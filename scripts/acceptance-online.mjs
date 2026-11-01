@@ -75,7 +75,17 @@ if (onlineIndex) {
 }
 let verifiedCount = 0
 for (const e of localIndex.problems) if (recOf(e)?.verified === true) verifiedCount += 1
-check('仓库 verified 数 === 2068', verifiedCount === 2068, `verified=${verifiedCount}`)
+let onlineVerified = 0
+try {
+  const shardFiles = [...new Set(onlineIndex.problems.map((e) => e.file))]
+  for (const f of shardFiles) {
+    const shard = JSON.parse(await (await fetch(BASE + 'data/problems/' + f)).text())
+    for (const p of shard.problems) if (p.verified === true) onlineVerified += 1
+  }
+} catch (e) {
+  check('线上 verified 数可统计', false, e.message)
+}
+check('线上 verified 数 === 仓库 verified 数', onlineVerified === verifiedCount, `线上=${onlineVerified} 仓库=${verifiedCount}`)
 
 /* ============ C. 浏览器：三大板块 + 线上真实判分 ============ */
 const consoleIssues = []
@@ -132,7 +142,8 @@ async function main() {
   await page.goto(`${BASE}#/problems`, { waitUntil: 'domcontentloaded' })
   await page.waitForSelector('[data-role="problem-table"], [data-role="row"]', { timeout: 30000 })
   const listTxt = await page.evaluate(() => document.body.innerText)
-  check('题目列表显示总题量 2074', listTxt.includes('2074'), (listTxt.match(/\d{3,5}\s*道/) ?? [''])[0])
+  const totalStr = String(localIndex.problems.length)
+  check(`题目列表显示总题量 ${totalStr}`, listTxt.includes(totalStr), (listTxt.match(/\d{3,5}\s*道/) ?? [''])[0])
 
   // 知识卡片列表 + 演示列表 + 进度页
   await page.goto(`${BASE}#/knowledge`, { waitUntil: 'domcontentloaded' })
