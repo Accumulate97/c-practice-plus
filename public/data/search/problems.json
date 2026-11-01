@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "319a7ceeafe744ca",
+  "content_sha": "37ae81970ed23598",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 2857,
+  "count": 3007,
   "docs": [
     {
       "id": "c-ch01-sc-001",
@@ -29281,6 +29281,2116 @@
       "chapter": "第12章 文件",
       "section": "12.4 变式练习（概念类）",
       "type": "true_false",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-101",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib",
+        "升序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-102",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib",
+        "降序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-103",
+      "file": "c-ch13.json",
+      "title": "输入 n 个学生的姓名和分数",
+      "tags": [
+        "排序",
+        "结构体",
+        "qsort",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-104",
+      "file": "c-ch13.json",
+      "title": "输入一个升序排列的整数序列",
+      "tags": [
+        "查找",
+        "bsearch",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-105",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个子串 sub",
+      "tags": [
+        "字符串",
+        "strstr",
+        "查找"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-106",
+      "file": "c-ch13.json",
+      "title": "输入一个用逗号分隔的字符串",
+      "tags": [
+        "字符串",
+        "strtok",
+        "切分"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-107",
+      "file": "c-ch13.json",
+      "title": "输入一个整数",
+      "tags": [
+        "格式化",
+        "sprintf",
+        "stdio"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-108",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "格式化",
+        "snprintf",
+        "stdio"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-109",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个字符 ch",
+      "tags": [
+        "字符串",
+        "strchr",
+        "查找"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-110",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个字符 ch",
+      "tags": [
+        "字符串",
+        "strrchr",
+        "查找"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-111",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "tags": [
+        "数组",
+        "memcpy",
+        "内存"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-112",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串和一个下标 p",
+      "tags": [
+        "内存",
+        "memmove",
+        "字符串"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-113",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n 和一个字符 c",
+      "tags": [
+        "数组",
+        "memset",
+        "内存"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-114",
+      "file": "c-ch13.json",
+      "title": "输入一个表示整数的字符串",
+      "tags": [
+        "字符串",
+        "atoi",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-115",
+      "file": "c-ch13.json",
+      "title": "输入一个表示浮点数的字符串",
+      "tags": [
+        "字符串",
+        "atof",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-116",
+      "file": "c-ch13.json",
+      "title": "输入两个非负整数 a 和 b",
+      "tags": [
+        "整除",
+        "div",
+        "商",
+        "余数"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-117",
+      "file": "c-ch13.json",
+      "title": "输入 n",
+      "tags": [
+        "内存",
+        "malloc",
+        "free"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-118",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "字符串",
+        "strlen",
+        "string"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-119",
+      "file": "c-ch13.json",
+      "title": "输入两个字符串 a 和 b",
+      "tags": [
+        "字符串",
+        "strcat",
+        "拼接"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-120",
+      "file": "c-ch13.json",
+      "title": "输入两个字符串 a 和 b",
+      "tags": [
+        "字符串",
+        "strcmp",
+        "比较"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-121",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个字符串",
+      "tags": [
+        "qsort",
+        "字符串",
+        "排序",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-122",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个实数",
+      "tags": [
+        "qsort",
+        "double",
+        "排序",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-123",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个已按字典序排好的字符串",
+      "tags": [
+        "bsearch",
+        "查找",
+        "字符串",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-124",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串和一个整数 n",
+      "tags": [
+        "strncpy",
+        "字符串",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-125",
+      "file": "c-ch13.json",
+      "title": "输入两个字符串和一个整数 n",
+      "tags": [
+        "strncat",
+        "字符串",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-126",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "tags": [
+        "strspn",
+        "字符串",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-127",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "tags": [
+        "strcspn",
+        "字符串",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-128",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "tags": [
+        "strpbrk",
+        "查找",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-129",
+      "file": "c-ch13.json",
+      "title": "输入两个字符串",
+      "tags": [
+        "strcasecmp",
+        "字符串",
+        "大小写"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-130",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串和一个字符",
+      "tags": [
+        "memchr",
+        "查找",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-131",
+      "file": "c-ch13.json",
+      "title": "先输入初始个数 n 和扩容后新增个数 m",
+      "tags": [
+        "realloc",
+        "动态内存",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-132",
+      "file": "c-ch13.json",
+      "title": "先输入已读入个数 m",
+      "tags": [
+        "calloc",
+        "动态内存",
+        "清零",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-133",
+      "file": "c-ch13.json",
+      "title": "输入一个历史上的时间戳 t0",
+      "tags": [
+        "time",
+        "时间戳",
+        "time.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-134",
+      "file": "c-ch13.json",
+      "title": "用 fgets 从标准输入读取一整行字符串",
+      "tags": [
+        "fgets",
+        "输入",
+        "stdio.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-135",
+      "file": "c-ch13.json",
+      "title": "输入一个整数和一个字符串",
+      "tags": [
+        "fprintf",
+        "fscanf",
+        "文件流",
+        "stdio.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-136",
+      "file": "c-ch13.json",
+      "title": "输入一个整数",
+      "tags": [
+        "abs",
+        "绝对值",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-137",
+      "file": "c-ch13.json",
+      "title": "输入一个数字字符串",
+      "tags": [
+        "atol",
+        "字符串转长整型",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-138",
+      "file": "c-ch13.json",
+      "title": "输入行数 r 和每行两个整数",
+      "tags": [
+        "qsort",
+        "二维数组",
+        "排序",
+        "stdlib"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-139",
+      "file": "c-ch13.json",
+      "title": "输入年、月、日三个整数",
+      "tags": [
+        "sprintf",
+        "格式化",
+        "stdio.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ad-140",
+      "file": "c-ch13.json",
+      "title": "输入一个字符串 s 和一个分隔符集合 delim",
+      "tags": [
+        "strtok",
+        "分割",
+        "string.h"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "type": "api_drill",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-101",
+      "file": "c-ch13.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "求和",
+        "公式",
+        "O(1)",
+        "循环"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-102",
+      "file": "c-ch13.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "平方和",
+        "公式",
+        "O(1)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-103",
+      "file": "c-ch13.json",
+      "title": "输入一个升序数组",
+      "tags": [
+        "两数之和",
+        "双指针",
+        "升序",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-104",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "最大值",
+        "单遍",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-105",
+      "file": "c-ch13.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "字符串",
+        "反转",
+        "双指针",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-106",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "移动零",
+        "双指针",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-107",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "去重",
+        "计数",
+        "升序",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-108",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "排序",
+        "快速排序",
+        "O(n log n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-109",
+      "file": "c-ch13.json",
+      "title": "输入一个由小写字母组成的字符串",
+      "tags": [
+        "滑动窗口",
+        "子串",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-110",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "前缀和",
+        "区间和",
+        "O(1)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-111",
+      "file": "c-ch13.json",
+      "title": "输入两个升序数组",
+      "tags": [
+        "归并",
+        "双指针",
+        "有序数组",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-112",
+      "file": "c-ch13.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "位运算",
+        "2 的幂",
+        "O(1)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-113",
+      "file": "c-ch13.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "字符串压缩",
+        "扫描",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-114",
+      "file": "c-ch13.json",
+      "title": "输入一个升序数组",
+      "tags": [
+        "去重",
+        "有序数组",
+        "双指针",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-115",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "频数",
+        "计数数组",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-116",
+      "file": "c-ch13.json",
+      "title": "输入一个数组",
+      "tags": [
+        "极值",
+        "最大最小",
+        "单遍",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-117",
+      "file": "c-ch13.json",
+      "title": "输入两个不含空格的字符串 s 和 t",
+      "tags": [
+        "旋转",
+        "字符串",
+        "拼接",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-118",
+      "file": "c-ch13.json",
+      "title": "输入两个升序数组",
+      "tags": [
+        "集合",
+        "交集",
+        "双指针",
+        "O(n)"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-119",
+      "file": "c-ch13.json",
+      "title": "下面的程序找字符串中第一个不重复的字符",
+      "tags": [
+        "优化",
+        "计数",
+        "字符串"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-120",
+      "file": "c-ch13.json",
+      "title": "下面的程序在「升序数组」里找和为 target 的两个数",
+      "tags": [
+        "优化",
+        "双指针",
+        "数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-121",
+      "file": "c-ch13.json",
+      "title": "下面的程序用二维数组逐行递推算杨辉三角第 n 行",
+      "tags": [
+        "优化",
+        "组合数",
+        "滚动数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-122",
+      "file": "c-ch13.json",
+      "title": "下面的程序数「连续子数组和为 k」的个数",
+      "tags": [
+        "优化",
+        "前缀和",
+        "哈希"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-123",
+      "file": "c-ch13.json",
+      "title": "下面的程序用循环累加求等差数列第 n 项",
+      "tags": [
+        "优化",
+        "等差数列"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-124",
+      "file": "c-ch13.json",
+      "title": "下面的程序用冒泡排序给数组升序排序",
+      "tags": [
+        "优化",
+        "堆排序",
+        "排序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-125",
+      "file": "c-ch13.json",
+      "title": "下面的程序用循环从 1 开始逐个试 i*i 判断 n 是否为完全平方数",
+      "tags": [
+        "优化",
+        "完全平方数",
+        "sqrt"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-126",
+      "file": "c-ch13.json",
+      "title": "下面的程序求「不含重复字符的最长子串」长度",
+      "tags": [
+        "优化",
+        "滑动窗口",
+        "字符串"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-127",
+      "file": "c-ch13.json",
+      "title": "下面的程序合并重叠区间",
+      "tags": [
+        "优化",
+        "区间合并",
+        "qsort"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-128",
+      "file": "c-ch13.json",
+      "title": "下面的程序按「先上、再右、后下、回左」逐圈螺旋输出矩阵元素",
+      "tags": [
+        "优化",
+        "螺旋矩阵",
+        "方向数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-129",
+      "file": "c-ch13.json",
+      "title": "下面的程序求数组中「最长连续 1 的个数」",
+      "tags": [
+        "优化",
+        "遍历",
+        "连续1"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-130",
+      "file": "c-ch13.json",
+      "title": "下面的程序把句子中的单词顺序反转",
+      "tags": [
+        "优化",
+        "字符串",
+        "翻转"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-131",
+      "file": "c-ch13.json",
+      "title": "下面的程序求一次买卖股票的最大利润",
+      "tags": [
+        "优化",
+        "股票",
+        "一次遍历"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-132",
+      "file": "c-ch13.json",
+      "title": "下面的程序判断一个非负整数是奇数还是偶数",
+      "tags": [
+        "优化",
+        "位运算",
+        "奇偶"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-133",
+      "file": "c-ch13.json",
+      "title": "下面的程序求数组第 k 大",
+      "tags": [
+        "优化",
+        "快速选择",
+        "第k大"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-134",
+      "file": "c-ch13.json",
+      "title": "下面的程序求「乘积最大的连续子数组」",
+      "tags": [
+        "优化",
+        "动态规划",
+        "子数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-opt-135",
+      "file": "c-ch13.json",
+      "title": "下面的程序找数组中的重复数",
+      "tags": [
+        "优化",
+        "Floyd判圈",
+        "重复数"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-101",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strlen",
+      "tags": [
+        "字符串",
+        "指针",
+        "strlen"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-102",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strcpy",
+      "tags": [
+        "字符串",
+        "指针",
+        "strcpy"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-103",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strncpy",
+      "tags": [
+        "字符串",
+        "指针",
+        "strncpy"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-104",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strcat",
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-105",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strncat",
+      "tags": [
+        "字符串",
+        "指针",
+        "strncat"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-106",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strcmp",
+      "tags": [
+        "字符串",
+        "比较",
+        "strcmp"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-107",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strncmp",
+      "tags": [
+        "字符串",
+        "比较",
+        "strncmp"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-108",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strchr",
+      "tags": [
+        "字符串",
+        "查找",
+        "strchr"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-109",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strrchr",
+      "tags": [
+        "字符串",
+        "查找",
+        "strrchr"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-110",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strstr",
+      "tags": [
+        "字符串",
+        "子串",
+        "strstr"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-111",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strtok",
+      "tags": [
+        "字符串",
+        "分割",
+        "strtok"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-112",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 memcpy",
+      "tags": [
+        "内存",
+        "指针",
+        "memcpy"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-113",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 memmove",
+      "tags": [
+        "内存",
+        "指针",
+        "memmove",
+        "重叠"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-114",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 memset",
+      "tags": [
+        "内存",
+        "赋值",
+        "memset"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-115",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 memcmp",
+      "tags": [
+        "内存",
+        "比较",
+        "memcmp"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-116",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 atoi",
+      "tags": [
+        "字符串",
+        "转换",
+        "atoi"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-117",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 itoa",
+      "tags": [
+        "整数",
+        "转换",
+        "itoa"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-118",
+      "file": "c-ch13.json",
+      "title": "不使用任何库函数",
+      "tags": [
+        "数值算法",
+        "gcd",
+        "辗转相除"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-119",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 qsort",
+      "tags": [
+        "排序",
+        "函数指针",
+        "qsort"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-120",
+      "file": "c-ch13.json",
+      "title": "自实现 `void quicksort",
+      "tags": [
+        "排序",
+        "快速排序",
+        "递归"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-121",
+      "file": "c-ch13.json",
+      "title": "自实现 `void merge_sort",
+      "tags": [
+        "排序",
+        "归并排序",
+        "分治"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-122",
+      "file": "c-ch13.json",
+      "title": "自实现 `void heap_sort",
+      "tags": [
+        "排序",
+        "堆排序",
+        "大顶堆"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-123",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 bsearch",
+      "tags": [
+        "查找",
+        "二分查找",
+        "下标"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-124",
+      "file": "c-ch13.json",
+      "title": "自实现 `long long fast_pow",
+      "tags": [
+        "分治",
+        "快速幂",
+        "递归"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-125",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h>/<stdlib.h> 的 strdup",
+      "tags": [
+        "字符串",
+        "动态内存",
+        "strdup"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-126",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strspn",
+      "tags": [
+        "字符串",
+        "strspn",
+        "字符集合"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-127",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strcspn",
+      "tags": [
+        "字符串",
+        "strcspn",
+        "字符集合"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-128",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strpbrk",
+      "tags": [
+        "字符串",
+        "strpbrk",
+        "字符集合"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-129",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 strcasecmp",
+      "tags": [
+        "字符串",
+        "strcasecmp",
+        "忽略大小写"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-130",
+      "file": "c-ch13.json",
+      "title": "不用 <string.h> 的 memchr",
+      "tags": [
+        "内存",
+        "memchr",
+        "按字节查找"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-131",
+      "file": "c-ch13.json",
+      "title": "自实现 `void my_strrev",
+      "tags": [
+        "字符串",
+        "strrev",
+        "就地反转"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-132",
+      "file": "c-ch13.json",
+      "title": "自实现 `void my_strlwr",
+      "tags": [
+        "字符串",
+        "strlwr",
+        "转小写"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-133",
+      "file": "c-ch13.json",
+      "title": "自实现 `void my_strupr",
+      "tags": [
+        "字符串",
+        "strupr",
+        "转大写"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-134",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 strtol",
+      "tags": [
+        "字符串",
+        "strtol",
+        "进制转换"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-sr-135",
+      "file": "c-ch13.json",
+      "title": "不用 <stdlib.h> 的 bsearch",
+      "tags": [
+        "查找",
+        "bsearch",
+        "函数指针"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "type": "stdlib_reimpl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-101",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "循环",
+        "求和"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-102",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "最大值"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-103",
+      "file": "c-ch13.json",
+      "title": "输入整数 n",
+      "tags": [
+        "循环",
+        "计数",
+        "取模"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-104",
+      "file": "c-ch13.json",
+      "title": "输入整数 n",
+      "tags": [
+        "素数",
+        "循环",
+        "break"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-105",
+      "file": "c-ch13.json",
+      "title": "输入非负整数 n",
+      "tags": [
+        "循环",
+        "阶乘",
+        "long long"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-106",
+      "file": "c-ch13.json",
+      "title": "输入 n",
+      "tags": [
+        "循环",
+        "斐波那契",
+        "递推"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-107",
+      "file": "c-ch13.json",
+      "title": "输入两个非负整数 a 和 b",
+      "tags": [
+        "辗转相除",
+        "最大公约数",
+        "while"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-108",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "逆序",
+        "遍历"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-109",
+      "file": "c-ch13.json",
+      "title": "输入一行字符串",
+      "tags": [
+        "字符串",
+        "长度",
+        "fgets"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-110",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "冒泡排序",
+        "数组",
+        "升序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-111",
+      "file": "c-ch13.json",
+      "title": "输入 n、n 个已升序排列的整数",
+      "tags": [
+        "二分查找",
+        "数组",
+        "有序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-112",
+      "file": "c-ch13.json",
+      "title": "输入一行字符串",
+      "tags": [
+        "字符串",
+        "元音",
+        "大小写"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-113",
+      "file": "c-ch13.json",
+      "title": "输入一个 3×3 矩阵",
+      "tags": [
+        "二维数组",
+        "转置",
+        "矩阵"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-114",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "取模",
+        "数位",
+        "循环"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-115",
+      "file": "c-ch13.json",
+      "title": "输入一行字符串",
+      "tags": [
+        "回文",
+        "字符串",
+        "双指针"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-116",
+      "file": "c-ch13.json",
+      "title": "鸡兔同笼",
+      "tags": [
+        "鸡兔同笼",
+        "方程",
+        "条件"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-117",
+      "file": "c-ch13.json",
+      "title": "输入整数 n",
+      "tags": [
+        "杨辉三角",
+        "二维数组",
+        "递推"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-118",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "位运算",
+        "进制",
+        "计数"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-119",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "求和",
+        "平均值",
+        "保留小数"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-120",
+      "file": "c-ch13.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "次大值",
+        "数组",
+        "去重"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-121",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "整数反转",
+        "循环",
+        "数位"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-122",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "平均值",
+        "循环",
+        "整数除法"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-123",
+      "file": "c-ch13.json",
+      "title": "输入两个字符串",
+      "tags": [
+        "字符串",
+        "字符数组",
+        "拼接"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-124",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "插入排序",
+        "排序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-125",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "选择排序",
+        "排序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-126",
+      "file": "c-ch13.json",
+      "title": "输入一行可能含多个空格的字符串",
+      "tags": [
+        "字符串",
+        "单词计数",
+        "空格分隔"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-127",
+      "file": "c-ch13.json",
+      "title": "输入一个年份 y",
+      "tags": [
+        "闰年",
+        "条件判断"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-128",
+      "file": "c-ch13.json",
+      "title": "输入某年、某月、某日",
+      "tags": [
+        "日期",
+        "闰年",
+        "数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-129",
+      "file": "c-ch13.json",
+      "title": "输出所有三位数的“水仙花数”",
+      "tags": [
+        "水仙花数",
+        "循环",
+        "数位"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-130",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "完数",
+        "因子",
+        "循环"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-131",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "乘法口诀表",
+        "嵌套循环",
+        "格式化输出"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-132",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "最大子段和",
+        "Kadane算法",
+        "动态规划"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-133",
+      "file": "c-ch13.json",
+      "title": "n 个人围成一圈",
+      "tags": [
+        "约瑟夫环",
+        "模拟",
+        "数组"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-134",
+      "file": "c-ch13.json",
+      "title": "输入两个整数 a 和 b",
+      "tags": [
+        "素数",
+        "区间",
+        "循环"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-135",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "数组去重",
+        "查找"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-136",
+      "file": "c-ch13.json",
+      "title": "先输入一个整数 n",
+      "tags": [
+        "中位数",
+        "排序"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-137",
+      "file": "c-ch13.json",
+      "title": "汉诺塔问题",
+      "tags": [
+        "汉诺塔",
+        "递归"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-138",
+      "file": "c-ch13.json",
+      "title": "输入一行字符串",
+      "tags": [
+        "大小写转换",
+        "ASCII",
+        "字符串"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-139",
+      "file": "c-ch13.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "完全平方数",
+        "循环"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch13-ti-140",
+      "file": "c-ch13.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "数字统计",
+        "数组计数",
+        "数位"
+      ],
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "type": "timed_impl",
       "category": "c"
     },
     {

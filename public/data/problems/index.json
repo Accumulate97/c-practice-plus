@@ -1,10 +1,10 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "a6f50c0e0e5fd208",
+  "content_sha": "7e2cc47a7296afa2",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 2857,
-  "shard_count": 20,
+  "count": 3007,
+  "shard_count": 21,
   "shards": [
     {
       "file": "c-ch01.json",
@@ -89,6 +89,13 @@
       "chapter": "第12章 文件",
       "count": 103,
       "url": "data/problems/c-ch12.json"
+    },
+    {
+      "file": "c-ch13.json",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "count": 150,
+      "url": "data/problems/c-ch13.json"
     },
     {
       "file": "ds-ch01.json",
@@ -15983,7 +15990,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "遍历",
@@ -16001,7 +16008,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "最大值",
@@ -16018,7 +16025,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "逆序",
@@ -16035,7 +16042,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "初始化",
@@ -16052,7 +16059,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "计数",
@@ -16070,7 +16077,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "次大值",
@@ -16087,7 +16094,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "去重",
@@ -16104,7 +16111,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "计数",
@@ -16121,7 +16128,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "区间计数",
@@ -16139,7 +16146,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "左旋",
@@ -16156,7 +16163,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "右旋",
@@ -16173,7 +16180,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "合并有序数组",
@@ -16190,7 +16197,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "指针",
@@ -16208,7 +16215,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "定义",
@@ -16225,7 +16232,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "函数参数",
@@ -16243,7 +16250,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "行求和",
@@ -16260,7 +16267,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "转置",
@@ -16277,7 +16284,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "杨辉三角",
@@ -16294,7 +16301,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "对角线",
@@ -16311,7 +16318,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "马鞍点",
@@ -16328,7 +16335,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串",
@@ -16345,7 +16352,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串",
@@ -16362,7 +16369,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "顺序查找",
@@ -16379,7 +16386,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分查找",
@@ -16396,7 +16403,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分",
@@ -16414,7 +16421,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "冒泡排序",
@@ -16431,7 +16438,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "选择排序",
@@ -16448,7 +16455,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "插入排序",
@@ -16465,7 +16472,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "稳定性",
@@ -16483,7 +16490,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "螺旋遍历",
@@ -16500,7 +16507,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "有序数组",
         "双指针",
@@ -16517,7 +16524,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "有序数组",
         "二分查找",
@@ -16534,7 +16541,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "快速排序",
         "划分",
@@ -16551,7 +16558,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "快速排序",
         "递归",
@@ -16568,7 +16575,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "归并",
         "有序数组",
@@ -16585,7 +16592,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "归并排序",
         "递归",
@@ -16602,7 +16609,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "堆排序",
         "大顶堆",
@@ -16619,7 +16626,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "计数排序",
         "非负整数",
@@ -16636,7 +16643,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "计数排序",
         "负数",
@@ -16653,7 +16660,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "桶排序",
         "分桶",
@@ -16670,7 +16677,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "奇偶重排",
         "一维数组",
@@ -16687,7 +16694,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "正负重排",
         "双指针",
@@ -16704,7 +16711,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "稳定性",
         "归并排序",
@@ -16721,7 +16728,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "左边界",
@@ -16738,7 +16745,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "右边界",
@@ -16755,7 +16762,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "出现次数",
@@ -16772,7 +16779,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "旋转数组",
         "二分查找",
@@ -16789,7 +16796,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "旋转数组",
         "二分查找",
@@ -16806,7 +16813,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "重复元素",
         "数组计数",
@@ -16823,7 +16830,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "两数之和",
         "哈希",
@@ -16840,7 +16847,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "多数元素",
         "摩尔投票",
@@ -16857,7 +16864,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "最大子数组",
         "Kadane",
@@ -16874,7 +16881,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "最大子数组",
         "Kadane",
@@ -16891,7 +16898,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "区间合并",
         "排序",
@@ -16908,7 +16915,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "前缀和",
         "区间查询",
@@ -16925,7 +16932,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "二维前缀和",
@@ -16942,7 +16949,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "差分",
         "区间修改",
@@ -16959,7 +16966,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "滑动窗口",
         "单调队列",
@@ -16976,7 +16983,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "滑动窗口",
         "字符串",
@@ -16993,7 +17000,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "计数",
@@ -17010,7 +17017,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环右移",
         "取模",
@@ -17027,7 +17034,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "指针遍历",
         "数组名",
@@ -17044,7 +17051,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "sizeof",
         "函数参数退化",
@@ -17061,7 +17068,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "计数数组",
         "负下标",
@@ -17078,7 +17085,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "移动零",
         "双指针",
@@ -17095,7 +17102,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "稳定划分",
         "负数",
@@ -17112,7 +17119,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "区间合并",
         "排序",
@@ -17129,7 +17136,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "区间覆盖",
         "合并",
@@ -17146,7 +17153,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "三数之和",
         "嵌套循环",
@@ -17163,7 +17170,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "四数之和",
         "四层循环",
@@ -17180,7 +17187,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "前缀和",
         "子数组",
@@ -17197,7 +17204,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "约瑟夫环",
         "数组模拟",
@@ -17214,7 +17221,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组参数",
         "列数",
@@ -17231,7 +17238,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "主对角线",
         "副对角线",
@@ -17248,7 +17255,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "转置",
         "行列互换",
@@ -17265,7 +17272,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "边界元素",
         "越界",
@@ -17282,7 +17289,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "旋转90度",
         "映射",
@@ -17299,7 +17306,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "螺旋遍历",
         "边界收缩"
@@ -17315,7 +17322,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "杨辉三角",
         "递推",
@@ -17332,7 +17339,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "鞍点",
         "行最大",
@@ -17349,7 +17356,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "托普利茨",
         "对角线",
@@ -17366,7 +17373,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "生命游戏",
         "邻居计数",
@@ -17383,7 +17390,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "回文",
         "字符数组",
@@ -17400,7 +17407,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符判断",
         "数字",
@@ -17417,7 +17424,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "单词计数",
         "fgets",
@@ -17434,7 +17441,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "逆序",
         "字符串",
@@ -17451,7 +17458,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连续递增",
         "一趟扫描",
@@ -17468,7 +17475,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "插入位置",
@@ -17485,7 +17492,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "第k大",
         "选择排序",
@@ -17502,7 +17509,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "报数出列",
         "数组模拟",
@@ -17519,7 +17526,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "sizeof",
@@ -17536,7 +17543,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "部分初始化",
@@ -17553,7 +17560,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "a[i]与i[a]等价",
@@ -17570,7 +17577,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "指针自增",
@@ -17588,7 +17595,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "数组名作函数参数",
@@ -17605,7 +17612,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "求最值"
@@ -17621,7 +17628,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "倒序输出"
@@ -17637,7 +17644,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "逗号表达式",
         "赋值",
@@ -17671,7 +17678,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "初始化",
@@ -17688,7 +17695,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "a[i][j]与*(*(a+i)+j)",
@@ -17705,7 +17712,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "内存连续",
@@ -17722,7 +17729,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "部分初始化",
@@ -17739,7 +17746,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "转置输出",
@@ -17756,7 +17763,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "矩阵转置",
@@ -17773,7 +17780,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "矩阵乘法"
@@ -17789,7 +17796,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "strlen与sizeof",
@@ -17806,7 +17813,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "strcat",
@@ -17823,7 +17830,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "遍历",
@@ -17840,7 +17847,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串逆序",
@@ -17857,7 +17864,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "内嵌\\0",
@@ -17874,7 +17881,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "有序数组"
@@ -17890,7 +17897,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "冒泡排序",
         "单趟"
@@ -17906,7 +17913,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "选择排序",
         "单步"
@@ -17922,7 +17929,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "插入排序",
         "元素插入"
@@ -17938,7 +17945,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "越界读",
         "二维数组",
@@ -17955,7 +17962,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组名退化",
         "sizeof",
@@ -17972,7 +17979,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "指针自增",
         "数组名退化",
@@ -17989,7 +17996,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "部分初始化",
         "补零",
@@ -18006,7 +18013,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "负下标",
         "指针",
@@ -18023,7 +18030,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维传参",
         "数组名退化",
@@ -18040,7 +18047,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "自增自减",
         "指针",
@@ -18057,7 +18064,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "遍历",
         "求和",
@@ -18074,7 +18081,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "转置",
         "二维数组",
@@ -18091,7 +18098,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strlen",
         "sizeof",
@@ -18108,7 +18115,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strcpy",
         "字符数组",
@@ -18125,7 +18132,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "getchar",
         "字符读入",
@@ -18142,7 +18149,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "冒泡排序",
         "单趟",
@@ -18159,7 +18166,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "选择排序",
         "最小值",
@@ -18176,7 +18183,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "插入排序",
         "单步",
@@ -18193,7 +18200,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "mid",
@@ -18210,7 +18217,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "杨辉三角",
         "二维数组",
@@ -18227,7 +18234,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "指针运算",
         "二维数组",
@@ -18244,7 +18251,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "逆序",
         "一维数组",
@@ -18261,7 +18268,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "计数排序",
         "数组应用",
@@ -18278,7 +18285,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "遍历",
@@ -18295,7 +18302,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "逆序",
@@ -18312,7 +18319,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "元素交换",
@@ -18329,7 +18336,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "初始化",
@@ -18346,7 +18353,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "最大值",
@@ -18363,7 +18370,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "逆序",
@@ -18380,7 +18387,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "平均值",
@@ -18397,7 +18404,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "去重",
@@ -18414,7 +18421,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "轮转",
@@ -18431,7 +18438,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "有序数组",
@@ -18448,7 +18455,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "计数",
@@ -18465,7 +18472,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "插入",
@@ -18482,7 +18489,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "读写",
@@ -18499,7 +18506,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "对角线",
@@ -18516,7 +18523,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "行列互换",
@@ -18533,7 +18540,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "初始化",
@@ -18550,7 +18557,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "转置",
@@ -18567,7 +18574,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "杨辉三角",
@@ -18584,7 +18591,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "矩阵乘法",
@@ -18601,7 +18608,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "螺旋遍历",
@@ -18618,7 +18625,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "马鞍点",
@@ -18635,7 +18642,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strlen",
@@ -18652,7 +18659,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strcpy",
@@ -18669,7 +18676,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "逆序",
@@ -18686,7 +18693,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "字符统计",
@@ -18703,7 +18710,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "元音统计",
@@ -18720,7 +18727,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "顺序查找",
@@ -18737,7 +18744,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分查找",
@@ -18754,7 +18761,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "冒泡排序",
@@ -18771,7 +18778,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "插入排序",
@@ -18788,7 +18795,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "求和",
@@ -18806,7 +18813,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "求最大值",
@@ -18823,7 +18830,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "输入",
@@ -18841,7 +18848,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "逆序",
@@ -18859,7 +18866,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "指针遍历",
@@ -18876,7 +18883,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "查找",
@@ -18893,7 +18900,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "倒序输出",
@@ -18911,7 +18918,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "函数参数",
@@ -18929,7 +18936,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "求和",
@@ -18947,7 +18954,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "元素引用",
@@ -18965,7 +18972,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "主对角线",
@@ -18983,7 +18990,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "转置",
@@ -19001,7 +19008,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "杨辉三角",
@@ -19018,7 +19025,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "求最大值",
@@ -19036,7 +19043,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串长度",
@@ -19053,7 +19060,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串拼接",
@@ -19071,7 +19078,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "大小写转换",
@@ -19089,7 +19096,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "统计字符",
@@ -19106,7 +19113,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "回文",
@@ -19123,7 +19130,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "冒泡排序",
@@ -19141,7 +19148,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "选择排序",
@@ -19158,7 +19165,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分查找",
@@ -19175,7 +19182,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "插入",
@@ -19193,7 +19200,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "线性查找",
@@ -19211,7 +19218,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "合并",
@@ -19229,7 +19236,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "定义",
@@ -19247,7 +19254,7 @@
       "section": "6.1 一维数组的定义和引用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "部分初始化",
@@ -19264,7 +19271,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "最值"
@@ -19280,7 +19287,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "求和",
@@ -19297,7 +19304,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "逆序"
@@ -19313,7 +19320,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "去重",
@@ -19331,7 +19338,7 @@
       "section": "6.2 一维数组的应用",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "一维数组",
         "轮转"
@@ -19347,7 +19354,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "初始化",
@@ -19364,7 +19371,7 @@
       "section": "6.3 二维数组的定义和引用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "矩阵转置",
@@ -19381,7 +19388,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "矩阵乘法"
@@ -19397,7 +19404,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "杨辉三角"
@@ -19413,7 +19420,7 @@
       "section": "6.4 二维数组的应用",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "对角线"
@@ -19429,7 +19436,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串",
@@ -19446,7 +19453,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串拷贝",
@@ -19463,7 +19470,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符串逆序"
@@ -19479,7 +19486,7 @@
       "section": "6.5 字符数组与字符串",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符数组",
         "字符统计",
@@ -19496,7 +19503,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "冒泡排序"
@@ -19512,7 +19519,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "选择排序"
@@ -19528,7 +19535,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分查找"
@@ -19544,7 +19551,7 @@
       "section": "6.6 数组的排序与查找",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "函数传参",
@@ -36639,6 +36646,2566 @@
       ],
       "title": "fwrite",
       "file": "c-ch12.json"
+    },
+    {
+      "id": "c-ch13-ad-101",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib",
+        "升序"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-102",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib",
+        "降序"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-103",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "排序",
+        "结构体",
+        "qsort",
+        "stdlib"
+      ],
+      "title": "输入 n 个学生的姓名和分数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-104",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "查找",
+        "bsearch",
+        "stdlib"
+      ],
+      "title": "输入一个升序排列的整数序列",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-105",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strstr",
+        "查找"
+      ],
+      "title": "输入一个字符串 s 和一个子串 sub",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-106",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strtok",
+        "切分"
+      ],
+      "title": "输入一个用逗号分隔的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-107",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "格式化",
+        "sprintf",
+        "stdio"
+      ],
+      "title": "输入一个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-108",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "格式化",
+        "snprintf",
+        "stdio"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-109",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strchr",
+        "查找"
+      ],
+      "title": "输入一个字符串 s 和一个字符 ch",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-110",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strrchr",
+        "查找"
+      ],
+      "title": "输入一个字符串 s 和一个字符 ch",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-111",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数组",
+        "memcpy",
+        "内存"
+      ],
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-112",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "内存",
+        "memmove",
+        "字符串"
+      ],
+      "title": "输入一个字符串和一个下标 p",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-113",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数组",
+        "memset",
+        "内存"
+      ],
+      "title": "输入一个整数 n 和一个字符 c",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-114",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "atoi",
+        "stdlib"
+      ],
+      "title": "输入一个表示整数的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-115",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "atof",
+        "stdlib"
+      ],
+      "title": "输入一个表示浮点数的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-116",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "整除",
+        "div",
+        "商",
+        "余数"
+      ],
+      "title": "输入两个非负整数 a 和 b",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-117",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "内存",
+        "malloc",
+        "free"
+      ],
+      "title": "输入 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-118",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strlen",
+        "string"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-119",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strcat",
+        "拼接"
+      ],
+      "title": "输入两个字符串 a 和 b",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-120",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strcmp",
+        "比较"
+      ],
+      "title": "输入两个字符串 a 和 b",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-121",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "qsort",
+        "字符串",
+        "排序",
+        "stdlib"
+      ],
+      "title": "输入 n 和 n 个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-122",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "qsort",
+        "double",
+        "排序",
+        "stdlib"
+      ],
+      "title": "输入 n 和 n 个实数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-123",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "bsearch",
+        "查找",
+        "字符串",
+        "stdlib"
+      ],
+      "title": "输入 n 和 n 个已按字典序排好的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-124",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strncpy",
+        "字符串",
+        "string.h"
+      ],
+      "title": "输入一个字符串和一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-125",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strncat",
+        "字符串",
+        "string.h"
+      ],
+      "title": "输入两个字符串和一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-126",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strspn",
+        "字符串",
+        "string.h"
+      ],
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-127",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strcspn",
+        "字符串",
+        "string.h"
+      ],
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-128",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strpbrk",
+        "查找",
+        "string.h"
+      ],
+      "title": "输入一个字符串 s 和一个字符集合 set",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-129",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strcasecmp",
+        "字符串",
+        "大小写"
+      ],
+      "title": "输入两个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-130",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "memchr",
+        "查找",
+        "string.h"
+      ],
+      "title": "输入一个字符串和一个字符",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-131",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "realloc",
+        "动态内存",
+        "stdlib"
+      ],
+      "title": "先输入初始个数 n 和扩容后新增个数 m",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-132",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "calloc",
+        "动态内存",
+        "清零",
+        "stdlib"
+      ],
+      "title": "先输入已读入个数 m",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-133",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "time",
+        "时间戳",
+        "time.h"
+      ],
+      "title": "输入一个历史上的时间戳 t0",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-134",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "fgets",
+        "输入",
+        "stdio.h"
+      ],
+      "title": "用 fgets 从标准输入读取一整行字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-135",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "fprintf",
+        "fscanf",
+        "文件流",
+        "stdio.h"
+      ],
+      "title": "输入一个整数和一个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-136",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "abs",
+        "绝对值",
+        "stdlib"
+      ],
+      "title": "输入一个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-137",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "atol",
+        "字符串转长整型",
+        "stdlib"
+      ],
+      "title": "输入一个数字字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-138",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "qsort",
+        "二维数组",
+        "排序",
+        "stdlib"
+      ],
+      "title": "输入行数 r 和每行两个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-139",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "sprintf",
+        "格式化",
+        "stdio.h"
+      ],
+      "title": "输入年、月、日三个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ad-140",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.3 API 练习",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strtok",
+        "分割",
+        "string.h"
+      ],
+      "title": "输入一个字符串 s 和一个分隔符集合 delim",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-101",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "求和",
+        "公式",
+        "O(1)",
+        "循环"
+      ],
+      "title": "输入一个正整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-102",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "平方和",
+        "公式",
+        "O(1)"
+      ],
+      "title": "输入一个正整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-103",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "两数之和",
+        "双指针",
+        "升序",
+        "O(n)"
+      ],
+      "title": "输入一个升序数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-104",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "最大值",
+        "单遍",
+        "O(n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-105",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "反转",
+        "双指针",
+        "O(n)"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-106",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "移动零",
+        "双指针",
+        "O(n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-107",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "去重",
+        "计数",
+        "升序",
+        "O(n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-108",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "排序",
+        "快速排序",
+        "O(n log n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-109",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "滑动窗口",
+        "子串",
+        "O(n)"
+      ],
+      "title": "输入一个由小写字母组成的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-110",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "前缀和",
+        "区间和",
+        "O(1)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-111",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "归并",
+        "双指针",
+        "有序数组",
+        "O(n)"
+      ],
+      "title": "输入两个升序数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-112",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "位运算",
+        "2 的幂",
+        "O(1)"
+      ],
+      "title": "输入一个非负整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-113",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串压缩",
+        "扫描",
+        "O(n)"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-114",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "去重",
+        "有序数组",
+        "双指针",
+        "O(n)"
+      ],
+      "title": "输入一个升序数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-115",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "频数",
+        "计数数组",
+        "O(n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-116",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "极值",
+        "最大最小",
+        "单遍",
+        "O(n)"
+      ],
+      "title": "输入一个数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-117",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "旋转",
+        "字符串",
+        "拼接",
+        "O(n)"
+      ],
+      "title": "输入两个不含空格的字符串 s 和 t",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-118",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "集合",
+        "交集",
+        "双指针",
+        "O(n)"
+      ],
+      "title": "输入两个升序数组",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-119",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "计数",
+        "字符串"
+      ],
+      "title": "下面的程序找字符串中第一个不重复的字符",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-120",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "双指针",
+        "数组"
+      ],
+      "title": "下面的程序在「升序数组」里找和为 target 的两个数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-121",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "组合数",
+        "滚动数组"
+      ],
+      "title": "下面的程序用二维数组逐行递推算杨辉三角第 n 行",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-122",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "前缀和",
+        "哈希"
+      ],
+      "title": "下面的程序数「连续子数组和为 k」的个数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-123",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "优化",
+        "等差数列"
+      ],
+      "title": "下面的程序用循环累加求等差数列第 n 项",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-124",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "堆排序",
+        "排序"
+      ],
+      "title": "下面的程序用冒泡排序给数组升序排序",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-125",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "优化",
+        "完全平方数",
+        "sqrt"
+      ],
+      "title": "下面的程序用循环从 1 开始逐个试 i*i 判断 n 是否为完全平方数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-126",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "滑动窗口",
+        "字符串"
+      ],
+      "title": "下面的程序求「不含重复字符的最长子串」长度",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-127",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "区间合并",
+        "qsort"
+      ],
+      "title": "下面的程序合并重叠区间",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-128",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "螺旋矩阵",
+        "方向数组"
+      ],
+      "title": "下面的程序按「先上、再右、后下、回左」逐圈螺旋输出矩阵元素",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-129",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "优化",
+        "遍历",
+        "连续1"
+      ],
+      "title": "下面的程序求数组中「最长连续 1 的个数」",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-130",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "字符串",
+        "翻转"
+      ],
+      "title": "下面的程序把句子中的单词顺序反转",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-131",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "股票",
+        "一次遍历"
+      ],
+      "title": "下面的程序求一次买卖股票的最大利润",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-132",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "优化",
+        "位运算",
+        "奇偶"
+      ],
+      "title": "下面的程序判断一个非负整数是奇数还是偶数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-133",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "快速选择",
+        "第k大"
+      ],
+      "title": "下面的程序求数组第 k 大",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-134",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "动态规划",
+        "子数组"
+      ],
+      "title": "下面的程序求「乘积最大的连续子数组」",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-opt-135",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.4 代码优化",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "优化",
+        "Floyd判圈",
+        "重复数"
+      ],
+      "title": "下面的程序找数组中的重复数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-101",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "指针",
+        "strlen"
+      ],
+      "title": "不用 <string.h> 的 strlen",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-102",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "指针",
+        "strcpy"
+      ],
+      "title": "不用 <string.h> 的 strcpy",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-103",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "指针",
+        "strncpy"
+      ],
+      "title": "不用 <string.h> 的 strncpy",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-104",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat"
+      ],
+      "title": "不用 <string.h> 的 strcat",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-105",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "指针",
+        "strncat"
+      ],
+      "title": "不用 <string.h> 的 strncat",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-106",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "比较",
+        "strcmp"
+      ],
+      "title": "不用 <string.h> 的 strcmp",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-107",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "比较",
+        "strncmp"
+      ],
+      "title": "不用 <string.h> 的 strncmp",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-108",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "查找",
+        "strchr"
+      ],
+      "title": "不用 <string.h> 的 strchr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-109",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "查找",
+        "strrchr"
+      ],
+      "title": "不用 <string.h> 的 strrchr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-110",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "子串",
+        "strstr"
+      ],
+      "title": "不用 <string.h> 的 strstr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-111",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "分割",
+        "strtok"
+      ],
+      "title": "不用 <string.h> 的 strtok",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-112",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "内存",
+        "指针",
+        "memcpy"
+      ],
+      "title": "不用 <string.h> 的 memcpy",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-113",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "内存",
+        "指针",
+        "memmove",
+        "重叠"
+      ],
+      "title": "不用 <string.h> 的 memmove",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-114",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "内存",
+        "赋值",
+        "memset"
+      ],
+      "title": "不用 <string.h> 的 memset",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-115",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "内存",
+        "比较",
+        "memcmp"
+      ],
+      "title": "不用 <string.h> 的 memcmp",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-116",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "转换",
+        "atoi"
+      ],
+      "title": "不用 <stdlib.h> 的 atoi",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-117",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "整数",
+        "转换",
+        "itoa"
+      ],
+      "title": "不用 <stdlib.h> 的 itoa",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-118",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "数值算法",
+        "gcd",
+        "辗转相除"
+      ],
+      "title": "不使用任何库函数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-119",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "函数指针",
+        "qsort"
+      ],
+      "title": "不用 <stdlib.h> 的 qsort",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-120",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "快速排序",
+        "递归"
+      ],
+      "title": "自实现 `void quicksort",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-121",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "归并排序",
+        "分治"
+      ],
+      "title": "自实现 `void merge_sort",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-122",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "堆排序",
+        "大顶堆"
+      ],
+      "title": "自实现 `void heap_sort",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-123",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分查找",
+        "下标"
+      ],
+      "title": "不用 <stdlib.h> 的 bsearch",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-124",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "分治",
+        "快速幂",
+        "递归"
+      ],
+      "title": "自实现 `long long fast_pow",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-125",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "动态内存",
+        "strdup"
+      ],
+      "title": "不用 <string.h>/<stdlib.h> 的 strdup",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-126",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strspn",
+        "字符集合"
+      ],
+      "title": "不用 <string.h> 的 strspn",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-127",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strcspn",
+        "字符集合"
+      ],
+      "title": "不用 <string.h> 的 strcspn",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-128",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strpbrk",
+        "字符集合"
+      ],
+      "title": "不用 <string.h> 的 strpbrk",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-129",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strcasecmp",
+        "忽略大小写"
+      ],
+      "title": "不用 <string.h> 的 strcasecmp",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-130",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "内存",
+        "memchr",
+        "按字节查找"
+      ],
+      "title": "不用 <string.h> 的 memchr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-131",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strrev",
+        "就地反转"
+      ],
+      "title": "自实现 `void my_strrev",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-132",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strlwr",
+        "转小写"
+      ],
+      "title": "自实现 `void my_strlwr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-133",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strupr",
+        "转大写"
+      ],
+      "title": "自实现 `void my_strupr",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-134",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strtol",
+        "进制转换"
+      ],
+      "title": "不用 <stdlib.h> 的 strtol",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-sr-135",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.2 标准库重实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "bsearch",
+        "函数指针"
+      ],
+      "title": "不用 <stdlib.h> 的 bsearch",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-101",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "循环",
+        "求和"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-102",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数组",
+        "最大值"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-103",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "计数",
+        "取模"
+      ],
+      "title": "输入整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-104",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "素数",
+        "循环",
+        "break"
+      ],
+      "title": "输入整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-105",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "阶乘",
+        "long long"
+      ],
+      "title": "输入非负整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-106",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "斐波那契",
+        "递推"
+      ],
+      "title": "输入 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-107",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "辗转相除",
+        "最大公约数",
+        "while"
+      ],
+      "title": "输入两个非负整数 a 和 b",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-108",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "数组",
+        "逆序",
+        "遍历"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-109",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "长度",
+        "fgets"
+      ],
+      "title": "输入一行字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-110",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "冒泡排序",
+        "数组",
+        "升序"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-111",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "数组",
+        "有序"
+      ],
+      "title": "输入 n、n 个已升序排列的整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-112",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "元音",
+        "大小写"
+      ],
+      "title": "输入一行字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-113",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "转置",
+        "矩阵"
+      ],
+      "title": "输入一个 3×3 矩阵",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-114",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "取模",
+        "数位",
+        "循环"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-115",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "回文",
+        "字符串",
+        "双指针"
+      ],
+      "title": "输入一行字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-116",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "鸡兔同笼",
+        "方程",
+        "条件"
+      ],
+      "title": "鸡兔同笼",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-117",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "杨辉三角",
+        "二维数组",
+        "递推"
+      ],
+      "title": "输入整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-118",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "位运算",
+        "进制",
+        "计数"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-119",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "求和",
+        "平均值",
+        "保留小数"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-120",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "次大值",
+        "数组",
+        "去重"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-121",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "整数反转",
+        "循环",
+        "数位"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-122",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "平均值",
+        "循环",
+        "整数除法"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-123",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "字符数组",
+        "拼接"
+      ],
+      "title": "输入两个字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-124",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "插入排序",
+        "排序"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-125",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "选择排序",
+        "排序"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-126",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "单词计数",
+        "空格分隔"
+      ],
+      "title": "输入一行可能含多个空格的字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-127",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "闰年",
+        "条件判断"
+      ],
+      "title": "输入一个年份 y",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-128",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "日期",
+        "闰年",
+        "数组"
+      ],
+      "title": "输入某年、某月、某日",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-129",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "水仙花数",
+        "循环",
+        "数位"
+      ],
+      "title": "输出所有三位数的“水仙花数”",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-130",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "完数",
+        "因子",
+        "循环"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-131",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "乘法口诀表",
+        "嵌套循环",
+        "格式化输出"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-132",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "最大子段和",
+        "Kadane算法",
+        "动态规划"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-133",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "约瑟夫环",
+        "模拟",
+        "数组"
+      ],
+      "title": "n 个人围成一圈",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-134",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "素数",
+        "区间",
+        "循环"
+      ],
+      "title": "输入两个整数 a 和 b",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-135",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数组去重",
+        "查找"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-136",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "中位数",
+        "排序"
+      ],
+      "title": "先输入一个整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-137",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "汉诺塔",
+        "递归"
+      ],
+      "title": "汉诺塔问题",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-138",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "大小写转换",
+        "ASCII",
+        "字符串"
+      ],
+      "title": "输入一行字符串",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-139",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "完全平方数",
+        "循环"
+      ],
+      "title": "输入一个非负整数 n",
+      "file": "c-ch13.json"
+    },
+    {
+      "id": "c-ch13-ti-140",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第13章 熟练度专题",
+      "section": "13.1 限时实现",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数字统计",
+        "数组计数",
+        "数位"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch13.json"
     },
     {
       "id": "ds-ch01-sc-001",
