@@ -2,7 +2,7 @@
   "category": "c",
   "chapter": "第6章 数组",
   "generated_at": "2026-09-08",
-  "count": 137,
+  "count": 190,
   "problems": [
     {
       "category": "c",
@@ -5508,6 +5508,116 @@
       "source": "变式（源自 c-ch06 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
       "ai_generated": true,
       "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch06-ad-001",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib"
+      ],
+      "stem": "输入 n 和 n 个整数，用 qsort 升序排序后输出（数与数之间一个空格）。本题要求调用标准库 qsort（<stdlib.h>），未调用视为不通过。main 已给出，请不要改动。",
+      "requiredApi": [
+        "qsort"
+      ],
+      "code_starter": "#include <stdio.h>\n      #include <stdlib.h>\n\n      int cmp(const void *a, const void *b) {\n          int ia = *(const int *)a;\n          int ib = *(const int *)b;\n          return (ia > ib) - (ia < ib);\n      }\n\n      int main(void) {\n          int n, i;\n          int a[128];\n          scanf(\"%d\", &n);\n          for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n          // TODO: 调用 qsort 对 a 前 n 个元素排序\n          for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <stdlib.h>\n\n      int cmp(const void *a, const void *b) {\n          int ia = *(const int *)a;\n          int ib = *(const int *)b;\n          return (ia > ib) - (ia < ib);\n      }\n\n      int main(void) {\n          int n, i;\n          int a[128];\n          scanf(\"%d\", &n);\n          for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n          qsort(a, n, sizeof(int), cmp);\n          for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "5\n3 1 4 1 5\n",
+          "expected": "1 1 3 4 5",
+          "note": "含重复"
+        },
+        {
+          "stdin": "3\n9 7 8\n",
+          "expected": "7 8 9",
+          "note": "小数组"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "42",
+          "note": "单元素"
+        }
+      ],
+      "explanation": "qsort(基址, 元素个数, 元素大小, 比较函数)。比较函数返回负表示 a 排在 b 前，正表示 b 在前，0 相等。用 `(ia > ib) - (ia < ib)` 能得到标准的 -1/0/1 且不溢出（比 `ia - ib` 安全，后者可能因差值溢出出错）。qsort 是库提供的快排，必须包含 <stdlib.h>。",
+      "source": "自撰（依据《C程序设计》第6章 数组 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch06-ad-002",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "数组",
+        "malloc",
+        "stdlib"
+      ],
+      "stem": "输入 n，用 malloc 分配长度为 n 的 int 数组，读入 n 个整数，求和后输出，最后 free。本题要求调用 malloc 与 free（<stdlib.h>），未调用视为不通过。main 已给出，请不要改动。",
+      "requiredApi": [
+        "malloc",
+        "free"
+      ],
+      "code_starter": "#include <stdio.h>\n      #include <stdlib.h>\n\n      int main(void) {\n          int n, i, sum = 0;\n          int *a;\n          scanf(\"%d\", &n);\n          // TODO: 用 malloc 分配 n 个 int，读入求和，最后 free\n          printf(\"%d\\n\", sum);\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <stdlib.h>\n\n      int main(void) {\n          int n, i, sum = 0;\n          int *a;\n          scanf(\"%d\", &n);\n          a = malloc(n * sizeof(int));\n          if (a == NULL) return 1;\n          for (i = 0; i < n; i++) { scanf(\"%d\", &a[i]); sum += a[i]; }\n          printf(\"%d\\n\", sum);\n          free(a);\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "4\n1 2 3 4\n",
+          "expected": "10",
+          "note": "和=10"
+        },
+        {
+          "stdin": "3\n-1 -2 -3\n",
+          "expected": "-6",
+          "note": "含负数"
+        }
+      ],
+      "explanation": "malloc(n * sizeof(int)) 分配 n 个 int 的空间，返回 void* 需赋给 int*。malloc 失败返回 NULL，应检查。用下标访问 a[i]，累加进 sum。用完必须 free(a) 释放，否则内存泄漏（熟练度维度「malloc 配对」）。注意 C 中不需要强制转换 malloc 的返回（void* 自动转），但强转是合法的。",
+      "source": "自撰（依据《C程序设计》第6章 数组 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch06-ad-003",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "tags": [
+        "字符串",
+        "memcpy"
+      ],
+      "stem": "输入一个字符串，用 memcpy 把它复制到另一个缓冲并输出。本题要求调用 memcpy（<string.h>），未调用视为不通过。main 已给出，请不要改动。",
+      "requiredApi": [
+        "memcpy"
+      ],
+      "code_starter": "#include <stdio.h>\n      #include <string.h>\n\n      int main(void) {\n          char src[256], dst[256];\n          fgets(src, sizeof(src), stdin);\n          src[strcspn(src, \"\\n\")] = 0;\n          // TODO: 用 memcpy 把 src 复制到 dst（含结尾 \\0）\n          printf(\"%s\\n\", dst);\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <string.h>\n\n      int main(void) {\n          char src[256], dst[256];\n          fgets(src, sizeof(src), stdin);\n          src[strcspn(src, \"\\n\")] = 0;\n          memcpy(dst, src, strlen(src) + 1);\n          printf(\"%s\\n\", dst);\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "practice\n",
+          "expected": "practice",
+          "note": "普通串"
+        },
+        {
+          "stdin": "a b c\n",
+          "expected": "a b c",
+          "note": "含空格"
+        }
+      ],
+      "explanation": "memcpy(dst, src, n) 从 src 复制 n 个字节到 dst。要复制整个 C 字符串，需复制 `strlen(src) + 1` 个字节（含结尾的 `\\0`），否则 printf 会越界读到垃圾。memcpy 要求目标与源不重叠（重叠用 memmove）。注意 fgets 读入的换行已用 strcspn 去掉。",
+      "source": "自撰（依据《C程序设计》第6章 数组 知识点体系）",
       "verified": true
     }
   ]

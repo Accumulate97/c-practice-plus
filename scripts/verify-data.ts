@@ -175,6 +175,32 @@ function nonCodeAnswerGap(p: ProblemLike): { level: Level; msg: string } | null 
     }
     return null
   }
+  // 任务04 新增三类概念型：term_explanation / essay_answer / code_review 无 answer 字段，
+  // 判分内容分别在 keyPoints / reference_answer / reviewPoints。
+  if (p.type === 'term_explanation') {
+    const kp = Array.isArray(p.keyPoints) ? (p.keyPoints as unknown[]) : []
+    if (kp.length === 0) return { level: 'error', msg: 'term_explanation 缺 keyPoints，verified:true 却无法判分' }
+    const empty = kp.map((k, i) => ({ k, i })).filter(({ k }) => isBlank(k))
+    if (empty.length > 0) {
+      return { level: 'error', msg: 'term_explanation 的 keyPoints[' + empty.map(({ i }) => String(i)).join('、') + '] 为空，verified:true 却无法判分' }
+    }
+    return null
+  }
+  if (p.type === 'essay_answer') {
+    if (isBlank(p.reference_answer)) return { level: 'error', msg: 'essay_answer 缺 reference_answer，自评无内容可显示' }
+    const kp = Array.isArray(p.keyPoints) ? (p.keyPoints as unknown[]) : []
+    if (kp.length === 0) return { level: 'error', msg: 'essay_answer 缺 keyPoints，verified:true 却无法判分' }
+    return null
+  }
+  if (p.type === 'code_review') {
+    const rp = Array.isArray(p.reviewPoints) ? (p.reviewPoints as unknown[]) : []
+    if (rp.length === 0) return { level: 'error', msg: 'code_review 缺 reviewPoints，verified:true 却无法判分' }
+    const empty = rp.map((r, i) => ({ r, i })).filter(({ r }) => isBlank(r))
+    if (empty.length > 0) {
+      return { level: 'error', msg: 'code_review 的 reviewPoints[' + empty.map(({ i }) => String(i)).join('、') + '] 为空，verified:true 却无法判分' }
+    }
+    return null
+  }
   // true_false / complexity / matching 等其余非代码型：answer 必须有内容（布尔 false 是合法答案）
   if (isBlank(p.answer)) return { level: 'error', msg: String(p.type) + ' 缺 answer，verified:true 却无法判分' }
   return null

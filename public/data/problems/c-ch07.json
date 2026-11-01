@@ -2,7 +2,7 @@
   "category": "c",
   "chapter": "第7章 函数",
   "generated_at": "2026-09-08",
-  "count": 81,
+  "count": 134,
   "problems": [
     {
       "category": "c",
@@ -4391,6 +4391,114 @@
       "source": "变式（源自 c-ch07 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
       "ai_generated": true,
       "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch07-sr-001",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.4 函数的调用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "字符串",
+        "指针",
+        "strlen"
+      ],
+      "apiName": "strlen",
+      "stem": "不用 <string.h> 的 strlen，自实现 `unsigned int my_strlen(const char *s)` 返回字符串长度。main 已给出，请不要改动；判分以 stdin 输入调用 my_strlen 的输出为准。",
+      "code_starter": "#include <stdio.h>\n      #include <string.h>\n\n      unsigned int my_strlen(const char *s) {\n          // TODO: 返回字符串 s 的长度（不含结尾 \\0）\n          return 0;\n      }\n\n      int main(void) {\n          char buf[256];\n          fgets(buf, sizeof(buf), stdin);\n          buf[strcspn(buf, \"\\n\")] = 0;\n          printf(\"%u\\n\", my_strlen(buf));\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <string.h>\n\n      unsigned int my_strlen(const char *s) {\n          unsigned int n = 0;\n          while (s[n] != '\\0') n++;\n          return n;\n      }\n\n      int main(void) {\n          char buf[256];\n          fgets(buf, sizeof(buf), stdin);\n          buf[strcspn(buf, \"\\n\")] = 0;\n          printf(\"%u\\n\", my_strlen(buf));\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "hello\n",
+          "expected": "5",
+          "note": "普通串"
+        },
+        {
+          "stdin": "\n",
+          "expected": "0",
+          "note": "空串"
+        },
+        {
+          "stdin": "C practice\n",
+          "expected": "10",
+          "note": "含空格"
+        }
+      ],
+      "explanation": "C 字符串以 `\\0` 结尾。我_strlen 的思路：从下标 0 开始，不断对 `s[n]` 判断是否等于 `\\0`，不等于就 n++，直到遇到 `\\0` 停止，返回 n。注意用 `unsigned int`（长度不为负），且 main 里 fgets 会读入换行，用 strcspn 把换行替换为 `\\0` 去掉，避免把换行计入长度。",
+      "source": "自撰（依据《C程序设计》第7章 函数 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch07-sr-002",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.4 函数的调用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat"
+      ],
+      "apiName": "strcat",
+      "stem": "不用 <string.h> 的 strcat，自实现 `char *my_strcat(char *dest, const char *src)` 把 src 拼到 dest 末尾并返回 dest。main 已给出，请不要改动。",
+      "code_starter": "#include <stdio.h>\n      #include <string.h>\n\n      char *my_strcat(char *dest, const char *src) {\n          // TODO: 把 src 拼接到 dest 的末尾，返回 dest\n          return dest;\n      }\n\n      int main(void) {\n          char a[256], b[256];\n          fgets(a, sizeof(a), stdin);\n          a[strcspn(a, \"\\n\")] = 0;\n          fgets(b, sizeof(b), stdin);\n          b[strcspn(b, \"\\n\")] = 0;\n          printf(\"%s\\n\", my_strcat(a, b));\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <string.h>\n\n      char *my_strcat(char *dest, const char *src) {\n          char *p = dest;\n          while (*p != '\\0') p++;\n          while (*src != '\\0') { *p = *src; p++; src++; }\n          *p = '\\0';\n          return dest;\n      }\n\n      int main(void) {\n          char a[256], b[256];\n          fgets(a, sizeof(a), stdin);\n          a[strcspn(a, \"\\n\")] = 0;\n          fgets(b, sizeof(b), stdin);\n          b[strcspn(b, \"\\n\")] = 0;\n          printf(\"%s\\n\", my_strcat(a, b));\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "hello\nworld\n",
+          "expected": "helloworld",
+          "note": "拼接两串"
+        },
+        {
+          "stdin": "abc\n\n",
+          "expected": "abc",
+          "note": "空串 src"
+        }
+      ],
+      "explanation": "strcat 分两步：先用指针 p 走到 dest 的末尾（`*p != '\\0'`），再从 dest 末尾起把 src 的每个字符逐个复制过去，最后别忘了补 `\\0`。用指针遍历比下标简洁：`*p = *src; p++; src++` 逐个搬运。注意拼完后要在末尾 `*p = '\\0'` 终止，否则输出会带上未初始化垃圾。",
+      "source": "自撰（依据《C程序设计》第7章 函数 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch07-sr-003",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.5 数组作为函数参数",
+      "difficulty": 4,
+      "bloom": "apply",
+      "tags": [
+        "字符串",
+        "strcmp"
+      ],
+      "apiName": "strcmp",
+      "stem": "不用 <string.h> 的 strcmp，自实现 `int my_strcmp(const char *a, const char *b)`：a<b 返回负，a>b 返回正，相等返回 0。main 已给出，请不要改动。",
+      "code_starter": "#include <stdio.h>\n      #include <string.h>\n\n      int my_strcmp(const char *a, const char *b) {\n          // TODO: 按字典序比较 a 与 b\n          return 0;\n      }\n\n      int main(void) {\n          char a[256], b[256];\n          fgets(a, sizeof(a), stdin);\n          a[strcspn(a, \"\\n\")] = 0;\n          fgets(b, sizeof(b), stdin);\n          b[strcspn(b, \"\\n\")] = 0;\n          printf(\"%d\\n\", my_strcmp(a, b));\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\n      #include <string.h>\n\n      int my_strcmp(const char *a, const char *b) {\n          while (*a != '\\0' && *a == *b) { a++; b++; }\n          return (unsigned char)*a - (unsigned char)*b;\n      }\n\n      int main(void) {\n          char a[256], b[256];\n          fgets(a, sizeof(a), stdin);\n          a[strcspn(a, \"\\n\")] = 0;\n          fgets(b, sizeof(b), stdin);\n          b[strcspn(b, \"\\n\")] = 0;\n          printf(\"%d\\n\", my_strcmp(a, b));\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "abc\nabd\n",
+          "expected": "-1",
+          "note": "c<d，负"
+        },
+        {
+          "stdin": "abc\nabc\n",
+          "expected": "0",
+          "note": "相等"
+        },
+        {
+          "stdin": "b\na\n",
+          "expected": "1",
+          "note": "b>a，正"
+        }
+      ],
+      "explanation": "strcmp 逐字符比较：只要两串当前字符相等且没到结尾，就一起后移。跳到第一个不等处（或某串到 `\\0`）返回这两字符的差。关键是用 `(unsigned char)` 强制转换，否则字符可能是负值、大小比较会出错（如 `\\xff`）。a<b 时差为负，a>b 时差为正，相等时差为 0。",
+      "source": "自撰（依据《C程序设计》第7章 函数 知识点体系）",
       "verified": true
     }
   ]

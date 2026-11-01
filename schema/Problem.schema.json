@@ -1,21 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Problem",
-  "description": "C practice 题目统一数据结构 v3.1。基础字段共用，按 type 追加特有字段。支持 11 种题型。根节点 unevaluatedProperties:false 禁止规范外字段（如 score），新增字段必须先改本 Schema。",
+  "description": "C practice 题目统一数据结构 v3.2。基础字段共用，按 type 追加特有字段。支持 20 种题型。根节点 unevaluatedProperties:false 禁止规范外字段（如 score），新增字段必须先改本 Schema。",
   "type": "object",
   "required": ["id", "type", "category", "chapter", "section", "difficulty", "bloom", "stem", "explanation"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt)-[0-9]{3}$",
-      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配"
+      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt|pt|mb|ti|sr|ad|opt|rv|te|ea)-[0-9]{3}$",
+      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配 pt指针追踪 mb多空填空 ti限时实现 sr标准库重实现 adAPI练习 opt代码优化 rv代码评审 te术语解释 ea论述"
     },
     "type": {
       "type": "string",
       "enum": ["code_completion", "debug", "code_reading", "programming",
                "single_choice", "true_false", "fill_blank",
-               "code_ordering", "short_answer", "complexity", "matching"],
-      "description": "主力题型为前四种"
+               "code_ordering", "short_answer", "complexity", "matching",
+               "pointer_trace", "multi_blank", "timed_impl", "stdlib_reimpl",
+               "api_drill", "code_optimization", "code_review",
+               "term_explanation", "essay_answer"],
+      "description": "主力题型为前四种；pointer_trace/timed_impl/stdlib_reimpl/api_drill/code_optimization/code_review/multi_blank 为扩张主力；term_explanation/essay_answer 为概念型"
     },
     "category": {
       "type": "string",
@@ -230,6 +233,141 @@
                 "right": { "type": "string" }
               }
             }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "pointer_trace" } } },
+      "then": {
+        "required": ["code", "answer"],
+        "properties": {
+          "code": { "type": "string", "description": "含指针操作的代码，学生需追踪执行结果" },
+          "stdin": {
+            "type": "string",
+            "default": "",
+            "description": "程序运行时喂给 stdin 的输入（含换行）。缺失按空串处理"
+          },
+          "answer": { "type": "string", "description": "指针追踪后各输出/各指针取值" },
+          "answerIsDescription": {
+            "type": "boolean", "default": false,
+            "description": "true 表示要求描述指针行为而非写出输出"
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "multi_blank" } } },
+      "then": {
+        "required": ["code", "blanks", "solution", "testCases"],
+        "properties": {
+          "code": { "type": "string", "description": "含 /*__BLANK_n__*/ 标记的代码（多处空）" },
+          "blanks": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["index", "answer"],
+              "properties": {
+                "index": { "type": "integer", "minimum": 1 },
+                "hint": { "type": "string" },
+                "answer": { "type": "string" },
+                "accepted": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          },
+          "solution": { "type": "string", "description": "补全后的完整代码" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "timed_impl" } } },
+      "then": {
+        "required": ["reference", "testCases"],
+        "properties": {
+          "reference": { "type": "string", "description": "参考实现" },
+          "timeLimitSec": { "type": "integer", "minimum": 1, "description": "限时（秒），面向熟练度展示用" },
+          "code_starter": { "type": "string", "description": "给学生代码的起始模板" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "stdlib_reimpl" } } },
+      "then": {
+        "required": ["reference", "testCases"],
+        "properties": {
+          "apiName": { "type": "string", "description": "重实现的标准库函数名，如 strcpy" },
+          "reference": { "type": "string", "description": "参考实现（按原型实现该函数）" },
+          "code_starter": { "type": "string", "description": "给学生代码的起始模板" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "api_drill" } } },
+      "then": {
+        "required": ["reference", "requiredApi", "testCases"],
+        "properties": {
+          "reference": { "type": "string", "description": "参考实现" },
+          "requiredApi": {
+            "type": "array", "minItems": 1, "items": { "type": "string" },
+            "description": "学生代码必须调用的 API 清单，未调用即不通过"
+          },
+          "code_starter": { "type": "string", "description": "给学生代码的起始模板" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "code_optimization" } } },
+      "then": {
+        "required": ["code", "reference", "testCases"],
+        "properties": {
+          "code": { "type": "string", "description": "能跑通但低效的代码，需改优并保持输出一致" },
+          "reference": { "type": "string", "description": "优化后的参考实现" },
+          "baselineComplexity": { "type": "string", "description": "原代码复杂度，如 O(n^2)" },
+          "targetComplexity": { "type": "string", "description": "目标复杂度，如 O(n log n)" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "code_review" } } },
+      "then": {
+        "required": ["code", "reviewPoints"],
+        "properties": {
+          "code": { "type": "string", "description": "待评审的代码片段" },
+          "reviewPoints": {
+            "type": "array", "items": { "type": "string" },
+            "description": "评审应指出的要点"
+          },
+          "reference_answer": { "type": "string", "description": "参考评审意见" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "term_explanation" } } },
+      "then": {
+        "required": ["keyPoints"],
+        "properties": {
+          "keyPoints": {
+            "type": "array", "minItems": 1, "items": { "type": "string" },
+            "description": "判定要点；命中数 ≥ 总数-1 即通过"
+          },
+          "reference_answer": { "type": "string", "description": "参考解释" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "essay_answer" } } },
+      "then": {
+        "required": ["reference_answer", "keyPoints"],
+        "properties": {
+          "reference_answer": { "type": "string", "description": "参考论述" },
+          "keyPoints": {
+            "type": "array", "items": { "type": "string" },
+            "description": "评分要点，供学生自评"
           }
         }
       }

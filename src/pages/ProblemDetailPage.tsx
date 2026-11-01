@@ -7,6 +7,7 @@ import type { LoadedProblem, ProblemRecord } from '../modules/problems/data/load
 import { CodeReadingRenderer } from '../modules/problems/renderers/CodeReadingRenderer'
 import { ProgrammingRenderer } from '../modules/problems/renderers/ProgrammingRenderer'
 import { DebugRenderer } from '../modules/problems/renderers/DebugRenderer'
+import { CodeReviewRenderer, EssayAnswerRenderer, TermExplanationRenderer } from '../modules/problems/renderers/ExpandedRenderers'
 // 七个概念题渲染器（阶段 5）：都不含编辑器与判分后端，静态 import 不会把 Godbolt 那一套拖进首屏
 import { SingleChoiceRenderer } from '../modules/problems/renderers/SingleChoiceRenderer'
 import { TrueFalseRenderer } from '../modules/problems/renderers/TrueFalseRenderer'
@@ -175,7 +176,19 @@ function Ready({ data }: { data: LoadedProblem }) {
  * 只对**含完整可编译代码**的题型出现（编程 / 改错 / 程序填空 / 程序阅读）；
  * 选择题、判断题这类没有代码可带，硬塞一个入口只会点进去报错。
  */
-const PLAYGROUND_TYPES = new Set(['programming', 'debug', 'code_completion', 'code_reading'])
+const PLAYGROUND_TYPES = new Set([
+  'programming',
+  'debug',
+  'code_completion',
+  'code_reading',
+  // 任务04 新增代码型：指针追踪 / 多空填空 / 限时实现 / 标准库重实现 / API 练习 / 代码优化
+  'pointer_trace',
+  'multi_blank',
+  'timed_impl',
+  'stdlib_reimpl',
+  'api_drill',
+  'code_optimization',
+])
 
 function PlaygroundLink({ problem }: { problem: ProblemRecord }) {
   const type = String(problem.type ?? '')
@@ -263,6 +276,7 @@ const CONCEPT_RENDERERS: Record<string, ComponentType<{ problem: ProblemRecord }
 }
 
 function TypeRenderer({ problem }: { problem: ProblemRecord }) {
+  // 四类主力（阶段 4）
   if (problem.type === 'programming') return <ProgrammingRenderer problem={problem} />
   if (problem.type === 'code_reading') return <CodeReadingRenderer problem={problem} />
   if (problem.type === 'debug') return <DebugRenderer problem={problem} />
@@ -273,6 +287,26 @@ function TypeRenderer({ problem }: { problem: ProblemRecord }) {
       </Suspense>
     )
   }
+  // 任务04 新增代码型：与既有代码渲染器同构，直接复用。
+  //   pointer_trace  → CodeReadingRenderer（code + answer，读代码预测输出）
+  //   multi_blank    → CodeCompletionRenderer（code + blanks + solution + testCases）
+  //   timed_impl / stdlib_reimpl / api_drill / code_optimization → ProgrammingRenderer（reference + testCases）
+  if (problem.type === 'pointer_trace') return <CodeReadingRenderer problem={problem} />
+  if (problem.type === 'multi_blank') {
+    return (
+      <Suspense fallback={<p className="text-sm" style={muted}>正在加载多空填空编辑器…</p>}>
+        <CodeCompletionRenderer problem={problem} />
+      </Suspense>
+    )
+  }
+  if (problem.type === 'timed_impl' || problem.type === 'stdlib_reimpl' ||
+      problem.type === 'api_drill' || problem.type === 'code_optimization') {
+    return <ProgrammingRenderer problem={problem} />
+  }
+  // 任务04 新增概念型：前端即时判定（term_explanation / code_review）与自评（essay_answer）
+  if (problem.type === 'term_explanation') return <TermExplanationRenderer problem={problem} />
+  if (problem.type === 'code_review') return <CodeReviewRenderer problem={problem} />
+  if (problem.type === 'essay_answer') return <EssayAnswerRenderer problem={problem} />
   const Concept = CONCEPT_RENDERERS[problem.type]
   if (Concept !== undefined) return <Concept problem={problem} />
   // 表外类型（历史数据 / 将来新增题型）：如实说明还没实现，不静默渲染成「已支持」
@@ -284,7 +318,7 @@ function TypeRenderer({ problem }: { problem: ProblemRecord }) {
       <PhasePlaceholder
         phase={`未实现的题型：${problem.type}`}
         todo={[
-          '本站已支持十一个题型（四类主力走 Godbolt 实机判分，七类辅助前端即时判定），这一型不在其中',
+          '本站已支持多个题型（代码型走 Godbolt 实机判分，概念型前端即时判定 / 自评），这一型不在其中',
           '这不是数据损坏：index.json 与分片一致，只是前端还没有这一型的作答界面',
           '可以先回列表页（✍️ 在线刷题）按题型筛选，做其余题目',
         ]}

@@ -160,9 +160,12 @@ function collectCode(value: unknown, path: string, out: Array<{ where: string; s
   for (const k of Object.keys(o)) collectCode(o[k], path + '.' + k, out, k)
 }
 
-function docFile(prefix: string): string | null {
-  const name = readdirSync(ROOT).find((f) => f.startsWith(prefix) && f.endsWith('.md'))
-  return name ? join(ROOT, name) : null
+function docFile(file: string): string | null {
+  // 规范文档已从根目录移入 docs/specs/（c-practice-plus 步骤3 重排），按文件名精确匹配，避免残留根目录旧名。
+  const dir = join(ROOT, 'docs', 'specs')
+  const full = join(dir, file)
+  const exists = readdirSync(dir).includes(file)
+  return exists ? full : null
 }
 
 /** 取 markdown 里指定语言围栏的内容（05/06 的 C 示例） */
@@ -239,7 +242,7 @@ for (const name of readdirSync(PROBLEM_DIR).sort()) {
   const parsed = JSON.parse(readFileSync(join(PROBLEM_DIR, name), 'utf8')) as unknown
   collectCode(parsed, name, targets)
 }
-const p04 = docFile('04_')
+const p04 = docFile('04-question-types.md')
 if (p04) {
   for (const s of readDocSamples(readFileSync(p04, 'utf8'))) {
     collectCode(s as unknown, '04#' + s.id + '.json', targets)
@@ -260,7 +263,7 @@ if (findings.length === 0) {
 
 if (process.argv.includes('--all')) {
   console.log('\n--- 参考口径：05 / 06 规范文档里的 C 代码围栏（其中可能含故意展示的反例，只报不计罪）---')
-  for (const prefix of ['05_', '06_']) {
+  for (const prefix of ['05-code-style.md', '06-variant-methodology.md']) {
     const file = docFile(prefix)
     if (!file) continue
     const blocks = cFences(readFileSync(file, 'utf8'))

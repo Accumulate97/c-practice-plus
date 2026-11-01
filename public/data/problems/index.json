@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "3e564738960085bb",
+  "content_sha": "c6492686f1da1549",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 2074,
+  "count": 2101,
   "shard_count": 20,
   "shards": [
     {
@@ -38,21 +38,21 @@
       "file": "c-ch05.json",
       "category": "c",
       "chapter": "第5章 循环结构",
-      "count": 157,
+      "count": 166,
       "url": "data/problems/c-ch05.json"
     },
     {
       "file": "c-ch06.json",
       "category": "c",
       "chapter": "第6章 数组",
-      "count": 187,
+      "count": 190,
       "url": "data/problems/c-ch06.json"
     },
     {
       "file": "c-ch07.json",
       "category": "c",
       "chapter": "第7章 函数",
-      "count": 131,
+      "count": 134,
       "url": "data/problems/c-ch07.json"
     },
     {
@@ -66,7 +66,7 @@
       "file": "c-ch09.json",
       "category": "c",
       "chapter": "第9章 指针",
-      "count": 246,
+      "count": 258,
       "url": "data/problems/c-ch09.json"
     },
     {
@@ -8941,6 +8941,152 @@
       "file": "c-ch05.json"
     },
     {
+      "id": "c-ch05-mb-001",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "for循环",
+        "累加"
+      ],
+      "title": "补全下面程序",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-mb-002",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环",
+        "break"
+      ],
+      "title": "补全下面程序",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-mb-003",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.6 循环嵌套",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环嵌套",
+        "乘法表"
+      ],
+      "title": "补全下面程序",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-ti-001",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环",
+        "计数"
+      ],
+      "title": "输入整数 n",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-ti-002",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.4 while 语句",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "while循环",
+        "逆序"
+      ],
+      "title": "输入正整数 n",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-ti-003",
+      "type": "timed_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环",
+        "素数"
+      ],
+      "title": "输入整数 n",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-opt-001",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "优化",
+        "复杂度",
+        "等差数列"
+      ],
+      "title": "下面的程序能算对 1 到 n 的和",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-opt-002",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.4 while 语句",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "优化",
+        "平方"
+      ],
+      "title": "下面的程序用循环求 n 的平方",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-opt-003",
+      "type": "code_optimization",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "优化",
+        "素数",
+        "提前退出"
+      ],
+      "title": "下面的程序判断 n 是否为素数",
+      "file": "c-ch05.json"
+    },
+    {
       "id": "c-ch06-fb-001",
       "type": "fill_blank",
       "category": "c",
@@ -11539,6 +11685,56 @@
       "file": "c-ch06.json"
     },
     {
+      "id": "c-ch06-ad-001",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "排序",
+        "qsort",
+        "stdlib"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-ad-002",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "数组",
+        "malloc",
+        "stdlib"
+      ],
+      "title": "输入 n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-ad-003",
+      "type": "api_drill",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 数组的综合应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "memcpy"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch06.json"
+    },
+    {
       "id": "c-ch07-cr-001",
       "type": "code_reading",
       "category": "c",
@@ -13419,6 +13615,56 @@
         "效率"
       ],
       "title": "同一个问题用递归求解一定比用迭代求解效率更高",
+      "file": "c-ch07.json"
+    },
+    {
+      "id": "c-ch07-sr-001",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.4 函数的调用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "strlen"
+      ],
+      "title": "不用 <string.h> 的 strlen",
+      "file": "c-ch07.json"
+    },
+    {
+      "id": "c-ch07-sr-002",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.4 函数的调用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat"
+      ],
+      "title": "不用 <string.h> 的 strcat",
+      "file": "c-ch07.json"
+    },
+    {
+      "id": "c-ch07-sr-003",
+      "type": "stdlib_reimpl",
+      "category": "c",
+      "chapter": "第7章 函数",
+      "section": "7.5 数组作为函数参数",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "strcmp"
+      ],
+      "title": "不用 <string.h> 的 strcmp",
       "file": "c-ch07.json"
     },
     {
@@ -18353,6 +18599,206 @@
         "强制类型转换"
       ],
       "title": "void * 类型的指针可以指向任何类型的对象",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-001",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "解引用",
+        "取地址"
+      ],
+      "title": "下面程序输出什么？请写出程序运行后打印的两行",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-002",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 指针与数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针运算",
+        "数组"
+      ],
+      "title": "下面程序输出什么？写出程序运行后打印的那个数字",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-003",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 指向指针的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二级指针"
+      ],
+      "title": "下面程序输出什么？写出程序运行后打印的两个数字",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-001",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "评审",
+        "越界",
+        "未初始化指针"
+      ],
+      "title": "下面是某同学写的一段 C 代码",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-002",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 指针与数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "评审",
+        "数组名",
+        "指针"
+      ],
+      "title": "下面是某同学尝试把数组名当指针赋值",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-003",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指针与函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "评审",
+        "局部变量",
+        "悬垂指针"
+      ],
+      "title": "下面是某同学写的返回局部变量地址的函数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-te-001",
+      "type": "term_explanation",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "概念"
+      ],
+      "title": "请用自己的话解释",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-te-002",
+      "type": "term_explanation",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 指针与数组",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "退化"
+      ],
+      "title": "请解释",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-te-003",
+      "type": "term_explanation",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指针与函数",
+      "difficulty": 4,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "传引用"
+      ],
+      "title": "请解释",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-ea-001",
+      "type": "essay_answer",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 指针与数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "论述",
+        "指针",
+        "数组"
+      ],
+      "title": "请从「指针退化为首元素指针」「下标与 *",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-ea-002",
+      "type": "essay_answer",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指针与函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "论述",
+        "指针",
+        "传引用"
+      ],
+      "title": "论述",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-ea-003",
+      "type": "essay_answer",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 指向指针的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "论述",
+        "二级指针"
+      ],
+      "title": "论述",
       "file": "c-ch09.json"
     },
     {

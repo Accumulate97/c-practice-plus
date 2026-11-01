@@ -20,6 +20,15 @@ export const TYPE_LABEL: Record<string, string> = {
   complexity: '复杂度分析',
   short_answer: '简答题',
   matching: '匹配题',
+  pointer_trace: '指针追踪',
+  multi_blank: '多空填空',
+  timed_impl: '限时实现',
+  stdlib_reimpl: '标准库重实现',
+  api_drill: 'API 练习',
+  code_optimization: '代码优化',
+  code_review: '代码评审',
+  term_explanation: '术语解释',
+  essay_answer: '论述题',
 }
 
 export function typeLabel(type: string): string {
@@ -73,6 +82,15 @@ export const RENDERABLE_TYPES: ReadonlySet<string> = new Set([
   'complexity',
   'short_answer',
   'matching',
+  'pointer_trace',
+  'multi_blank',
+  'timed_impl',
+  'stdlib_reimpl',
+  'api_drill',
+  'code_optimization',
+  'code_review',
+  'term_explanation',
+  'essay_answer',
 ])
 
 /**
@@ -86,6 +104,15 @@ export const TYPE_ORDER: readonly string[] = [
   'debug',
   'code_reading',
   'programming',
+  'pointer_trace',
+  'timed_impl',
+  'stdlib_reimpl',
+  'api_drill',
+  'code_optimization',
+  'code_review',
+  'multi_blank',
+  'term_explanation',
+  'essay_answer',
   'single_choice',
   'fill_blank',
   'short_answer',

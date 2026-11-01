@@ -30,7 +30,13 @@ export let CODE_TYPES: string[] = [
   'debug',
   'code_reading',
   'programming',
-  'code_ordering'
+  'code_ordering',
+  'pointer_trace',
+  'multi_blank',
+  'timed_impl',
+  'stdlib_reimpl',
+  'api_drill',
+  'code_optimization'
 ]
 
 export function isCodeType(type: string): boolean {
@@ -97,6 +103,40 @@ export function buildRunnableSource(p: ProblemLike): Runnable | null {
         ordered.push(line)
       }
       return { code: ordered.join('\n'), cases: casesOf(p), checkedField: 'correct_order' }
+    }
+    case 'pointer_trace': {
+      // 指针追踪：读代码预测输出，与 code_reading 同构（code + answer，stdin 可选）。
+      let code = str(p, 'code')
+      let answer = str(p, 'answer')
+      if (!code || !answer) return null
+      let stdin = str(p, 'stdin')
+      return { code, cases: [{ stdin: stdin === null ? '' : stdin, expected: answer }], checkedField: 'answer' }
+    }
+    case 'multi_blank': {
+      // 多空填空：补全后整份代码要能跑测试用例，与 code_completion 同构（solution）。
+      let code = str(p, 'solution')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'solution' }
+    }
+    case 'timed_impl': {
+      let code = str(p, 'reference')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'reference' }
+    }
+    case 'stdlib_reimpl': {
+      let code = str(p, 'reference')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'reference' }
+    }
+    case 'api_drill': {
+      let code = str(p, 'reference')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'reference' }
+    }
+    case 'code_optimization': {
+      let code = str(p, 'reference')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'reference' }
     }
     default:
       return null
