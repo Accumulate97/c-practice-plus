@@ -4639,7 +4639,8 @@
       ],
       "explanation": "计数器 c 初始 0。for 遍历 i 从 1 到 n，对每个 i 用 `i % 3 == 0` 判断能否被 3 整除，是则将 c 加 1。注意要 `<=` 才能统计到 n；且这是 1 到 n 而非 0 到 n，边界 n=1 时 1 不能被 3 整除，结果应为 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-ti-002",
@@ -4676,7 +4677,8 @@
       ],
       "explanation": "用 `n % 10` 取出最低位并打印，再用 `n /= 10` 去掉它，直到 n 为 0。用 `do...while` 而非 `while` 是为了让 n=0 的情况也能正确输出一个 0（虽然本题输入正整数，但 do-while 至少执行一次）。100 逆序是 001，逐位打印自然得到前导零。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "constraints": "数据规模：0 ≤ n ≤ 10^9；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-ti-003",
@@ -4713,7 +4715,8 @@
       ],
       "explanation": "素数是只能被 1 和自身整除的大于 1 的整数。从 i=2 试除到 sqrt(n)，用 `i*i <= n` 避免开方。一旦找到能整除 n 的 i，就把 is_p 置 0 并 break 提前退出。注意从 2 开始，且 n=2 时循环体不执行，is_p 保持 1（正确）。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "constraints": "数据规模：0 ≤ n ≤ 10^9；时间复杂度：O(√n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-opt-001",
@@ -4861,7 +4864,11 @@
       ],
       "explanation": "用 for 循环从 1 累加到 n 即可。s 从 0 开始，每个 i 累加进 s。注意 i <= n 而不是 i < n，否则漏掉最后一项。n 取到 10000 时和为 50005000，在 int（约 21 亿）以内，不会溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-002",
@@ -4904,7 +4911,11 @@
       ],
       "explanation": "对每个 i 判断是否为素数：从 2 试除到 sqrt(i)（写成 j*j<=i 避免浮点与 sqrt 头文件），只要有一个整除就不是素数。外层循环遍历 2..n，内层做试除。isp 标志记录是否素数。试除到 sqrt(i) 即可：若 i 有因子，必有一个因子 ≤ sqrt(i)。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n√n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-003",
@@ -4937,7 +4948,11 @@
       ],
       "explanation": "遍历 100~999 每个数 n，用除法和取余拆出百位 a、十位 b、个位 c（n/100 得百位，n%10 得个位，中间 (n/10)%10 得十位）。若 a³+b³+c³ == n 则是水仙花数，输出。100~999 中只有 153、370、371、407 四个。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-mdb-001",
@@ -4978,7 +4993,10 @@
       ],
       "explanation": "原程序用 for(i=0; i<n; ++i) 会从 0 累加到 n-1，多加了 0（无影响）但漏掉了 n（本应加到 n）。应改为 for(i=1; i<=n; ++i)，从 1 到 n。同时 scanf 返回值应被检查，输入失败时提前 return，避免用到未初始化的 n。这两处都修才算完全正确。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-002",
@@ -5024,7 +5042,10 @@
       ],
       "explanation": "原程序循环到 i<=n，当 i=n 时 n%n==0 恒成立，任何数都会被判成合数。改为判断到 sqrt(n)（i*i<=n）即可：若 n 有因子，必有一个 ≤ sqrt(n)。另外 n=1 时循环不执行且 isp 初始为 1，会被误判为素数，需先处理 n<=1。加入 break 提前退出更高效。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-003",
@@ -5071,7 +5092,10 @@
       ],
       "explanation": "原程序 n = n % 10 只保留个位，while 条件 n>0 永远成立，形成死循环。应改为 n = n / 10 去掉最后一位，才能逐步缩位直至 0。另外 n=0 时循环不执行什么也不输出，需要单独处理输出 0。注意 100 逆序是 001（前导零也被输出，符合「各位数字逆序」的字面含义，若要忽略前导零则另当别论）。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-alg-101",
@@ -5110,7 +5134,11 @@
       ],
       "explanation": "使用 for 循环从 i=1 开始逐项累加到 n，每次将 i 加到和 s 上；循环变量 i 每轮自增 1，直到 i 超过 n 才退出。循环结束后 s 即为 1 到 n 所有整数之和，直接输出 s 即可，这是最基础的累加器模式。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-102",
@@ -5149,7 +5177,11 @@
       ],
       "explanation": "在 for 循环体内部用 if(i%2) 判断 i 是否为奇数：i 对 2 取余非 0 即为奇数，满足条件才累加，否则用 continue 跳过本次。这样循环只累计奇数之和，偶数项被过滤，体现了循环内分支筛选的技巧。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 99；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-103",
@@ -5188,7 +5220,11 @@
       ],
       "explanation": "令循环变量从 2 开始、每次步长加 2（i+=2），这样 i 依次取 2、4、6… 全部是偶数，无需逐个判断即可高效累加偶数之和。相比每轮用 if 判断奇偶，直接控制步长能减少一次分支判断，循环次数也减半。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-104",
@@ -5223,7 +5259,11 @@
       ],
       "explanation": "用 while 循环并把计数变量 i 与和变量 s 同时更新：先 s 累加当前 i，再 i 自增，当 i 超过 n 时循环条件不成立而退出，得到 1 到 n 的和。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-105",
@@ -5258,7 +5298,11 @@
       ],
       "explanation": "do-while 循环先执行一次循环体再判断条件，保证至少执行一次。每次把 i 加到 s 后 i 自增，直到 i 大于 n 时条件为假而退出。因为至少执行一次，即使 n 为 0 也会把 1 算进去，求 1 到 n 之和时要注意这一边界。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 200；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-106",
@@ -5297,7 +5341,11 @@
       ],
       "explanation": "先用 long long 保存总和以防溢出，循环读入每个整数并累加。平均值用 (long double)s/n 再 +0.5 后强转 int，实现四舍五入取整。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-107",
@@ -5336,7 +5384,11 @@
       ],
       "explanation": "遍历 n 个整数，第一个数直接作为当前最大值，后续每个数若大于当前 max 则更新 max。循环结束后 max 即为所有输入中的最大值。注意须先读入第一个数作为初始值，避免以 0 为初始值导致全负数输入时结果错误。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-108",
@@ -5375,7 +5427,11 @@
       ],
       "explanation": "利用取余运算 n%10 拿到个位并累加，然后 n/=10 去掉个位，重复直到 n 变为 0，从而逐位求出各位数字之和。注意对 n=0 的特判：输入 0 时各位数字之和应为 0，其余情况逐位取出累加即可。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12345；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-109",
@@ -5415,7 +5471,11 @@
       ],
       "explanation": "每次取 n 的个位 n%10，把逆序数 r 乘 10 再加该位，然后 n/=10 去掉个位。重复直到 n 为 0 停止，r 即为 n 各位逆序组成的新数，例如 123 会得到 321。注意原数若以 0 结尾，逆序后的前导零会被自然丢弃。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 98765；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-110",
@@ -5454,7 +5514,11 @@
       ],
       "explanation": "用 while 循环不断执行 n/=10 去掉最低位，每去掉一位计数 c 加一，直到 n 为 0。循环执行的次数就是该整数的十进制位数。注意输入 0 时循环一次也不执行，因此需对 n=0 特判返回位数 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10^9（约 1000000000）；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-111",
@@ -5494,7 +5558,11 @@
       ],
       "explanation": "三位数 n 的百位为 n/100、十位为 n/10%10、个位为 n%10。若三者各自的立方之和等于 n 本身，则该数为水仙花数，输出 1，否则输出 0。这是典型的数位拆分与幂和比较题：先拆位再求和再与原数比较。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 407；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-112",
@@ -5533,7 +5601,11 @@
       ],
       "explanation": "记录原数 o，然后循环把各位逆序重组成 r，即每次 r=r*10+n%10 并 n/=10。若最终 r 与 o 相等，说明正读反读相同，即为回文数，输出 1，否则输出 0。回文判断与逆序构造复用同一位移思路。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12321；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-113",
@@ -5572,7 +5644,11 @@
       ],
       "explanation": "阶乘用 long long 保存。for 循环从 1 乘到 n，每次 f*=i，循环结束后 f 即为 n!。由于 n≤12，结果不会超出 long long 范围。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-114",
@@ -5607,7 +5683,11 @@
       ],
       "explanation": "求 1 到 n 的平方和：for 循环从 1 到 n，每次累加 i*i。注意用 1LL*i*i 先把 i 提升为 long long，避免 int 乘法在中途溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-115",
@@ -5646,7 +5726,11 @@
       ],
       "explanation": "等差数列第 i 项为 a+i*d（i 从 0 开始）。for 循环逐项累加 a+(long long)i*d 得到前 n 项之和，注意用 long long 防止累加溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-501",
@@ -5685,7 +5769,11 @@
       ],
       "explanation": "幂运算用 for 循环实现：结果 r 初始为 1，循环 n 次每次 r*=x，循环结束后 r 就是 x 的 n 次幂。指数为 0 时循环一次都不执行，r 保持 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-502",
@@ -5724,7 +5812,11 @@
       ],
       "explanation": "等比数列逐项生成：t 初始为 a 表示当前项，每轮先累加 s 再加 t，然后 t*=q 得到下一项。循环 n 次即得前 n 项之和。注意首项 a 与公比 q 应为整数，且项数 n 控制循环次数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-503",
@@ -5763,7 +5855,11 @@
       ],
       "explanation": "用 while 循环逐位取 n%10 判断是否等于目标数字 d，相等则计数加一，然后 n/=10 去掉当前位。循环直到 n 为 0，计数即为数字 d 在该数中出现的次数。注意对 n=0 且 d=0 的边界情况需单独处理。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-504",
@@ -5802,7 +5898,11 @@
       ],
       "explanation": "完数指等于其所有真因子之和的数。for 循环从 1 遍历到 n-1，凡能整除 n 的 i 都累加进因子和 s，结束时若和 s 等于 n 则为完数。注意真因子不含 n 本身，故上界取 n-1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 496；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-505",
@@ -5841,7 +5941,11 @@
       ],
       "explanation": "逐项生成全 1 数：t 每轮 t=t*10+1 得到 1、11、111、1111…，每次生成当前项 t 后累加进总和 s。for 循环执行 n 次，循环结束后 s 即为 1+11+111+… 前 n 项之和。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-506",
@@ -5880,7 +5984,11 @@
       ],
       "explanation": "阶乘 t 每轮 t*=i，然后累加 1.0/t 到 s。因涉及浮点数除法，分子必须写成 1.0 才能得到浮点结果，否则整数除法会变成 0。用 double 存储各项以保证足够精度，最终用 %.6f 保留 6 位小数输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-507",
@@ -5919,7 +6027,11 @@
       ],
       "explanation": "遍历 n 个整数，用 x%2 判断奇偶：余数为 0 表示偶数计入 e，余数非 0 表示奇数计入 o。for 循环逐个读取并分类统计，循环结束后分别输出偶数与奇数的个数，二者之和应等于输入的整数个数 n。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 7；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-508",
@@ -5958,7 +6070,11 @@
       ],
       "explanation": "累乘与累加类似，但结果增长更快，需用 long long 保存以防止 int 溢出。乘积 p 初始化为 1，循环中每读入一个整数 x 就执行 p*=x，遍历完输入的 n 个数后 p 即为它们的乘积。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 6；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-509",
@@ -5997,7 +6113,11 @@
       ],
       "explanation": "判断素数只需试除到该数的平方根即可：内层循环从 2 到 i*i<=x 判断 x 能否被整除，一旦发现整除就置 ok=0 并用 break 提前跳出。外层枚举 2 到 n 的每个数，素数个数累加后输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-510",
@@ -6036,7 +6156,11 @@
       ],
       "explanation": "辗转相除法求最大公约数：用 while 循环不断计算 a%b 得到余数，并把 b 赋给 a、余数赋给 b，如此辗转相除，当余数变为 0 时 a 即为两数的最大公约数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-511",
@@ -6075,7 +6199,11 @@
       ],
       "explanation": "最小公倍数可由公式 lcm(a,b)=a*b/gcd(a,b) 求得。先用辗转相除求出 a、b 的最大公约数 x，再计算 a/x*b（先除法再乘法以避免中间结果溢出）即得最小公倍数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-512",
@@ -6114,7 +6242,11 @@
       ],
       "explanation": "将十进制数转换为二进制采用除 2 取余法：用 while 循环不断取 n%2 得到当前最低位存入数组，再把 n 整除 2 去掉该位。如此反复直到 n 为 0，最后逆序输出数组中的各位即得二进制表示。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 2^31-1；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-513",
@@ -6153,7 +6285,11 @@
       ],
       "explanation": "斐波那契数列前两项均为 1，用两个滚动变量 a 和 b 保存相邻两项。for 循环从第 3 项开始每次令 c=a+b 并做 a=b、b=c 推进，循环结束时 b 恰好为第 n 项；n 为 1 或 2 时直接输出 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-514",
@@ -6192,7 +6328,11 @@
       ],
       "explanation": "计算 1!+2!+…+n! 可复用上一项阶乘：阶乘变量 f 每轮先 f*=i 得到 i!，再把 f 累加到总和 s。这样避免重复计算，循环结束后 s 即为各阶乘之和。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-515",
@@ -6231,7 +6371,11 @@
       ],
       "explanation": "交错调和级数 1-1/2+1/3-1/4+… 的每一项符号交替。for 循环中当项号 i 为奇数时用加号累加 1.0/i，i 为偶数时用减号累减，因涉及浮点整除要用 1.0/i 保证精度，最终保留 6 位小数输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-516",
@@ -6266,7 +6410,11 @@
       ],
       "explanation": "while 循环持续读取整数并累加到 s，每累加一次就判断 s 是否达到或超过 100，一旦满足立即用 break 跳出循环。这样循环在总和首次越过 100 时停止，输出的 s 即为停止时刻的累加和。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-517",
@@ -6305,7 +6453,11 @@
       ],
       "explanation": "遍历 n 个整数，遇负数用 continue 直接进入下一次循环而跳过本轮，只有非负整数才累加到总和 s 并把计数器 c 加一。循环结束后 s 即为所有非负数之和，c 为非负数的个数，两者一并输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 8；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-518",
@@ -6344,7 +6496,11 @@
       ],
       "explanation": "阶乘 0! 按定义等于 1，因此把结果变量 f 初始化为 1。for 循环从 2 乘到 n，遇到 n 为 0 或 1 时循环体一次都不执行，f 保持为 1；n 更大时逐项相乘得到 n!。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-519",
@@ -6383,7 +6539,11 @@
       ],
       "explanation": "求 1 到 n 中所有能被 3 整除的数之和，可让 for 循环变量从 3 开始、每次自增 3（i+=3），这样 i 恒为 3 的倍数，无需逐个判断即可把每个 3 的倍数累加进总和。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-520",
@@ -6422,7 +6582,11 @@
       ],
       "explanation": "数论中有一条结论：任意两个数的最大公约数与最小公倍数的乘积等于这两个数本身的乘积，即 gcd(a,b)*lcm(a,b)=a*b。因此直接输出 a*b 即可得到 gcd 与 lcm 的乘积。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-201",
@@ -6470,7 +6634,11 @@
       ],
       "explanation": "本题用 for 循环从 2 遍历到 √n 逐数试除，一旦找到能整除 n 的因子就用 break 提前结束循环并把标志置为 0；只要循环没有因 break 而提前退出，就说明不存在约数，该数为素数。注意先用 if 排除 n<2 的边界（1 不是素数），再以 i*i<=n 作为循环上界，把时间复杂度从 O(n) 降到 O(√n)。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-202",
@@ -6517,7 +6685,11 @@
       ],
       "explanation": "本题要求输出 1 到 n 之间所有素数，采用两重循环：外层 for 枚举候选数 i，内层循环用 j 从 2 到 √i 判断 i 是否有约数，并用一个标志变量记录是否为素数。输出时借助 first 标志控制空格位置，保证第一个数前没有多余空格、最后一个数后也不带尾随空格，这样格式才算正确。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-203",
@@ -6565,7 +6737,11 @@
       ],
       "explanation": "本题统计 n 以内素数的个数，思路是外层循环遍历每个候选数，内层循环逐个试除判断是否为素数，是则让计数器自增。循环上界取到 √i 能减少一半以上的无用判断，用 long long 防止计数溢出。最后输出计数器的值，并特别处理 n 为 1 时结果应为 0 的边界情形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-204",
@@ -6613,7 +6789,11 @@
       ],
       "explanation": "本题求第 n 个素数，采用外层 while 循环不断递增候选数 cur，每遇到一个数就用内层 for 试除判断是否为素数，是则计数器加一；当计数器达到 n 时跳出循环。因为越往后的素数分布越稀疏，用 while 而非固定次数的 for 更合适，循环条件 c<n 控制停止时机，配合 break 提前结束内层判断提高效率。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-205",
@@ -6661,7 +6841,11 @@
       ],
       "explanation": "本题求闭区间 [m,n] 内所有素数之和，外层 for 遍历区间内每个数，遇到小于 2 的数先用 continue 跳过，再用内层循环判素；若是素数就累加到 long long 型的和变量。这里用 continue 提前进入下一轮，避免多余判断，同时区间端点 m 与 n 都要正确纳入，结果直接输出无需取模。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 200；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-206",
@@ -6709,7 +6893,11 @@
       ],
       "explanation": "本题把整数分解为质因数的连乘积，核心是外层 for 从小到大枚举可能的质因子 i，内层 while 反复用 n 除以当前因子并输出，直到不能再整除为止；循环结束后若 n 仍大于 1，说明剩余部分本身就是一个质因子。用 first 标志控制乘号的位置，避免首尾出现多余的 *，最终输出形如 n=2*2*3 的格式。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-207",
@@ -6757,7 +6945,11 @@
       ],
       "explanation": "本题求斐波那契数列第 n 项，已知前两项均为 1，从第三项起每一项等于前两项之和。用变量 a、b 分别保存当前项与前一项，for 循环从 3 到 n 逐次迭代，借助临时变量 t 完成交换更新。由于数列增长极快，须用 long long 存储，并先处理 n 为 1 或 2 时直接返回 1 的边界。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 90；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-208",
@@ -6805,7 +6997,11 @@
       ],
       "explanation": "本题求斐波那契数列前 n 项之和，采用迭代方式：a、b 保存相邻两项，for 循环每轮把当前项 a 累加到和变量 s，再通过临时变量把二者更新为后一项。从第 1 项累加到第 n 项，复杂度为线性 O(n)。由于前 n 项和约等于 fib(n+2)-1，增长迅速，务必用 long long 防止溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-209",
@@ -6853,7 +7049,11 @@
       ],
       "explanation": "本题输出斐波那契数列的前 n 项，用一个 for 循环每轮产生一项：先输出当前项 a，再利用临时变量把 (a,b) 更新为下一组 (b,a+b)。输出时通过判断 i 是否大于 1 决定是否在数前补空格，从而把 n 个数用空格分隔且结尾无多余空格，保证输出格式正确。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-210",
@@ -6901,7 +7101,11 @@
       ],
       "explanation": "本题求斐波那契数列前 n 项中所有偶数项之和，仍用迭代法逐项生成，每轮判断当前项是否为偶数，是则累加到和变量。斐波那契数列中的偶数项每隔两项出现一次，这里统一通过取模判断即可。用 long long 保存和，遍历 n 项一次完成统计，时间复杂度 O(n)，空间复杂度 O(1)。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-211",
@@ -6948,7 +7152,11 @@
       ],
       "explanation": "本题求两数最大公约数，用辗转相除法（欧几里得算法）：反复用较大数对较小数取余，把余数作为新的除数继续，直到余数为 0，此时被除数就是最大公约数。实现上用 while 循环不断更新 a、b，当 b 为 0 时退出并输出 a。该算法每一步余数都迅速减小，效率远高于逐一试除。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-212",
@@ -6995,7 +7203,11 @@
       ],
       "explanation": "本题求两数最小公倍数，先通过辗转相除法求出最大公约数 g，再用公式 lcm=a/g*b 计算，这样可避免直接相乘导致溢出。注意先乘以 long long 进行类型转换再相乘，防止整数乘法溢出。用 while 循环实现欧几里得算法求 g，最后输出最小公倍数；若两数互质，最小公倍数即为二者之积。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-213",
@@ -7042,7 +7254,11 @@
       ],
       "explanation": "本题求三个数的最大公约数，利用 gcd 的结合律，即 gcd(a,b,c)=gcd(gcd(a,b),c)。先对前两个数用欧几里得算法求出第一层公约数，再将该结果与第三个数再一次求最大公约数。用 while 循环实现辗转相除，得到最终结果后输出，避免了把三个数写成多个独立判断分支的繁琐写法。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 24；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-214",
@@ -7089,7 +7305,11 @@
       ],
       "explanation": "本题把十进制数转成二进制，用短除法：不断用 2 去除 n，每轮把余数存入数组，直到商为 0；由于得到的余数低位在前，最后要倒序输出才是正确的二进制。用 while 循环完成除与取余，先特判 n 为 0 的情形，再用固定长度数组保存各位，保证输出不含前导零。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 2^31-1；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-215",
@@ -7136,7 +7356,11 @@
       ],
       "explanation": "本题把十进制数转成八进制，原理与转二进制完全相同，只是除数改为 8。用 while 循环不断对 8 取余收集各位数字，存入数组后倒序输出。先处理 n 为 0 时直接输出 0 的边界，其余情况反复除以 8 直到商为 0，得到的就是该数的八进制表示。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 512；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-216",
@@ -7184,7 +7408,11 @@
       ],
       "explanation": "本题把二进制字符串转成十进制，用 for 循环从左到右扫描每一位，用累乘累加公式 value=value*2+digit 逐位构造十进制值。由于输入以字符串形式给出，逐个字符减去字符 0 得到数字位。用 long long 保存结果以防位数多时溢出，最后输出转换后的十进制整数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10^7（约 11111111）；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-217",
@@ -7232,7 +7460,11 @@
       ],
       "explanation": "本题把八进制字符串转成十进制，对每一位用公式 value=value*8+digit 逐位累乘累加。for 循环扫描整个字符串，把字符转换为对应的数字位。八进制每位的权值是 8 的幂，从高位到低位反复乘 8 累加即可；用 long long 保存结果，最后输出十进制整数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-218",
@@ -7279,7 +7511,11 @@
       ],
       "explanation": "本题求交错调和级数 1-1/2+1/3-… 前 n 项的和，用 for 循环从 1 到 n 逐项累加，每一项的符号由 sign 变量在 1 与 -1 之间交替翻转。分数用 1.0/i 得到 double 值避免整数除法截断为 0，用 %.6f 控制小数位数确保输出稳定，该级数收敛于 ln2。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-219",
@@ -7327,7 +7563,11 @@
       ],
       "explanation": "本题求 1!+2!+…+n! 的阶乘累加和，用一个变量 f 在循环中不断乘以 i 得到当前阶乘，再把它累加到和变量 s。这样每个阶乘只需一次乘法，无需重复计算。因为阶乘增长极快，用 long long 存储阶乘与和，n 较小时也能输出精确的整数结果。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-220",
@@ -7375,7 +7615,11 @@
       ],
       "explanation": "本题用莱布尼茨级数 1-1/3+1/5-1/7+… 前 n 项近似计算圆周率，级数之和乘以 4 即为 π 的近似值。for 循环从 0 到 n-1 逐项累加，第 i 项分母为 2i+1，符号用 sign 变量交替。由于是交错且分母递增的级数，收敛较慢，用 double 与 %.6f 输出足够稳定的近似值。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 500；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-221",
@@ -7423,7 +7667,11 @@
       ],
       "explanation": "本题求 1/1!+1/2!+…+1/n! 的和，其结果接近自然常数 e。用变量 f 在 for 循环中逐项乘以 i 得到阶乘，再取倒数累加到和变量 s，这样每轮只做一次乘法和一次除法。分母用 double 参与计算避免整数除法得到 0，最后用 %.6f 输出稳定的近似值。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-222",
@@ -7471,7 +7719,11 @@
       ],
       "explanation": "本题求 1!-2!+3!-4!+… 前 n 项的交错阶乘之和，用 sign 变量控制每项的正负交替。循环中先计算当前阶乘 f，再按符号累加，每轮结束后翻转符号。由于阶乘增长极快，用 long long 存储，绝对值可能很大，n 控制在较小范围内以保证结果正确。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-223",
@@ -7518,7 +7770,11 @@
       ],
       "explanation": "本题求 1×2+2×3+…+n×(n+1) 的积式和，用 for 循环从 1 到 n，每轮累加 i*(i+1)。由于每一项都是相邻两数之积，用 long long 相乘并以 long long 累加，避免结果超出整数范围。该方式直观且为线性复杂度 O(n)，n 较大时也能在时限内完成。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 200；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-224",
@@ -7566,7 +7822,11 @@
       ],
       "explanation": "本题求 1/(1×2)+1/(2×3)+…+1/(n×(n+1)) 的裂项级数和。用 for 循环逐个累加每一项，分母是 i*(i+1)，分子固定为 1，用 1.0/(i*(i+1)) 保证浮点除法。该级数可裂项相消得 n/(n+1)，这里直接逐项累加验证，用 %.6f 输出稳定的近似值。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 999；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-225",
@@ -7614,7 +7874,11 @@
       ],
       "explanation": "本题求 1+1/(1+2)+1/(1+2+3)+…+1/(1+2+…+n) 的和。用累积变量 acc 在 for 循环中不断累加 i，得到 1 到 i 的和，再以 1.0/acc 累加到结果变量 s。这样无需内层重复求和，可以在线性时间内完成。最后用 %.6f 输出逼近的浮点近似值。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-301",
@@ -7662,7 +7926,11 @@
       ],
       "explanation": "本题用双层循环打印左下直角三角形。外层循环 i 从 1 到 n 控制行数，内层循环 j 从 1 到 i 控制每行的星号个数，因此第 i 行恰好有 i 颗星。外层每行结束后打印一个换行。当 n=1 时内层只执行一次，输出单个星号，边界正确。n 增大时行数与每行星号数同步递增，构成左对齐的直角三角形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-302",
@@ -7710,7 +7978,11 @@
       ],
       "explanation": "右下直角三角形与“左下”版本的区别在于每行要先输出前导空格。外层循环 i 控制行，第一层内层循环打印 n-i 个空格实现右对齐，第二层内层循环打印 i 个星号。当 n=1 时（n-i）=0，不打印空格而是直接输出一颗星，边界成立。空格与星号的数量互补，从而在视觉上形成靠右的直角三角形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-303",
@@ -7758,7 +8030,11 @@
       ],
       "explanation": "本题打印逐行递减的星号，与递增版本方向相反。外层循环 i 从 1 到 n，内层循环 j 从 1 到 n-i+1，因此第 1 行有 n 颗星，最后一行只有 1 颗星。内层循环的边界 n-i+1 是关键：i 越大可打印的星号越少。当 n=1 时 n-i+1=1，输出单颗星，边界成立。通过改变循环上限即可把“递增”变为“递减”图案。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-304",
@@ -7806,7 +8082,11 @@
       ],
       "explanation": "右上三角形同时结合了“递减星号”与“右对齐空格”两个要素。外层循环 i 控制行，第一个内层循环打印 i-1 个空格让星号靠右，第二个内层循环打印 n-i+1 个星号实现逐行减少。当 i=1 时不打印空格，直接输出 n 颗星；当 i=n 时只输出 1 颗星。n=1 时 i-1=0、n-i+1=1，仅输出一颗星，边界正确。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-305",
@@ -7854,7 +8134,11 @@
       ],
       "explanation": "等腰三角形是“先空格后星号”的对称图案。外层循环 i 控制行，第一个内层循环打印 n-i 个空格把整行推向中间，第二个内层循环打印 2i-1 个星号，数量为奇数从而保证左右对称。n=1 时 n-i=0、2i-1=1，只输出一颗星；当 n=9 时最后一行有 17 颗星。中间对齐、两侧对称是等腰三角形成立的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-306",
@@ -7902,7 +8186,11 @@
       ],
       "explanation": "倒等腰三角形是金字塔的“上下翻转”版本。外层循环 i 从 1 到 n，第一个内层循环打印 i-1 个空格，使星号随行下移而左移；第二个内层循环打印 2*(n-i+1)-1 个星号，数量随 i 增大而递减，仍保持奇数保证对称。n=1 时仅输出一颗星；n=9 时第一行有 17 颗星、最后一行 1 颗星。通过同时调整空格与星号的数量关系实现倒置效果。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-307",
@@ -7950,7 +8238,11 @@
       ],
       "explanation": "乘法表本身是双层循环的经典应用。外层循环 i 表示当前行（即被乘数），内层循环 j 从 1 到 i 依次打印 j*i 的结果，因此构成下三角。每项输出格式统一为“j*i=积”，每行内层结束后打印换行。n=1 时只打印 “1*1=1”；n=9 时第 9 行包含 9 个式子。内层循环上限取 i 是下三角形状成立的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-308",
@@ -7998,7 +8290,11 @@
       ],
       "explanation": "空心矩形通过在双层循环中加入条件判断实现“描边”。外层循环 i 控制行，内层循环 j 控制列；只要当前位置处于第一行、最后一行、第一列或最后一列（i==1||i==m||j==1||j==n），就输出星号，否则输出空格，从而形成空心边框。n=1 时每列都是边框，输出一条竖直星号线；m=1 时输出一行星号。条件判断是区分边框与内部的本质。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-309",
@@ -8046,7 +8342,11 @@
       ],
       "explanation": "菱形可拆成上、下两段三角形来打印。第一段 i 从 1 到 n，每行打印 n-i 个空格和 2i-1 个星号，构成金字塔；第二段 i 从 n-1 递减到 1，复用相同的“空格+星号”公式，构成倒金字塔，从而形成上下对称的菱形。n=1 时第一段输出单颗星，第二段循环不执行，结果正确。把图案拆成两段并各自控制循环边界是本题的难点。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-310",
@@ -8094,7 +8394,11 @@
       ],
       "explanation": "沙漏是菱形“方向取反”的变体。上半段 i 从 1 到 n，打印 i-1 个空格和 2*(n-i+1)-1 个星号，星号逐行收窄，末行只剩 1 颗；下半段 i 从 n-1 递减到 1，用同一公式使星号逐行加宽，从而形成中间最窄、上下对称的沙漏。n=1 时只打印一行单颗星。理解两段各自的空格与星号公式，是沙漏图案的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-311",
@@ -8142,7 +8446,11 @@
       ],
       "explanation": "字母金字塔用字符‘A’加上循环下标来生成字母。外层循环 i 控制行，先打印 n-i 个空格使其居中；再用两个循环分别做升序（k 从 0 到 i-1，输出 ‘A’+k）与降序（k 从 i-2 到 0），从而拼出“A..第i个字母..A”的回文内容。n=1 时只输出一个‘A’。利用字符与整数相加即可自动生成连续字母，无需手工枚举。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 26；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-312",
@@ -8190,7 +8498,11 @@
       ],
       "explanation": "数字直角三角形将“星号”替换为“行内序号”即可得到。外层循环 i 从 1 到 n 控制行，内层循环 j 从 1 到 i 控制行内数字，输出 j 而非‘*’，于是第 i 行就得到 1 到 i 的连续整数。n=1 时输出单个“1”。通过把内层循环的输出内容由固定字符改为随下标变化的整数，就能把图案题扩展为数字题，这是循环与输出结合的基础练习。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-313",
@@ -8238,7 +8550,11 @@
       ],
       "explanation": "回文数字金字塔由“空格+升序+降序”三段组成。外层循环 i 控制行，先打印 n-i 个空格实现居中；再用一个循环输出 1 到 i 的升序部分，最后用一个循环输出 i-1 到 1 的降序部分，二者拼成回文内容。n=1 时降序部分范围为空，只输出“1”。理解三段循环各自的起点与终点，就能构造出任意高度的回文金字塔。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-314",
@@ -8286,7 +8602,11 @@
       ],
       "explanation": "空心菱形在实心菱形的基础上，把“整行星号”换成“左右两颗星”。上半段 i 从 1 到 n，先打印 n-i 个空格，输出第一颗星；当 i>1 时再打印 2*i-3 个内部空格并输出第二颗星。下半段 i 从 n-1 递减到 1，复用同样的公式。n=1 时 i>1 不成立，只输出单颗星。用条件来控制内部空格的数量，是空心图案区别于实心图案的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-315",
@@ -8334,7 +8654,11 @@
       ],
       "explanation": "平行四边形的特点是“每行星号数量固定，而前导空格逐行递减”。外层循环 i 从 1 到 n，第一个内层循环打印 n-i 个空格，使整块向左下方平移；第二个内层循环固定打印 n 个星号，从而每行宽度一致。n=1 时无空格，只输出一颗星。固定星号数量、改变空格数量，即可形成斜边，这是与其他三角形图案的核心差异。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-316",
@@ -8382,7 +8706,11 @@
       ],
       "explanation": "矩阵转置的本质是交换行列下标。读入时用外层 i、内层 j 按行优先存入 a[i][j]；输出时改成外层 j、内层 i，即先遍历列再遍历行，于是 a[i][j] 被输出到第 j 行第 i 列。m 行 n 列的矩阵转置后变成 n 行 m 列，因此输出循环是外 j 内 i。1 行 n 列会转成 n 行 1 列，n 行 1 列转成 1 行 n 列，边界情形由双层循环的交换自然覆盖。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-317",
@@ -8430,7 +8758,11 @@
       ],
       "explanation": "矩阵加法要求两个矩阵规模相同，结果矩阵中每个元素是对应位置之和。程序分三步：先读入 m 和 n，再用两个双层循环分别按行优先读入矩阵 A 和 B，最后用双层循环输出 a[i][j]+b[i][j]。三个双层循环的行、列边界完全一致，均为外层 i 从 0 到 m-1、内层 j 从 0 到 n-1。当 m=n=1 时只做一次加法，输出两数之和，边界正确。矩阵运算类题目强调“按行优先读、按行优先写”的一致约定。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 60；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-318",
@@ -8478,7 +8810,11 @@
       ],
       "explanation": "矩阵乘法是三重循环的典型应用：结果矩阵 C 的第 i 行第 j 列元素由 A 的第 i 行与 B 的第 j 列对应元素相乘再求和得到。最外层 i 遍历结果行，中间层 j 遍历结果列，最内层 k 遍历公共维 p，把 a[i][k]*b[k][j] 累加进变量 s。A 是 m 行 p 列、B 是 p 行 n 列，乘积是 m 行 n 列；只有当 A 的列数等于 B 的行数时才能相乘。最内层求和时需先清零累加器，再乘加 p 次。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-319",
@@ -8526,7 +8862,11 @@
       ],
       "explanation": "主对角线上元素满足行下标等于列下标，即 a[i][i]。读入时用双层循环按行优先把 n*n 个元素存入 a[i][j]；求和只需一个单层循环 i 从 0 到 n-1，累加 a[i][i]，而不必遍历整个矩阵。因为只取行列下标相等的元素，所以复杂度由 O(n²) 降为 O(n)。当 n=1 时只有 a[0][0] 一个元素，和就是它本身。区分“整体遍历”与“按位置取元素”是处理矩阵与对角线问题的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 25；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-320",
@@ -8574,7 +8914,11 @@
       ],
       "explanation": "副对角线元素满足“行下标 + 列下标 = n-1”，因此固定行 i 时列下标为 n-1-i。读入矩阵仍使用双层循环；求和只需单层循环 i 从 0 到 n-1，累加 a[i][n-1-i]。注意主对角线用 a[i][i]，副对角线要用 n-1-i 这个反向关系，两者写法不同但都只需 O(n) 次访问。当 n=1 时主、副对角线重合，结果就是唯一元素。理解行列下标之间的关系，是应对各种对角线问题的核心。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 25；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-321",
@@ -8622,7 +8966,11 @@
       ],
       "explanation": "在矩阵中找最大值需要同时记录“值”和“位置”。先把 a[0][0] 当作初始最大值，并令行号、列号为 1；随后用双层循环逐个比较，当 a[i][j] 大于当前最大值时更新 max，同时把行号记作 i+1、列号记作 j+1。若使用严格大于号（>），当出现多个相等最大值时只保留第一次出现的元素，符合题目要求。1 行 n 列或 n 行 1 列时只有单行或单列，边界也能正确处理。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-322",
@@ -8670,7 +9018,11 @@
       ],
       "explanation": "求每行之和的思路是“外层遍历行，内层遍历列累加”。读入矩阵后，外层循环 i 从 0 到 m-1，在每行开始前把累加器 s 清零；内层循环 j 从 0 到 n-1 累加 a[i][j]，随后输出该行和。注意每行的 s 都要独立清零，否则会把前一行的结果带进来。当 m=1 时只有一行和，当 n=1 时每行只有一个元素，直接输出该元素即可。累加器的作用域与清零时机是此类题的关键。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-323",
@@ -8718,7 +9070,11 @@
       ],
       "explanation": "鞍点要求元素同时满足“是行内最大值”和“是列内最小值”两个条件。对每个元素 a[i][j]，用两个内层循环分别检查：第一段遍历该行所有元素，只要发现比它大的就说明它不是行最大，置 maxr=0；第二段遍历该列所有元素，只要发现比它小的就说明它不是列最小，置 minc=0。只有当 maxr 与 minc 同时为真时才输出该元素并置 found=1。若遍历完全部元素都没有找到，则输出 NONE。判断条件要同时成立，体现了对“行最大”“列最小”的联合校验。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-324",
@@ -8766,7 +9122,11 @@
       ],
       "explanation": "蛇形矩阵的关键是“逐行交替方向填充”。外层循环 i 遍历行，判断 i%2 是否为 0：偶数行（i 从 0 起）让内层 j 从 0 递增到 n-1 填充，奇数行则让 j 从 n-1 递减到 0 填充，每次填充都递增计数器 val。方向交替由行号奇偶决定，从而形成蛇形路径。为了使数字列对齐，先计算 n*n 的位数 w，再用 %*d 按宽度右对齐输出。n=1 时只有一行一个数，边界正确。这种“按规则填表再整体输出”是矩阵生成题的典型思路。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-325",
@@ -8814,7 +9174,11 @@
       ],
       "explanation": "杨辉三角利用二维数组递推：每行首尾元素固定为 1（a[i][0]=a[i][i]=1），中间元素 a[i][j] 等于上一行左上方 a[i-1][j-1] 与正上方 a[i-1][j] 之和。递推只依赖上一行的值，因此需按行从小到大计算。由于阶数较高时数值会很快增大，这里用 long long 存储结果，避免整型溢出。输出时第 i 行打印 i+1 个数，行末不留多余空格。n=1 时只输出一个“1”。这种“先递推建表、再按行输出”是二维数组动态规划的入门模型。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch05-alg-401",
@@ -8861,7 +9225,11 @@
       ],
       "explanation": "用 for 循环从 1 逐个数到 n，每取到一个数先用 i%6==0 判断能否被 6 整除，命中即把 found 记为 i 并用 break 立刻跳出循环，不再往后枚举。因为题目只要求第一个满足条件的数，越早找到越省时，所以提前终止是本题的关键。若循环结束 found 仍为初始值 0，说明 1 到 n 中不存在 6 的倍数，输出 0。易错点是忘记 break，那样会继续循环把 found 覆盖成最后一个能被 6 整除的数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-402",
@@ -8909,7 +9277,11 @@
       ],
       "explanation": "判断素数只需从 2 试除到根号 n 即可，因为如果 n 有大于根号 n 的因子，必然同时存在小于根号 n 的另一个因子。循环条件写成 i*i<=n 避免浮点和 sqrt。一旦发现 n%i==0 就说明 n 有因子，把标记 p 置 0 并用 break 提前终止，不必再试更大的因子。最后按 p 的值输出 1 或 0。易错点是漏掉 n<2 的情况，2 和 3 这类小素数也要能正确判为 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10^9（约 1000000007）；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-403",
@@ -8956,7 +9328,11 @@
       ],
       "explanation": "用 for 循环依次读入 n 个数，每读一个 x 就判断 x<0 是否成立，成立说明找到了第一个负数，把结果 r 赋成该数并用 break 立即退出，剩下未读的数不必再处理。因为题目要的是第一个满足条件的数，一旦命中就应终止。循环结束后若 r 还是初始值 0，说明 n 个数全非负，输出 0。易错点是找到后忘记 break，会继续把 r 覆盖成后面出现的其它负数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-404",
@@ -9004,7 +9380,11 @@
       ],
       "explanation": "要求不大于 n 的最大素数，应让外层循环从 n 向 2 递减枚举 x，越靠前的 x 越接近 n 越可能是答案。对每个 x 用内层循环从 2 试除到根号 x 判断素性，一旦被整除就把标记置 0 并 break 退出内层。若内层结束标记仍为 1，说明 x 是素数，把 r 记成 x 再用 break 退出最外层循环。易错点是内层用到的 break 只退出内层，判断完成后还需单独 break 外层。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-405",
@@ -9052,7 +9432,11 @@
       ],
       "explanation": "用 while(scanf(\"%d\",&x)==1) 循环不断读取整数，读到 0 时先 break 结束输入，再检查 x>=100 是否成立，成立就把结果赋成该数并 break 提前跳出。这样既能处理以 0 结尾的序列，又能保证只输出第一个不小于 100 的数。若整个序列都小于 100，循环因遇到 0 正常退出，结果保持初始值 0。易错点是把「遇到 0 结束」和「找到目标退出」两个 break 混在一起，要先判 0 再判目标。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 120；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-406",
@@ -9100,7 +9484,11 @@
       ],
       "explanation": "用 for 循环从 1 数到 n，对每个 i 先判断 i%3==0。若能被 3 整除就用 continue 直接跳到循环的下一步，跳过下面的累加语句，使这些数不参与求和；否则把 i 累加到 s。continue 与 break 的区别在于它只结束本轮循环、不退出整个循环，所以后面仍会继续检查更大的数。最后输出 s。易错点是 continue 放错位置或漏写累加，导致该加的数没加上。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-407",
@@ -9148,7 +9536,11 @@
       ],
       "explanation": "题目要求能被 3 或 5 整除、但不能同时被 15 整除的数。循环中对每个 i 先判断 !(i%3==0||i%5==0)，若既不整除 3 也不整除 5，用 continue 跳过计数；接着再判断 i%15==0，若同时被 15 整除也 continue 跳过。两次 continue 实现了两层筛选，只有既进入第一层又通过第二层的数才被计数。易错点是两个条件的写法，要区分「或」与「且」的关系。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-408",
@@ -9196,7 +9588,11 @@
       ],
       "explanation": "对 1 到 n 的每个数，先复制一份到 t，再用内层 while 逐位取 t%10 检查是否是 5，一旦某位是 5 就把标记 has 置 1 并 break 退出逐位循环。循环结束后若 has 为 1，用 continue 跳过该数的打印；否则用 printf(\"%d \",i) 输出。这样实现了「过滤打印」：含数字 5 的数直接跳过，其余按序打印。易错点是拆分数字要复制临时变量，直接改 i 会破坏外层循环；末尾多出的空格属正常输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-409",
@@ -9244,7 +9640,11 @@
       ],
       "explanation": "用 for 循环读入 n 个整数，每个 x 都要先经过判断 x>0&&x%2==0，即同时满足大于 0 且能被 2 整除才是正偶数。如果条件不成立，用 continue 跳过本轮累加；成立才把 x 加到 s。continue 让代码只在符合条件的数上执行累加，逻辑清晰。最后输出 s。易错点是条件用 || 而非 &&，或漏掉 x>0 导致把负数偶数也算进去。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-410",
@@ -9292,7 +9692,11 @@
       ],
       "explanation": "题目求奇数的平方和，循环从 1 到 n，对每个 i 先判断 i%2==0，若为偶数就用 continue 跳过本轮，不参与平方累加；奇数才执行 s+=1LL*i*i。注意用 1LL 把乘法提升为 long long，避免 i*i 在 int 范围内溢出。continue 只跳过偶数这一轮，不会终止整个循环，所以 1 到 n 的奇数都会被正确处理。易错点是不加 1LL 导致大 n 时结果溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-411",
@@ -9340,7 +9744,11 @@
       ],
       "explanation": "这是三重分支统计题。循环内读到 x 后，用 if-else if-else 把 x>0、x<0、x==0 三种情况分开，分别累加正数计数器 p、负数计数器 ne、零计数器 z。由于三者互斥，用 else if 连接即可，每个数只会命中一个分支。循环结束后依次输出三个计数。易错点是把 else if 写成多个独立 if，那样一个数可能同时多次计数，导致总和超过 n。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 6；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-412",
@@ -9388,7 +9796,11 @@
       ],
       "explanation": "这是分数段统计题，用 if-else if 链把成绩按 90、80、60 三个分界点切成四段。g>=90 进优秀计数 a；否则若 g>=80 进良好 b；否则若 g>=60 进及格 c；剩下的都进不及格 d。因为从高到低依次判断，else if 保证了互斥，95 不会同时计入两段。循环结束后输出四个计数。易错点是分界点写错，或把 d 分支写成 else if 导致无人落入，应在最后用 else 兜底。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-413",
@@ -9436,7 +9848,11 @@
       ],
       "explanation": "用 while(n) 循环不断对 n 取 n%10 得到末位数字，与目标 d 比较是否相等，相等则计数器加一，随后 n/=10 去掉末位，直到 n 变为 0。题目特别指出 n 为 0 时其十进制表示只有一位 0，需单独处理：若 d==0 输出 1 否则输出 0。易错点是忘记 n==0 的特殊情形，while(0) 一次都不循环会直接输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10^8（约 987654321）；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-414",
@@ -9484,7 +9900,11 @@
       ],
       "explanation": "奇偶统计题。循环内读入 x 后用 x%2==0 判断，能被 2 整除的数计入偶数计数 e（注意 0 是偶数），否则计入奇数计数 o。因为每个整数非偶即奇，用 if-else 即可保证一个数只计一次。循环结束后输出 e 和 o 两个数。易错点是误把 0 当成非偶数，或把负数奇偶搞反，-3 除以 2 余 -1 属于奇数，条件应统一写成 x%2==0 判断偶数更稳妥。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 7；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-415",
@@ -9533,7 +9953,11 @@
       ],
       "explanation": "统计类中嵌套数位拆分的题。外层 for 遍历 1 到 n 的每个数，内层 while 对每个数逐位取余求和得到数位和 s，然后用 if(s==8) 判断是否恰好等于 8，是则计数加一。每个数都要现场分解，不能用简单公式。易错点是分解数字时要复制到临时变量 t，直接在 i 上做除法会破坏外层循环；同时要确保把 s 在每个数开始前归零。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-416",
@@ -9581,7 +10005,11 @@
       ],
       "explanation": "EOF 求和题。while(scanf(\"%d\",&x)!=EOF) 会在读到文件结束标志时返回 EOF，从而停止循环，这种写法无需事先知道输入的个数。每成功读入一个 x 就把它累加到 s。由于题目可能输入 10^4 以上个数，和值可能超过 int，需把 s 声明为 long long，用 %lld 输出。输入为空时循环一次都不执行，s 保持 0。易错点是误用 char 或 int 承接，以及忘记加 long long 导致溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 400；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-417",
@@ -9629,7 +10057,11 @@
       ],
       "explanation": "EOF 统计题。用 while(scanf(\"%d\",&x)!=EOF) 持续读入，直到输入结束。对每个成功读入的 x 判断 x>0 是否成立，成立则正数计数器加一。循环结束输出计数。这类写法适用于不确定个数的输入，只要一直读到文件尾即可。易错点是写成 while(1) 死循环而缺少退出条件，或忘记 x>0 判断把 0 和负数也计入。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-418",
@@ -9677,7 +10109,11 @@
       ],
       "explanation": "哨兵求和题。while(scanf(\"%d\",&x)==1) 读入整数，遇到 x==0 用 break 退出循环，因为 0 是结束标志不参与求和；其余 x 累加到 s。注意要先把累加语句放在 break 之后，保证 0 不被加入。求和值可能很大，s 用 long long。输入以 0 开头时循环立即退出，输出 0。易错点是把 break 判断写在累加之后，或误把 0 也加进和里。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-419",
@@ -9725,7 +10161,11 @@
       ],
       "explanation": "EOF 奇偶统计算。while(scanf(\"%d\",&x)!=EOF) 持续读入，对每个 x 用 x%2==0 判断：是则偶计数 e 加一，否则奇计数 o 加一。用 if-else 保证每数只计一次。循环结束输出 o 和 e。易错点是把输出顺序写反（题目要求奇数在前），或者把 0 误归为奇数，实际上 0%2==0 应计入偶数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-420",
@@ -9773,7 +10213,11 @@
       ],
       "explanation": "哨兵统计题。while(scanf(\"%d\",&x)==1) 读入整数，遇到 x==-1 用 break 退出，-1 是结束标志不参与统计；其余数判断 x>100 是否成立，成立则计数加一。这样能处理以 -1 结尾的不定长输入。易错点是忘记把 break 写在累加/计数之前导致 -1 也被统计，或把条件写成 >=100 与题意不符。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 300；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-421",
@@ -9821,7 +10265,11 @@
       ],
       "explanation": "完数判断题。用 for 循环枚举 1 到 n-1 之间所有小于 n 的正整数，凡是满足 n%i==0 的就是 n 的真因子，把它累加到 s。循环结束后比较 s 与 n 是否相等，相等说明 n 等于所有真因子之和，输出 1，否则输出 0。易错点是循环上界写成 i<=n，那样会把 n 自身也当作因子相加，导致几乎所有数都被误判为完数；1 的真因子之和为 0，应输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 496；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-422",
@@ -9869,7 +10317,11 @@
       ],
       "explanation": "统计题。外层 for 遍历 1 到 n 的每个数，内层 while 对每个数逐位取余累加得到数位和 s，再用 if(s%2==0) 判断数位和是否为偶数，是则计数加一。这样每个数都要先分解数字再判断奇偶，是双重条件的典型应用。易错点是忘了在每个数开始前把 s 清零，导致数位和跨数累加结果完全错误。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-423",
@@ -9917,7 +10369,11 @@
       ],
       "explanation": "求最大数位题。用 while(n) 循环逐位取出末位 d=n%10，与当前最大值 mx 比较，d 大于 mx 就更新 mx，然后 n/=10 去掉末位。循环结束时 mx 就是最大的那位数字。易错点是 n 为 0 时 while(0) 不执行，mx 保持 0，恰好正确；若把比较写成小于号或漏掉取余前的判断都会得到错误结果。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 98765；时间复杂度：O(log n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-424",
@@ -9965,7 +10421,11 @@
       ],
       "explanation": "双条件查找题。外层 for 从 1 到 m，先判断 i%3!=0，若是则 continue 跳过，保证只处理能被 3 整除的数；对内层再用 while 拆解 i 求数位和 s，判断 s>=10 是否成立，都满足就把 r 记成 i 并 break 提前退出。这是 continue 筛选与 break 提前终止结合的综合题。易错点是 continue 与 break 混用，或分解数字时直接改了外层循环变量 i。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-alg-425",
@@ -10013,7 +10473,11 @@
       ],
       "explanation": "水仙花数题。对区间内每个三位数 i，先用 i/100、i/10%10、i%10 分别取出百位、十位、个位，再判断它们的立方和是否等于 i 本身，相等就用 printf(\"%d \",i) 输出。因为要求区间内所有水仙花数，所以循环要完整走完、不能提前 break。易错点是取十位时用 i/10%10 而非 i%100/10，或漏掉个位取法；行末多出的空格属于正常输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 999；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch05-cr-501",
@@ -10034,7 +10498,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 for 循环从 i=1 累加至 i=10，每次把 i 加到变量 s。循环共执行 10 次，累加结果为 1+2+3+...+10=55，最后 printf 输出 55。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-502",
@@ -10055,7 +10522,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 for 循环从 i=5 逆序递减到 i=1，循环体每次 printf 输出当前 i 且不换行。循环依次输出 5、4、3、2、1 五个数字，故结果连成一行 54321。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-503",
@@ -10076,7 +10546,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 while 循环，i 从 1 开始每次加 2，因此依次遍历 1、3、5、...、99 共 50 个奇数并累加到 s。1 到 99 的奇数和为 50×50=2500，故输出 2500。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-504",
@@ -10097,7 +10570,10 @@
       "answerIsDescription": false,
       "explanation": "do-while 循环先执行循环体再判断条件，至少执行一次。i 初始为 0，每轮 n 加 1、i 加 3，i 依次变为 3、6、9、12；当 i=12 时不再满足 i<10。循环体执行 4 次，n=4，结束时 i=12，故输出 4 12。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-505",
@@ -10118,7 +10594,10 @@
       "answerIsDescription": false,
       "explanation": "程序是双重 for 循环输出直角三角形。外层 i 从 1 到 4，内层每行输出 i 个星号并换行。第 1 行 1 个星号，第 2 行 2 个，第 3 行 3 个，第 4 行 4 个，故输出四行星号。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-506",
@@ -10139,7 +10618,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环从 i=1 到 10，当 i==6 时执行 break 直接跳出整个循环。break 之前已输出 1、2、3、4、5 五个数字，之后不再执行，故输出 12345。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-507",
@@ -10160,7 +10642,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环遍历 1 到 10，遇到 i%3==0 即 3、6、9 时执行 continue 跳过本次，不输出该数；其余数正常输出。因此输出的数是 1、2、4、5、7、8、10，连成一串为 12457810。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-508",
@@ -10181,7 +10666,10 @@
       "answerIsDescription": false,
       "explanation": "while 循环中 r=r*10+n%10 把 n 的个位拼到 r 末尾，然后 n/=10 去掉个位，直到 n 为 0。对 12345 逐位处理，r 依次变为 5、54、543、5432、54321，故输出 54321。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-509",
@@ -10202,7 +10690,10 @@
       "answerIsDescription": false,
       "explanation": "while 循环用 n%10 取出个位累加到 s，再执行 n/=10 去掉个位，直至 n 为 0。对输入 987，依次累加 7、8、9，得 s=7+8+9=24，故输出 24。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-510",
@@ -10223,7 +10714,10 @@
       "answerIsDescription": false,
       "explanation": "while 循环每次执行 n/=10 去掉一位数字并使计数器 c 加 1，直到 n 为 0。输入 30528 是 5 位数，循环共执行 5 次，c=5，故输出 5。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-511",
@@ -10244,7 +10738,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环从 i=1 到 10，把每个 i 依次乘到 f 上。f 最终等于 10 的阶乘 10!=3628800，用 %lld 输出，故结果为 3628800。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-512",
@@ -10265,7 +10762,10 @@
       "answerIsDescription": false,
       "explanation": "双重 for 循环输出 3×3 的乘法表，内层计算并输出 i*j，每行结束后换行。第 1 行输出 1 2 3，第 2 行输出 2 4 6，第 3 行输出 3 6 9，故结果共三行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-513",
@@ -10286,7 +10786,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环初始化 i=0、j=10，每轮 i 加 1、j 减 1，判断条件 i<j。依次输出数对 (0,10)、(1,9)、(2,8)、(3,7)、(4,6)，共 5 行；当 i=5、j=5 时 i<j 不成立循环结束。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-514",
@@ -10307,7 +10810,10 @@
       "answerIsDescription": false,
       "explanation": "while 循环中 i 从 1 递增到 4，每次把 i×i 累加到 s。累加结果为 1+4+9+16=30，i 增到 5 时条件 i<=4 不成立而退出循环，故输出 30。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-515",
@@ -10328,7 +10834,10 @@
       "answerIsDescription": false,
       "explanation": "双重 for 循环中，内层 j 从 1 到 4，当 i*j>6 时 break 跳出内层。i=1 时输出 1 2 3 4；i=2 输出 2 4 6；i=3 输出 3 6；i=4 输出 4，每行换行，故结果共四行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-516",
@@ -10349,7 +10858,10 @@
       "answerIsDescription": false,
       "explanation": "双重 for 循环中，内层 j 从 1 到 5，当 j==3 时 continue 跳过本次不输出 3。每行都输出 1、2、4、5 即 1245，外层共 3 行完全相同，故输出三行 1245。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-517",
@@ -10370,7 +10882,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 for 循环控制变量 i 从 2 开始，每次步进加 2，循环条件是 i<=10，因此依次输出 2、4、6、8、10 这五个偶数，数字间带空格，循环结束后换行。故整个输出为 2 4 6 8 10。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-518",
@@ -10391,7 +10906,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 while((c=getchar())!=EOF) 逐个读取字符，每当遇到元音字母 a、e、i、o、u 时计数 v 加 1。输入 hello world 中的元音字母为 e、o、o 共 3 个，故输出 3。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-519",
@@ -10412,7 +10930,10 @@
       "answerIsDescription": false,
       "explanation": "do-while 循环先读入一个数并累加到 s，再判断是否等于 0 来结束循环。输入 3 5 8 0，依次累加得 3+5+8+0=16，读到 0 后循环停止，故输出 16。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-520",
@@ -10433,7 +10954,10 @@
       "answerIsDescription": false,
       "explanation": "程序用双重 for 循环输出数字金字塔。第 i 行先输出 3-i 个空格，再输出 2*i-1 个数字 i。i=1 行是\"  1\"，i=2 行是\" 222\"，i=3 行是\"33333\"，故结果共三行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-601",
@@ -10455,7 +10979,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 do-while 逐位取出 n 的个位：r=r*10+n%10 把当前个位拼到 r 的末尾，再 n=n/10 去掉个位。n=12345 时依次得到 r=5、54、543、5432、54321，最后一次 n=0 使 n>0 为假退出。由于 do-while 保证先执行一次，即使输入 0 也输出 0；本题输入 12345，最终输出 54321。易错点：r 的初值必须为 0，且取余与整除的顺序不能颠倒。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-602",
@@ -10477,7 +11004,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 while 统计 n 的位数：每轮 c++ 计数一次，再 n=n/10 去掉一位。n=9876 时依次变为 9876、987、98、9、0，共循环 4 轮。当 n 变成 0 时 n>0 为假，循环终止，c 恰好等于位数 4。易错点：n=0 时 while 一次都不执行，c 保持 0，这类题目常考 n=0 的边界情况；本题 n=9876，最终输出 4。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-603",
@@ -10499,7 +11029,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 do-while 计数：每轮 k++ 加一、n-- 减一，直到 n>0 为假。输入 n=0 时，由于是 do-while，循环体先无条件执行一次：k 由 0 变 1、n 由 0 变 -1，再判断 n>0 即 -1>0 为假，循环结束。k 最终为 1。这道题考查 do-while 与 while 的关键区别：do-while 至少执行一次循环体。易错点：若误当成 while，会认为一次都不执行、输出 0。最终输出 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-604",
@@ -10521,7 +11054,10 @@
       "answerIsDescription": false,
       "explanation": "程序是两层 for 循环，i 外层、j 内层均为 1 到 3。内层中遇到 j==2 就 break，break 只终止当前内层循环，外层继续。i=1 时只打印 j=1 的 11，随后 j=2 触发 break；i=2 同理打印 21；i=3 打印 31。共打印 11 21 31。易错点：break 只退出所在行循环，不会连外层一起退出；每个数后面都有空格，最后的换行由循环外的 printf 补上。最终输出 11 21 31。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-605",
@@ -10543,7 +11079,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 for 循环遍历 i 从 1 到 5。当 i%2==0 即 i 为偶数时执行 continue，跳过本次循环体中 continue 之后的 printf，直接进入下一次迭代。于是 i=2、4 两轮被跳过，只有 i=1、3、5 三轮回执行了 printf(\"%d\",i)，且中间没有空格，连成 135。易错点：continue 只跳过本次迭代剩余语句，不结束整个循环；printf 格式不含空格，所以三个数字紧挨着。最终输出 135。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-606",
@@ -10565,7 +11104,10 @@
       "answerIsDescription": false,
       "explanation": "程序是两层嵌套循环：外层 i 控制行，从 1 到 4；内层 j 从 1 打印到 i，每行输出 1~i 的数，行末 printf 换行。所以第 1 行输出 1，第 2 行输出 12，第 3 行输出 123，第 4 行输出 1234。内层循环的终止条件 j<=i 恰好让每行数比行号多 1 个，形成右对齐的数字三角形。易错点：内层终值随外层 i 变化，是典型的循环嵌套规律。最终输出为 1、12、123、1234 四行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-607",
@@ -10587,7 +11129,10 @@
       "answerIsDescription": false,
       "explanation": "程序是三层结构：外层 i 从 1 到 3 控制行；第一个内层循环打印 3-i 个空格实现居中，第二个内层循环打印 2*i-1 个数字 i。i=1 时打印 2 个空格加 1 个 1，i=2 时打印 1 个空格加 3 个 2，i=3 时不打印空格加 5 个 3。易错点：空格的数量和数字个数都依赖 i，要分别用 3-i 和 2*i-1 计算。最终输出为：第一行两个空格加 1，第二行一个空格加 222，第三行 33333。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-608",
@@ -10609,7 +11154,10 @@
       "answerIsDescription": false,
       "explanation": "程序统计 n 中偶数位的个数：每轮用 n%10 取出个位，若为 0、2、4、6、8 则 c++，再 n=n/10 去掉个位。n=24680 的各位依次是 0、8、6、4、2，全部为偶数，每轮 c 都加一，共 5 轮。之后 n=0 使 while 终止。易错点：0 也是偶数，末位 0 会被正确计数；n=0 本身不会进入循环。最终输出 5。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-609",
@@ -10631,7 +11179,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 do-while 反复读入 x 并累加到 s，直到读入的 x 为 0 才停止。输入依次为 3、5、0。第一轮读 3 累加 s=3，第二轮读 5 累加 s=8，第三轮读 0 累加 s=8（加 0 不变），然后 x==0 使 x!=0 为假退出。易错点：0 本身也会被累加进去，但加 0 无影响；终止条件是读到的数为 0，而不是读不到数。最终输出 8。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-610",
@@ -10653,7 +11204,10 @@
       "answerIsDescription": false,
       "explanation": "程序在 while 内用 scanf 读入 x。若 x<0 则 break 结束整个循环；若 x==0 则 c++ 并 continue 跳过累加；否则把 x 累加到 s。输入 2、0、5、0、9、-1：2 累加 s=2；0 使 c=1；5 累加 s=7；0 使 c=2；9 累加 s=16；-1 触发 break 结束。易错点：continue 与 break 的作用范围不同，continue 只跳过本次循环的后半段。最终输出 16 2。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-611",
@@ -10675,7 +11229,10 @@
       "answerIsDescription": false,
       "explanation": "程序是下三角乘法表：外层 i 从 1 到 3 控制行，内层 j 从 1 打印到 i，格式为 j*i=j*i，每个算式后带一个空格，行末换行。i=1 行输出 1*1=1，i=2 行输出 1*2=2 和 2*2=4，i=3 行输出 1*3=3、2*3=6、3*3=9。易错点：注意乘法算式中乘号前后是 j 和 i（j 在前），即竖向是乘数、横向是被乘数；算式之间与行末都有空格。最终输出三行乘法式。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-612",
@@ -10697,7 +11254,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 for 遍历 i 从 1 到 n，只要 n%i==0 就 c++，统计 n 的所有约数个数。n=12 时，能被 12 整除的 i 有 1、2、3、4、6、12 共 6 个，所以 c=6。易错点：循环到 n 为止，因而 n 本身作为约数也被计入；约数包括 1 和 n 自身。若把循环上限写错或漏掉 n 自身，计数会出错。最终输出 6。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-613",
@@ -10719,7 +11279,10 @@
       "answerIsDescription": false,
       "explanation": "程序累加 n 的各位数字：每轮 s+=n%10 取个位加到 s，再 n/=10 去掉个位。n=327 时依次取出个位 7、2、3，累加得 s=7、9、12。第 3 轮后 n=0，while 终止。易错点：取余得到的是当前个位，必须配合整除 n/=10 逐位推进，否则会死循环；s 初值必须为 0。最终输出 12。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-614",
@@ -10741,7 +11304,10 @@
       "answerIsDescription": false,
       "explanation": "程序遍历 i 从 1 到 10，若 i%3!=0 即 i 不是 3 的倍数就 continue 跳过，否则 k++。因此只有 3、6、9 三个数执行了 k++，其余 7 个数都被 continue 跳过。易错点：continue 跳过了 k++ 即计数语句本身，所以只统计到 3 的倍数的个数；3 的倍数在 1~10 之间只有 3、6、9。最终输出 3。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-615",
@@ -10763,7 +11329,10 @@
       "answerIsDescription": false,
       "explanation": "程序生成三角数表：外层 i 从 1 到 4，内层 j 每行打印 i 个数，数取自变量 n 并逐次自增，每个数用 %3d 占 3 列右对齐。n 从 1 起：第 1 行 1，第 2 行 2、3，第 3 行 4、5、6，第 4 行 7、8、9、10。易错点：%3d 会产生前导空格，属于输出内容；n 在两层循环间连续自增不重置。最终输出四行三角数表，每行靠右对齐。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-616",
@@ -10785,7 +11354,10 @@
       "answerIsDescription": false,
       "explanation": "程序统计 for(i=n;i>0;i=i/2) 的循环次数：每轮 c++，i 折半取整。n=100 时 i 依次为 100、50、25、12、6、3、1，共 7 轮；i=1 时除以 2 得 0，i>0 为假退出。易错点：i=i/2 是整除折半，25/2=12、12/2=6，都是向下取整，不能按实数折半去数；第 1 轮 i=100 也要计入循环。最终输出 7。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-617",
@@ -10807,7 +11379,10 @@
       "answerIsDescription": false,
       "explanation": "程序输出右对齐的星号三角形：外层 i 从 1 到 4，第一个内层循环打印 4-i 个空格，第二个内层循环打印 i 个星号，行末换行。i=1 打印 3 空格加 1 星，i=2 打印 2 空格加 2 星，i=3 打印 1 空格加 3 星，i=4 打印 0 空格加 4 星。易错点：空格数随行数递减、星号数递增，二者之和恒为 4，保证右对齐。最终输出四行，星星个数为 1、2、3、4。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-618",
@@ -10829,7 +11404,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 do-while(1) 无限循环读数：x==-1 时 break 退出，x<=0 时 continue 跳过累加，否则累加到 s。输入 4、-2、6、3、-1：4 累加 s=4；-2 为负数被 continue；6 累加 s=10；3 累加 s=13；-1 触发 break 结束。易错点：do-while(1) 是死循环，必须依赖 break 退出；0 和负数都被 continue 过滤不累加。最终输出 13。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-619",
@@ -10851,7 +11429,10 @@
       "answerIsDescription": false,
       "explanation": "程序求 n 的各位数字之积：每轮 p=p*(n%10) 把个位乘进 p，再 n/=10 去掉个位。n=234 时依次取出个位 4、3、2，乘积 p=4、12、24。第 3 轮后 n=0，while 终止。易错点：p 初值必须是 1，若是 0 则乘积永远为 0；与求和不同，累乘初值为 1。最终输出 24。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-620",
@@ -10873,7 +11454,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 do-while 遍历 i 从 1 到 n：当 i 为奇数时累加到 s，每轮 i++，直到 i<=n 为假。输入 n=9，i 依次取 1、2、3、4、5、6、7、8、9，其中奇数 1、3、5、7、9 被累加。s=1+3+5+7+9=25。易错点：do-while 保证先执行一轮，i=1 被正确累加；i 自增写在条件判断之前，避免死循环。最终输出 25。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-701",
@@ -10894,7 +11478,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 4，内层 j 从 1 到 i 依次打印 j 并连成一行，输出左对齐数字三角形。第 1 行是 1，第 2 行是 12，第 3 行是 123，第 4 行是 1234，共四行，每行数字从左到右递增。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-702",
@@ -10915,7 +11502,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 4 递减到 1，内层 j 从 1 到 i 打印 *，行数由多到少。第一行 4 个星号 ****，第二行 3 个 ***，第三行 2 个 **，第四行 1 个 *，整体构成一个左对齐的倒三角形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-703",
@@ -10936,7 +11526,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 3，内层 j 从 1 到 3，打印 i*j 并以空格分隔。第 1 行为 1 2 3，第 2 行为 2 4 6，第 3 行为 3 6 9，是一个 3×3 乘法表的局部输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-704",
@@ -10957,7 +11550,10 @@
       "answerIsDescription": false,
       "explanation": "计数器 k 从 1 开始，外层 i 从 1 到 4，内层 j 从 1 到 i 依次打印 k 并自增。第 1 行为 1，第 2 行为 2 3，第 3 行为 4 5 6，第 4 行为 7 8 9 10，即累进计数的 Floyd 三角形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-705",
@@ -10978,7 +11574,10 @@
       "answerIsDescription": false,
       "explanation": "while 的复合条件是 n<10 且 n!=7。n 从 0 开始每次加 2，依次为 0,2,4,6，都在条件内被打印；n 变为 8 时仍小于 10 且不等于 7，打印 8 后 n=10，此时 n<10 为假，条件失败退出。故输出 0 2 4 6 8。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-706",
@@ -10999,7 +11598,10 @@
       "answerIsDescription": false,
       "explanation": "do-while 先执行循环体再判断条件。i 初值 10，先执行 s+=i 使 s=10，i 自减为 9；此时判断 i>100 即 9>100 为假，循环体只执行这一次即结束。因此输出 s 的值为 10。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-707",
@@ -11020,7 +11622,10 @@
       "answerIsDescription": false,
       "explanation": "累乘变量 p 初值 1，for 循环 i 从 1 到 5，每次 p*=i。依次求得 1×1=1、1×2=2、2×3=6、6×4=24、24×5=120，循环结束后打印 p，即 5 的阶乘 120。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-708",
@@ -11041,7 +11646,10 @@
       "answerIsDescription": false,
       "explanation": "双重 for 累加 s，内层对每个 (i,j) 加 i*j，即 (1+...+5)×(1+...+5)=15×15。因为 sum(i)*sum(j) 等于 (1+2+3+4+5) 的平方，1+2+3+4+5=15，15×15=225，故最终输出 225。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-709",
@@ -11062,7 +11670,10 @@
       "answerIsDescription": false,
       "explanation": "scanf 读入 n=12345。while 循环每次取 n%10 累加到 s 再 n/=10。依次累加 5、4、3、2、1，其和为 15，循环到 n 为 0 结束，输出各位数字之和 15。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-710",
@@ -11083,7 +11694,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 4。第一个内层打印 n-i 个空格实现右对齐，第二个内层从 1 到 i 打印 j。第 1 行 3 个空格加 1，第 2 行 2 个空格加 12，第 3 行 1 个空格加 123，第 4 行不加空格加 1234，构成右对齐数字三角形。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-711",
@@ -11104,7 +11718,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环 i 从 1 到 10。遇到偶数 i%2==0 时执行 continue 跳过本次打印并进入下一次循环；只有奇数 1,3,5,7,9 会被 printf 输出，各数以空格分隔，因此输出 1 3 5 7 9。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-712",
@@ -11125,7 +11742,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 3。对每个 i，内层从 1 到 i 累加 j 得到 s。i=1 时 s=1，i=2 时 s=1+2=3，i=3 时 s=1+2+3=6，把各行的和以空格分隔打印在同一行，输出 1 3 6。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-713",
@@ -11146,7 +11766,10 @@
       "answerIsDescription": false,
       "explanation": "do-while 先 scanf 读入一个数再加到 s。输入序列为 1 2 3 0：依次读到 1,2,3,0，s 累加为 1+2+3+0=6；读到 0 后条件 x!=0 为假，循环停止。故输出 6。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-714",
@@ -11167,7 +11790,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环 i 从 1 到 20，判断 i 同时被 2 和 3 整除，即 i 是 6 的倍数。20 以内满足的数为 6、12、18，共 3 个，计数器 c 自增三次，最后输出计数结果为 3。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-715",
@@ -11188,7 +11814,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 4，内层 j 从 1 到 4，判断 (i+j)%2 是否为 0。i=1 时输出 1010，i=2 时为 0101，i=3 时为 1010，i=4 时为 0101，整体是一个 4×4 的棋盘格 0/1 图案，相邻格子黑白相间。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-716",
@@ -11209,7 +11838,10 @@
       "answerIsDescription": false,
       "explanation": "scanf 读入 n=6。while 循环内 p 从 1 开始乘以 i，i 从 1 递增到 6。依次得到 1、2、6、24、120、720，当 i 变为 7 时 i<=6 不成立退出，打印 6 的阶乘 720。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-717",
@@ -11230,7 +11862,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 5，内层 j 从 1 到 i 打印行号 i。第 1 行一个 1，第 2 行两个 2，第 3 行三个 3，第 4 行四个 4，第 5 行五个 5，每行的数字即行号且重复出现该行号次。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-718",
@@ -11251,7 +11886,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 3 递减到 1。内层 j 从当前 i 递减到 1 打印 j。i=3 时打印 321，i=2 时打印 21，i=1 时打印 1，整体输出为 321、21、1 三行，数字从左到右递减。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-719",
@@ -11272,7 +11910,10 @@
       "answerIsDescription": false,
       "explanation": "for 循环 i 从 1 到 10，偶数做减法、奇数做加法，即求 1-2+3-4+5-6+7-8+9-10。每相邻两项配对 (1-2)+(3-4)+...+(9-10) 均等于 -1，共 5 对，和为 -5，故输出 -5。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cr-720",
@@ -11293,7 +11934,10 @@
       "answerIsDescription": false,
       "explanation": "外层 i 从 1 到 4，内层 j 从 1 到 i，把 i*j 直接拼接打印。第 1 行为 1，第 2 行为 24，第 3 行为 369，第 4 行为 481216，即每行是 i 与递增 j 的乘积依次拼接，gcc 打印为 1、24、369、481216。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-801",
@@ -11355,7 +11999,10 @@
       ],
       "explanation": "程序用 for 循环累加计算 1+2+…+n 并输出和。第一空是循环初始化 i=1，使 i 从 1 开始；第二空是循环条件 i<=n，保证把 n 也累加进去；第三空是步进 i++，每轮加 1。当 n 为 0 时循环体一次都不执行，直接输出初值 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-802",
@@ -11417,7 +12064,10 @@
       ],
       "explanation": "程序用 while 循环逐位拆分整数 n，把各位数字累加到 sum。第一空是循环条件 n!=0，当 n 被剥离到 0 时结束；第二空 n%10 取出最后一位数字；第三空 n/10 去掉最后一位。输入 0 时循环不执行，输出初值 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-803",
@@ -11479,7 +12129,10 @@
       ],
       "explanation": "程序用 do-while 循环统计整数 n 的位数。因为 do-while 至少执行一次循环体，所以输入 0 也能正确得到 1 位。第一空 count++ 在每处理一位后计数；第二空 n/10 去掉最低位；第三空循环条件 n!=0。输入 10 输出 2，输入 12345 输出 5。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-804",
@@ -11545,7 +12198,10 @@
       ],
       "explanation": "程序用 while 循环把整数 n 逐位反转存入 rev。第一空是条件 n!=0；第二空 rev*10+n%10 把 n 的最后一位逆序拼接到 rev 的末尾；第三空 n/10 去掉最低位。输入 1000 时只输出 1（前导 0 在反转后被丢弃），输入 99999 输出 99999。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-805",
@@ -11607,7 +12263,10 @@
       ],
       "explanation": "程序判断整数 n 是否为素数。第一空 i*i<=n 让试除只需进行到 n 的平方根；第二空 n%i==0 判断 i 是否为 n 的因子；第三空 break 在找到因子后跳出循环。n<2 时直接判为非素数，2、3 是素数，4 不是。输入 17 输出 YES。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-806",
@@ -11664,7 +12323,10 @@
       ],
       "explanation": "程序用 for 循环输出斐波那契数列的前 n 项（0 1 1 2 3…）。第一空 i<=n 控制输出的项数；第二空 a+b 计算下一项，随后把 a、b 依次前移。输入 5 输出 0 1 1 2 3。每次循环都先输出当前的 a，再递推到下一项。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-807",
@@ -11726,7 +12388,10 @@
       ],
       "explanation": "程序用辗转相除法求两数的最大公约数。第一空为循环条件 b!=0；第二空 a%b 求出 a 除以 b 的余数；第三空 b=t 把余数赋给 b，进入下一轮继续相除。循环结束时 a 即最大公约数。输入 12 18 输出 6，输入 7 0 时直接输出 7。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-808",
@@ -11788,7 +12453,10 @@
       ],
       "explanation": "程序用 for 循环累乘求 n 的阶乘。第一空是初始化 i=1；第二空是循环条件 i<=n；第三空 fact=fact*i 把 i 逐次乘入结果。fact 用 long long 以避免结果溢出。输入 12 输出 479001600，输入 0 时循环不执行输出 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-809",
@@ -11845,7 +12513,10 @@
       ],
       "explanation": "程序用双重 for 循环打印直角三角形星号图，第 i 行输出 i 个星号。第一空是外层循环条件 i<=n，控制总行数；第二空是内层循环条件 j<=i，控制每行星号的个数。输入 3 输出三行，分别为 *、**、***。注意每次外层循环结束后要换行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-810",
@@ -11902,7 +12573,10 @@
       ],
       "explanation": "程序用双重循环打印 n 行下三角乘法口诀表。外层 i 控制行号，内层 j 控制列号。第一空为内层条件 j<=i，使第 i 行只输出 i 个算式；第二空 i*j 打印两个数的乘积。输入 3 输出三行，如 1*1=1、1*2=2 2*2=4、1*3=3 2*3=6 3*3=9。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-811",
@@ -11959,7 +12633,10 @@
       ],
       "explanation": "程序计算调和级数 1+1/2+…+1/n 的和并保留 4 位小数。第一空是循环条件 i<=n；第二空 1.0/i 必须用浮点除法，若写成 1/i 会因整数相除而得到 0。sum 声明为 double。输入 2 输出 1.5000，输入 100 约等于 5.1874。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-812",
@@ -12021,7 +12698,10 @@
       ],
       "explanation": "程序先读入 n，再读入第一个数作为当前最大值 max。第一空 i=2 表示从第 2 个数起与 max 比较；第二空 x>max 判断是否需要更新；第三空 max=x 更新最大值。输入 5 3 1 4 1 5 时最终输出 5。注意第一个数要先单独读入作为初值。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-813",
@@ -12087,7 +12767,10 @@
       ],
       "explanation": "程序统计整数 n 的十进制表示中数字 d 出现的次数。第一空 n%10==d 判断最低位是否为 d；第二空 count++ 在匹配时计数；第三空 n/10 去掉最低位。n 为 0 时单独处理：若 d 也为 0 则计 1 次。输入 1000 0 输出 3，输入 0 7 输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-814",
@@ -12149,7 +12832,10 @@
       ],
       "explanation": "程序用 while 循环把整数 n 反转得到 rev，再与原数 orig 比较判断是否为回文数。第一空 rev*10+n%10 构造反序数；第二空 n/10 去掉最低位；第三空 rev==orig 判断相否。输入 121 输出 YES，输入 10 输出 NO（反转后为 01 即 1）。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-815",
@@ -12206,7 +12892,10 @@
       ],
       "explanation": "程序用 for 循环从 1 到 n 逐个试除，输出 n 的所有正因子。第一空 i<=n 使循环试除到 n 本身；第二空 n%i==0 判断 i 是否为因子，成立则打印。输入 6 输出 1 2 3 6，输入 12 输出 1 2 3 4 6 12，输入 100 时输出其全部 9 个因子。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-816",
@@ -12268,7 +12957,10 @@
       ],
       "explanation": "程序用 for 循环求 1 到 n 中所有偶数的和，并结合 continue 跳过奇数。第一空 i%2!=0 判定奇数；第二空 continue 跳过本轮的累加；第三空 sum=sum+i 把偶数累加进和。输入 10 时输出 2+4+6+8+10=30，输入 100 时输出 2550。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-817",
@@ -12330,7 +13022,10 @@
       ],
       "explanation": "程序连续读入整数，用 0 作为结束标志，统计正数与负数的个数。第一空 x!=0 让读到 0 时停止循环；第二空 x>0 判断正负；第三空 pos++ 统计正数个数，负数走 else 分支用 neg++ 统计。输入 3 -1 5 -2 0 时输出 pos=2 neg=2，输入 0 时两者都为 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-818",
@@ -12387,7 +13082,10 @@
       ],
       "explanation": "程序先用辗转相除法求出最大公约数（循环结束时 a 即 gcd），再运用公式求最小公倍数。第一空 a%b 求余数；第二空 a0/a*b0 即两数之积除以最大公约数。输入 4 6 输出 12，输入 7 13 时互素输出 91。注意要先保存原数到 a0、b0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-819",
@@ -12449,7 +13147,10 @@
       ],
       "explanation": "程序用双重循环打印弗洛伊德三角形：第 i 行输出 i 个连续递增的自然数。第一空 i<=n 控制总行数；第二空 j<=i 控制每行个数；第三空 num++ 使自然数逐次递增。输入 3 输出三行 1、2 3、4 5 6，输入 10 时总共打印 55 个数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-820",
@@ -12511,7 +13212,10 @@
       ],
       "explanation": "程序用双层循环输出小于 n 的所有素数，外层遍历 2 到 n-1，内层判断是否为素数。第一空 i<n 控制外层范围；第二空 j*j<=i 使内层只试除到 sqrt(i)；第三空 is_prime=0 在找到因子时置为非素数。输入 10 输出 2 3 5 7，输入 1 或 2 时没有满足条件的素数，只输出空行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-901",
@@ -12569,7 +13273,10 @@
       ],
       "explanation": "本题考察 for 循环的累加求和应用。第 1 空填循环控制条件 i<=n，使 i 从 1 一路递增到 n，最后一次进入循环体时 i 恰好等于 n。第 2 空填累加表达式 s+i，把当前 i 的值加到变量 s 中；由于 s 初始为 0，循环结束后 s 保存的就是 1+2+…+n 的结果。易错点：条件写成 i<n 会少加最后一项 n；累加项若写成 s 则无法累积。答案中循环结束时 s 的值随着输入 n 而变化，例如 n=5 输出 15，n=100 输出 5050。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-902",
@@ -12627,7 +13334,10 @@
       ],
       "explanation": "本题考察 for 循环的连乘应用与 long long 类型的必要性。阶乘初值 f=1，第 1 空填 i<=n，使 i 从 2 递增到 n，循环恰好执行 n-1 次。第 2 空填连乘表达式 f*i，把每次的 i 乘进 f。易错点：a) 循环写成 i=1 开始连乘会使结果多乘一个 1，虽不影响数值但会多跑一轮；b) 阶乘增长极快，n=13 时已超过 32 位 int 上限，故必须用 long long（搭配 %lld 输出）；c) 条件写 i<n 会漏乘最后一项 n。例如 n=5 输出 120，n=10 输出 3628800。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-903",
@@ -12690,7 +13400,10 @@
       ],
       "explanation": "本题考察 for 循环中\"计数\"的写法，是\"筛选 + 统计\"类问题的典型。第 1 空填循环条件 i<=n，让 i 遍历 1..n 的每一个整数。第 2 空填偶数判定 i%2==0，当 i 能被 2 整除时条件成立。第 3 空填计数器更新表达式 cnt+1，把命中条件的次数累加到 cnt（也可写成 cnt++）。易错点：a) 循环条件若写 i<n 会漏掉 n 本身；b) 偶数条件误写成 i%2==1 会数成奇数；c) 忘记给 cnt 赋初值 0 会得到未定义结果。n=10 时输出 5，n=100 时输出 50，n=1 时输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-904",
@@ -12748,7 +13461,10 @@
       ],
       "explanation": "本题考察 for 循环中\"先算平方再累加\"的表达式写法。第 1 空填循环条件 i<=n，使 i 遍历 1..n。第 2 空填 s+i*i，它先计算 i*i 求出第 i 个平方数，再加到 s 中；由于乘法优先级高于加法，写成 i*i 不需要额外括号。易错点：a) 若写成 s+i 会退化成普通的加法求和；b) 写成 (s+i)*(s+i) 则会求出\"和的平方\"，导致结果完全不同；c) 循环条件 i<n 会漏掉 n² 这一项。验证：n=3 时 1+4+9=14，n=10 时 1+4+9+16+25+36+49+64+81+100=385，n=0 时输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-905",
@@ -12806,7 +13522,10 @@
       ],
       "explanation": "本题考察\"打擂台\"式求最值的写法，是 for 循环与 scanf 配合的典型题。第 1 空填 i<n（而不是 i<=n）：因为 max 已经先读取并保存了第一个数，循环只需再比较剩下的 n-1 个数，所以 i 从 1 走到 n-1 即可。第 2 空填 x，当读入的 x 大于当前最大值时用 x 覆盖 max。易错点：a) 循环条件写成 i<=n 会导致多读一个数而越界；b) 更新写成 max=i 或 max=n 都是错误的，应更新为读入的那个数 x；c) 若把第一个数也放进循环里比较，需把 i 从 0 起且注意处理 n=1 的边界。验证：输入 \"5\\n3 1 4 1 5\" 输出 5，输入 \"1\\n7\" 输出 7。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-906",
@@ -12864,7 +13583,10 @@
       ],
       "explanation": "本题考察循环嵌套打印图形，是最基础的两层循环结构。外层 i 循环控制行数，第 1 空填 i<=n 使程序打印恰好 n 行。内层 j 循环控制每行的星号个数，第 2 空填 j<=i：因为第 i 行要有 i 个 *，所以 j 从 1 走到 i。内层结束后用 printf(\"\\n\") 换行，保证每一行独占一行。易错点：a) 内层条件若写 j<=n，则每行都会打满 n 个星号，不再是三角形；b) 换行 printf 必须放在内层循环之外、外层循环之内，否则会变成每打印一个星号就换行；c) 外层条件 i<n 会少打最后一行。n=3 时输出三行 \"*\"、\"**\"、\"***\"。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-907",
@@ -12922,7 +13644,10 @@
       ],
       "explanation": "本题考察外层循环变量递减时的嵌套图形打印。外层循环 i=n;i>=1;i--，第 1 空填 i>=1，使 i 从 n 依次减到 1，共打印 n 行；i 的取值本身就是每行应打印的星号数。内层循环 j<=i 使第 i 行恰好打印 i 个 *。易错点：a) 递减条件若写成 i>1 会漏掉最后一行（i=1 那一行，只有 1 个星号）；b) 递减步长写成 i++ 会造成死循环或越界，必须用 i--；c) 若想用第 i 行打 n-i+1 个（倒三角从大到小），则需调整内层条件为 j<=n-i+1，二者等价但本题采用递减写法。n=3 时输出三行 \"***\"、\"**\"、\"*\"。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-908",
@@ -12980,7 +13705,10 @@
       ],
       "explanation": "本题考察循环嵌套打印九九乘法表式的上三角结构。外层 i 循环控制被乘数（行号），第 1 空填 i<=n，使程序打印 n 行。内层 j 循环控制乘数（列号），第 2 空填 j<=i，因为第 i 行只打印 i×1 到 i×i 共 i 个乘积，形成三角形状。格式化串 \"%d*%d=%2d \" 中 %2d 表示乘积至少占 2 格，用于对齐。易错点：a) 内层条件若写 j<=n 会打满整个方阵而非上三角；b) 换行 printf(\"\\n\") 必须放在内层循环之外；c) %2d 的宽度会导致输出中出现空格（如 1*1= 1 前面有一个占位空格），比对结果时这些空格属于输出内容，不能省。n=2 时输出 \"1*1= 1 \" 与 \"2*1= 2 2*2= 4 \" 两行。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-909",
@@ -13038,7 +13766,10 @@
       ],
       "explanation": "本题考察循环嵌套打印数字图形，与打印星号图形结构相同，区别在于内层循环打印的字符随列号 j 变化。外层 i 循环控制行数，第 1 空填 i<=n。内层 j 循环控制每行打印的数字，第 2 空填 j<=i，使第 i 行打印 1,2,…,i 共 i 个连续整数；printf(\"%d\",j) 打印的是循环变量 j 本身，而不是行号 i。易错点：a) 若内层打印 printf(\"%d\",i)，则每行都会重复打印同一行号 i，得不到递增数列；b) 内层条件写 j<i 会漏掉行尾那个数，例如第 3 行会只打印 \"12\" 而不是 \"123\"；c) 换行 printf(\"\\n\") 需放在内层循环之外。n=4 时输出四行 1 / 12 / 123 / 1234。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-910",
@@ -13096,7 +13827,10 @@
       ],
       "explanation": "本题是嵌套循环的进阶应用：每一行需要\"先打印一段空格用于居中，再打印一段星号构成三角形\"。第一个内层循环打印前导空格，第 1 空填 j<=n-i，因为第 i 行需要 n-i 个空格才能把星号居中；第二个内层循环打印星号，第 2 空填 j<=2*i-1，因为第 i 行需要 2i-1 个星号（奇数，形成对称三角形）。易错点：a) 星号个数若写成 j<=i 会得到左对齐的直角三角形而不是等腰三角形；b) 空格与星号必须用两个独立的循环分别打印，不能混在同一循环里；c) 空格循环的起始与步进要与行号 i 正确关联，若写成 j<=i 或 j<=n 都会破坏居中布局。n=3 时输出三行，第一行 2 个空格加 1 个星号 \"  *\"。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-911",
@@ -13159,7 +13893,10 @@
       ],
       "explanation": "本题考察用 break 提前终止循环的素数判定算法，是 break 语句的经典应用。第 1 空填 i<=n-1，让试除数 i 遍历 2..n-1。第 2 空填 n%i==0，当 n 能被 i 整除说明 n 有因子，不是素数。第 3 空填 break，一旦找到因子立刻跳出循环，无需再试剩下的数。易错点：a) 条件写 i<=n 会多试到 i=n，此时 n%n==0 恒成立导致误判为合数；b) break 之后不能再执行语句，所以 flag=0 要放在 break 之前；c) 循环若正常结束后 flag 仍为 1 才输出 yes。n=2、3、7、17 输出 yes，n=9、15 输出 no。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-912",
@@ -13217,7 +13954,10 @@
       ],
       "explanation": "本题考察 continue 语句的作用：提前结束本次循环体、直接回到循环的更新与条件判断。第 1 空填 for 循环头 i=1;i<=n;i++，使 i 依次取 1..n。第 2 空填 continue，当 i 是偶数（i%2==0）时会执行 continue，跳过随后的 s=s+i，因此偶数不会被累加，s 中只留下奇数的和。易错点：a) continue 与 break 的区别——continue 只跳过本次，循环还会继续，而 break 会彻底退出循环；b) continue 放在 if 条件成立的分支里，只对满足条件的 i 生效；c) 若把 continue 误写成 break，循环在遇到第一个偶数时就终止了。n=5 时 1+3+5=9，n=10 时奇数 1+3+5+7+9=25。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-913",
@@ -13275,7 +14015,10 @@
       ],
       "explanation": "本题考察\"边读边找、找到即停\"的 break 用法，属于查找类问题的典型写法。第 1 空填 i<n，控制循环读入并判断 n 个数。第 2 空填 break，一旦找到第一个大于 100 的数就立刻跳出循环，不再处理后面的数，这正是 break 的优势——需要立刻停止时用 break 而非 continue。易错点：a) 若用 continue 则不会停，会继续读完所有数并可能打印多个结果；b) 循环结束后用 found==0 判断是否\"没有找到\"，for 循环里的 break 和循环自然结束要能区分，因此用 found 标志记录是否命中；c) break 只跳出一个循环，这里恰好在 for 循环体内，故能整体停止。输入 \"4\\n10 20 150 30\" 输出 150，输入 \"3\\n5 6 7\" 输出 none。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-914",
@@ -13338,7 +14081,10 @@
       ],
       "explanation": "本题考察在循环中配合 continue 完成\"只统计满足条件元素\"的计数。第 1 空填 i<n，循环读入 n 个数。第 2 空填 continue，当读入的 x 不大于 0（x<=0）时跳过随后的 cnt=cnt+1，因此只有正数被计数；continue 之后本轮的 scanf 和判断已经完成，循环进入下一轮。第 3 空填 cnt+1，把命中正数的次数累加到 cnt（也可写 cnt++）。易错点：a) 判定条件写 x<0 会把 0 也当成正数统计，需用 x<=0 跳过；b) continue 分支里不能有其他语句被跳过而漏掉计数；c) 若忘了给 cnt 赋初值 0 会得到垃圾结果。输入 \"5\\n1 -2 3 -4 5\" 输出 3，输入 \"3\\n0 0 0\" 输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-915",
@@ -13396,7 +14142,10 @@
       ],
       "explanation": "本题考察用 while(1)+break 实现\"先判断后退出\"的读入循环，是哨兵值（sentin络）结束循环的典型写法。第 1 空填常量 1，作为 while 的永真条件，使循环不断执行。第 2 空填 break，当读入的 x 等于 0（结束标志）时立即跳出循环。易错点：a) 若不写 break，while(1) 会成为无限循环；b) 若把 break 换成 continue，则读到 0 时只跳过累加但循环永不结束；c) 结束标志 0 本身不应被累加，所以 break 要放在 s=s+x 之前；d) 当以 0 开头输入时循环体只执行一次就退出，输出 0。输入 \"1 2 3 0\" 输出 6，输入 \"0\" 输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-916",
@@ -13454,7 +14203,10 @@
       ],
       "explanation": "本题考察\"读入—处理—再读入\"这一经典循环模式，以及用输入哨兵值（0）结束循环。第 1 空填 x!=0，使循环在遇到 0 时结束；由于采用先读后判的结构，循环体内需要再次 scanf 读下一个数，形成\"读、处理、再读\"的节奏。第 2 空填 cnt+1，把每个有效数字的个数累加进 cnt。易错点：a) 若把判断放在读入之前或只读一次，将无法正确结束；b) 结束标志 0 不能参与统计，所以要把 cnt=cnt+1 放在判断之后；c) 若用 do-while 则需改成先处理再读、并在条件处判断，二者结构不同。输入 \"1 2 3 0\" 输出 \"3 6\"，输入 \"0\" 输出 \"0 0\"。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-917",
@@ -13517,7 +14269,10 @@
       ],
       "explanation": "本题考察递推式在循环中的\"滚动更新\"实现，是斐波那契数列的经典问题。第 1 空填 i<=n，控制打印前 n 项。第 2 空填 a+b，用当前两项 a、b 之和算出下一项 c。第 3 空填 b，把旧的 b 赋给 a，使 a 从当前项前进到下一项，从而 a、b、c 依次前移。易错点：a) 更新顺序至关重要，必须先算 c=a+b，再 a=b、b=c，若先改 a 再算 c 会使用错误的前两项；b) 若把 c=a+b 误写成 a+b 之外的形式（如 c=a）则得不到递推；c) printf 中的 \"%d \" 会在每个数后带一个空格，最后一项后也有空格，属于输出内容。n=6 时输出 1 1 2 3 5 8，n=8 时输出 1 1 2 3 5 8 13 21。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-918",
@@ -13580,7 +14335,10 @@
       ],
       "explanation": "本题考察用取余 % 与整除 / 逐位处理整数的技巧，是数字分解类问题的核心。第 1 空填 n>0，当 n 还没被除尽（还有数字）时继续循环。第 2 空填 n%10，取出 n 的个位数字。第 3 空填 n/10，整数除法会自动舍弃个位使 n 缩小十倍。要逆序输出，需把取出的个位拼到结果 r 的末尾，即 r=r*10+个位。易错点：a) 逆序时若写成 r=n%10 会丢失之前已经拼好的高位；b) 末尾是 0 的数（如 100）逆序后前导 0 会被自动舍去，输出 1 而非 001，这是整数运算的固有结果；c) 循环条件不能用 n!=0 代替 n>0，否则输入负数时逻辑不同。123 输出 321，1000 输出 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-919",
@@ -13638,7 +14396,10 @@
       ],
       "explanation": "本题考察辗转相除法（欧几里得算法）的循环实现，是循环与算法结合的经典题。第 1 空填 b!=0，当余数 b 非 0 时说明尚未除尽，需继续辗转相除；一旦余数为 0，则 a 就是最大公约数。第 2 空填 a%b，求出 a 除以 b 的余数，随后用 a=b、b=余数完成更新。易错点：a) 求余表达式若写成 a/b 得到的是商而非余数，算法完全失效；b) 循环条件用 b!=0 而非 a!=b，否则对某些输入会陷入错误；c) 当 b 为 0 时循环不执行，直接输出 a，因此输入 \"7 0\" 输出 7；d) 交换 a、b 顺序不影响结果，但初始若 a<b，第一轮会先交换。输入 \"24 18\" 输出 6，输入 \"17 5\" 输出 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-cc-920",
@@ -13696,7 +14457,10 @@
       ],
       "explanation": "本题考察 do-while 语句的特点：先执行一次循环体再判断条件，因此循环体至少执行一次。第 1 空填 cnt+1，每去掉 n 的一个个位就把位数计数加 1。第 2 空填 n>0，当 n 被整数除法除尽（变为 0）时结束循环。易错点：a) 若改用 while 循环，当输入 0 时循环体一次都不执行，会输出 0 位，这是错误的，所以本题特意用 do-while；b) n=n/10 必须放在计数之后，否则会提前把 n 变成 0 而少计一位；c) 计数初值 cnt=0，do-while 至少加 1 次，故任何非负整数至少有 1 位。输入 \"12345\" 输出 5，输入 \"0\" 输出 1，输入 \"1000000\" 输出 7。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-101",
@@ -13752,7 +14516,10 @@
       ],
       "explanation": "这两处错误都属于循环最经典的坑。第一处把累加器初值写成 1，而加法运算的单位元是 0，所以任何输入都会多出 1：例如 n=5 时正确结果是 15，出错程序却算出 16（sum 从 1 起加，再加上 1+2+3+4，循环里 i 只到 4）。注意这里两处错误会互相叠加，但方向不同：初值多 1 会让结果偏大，边界 i<n 又会让结果偏小（丢掉 n），所以只改一处仍然不对。第二处是典型的 off-by-one：for 的终止条件决定最后一个数是否被处理，既然题目要求“1 到 n”，i 必须能取到 n，写成 i<n 就把 1+2+…+(n-1) 当作答案，n=1 时甚至一个数都不加。改正时把初值改回 0、边界改为 i<=n，三元组合（n=1 时结果恰为 1）就能对。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-102",
@@ -13803,7 +14570,10 @@
       ],
       "explanation": "阶乘题的两处错误都是“差一格”型。第一处把累乘器初值写成 0，这是乘法最具迷惑性的错误：因为 0 乘任何数都得 0，无论输什么都输出 0，学生往往会先怀疑循环，而忽视初值。乘法的单位元是 1，所以应写 fact = 1。第二处是循环上界，阶梯乘必须把 1、2、3、…、n 全部连乘，i 要能取到 n，写成 i < n 就只乘到 n-1，n=0 时 for 循环一行都不执行，靠初值 fact=1 保住“0!=1”这个约定。注意这两处错误叠加后对 n=0 会“恰好”得到 1（初值 1、循环不执行），表面看不出问题，必须用 n=2、n=5 这样的输入才能暴露：n=5 时正确是 120，出错程序因为初值 0 直接得 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-103",
@@ -13859,7 +14629,10 @@
       ],
       "explanation": "这道题的核心是“把一个整数拆成各位数字”的标准循环：每次取 n % 10 得到当前个位，加入累加器，再用 n / 10 把最低位移走。第一处错误把取余除数写成 100，n % 100 一次得到的是末两位组成的数（1234 得 34，而不是 4），累加值被严重放大；第二处错误把整除除数也写成 100，n / 100 一次砍掉两位，1234 直接变成 12，而正确应是先 123 再 12 再 1。两处除数都错，会导致数位错乱、和也不对。注意这里用的是 do...while：它的特点是“先执行循环体再判断条件”，所以即使 n=0 也会执行一次（0 % 10 = 0，累加 0），这是和 while 的关键区别。改正后把两个除数都改回 10，n=0 时输出 0，n=2020 时输出 2+0+2+0=4。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-104",
@@ -13910,7 +14683,10 @@
       ],
       "explanation": "斐波那契数列的循环核心是“三项滚动”：第 n 项是前两项之和，所以要用 c = a + b 算出新项后，把整列向前平移一位，即 a = b、b = c。第一处错误在循环控制：前两项 1、1 已经用 printf 输出，真正需要循环生成的是从第 3 项到第 n 项，所以循环应从 i=3 开始、到 i<=n 结束；写成 for (i=1; i<n; i++) 会从第 1 项就开始“再算一遍”，导致输出多余且项数错乱。第二处错误是更新顺序：a=c、b=c 把两个变量都设成刚算出的新项，下一轮 c=a+b 就成了“新项+新项”，数列变成 1、1、2、4、8… 的翻倍序列；正确应是 a=b（旧 b 成为新 a）、b=c（新项成为新 b），下一轮才能继续加出正确项。n=2 时循环不执行，正好验证前两项的输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-105",
@@ -13966,7 +14742,10 @@
       ],
       "explanation": "素数判定有两处典型错误。第一处是循环上界：试除到底要不要包含 n 本身？i 取到 n 时 n % n == 0 恒成立，任何人都被“自己整除”，于是任何数都会被打上“有因子”的标记；而且一个数若在 2 到 n/2 之间没有因子，它必定是素数，所以只需试除到 n/2（甚至到 sqrt(n)）即可。写成 i<=n 不仅多加一次无意义的自除，还会让 n=4 —— 因为判定被后面的条件取反错误掩盖，需要和第 2 处一起看。第二处是经典的反向条件：素数判定本义是“一旦在某处能整除，就说明 n 有因子、不是素数”，应当 if (n % i == 0) 时置 flag=0 并 break；程序却写成 n % i != 0（没整除时）置 0，逻辑完全颠倒。注意 2 是素数：循环 i=2 到 n/2=1 不执行，flag 保持 1，输出 is prime，这是边界用例。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-106",
@@ -14022,7 +14801,10 @@
       ],
       "explanation": "辗转相除法的原理是：gcd(a, b) = gcd(b, a % b)，反复把较大数换成余数，直到余数为 0，此时的除数就是最大公约数。第一处错误是把求余写成了求商 r = a / b，这完全破坏了算法的核心——整数商不能保证余数逐渐变小，算法无法收敛到正确结果。第二处错误是输出变量：while (b != 0) 循环结束时，b 已经在最后一次迭代里被赋成了 0（因为当 b 的余数 r 为 0 时，执行 b = r 使 b 变为 0），所以此时真正保存最大公约数的是 a。这个“循环退出后变量是哪一位”的考点很容易错：很多人直觉上以为该输出 b，其实 b 被清成 0 了。改正后 gcd(12,8)=4、gcd(30,45)=15。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-107",
@@ -14073,7 +14855,10 @@
       ],
       "explanation": "统计位数用的是“每除一次 10 就丢掉一个最低位，直到 n 变成 0”的循环。第一处错误是计数器初值：统计开始前一个数位都没数，count 应从 0 起；写成 1 会让人多算一个数位（例如输入 5，正确是 1 位，程序却输出 2）。第二处错误是 while 条件写反：n 在被除成 0 之前都应继续循环，所以条件是 n > 0；写成 n <= 0 恰好相反——对正整数，n 一开始就大于 0，循环体一次都不执行，count 停留在初值 1，永远输出 1。注意这两处错误叠加后，输入任意正整数都“恰好”输出 1，表面上像是“只统计了个位”，掩盖了循环条件写反的事实；必须用多位数（如 123 应为 3 位、100 应为 3 位）才能暴露。改正后 count 从 0 起、条件 n>0，n=100000 得到 6 位。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-108",
@@ -14124,7 +14909,10 @@
       ],
       "explanation": "这道题涉及 scanf 和奇偶判断两个高频考点。第一处错误是 scanf 取地址符缺失：scanf 是按地址把读到的值写进内存的，对 int 变量必须传 &x（变量的地址）。写 scanf(\"%d\", x) 会把读入值写到地址 0 附近的非法位置，轻则变量值不确定，重则程序崩溃（不同编译器可能只给警告，但行为仍是未定义的）。第二处错误是奇偶判断取反：x % 2 的结果非 0 即 1，if (x % 2) 为真时表示 x 是奇数；而题目要求累加偶数，正确的条件是 x % 2 == 0。注意负数也可以用 % 判断奇偶（C 语言里 -2 % 2 == 0，是偶数），所以输入含负数偶数时也应累加。改正后，全奇输入（1 3 5）的和为 0，含 0 的输入应把 0 也计入。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-109",
@@ -14175,7 +14963,10 @@
       ],
       "explanation": "这道题的“主角”是 if 缺花括号。在 C 语言里，if 默认只控制后面的一条语句；程序写 if (i % 2 != 0) printf(\"%d \", i); count++;，分号把 count++ 与 if 分开，于是 count++ 属于 for 循环体、但不受 if 约束——每一轮 i 无论奇偶都会对 count 自增，计数结果翻成“所有数都算上”，打印的奇数本身却依旧正确，从而“打印内容对、个数错”，这种错位最容易迷惑学生。第二处错误是 i < n：因为最后一个数 n 是否参与取决于边界，写成 i < n 会在 n 为奇数时漏掉 n 这个奇数。改正时要给 if 加花括号让计数只在奇数时进行，并把边界改为 i <= n。例如 n=9 应得到 1 3 5 7 9 且 count=5；n=4 应得到 1 3 且 count=2。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-110",
@@ -14226,7 +15017,10 @@
       ],
       "explanation": "这道题的核心是区分 break 与 continue：两者都是循环控制语句，但作用完全不同。break 不满足条件就立即终止整个循环，continue 则只结束本轮、跳到下一次条件判断继续循环。程序把 continue 写成 break 后，i=3 时命中 if (i % 3 == 0) 就直接跳出 for，1 到 n 中 3 之后的数全部不参与累加，结果严重偏小。第二处错误是累加器初值：求和应该从 0 开始累加（加法的单位元是 0），写成 s = 1 会让每个结果都多出 1。注意两处错误方向相反、互相掩盖的陷阱：n=3 时，正确结果是 1+2=3；而“s 初值 1 + break 只算到 1、2”得到的也是 1+1+2=4，与正确答案只差 1，若不仔细对多组输入会以为只是初值问题。应改为 continue（跳过 3 的倍数）加 s 初值 0。n=10 时正确结果 37。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-111",
@@ -14277,7 +15071,10 @@
       ],
       "explanation": "这道题的两个错误都极经典。第一处是 = 与 == 混淆：C 语言里单个 = 是赋值运算，x = 0 先把 0 赋给 x，随后的条件表达式值就是被赋的 0，而 0 在 C 里表示“假”，所以 if (x = 0) 恒不成立，count 永远不变。真正的比较要用双等号 ==。这种错误编译器往往只给一个“建议加括号”的警告而不报错，最容易漏网。第二处是循环次数：读取 n 个整数，循环应执行 n 次，i 从 0 到 n-1，写成 i <= n 会让循环多跑一次，第 n+1 次 scanf 因为输入耗尽而失败，x 保留上一次的值，可能造成凑巧的误判。改正后，输入 4 个 0 应统计出 4；输入 5 6（无 0）应统计出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-112",
@@ -14328,7 +15125,10 @@
       ],
       "explanation": "这道题的主旨是“整数除法陷阱”。在 C 语言里，两个 int 相除结果仍是 int：1/2 得到 0，1/3 得到 0，只有 1/1 得到 1——所以程序里除了第一项，其余全是 0，sum 恒为 1.00。要让除法产生小数，必须让至少一个操作数是浮点：写成 1.0 / i（分子变成 double），编译器才会按浮点除法计算，1.0/2 得到 0.5。第二处错误是边界：调和级数第 n 项是 1/n，循环条件 i < n 会漏掉最后一项，正确答案应该包含到 1/n，所以是 i <= n。注意如果只改初值不改 1.0/i，因为整数除法，结果仍然是 1.00，验证用例（如 n=4 应为 2.08）能立刻暴露；反之只改 1.0/i 不改边界，会少了最后一项。两处一起改正后 n=4 输出 2.08、n=20 输出 3.60。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-113",
@@ -14379,7 +15179,10 @@
       ],
       "explanation": "这道题是“数字反转”标准算法：循环拆位，每取到一个 n % 10 就把已有结果向左移一位（乘 10）再拼上该位，从而让先取到的低位占据高位。第一处错误是 r = r + n % 10 漏了乘 10：这样 r 只是在“累加各位数字之和”，而不是反转——比如 123 会得到 1+2+3=6 而不是 321。要构造反转数必须在每次拼新位前把 r 乘 10：r = r * 10 + n % 10。第二处错误是输出变量：while (n != 0) 会把 n 不断除以 10，循环结束时 n 已经变成 0，真正的结果在 r 里；打印 n 会永远得到 0。注意 120 这样的数：正确逆序应为 21（1 2 0 中后者的 0 在整数的十进制表示里被自动去掉），因为 r 先取 0、再取 2、再取 1，得到 120 而整数右边是不显示前导 0 的，所以得到 21。n=0 时循环不执行，r 保持 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-114",
@@ -14430,7 +15233,10 @@
       ],
       "explanation": "这是一道循环嵌套题，考查两个层次的控制。外层决定行：第 i 行很久，行号 i 从 1 到 n，所以外层 i 应取到 n（i <= n）。内层决定这行有几个星号：第 i 行有 i 个星号，所以内层循环的上界必须依赖于外层变量 i，即 j <= i。第一处错误是内层误用了外层上界 n：for (j = 1; j < n; j++) 使每一行都打印 n-1 个星号，结果变成 n-1 行、每行 n-1 个星号的“正方形”，完全与行号无关，学生常把内层上界误写成 n 或 n-1，而正确的必须写 i。第二处错误是外层 i < n 少了一行（第 n 行缺失）；当 n=1 时，外层 i=1 不小于 1，一行都不输出，实际应输出一个星号。改正后 n=4 输出 4 行（1、2、3、4 个星号），n=1 输出一行一个星号。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-115",
@@ -14481,7 +15287,10 @@
       ],
       "explanation": "这道题考查 for 循环的步长（增量表达式）与终止条件。第一处错误是 i += 2：for 的第三个表达式决定每次循环后变量如何变化，i += 2 让 i 走 1、3、5、7…，只输出奇数；要输出所有整数必须递增 1，即 i++。很多学生看到这种“相邻数”就条件反射写成 i++，但一旦改错成 i+=2 就会漏掉偶数。第二处错误与终止条件有关：要求输出到 n，i 必须能取到 n，所以是 i <= n；写成 i < n 会在 n 为偶数时把 n 漏掉（例如 n=6 时 i=6 不小于 6，最后一个数 6 不输出），n 为奇数时则会误以为“恰好差一个奇数值都没漏”。注意两处错误可以互相掩盖：当输入为奇数 n 时，i+=2 输出 1、3、5…（只输出奇数），边界 i<n 会让它恰好停在 n 之前，乍看像“正确地只输出奇数”；但输入偶数 n 时，两种错误叠加就会漏掉最后一个偶数。改正为 i++ 和 i<=n 后，n=6 输出 1 2 3 4 5 6。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-201",
@@ -14527,7 +15336,10 @@
       ],
       "explanation": "这道题考查 for 循环的边界与累加器初值。第一处错误是 sum 被初始化为 1 而不是 0，累加器应从 0 开始累计每一项，否则结果会比正确值多 1。第二处错误是循环条件写成 i<n，当 i 等于 n 时循环就停止了，把最后一项 n 漏掉，正确应为 i<=n。改正后输入 5 得 15，输入 10 得 55，输入 1 得 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-202",
@@ -14573,7 +15385,10 @@
       ],
       "explanation": "这道题考查 while 循环与累加、求平均。第一个错误是累加器 sum 没有初始化，double sum, avg; 里的 sum 是未初始化的随机数，应写成 double sum = 0, avg;，这样每次累加才有正确的起点。第二个错误是循环条件 i<=n，i 从 0 开始，当 i 等于 n 时还会再读一个数，导致多累加一个成绩且可能读到错误数据，正确应为 i<n，正好循环 n 次读完 n 个成绩。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-203",
@@ -14619,7 +15434,10 @@
       ],
       "explanation": "这道题考查 do-while 循环与计数。第一个错误是负数分支写成了 pos++，把负数也累加到正数计数里，导致 pos 偏大而 neg 恒为 0，正确应写成 neg++。第二个错误是循环条件 x==0，do-while 会先执行一次再判断，终止值 0 恰恰是不该继续统计的，写成 x==0 会让读到 0 后还继续循环；终止条件应为 x!=0，读到 0 即结束，而 0 本身既不大于 0 也不小于 0，不会被计数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-204",
@@ -14666,7 +15484,10 @@
       ],
       "explanation": "这道题考查累乘与数据类型。第一处错误是 fact 用 int，阶乘增长极快，n 稍大就会整型溢出，应改成 long long。第二处错误是循环条件 i<n，当 i=n 时不再执行，最后一项 n 没有乘进去，正确应为 i<=n。第三处错误是输出格式，long long 类型必须用 %lld，写成 %d 打印出的值会错误。改正后输入 10 得到 3628800。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-205",
@@ -14713,7 +15534,10 @@
       ],
       "explanation": "这道题考查幂运算的循环实现。第一处错误是 result 用 int，幂运算增长很快，应改用 long long，否则 a 较大或 n 较大时溢出。第二处错误是循环条件 i<=n，循环从 0 开始，i 取到 n 时一共执行了 n+1 次，相当于多乘了一次 a，正确应为 i<n，正好乘 n 次。第三处错误是输出格式，long long 必须用 %lld。改正后输入 2 10 得到 1024，输入 5 0 得到 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-206",
@@ -14759,7 +15583,10 @@
       ],
       "explanation": "这道题考查辗转相除法（欧几里得算法）求最大公约数。第一处错误是循环条件写成了 a!=0，辗转相除的关键是当除数 b 变为 0 时停止；若以 a 为条件，当 b 变成 0 时 a 恰好是最大公约数（非零），下一轮执行 a%b 就会除零，因此应为 while(b!=0)。第二处错误是输出变量，辗转相除结束后被除数 a 就保存了最大公约数，这里是 while(b!=0)，结束时 b 为 0，所以应输出 a 而非 b。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-207",
@@ -14804,7 +15631,10 @@
       ],
       "explanation": "这道题考查“从最小数 a 的倍数开始试探”来求最小公倍数。第一处错误是初值 m 取成了 b，应取 a，这样每次 m=m+a 得到的都是 a 的倍数。第二处错误是循环条件 m%b==0，写成等于 0 时循环继续，恰好把找到答案的分支当成了继续条件，逻辑反了；正确应为 while(m%b!=0)，即当 m 还不能被 b 整除时就继续加 a，一旦 m 是 b 的倍数（最小公倍数）就停止。改正后输入 4 6 得到 12。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-208",
@@ -14850,7 +15680,10 @@
       ],
       "explanation": "这道题考查“数字反转”方法判断回文数。第一处错误是反转式子 rev=temp%10，这样每轮都把 rev 重新赋成当前最低位，最后只会得到原数的最低一位，正确应为 rev=rev*10+temp%10，把已反转的部分左移一位再补上新的最低位。第二处错误是判等对象，循环结束时 temp 已被除以 0（数值为 0），因此 rev==temp 永远为假；应保留原数在主变量 n 中，比较 rev==n。改正后输入 121 输出 yes。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-209",
@@ -14896,7 +15729,10 @@
       ],
       "explanation": "这道题考查嵌套循环与素数判定。第一处错误是内层循环上限写成 j<i/2，等于漏掉了 i/2 这个可能的因子，例如 i=4 时 i/2=2，j 从 2 开始却不满足 j<2，导致没有检测 4%2，4 被误判为素数，正确应为 j<=i/2。第二处错误是把找到因子时的标记写成了 isPrime=1，找到因子说明是合数，应置为 isPrime=0；否则只要内层循环能找到任意因子就被当成素数，合数也会被输出。改正后输入 10 输出 2 3 5 7。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-210",
@@ -14942,7 +15778,10 @@
       ],
       "explanation": "这道题考查嵌套循环求“阶乘之和”。第一处错误是内层累乘写成 term=term*i，这里乘的是外层行号 i 而不是当前项 j，结果每一项都变成 i 的 i 次方（i=3 时算成 27 而不是 6），正确应为 term=term*j。第二处错误是外层写成 sum=term，每轮都把 sum 覆盖成当前项的阶乘，丢失了前面各项的累加，正确应为 sum=sum+term。改正后输入 5 得到 1+2+6+24+120=153。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-211",
@@ -14988,7 +15827,10 @@
       ],
       "explanation": "这道题考查用 getchar 逐字符统计与逻辑运算符。第一处错误是数字分支没有累加到 digits 而是写成了 letters++，这样 digits 永远为 0、letters 里却混进了数字，正确应为 digits++。第二处错误是字母判断分写成 &&（逻辑与），一个字符不可能同时是小写又是大写，该条件恒为假，导致字母一个都统计不到；正确应为逻辑或 ||，即只要是大写字母或者小写字母就计入 letters。改正后输入 abc123+ 输出 3 3 1。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-212",
@@ -15033,7 +15875,10 @@
       ],
       "explanation": "这道题考查嵌套循环打印图案。第一处错误是外层循环写成 i<n，共输出 n-1 行，把最后一行漏掉了，正确应为 i<=n，正好输出 n 行。第二处错误是内层循环写成 j<=n，这样每一行都打印 n 个星号，形成的是矩形而不是三角形；三角形要求第 i 行打印 i 个星号，因此内层应为 j<=i。改正后输入 3 输出 1、2、3 个星号的三行图案。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-213",
@@ -15079,7 +15924,10 @@
       ],
       "explanation": "这道题考查“读到文件结束（EOF）”的多组数据处理。第一处错误是循环条件写成 scanf(...)!=2，scanf 返回值为成功读入的个数，读到文件结束时返回 EOF（-1）；应写成 ==2，表示每成功读入两个数就进入循环处理，读到 EOF 时退出。第二处错误是输出里写成了 a-b，求的是差值，而题目要求输出两数之和，应改为 a+b。改正后输入 1 2、3 4、5 6 会依次输出 3、7、11。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-214",
@@ -15125,7 +15973,10 @@
       ],
       "explanation": "这道题考查分数累加与“整数除法陷阱”。第一处错误是循环条件 i<n，最后一项 1/n 没有被累加，正确应为 i<=n，把第 n 项也算进去。第二处错误是 1/i 的写法：1 和 i 都是 int，两个整数相除结果是整数，当 i>1 时 1/i 恒为 0，导致只加了第一项 1；应把分子写成实型 1.0，即 1.0/i 才能得到小数。改正后输入 5 得到 1+0.5+0.333333+0.25+0.2≈2.283333。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mdb-215",
@@ -15171,7 +16022,10 @@
       ],
       "explanation": "这道题考查分解质因数。第一处错误是外层循环写成 i<n，当 n 本身就是素数时，其唯一的质因数就是 n 本身，i 取不到 n 就会导致输出结果只有 “n=” 而缺少因子，条件应为 i<=n。第二处错误是内层用 if 只判断一次 n%i==0，但同一个质因数可能连续出现多次，例如 12=2*2*3 中的 2 出现两次，用 if 只能除掉一次；应改用 while(n%i==0)，反复除以当前质因数直到不能整除为止。改正后输入 12 输出 12=2*2*3。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-101",
@@ -15235,7 +16089,10 @@
       ],
       "explanation": "程序用 for 循环累加计算 1+2+…+n 并输出和。第一空是循环条件 i<=n，它保证 i 能够取到 n 这个最后一项，若误写成 i<n 就会漏加 n，结果偏小；第二空是累加语句 sum+=i，把当前数 i 加进和变量，等价于 sum=sum+i。sum 初始为 0 很重要，否则会累加一个未知的垃圾值；当 n=0 时循环一次都不执行，直接输出初值 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-102",
@@ -15307,7 +16164,10 @@
       ],
       "explanation": "程序用 while 循环计算 1+2+…+n。第一空 i<=n 是循环继续的条件，它和 for 写法等价；第二空 sum+=i 把当前 i 加进和；第三空 i++ 必须放在循环体内，它让 i 每轮递增并最终使条件变为假从而退出，否则会死循环。i 初始为 1、sum 初始为 0 是两个前提，缺一不可。while 是\"先判断后执行\"，当 n=0 时条件一开始就不成立，循环体一次都不执行，直接输出 0。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-103",
@@ -15379,7 +16239,10 @@
       ],
       "explanation": "程序用 do-while 循环计算 0+1+…+n。第一空 sum+=i 累加 i；第二空 i++ 每轮自增；第三空是 while 后的条件 i<=n。do-while 的特点是\"先执行后判断\"，循环体至少会执行一次，所以这里特意让 i 从 0 开始、第一轮先加 0，这样当 n=0 时仍能正确得到 0；若让 i 从 1 开始，n=0 时会先加 1 再退出，结果错误地输出 1。末尾的 while 条件需要分号。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-104",
@@ -15444,7 +16307,10 @@
       ],
       "explanation": "程序用 for 循环累乘计算 n!。第一空 i<=n 让 i 依次取 1 到 n，保证把 n 也乘进去；第二空 f*=i 把当前数 i 乘进结果，等价于 f=f*i。累乘的初值必须是 1 而不是 0，否则结果恒为 0；直接用 int 会在 n=13 后溢出，所以结果用 long long 并用 %lld 输出。当 n=0 时循环体一次都不执行，f 保持初值 1，正好符合 0!=1 的规定。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-105",
@@ -15515,7 +16381,10 @@
       ],
       "explanation": "程序在 for 循环里用 if 分支挑选偶数，一边计数一边累加。第一空填求余运算符 %，使 i%2==0 成立时就说明 i 是偶数；第二空 cnt++ 把偶数个数加 1；第三空 sum+=i 把该偶数加进和。注意整型 i 对 2 取余只可能是 0 或 1，因此用 i%2==0 判断偶数、i%2!=0（或 i%2==1）判断奇数都很直观。两个结果按 cnt 在前、sum 在后的顺序输出；当 n=0 或 1 时循环里找不到偶数，输出 \"0 0\"。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-106",
@@ -15577,7 +16446,10 @@
       ],
       "explanation": "程序用 do-while 循环反复拆分整数 n，把各位数字累加进 sum。第一空填 %，n%10 取出 n 的最后一位数字；第二空 n!=0 是循环继续的条件，只要 n 还没被除成 0 就还有数字要处理。循环体里再执行 n=n/10 把最后一位丢掉，如此反复。% 与 / 是一对递推操作，二者不能调换顺序，否则会反复取到同一位。这里特意选 do-while，是为了让 n=0 也能进入循环体，最终输出 0 而不是什么都不输出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-107",
@@ -15648,7 +16520,10 @@
       ],
       "explanation": "程序用\"试除法\"判断素数：只要 2 到 n-1 之间存在某个 i 能整除 n，n 就不是素数。第一空 i<n 限定试除范围，i 不能取到 n，因为 n 总能被 n 整除，那样会把素数也误判成非素数（写成 i*i<=n 或 i<=n/2 也能起同样作用且更高效）；第二空填 %，用 n%i==0 判断整除；第三空 break，一旦发现因子就立即跳出循环省去后续判断。flag 初始为 1，只有找到因子才被置 0，最终以 flag 判定素数。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-108",
@@ -15709,7 +16584,10 @@
       ],
       "explanation": "程序用欧几里得辗转相除法求最大公约数：gcd(m,n)=gcd(n,m%n)。第一空 n!=0 是循环条件，只要除数 n 非零就继续；第二空填 %，用 m%n 算出余数 r，随后把除数 n 变成新的被除数 m，把余数 r 变成新的除数 n，如此辗转。当余数为 0 时循环结束，此时被除数 m 就是最大公约数。若一开始输入 n=0（如 7 0），循环一次都不执行，直接输出 m，这也是正确的（gcd(a,0)=a）。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-109",
@@ -15769,7 +16647,10 @@
       ],
       "explanation": "程序用递推法输出斐波那契数列。第一空填 +，c=a+b 计算下一项（等于前两项之和）；第二空填 c，把临时算出的新项赋给 b，配合前面的 a=b，让 (a,b) 整体向后滚动一项，为下一轮做准备。三个赋值语句 c=a+b、a=b、b=c 顺序不能乱，若先执行 a=b 再 b=a+b 就会丢掉原来的 b 导致递推出错。数列从 0、1 开始，a、b 分别持有当前项与下一项，每轮打印 a。由于增长很快，用 long long 避免溢出。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch05-mb-110",
@@ -15838,7 +16719,10 @@
       ],
       "explanation": "程序用双重 for 循环打印下三角乘法表。第一空 i<=n 是外层循环条件，i 控制行数；第二空 j<=i 是内层循环条件，j 控制列数，且第 i 行恰好要从 1 打印到 i，所以内层上限是外层变量 i 而不是 n，这是循环嵌套最容易出错的地方；第三空填 *，用 i*j 计算乘积。外层每结束一行就打印一个换行符，让各行自动换行。%2d 使乘积右对齐占两位，保证版面整齐。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     }
   ]
 }

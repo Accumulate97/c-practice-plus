@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "db3cfdd222ebafe6",
+  "content_sha": "99ca2559de075cde",
   "fields": [
     "title",
     "tags",
@@ -7979,7 +7979,7 @@
     {
       "id": "c-ch05-mdb-003",
       "file": "c-ch05.json",
-      "title": "下面程序本应把输入的正整数 n 的各位数字逆序输出",
+      "title": "下面程序本应把输入的非负整数 n 的各位数字逆序输出",
       "tags": [
         "改错",
         "循环",
@@ -10291,7 +10291,7 @@
     {
       "id": "c-ch05-cc-801",
       "file": "c-ch05.json",
-      "title": "读入一个正整数 n",
+      "title": "读入一个非负整数 n",
       "tags": [
         "for循环",
         "累加求和"
@@ -10330,7 +10330,7 @@
     {
       "id": "c-ch05-cc-804",
       "file": "c-ch05.json",
-      "title": "读入一个正整数 n",
+      "title": "读入一个非负整数 n",
       "tags": [
         "while循环",
         "数字反转"
@@ -10551,7 +10551,7 @@
     {
       "id": "c-ch05-cc-901",
       "file": "c-ch05.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "循环结构",
         "for语句",
@@ -10579,7 +10579,7 @@
     {
       "id": "c-ch05-cc-903",
       "file": "c-ch05.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "循环结构",
         "for语句",
@@ -10593,7 +10593,7 @@
     {
       "id": "c-ch05-cc-904",
       "file": "c-ch05.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "循环结构",
         "for语句",
@@ -10705,7 +10705,7 @@
     {
       "id": "c-ch05-cc-912",
       "file": "c-ch05.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "循环结构",
         "continue语句",
@@ -11249,7 +11249,7 @@
     {
       "id": "c-ch05-mb-101",
       "file": "c-ch05.json",
-      "title": "读入正整数 n",
+      "title": "读入非负整数 n",
       "tags": [
         "for循环",
         "累加求和"
@@ -11262,7 +11262,7 @@
     {
       "id": "c-ch05-mb-102",
       "file": "c-ch05.json",
-      "title": "读入正整数 n",
+      "title": "读入非负整数 n",
       "tags": [
         "while循环",
         "累加求和"
@@ -32587,7 +32587,7 @@
     {
       "id": "c-ch13-opt-101",
       "file": "c-ch13.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "求和",
         "公式",
@@ -32602,7 +32602,7 @@
     {
       "id": "c-ch13-opt-102",
       "file": "c-ch13.json",
-      "title": "输入一个正整数 n",
+      "title": "输入一个非负整数 n",
       "tags": [
         "平方和",
         "公式",

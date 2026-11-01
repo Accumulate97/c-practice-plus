@@ -46,7 +46,8 @@
     "typecheck": "tsc -b --pretty false",
     "verify:data": "node scripts/verify-data.ts",
     "verify:pages": "node scripts/verify-pages-dist.mjs",
-    "build:search": "node scripts/build-search-index.mjs"
+    "build:search": "node scripts/build-search-index.mjs",
+    "verify:spec": "node scripts/verify-spec.ts"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.3",

@@ -62,6 +62,15 @@
       "default": false,
       "description": "代码类题目是否通过实机编译验证。非代码题固定 true"
     },
+    "variantOf": {
+      "type": "string",
+      "default": "",
+      "description": "母题 id；有母题的必须指向母题 id，无母题留空串"
+    },
+    "constraints": {
+      "type": "string",
+      "description": "规格约束（算法题与熟练度专项必填）：n 范围 / 时间复杂度 / 空间复杂度。例：&quot;1 ≤ n ≤ 10^5；时间复杂度 O(n)；空间复杂度 O(1)&quot;"
+    },
     "ai_generated": { "type": "boolean", "default": true },
     "generated_at": { "type": "string", "format": "date" }
   },
@@ -284,11 +293,12 @@
     {
       "if": { "properties": { "type": { "const": "timed_impl" } } },
       "then": {
-        "required": ["reference", "testCases"],
+        "required": ["reference", "testCases", "constraints"],
         "properties": {
           "reference": { "type": "string", "description": "参考实现" },
           "timeLimitSec": { "type": "integer", "minimum": 1, "description": "限时（秒），面向熟练度展示用" },
           "code_starter": { "type": "string", "description": "给学生代码的起始模板" },
+          "constraints": { "type": "string", "description": "规格约束（熟练度专项必填）：n 范围 / 时间复杂度 / 空间复杂度" },
           "testCases": { "$ref": "#/definitions/testCases" }
         }
       }
@@ -376,12 +386,13 @@
     {
       "if": { "properties": { "type": { "const": "algorithm_impl" } } },
       "then": {
-        "required": ["reference", "testCases"],
+        "required": ["reference", "testCases", "constraints"],
         "properties": {
           "input_format": { "type": "string" },
           "output_format": { "type": "string" },
           "code_starter": { "type": "string" },
           "reference": { "type": "string" },
+          "constraints": { "type": "string", "description": "规格约束（算法题必填）：n 范围 / 时间复杂度 / 空间复杂度" },
           "testCases": { "$ref": "#/definitions/testCases" }
         }
       }

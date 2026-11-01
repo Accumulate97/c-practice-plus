@@ -58,7 +58,11 @@
       ],
       "explanation": "swap 接收两个指针参数，通过解引用 *x、*y 直接改写主调函数里的 a、b。核心是先取 *x 存入临时变量 t，再把 *y 写入 *x，最后把 t 写入 *y，这样两值才得以安全交换；若省略 t 或直接写成 *x=*y;*y=*x，两个值会被覆盖丢失。调用时必须传地址 &a、&b 而不是 a、b 本身。输入 10 10 时交换前后不变仍输出 10 10；负数和零同样正确。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-102",
@@ -114,7 +118,11 @@
       ],
       "explanation": "update 用两个指针参数返回两个结果值，体现 C 语言里\"用指针模拟引用\"的经典手法：形参拿到的是实参地址，解引用 *a 就是实参本身。关键在于先把和 s 与差 d 用原值算好暂存，再一次性写回，若先写 *a=s 再算 *b=*a-*b，差就会错；a 与 b 指向不同对象，写回先后不影响。输入 0 0 得 0 0；输入 9 9 差为 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-103",
@@ -170,7 +178,11 @@
       ],
       "explanation": "const int *a 是\"指向常量的指针\"，即指针本身可变但所指对象只读；这与 int * const a（常量指针，指向可变对象但指针本身不能改）语义相反。本题用只读指针遍历数组求和，参数写成 const 能防止函数内误改原数组。遍历可直接用 a[i] 或 *(a+i)，二者等价。输入 0 时循环不执行、和为 0；负数组和为 -15；重复元素照常累加。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-104",
@@ -226,7 +238,11 @@
       ],
       "explanation": "get 先用条件表达式 p 判断指针是否为空，再决定解引用还是返回哨兵 -999，这是对空指针防护的典型写法。空指针表示\"不指向任何有效对象\"，对其解引用是未定义行为，可能崩溃或读取垃圾值；野指针指向已释放或无效的内存，同样必须避免。调用者用 (a==0)?NULL:&a 选择传空指针或传地址，输入 0 得到 -999，输入其余值得到该值本身，负数和正数都正常。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 123；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-105",
@@ -282,7 +298,11 @@
       ],
       "explanation": "用指针遍历数组的标准写法是 for(int *p=a;p<a+n;p++)，循环条件 p<a+n 是地址比较，p++ 使指针后移一个整型元素的大小，*p 取出当前值。s 累加 *p，最后 s/n 用整数除法求平均值（丢弃小数）。注意求和初值必须为 0；n 至少为 1，避免除零。输入 2 个数 100 -99 时和为 1、平均 0；负数与重复元素都能正确累加。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-106",
@@ -338,7 +358,11 @@
       ],
       "explanation": "数组名 a 在参与运算时自动退化为指向首元素的指针，因此 a[i] 与 *(a+i) 完全等价，a+i 就是第 i 个元素的地址。声明 int *p=a 后，*(p+k) 与 p[k]、a[k] 都是同一内存单元。这道题强调必须用指针形式 *(p+k) 而非 a[k]。注意 k 不能越界；k 为 0 取首元素，k 为 n-1 取末元素，负数元素与重复元素同样正确取值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-107",
@@ -394,7 +418,11 @@
       ],
       "explanation": "数组名 a 本质是指向首元素的常量指针，&a[0] 与 a 的地址值相同，*(p+i) 与 a[i] 等价。int *p=a 让 p 指向首元素，然后循环从 i=1 起，用 *(p+i) 依次比较并更新 max。注意最大值初值必须取 *p（首元素），不能取 0，否则全为负数时永远选不出正确最大；n 至少为 1，循环从 1 开始避免重复比较。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-108",
@@ -450,7 +478,11 @@
       ],
       "explanation": "*p++ 是后缀自增与解引用的组合：由于 ++ 优先级低于 *，表达式等价于 *(p++)，即先取当前 *p 的值，再让 p 后移一个元素。整个循环 s+=*p++ 不需要另写 p++，两种写法结果相同。注意循环条件 p<a+n 是地址比较，指针移到数组尾之后停止；n 至少为 1，避免空数组。负数与零都能正确累加，100 与 -100 相抵得 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-109",
@@ -506,7 +538,11 @@
       ],
       "explanation": "在找最大值的同时记录下标：max 与 idx 初值分别为 *p 与 0，从 i=1 起用 *(p+i) 与 max 比较，遇到严格大于就同时更新 max 与 idx。因为条件是 > 而非 >=，所以最大值重复时保留第一次出现的位置；全相同、升序、逆序、含负数等各种输入都正确。若 n 为 1，循环不执行，输出首元素与下标 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-110",
@@ -562,7 +598,11 @@
       ],
       "explanation": "反转用首尾指针相向交换：hi 初值为 a+n-1 指向末元素，循环条件 lo<hi 保证两指针相遇前持续交换 *lo 与 *hi，每轮 lo++、hi-- 向内收缩。交换需借助临时变量 t，否则两值被覆盖。循环结束后数组即被原地反转，无需新数组。n 为奇数时中间元素最终不动，n 为 1 时循环一次都不执行，输出保持原值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-111",
@@ -618,7 +658,11 @@
       ],
       "explanation": "折半查找用 low、high 两个下标指针圈定当前查找区间，每次取中值 mid=lo+(hi-lo)/2 与 k 比较：相等即命中，小于则 lo=mid+1，大于则 hi=mid-1，区间不断收缩直至 lo>hi 找不到。相比顺序查找，时间复杂度 O(log n)。注意区间收缩必须写成 mid+1 与 mid-1，否则可能死循环；循环条件是 lo<=hi；数组须已升序。含重复值时命中的是中位数附近的位置。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 42；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-112",
@@ -674,7 +718,11 @@
       ],
       "explanation": "判回文用首尾指针 p、q 同步内移比较：p 指向首元素，q=a+n-1 指向尾元素，只要 p<q 就比较 *p 与 *q，不等立即输出 no，否则 p++、q--。循环结束说明逐对相等，输出 yes。这里 p<q 是指针（地址）比较，仅在同一数组范围内才有意义。n 为 1 或全相同必为回文；奇数长度时中间元素无需比较。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 7；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-113",
@@ -730,7 +778,11 @@
       ],
       "explanation": "int *pa[1000] 是\"元素为指针\"的数组，pa[i] 是 int *，可存 &a[i]。先用循环让 pa[i]=&a[i]，再用 pmax 记录当前最大元素的指针，比较时用 *pa[i] 取所指值，最后输出 *pmax。因为存的是地址，若想通过指针数组修改数组元素也可直接改 *pa[i]。注意 n 至少为 1，pmax 初值取 pa[0]；指针数组本身也能参与排序，这里只选最大。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-114",
@@ -786,7 +838,11 @@
       ],
       "explanation": "字符串以'\\0'结尾，故可用 for(char *p=s;*p!='\\0';p++) 让 p 指向每个字符，循环条件 *p!='\\0' 表示还没到结束符，*p 取出当前字符，p++ 移到下一个字符。注意元音判断要同时考虑大小写，用较多 || 连接。fgets 读入的字符串里换行符不算元音；空格、数字、标点都不计入。输入xyz得0，全元音得5。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-115",
@@ -842,7 +898,11 @@
       ],
       "explanation": "连接要点：先让指针 p 走到 s1 的末尾，即 while(*p)p++（p 停在'\\0'处），再用 q 指针从 s2 首逐个复制：*p++=*q++ 先复制字符再同时后移，最后 *p='\\0' 补结束符。因 fgets 会把换行符也读进来，需先用 strcspn 去掉末尾换行。空串的情况也要正确处理：s1 为空时 p 直接停在首，s2 为空时不复制，两种边界都能安全拼接。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 34；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-116",
@@ -898,7 +958,11 @@
       ],
       "explanation": "二维数组 a 的 a[i] 就是第 i 行的首地址（退化为 int*），int *p=a[i] 让 p 指向该行首元素，*(p+j) 访问第 j 列，与 a[i][j] 等价。外层循环按行取行指针，内层用指针算术遍历该行。注意 m*n 不能超过 10000（固定数组 a[100][100]）；下标从 0 起，行列都在 0~99 内。负数、全相同、单行单列矩阵都能正确累加。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-117",
@@ -954,7 +1018,11 @@
       ],
       "explanation": "结构体指针访问成员用 ->，等价于 (*p).成员，而直接变量访问用 .。best=&s[0] 使 best 指向首元素，循环中用 s[i].score>best->score 比较（也可写 best.score 但需解引用）。成绩相同时因用严格大于，保留第一个出现的最高分。读取 double 用 %lf，输出用 %.2f 保留两位小数。成绩可为负数，只要严格更大就更新。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-118",
@@ -1010,7 +1078,11 @@
       ],
       "explanation": "minmax 用指针参数 pmn、pmx 把内部算出的最小、最大值写回调用者变量，从而让一个函数返回两个结果——这是 C 里\"用指针模拟多返回值\"的标准做法。调用时传 &mn、&mx。初值 *pmn=*pmx=a[0]，从 i=1 起分别用小于和大于比较更新。数组元素可全相同，此时最小与最大相等；全为负数时最小值是绝对值最大的那个负数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-119",
@@ -1066,7 +1138,11 @@
       ],
       "explanation": "双指针去重利用数组已升序的特点：write 指向当前已确认的最后一个不重复值，read 逐个向后扫描，只有 *read 与 *write 不同才让 write 后移一格并写入新值，否则跳过。因相等值相邻，这样能保证每个不重复值只保留一次。长度由 write-a+1 算出。需先处理 n=0（输出0）避免 write 指向不存在的元素；注意数组必须升序，否则算法会出错。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-120",
@@ -1122,7 +1198,11 @@
       ],
       "explanation": "用指针遍历统计时，循环条件 p<a+n 是地址比较，循环体里 *p 取出当前元素，按大于0、小于0、等于0 分别累加 pos、neg、z。注意判断顺序：先判正，再判负，否则 else 分支（零）会吞掉部分数据；写成 if/else if/else 即可。n 为 0 时统计三次计数都是 0；全一样、含负、含零的输入都能正确统计。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-121",
@@ -1178,7 +1258,11 @@
       ],
       "explanation": "函数指针 int (*cmp)(int,int) 的声明中，*cmp 两侧的括号不能省，否则就成了返回 int* 的函数。cmp 就是被传入函数的地址，调用 cmp(a[j],a[j+1]) 即执行那个函数。冒泡排序每轮把相邻逆序对交换，外层控制轮数、内层逐对比较；cmp(a[j],a[j+1])>0 表示前者大（升序需要交换）。若默认比较函数与 cmp 含义不一致会排错。n 为 1 时双层循环不执行。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-122",
@@ -1234,7 +1318,11 @@
       ],
       "explanation": "malloc 接受字节数，需乘 sizeof(int)，返回 void* 需强转成 int*；申请后必须判空（if(!a) 处理失败）。用指针 a[i] 或 *(a+i) 访问动态数组，和普通数组用法一致。用完必须 free(a) 释放，否则内存泄漏。n 为 0 时仍申请一个 int 的合法空间避免返回 NULL，循环不执行、输出 0。注意 free 之后不能再访问该指针（成为野指针）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-123",
@@ -1290,7 +1378,11 @@
       ],
       "explanation": "int **ppa 是二级指针，ppa[i] 是 int*（指向一个 int 的指针），*ppa[i] 才是要访问的 int；等价地 *(ppa+i) 是地址、**(ppa+i) 是值。每个 ppa[i] 需单独 malloc，形成\"指针数组 + 每个元素指向独立空间\"的结构，倒序释放时先 free(ppa[i]) 再 free(ppa)。n 为 0 时仍申请一个指针的合法空间，循环不执行、三重防护下输出 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-124",
@@ -1346,7 +1438,11 @@
       ],
       "explanation": "maxptr 返回 int*，用 m 记录当前最大元素的地址（m=a 指向首元素），循环用 *(a+i)>*m 比较，命中则 m=a+i 更新地址，最后返回 m。返回的指针必须指向仍有效的内存（这里指向调用者数组内部），绝不能返回局部变量的地址（函数结束后即失效）。主函数用 *p 取值、p-a 算相对偏移（即下标）。因用严格大于，最大值重复时返回第一次出现的位置。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-125",
@@ -1406,7 +1502,11 @@
       ],
       "explanation": "int (*f[4])(int,int) 是\"元素为函数指针的数组\"：f[i] 是 int(*)(int,int) 型的函数指针，数组初始化 {add,sub,mul,divv} 把四个函数名（自动退化为函数指针）按序存放；调用 f[idx](a,b) 即间接调用对应函数，这就是函数指针数组实现\"分派表\"的典型用途。运算符匹配用 switch 或 if-else 求出 idx。除法须先判除数 b 是否为 0 再相除，避免除零崩溃。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(1)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-126",
@@ -1462,7 +1562,11 @@
       ],
       "explanation": "用两个指针 p 指向首字符、q 指向末字符。循环条件是 p<q，每轮交换 *p 与 *q 的内容，然后 p 后移、q 前移，直到两个指针相遇或交错。这样从两端向中间逐步交换，就完成了字符串的就地反转。注意类似 n 个字符要交换 n/2 次，奇数长度时中间字符不动。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12345；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-127",
@@ -1518,7 +1622,11 @@
       ],
       "explanation": "用一个字符指针 p 遍历字符串，每次取 *p 判断是否属于 a~z，命中则把以 *p- a 为下标的计数数组 cnt 加一。所有字符处理完后，再按 26 个小写字母的顺序输出 cnt 非 0 的项。用字符减去 a 的做法把字符映射成 0~25 的下标，是计数统计的标准手法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-128",
@@ -1574,7 +1682,11 @@
       ],
       "explanation": "先让指针 p 从 a 的首地址一路后移，直到指向字符串结束符 \\0 的位置，这样 p 就落在 a 的末尾。再用指针 q 遍历 b，把 *q 逐个赋值给 *p 后两者同步后移，最后把 a 的末尾手动补上结束符。这一过程实现了字符串拼接，本质是把 b 追加到 a 的末尾。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-129",
@@ -1630,7 +1742,11 @@
       ],
       "explanation": "用 low 指向首元素、high 指向末元素，每轮取中点 mid=low+(high-low)/2。若 *mid 等于 key 则命中并记录 mid；小于则说明 key 在右半区，把 low 移到 mid+1；大于则把 high 移到 mid-1。循环条件是 low<=high，循环正常结束仍未命中则说明 key 不存在。注意 mid 指针减去 a 即得下标。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-130",
@@ -1686,7 +1802,11 @@
       ],
       "explanation": "冒泡排序用两层循环，外层每轮把当前未排序区间里的最大值\"冒\"到末尾。内层用指针访问 *(a+j) 和 *(a+j+1) 比较相邻两数，若前者大于后者就交换。每完成一轮，待排序区间缩小一个，最终整个数组升序。用指针而不是数组下标访问，体现了指针与数组下标等价。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-131",
@@ -1742,7 +1862,11 @@
       ],
       "explanation": "声明行指针 int (*p)[10]，它指向的元素类型是\"长度为 10 的一维整型数组\"，从而 p 的步长是一整行。第 i 行第 j 列元素可写作 *(*(p+i)+j)：*(p+i) 先取到第 i 行的首地址，再加 j 解引用即得该元素。外层循环固定行、内层循环遍历该行每一列，逐行累加就能求出每行之和并输出。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-132",
@@ -1799,7 +1923,11 @@
       ],
       "explanation": "用 int ** 表示指向指针的指针。先 malloc r 个 int* 得到行指针数组，再对每行 malloc c 个 int 得到数据行。访问时 a[i] 先取到第 i 行首地址，再解引用得到元素，等价写法是 *(*(a+i)+j)。用完后必须对每行 free，再 free 行指针数组，否则造成内存泄漏。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-133",
@@ -1855,7 +1983,11 @@
       ],
       "explanation": "定义四个返回 int、接收两个 int 的同类型函数，可组成函数指针数组 int (*ops[4])(int,int)。数组元素依次存放 add、sub、mul、div_ 的地址。读入运算符后，用另一个字符数组 names 把 op 映射成下标 i，再调用 ops[i](a,b) 分派到正确的函数。这体现了函数指针数组用于\"命令分派\"的用途。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-134",
@@ -1910,7 +2042,11 @@
       ],
       "explanation": "指向函数的指针 fp 类型为 int (*)(int,int)。根据 flag 为真或假，把 fp 赋值为 add 或 sub 的函数地址。然后直接通过 fp(a,b) 调用所指向的函数。函数名本身就是函数的地址，所以 fp=add 合法；经 fp 调用与直接调用 add(a,b) 效果完全一致，这就是函数指针作为回调的基本用法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(1)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-135",
@@ -1966,7 +2102,11 @@
       ],
       "explanation": "指针 p 指向数组首元素后，p[i] 与 *(p+i) 是完全等价的两种写法，都是访问第 i 个元素。p[i] 只是编译器把下标运算翻译成 *(p+i) 的语法糖。分别用两种方式求同一个数组的和，两次结果相等，就演示了这一等价关系。注意 p 的基类型是 int，p+i 移动 i 个 int 的长度。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-136",
@@ -2022,7 +2162,11 @@
       ],
       "explanation": "用指针 p 遍历数组，对每个元素 *(p+i) 求余 2。余数为 1 表示奇数，计入 odd；否则为 0 表示偶数，计入 even。判断用 *(p+i)%2 非 0 即奇数。注意负数如 -2 对 2 取余结果为 0，仍归偶数；-3 取余为 -1，非 0 归奇数，所以在 C 中可放心用取余判断奇偶。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 8；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-137",
@@ -2078,7 +2222,11 @@
       ],
       "explanation": "用 pa、pb 两个指针分别指向源数组 a 和目标数组 b。循环中执行 *(pb+i)=*(pa+i)，把 a 的第 i 个元素复制到 b 的同一下标位置。复制完成后，再用指针 pb 依次累加 b 的元素得到和。这种\"用指针搬运数组\"的方式能直观展示指针的间接访问能力。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-138",
@@ -2135,7 +2283,11 @@
       ],
       "explanation": "先遍历一遍找到最大值及其下标 idx。次大值不能在原数组中与最大值同一下标，所以先取另一个元素（idx 为 0 取 a[1]，否则取 a[0]）作为次大值的候选，再遍历全程，凡是下标不等于 idx 且大于当前次大值的元素都更新它。这样就正确得到了严格意义上的次大值，即使有重复值也能正确处理。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-139",
@@ -2191,7 +2343,11 @@
       ],
       "explanation": "线性查找用一个指针 p 从首元素开始，逐一比较 *(p+i) 与 key。一旦相等就记录当前下标并用 break 跳出，保证返回的是第一次出现的位置。若整个循环结束都没有找到，res 保持初始值 -1，表示不存在。注意用 break 提前结束以减少不必要的比较。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-140",
@@ -2247,7 +2403,11 @@
       ],
       "explanation": "字符串字面量 \"pointer\" 存放在只读常量区，用 char *lit 指向它即可只读访问。输入字符串经 scanf 读入可写数组 s，指针 p 指向它。用 while 循环依次比较 p[i] 与 lit[i]，只有两者都非结束符且相等时才继续。循环结束后若两者同时到达结束符 \\0，说明完全相等，输出 1，否则输出 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-141",
@@ -2303,7 +2463,11 @@
       ],
       "explanation": "const char *p 表示 p 指向的内容不可通过 p 修改，但 p 本身可以重新指向别处，因此适合只读遍历。循环里用 *p 读字符并判断是否为元音，命中则计数加一，读完后 p 后移。整段代码只读不写，正是 const 指针的典型应用，能防止误改字符串内容。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-142",
@@ -2359,7 +2523,11 @@
       ],
       "explanation": "令指针 p 指向数组最后一个元素 a+n-1。输出时用 *(p-i)，当 i 从 0 逐步增大到 n-1，p-i 就从末尾逐步移向首元素，因此依次输出的是原数组的倒数第 1、第 2……第 n 个元素，得到逆序序列。这种\"从尾指针向前递减\"的方式是倒序遍历数组的常用指针技巧。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-143",
@@ -2416,7 +2584,11 @@
       ],
       "explanation": "先累加所有元素得到总和，除以 n 得到平均值 mean。再遍历一遍，对每个元素计算与 mean 的差 d，累加 d*d。最后把平方和除以 n 得到总体方差。方差衡量数据偏离均值的离散程度，值越大说明数据越分散；输出时按要求保留两位小数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-144",
@@ -2472,7 +2644,11 @@
       ],
       "explanation": "插入排序从第 2 个元素开始，把当前元素 key 用 *(a+i) 取出，再用下标 j 从前面已排序部分从后往前扫描。只要 *(a+j) 大于 key 就把它后移一位，直到找到不大位置，把 key 放到 *(a+j+1)。这样每次都把 key 插入到已有序前缀的正确位置，最终整体升序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-145",
@@ -2528,7 +2704,11 @@
       ],
       "explanation": "统计不同元素个数，可对每个位置 i 检查它之前是否出现过相同的值：用内层循环 j 从 0 到 i-1，若 *(p+j) 等于 *(p+i) 则标记 dup 为 1。只有当前面没有出现过时才把计数 cnt 加一。这样每个不同值只在第一次出现时被计入，从而得到互不相同元素的个数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 30；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-146",
@@ -2584,7 +2764,11 @@
       ],
       "explanation": "用 pa、pb 两个指针分别指向目标 a 与源 b。while(*pb) 循环里先执行 *pa=*pb 把当前字符拷到目标，再让两个指针都后移；当 *pb 为结束符时循环退出。最后必须给 a 的末尾补上 *pa=0，否则 a 中残留原有字符，输出会多出内容。删除末尾残留是字符串复制最容易漏掉的一步。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-147",
@@ -2640,7 +2824,11 @@
       ],
       "explanation": "用指针 p 指向字符串首字符。遍历时对每个下标 i，判断 *(p+i) 是否等于目标字符 ch，相等则记录 i 并用 break 跳出，返回第一次出现的位置；循环条件用 s[i] 非结束符，遍历完整个字符串仍未命中，则输出初始值 -1。注意区分字符串结束符与普通字符。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-148",
@@ -2696,7 +2884,11 @@
       ],
       "explanation": "用 while(*p++) 循环求字符串长度，循环条件先取 *p 判断是否为 0，非 0 则进入循环并把 len 加一，同时 p 自增指向下一字符。当 *p 为结束符时条件为假，循环停止，len 恰好等于不含结束符的字符个数。注意结束符本身不计入长度。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-149",
@@ -2756,7 +2948,11 @@
       ],
       "explanation": "求子串位置可让外层下标 i 在 s 上移动，内层用指针比较 s[i+j] 与 sub[j]。只要 sub 非空且所有字符都与 s 的对应位置相等，就在 i 处找到子串并输出。内层匹配要保证 i+nt 不超过 s 的长度，否则越界。找不到位置时输出 -1，表示 sub 不是 s 的子串。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-150",
@@ -2812,7 +3008,11 @@
       ],
       "explanation": "转置就是把 a 的第 i 行第 j 列元素放到 b 的第 j 行第 i 列。用指针 pa、pb 分别指向数组首元素，则 a[i][j] 对应 *(pa+i*c+j)，b[j][i] 对应 *(pb+j*r+i)。注意 b 的规模是 c 行 r 列，所以其偏移要用转置后的列数 r 来乘行下标。最后按 c 行 r 列输出 b 即可。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-151",
@@ -2869,7 +3069,11 @@
       ],
       "explanation": "删除元素用「读写双指针」原地完成：写指针 k 指向下一个应保留的位置，读指针 p 从左到右扫描。只有当 *p 不等于待删值 x 时才把 *p 写入 a[k++]（覆盖），等于 x 的直接跳过。这样一次遍历即可剔除所有等于 x 的元素，且保持剩余元素相对顺序不变。输出时先打印新个数 k 再打印 a[0..k-1]。注意 n 可为 0、x 不存在、全部被删除、含负数与重复元素等情形都要正确；写指针初值 0，若全部删除则 k 为 0、数组看似为空。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-152",
@@ -2926,7 +3130,11 @@
       ],
       "explanation": "在 pos 处插入需先把 pos 及之后的元素整体后移一格腾出空位，再写入 x。后移用 for(int i=n;i>pos;i--) a[i]=a[i-1] 从后往前搬，避免从前搬时覆盖未移动的元素；写指针 a[i] 与 *(a+i) 等价。插入后数组长度加一。注意 pos 可取 0（头插）或 n（尾插），分别对应 i>0 与 i>n 的边界；n 为 0 时直接在 a[0] 放 x。输出全部 n+1 个元素。重复值、负数都能正确后移插入。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-153",
@@ -2983,7 +3191,11 @@
       ],
       "explanation": "判重用两层嵌套循环枚举所有下标对：外层指针 p 固定当前元素，内层指针 q 从 p+1 扫到数组末尾，只要 *p==*q 就说明找到了重复，置 dup=1 并退出。因为 q 从 p+1 开始，不会把同一元素与自身比较，也不会重复枚举同一对。外层条件加入 !dup 可提前结束。算法复杂度 O(n^2)，但思路清晰；n 为 0 或 1 时不存在重复，输出 0；全相同、含重复的输入正确判 1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-154",
@@ -3040,7 +3252,11 @@
       ],
       "explanation": "找最小值用 mn 记录当前最小值、idx 记录其下标，初值取 *p（首元素）与 0。从 i=1 起用 *(p+i) 与 mn 比较，条件用严格小于 <，因此只在出现更小的值时更新，最小值重复时保留第一次出现的位置。注意初值必须取首元素而非 0，否则全为正数时可能选错；n 至少为 1，循环从 1 开始避免把首元素与自身比较。负数、重复值、已排序（升/降序）的数组都能正确输出最小及其下标。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-155",
@@ -3097,7 +3313,11 @@
       ],
       "explanation": "计数遍历用一个指针 p 从头走到 a+n，循环体判断 *p 是否等于 x，相等则计数器 c 加一。由于是整段数组扫描，重复元素会多次命中，统计的是总出现次数。注意 x 不在数组时 c 保持 0；n 为 0 时循环不执行、输出 0；全相同、含 0、负数等输入都能正确统计。用指针遍历 p++ 与用下标 i++ 等价，这里强调指针自增逐个移动。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-156",
@@ -3154,7 +3374,11 @@
       ],
       "explanation": "分区用「写指针」w 初始指向数组首元素。读指针 p 从左到右依次检查 *p：若 *p 小于等于 pivot，就把 *p 与 *w 指向的元素交换，然后 w 后移一格；否则跳过。这样交换后，[a, w) 区间始终存放已遇见的 ≤ pivot 元素，w 之后是待处理或 > pivot 的元素。一趟结束，w 之前全是 ≤ pivot，之后全是 > pivot，这正是快排 partition 的核心。注意该法不保持相对顺序（不稳定），n 可含负数与重复值；pivot 等于最大值或最小值时都能正确分组。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-157",
@@ -3211,7 +3435,11 @@
       ],
       "explanation": "循环左移 k 位可用三次反转完成：第一次反转整个数组得到「把尾端翻到头部」；第二次反转前 n-k 个元素使其恢复成左移后应留在前面的部分；第三次反转后 k 个元素使其恢复成被移到末尾的部分。三次反转后数组正好整体左移 k 位。rev 用首尾指针 p、q 交换：只要 p<q 就交换 *p 与 *q 并相向移动。注意 k 先对 n 取模（k%=n）以处理 k>n 的情况；k 为 0 或 n 时两次反转相互抵消，数组不变。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 40；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-158",
@@ -3268,7 +3496,11 @@
       ],
       "explanation": "矩阵乘法中 C[i][j] 等于 A 的第 i 行与 B 的第 j 列对应元素乘积之和。A[i] 本身就是第 i 行的首地址（int*），用 int *pa=A[i] 让 pa 指向该行；B 的第 j 列需逐行取 *(B[k]+j)。累加 s += pa[k]*(*(B[k]+j)) 即完成一行一列的点积。注意列数必须匹配：A 列数 p 等于 B 行数 p，结果 C 为 m 行 n 列，行列下标不要混用。n 可为 1、含负数与重复值；输出时每行以换行结尾。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-159",
@@ -3325,7 +3557,11 @@
       ],
       "explanation": "链表用「尾插法」构建：维护 head 指向首结点、tail 指向尾结点。每读一个数就 malloc 一个结点，若链表为空则 head=tail=nd，否则把新结点接到 tail 的 next 上并更新 tail。遍历用指针 p 从 head 出发，每轮 printf(p->val) 后 p=p->next，直到 p 为 NULL。结构体指针用 -> 访问成员，等价于 (*p).val。用完必须逐个 free 结点以免内存泄漏。n 为 0 时 head 为 NULL、无输出；负数与重复值都正常。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-160",
@@ -3382,7 +3618,11 @@
       ],
       "explanation": "链表插入分两种情况：若找到第一个值为 y 的结点 p，就把新结点 nx 插到 p 之后，需先设置 nx->next 指向 p 原来的后继，再把 p->next 改为 nx，顺序不能颠倒否则断链；若遍历完未找到 y，则把 nx 插到链表末尾（空表时直接用 head=tail=nx）。因为只插入一个结点，时间复杂度 O(n)。注意用 found 标志区分两种情况；空链表、y 在表头/表尾/不存在、重复值都能正确处理。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-161",
@@ -3439,7 +3679,11 @@
       ],
       "explanation": "删除单链表结点需同时维护当前指针 p 与前驱指针 prev。从 head 开始，只要 p 非空且 p 的值不等于 x 就同时把 prev、p 前移；找到值为 x 的 p 后，若 prev 非空（非头结点）则让 prev->next=p->next 跳过 p，若 prev 为空（p 是头结点）则把 head 改为 p->next 使头结点后移，最后 free(p)。注意删除头结点要单独处理，否则 head 仍指向已被释放的内存。找不到 x 时不做任何改动。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-162",
@@ -3496,7 +3740,11 @@
       ],
       "explanation": "int *p[1000] 是元素为指针的指针数组，先让 p[i]=&a[i] 使每个指针指向数组的一个整数。要找出第 k 大，可用选择排序把指针数组按 *p（所指值）从大到小排好：外层 i 固定当前位置，内层 j 找剩余部分中 *p 最大的指针下标 mi，再交换 p[i] 与 p[mi]（交换的是指针不是整数）。排序完 p[0] 指向最大、p[k-1] 指向第 k 大，输出 *p[k-1]。这种「排序指针而非数据」能避免搬动整个数组，也便于复用得多个结果；重复值、负数都按值正确比较。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 40；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-163",
@@ -3553,7 +3801,11 @@
       ],
       "explanation": "递归折半查找用 lo、hi 两个指针圈定当前区间，先判 lo>hi 说明区间已空、key 不在，返回 NULL。否则取中点 mid=lo+(hi-lo)/2（可用指针相减再除以 2），比较 *mid 与 key：相等即命中返回 mid；key 较大则递归右半 [mid+1,hi]；较小则递归左半 [lo,mid-1]。每次都把区间长度减半，故时间 O(log n)。主函数用返回指针 p 减数组首地址 a 得到下标。注意 mid+1 与 mid-1 避免死循环，且要求数组已升序，含重复值时命中中间某个位置。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 42；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-164",
@@ -3610,7 +3862,11 @@
       ],
       "explanation": "在有序数组中插入并保持升序，关键是找到正确插入位置：用 pos 从 0 开始，只要 a[pos] 小于 x 就后移 pos，找到第一个不小于 x 的位置（若无则 pos=n 表示插到末尾）。然后把 [pos,n-1] 的元素从后往前搬一格，最后把 x 写入 a[pos]，数组长度加一。注意先找位置再搬移；x 小于全部时 pos=0（头插），x 大于全部时 pos=n（尾插），x 等于某个值时可插到第一个相等位置之前，仍保持非降序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 40；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-165",
@@ -3667,7 +3923,11 @@
       ],
       "explanation": "由于数组已升序，可用首尾双指针：i 指向首、j 指向尾，每轮求 a[i]+a[j]=s。若 s==target 即找到一对，输出 i、j；若 s<target 说明和太小，应让 i 右移以增大和；若 s>target 说明和太大，应让 j 左移以减小和。因为每次只移动一个指针，区间不断收缩，O(n) 完成。注意 i<j 才继续（要两个不同位置），而数组升序保证这样移动不会漏解。target 较小无解时输出 -1。重复值也能找到合法下标对。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-166",
@@ -3724,7 +3984,11 @@
       ],
       "explanation": "求众数可对每个元素扫描整段数组统计其出现次数：外层指针 p 固定当前元素，内层指针 q 再遍历一遍，统计 *q==*p 的次数 c。若 c 大于已记录的最大次数 bc，或 c 等于 bc 且当前元素更小（用于并列时取最小），就更新 bc 与 best。时间复杂度 O(n^2)，但实现简单直观；负数、重复值、全部相同都正确。注意并列时条件 (c==bc && *p<best) 确保输出值最小的那个，避免因遍历顺序随机而输出不确定。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-167",
@@ -3781,7 +4045,11 @@
       ],
       "explanation": "把数字字符串转整数：先看首字符，若是 '-' 则 sign=-1 且跳过，若是 '+' 则跳过；之后应为数字字符。循环里用 v=v*10+(*p-'0') 累积：*p-'0' 把字符 '0'..'9' 转成 0..9，每次把已有值乘 10 腾出一位再加当前位。最后返回 sign*v。注意 p++ 逐个移动指针，直到 *p 为 '\\0'。前导 0、正负号、单独的 0 都能正确处理，'-0' 结果为 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 1000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-168",
@@ -3838,7 +4106,11 @@
       ],
       "explanation": "字符串按字典序比较即从左到右逐字符比较：只要两指针所指字符都非结束符且相等，就一起后移；一旦出现不同，比较这两个字符的 ASCII 码即可判定大小（因为结束符 '\\0' 的码为 0，与其他字符相比更小，天然处理了一个是另一个前缀的情况）。若其中一个先结束，则其 ASCII 0 与另一字符比较得到正确结果。最后按 *pa<*pb 输出 -1、*pa>*pb 输出 1、否则 0。大小写、相等串、前缀串都正确。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-169",
@@ -3895,7 +4167,11 @@
       ],
       "explanation": "删字符用「读写指针」原地完成：读指针 p 从头扫描字符串，写指针 r 指向结果当前位置。当 *p 不等于要删的字符 c 时，把 *p 复制到 *r 并让 r 后移；等于 c 时跳过不写。由于写指针始终不超过读指针，可以安全地原地覆盖。循环结束后必须给 r 处补上 *r='\\0'，否则输出会带上原字符串残留的字符。注意 c 不存在时字符串不变，全删时结果为空串。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-170",
@@ -3952,7 +4228,11 @@
       ],
       "explanation": "数字字符 '0'~'9' 在 ASCII 中连续，判断一个字符是否为数字可用 *p>='0' && *p<='9'；把它转成数值用 *p-'0'（字符减去字符 '0' 得到 0~9）。用指针遍历整个字符串，命中数字就 cnt++ 并 sum+=*p-'0'。注意数字字符与数字本身不同，字符 '0' 减去 '0' 得 0；字母、符号不计入。输入无数字时输出 0 0，全数字、混合、单个 0 等都能正确统计。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 12345；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-171",
@@ -4009,7 +4289,11 @@
       ],
       "explanation": "快速排序用递归 + 分区：选数组最后一个元素为基准 pivot，指针 i 从 a-1 开始，j 从 a 扫到倒数第二个元素，凡 *j 小于等于 pivot 就把 i 后移并把 *i 与 *j 交换，这样 [a, i] 区间始终存放 ≤ pivot 的元素。循环结束后 i 指向最后一个 ≤pivot 的位置，基准落在 i+1 处（与末尾交换），它已就位。再对左段 [a, pi) 与右段 [pi+1, 末尾) 递归，当长度 ≤1 时返回。平均时间 O(n log n)。注意用 a[n-1] 做基准可避免边界越界；负数、重复值都能正确排升序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n log n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-172",
@@ -4066,7 +4350,11 @@
       ],
       "explanation": "动态分配二维数组需两级 malloc：先 int **a=(int**)malloc(m*sizeof(int*)) 得到 m 个行指针，再对每行 a[i]=(int*)malloc(n*sizeof(int)) 分配 n 个 int。访问元素用二重指针 *(*(a+i)+j)：*(a+i) 是第 i 行首地址，再解引用 *(*(a+i)+j) 得该行第 j 列元素，与 a[i][j] 等价。求列和时外层遍历列 j、内层遍历行 i 累加。用完后必须逆序释放：先 free(a[i]) 每行，再 free(a)，否则内存泄漏。注意下标 0 起、m/n 不超过 100。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-173",
@@ -4123,7 +4411,11 @@
       ],
       "explanation": "单链表原地逆转用三个指针：prev 记录前驱（初始 NULL）、cur 记录当前（初始 head）、next 记录后继。每轮先保存 N *nxt=cur->next 以免断链，然后把 cur->next 指回 prev（反转链接），再让 prev、cur 整体前移（prev=cur, cur=nxt）。当 cur 变为 NULL 时循环结束，此时 prev 指向原表尾即新表头。因为只改链接方向不新建结点，空间 O(1)、时间 O(n)。注意空表（n=0）时 prev 为 NULL 无输出，含重复值与负数也正确。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(1)"
     },
     {
       "id": "c-ch09-alg-174",
@@ -4180,7 +4472,11 @@
       ],
       "explanation": "交替合并用三个指针：pa、pb 分别指向两个源串当前字符，pr 指向结果写入位置。第一个 while 只要两串都非空，就交替把 *pa 与 *pb 依次写入 *pr（写后指针后移）。循环结束后至少有一串已读完，再用两个 while 把另一串剩余部分整体接入。最后必须在 pr 处补 *pr='\\0' 结束符，否则 r 不是合法字符串。注意结果数组 r 要开得足够大（此处 202）；某一串为空、两串等长/一长一短都能正确合并，英文大小写与数字均可。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-175",
@@ -4237,7 +4533,11 @@
       ],
       "explanation": "荷兰国旗问题用 lo、mid、hi 三个指针一次扫描完成三类分区：lo 指向 0 区后一个位置，mid 遍历待处理元素，hi 指向 2 区前一个位置。当 *mid==0 时与 *lo 交换（把 0 归入左区）后 lo++、mid++；*mid==1 时直接 mid++（1 留在中间）；*mid==2 时与 *hi 交换（把 2 归入右区）后 hi--，注意此时不移动 mid，因为交换来的新元素还要再判断。循环直到 mid>hi。这样一趟 O(n) 即得所有 0 在左、1 在中、2 在右，且每类内部无需有序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 6；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-176",
@@ -4293,7 +4593,11 @@
       ],
       "explanation": "本题用指针遍历求最大连续子段和，采用 Kadane 算法：维护「以当前元素结尾的最大子段和」cur 与「全局最大」m。当 cur 为负说明之前段是负担，应舍去，故 c<0 时令 c=当前元素重新起算，否则累加；每步都用 c 更新 m。用 int *p 遍历而非下标，直接体现指针算术。初始 c 与 m 都取 a[0]，保证全为负数时也能正确输出最大单元素。复杂度 O(n)，只扫描一遍。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 20；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-177",
@@ -4349,7 +4653,11 @@
       ],
       "explanation": "计数排序核心是「先统计每个值出现次数，再按值从小到大输出」。值域已知为 0..100，用 cnt[101] 计数；用指针 for(p=a;p<a+n;p++) cnt[*p]++ 完成统计。输出时外层循环 v 从 0 到 100，内层按 cnt[v] 次打印 v，并用手动 first 标志控制空格以免末尾多空格。这样不用比较，O(n+101) 线性完成，只有当值域较小才适用。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-178",
@@ -4406,7 +4714,11 @@
       ],
       "explanation": "遍历字符串用 char *p 从 s 出发，直到 *p 为 \\0。先统一大小写：若是大写则 ch+=32 变成小写，简化判断。随后判断是否落在 a/e/i/o/u 中，是则元音计数 v++，否则只要是小写字母就计入辅音 c。注意本题输入仅含英文字母，所以非元音即辅音，不用再区分数字/空格。指针逐个移动 p++，直到字符串结束。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-179",
@@ -4462,7 +4774,11 @@
       ],
       "explanation": "对二维数组按行求和：a[i] 本身是第 i 行的首地址（int* 类型），因此可用行指针 int *q=a[i] 从该行开头遍历到 q<a[i]+n。循环累加 *q 得到行和并输出。关键在理解 a[i] 与 &a[i][0] 等价、二维数组名退化后「行指针 + 列下标」访问元素；每行用一个独立的指针从头走一遍即可，打印后用 \\n 分隔各行。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 50；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-180",
@@ -4518,7 +4834,11 @@
       ],
       "explanation": "峰值定义为严格大于左右邻居（端点只比较能存在的那一侧）。逐格检查：用两个条件 a[i]<=a[i-1]（i>0 时）与 a[i]<=a[i+1]（i<n-1 时），只要有一个不满足就不是峰值。全部大于才记 ok=1，找到第一个即 break 返回下标。注意边界处理——两端不越界访问；n=1 时两端检查都跳过，该单元素即峰值，下标为 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-181",
@@ -4574,7 +4894,11 @@
       ],
       "explanation": "只需一次指针遍历：int *p 从 a 走到 a+n，对每个 *p 判断符号累加到三个计数器。用 if(*p>0) pos++ else if(*p<0) neg++ else z++ 依次区分正、负、零。这样每个元素只访问一次，时间 O(n)。注意 0 既不大于 0 也不小于 0，必须用单独的 else 分支才不会被漏计，这正是分段统计的常见易错点。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-182",
@@ -4630,7 +4954,11 @@
       ],
       "explanation": "合并两个有序数组用「双指针归并」：pa、pb 分别指向两数组当前待比较元素，把较小的写入 pc；谁小谁前进一步。剩余部分用 while 循环把未耗尽的那一侧整体拷贝到 c。用增量 ++ 的指针写法 pc++、pa++ 简洁地同时取元素并前进。输出时用 first 标志控制空格。当两数组都有重复时用 <= 保持稳定，重复值会依次并入。复杂度 O(n+m)。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-183",
@@ -4686,7 +5014,11 @@
       ],
       "explanation": "奇偶分离就是把数组元素按奇偶分成两组，且各自保持原相对顺序。用两个临时数组 ev、od 分别接收原数组中的偶数与奇数（*p%2==0 判断偶数，负数取模结果非零即奇数），遍历一次用指针 *p 顺序读入并分别追加。最后先打印 ev 再打印 od，均用 first 标志控制空格。这样既分离又稳定，不破坏相对次序；时间复杂度 O(n)。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 8；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-184",
@@ -4742,7 +5074,11 @@
       ],
       "explanation": "字符串去重保留每个字符第一次出现：用结果串 t 与已存个数 k。外层指针 p 遍历原串 s，内层用 q 在 t[0..k-1] 中查找该字符是否已存在，若存在置 dup=1 跳过，否则追加到 t[k++] 并置 t[k]='\\0'。判断重复用两重循环 O(n^2)，但实现直观可靠，也能体会「结果数组即已收集集合」的指针用法。最后以 \\0 收尾才能用 %s 输出。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10000；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-185",
@@ -4799,7 +5135,11 @@
       ],
       "explanation": "qsort 通过「函数指针比较器」控制排序方向，这里把 cmp 作为第四个实参传入。比较器收到两个 const void*，先转成 Stu*，再比较 x->score 与 y->score：分数不等时返回 y->score - x->score 实现降序；相等时用 strcmp 按姓名升序。qsort 内部调用 cmp 来回交换，配合 sizeof(Stu) 确定元素大小。这样同一套排序代码可复用不同比较规则，正是函数指针的典型价值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n log n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-186",
@@ -4855,7 +5195,11 @@
       ],
       "explanation": "循环右移 k 位可用三次反转：先逆转整个数组，再把前 k 个逆转，最后把剩余部分逆转。推导：原数组 [a0..a_{n-1}] 逆转为 [a_{n-1}..a0]，前 k 个再逆转变为 [a_{n-k}..a_{n-1}]，末段逆转回 [a0..a_{n-k-1}]，合起来正是右移 k 位的结果。rev 用首尾指针 p<q 交换完成。k 先对 n 取模处理 k>n 的情况；k=0 时两次全反转抵消，得到原数组。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 40；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-187",
@@ -4911,7 +5255,11 @@
       ],
       "explanation": "求第二小分两步：先一趟指针遍历找到最小值 mn，再第二趟找「所有大于 mn 的元素中最小的那个」作为 sec。由于只要求大于最小值，重复的最小值会被跳过，因此 `1 1 1 1` 这类全相等数组找不到第二小，输出 -1；元素个数不足 2 同理。用 found 标志记录是否找到。这样只需 O(n) 两遍扫描，不用排序，且正确区分「相同值」与「次小值」。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-188",
@@ -4967,7 +5315,11 @@
       ],
       "explanation": "反转区间 [l,r] 用首尾指针：int *p=a+l 指向区间头，int *q=a+r 指向区间尾，两者交换内容后 p++、q--，直到 p>=q。这恰好只影响 [l,r]，区间外的元素保持原样。用指针直接定位而不用下标，体现「指针即地址、可相减定位」的理解。交换用临时变量 t 完成；l==r 时 p、q 重合，循环一次都不执行，区间不变。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-189",
@@ -5023,7 +5375,11 @@
       ],
       "explanation": "前缀和即前 i 项之和：用 long long 累加防溢出。指针 p 从 a 递增到 a+n，每次 s+=*p 后把当前和 s 输出。注意用 %lld 打印 long long，防止超出 int。用 first 标志控制空格，只在首个前缀和之前不加空格。这样一遍遍历即可得到全 n 个前缀和，O(n)。理解 a[i] 与 *(a+i) 等价，指针递增等价于下标 ++。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-190",
@@ -5079,7 +5435,11 @@
       ],
       "explanation": "两有序数组求公共元素用双指针归并式扫描：pa、pb 分别比较当前元素。a[pa]<b[pb] 时 pa++；a[pa]>b[pb] 时 pb++；相等则找到一个公共值，打印后分别 while 跳过两边的所有重复值，保证每个公共值只输出一次。由于两数组都升序，这样扫描不会漏也不会重。若全程没有相等则什么都不输出，输出为空串。复杂度 O(n+m)。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-191",
@@ -5135,7 +5495,11 @@
       ],
       "explanation": "判断数组是否回文用首尾双指针：int *p=a 指向头，int *q=a+n-1 指向尾，每次比较 *p 与 *q，不等则置 ok=0 并退出；相等则 p++、q-- 向中间靠拢，直到 p>=q。若全程都相等说明正反一致，ok 仍为 1。对奇数长度中间元素不需要比较；对 n=1 直接得到回文。使用的 char 换成 int 同理，核心是「对称位置相等」。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-192",
@@ -5191,7 +5555,11 @@
       ],
       "explanation": "冒泡排序逐趟把当前最大元素冒到末尾。外层控制趟数 i（共 n-1 趟），内层从 0 到 n-1-i 做相邻交换：若 a[j]>a[j+1] 则交换。每趟结束后打印当前数组一行，观察最大元素逐步就位。由于交换只在逆序时发生，已有序时某趟可能完全没有交换（本参考仍打印满 n-1 趟以便看清过程）。用指针/下标均可；打印分隔用 k 判断。n=1 时一趟都没有，输出为空。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 7；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-193",
@@ -5247,7 +5615,11 @@
       ],
       "explanation": "选择排序每趟「选出剩余部分最小元素放到当前位置」：外层 i 从 0 到 n-2，内层用指针 int *m=&a[i] 假定当前最小，再让 p 从 a+i+1 扫到 a+n，若 *p<*m 则更新 m 指向真正最小。一趟结束把 a[i] 与 *m 交换。这样每趟固定把一个元素放到正确位置，交换次数最多 n-1 次。对比冒泡它减少了交换，但比较次数仍是 O(n^2)。用指针定位最小元素下标切换，体现指针指向并解引用。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 10；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-194",
@@ -5303,7 +5675,11 @@
       ],
       "explanation": "先一趟指针遍历累加所有成绩得 sum，再把 sum/(double)n 得到平均分，用 %.2f 输出到两位小数。第二趟再遍历一次，统计 *p>avg 的人数（严格大于平均，等于不算）。注意除法要写成 double 才能得到小数，且这里用严格 >，成绩恰好等于平均分的学生不计入。两遍扫描 O(n)；若把平均分取整会改变 > 比较结果，故务必先保留浮点平均分再比较。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-195",
@@ -5359,7 +5735,11 @@
       ],
       "explanation": "鞍点定义为「在所在行最大、且在所在列最小」。对每个格 a[i][j]，用两个内层循环验证：行循环 k 检查是否 a[i][k]>a[i][j]，若存在更大则 rowMax=0；列循环 k 检查是否 a[k][j]<a[i][j]，若存在更小则 colMin=0。两者同时为 1 才是鞍点，找到第一个即输出并结束。注意用 >= / <= 时相同值也算成立，可能导致多个鞍点；扫描到第一个即返回。若无鞍点输出 -1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 9；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-196",
@@ -5415,7 +5795,11 @@
       ],
       "explanation": "findMax 返回指向最大元素的指针而非值：int *m=a 先指向首元素，再从 p=a+1 遍历到 a+n，若 *p>*m 则 m=p（指针指向新最大）。函数结束后通过返回值拿到「最大元素的地址」，主函数据此用 *p 取最大值、用 p-a 得到其下标。这正是「函数返回指针」的核心——返回变量生存期需在调用方（数组）中，所以返回数组元素地址是安全的，不能返回函数内局部变量的地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-197",
@@ -5472,7 +5856,11 @@
       ],
       "explanation": "动态内存分配用 malloc(n*sizeof(int)) 在堆上申请 n 个 int 的空间，返回的 void* 在 C 中可隐式转为 int*；用指针访问 a[i]（等价 *(a+i)），最后用 free(a) 释放避免泄漏。脚本输入 n 后申请、读入，再从 a[n-1] 倒着打印到 a[0] 即得逆序。malloc/free 是 C 动态数组的标准手段，也是 9.8 节核心；注意使用前要 #include <stdlib.h>，申请失败应检查返回值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 100；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-198",
@@ -5529,7 +5917,11 @@
       ],
       "explanation": "最大连续乘积因负数会「负负得正」，不能只保留最大极值，需同时记录「以当前元素结尾的最大乘积 mx 与最小乘积 mn」。每到一个新元素 x，计算 t1=mx*x、t2=mn*x，三者（x、t1、t2）中最大者作为新 mx、最小者作为新 mn，更新全局 best。这样遇到负数时，原来的最小（很大负数）乘以负数可能变成最大。指针遍历一遍 O(n)。注意乘积可能较大，本环境用 int 并控制 n 与数值在 int 范围内。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 5；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-199",
@@ -5585,7 +5977,11 @@
       ],
       "explanation": "原地去重利用数组已升序这一性质：用「读写双指针」k 记录去重后有效长度，读取指针 p 依次扫过原数组。当 k==0 或当前元素 *p 不等于已存的上一个元素 a[k-1] 时，把它写入 a[k++]（原地覆盖）。因为升序，相同元素必然相邻，所以只需和上一元素比较即可去重。最后先打印新长度 k，再打印 a[0..k-1]。这样原地完成，不额外申请空间，O(n)。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 7；时间复杂度：O(n)；空间复杂度：O(n)"
     },
     {
       "id": "c-ch09-alg-200",
@@ -5642,7 +6038,11 @@
       ],
       "explanation": "本题用「指针数组」char *p[100]，每个元素指向各字符串的首字符，再对这些指针排序。读入时 p[i]=s[i] 使指针数组指向二维字符数组的每行首地址。选择排序中用 strcmp(p[j], p[mi])<0 比较字符串字典序，交换的是「指针」而不是整段字符，效率高。最后按指针顺序 printf(\"%s\\n\", p[i])。理解 p[i] 是 char*、p 是 char**（双重指针），访问字符写作 p[i][j] 或 *(*(p+i)+j)。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": [],
+      "constraints": "数据规模：0 ≤ n ≤ 4；时间复杂度：O(n²)；空间复杂度：O(n)"
     },
     {
       "category": "c",
@@ -9602,7 +10002,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"5 7 5 7\"。关键：swap 的形参 p1、p2 是指针，但函数体内 `int *t=p1; p1=p2; p2=t;` 交换的是这两个局部指针变量本身，并没有通过解引用读写 a、b；实参是按值传递的，pa、pb 在调用者内仍指向 a、b。所以 a 仍是 5、b 仍是 7，*pa=5、*pb=7。易错点：想真正交换必须交换 `*p1` 与 `*p2`，只动指针是交换了个寂寞。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-102",
@@ -9624,7 +10027,10 @@
       "answerIsDescription": false,
       "explanation": "结论：第一行 \"6 8\"，第二行 \"8\"。关键：p 初始指向 a[0]=2；`p=p+2` 使 p 指向 a[2]=6，printf 打印 *p=6 与 *(p+1)=8；随后 `p++` 使 p 指向 a[3]=8，再打印 *p=8。数组元素在内存中连续存放，p+n 就是向右移 n 个 int 的步长（每步 sizeof(int) 字节）。易错点：*(p+1) 是取 p 下一个元素的值，不是 p+1 这个地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-103",
@@ -9646,7 +10052,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"1 3 1\"。关键：数组名 a 在表达式中自动退化为指向首元素的指针，所以 *a 等价于 a[0]=1；*(a+2) 等价于 a[2]=3；*（&a[0]）先取 a[0] 的地址再解引用，仍得 1。三者都是访问同一块连续内存的不同写法。易错点：a 本身不是指针变量、不能自增，但 *(a+k) 与 a[k] 完全等价。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-104",
@@ -9667,7 +10076,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"7\"。关键：inc 的形参 p 是 int*，函数内 `(*p)++` 通过指针解引用直接修改 p 所指向的内存单元。两次 inc(&x) 都把 x 的地址传进去，第一次 x 由 5 变 6，第二次由 6 变 7，最终打印 7。易错点：若形参写成 `int p`（值传递），函数内 p++ 只改局部副本，x 会保持 5。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-105",
@@ -9688,7 +10100,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"20 20 20\"。关键：int *p=&x 使 p 指向 x；int **pp=&p 使 pp 指向 p，即 pp 是「指向指针的指针」。`**pp=20` 沿两条链解引用，等价于 *p=20，也就是把 x 写成 20。于是 x、*p、**pp 三个量都是 20。易错点：*pp 是 p 的值（x 的地址），**pp 才是 x 的值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-106",
@@ -9709,7 +10124,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"3\"。关键：s 指向字符串常量 \"pointer\"，while(*s) 遍历到结尾的 \\0 为止；每遇到一个小写元音 a/e/i/o/u 就把 v 加一。\"pointer\" 中的元音是 o、i、e 三个，s++ 每轮后移一个字符。易错点：字符串以 \\0 结尾，while(*s) 在读到字符 r 后再走一步碰到 \\0 才终止；循环里每次都要 s++，否则死循环。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-107",
@@ -9730,7 +10148,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"8 2\"。关键：fp 是「指向函数的指针」int(*fp)(int,int)。`fp=add` 后调用 fp(5,3) 即调用 add，得 5+3=8；`fp=sub` 后调用 fp(5,3) 即调用 sub，得 5-3=2。函数名作地址赋值给函数指针，两者类型必须完全一致。易错点：fp 是函数指针，*fp(5,3) 与 fp(5,3) 等效，但绝不能写成 fp*()。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-108",
@@ -9751,7 +10172,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"1 3 5\"。关键：p 是指针数组，p[0]=&a[0]、p[1]=&a[2]、p[2]=&a[4]，分别保存 a 中三个不相邻元素的地址；*p[0]=a[0]=1、*p[1]=a[2]=3、*p[2]=a[4]=5。指针数组的元素本身是指针，解引用一次得到指向的 int。易错点：不要混淆 *p[i]（取第 i 个指针所指值）与 (*p)[i]（p 若为指向数组的指针才是）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-109",
@@ -9772,7 +10196,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"3 4\"。关键：a[2][3] 是二维数组；int(*p)[3]=a 让 p 指向「含 3 个 int 的一行」。(*p)[2] 等价于 p[0][2]=a[0][2]=3；*(*(p+1)+0) 先 p+1 移到第二行、*(p+1) 得该行首地址、再 +0 解引用得 a[1][0]=4。易错点：p 像一行一行往上移，p+1 前进整个一行（3 个 int），不是 1 个元素。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-110",
@@ -9793,7 +10220,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"2 95\"。关键：p 指向结构体 s。p->score=95 通过箭头运算符修改 score 成员；(*p).id=2 是等价的另一种写法，修改 id 成员。最终 s 为 {2, 95}，打印 p->id=2、p->score=95。易错点：p->score 与 (*p).score 完全等价，箭头运算符不过是指针解引用+成员的语法糖；结构体成员的访问要区分 . 与 ->。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-111",
@@ -9815,7 +10245,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"1 2 4 4\"。关键：a={1,2,3}，p 指 a[0]。第一个 `*p++` 先取值 a[0]=1 打印，副作用是 p 后移指向 a[1]；第二个 `(*p)++` 把 a[1] 的值 2 打印后自增成 3；第三个 `++*p` 先把 a[1] 自增成 4 再打印 4；最后 *p 仍是 a[1]=4。易错点：*p++ 是作用于指针 p 的自增（后置），(*p)++ 是作用于值，++*p 是前置自增值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-112",
@@ -9837,7 +10270,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"4 1 0\"。关键：p 指 a[0]，q 指 a[4]。q-p 是两指针之间元素个数差（4），不是字节差；p<q 为真，输出 1。把 p=q 之后 p 与 q 指向同一元素，q-p=0。易错点：指针相减得到的是按元素个数算的距离，必须先确认两指针指向同一数组；指针比较只在同一数组内才有意义。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-113",
@@ -9859,7 +10295,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"no\" 换行后 \"7\"。关键：q=NULL 是空指针，`if(q)` 判 q 是否为非空；空指针为假，走 else 打印 \"no\"，从而避免了在 if 分支里解引用 NULL 的非法访问。随后 *p 解引用得到 x=7。易错点：用 if(p) 或 if(p!=NULL) 判断空指针再解引用，是避免段错误的正确习惯；NULL 解引用是未定义行为。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-114",
@@ -9881,7 +10320,10 @@
       "answerIsDescription": false,
       "explanation": "结论：第一行 \"2\"，第二行 \"10 10\"。关键：`const int *p` 是「指向常量的指针」，*p 不能改但 p 本身可以重新赋值，故 p=&b 合法，*p=2；`int *const q` 是「常量指针」，q 不能改指向但可改写 *q，故 *q=10 把 a 改成 10。打印 a=10、*q=10。易错点：两种 const 位置含义相反，是 *p 受限还是 p 受限要看清。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-115",
@@ -9902,7 +10344,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"9 6\"。关键：max 返回的是「指向较大值所在变量的指针」，而不是值本身。第一次 max(&x,&y)：y=9>x=4，返回 &y，*p=9；第二次 max(&x,&z)：z=6>x=4，返回 &z，*p=6。函数返回的指针仍指向调用者栈上的 x、y、z，有效期覆盖整个 main，合法。易错点：这里返回的是调用者变量的地址，若返回函数内局部变量的地址就是悬垂指针。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-116",
@@ -9924,7 +10369,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"12\"。关键：a 是 3 行 2 列的二维数组，p 是「指向含 2 个 int 的一行」的指针。循环里 *(*(p+i)+1) 先用 p+i 移到第 i 行，*(p+i) 得到该行首元素地址，+1 再解引用取第 i 行第 1 列。三行取 a[0][1]=2、a[1][1]=4、a[2][1]=6，累加得 12。易错点：p 按行移动，步长是整行；*(*(p+i)+j) 与 a[i][j] 完全等价。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-117",
@@ -9946,7 +10394,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"200 4 1\"。关键：p 是 int*，*(p+1)=a[1]=200；把 p+1 转成 char* 再减 p 的 char*，（p+1）与 p 的字节差是 sizeof(int)=4，说明 int* 每次加 1 前进 4 字节；q 本来就是 char*，q+1-q=1，说明 char* 每次只前进 1 字节。易错点：指针加法的步长由指针所指类型决定，int* 与 char* 虽都指向同一地址，但前进量不同。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-118",
@@ -9968,7 +10419,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"10 20 30\"。关键：malloc(3*sizeof(int)) 在堆上申请可放 3 个 int 的空间，p 指向它。循环给 p[0]、p[1]、p[2] 分别赋值 (i+1)*10=10、20、30；再用指针下标打印，每轮输出一个数加一个空格。最后 free(p) 释放堆内存避免泄漏。易错点：malloc 返回 void*，C99 下需显式转换成 int*（或直接赋给指针也行）；用完必须 free，否则内存泄漏。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-119",
@@ -9990,7 +10444,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"16 8 4\"。关键：在 main 中 a 是真正的数组，sizeof(a)=4*4=16 表示整数组字节数；调用 f(a) 时数组名退化为指向首元素的指针，形参 int a[] 实际是 int*，所以 f 内 sizeof(a)=8（64 位平台指针占 8 字节）；sizeof(a[0])=4 是单个 int 的字节数。易错点：数组作为函数参数会退化，sizeof(形参) 只能得到指针大小，得不到数组大小。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-120",
@@ -10011,7 +10468,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"30 40 20 10\"。关键：p=&a[2] 指向中间元素 30。指针可带下标：p[0]=*(p+0)=30、p[1]=*(p+1)=40；负数下标 p[-1]=*(p-1)=a[1]=20、p[-2]=*(p-2)=a[0]=10。p[k] 与 *(p+k) 完全等价，k 可为负表示向左移动。易错点：负下标只是相对 p 向左走，仍在数组 a 的范围内，未越界。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-121",
@@ -10033,7 +10493,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"dcba\"。关键：p 指向字符串首 \"abcd\"，q 指向最后一个字符（strlen(s)-1 得到下标 3）。while(p<q) 用首尾两指针向中间逼近，每轮解引用交换 *p 与 *q，然后 p++、q--。于是 a 与 d 换、b 与 c 换，原地把 \"abcd\" 逆序成 \"dcba\"。易错点：q 用 strlen 定位到 \\0 前一位，不能含结束符；循环条件 p<q 保证奇数长度时中间字符不动。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-122",
@@ -10054,7 +10517,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"8 4 12\"。关键：fp 是函数指针数组，三个元素分别指向 add、sub、mul。循环 i=0,1,2 调用 fp[i](6,2)：add(6,2)=8、sub(6,2)=4、mul(6,2)=12，每轮打印后带一个空格。易错点：函数指针数组的声明 int(*fp[3])(int,int) 中，[] 先于 * 结合，fp 是数组、每个元素是指向函数 int(int,int) 的指针。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-123",
@@ -10075,7 +10541,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"7 12\"。关键：op 的返回类型是 int(*)(int,int)，即「返回指向函数的指针」；op('+') 返回 add、其余返回 mul。main 里 f=op('+') 得 add，f(3,4)=7；再 f=op('*') 得 mul，f(3,4)=12。易错点：int(*op(char c))(int,int) 的声明中，char c 是入参、int(*)(int,int) 是返回的函数指针类型，需与 add/mul 签名完全一致。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-124",
@@ -10096,7 +10565,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"-1\"。关键：s 与 t 分别指向 \"abc\" 和 \"abd\"。while(*s && *s==*t) 在字符相等且 s 未到 \\0 时 s++、t++ 前进，直到第 3 个字符：s 处是 'c'（ASCII 99），t 处是 'd'（ASCII 100），二者不等退出循环，打印 *s-*t=99-100=-1。易错点：字符串比较靠逐字符比较 ASCII 码，差值即字典序大小；\u0000 的 ASCII 为 0，\\0 与字符比较时用 *s 判空。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-125",
@@ -10118,7 +10590,10 @@
       "answerIsDescription": false,
       "explanation": "结论：输出 \"10 2 30\"。关键：p 是指针数组，pp=p 是二级指针。**pp 先 *pp 得 p 的首元素 p[0]（即 &a），再解引用得 a，**pp=10 把 a 写成 10。*(*(pp+2)) 把 pp+2 移动一个指针位置指向 p[2]（即 &c），再两级解引用得 c，=30 把 c 写成 30。b 没被改动仍是 2。易错点：*(pp+k) 是第 k 个指针元素，再解引用一次才是所指的 int，两层指针要解两次。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-126",
@@ -10141,7 +10616,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 rev 实现字符串原地反转：q 指向末尾字符（p+strlen-1），p、q 两个指针从两端向中间靠拢。每轮循环先把 *p 存入临时变量 t，再把 *q 赋给 *p，把 t 赋给 *q，随后 p++、q-- 同时内移。当 p 与 q 相遇或交错（p<q 为假）时循环结束，此时整个字符串被对称交换。对 \"abcd\"：先交换 a 与 d 得 \"dbca\"，再交换 b 与 c 得 \"dcba\"，字符个数为偶数恰好能两两完成交换。易错点：q 初始是 p+strlen(p)-1，即指向最后一个字符而非末尾的 \\0；如果误用 p<=q 会把中间字符重复交换一次（奇数长度时更是如此）。最终输出 dcba。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-127",
@@ -10163,7 +10641,10 @@
       "answerIsDescription": false,
       "explanation": "程序定义一个指针数组 p，四个元素分别是指向字符串字面量 \"red\"、\"green\"、\"blue\"、\"white\" 的字符指针。for 循环从 i=3 递减到 0，每次用 printf(\"%s \", p[i]) 打印对应字符串并在其后输出一个空格。p[3] 是 \"white\"，p[2] 是 \"blue\"，p[1] 是 \"green\"，p[0] 是 \"red\"，所以打印顺序正好与定义顺序相反。易错点：下标越界方向——从大到小遍历时 i 从元素个数减 1（即 3）开始，到 0 结束，i>=0 的条件保证最后一个元素也被打印；%s 会一直打印到字符串末尾的 \\0 为止，因而不需要知道每个字面量的长度。输出：white blue green red。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-128",
@@ -10185,7 +10666,10 @@
       "answerIsDescription": false,
       "explanation": "程序声明了一个函数指针数组 f，元素类型是 int(*)(int,int)，即指向\"接收两个 int、返回 int\"的函数的指针，并初始化指向 add、sub、mul 三个函数。循环里 f[i](x,y) 等价于用指针调用对应的函数：f[0](6,3) 调 add 得 6+3=9，f[1](6,3) 调 sub 得 6-3=3，f[2](6,3) 调 mul 得 6*3=18。易错点：函数名（不含括号）本来就是函数指针，可直接赋给函数指针变量；调用时必须写成 f[i](x,y) 而不要写成 (*f[i])(x,y) 之外的奇怪形式，二者其实等价；函数声明处必须写全返回类型、参数类型和一个个括号，语法 int (*f[3])(int,int) 表示 f 是数组、元素是函数指针。输出：9 3 18。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-129",
@@ -10207,7 +10691,10 @@
       "answerIsDescription": false,
       "explanation": "程序把二维数组 a 用一个行指针传入函数 row。形参 int (*p)[4] 表示 p 是指向\"长度为 4 的 int 数组\"的指针，这正是二维数组一行数据的地址类型；形参的第二维 4 不能省略，否则编译器无法计算 a[i][j] 的内存偏移。调用 row(a,1) 时数组名 a 退化为指向首行的指针，r=1 表示取出第 1 行。函数里 p[1][j] 等价于 *(*(p+1)+j)，即原始数组 a[1][j]，依次是 5、6、7、8。易错点：二维数组作参数时列数必须写明；p[r] 取出的是第 r 行首地址，再 [j] 才是该行第 j 个元素。输出：5 6 7 8。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-130",
@@ -10230,7 +10717,10 @@
       "answerIsDescription": false,
       "explanation": "程序通过指针 p 指向变量 n，再用位运算统计 n 的二进制表示中 1 的个数。循环条件 *p 非零才继续：每轮先执行 cnt += *p & 1，即把当前最低位（&1 取末位）加到 cnt 上，再把 *p 右移一位（*p = *p >> 1）丢弃最低位。n=6 的二进制是 110：第一轮最低位是 0，cnt 不变，*p 变成 3（11）；第二轮最低位是 1，cnt 变 1，*p 变成 1；第三轮最低位是 1，cnt 变 2，*p 变成 0；第四轮 *p 为 0 循环结束。易错点：& 与 && 不同，这里用的是按位与 &；右移 >> 是整除式位移，整数右移一位相当于除以 2；循环当 *p 为零即二进制全零时停止。最终输出 2。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-131",
@@ -10253,7 +10743,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 malloc 一次性申请 2*3 个 int 的连续内存，并赋给行指针 a（类型 int(*)[3]），从而把这段内存当作一个 2 行 3 列的动态二维数组。双重 for 循环按 a[i][j] = i*3+j+1 填值：第 0 行是 1、2、3，第 1 行是 4、5、6。随后循环打印每行的第 1 列 a[i][1]，即第 0 行的 2 和第 1 行的 5。易错点：必须用 free(a) 释放 malloc 申请的内存，虽然本题释放与否不影响已打印的结果；a[i][j] 等价于 *(*(a+i)+j)，行指针步进一行的字节数是 3*sizeof(int)；申请字节数要写成 2*3*sizeof(int)，否则不够放完整内存会越界。输出：2 5。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-132",
@@ -10276,7 +10769,10 @@
       "answerIsDescription": false,
       "explanation": "程序比较同一数组内两个指针的关系。q 指向 a[3]，p 指向 a[0]（数组名 a 即首元素地址）。表达式 q - p 是同一数组内两个指针的元素差，等于相差的元素个数，即 (a+3)-(a+0)=3，所以第一项打印 3。p < q 是比较两个指针地址的大小，p 指向 a[0] 在 q 指向的 a[3] 之前，关系成立，打印 1。易错点：只有指向同一数组（或数组末尾之后一位）的指针才能相减，相减的结果是\"元素个数差\"而不是字节数差，这是编译器按元素大小自动换算的；指针比较比较的是地址的相对先后，不是它所指向的值的大小。输出：3 1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-133",
@@ -10298,7 +10794,10 @@
       "answerIsDescription": false,
       "explanation": "程序用递归求和。sum 接收数组首指针 p 与元素个数 n：当 n==0 时返回 0 作为递归出口；否则返回 *p 加上 sum(p+1, n-1)，即取当前元素后让指针后移一位、计数减一。展开 sum(a,5)：*a=1 加上 sum(a+1,4)；sum(a+1,4)=2 加 sum(a+2,3)；依此类推，最终是 1+2+3+4+5=15。易错点：递归出口必须是 n==0 而不能是到达某个无效指针，否则会一路读下去越界；每次递归指针 p 都会 +1，等价于把数组元素逐个作为 *p 访问；n 与 p 必须同步变化，否则要么重复取值要么漏取。最终输出 15。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-134",
@@ -10321,7 +10820,10 @@
       "answerIsDescription": false,
       "explanation": "程序用指针遍历数组并做累加，循环条件 *p != 0 把 0 当作哨兵值。数组 a 的元素是 3、7、2、9、0，p 从 a[0] 开始：第一轮 *p=3 非 0，s 加 3 变 3；第二轮 *p=7，s 变 10；第三轮 *p=2，s 变 12；第四轮 *p=9，s 变 21；第五轮 *p=0，条件 *p!=0 为假，循环结束，p 并没有把最后这个 0 累加进去。易错点：这是典型的\"以 0 结尾\"的数组约定，0 只作为结束标记不参与运算；如果循环条件写成 *p!=0 而数组末尾恰好没有 0，就会出现越界；最后一遍循环判断时 p 已指向末尾 0，但不会进入循环体。最终输出 21。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-135",
@@ -10343,7 +10845,10 @@
       "answerIsDescription": false,
       "explanation": "程序定义了一个结构体数组 s，每个元素含 name 和 score 两个成员，并初始化为三行（Tom/Ann/Lee 及各自分数）。指针 p 初始指向 s[0]（数组名 s 即首元素地址），for 循环每轮用 p->score 通过箭头运算符访问指针所指向结构体的 score 成员，随后 p++ 使 p 指向下一个结构体元素。三轮分别得到 80、92、75，均带上一个空格。易错点：p->score 与 (*p).score 完全等价，箭头运算符是\"指针指向结构体成员\"的简便写法；p++ 使指针步进的是整个 struct Stu 的大小（含 name 数组的 10 字节），而不是只走 4 字节，这由编译器自动计算；若写成 p+1 后再解引用要特别注意括号。输出：80 92 75。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-136",
@@ -10365,7 +10870,10 @@
       "answerIsDescription": false,
       "explanation": "程序用指针求数组最大值。p 指向数组 a 的首元素，max 先取 *p 即 a[0]=5 作为初始最大。for 循环从 i=1 到 3，用 *(p+i) 依次访问 a[1]、a[2]、a[3]：i=1 时 *(p+1)=8 大于 5，max 更新为 8；i=2 时 *(p+2)=3 不大于 8，不更新；i=3 时 *(p+3)=6 不大于 8，不更新。循环结束后 max 保持 8。易错点：*(p+i) 与 p[i] 以及 a[i] 三者等价，都是访问同一元素；初始 max 必须取某个实际元素而不是 0，否则全是负数的数组会得到错误结果；循环从 1 开始是因为 a[0] 已经作为初值被取走。最终输出 8。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-137",
@@ -10387,7 +10895,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示指针越过\"逻辑上\"数组边界但仍在包围它的更大数组内的情形。data 有 6 个元素，p 指向 data[0]。第一项 *(p+2) 就是 data[2]=3。第二项 q = p+4 使 q 指向 data[4]=5，因而打印 5。易错点：这里 q 并没有真的越界，因为 data 数组本身有 6 个元素，data[4] 是合法元素；真正越界的风险在于：如果读者误以为 data 只有 3 个元素，就会把 p+4 当成越界；更危险的是，若实际数组只有 3 个元素，那么 p+3 及之后访问的就是未定义行为，可能读到垃圾值甚至崩溃。C 标准只允许指针指向数组元素或末尾之后的\"一位\"，越界越多的取值结果是未定义的。输出：3 5。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-138",
@@ -10409,7 +10920,10 @@
       "answerIsDescription": false,
       "explanation": "程序澄清\"交换指针\"与\"交换被指值\"的根本区别。x=4、y=9，p 指向 x、q 指向 y。随后 p=q、q=t（t 保存了原 p）只是让 p 改成指向 y、q 改成指向 x，并没有动 x 和 y 的内存内容。于是第一行 *p=9（p 现在指向 y 的值）、*q=4（q 现在指向 x 的值）。第二行直接打印 x 和 y，它们仍是 4 和 9，因为整个过程中没有任何语句向 x、y 所在地址写值。易错点：交换的是两个指针变量保存的地址，而不是地址所指向的整数值；若想真正交换 x、y 的值，需要写成交换 *p 与 *q，即对解引用后的值执行 t=*p; *p=*q; *q=t。输出两行为 9 4 和 4 9。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-139",
@@ -10431,7 +10945,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示函数返回指针后可以继续作为实参做链式调用。skip 接收字符串首指针 s 与偏移 n，返回 s+n 即指向原串第 n 个字符的指针。字符串 \"program\" 下标为 0:p、1:r、2:o、3:g、4:r、5:a、6:m。第一次 skip(s,2) 返回指向 s[2] 的指针，即子串 \"ogram\"；第二次 skip(skip(s,2),3) 等价于对 \"ogram\" 首指针 (s+2) 再加 3，即 s+5，指向原串的 s[5]，从这里 %s 打印到末尾得 \"am\"。易错点：返回的是指向原字符串内部的指针，不是新拷贝，因此所有操作都作用于同一块内存；偏移 n 是从首指针开始计数的元素个数，叠加时是累计偏移；%s 一律打印到末尾的 \\0 为止。最终输出 am。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-140",
@@ -10453,7 +10970,10 @@
       "answerIsDescription": false,
       "explanation": "程序区分 const 修饰指针的两种含义。const char *p 表示\"p 指向的内容是常量\"（不能通过 *p 改写），但 p 本身可以重新赋值，所以 p = b 合法，p 改指 \"XYZ\"。char * const q 表示\"q 本身是常量指针\"（不能再改变 q 指向），但 q 指向的内容可变，所以 *q = 'M' 合法，它把 a[0] 改成 'M'，a 变成 \"MBC\"。最后 printf(\"%s %s\", p, a) 打印 p 指向的 \"XYZ\" 和 a 当前的 \"MBC\"。易错点：*p 与 p 的可写/可改性是两回事；本题 p 可以重新指向、q 不能改变指向；若试图 *p = 'X' 会编译报错，若试图 q = b 也会编译报错。输出：XYZ MBC。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-141",
@@ -10475,7 +10995,10 @@
       "answerIsDescription": false,
       "explanation": "程序用字符指针遍历字符串并验证结束符。s 是字符数组 \"ABC\"，其后自动补一个 \\0。p 从 s[0] 开始，while(*p != '\\0') 循环里 printf(\"%c\", *p) 逐个打印字符，p++ 前进一位，分别打印 'A'、'B'、'C'，直到 p 指向末尾的 '\\0' 时条件为假退出循环。此时 p 恰好在末尾 \\0 处，所以 *p == '\\0' 成立，结果为真值 1。于是整行输出是 \"ABC | 1\"。易错点：%c 打印的是字符本身；退出循环后指针停在结束符处而不是越界，这是字符串遍历的常见落点；*p=='\\0' 比较的是字符值，结果为 1 表示真。最终输出 ABC | 1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-142",
@@ -10497,7 +11020,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示对字符数组的几种打印方式。s=\"hello\"，p 指向 s[0]。第一行 printf(\"%c %c\", *p, *(p+4))：*p 是 s[0] 即 'h'，*(p+4) 是 s[4] 即 'o'，所以打印 h o。第二行 printf(\"%s\", p+1)：p+1 指向 s[1]，%s 从 s[1] 打印到末尾的 \\0，得 \"ello\"。易错点：%c 只打印一个字符，必须用解引用或下标取单个元素；%s 需要的是\"字符串首地址\"，传 p+1 即从第二个字符开始打印，直到遇见 \\0 为止；字符数组的末尾 \\0 不会被 %s 打印出来，却决定了字符串的结束位置。输出两行为 h o 和 ello。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-143",
@@ -10519,7 +11045,10 @@
       "answerIsDescription": false,
       "explanation": "程序模拟了 main 的参数环境。argv 是一个指针数组，每个元素是一个 char* 字符串；p 是 char**，指向 argv 的首元素。第一行 p[0] 即 argv[0]=\"./prog\"。第二行 *(p+2) 即 argv[2]=\"world\"。第三行 *(*p+2)：*p 是 argv[0]（一个字符串首指针），再 +2 指向该字符串下标 2 的字符，解引用输出 'p'。易错点：多层解引用必须一层层来，*(p+2) 是取第 2 个指针，不能当成单层访问；*(*p+2) 要先取 *p 得到首指针，再 +2 偏移，最后解引用；要确认字符串 \"./prog\" 的下标 0 为 '/'、1 为 '.'、2 为 'p'、3 为 'r'，所以输出的是下标 2 的 'p' 而不是 'r'。输出三行为 ./prog、world、p。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-144",
@@ -10541,7 +11070,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示指针的赋值链和二级指针。x=7，p 指向 x，q=p 使 q 也指向 x（指针赋值是拷贝地址），r=&p 使 r 是指向 p 的二级指针。第一行 *p、*q、**r 都是通过不同路径取到 x 的值 7，所以打印 7 7 7。第二行 **r=8：**r 等价于 *(*r)，*r 是 p（取 r 指向的 p），再解引用 *p 就是 x，因此把 x 改成 8，再打印 x 得 8。易错点：一级指针用 * 解引用取目标，二级指针用 ** 需要解开两层；r=&p 存的是 p 的地址，而不是 x 的地址；q=p 只是让 q 和 p 保存相同地址，q 与 p 是两个独立的指针变量，改 *p 或 *q 都会反映到同一个 x 上。输出两行为 7 7 7 和 8。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-145",
@@ -10563,7 +11095,10 @@
       "answerIsDescription": false,
       "explanation": "程序用 sizeof 计算数组元素个数并用指针差验证。sizeof(a) 是整个数组占的字节数（5 个 int），sizeof(a[0]) 是单个元素占的字节数（1 个 int），二者相除得到元素个数 5，这是一种不依赖具体 int 字节数、可移植地求数组长度的惯用写法。p 指向 a[0]，q 指向 a[4]，q - p 得到同一数组内两指针的元素差（4-0=4），即 4。易错点：sizeof(a) 在数组名直接作用于 sizeof 时返回整个数组的大小，但当数组名作为函数参数或赋给指针后就退化为首元素地址，那时 sizeof 得到的是指针的大小；q-p 的结果是元素个数差而非字节数差，编译器已按元素大小换算；本程序用 sizeof 与数组元素除法得出 5，再用指针差验证数组长度，两种手段都得到 5 和 4。输出：5 4。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-146",
@@ -10585,7 +11120,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示函数借助指针同时\"返回\"两个结果。mm 的形参 a 是数组（等价于首指针 int*），mx、mn 是两个 int*，用于把结果写回调用者。函数内先执行 *mx=*mn=a[0]，即把 mx、mn 指向的位置都设为数组首元素 4；随后遍历 1 到 n-1：a[i]>*mx 时更新 *mx，a[i]<*mn 时更新 *mn。数组 4、9、2、7 中最大 9、最小 2。结束时 main 通过 &mx、&mn 把地址传入，函数把 9、2 写回这两个地址，printf 打印 mx、mn 分别为 9、2。易错点：要让函数修改调用者的变量，必须传地址（&mx、&mn），形参声明为 int*；若形参写成 int mx 就只是值传递，改不到外部变量；*mx=*mn=a[0] 是把 a[0] 同时赋给两个目标，顺序上先赋给 *mn 再赋给 *mx，两者相等。输出：9 2。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-147",
@@ -10607,7 +11145,10 @@
       "answerIsDescription": false,
       "explanation": "程序用二级指针交换两个指针变量的指向。swapP 的形参 int **a、int **b 接收的是两个一级指针变量的地址。函数内 int *t = *a 取出 *a 原本保存的指针（先备份），再 *a = *b 把 b 处保存的指针写到 a 处，最后 *b = t 把备份写回 b 处，从而交换了两个指针变量保存的地址。main 中 p 指向 x=1、q 指向 y=2，调用 swapP(&p,&q) 后 p 指向 y、q 指向 x，所以 *p=2、*q=1。易错点：形参是 int** 因为要改写调用者的指针变量，必须传指针变量的地址；函数里解引用两次（如 *a 取到的是\"保存的指针\"）才能完成交换；若形参写成 int* 则只能改指针所指向的值，改不了指针本身。输出：2 1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-148",
@@ -10629,7 +11170,10 @@
       "answerIsDescription": false,
       "explanation": "程序演示结构体成员本身是一个指针。struct Box 含一个 int* p 和一个 int n。b.p = vals 使结构体的指针成员 p 指向数组 vals 的首元素，b.n = 3。printf(\"%d %d\", *(b.p+1), b.n) 中，*(b.p+1) 是取 b.p 指向的数组第 1 个元素（越过了第 0 个），即 vals[1]=7；b.n 是结构体成员 3。易错点：访问结构体成员 p 用 .（点）运算符，而访问 p 所指向的内容要用解引用，即 *(b.p+1) 等价于 b.p[1]；b.p 与 b 是\"包含\"关系，p++ 或 p+1 移动的是 p 指向的目标；n 是普通成员直接取值，不要加 *。输出：7 3。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-149",
@@ -10651,7 +11195,10 @@
       "answerIsDescription": false,
       "explanation": "程序用字符指针遍历统计某字符出现次数。count 接收字符串首指针 s 与目标字符 c，循环 while(*s) 在 *s 非零（即未到字符串末尾的 \\0）时继续：若 *s==c 则 n++，然后 s++ 前进一位。对字符串 \"banana\"，字符依次是 b、a、n、a、n、a，其中 'a' 出现在第 1、3、5 个位置（下标 1、3、5），共 3 次，所以 count 返回 3。易错点：while(*s) 的终止条件是遇到 \\0（ASCII 0），这就是字符串结束的约定；s++ 必须每轮都执行，否则变成死循环；比较的是字符值相等，n 统计的是出现次数。最终输出 3。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-cr-150",
@@ -10673,7 +11220,10 @@
       "answerIsDescription": false,
       "explanation": "程序用指针算术实现折半查找。find 接收数组首指针 a、长度 n 和要查的 key，用 lo、hi 维护当前区间。每轮取 mid = lo + (hi-lo)/2，用 *(a+mid) 访问中间元素：等于 key 就返回下标；小于 key 说明目标在右半段，lo=mid+1；大于则在左半段，hi=mid-1。数组 {2,5,8,12,16,23,38} 查 16：mid=3（12<16 走右）→lo=4；mid=5（23>16 走左）→hi=4；mid=4（等于 16）返回 4。查 20：mid=3（12<20）→lo=4；mid=5（23>20）→hi=4；mid=4（16<20）→lo=5；此时 lo=5>hi=4 循环结束，返回 -1。易错点：数组必须有序，否则折半查找结果不可靠；*(a+mid) 等价于 a[mid]；mid 取 (lo+hi)/2 可能溢出，用 lo+(hi-lo)/2 更稳妥；返回 -1 表示未找到。输出：4 -1。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-dbg-013",
@@ -11036,7 +11586,10 @@
       "reference_answer": "指针与数组关系密切但不等同。等价方面：一，数组名在大多数表达式中退化为指向首元素的指针，因此可赋给指针变量（int *p = a）；二，下标运算 a[i] 与 *(a + i) 完全等价，a + i 是按元素类型缩放后的地址，解引用即得元素，因此用指针遍历数组与用下标等价，这就是二者操作可互换的根源；三，对函数形参而言，int a[] 与 int *a 等价，形参就是指针。不同方面：一，数组名是地址常量，不可改变、不能作为左值被赋值，而指针变量可以指向别处、可以移动；二，sizeof(a) 得到整个数组的字节数，sizeof(p) 只得到指针本身大小；三，数组有确定的元素个数（可从 sizeof 推知），指针只是地址，不携带长度信息；四，取 a 的地址是「指向整个数组的指针」类型，取 p 的地址是「指向指针的指针」，语义不同。结论：理解「数组名退化为首元素指针」与「数组名本身是只读首地址」这对相反性质，是掌握两者关系的关键。",
       "explanation": "本题考指针与数组的「等价与不等价」两面。等价源于数组名退化为首元素指针、下标与 *(a+i) 等价；不等价源于数组名是只读地址常量、不携带长度、取地址语义不同。答题要避免「数组就是指针」的绝对化，抓住退化与常量地址这对相反性质。能同时讲清等价缘由与差异本质并用 sizeof 例证者，是得高分的关键。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-ea-027",
@@ -11060,7 +11613,10 @@
       "reference_answer": "普通变量直接存放数据本身（如 int x = 5 存的是数值 5），访问时通过变量名直接读写该存储单元。指针变量存放的是另一个变量的地址（如 int *p = &x 中 p 存的是 x 的地址），它本身也占存储单元，但内容是一个地址，用来「指向」别的变量。访问方式不同：普通变量直接以名字或取地址 & 访问；指针变量用解引用运算符 * 访问它所指向的变量，即 *p 就等价于它所指向的那个变量（读写 x）。运算方式不同：普通变量做算术运算（如 x+1）是对数值运算；指针做算术运算（p+1）是按它指向类型的字节数前进，即移动到下一个元素（如 int 指针加 1 前进 4 字节），这与普通整数加 1 意义完全不同。此外，指针要指向某对象才有意义，未初始化或指向无效地址的指针（野指针、悬垂指针）解引用会造成严重错误，因此指针使用前必须初始化，并注意 const 限定可保护所指向的数据。总结：普通变量存数据，指针变量存地址；普通变量以名字访问，指针以解引用访问它指向的对象，且指针的算术是按元素大小步进。",
       "explanation": "本题考指针的本质：它是一个存地址的变量，通过 * 间接访问目标。答题要抓住「存的数据」（值 vs 地址）与「访问方式」（名字 vs 解引用）两条主线，并说明指针算术按元素大小步进这一特殊之处。还要强调初始化与野指针风险，因为这些是初学者最容易出错的地方。能把「指针存地址、* 取目标、算术按步长」三点讲清并加上安全提醒，答案才完整。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-ea-028",
@@ -11084,7 +11640,10 @@
       "reference_answer": "动态内存分配用 malloc/calloc/realloc 在堆区分配内存，用 free 释放，使用时需注意：一，必须检查 malloc 的返回值是否为 NULL：分配失败时返回 NULL，若不解引用前检查而直接使用，会访问空指针导致程序崩溃；二，分配后要判断分配的大小是否合适并正确初始化；三，必须与 free 配对，且 free 只能释放 malloc 分配的指针，释放后应将该指针置为 NULL，避免悬垂指针（dangling pointer）——即指向已释放内存的指针，再次解引用会造成未定义行为；四，避免内存泄漏：动态分配的内存若不再使用却未 free，程序运行中持续占用，长时间运行会耗尽堆内存；五，不要多次释放同一块内存（double free）或释放栈上/非动态分配的内存，否则是未定义行为，甚至破坏堆结构；六，realloc 失败会返回 NULL 且原指针仍有效，不能直接覆盖原指针，否则会丢失原内存；七，注意内存对齐与边界：分配的大小要按需求，使用后及时释放。总结：检查 NULL、正确配对 free、释放后置 NULL 防悬垂、避免泄漏与双重释放，是动态内存管理的核心规范。",
       "explanation": "本题考动态内存管理的完整规范。核心是内存的「申请-使用-释放」生命周期要正确：检查 NULL、配对 free、置 NULL 防悬垂、避免泄漏与 double free。答题要把常见错误（空指针、泄漏、悬垂、双重释放、realloc 覆盖）及其后果讲清。能点出 realloc 失败不能覆盖原指针、以及 free 后置 NULL 这个好习惯者，答案更完整。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "category": "c",
@@ -12284,7 +12843,10 @@
       ],
       "explanation": "本题考查取地址运算符 & 与解引用运算符 *。第 1 空填 &a，把整型变量 a 的地址取出来赋给指针 pa，使 pa 指向 a。第 2 空同理填 &b，让 pb 指向 b。printf 中 *pa 解引用得到 a 的值，*pb 得到 b 的值，因此输出为两数之和与两数之积。易错点：指针变量只能存地址，必须用 & 取地址，不能直接把整数值赋给指针；数组名作为地址时不能再加 &。例如输入 3 5 输出 8 15。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-102",
@@ -12358,7 +12920,10 @@
       ],
       "explanation": "本题考查通过指针遍历一维数组。第 1 空填 a，数组名 a 等价于首元素地址 &a[0]，把它赋给 p 让 p 指向数组开头。第 2 空填 *p，解引用指针得到当前指向元素的值，累加到 s。第 3 空填 p++，使 p 后移一个 int，下一轮取下一个元素。易错点：p++ 移动的字节数是 sizeof(int)（指针算术按所指类型走），也可写成 p=p+1；条件与下标无关，p 前进多少次由外循环 i 控制。n=0 时循环体不执行，s 保持初值 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-103",
@@ -12423,7 +12988,10 @@
       ],
       "explanation": "本题考查用指针参数在函数内真正修改实参。形参 int *a、int *b 接收的是变量地址，函数内 *a、*b 就是实参变量本身。第 1 空填 *a，把 a 指向的值暂存到 t。第 2 空填 *b，把 b 指向的值写到 a 所指位置。第 3 空填 t，把暂存的原值写到 b 所指位置，完成交换。易错点：若写成 a、b（不带 *）只是交换两个地址副本，x、y 不会改变；main 中必须传 &x、&y 才能把地址传入。例如输入 3 5，输出 5 3。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-104",
@@ -12496,7 +13064,10 @@
       ],
       "explanation": "本题考查空指针 NULL 的返回与判空。find 在数组中找到等于 key 的元素时返回该元素地址 &a[i]（第 1 空）；找不到返回空指针 NULL（第 2 空）。main 接收返回值后，解引用前必须先判空，第 3 空填 !=NULL，即指针非空才输出 *p，否则输出 not found。易错点：对空指针直接解引用（*p）会引发运行时错误；NULL 与 0 等价但习惯用 NULL；不能用 &a[i] 之外的方式返回指向内部元素的地址。a={3,7,9,1,5}，输入 9 输出 9，输入 2 输出 not found。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-105",
@@ -12562,7 +13133,10 @@
       ],
       "explanation": "本题考查动态内存分配 malloc 与释放 free。第 1 空填 sizeof(int)，malloc 以字节为单位，n 个 int 需要 n 个 int 的大小，写成 sizeof(int) 才能平台无关。第 2 空填 p[i]（等价 *(p+i)），分配成功后 p 可像普通数组一样按下标访问，把读入值累加到 s。第 3 空填 free(p)，释放堆上内存。易错点：malloc 返回 void* 需按目标类型转换；分配后必须判空（本程序 if(p==NULL) return 1）；free 只释放一次，避免 double free 或内存泄漏；sizeof 不能省略成 1 或同类型名。n=3 读入 10 20 30 输出 60。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-106",
@@ -12631,7 +13205,10 @@
       ],
       "explanation": "本题考查用指针遍历并处理字符串。第 1 空填 s，scanf(\"%s\") 需接收首元素地址，数组名 s 即 &s[0]，可直接传入；写成 &s 则表示整个数组地址，类型不符。第 2 空填 *p，for 循环用 p 从 s 走到末尾，C 中字符串以 \\0 结尾，*p 为真即尚未遇结尾，等价于 *p!=\\0。循环体内用 *p 判断当前字符是否为小写元音，命中则计数。易错点：scanf(\"%s\") 读到空白即停，故测试用不含空格的串；比较的是字符值不是地址。apple 有 a、e 两个元音输出 2；AEIOU 为大写，不计数输出 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-107",
@@ -12699,7 +13276,10 @@
       ],
       "explanation": "本题考查函数指针的声明、赋值与调用。第 1 空填 add，函数名即函数入口地址，可直接赋给函数指针 fp。第 2 空填 mul，让 fp 改指乘法函数。第 3 空填 fp(x,y)，通过函数指针调用它当前指向的函数（等价 (*fp)(x,y)），实参 x、y 传给被调函数。易错点：声明 int (*fp)(int,int) 是函数指针，而 int *fp(int,int) 是返回指针的函数，括号位置必须严格；赋值时 add 与 &add 等价，但不能写成 add()。例如 x=3,y=5 先输出和 8，再输出积 15。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-108",
@@ -12763,7 +13343,10 @@
       ],
       "explanation": "本题考查返回指针值的函数。max_ptr 接收数组首地址与长度，用指针 p 记录当前最大元素地址。第 1 空填 &a[i]，当 a[i] 比 *p 更大时把该元素地址记入 p。第 2 空填 p，循环后 p 指向最大元素，返回它。第 3 空填 max_ptr(a,n)，main 把返回值（指向最大元素的指针）赋给 m，再解引用 *m 输出最大值。易错点：数组名 a 作实参传入首元素地址；返回的必须是指向数组内元素的指针；第 1 空不能填 a[i]（那是值不是地址）。例如 3 7 2 9 1 的最大值 9 输出 9。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-109",
@@ -12828,7 +13411,10 @@
       ],
       "explanation": "本题考查二维数组与行指针（指向一维数组的指针）。int (*p)[4] 声明 p 为指向含 4 个 int 的一维数组的指针，第 1 空填 a，把二维数组名赋给它（a 等价于 &a[0]）。访问 a[i][j] 用二级定位 *(*(p+i)+j)：*(p+i) 得到第 i 行数组，再加 j 得元素地址，解引用得元素。第 2、3 空填 *(*(p+i)+j)，用于比较并更新最大值。易错点：行指针移动一个单位是跨一整行（4 个 int），*(p+i) 是行首，不能当单个元素；不能用 *(p+i+j) 之类不等价写法。对 3×4 矩阵求最大值，输入 1 5 7 2 3 9 4 8 6 2 10 1 输出 10。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mb-110",
@@ -12888,7 +13474,10 @@
       ],
       "explanation": "本题考查指针数组。char *p[5] 是存放 char* 的数组，每个元素指向一个字符串。第 1 空填 s[i]，把第 i 个字符串的首地址存入指针数组，p 只存地址，字符本体仍在二维字符数组 s 中。第 2 空填 i，当第 i 个串更长时把最长下标更新为 i，配合 strlen 比较长度。易错点：char *p[5] 与 char (*p)[5] 不同，前者是指针数组、后者是数组指针；p[i]=s[i] 赋的是首地址，不是复制字符（复制用 strcpy）；相等长度时不更新 max，故保留最先出现的最长串。输入 3 apple banana cherry 输出 banana 6。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-101",
@@ -12935,7 +13524,10 @@
       ],
       "explanation": "要交换调用者的变量，必须把函数形参写成指针并传入地址。错误版本按值传参（int a, int b）且调用传值 swap(x,y)，函数内只能交换副本，输出仍是原顺序。改正后输出应为交换后的两个数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-102",
@@ -12981,7 +13573,10 @@
       ],
       "explanation": "p、q 指向数组 a 的两个元素，要交换元素值必须解引用：t=*p; *p=*q; *q=t。错误版本直接交换了指针 p、q 的指向，元素值一个都没动，输出仍是原顺序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-103",
@@ -13028,7 +13623,10 @@
       ],
       "explanation": "用指针遍历数组：p=a，循环内打印 *p 并 p++。错误版本写成 *p + i，优先级导致把元素值与下标相加；边界 i<=n 又使循环多跑一次、越界。改为 i<n 并只打印 *p 即可逐个输出元素。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-104",
@@ -13074,7 +13672,10 @@
       ],
       "explanation": "用指针求和应从第一个元素开始：p=a，循环内 sum+=*p 并 p++。错误版本起点写成 a+1（漏掉首元素），循环又漏掉 p++（只累加同一个元素），结果错误。改正后输出所有元素之和。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-105",
@@ -13120,7 +13721,10 @@
       ],
       "explanation": "通过指针修改调用者变量，必须解引用：*p = *p * 2，把结果写回 p 指向的内存。错误版本把结果存进局部变量 t，又让 p 指向 t，函数返回后 t 失效，主函数中的 x 并未被改变。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-106",
@@ -13166,7 +13770,10 @@
       ],
       "explanation": "要修改 *p 的值必须写 (*p)++（先解引用再自增），而 *p++ 因优先级等价于 *(p++)，只移动指针不增加值。错误版本又用了 i<=n 的边界，导致加的次数多 1。改正后输出 x+3。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-107",
@@ -13212,7 +13819,10 @@
       ],
       "explanation": "统计元音需把小写 a/e/i/o/u 与大写 A/E/I/O/U 都列进判断。错误版本把 'o' 误写成数字 '0'，又漏掉全部大写分支，导致统计个数错误。改正后输出元音总数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-108",
@@ -13258,7 +13868,10 @@
       ],
       "explanation": "字符串长度不含结束符 '\\0'。用指针遍历到末尾后，p - s 恰好等于字符个数，不应再加 1。错误版本 len=p-s+1 把结束符也算入，结果多 1。正确做法是边遍历边计数，得到实际字符数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-109",
@@ -13304,7 +13917,10 @@
       ],
       "explanation": "要用指针取数组第 pos 个元素，应解引用 *(p+pos)。读入 pos 时 scanf 必须写 &pos 取地址。错误版本 scanf 漏 &，输出又写成 *p+pos（先解引用再加下标），两者都错。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-110",
@@ -13350,7 +13966,10 @@
       ],
       "explanation": "函数指针 int (*fp)(int,int) 指向一个函数。正确用法：fp=add，然后调用 fp(x,y)（或 (*fp)(x,y)）。错误版本把 fp 指向 sub（得到差值），又用 *fp 打印函数地址而非调用。改正后输出两个数之和。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-111",
@@ -13397,7 +14016,10 @@
       ],
       "explanation": "用 malloc 申请动态数组需检查返回值是否为 NULL（内存可能分配失败），用完必须 free(p) 释放。错误版本未判空、读入循环 i<=n 越界（多读一位写入 p[n]），且没有释放内存。改正后输出总和。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-112",
@@ -13443,7 +14065,10 @@
       ],
       "explanation": "求首元素用 *p，末元素因下标从 0 开始应为 *(p+n-1)，写成 *(p+n) 会越界读。错误版本末元素下标错，且没有调用 free(p) 释放动态内存。改正后输出首末元素之和。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-113",
@@ -13489,7 +14114,10 @@
       ],
       "explanation": "求最大值应把 max 初始化为首元素 *p，遍历时若 *(p+i) 更大就更新 max=*(p+i)。错误版本把 max 初始化为 0（全负数时错误），且比较 *p<*p+i 因优先级错误、赋值又固定为 *p，无法找到真正最大。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-114",
@@ -13535,7 +14163,10 @@
       ],
       "explanation": "求最小值应把 min 初始化为首元素，遍历时若 *(p+i) 更小（min > *(p+i)）就更新。错误版本比较方向写成 min < *(p+i)（违反最小语义），且更新固定为 *p，无法得到最小值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-115",
@@ -13581,7 +14212,10 @@
       ],
       "explanation": "用 p+i 依次指向各元素，求和应写 sum += *(p + i)。错误版本固定使用 *p（始终是 a[0]），循环 n 次只累加同一个首元素，得到的结果是首元素乘以 n。改正后输出全部元素之和。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-116",
@@ -13627,7 +14261,10 @@
       ],
       "explanation": "行指针 int (*p)[3] 指向二维数组的一行。访问元素要两层解引用：*(*(p+i)+j)。错误版本把外层循环写成 j（列）、内层写成 i（行），按列输出；打印又写成 *(p+i)+j 少解引用一层，输出的是地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-117",
@@ -13673,7 +14310,10 @@
       ],
       "explanation": "二级指针 int **pp 指向一个 int *，要修改最终整数需要两层解引用：**pp = v。错误版本把 pp 重新指向局部变量 &t，既改动了形参又不解引用写回，主函数中的 x 保持不变。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-118",
@@ -13719,7 +14359,10 @@
       ],
       "explanation": "交换两个指针的指向：先用临时指针保存 *a，再 *a=*b，最后 *b=t。错误版本第一步 *a=t 写回自身、第二步 *b=*a 把另一指针也指到同一处，导致两个指针都指向原 a 的对象，输出变为两个相同值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-119",
@@ -13765,7 +14408,10 @@
       ],
       "explanation": "判断数字字符应为 *p>='0' && *p<='9'（同时满足上下界）。错误版本用了 ||（逻辑或），几乎字符都满足其一从而被计数；上界又写成 <'9'，漏掉了 '9'。改正后输出数字个数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-120",
@@ -13811,7 +14457,10 @@
       ],
       "explanation": "反转字符串只需交换首尾对应位置到中间即可，循环到 len/2 为止。错误版本让 i 走到 strlen(s)，每对字符被交换两次、字符串被还原，且每次循环重复调用 strlen 低效。改正后输出反转结果。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-121",
@@ -13858,7 +14507,10 @@
       ],
       "explanation": "my_strcat 用两个指针做拼接：p 先走到 dst 末尾，再把 src 逐字符复制到 p 并同时自增两个指针，最后补 *p='\\0'。错误版本漏写了 p++，导致目标指针原地不动，所有源字符覆盖同一位置；复制循环结束后也没有写到正确的新末尾。改正后输出应为两个单词的拼接结果。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-122",
@@ -13904,7 +14556,10 @@
       ],
       "explanation": "my_strcpy 用两个指针逐字符复制并同步自增，直到源串结束符 '\\0'。错误版本在 while 结束后没有补上 *dst='\\0'，导致目标串缺少字符串结束标志；当源串较短时，目标串会残留原内容，输出出现多余“尾巴”。改正后输出应为第二个单词。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-123",
@@ -13951,7 +14606,10 @@
       ],
       "explanation": "求第 k 大通常先对数组做降序冒泡排序：当 a[j] < a[j+1] 时交换。排序后第 k 大的元素位于下标 k-1。错误版本用了升序（a[j] > a[j+1]），且输出下标写成 k 而非 k-1，导致结果完全错误。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-124",
@@ -13998,7 +14656,10 @@
       ],
       "explanation": "统计众数：对每个元素 a[i]，用内层循环数出它在数组中出现的次数，再与当前最多出现次数 bestc 比较，出现更多就更新众数 best。错误版本把比较对象写成 a[j]==a[j]（恒真），使每个元素计数都等于 n；又误把 best 存成下标 i。改正后输出出现次数最多的元素值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-125",
@@ -14045,7 +14706,10 @@
       ],
       "explanation": "矩阵转置把 a[i][j] 与 a[j][i] 交换，只需遍历上三角（j 从 i+1 开始）。交换必须借助临时变量。错误版本交换时不保存 a[i][j]，导致两处都变成同一个值；输出又写成 a[j][i]，把行列顺序搞反。改正后按 a[i][j] 逐行输出即得到转置矩阵。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-126",
@@ -14092,7 +14756,10 @@
       ],
       "explanation": "矩阵乘法 C[i][j] = Σ a[i][k]*b[k][j]，需要用 += 累加。错误版本把 b 的下标写成 b[j][k]（正确是 b[k][j]），并且用 = 覆盖而非累加，导致每个元素只保留最后一项。改正后按 c[i][j] 输出即得乘积。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-127",
@@ -14139,7 +14806,10 @@
       ],
       "explanation": "用指针数组保存每个字符串的起始地址，冒泡排序交换的是指针而非字符串本身。比较字符串内容必须用 strcmp(p[j],p[j+1])>0，而不能直接比较指针地址（p[j]>p[j+1] 比较的是地址大小）。冒泡内层边界随外层变化，应为 j<n-1-i。改正后按字典序输出单词。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-128",
@@ -14185,7 +14855,10 @@
       ],
       "explanation": "指针数组 p 的每个元素指向数组 a 的一个整数。排序时比较的是指向的值：*p[j] > *p[j+1]；交换的是指针 p[j] 与 p[j+1]。输出也要用 *p[i] 取元素值。错误版本直接比较地址、打印地址，得到的都不是整数本身。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-129",
@@ -14231,7 +14904,10 @@
       ],
       "explanation": "函数指针 fp 指向一个 int (int,int) 类型的函数。op==0 时应把 fp 指向 add，op==1 指向 sub；调用时按读取顺序 fp(x, y)。错误版本把两个函数的指向对调，且调用参数也写反成 fp(y, x)，导致结果完全错误。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-130",
@@ -14277,7 +14953,10 @@
       ],
       "explanation": "函数指针数组 f 保存 add/sub/mul 三个函数地址，用 op 作为下标分派。越界检查应为 op<0||op>2；分派应为 f[op]。错误版本把上界写成 op>1（误伤乘法），下标又写成 f[op-1]，导致选错或越界。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-131",
@@ -14324,7 +15003,10 @@
       ],
       "explanation": "函数返回指向局部数组的指针是经典错误：局部数组 a 在函数结束时被销毁，返回的指针悬垂，读其内容结果不可预期。解决方法是把数组声明为 static（其生命周期持续到程序结束）或用 malloc 分配。错误版本既用了局部数组，又没有限制访问越界。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-132",
@@ -14371,7 +15053,10 @@
       ],
       "explanation": "ASCII 码中大写字母比对应小写字母小 32，因此小写转大写应 s[i]-32。错误版本用了 +32，把字母转到错误方向；同时 buf 是局部数组，函数返回后失效，应加 static 延长生命周期。改正后输出全大写字符串。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-133",
@@ -14418,7 +15103,10 @@
       ],
       "explanation": "二分查找每次取中间元素比较：若 a[mid] < x，说明目标在右半区，应 lo=mid+1；若 a[mid] > x，说明在左半区，应 hi=mid-1。错误版本把这两个更新写反了，导致搜索方向相反、找不到目标。改正后找到输出 1，否则 0。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-134",
@@ -14465,7 +15153,10 @@
       ],
       "explanation": "删除下标 pos 的元素时，要把 pos 之后的所有元素依次前移：for(i=pos;i<n-1;i++) a[i]=a[i+1]，再把长度减 1。错误版本用反向的 a[i-1]=a[i] 从后往前移动，方向与边界都不对，无法正确删除。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-135",
@@ -14512,7 +15203,10 @@
       ],
       "explanation": "在下标 pos 插入 x，需先把 pos 及以后元素整体后移：for(i=n;i>pos;i--) a[i]=a[i-1]，再把 a[pos]=x，长度加 1。错误版本边界写成 i>=pos，且把插入位置写成 a[pos-1]，导致 pos 处数据被覆盖、插入点错位。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-136",
@@ -14558,7 +15252,10 @@
       ],
       "explanation": "用指针遍历数组查找：p=a 后，*(p+i) 即 a[i]。比较应针对元素值 *(p+i)==x，而不是地址 p+i==x。找到时输出 found 并返回，否则循环结束后输出 not found。错误版本既拿地址比较，又把两种提示写反。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-137",
@@ -14604,7 +15301,10 @@
       ],
       "explanation": "指针数组 p[i] 应保存 a[i] 的地址，因此初始化必须写 p[i]=&a[i]，取出的是地址；随后 *p[i] 才解引用得到元素值。错误版本写成 p[i]=a[i]，把整数值当作地址存入，解引用 *p[i] 会访问非法内存，程序崩溃。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-138",
@@ -14651,7 +15351,10 @@
       ],
       "explanation": "要修改调用者的结构体变量，必须把函数参数写成指向结构体的指针 struct Student *s，主函数传地址 raise(&stu)，函数内用箭头 s->score 访问成员。错误版本按值传参，函数内的修改只作用于副本，无法改变主函数中的 stu。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-139",
@@ -14698,7 +15401,10 @@
       ],
       "explanation": "(*p)++ 表示解引用得到元素后自增；而 *p++ 因后缀 ++ 优先级高于 *，等价于 *(p++)，只是把指针前进。错误版本把 (*p)++ 误写成 *p++（未给元素加值），又额外自增指针导致跳元素。改正后每个元素加 1 输出。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-mdb-140",
@@ -14745,7 +15451,10 @@
       ],
       "explanation": "逆序输出应让指针从最后一个元素 a+n-1 开始，循环内每次 p-- 向前走。错误版本起点写成 a+1（第二个元素），且循环里用 p++ 向后递增，不仅起点错、还会越界访问数组外。改正后输出倒序。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "category": "c",
@@ -15241,7 +15950,10 @@
       "answer": "10 30 30\n20",
       "explanation": "结论：运行结果两行：第一行 \"10 30 30\"，第二行 \"20\"。程序先用 p=&a 让 p 存放 a 的地址，*p 解引用得到 a 的值 10；接着 *p=30 通过指针间接修改 a，此时 a 与 *p 都是 30，所以 printf 输出 \"10 30 30\"。最后 p=&b 把 p 改为指向 b，再输出 *p 得 20。易错点：*p=30 修改的是 a 而不是 p 本身，p 作为指针变量能被重新赋值去指向别的变量。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-102",
@@ -15262,7 +15974,10 @@
       "answer": "10 20 40 50 40",
       "explanation": "结论：输出 \"10 20 40 50 40\"。p 初值指向 a[0]，*p 输出 10；p++ 使 p 指向 a[1]，输出 20；*(p+2) 是 p 当前指向 a[1] 再往后偏移 2 个元素即 a[3]，输出 40；p=p+3 让 p 指向 a[4]，输出 50；p-- 回到 a[3]，输出 40。易错点：p++ 与 p+2 的步长是 sizeof(int) 而非 1，指针加整数的偏移量以元素为单位，不是字节。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-103",
@@ -15283,7 +15998,10 @@
       "answer": "2 8 6 4",
       "explanation": "结论：输出 \"2 8 6 4\"。数组名 a 在表达式中自动退化为首元素地址，*p 即 a[0]=2；*(a+3) 等价 a[3]=8；p 与 a 同指 a[0]，p[2] 即 a[2]=6；*(&a[1]) 先取 a[1] 的地址再解引用，得到 a[1]=4。易错点：*(a+i) 与 a[i] 完全等价，&a[1] 是 a[1] 的地址，加 * 后还原成元素值；下标与指针两种写法可以互换使用。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-104",
@@ -15304,7 +16022,10 @@
       "answer": "1 1 1 4",
       "explanation": "结论：输出 \"1 1 1 4\"。p=&a[0] 与数组名 a 相同地址，p==a 为真得 1；q=&a[4] 地址大于 p，q>p 得 1；p+4 指向 a[4]，与 q 相等得 1；q-p 是同类型指针相减，结果为元素个数差 4。易错点：指针比较比的是地址大小，两个指针相减的结果是以元素为单位的差值（ptrdiff_t），不是字节数，这里 4 表示相隔 4 个 int。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-105",
@@ -15325,7 +16046,10 @@
       "answer": "100 1",
       "explanation": "结论：输出 \"100 1\"。函数 g 的形参 p 是 int*，它复制了实参的指针值，因此 *p=100 是通过地址修改主调函数的 a，a 变为 100；而 p=NULL 只是修改了形参这个局部指针变量本身，不影响主调函数中仍指向 a 的 q，所以 q!=NULL 判断为真得 1。易错点：传指针给函数传的是\"地址的副本\"，能修改被指向的对象，但无法通过形参重新绑定主调函数的指针变量。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-106",
@@ -15346,7 +16070,10 @@
       "answer": "9 1",
       "explanation": "结论：输出 \"9 1\"。maxp 用指针 r 遍历数组，r 始终指向当前最大元素；扫描完返回最大元素 9 的地址 &v[1]。主函数 p 接收该地址，*p 得 9；p-v 是两个同数组内指针相减，得到下标差 1。易错点：函数返回的是元素地址而非元素值，返回指针必须指向仍然存活的对象（这里返回的是数组元素的地址，数组 v 在主函数仍存活，故安全），不能返回函数内局部变量的地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-107",
@@ -15367,7 +16094,10 @@
       "answer": "10 20 20",
       "explanation": "结论：输出 \"10 20 20\"。p 指向 x，pp 指向 p；**pp 先经 pp 得到 p 再解引用得到 x 的值 10，输出 10。*pp=&y 是修改 pp 所指向的 p 本身，使 p 改为指向 y，于是 *p 输出 y 的值 20，**pp 也输出 20。易错点：二级指针多一层间接，*pp 是 p（一个指针），**pp 才是最终 int 值；通过 *pp 赋值能改变一级指针 p 的指向。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-108",
@@ -15388,7 +16118,10 @@
       "answer": "7 it",
       "explanation": "结论：输出 \"7 it\"。char* s 指向字符串字面量，while(s[i]!='\\0') 用下标遍历数出字符串长度，'pointer' 共 7 个字符，i=7，输出 7。s=s+2 后 s 指向字符串第 2 个字符 'i'，*s 输出 i，*(s+2) 是再偏移 2 个字符即 't'，输出 it。易错点：字符串以 '\\0' 结尾，遍历时用它判断结束；指针可加减偏移指向字符串内部任意字符。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-109",
@@ -15409,7 +16142,10 @@
       "answer": "7 A",
       "explanation": "结论：输出 \"7 A\"。void* 通用指针可以存放任何对象的地址：先让 v 指向 int 型 ai，把 v 显式转换成 int* 后解引用，得到 ai 的值 7；再把 v 改成指向 char 型 ac，用 (char*)v 转换成 char* 解引用，得到字符 'A'。易错点：void* 不能直接解引用，必须先强转成确定的指针类型；转换只是改变解释方式，不改变所指对象的类型与地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-110",
@@ -15430,7 +16166,10 @@
       "answer": "8 20",
       "explanation": "结论：输出 \"8 20\"。const int* p 是\"指向常量的指针\"，它不能通过 *p 修改所指对象，但 p 本身可以重新指向别的对象，所以 p=&b 合法，*p 输出 b 的值 8。int* const q 是\"指针常量\"，q 一旦初始化就不能再指向别处，但它可以通过 *q=20 修改所指对象 a，故 a 变为 20。易错点：const 在 * 左边限的是被指向的值、在 * 右边限的是指针本身，两者含义刚好相反。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-111",
@@ -15452,7 +16191,10 @@
       "answer": "1 1 8",
       "explanation": "结论：输出 \"1 1 8\"。p=&a[0]、last=&a[3]，p<last 比较地址得 1；p+4 指向 a[4]，是数组最后一个元素之后的\"越界一个\"位置，last+1 也等于 a[4]，两者相等得 1；*last 是 a[3] 的值为 8。易错点：C 允许把指针加 1 指向数组尾后的一个位置（one-past-the-end）用于比较，但不能越界解引用它；last=a+3 才是合法可访问的最后一个元素。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-112",
@@ -15473,7 +16215,10 @@
       "answer": "3 5",
       "explanation": "结论：输出 \"3 5\"。int* p[2] 是指针数组，p[0]=x[0]、p[1]=x[1]，分别指向二维数组的两行首元素。*(p[0]+2) 是第 0 行第 2 列元素，即 x[0][2]=3；p[1][1] 等价 x[1][1]=5。易错点：int* p[2] 是\"元素为指针的数组\"，p[0] 是 int* 类型（指向一行的指针），*(p[0]+k) 等价于 p[0][k] 即该行第 k 列。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-113",
@@ -15494,7 +16239,10 @@
       "answer": "40 30 50",
       "explanation": "结论：输出 \"40 30 50\"。int (*p)[3] 是指向\"含 3 个 int 的数组\"的指针，p 指向整行。p+1 跳一整行到第 1 行，*(p+1) 得到行指针，再解引用 *(*(p+1)) 得第 1 行首元素 a[1][0]=40；*(p[0]+2) 是第 0 行偏移 2 列 a[0][2]=30；*(*(p+1)+1) 是第 1 行第 1 列 a[1][1]=50。易错点：int (*p)[3] 与 int* p[3] 完全不同，前者是一级指针指向数组、步长是整行，后者是数组每个元素是指针。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-114",
@@ -15515,7 +16263,10 @@
       "answer": "11 6 4",
       "explanation": "结论：输出 \"11 6 4\"。int (*fp)(int) 是函数指针，fp=add 使 fp 指向 add，fp(10) 调用 add 得 11。apply 的形参 int (*f)(int) 接收函数指针，apply(add,5) 调用函数得 6；随后 fp 改指 sub，apply(fp,5) 实际调用 sub(5) 得 4。易错点：函数名即函数入口地址，可赋值给函数指针；通过函数指针调用函数与直接调用等价，写 apply(fp,5) 走的是当时 fp 指向的函数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-115",
@@ -15536,7 +16287,10 @@
       "answer": "3 10 4",
       "explanation": "结论：输出 \"3 10 4\"。q 指向结构体变量 p，q->x 用箭头访问成员，等价 (*q).x，得到 p 的 x=3；q->x=10 通过指针修改结构体成员，p.x 变为 10；随后 q->x 输出 10、(*q).y 输出 p 的 y=4。易错点：-> 是专门用于指针访问结构体成员的运算符，(*q).y 的圆括号不能省，*q.y 会被解析成 *(q.y) 而报错。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-116",
@@ -15558,7 +16312,10 @@
       "answer": "1 3 3 4",
       "explanation": "结论：输出 \"1 3 3 4\"。*p++ 先取 *p（a[0]=1）再使 p 自增指向 a[1]；*++p 先把 p 自增到 a[2] 再取 *p，得 a[2]=3；(*p)++ 先解引用取 a[2]=3 输出，再把 a[2] 加 1 变为 4；最后 a[2] 输出 4。易错点：*p++ 是后缀自增、先取值后移动；*++p 是前缀自增、先移动后取值；(*p)++ 修改的是所指元素，而 *p++ 移动的是指针。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-117",
@@ -15579,7 +16336,10 @@
       "answer": "0 1 not null\n1",
       "explanation": "结论：输出两行：\"0 1 not null\" 与 \"1\"。r 指向 b=0，*r 输出 0；p 指向 a 而非 NULL，p!=NULL 为真得 1；if 判断 p==NULL 为假走 else 打印 \"not null\"；q 初始化为 NULL（即地址 0），q==0 为真得 1。易错点：NULL 就是空指针常量（值为 0），p==NULL 与 p==0 等价；用指针判空必须与 NULL/0 比较，不能直接当输出。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-118",
@@ -15600,7 +16360,10 @@
       "answer": "4 1 3 4",
       "explanation": "结论：输出 \"4 1 3 4\"。p 指向 a[1]（值为 2）。*(p+2) 是向后 2 个元素的 a[3]=4；*(p-1) 是向前 1 个元素的 a[0]=1；*(p+4-3) 即 *(p+1)=a[2]=3；*p+2 是先取 *p=2 再加 2 得 4。易错点：p+n 是 p 所指地址偏移 n 个元素后的位置，n 乘以的是元素大小；*p+2 是先解引用再算术，与 *(p+2) 的先后顺序不同，结果也不同。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-119",
@@ -15621,7 +16384,10 @@
       "answer": "2 6 4 6",
       "explanation": "结论：输出 \"2 6 4 6\"。a[i]+j 等于第 i 行第 j 列元素的地址，(a[0]+1) 即第 0 行第 1 列地址，解引用得 a[0][1]=2；a+1 指向第 1 行，*(a+1) 得到第 1 行行指针，+2 然后解引用得 a[1][2]=6；a[1][0]=4；*(a[1]+2) 得 a[1][2]=6。易错点：二维数组中 a[i] 是行首地址（int*），a[i]+j 是元素地址，需再解引用；*(*(a+i)+j) 与 a[i][j] 等价。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-120",
@@ -15642,7 +16408,10 @@
       "answer": "2 1",
       "explanation": "结论：输出 \"2 1\"。swapp 的形参是 int**（指向指针的指针），*a 得到实参指针变量里的值（即 &x），交换时用临时指针 t 暂存，最后 *a、*b 互换，使主函数里 p 改为指向 y、q 改为指向 x。于是 *p 输出 y 的值 2，*q 输出 x 的值 1。易错点：要交换两个指针变量的指向，必须传它们的地址（int**）作为参数，只传 int* 只能交换被指向的值，改不了指针本身的指向。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-121",
@@ -15663,7 +16432,10 @@
       "answer": "0 8 6",
       "explanation": "结论：输出 \"0 8 6\"。malloc 在堆上申请 5 个 int 的空间，强转成 int* 赋给 p；循环 p[i]=i*2 填入 0、2、4、6、8。p[0]=0、p[4]=8；*(p+3) 等价 p[3]=6。最后 free(p) 释放。易错点：malloc 返回 void*，需转成具体指针类型；它分配的不是数组而是一块连续内存，可像数组一样用下标或指针访问；用完后必须 free，否则内存泄漏。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-122",
@@ -15684,7 +16456,10 @@
       "answer": "c d f 1",
       "explanation": "结论：输出 \"c d f 1\"。s 是指针数组，每个元素指向一个字符串字面量。s[i][0] 是第 i 个字符串首字符，依次是 c、d、f；s[2][2] 是 \"fish\" 的第 2 个字符（下标从 0 计）即 's'，与 's' 相等为真得 1。易错点：s[i] 是 char* 指向字符串首字符，s[i][j] 等价 *(s[i]+j) 取第 i 串第 j 个字符；字符串字面量只读，只能读不能改写。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-123",
@@ -15705,7 +16480,10 @@
       "answer": "5 10",
       "explanation": "结论：输出 \"5 10\"。p 指向 a，pp 指向 p，ppp 指向 pp，三层间接。***ppp 依 ppp 取 pp 取 p 取 a，得 a 的值 5；***ppp=10 通过三级指针最终修改 a，a 变为 10。易错点：多重指针每多一层 & 就多一级间接，解引用用几个 * 要对应嵌套层数；***ppp 与 *a 最终指向同一个 int 变量。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-124",
@@ -15726,7 +16504,10 @@
       "answer": "5 -5 7",
       "explanation": "结论：输出 \"5 -5 7\"。p 指向 a[2]、q 指向 a[7]。q-p 是两个同数组内指针相减，得下标差 7-2=5；p-q 得 -5；*(p+(q-p)) 即 *(p+5)=a[7]=7。易错点：两个指针相减的结果是它们之间相隔的元素个数（ptrdiff_t 类型），不是字节数；p+(q-p) 就是 q 的位置，所以结果与 *q 相同。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-125",
@@ -15747,7 +16528,10 @@
       "answer": "12 1 1",
       "explanation": "结论：输出 \"12 1 1\"。* 与 & 互为逆运算：*(&a) 是对 a 取地址再解引用，还回 a 的值 12；*&p 先取 p 的地址再解引用得到 p，与 p 相等得 1；&*p 先解引用 p 得到 a 再取地址得到 p，与 p 相等也得 1。易错点：无论先 & 后 * 还是先 * 后 &，只要作用在同一对象上结果都不变；*&p 与 &*p 这类组合最常见于陷阱题，注意结合顺序从内向外。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-126",
@@ -15768,7 +16552,10 @@
       "answer": "many\none zero",
       "explanation": "结论：输出两行：\"many\" 与 \"one zero\"。greet 是返回 char* 的函数，msgs 是 static 局部数组（静态存储期），返回 msgs[n>2?2:n] 即某个字符串的地址，函数返回后内存仍有效。greet(5) 中 n>2 取下标 2 返回 \"many\"；greet(1) 返回 \"one\"，greet(0) 返回 \"zero\"。易错点：函数不能返回其内部普通局部变量的地址（函数结束即失效），但返回 static 数组或字符串字面量的地址是安全的。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-127",
@@ -15789,7 +16576,10 @@
       "answer": "14",
       "explanation": "结论：输出 \"14\"。p 指向首元素，end 指向数组尾后一个位置 a+5；while(p<end) 用指针遍历数组，每轮把 *p 累加进 s 并 p++，即把 3、1、4、1、5 依次相加，共 14。易错点：end 是 one-past-the-end 的边界指针，循环条件 p<end 保证解引用的是合法元素；指针遍历等价于下标遍历，但要注意边界不能写到 end 位置。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-128",
@@ -15810,7 +16600,10 @@
       "answer": "abc 98",
       "explanation": "结论：输出 \"abc 98\"。copy 用 while(*s) 以非 '\\0' 为循环条件，把 src 的每个字符依次写入 dst 并右移两个指针，最后在 dst 末尾补 '\\0'，完成字符串拷贝。main 中 a 变成 \"abc\"，a[1] 是字符 'b'，其 ASCII 码为 98，用 %d 打印得 98。易错点：拷贝结束必须手动写 '\\0' 才能正确结束目标串；'b' 是字符，%d 打印的是其 ASCII 码 98 而非字符本身。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-129",
@@ -15831,7 +16624,10 @@
       "answer": "aXc aXZ",
       "explanation": "结论：输出 \"aXc aXZ\"。s 是字符数组 \"abc\"（可写），p 指向 s[0]。*(p+1)='X' 把第 1 个字符改成 'X'，s 变为 \"aXc\"；随后 p=p+2 指向第 2 个字符位置，*p='Z' 把它改成 'Z'，s 变为 \"aXZ\"。易错点：字符数组可写，能通过指针修改内容；但字符串字面量（如 char* s=\"abc\"）对应的内容只读，绝不能通过指针去改，本题用数组所以才允许改写。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-130",
@@ -15852,7 +16648,10 @@
       "answer": "7 12",
       "explanation": "结论：输出 \"7 12\"。int (*ops[2])(int,int) 是\"函数指针数组\"，ops[0] 指向 add、ops[1] 指向 mul。循环调用 ops[i](3,4)，第一次调 add 得 3+4=7，第二次调 mul 得 3*4=12。易错点：函数指针数组可以统一保存并调用多个同型函数，ops[i](3,4) 等价 (*ops[i])(3,4)；它给\"函数表/分发\"提供了基础，是第 9.5 节知识与数组的结合。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-131",
@@ -15873,7 +16672,10 @@
       "answer": "3 8",
       "explanation": "结论：输出 3 8。逐行看：swap 的两个形参 a、b 是 int 而非 int*，调用 swap(x, y) 时按值把 x=3、y=8 拷贝给 a、b。函数体内 t=a→t=3；a=b→a=8；b=t→b=3，只交换了形参拷贝。回到 main，x、y 仍是原来的 3 和 8，所以打印 3 8。易错点：以为 swap 会真正交换——C 函数参数默认值传递，函数内对形参的改动不影响实参；要让交换生效必须传地址（void swap(int *a, int *b)：int t=*a; *a=*b; *b=t;），并在调用处写 swap(&x, &y)。本题正是「传值指针陷阱」的经典反例。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-132",
@@ -15895,7 +16697,10 @@
       "answer": "42",
       "explanation": "结论：输出 42。逐行看：get 里 x 被声明为 static，静态存储期的变量在函数返回后仍存活，地址 &x 有效；返回 &x 后，main 里 p 指向这块仍有效的内存，*p 解引用得到 42。易错点：若把 static 去掉写成普通局部变量 int x=42 再 return &x，那就返回了局部自动变量的地址，get 返回后该栈内存已失效，p 成为悬垂（野）指针，*p 属未定义行为——可能打印 42，也可能打印任意值或崩溃。本题用 static 是为了让程序确定性输出，并借此说明「返回局部变量地址是错的，必须用 static、堆内存或由调用者传入指针」这一原则。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-133",
@@ -15916,7 +16721,10 @@
       "answer": "100",
       "explanation": "结论：输出 100。逐行看：int *p = a 让 p 指向首元素 a[0]（数组名 a 退化为指向首元素的指针）。while(p < a+4) 用指针比较既是游标未越界；循环体先 s += *p 把当前元素累加，再 p++ 让指针后移一个元素。p 依次指向 10、20、30、40 各加一次，s=10+20+30+40=100；当 p 移到 a+4（越过最后一个元素）时条件为假退出。易错点：p++ 是跳过 sizeof(int) 个字节（按元素类型缩放），不是跳 1 字节；比较条件用「地址」而非「下标」，要特别注意 a+4 是「最后一个元素的下一个位置」，正好作为结束哨兵。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-134",
@@ -15937,7 +16745,10 @@
       "answer": "two t",
       "explanation": "结论：输出 two t。逐行看：w 是 char* 数组，三个元素分别指向字符串常量 \"one\"、\"two\"、\"three\"；数组名 w 在表达式中退化为 char**（指向首元素，即指向 \"one\" 的指针的地址）。char **p = w 让 p 指向 w[0]。p++ 让 p 指向 w[1]。于是 *p 就是 w[1]，即指向 \"two\" 的 char*，用 %s 打印得 two；**p 对 *p 再解引用一次取出 \"two\" 的首字符 t，用 %c 打印得 t。易错点：char* 数组的每个元素本身就是一个 char*（指向字符串的首字符），所以数组名升级成二级指针 char**；p++ 移动的是「一个 char* 指针」的宽度（即 8 字节的指针）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-135",
@@ -15957,7 +16768,10 @@
       "answer": "8 2",
       "explanation": "结论：输出 8 2。逐行看：int (*fp)(int, int) 声明一个函数指针 fp，它指向「返回 int、含两个 int 形参」的函数；= add 把 add 的函数入口赋给它。fp(5, 3) 经函数指针调用 add，得 5+3=8，先打印 8 和一个空格。随后 fp = sub 把 fp 改为指向 sub，再 fp(5, 3) 经指针调用 sub，得 5-3=2，打印 2 和换行。易错点：函数指针类型必须与目标函数签名一致（参数个数、类型、返回类型都相同），否则经 fp 调用会出错；赋函数名时括号写法 int (*fp)(int,int) 不能写成 int *fp(int,int)（那会变成返回 int* 的普通函数声明）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-136",
@@ -15977,7 +16791,10 @@
       "answer": "9",
       "explanation": "结论：输出 9。逐行看：int *p = &x 让 p 指向 x；int **pp = &p 让 pp 保存 p 的地址（二级指针）。调用 set(pp, &y) 时，q 收到 &p（int**），v 收到 &y（int*）。函数体内 *q = v：*q 解引用 q 得到 p 本身（因为 q 存的是 p 的地址），把 v（即 &y）赋给 p，于是 p 现在指向 y 而不是 x。函数返回后，main 里 *p 解引用得到 y 的值 9。易错点：普通一级指针形参无法改变调用方的指针变量，传进函数的只是「指针的拷贝」；要修改指针变量本身，必须传它的地址即二级指针。*q=v 是「改写 p 这个指针」，而不是改写 p 所指向的整数。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-137",
@@ -15997,7 +16814,10 @@
       "answer": "h o",
       "explanation": "结论：输出 h o。逐行看：char *p = \"hello\" 让 p 指向字符串字面量 \"hello\" 的首个字符 h。*p 解引用取出首字符 h，用 %c 打印得 h。p[4] 按下标语法等价于 *(p+4)，即从 p 起偏移 4 个 char，指向第 5 个字符 o，用 %c 打印得 o。易错点：字符串字面量在 C 中只读，即使 char* p 写起来像可修改指针，也不能通过 p 去改写 \"hello\" 的内容（如 *p='H' 是未定义行为，很可能崩溃）；但读取 *p、p[i] 完全合法。另外下标 p[4] 内部就是 *(p+4)，说明指针与下标在字符串访问上可互换。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-138",
@@ -16018,7 +16838,10 @@
       "answer": "2 6",
       "explanation": "结论：输出 2 6。逐行看：调用 twice(a, 3) 时，数组名 a 退化为指向首元素的 int*，被形参 int *a 接收；a[i] *= 2 通过指针按下标遍历，把数组每个元素翻倍：a[0] 1→2，a[1] 2→4，a[2] 3→6。因为实参传的是数组首地址（而不是数组拷贝），函数内对 a[i] 的修改真实写回原数组。函数返回后 main 里 a[0]=2、a[2]=6，打印 2 6。易错点：数组传给函数退化为指针，形参 int *a 与 int a[] 等价，都只是「指针」，函数内无法得知数组长度，所以通常用形参 n 单独传长度；这也意味着函数能修改实参数组元素。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-139",
@@ -16039,7 +16862,10 @@
       "answer": "5 10 11 15",
       "explanation": "结论：输出 5 10 11 15。逐行看：p 指向 a[0]。① *p++：后缀 ++ 优先级低于 *，等价于 *(p++)，先取 *p=5 打印，再把 p 后移指向 a[1]（首轮打印 5）。② (*p)++：先解引用得 *p=10，后缀 ++ 作用于该值，故打印 10，随后把 a[1] 自增为 11。③ *p：此时 p 仍指向 a[1]，*p=11，打印 11。④ *++p：前缀 ++ 先让 p 指向 a[2]，再解引用得 15，打印 15。易错点：*p++ 移动的是指针本身，(*p)++ 自增的是指针所指向的元素值，而 *++p 是先移动指针再取值；「先乘后加」的优先级与「先加后乘」差异必须靠括号与前后缀区分清楚。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-140",
@@ -16060,7 +16886,10 @@
       "answer": "7 4",
       "explanation": "结论：输出 7 4。逐行看：struct P p = {3,4} 初始化 x=3、y=4；struct P *q = &p 让 q 指向结构体 p。q->x = q->x + q->y 中，q->x 等价于 (*q).x（即 p.x=3），q->y 即 p.y=4，于是 p.x=3+4=7。printf 用 q->x、q->y 打印，q->x=7、q->y=4，输出 7 4。易错点：q->x 是 (*q).x 的简写，箭头运算符 -> 专用于「指向结构体的指针访问成员」，单点 . 只能用于结构体变量本身（(*q).x 也可，但 q->x 更简洁）；q-> 优先级很高，等价于先解引用 q 再取成员。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-141",
@@ -16081,7 +16910,10 @@
       "answer": "5 6",
       "explanation": "结论：输出 5 6。逐行看：a[2][3] 在内存中连续存放 1,2,3,4,5,6。int *p = &a[0][0] 让 p 指向第一个元素 1（&a[0][0] 是 int* 一级指针，指向单个元素）。*(p+4)：p+4 偏移 4 个 int，指向第 5 个元素（下标 4，即 a[1][1]）值 5，打印 5。*(*(a+1)+2)：a 是 int(*)[3] 指向第一行；a+1 指向第二行；*(a+1) 得第二行的首地址（int*）；再 +2 得第二行第 3 个元素地址；外层 * 解引用得 6。易错点：&a[0][0] 是「指向单个 int 的一级指针」，而数组名 a 是「指向一行的指针 int(*)[3]」，两者步长不同——p+1 只跳一个 int，a+1 跳一整行；混用会得到完全不同的地址。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-142",
@@ -16102,7 +16934,10 @@
       "answer": "3 1",
       "explanation": "结论：输出 3 1。逐行看：p 指向 a[1]，q 指向 a[4]。q - p 是指针减法：两个指向同一数组的指针相减，返回「相隔的元素个数」，q 比 p 高 3 个元素（a[4] 与 a[1] 下标差 4-1=3），故正数项打印 3。q > p 是关系比较：同一数组内指向靠后元素的指针更大，q 在 p 之后，比较结果为真，打印 1。易错点：指针减法 q-p 的结果是 ptrdiff_t（带符号整数），单位是元素个数而非字节数（它除以了元素大小）；只有指向同一数组（或同一数组末尾之后一格）的两个指针才能相减或比较，否则是未定义行为。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-143",
@@ -16123,7 +16958,10 @@
       "answer": "4",
       "explanation": "结论：输出 4。逐行看：malloc(3 * sizeof(int)) 在堆上分配 3 个 int 的空间，返回 void*，强转为 int* 赋给 p；malloc 分配的内存内容未初始化。接着 p[0]=1、p[1]=2、p[2]=3 用下标写值。printf 取 p[0]+p[2]=1+3=4，打印 4。最后 free(p) 释放这块堆内存，与 malloc 配对。易错点：malloc 返回的是 void*，需要转为目标指针类型（C 中可不强转，但强转是合法且常见的）；必须检查 p==NULL 判断是否失败；每次 malloc 都要配对一次 free，否则造成内存泄漏；p[0] 等价 *(p+0)，说明堆内存同样可用下标或指针访问。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-144",
@@ -16144,7 +16982,10 @@
       "answer": "5 5",
       "explanation": "结论：输出 5 5。逐行看：const int *p 是「指向常量的指针」——p 可以改（指向别处），但 *p 指向的内容只读（不能 *p=... 修改）。int *const q 是「常量指针」——q 本身不能改（不能 q=&y 重定向），但 *q 指向的内容可改。这里 p、q 都指向 x=5，解引用 *p、*q 都得到 5，打印 5 5。易错点：const 在 * 前（const int *p）修饰的是被指向的数据，const 在 * 后（int *const q）修饰的是指针本身。读法：从右往左读，p 是指向 const int 的指针（内容只读），q 是 const 指针指向 int（本体只读）。若写 *p=7 编译报错，若写 q=&y 也编译报错；而 *q=7 合法、p=&y 合法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-145",
@@ -16164,7 +17005,10 @@
       "answer": "4 4",
       "explanation": "结论：输出 4 4。逐行看：int *p = a 让 p 指向数组首元素。p[1] 按下标语法等价于 *(p+1)，即从 p 偏移 1 个 int 处取元素，是 a[1]=4。1[p] 是 C 中一个著名的等价技巧：下标运算符 a[b] 编译后等于 *(a+b)，而加法可交换，因此 1[p] 等价于 *(1+p) 也等价于 *(p+1)，同样是 a[1]=4。所以两个数都打印 4 4。易错点：a[i] 的本质就是 *(a+i)，下标只是语法糖；既然加法满足交换律，i[a] 也一样有效，只是写法怪异。注意 *(1+p) 用 1 作为基址 + p 作为偏移，结果相同；若想不通可记住「[] 就是 *( )」这一等价关系。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-146",
@@ -16185,7 +17029,10 @@
       "answer": "9\nnull",
       "explanation": "结论：输出两行，第一行 9，第二行 null。逐行看：show 函数先判断形参 p 是否等于 NULL。第一次 show(&x) 传入 x 的地址，p!=NULL，走 printf(\"%d\", *p)，解引用得 9，打印 9 并换行。第二次 show(NULL) 传入空指针，p==NULL 成立，打印 \"null\" 并换行。易错点：解引用一个空指针 *p 是未定义行为（通常直接段错误崩溃），因此在解引用前必须先用 p==NULL（或 !p）判空；本题的 if 分支正是「先判空再解引用」的正确写法，避免对 NULL 解引用。NULL 是空指针常量，值为 0，用来表示「不指向任何有效对象」。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-147",
@@ -16206,7 +17053,10 @@
       "answer": "3",
       "explanation": "结论：输出 3。逐行看：s 是字符数组，内容为 a、b、c、\\0（字符串以 \\0 结尾）。char *p = s 让 p 指向首字符 a；n 从 0 开始。while(*p != '\\0') 每次先判断当前字符是否结束符 \\0，不是就进入循环体 n++ 计数并 p++ 后移一个字符。p 依次指向 a、b、c 各让 n 加 1（n=3），当 p 移到存放 \\0 的位置时 *p=='\\0' 条件为假退出。打印 n=3。易错点：\\0 的 ASCII 值是 0，用字符比较 *p != '\\0'（也可写 *p != 0 或 while(*p)）判断是否到串尾；p++ 每次移动 sizeof(char)=1 字节；这种「指针作游标、以结束符作哨兵」是 C 遍历字符串的标准写法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-148",
@@ -16227,7 +17077,10 @@
       "answer": "4 1",
       "explanation": "结论：输出 4 1。逐行看：int *p = a 让 p 指向数组首元素。p+1 对 int* 加 1，实际跳过一个 int，即 sizeof(int)=4 字节；(char*)(p+1) 与 (char*)p 都强转为 char* 后相减，得到字节差 4，打印 4。char *c = (char*)a 让 c 指向同一块内存的起始字节；c+1 对 char* 加 1 只跳 1 字节，相减得 1，打印 1。易错点：指针加 1 会按「所指向类型的大小」缩放——int* 跳 4 字节、char* 跳 1 字节；只有在两个指针都强转成同类型（如都转 char*）后相减，才得到纯净的字节差。本题借此说明「指针的类型决定步长」，指针运算离不开类型。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-149",
@@ -16248,7 +17101,10 @@
       "answer": "5 4",
       "explanation": "结论：输出 5 4。逐行看：sizeof(a) 是数组 a 的总字节数，这里 a 有 5 个 int，占 5*4=20 字节；sizeof(a[0]) 是单个 int 的大小 4 字节；两者相除得到元素个数 5，打印 5。而在 sizeof 运算符内，数组名不退化，会反映整个数组的大小——这正是它与表达式里「数组名退化为指针」的区别。int *p = a 让 p 指向首元素；sizeof(*p) 中 *p 是一个 int，大小为 4 字节，打印 4。易错点：把数组名传给函数或赋值给指针时它退化为指针，但 sizeof(数组名) 仍返回整个数组大小，sizeof(指针) 则返回指针本身大小（8 字节 64 位 / 4 字节 32 位），两者不能混用；求元素个数用 sizeof(a)/sizeof(a[0])。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-150",
@@ -16269,7 +17125,10 @@
       "answer": "9",
       "explanation": "结论：输出 9。逐行看：find 用 for( i=0..n-1 ) 遍历数组，命中 a[i]==t 时返回该元素地址 &a[i]（int*），找不到返回 NULL。main 里调用 find(a,4,9)：目标 9 在 a[2] 位置，函数返回 &a[2]，赋给 p。printf(\"%d\", *p) 解引用 p 得到 a[2]=9，打印 9。易错点：函数返回指针时，返回的必须是仍然有效的地址——这里返回的是 main 里数组元素 a[2] 的地址，数组在 main 作用域内有效，所以解引用安全；若返回局部变量的地址则成悬垂指针。找到就返回并停止（这里只有一个 9），未找到时返回 NULL 供调用方判空，*p 前应先判 p!=NULL。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-151",
@@ -16290,7 +17149,10 @@
       "answer": "5 4",
       "explanation": "结论：输出 5 4。逐行看：int (*p)[3] 声明 p 为「指向含 3 个 int 的数组（一行）」的指针；= a 中数组名 a 类型是 int[2][3]，在赋给 int(*)[3] 时退化为「指向第一行」的指针。p+1 跳一整行（3 个 int），指向第二行。*(p+1) 得到第二行首地址（int*），再 +1 得第二行第 2 个元素地址，外层 * 解引用得 a[1][1]=5，打印 5。**(p+1)：p+1 指向第二行，*(p+1) 是第二行首地址，再 * 解引用得第二行第 1 个元素 a[1][0]=4，打印 4。易错点：int(*p)[3] 的括号不能省（否则成为 int* p[3] 指针数组）；p 与 p+1 相隔一个「整行」的字节数，跟 int* 指针对 a[0][0] 加 1 只跳一个元素完全不同。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-152",
@@ -16311,7 +17173,10 @@
       "answer": "1 4",
       "explanation": "结论：输出 1 4。逐行看：int *p = a 让 p 指向首元素 a[0]，*p=1。&a 的类型是「指向整个数组的指针」int(*)[4]，&a+1 加 1 会跳过一个完整的 int[4] 数组（16 字节），即指向 a 之后「越过整个数组」的位置；把它强转为 int* 后减 1，回到最后一个元素 a[3] 的地址，赋给 q，*q=4。printf 打印 1 和 4。易错点：&a 与 a 数值上可能相等（都指向同一块起始地址），但类型与步长不同——a 退化为 int*（+1 跳一个 int），&a 是 int(*)[4]（+1 跳一整个数组）；正是这个差异让 (&a+1)-1 能取到数组末尾元素，体现「取整个数组地址」与「取首元素地址」的本质区别。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-153",
@@ -16332,7 +17197,10 @@
       "answer": "HELLO",
       "explanation": "结论：输出 HELLO。逐行看：s 是字符数组（可修改），内容 \"hello\"；char *p = s 让 p 指向首字符。while(*p) 以字符非 0（即未到末尾 \\0）为条件循环。循环体 *p = *p - 'a' + 'A'：把当前小写字母减去 'a' 得到它在字母表中的偏移，再加 'A' 得到对应大写字母，写回 *p（比如 'h'−'a'+'A'='H'）；随后 p++ 后移。遍历结束后原数组内容变为 \"HELLO\"。printf(\"%s\", s) 打印整个字符串 HELLO。易错点：字符串字面量（如 char *q=\"hello\"）只读、不能改写；但 char s[]=\"hello\" 是字符数组、可修改，这里正是通过指针逐一改写它。ASCII 里小写与大写字母差 32（'a'−'A'），用 'a'、'A' 作基准更直观。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-154",
@@ -16353,7 +17221,10 @@
       "answer": "20 3",
       "explanation": "结论：输出 20 3。逐行看：int *p[3] 是存放 3 个 int* 的指针数组，分别指向 a、b、c。*p[1]：下标运算符 [] 优先级高于 *，故 p[1] 是第二个元素（即 &b），*p[1]=*(&b)=b；把它赋成 20，即 b 变为 20（p[0] 指向 a、p[1] 指向 b、p[2] 指向 c）。printf 中 b 已是 20，打印 20。**(&p[2])：&p[2] 是 p[2] 的地址（int**），* 解引用得 p[2]（即 &c），再 * 解引用得 c=3，打印 3。易错点：p 是指针数组，p[i] 本身是指针，*p[i] 才是指向的变量；把指针数组的元素当作变量直接使用（如 p[1]=...）会改写指针而不是变量。用 &p[2] 得到指向指针的指针，再两次解引用回到变量本身。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-155",
@@ -16374,7 +17245,10 @@
       "answer": "7 12",
       "explanation": "结论：输出 7 12。逐行看：int (*ops[2])(int,int) 声明一个数组 ops，它有 2 个元素，每个元素都是「指向返回 int、含两个 int 形参的函数」的指针；初始化列表把 add 赋给 ops[0]、mul 赋给 ops[1]。ops[0](3,4) 经数组下标取出函数指针再调用 add，得 3+4=7，打印 7。ops[1](3,4) 调用 mul，得 3*4=12，打印 12。易错点：声明 int(*ops[2])(int,int) 中括号的位置很关键——它表示「数组的元素是函数指针」，而不是一个返回指针数组的函数；用下标 ops[i] 得到函数指针后直接加参数调用即可。函数指针数组常用于「按索引选择操作」（如计算器按运算符选择 add/mul/...）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-156",
@@ -16395,7 +17269,10 @@
       "answer": "9",
       "explanation": "结论：输出 9。逐行看：max 形参 int *a 接收数组首地址，n 接收长度 4。int m = *a 先把第一个元素 a[0]=3 作为当前最大。for(i=1..3) 遍历其余元素，用 a[i] > m 判断是否更大，更大就更新 m。i=1 时 a[1]=9>3，m 更新为 9；i=2 时 a[2]=2 不大；i=3 时 a[3]=7 不大。函数返回 m=9。main 里调用 max(a,4) 并打印 9。易错点：数组传给函数退化为指针，形参 int *a 可以用下标 a[i] 访问；从 1 开始（而非 0）因为第 0 个已经作为初值；求最值要处理「所有值为负」的情形——把 a[0] 当初值能正确得到最大（若初值设为 0 会出错）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-157",
@@ -16416,7 +17293,10 @@
       "answer": "4",
       "explanation": "结论：输出 4。逐行看：s 内容为 a、b、c、d、\\0；char *p = s 让 p 指向首字符。while(*p++) 是「先取 *p 判断真假，再把 p 后移一位」：条件取当前字符，非 0 进入循环体 n++ 并（因 p++ 已执行）把 p 移到下一字符。p 依次停在 a、b、c、d 时条件为真，各让 n 加 1（n=4）；当 p 移到存放 \\0 的位置时 *p 为 0，循环停止（此时 p 又后移了一格，但循环不再执行）。打印 n=4。易错点：*p++ 的优先级等价于 *(p++)，是先取值得加后指针后移；p++ 在条件里每次都执行，哪怕最后一次条件为假也会把 p 越过 \\0 一格；计数的正是字符串长度（不含结尾 \\0）。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-158",
@@ -16437,7 +17317,10 @@
       "answer": "10",
       "explanation": "结论：输出 10。逐行看：malloc(4*sizeof(int)) 在堆上分配 4 个 int，赋给 p；int *q = p 让 q 也指向堆区开头。for(i=0..3) 里 *q++ = i+1：后缀 ++ 先于赋值取 *q 指向的位置，把 i+1 写入后再把 q 后移，依次写入 1、2、3、4。随后 q = p 把 q 复位到开头。while(q < p+4) 用指针比较控制范围，s += *q++ 每轮把当前值累加并把 q 后移一行：1+2+3+4=10。打印 10，最后 free(p) 释放堆内存。易错点：malloc 后需判 NULL；写完后 q 已被推到最后，复用前必须 q=p 复位；*q++ 是「取值再移动指针」的惯用法，而 while(q<p+4) 用指针比较作结束条件，其含义是「到最后一个元素的下一个位置为止」。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-159",
@@ -16458,7 +17341,10 @@
       "answer": "world hello",
       "explanation": "结论：输出 world hello。逐行看：x、y 是两个 char*，分别指向 \"hello\"、\"world\"。调用 swapstr(&x, &y) 传入的是 x、y 的地址，形参 a=char**（&x）、b=char**（&y）。函数体：char *t = *a 取出 *a（即 x 指向的 \"hello\" 的地址）暂存；*a = *b 把 *b（y 指向的 \"world\"）赋给 x；*b = t 把暂存的 t 赋给 y。于是 x 改为指向 \"world\"、y 改为指向 \"hello\"。printf 打印 world hello。易错点：要交换的是「两个指针变量」而非它们指向的字符串内容，所以必须传指针的地址（char**）；若只传 char* 形参，函数内交换的只是指针拷贝，调用方的 x、y 不变。*a 解引用一级得到指针变量，正是「用二级指针改指针」的典型用法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-pt-160",
@@ -16479,7 +17365,10 @@
       "answer": "4 1",
       "explanation": "结论：输出 4 1。逐行看：int *p = a 让 p 指向首元素 a[0]=1；int *q = a + 3 让 q 指向末尾元素 a[3]=4。int t = *p 先把首元素 1 暂存到 t；*p = *q 把末尾元素 4 写到首元素（a[0] 变为 4）；*q = t 把暂存的 1 写回末尾（a[3] 变为 1）。于是首尾交换：p 指向的 a[0]=4、q 指向的 a[3]=1。printf 打印 *p=4、*q=1，得 4 1。易错点：交换必须用一个临时变量 t 先保存一个值，否则覆盖丢失；*p、*q 是对「p、q 所指向的元素」赋值，属直接改写数组元素；用 q=a+3 而不是 q=&a[3]，体现数组名退化 + 指针算术取末元素。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-001",
@@ -16581,7 +17470,10 @@
       "reference_answer": "该程序把 p 初始化为空指针 NULL，紧接着 printf(\"%d\", *p) 就解引用空指针。空指针不指向任何有效对象，对空指针解引用属于未定义行为，在多数实现上会触发段错误使程序崩溃。评审要点：任何指针在解引用前都应确认其非空且指向有效对象；本例应先判空，如 if (p != NULL) 再访问 *p，或者把 p 初始化为某个真实变量的地址（int a; int *p=&a;）。",
       "explanation": "核心缺陷：对空指针解引用。p=NULL 后立即 *p，是非法的未定义行为，通常导致段错误。改进思路：指针使用前必须判空或确保指向真实对象，可写 if(p!=NULL) printf(\"%d\",*p)，或改为 int a; int *p=&a; 使 p 有合法指向。评审时要抓住\"先判空、后解引用\"这条安全红线。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-102",
@@ -16608,7 +17500,10 @@
       "reference_answer": "程序声明了 int *p; 但没有给它赋任何初值就执行 *p=10。未初始化指针保存的是随机垃圾地址，向其写入会破坏该随机地址区域的内存，属于未定义行为，可能崩溃、数据损坏或不报错地错误运行。评审要点：指针变量与普通局部变量一样不会自动初始化，声明时应立即初始化为 NULL 或指向某个有效对象；任何解引用前都须保证指针有确定、合法的指向。",
       "explanation": "核心缺陷：未初始化指针即被使用。局部指针 p 未赋值就解引用，是野指针写入，属未定义行为。改进：int a; int *p=&a; 或 int *p=NULL; 后再判空使用。评审强调\"声明即初始化\"与\"用前必判空\"两条原则。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-103",
@@ -16635,7 +17530,10 @@
       "reference_answer": "指针 s 指向字符串字面量 \"hello\"，字符串字面量在 C 中一般存放在只读存储器，s[0]=.H. 尝试改写其内容属于未定义行为，绝大多数平台会因写只读页而崩溃。评审要点：字面量只读，不能用指针去改；若确需可修改的字符串，应使用字符数组 char s[]=\"hello\";；若只是读取，宜写 const char *s=\"hello\";，既安全又明确表达不可修改的语义。",
       "explanation": "核心缺陷：通过 char* 改写字符串字面量。字面量存于只读区，s[0]=.H. 是未定义行为、通常崩溃。改进：要么 char s[]=\"hello\"; 用可写数组，要么 const char *s=\"hello\"; 仅作只读访问。评审要连带指出 const 的恰当用法。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-104",
@@ -16662,7 +17560,10 @@
       "reference_answer": "swap 函数意图交换两个指针的指向，但形参 a、b 声明为 int*，函数内交换的是这两个形参指针自身的值（地址副本），对主调函数中的实参 p、q 毫无影响，因此输出仍为 3 7。评审要点：指针作为形参时，改动的是形参的本地副本，无法重绑主调函数里的指针变量；要改变指针变量的指向，必须传指针的地址，即形参写成 int **a、调用写成 swap(&p,&q)。若只想交换被指向的 int 值，则应交换 *a 与 *b。",
       "explanation": "核心缺陷：形参类型选错。swap(int*,int*) 只能交换形参副本，无法重绑调用者的指针。改进：需要 int**（传 &p,&q），或改为交换 *a、*b 的值。评审要辨析\"传指针值\"与\"传指针地址\"的区别及二级指针的用途。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-105",
@@ -16689,7 +17590,10 @@
       "reference_answer": "count_letters 仅仅读取 s 指向的字符串并计数，并没有修改其中任何字符，但形参却声明为可写的 char*。这违背 const 正确性：调用者无法从签名得知该函数是否改动字符串，也无法传入 const char* 或字符串字面量。评审要点：只读参数应限定为 const char *s，让接口表达意图并扩大可用性；同时应补充 if(s==NULL) 判空以防空指针遍历；while(*s++) 虽紧凑但晦涩，建议改写成更清晰的指针/下标循环，兼顾可读性与安全性。",
       "explanation": "核心缺陷：const 使用不当。只读函数未用 const 修饰参数，接口语义不清、限制可传数据。改进：形参改 const char *s，并补 NULL 判空；循环写法可更清晰。评审要点是用 const 表达\"不改动\"，提升接口健壮性与可读性。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-106",
@@ -16716,7 +17620,10 @@
       "reference_answer": "程序把 *p++ 误当作对元素的自增。根据运算符优先级，后缀自增高于解引用，*p++ 等价于 *(p++)，即先解引用得到 a[0] 的值、再让 p 后移指向 a[1]，它并不会修改 a[0]。这与上一行 (*p)++（对 a[0] 自增）语义完全不同。评审要点：结合 * 与 ++、-- 时务必用括号明确意图；若意图是多次自增同一元素，应写 (*p)++ 或 (*p)+=1；避免依赖晦涩的优先级组合，提升可读性。",
       "explanation": "核心缺陷：混淆 *p++ 与 (*p)++ 的语义。后缀自增优先级高于解引用，*p++ 等价 *(p++) 移动指针而非修改元素。改进：用括号 (*p)++ 明确意图。评审要强调运算符优先级与可读性，避免晦涩表达式。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-107",
@@ -16743,7 +17650,10 @@
       "reference_answer": "half 通过形参 out 把结果写回调用者，但函数体直接 *out=n/2，没有检查 out 是否为空。当调用者传入 NULL（如本例 half(9,NULL)）时，对空指针解引用会引发未定义行为并大概率崩溃。评审要点：所有通过指针\"输出结果\"的参数都应视作不可信输入，函数应先判断 if(out==NULL) 再使用，或在注释/契约中明确要求调用者保证非空；健壮的接口应在入口做参数校验，提升库函数的可用性与安全性。",
       "explanation": "核心缺陷：输出形参未判空即解引用。half 直接 *out=...，调用者传 NULL 即崩溃。改进：入口加 if(out==NULL) return; 守卫，并把非空约束写进接口契约。评审要突出指针参数校验对健壮性的价值。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-108",
@@ -16770,7 +17680,10 @@
       "reference_answer": "循环 for(i=0;i<=5;i++) 的结束条件是 i<=5，因此会访问到 p[5]，而数组 a 只有 5 个元素（下标 0 到 4），p[5] 是越过数组末尾元素的越界访问，属于未定义行为，可能读到随机垃圾值、覆盖相邻变量甚至崩溃。评审要点：数组下标从 0 到 长度-1，遍历应使用 i<5（或 p 从 a 到 a+4）；可用 one-past-the-end 指针 int *end=a+5 配合 while(p<end) 表达范围语义，既清晰又不易越界。",
       "explanation": "核心缺陷：越界访问。i<=5 使 p[5] 越过数组末尾，是未定义行为。改进：改 i<5，或用 end=a+5 的指针区间遍历。评审要强调 off-by-one 边界错误与安全遍历习惯。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-109",
@@ -16797,7 +17710,10 @@
       "reference_answer": "程序用 while(p<=q) 遍历数组并累加，逻辑上能正确求和，但存在两类问题：其一，s、n 都是 int，s/n 执行整数除法，平均值 30 被算成 30 尚可、若为小数则被截断，应改为 double；其二，n 累加的是元素个数，若数组为空 n=0，s/n 会除零崩溃，需判 n==0。此外 p 在循环中被推进到越过 q（one-past-the-end），虽然未解引用，但这类边界指针的移动应受控。评审要点：整数除法、除零防护，以及指针遍历对边界的把握。",
       "explanation": "核心缺陷：平均值用整数除法截断，且 n 为 0 时除零。指针遍历本身可求和，但结果类型与除零未处理。改进：用 double 求和/结果，并在 n==0 时提前返回。评审要点是数值语义与除零防护。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-110",
@@ -16824,7 +17740,10 @@
       "reference_answer": "print 形参声明为 int**，但实参 a 是 int[2][3]，其数组名退化后是 int(*)[3]。int(*)[3] 与 int** 是完全不同的类型：前者是\"指向含 3 个 int 的数组的指针\"，后者是\"指向指针的指针\"。把前者传给后者导致 m[i][j] 的寻址错误（m[i] 被当作 int* 而非一行 3 元素的数组），读取的是错误地址，属未定义行为。评审要点：二维数组退化成行指针 int(*)[N]，形参应写 int(*m)[3]（或 int m[][3]），保持列数一致；只有在池化/动态行数组时才适合用 int**。",
       "explanation": "核心缺陷：多维数组形参类型错配。int[2][3] 退化后是 int(*)[3] 行指针，传给 int** 形参导致 m[i][j] 寻址错误。改进：形参改为 int(*m)[3] 或 int m[][3]。评审要点是指针类型与二维数组退化规则。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-111",
@@ -16851,7 +17770,10 @@
       "reference_answer": "p 指向数组 a 的元素，q 指向数组 b 的元素，二者不属于同一数组。标准 C 规定，只有两个指针指向同一数组（或它尾后一个位置）时，二者相减才有定义，结果是相隔的元素个数；对不相关对象的指针做减法属于未定义行为。本例把这样无意义的差值强转为 int 输出，结果依赖编译器与内存布局，不可移植、无任何语义价值。评审要点：指针运算限定于同一数组内；跨数组比较/相减必须避免，必要时改用下标或分离的计数。",
       "explanation": "核心缺陷：对不同数组的指针相减。C 只允许同一数组内的指针相减，跨数组减法是未定义行为、结果无意义且不可移植。改进：避免此类运算，改用下标或单独计数。评审要强调指针运算的适用范围。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-112",
@@ -16878,7 +17800,10 @@
       "reference_answer": "a+4 是数组 a 的 one-past-the-end 指针，即越过最后一个元素 a[3] 的下一个位置。C 标准允许构造这样一个指针并用于与数组内元素比较（如 while(p<end)），但不允许对它解引用，因为它不指向任何真实对象。这里 *p 越界读取 a[4] 的地址，属于未定义行为。评审要点：区分\"可构造、可比较\"的边界指针与\"可解引用\"的有效指针；访问最后一个元素应使用 a+3；把边界指针用于遍历、把有效指针用于取值。",
       "explanation": "核心缺陷：解引用 one-past-the-end 指针。a+4 合法可用于比较，但不能 *p 取值。改进：访问最后一个元素用 a+3。评审要区分边界指针与有效指针，澄清数组尾后位置的约束。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-113",
@@ -16905,7 +17830,10 @@
       "reference_answer": "mycpy 用 while(*s) 把 s 的非空字符逐个拷入 d，但当 s 指向 \\0 时循环结束，没有在 d 末尾写入 \\0。于是 a 中的字符串没有以 \\0 结尾，printf(\"%s\", a) 会沿着内存继续读取直到恰好遇到一个 \\0，读到的是越界垃圾并可能越界访问，输出不可预测。评审要点：字符串必须以 \\0 结尾；拷贝函数应在循环后补 *d=\\0;，或直接使用 strcpy/strncpy 并配合容量参数防止缓冲区溢出。",
       "explanation": "核心缺陷：字符串复制后未写结束符 \\0。mycpy 少了一句 *d=\\0;，导致 printf 越界读取。改进：循环后补 \\0，或用 strncpy 并限容量。评审要点是字符串终止与其造成的越界隐患。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-114",
@@ -16932,7 +17860,10 @@
       "reference_answer": "char *s=\"hello\" 中的 \"hello\" 是字符串字面量，通常存放在只读数据段。s[1]=.a. 尝试改写该只读内存，属于未定义行为，在多数平台上会触发段错误。即使某些环境允许，它也依赖实现、不可移植。评审要点：字符串字面量不可修改；需要可写字符串时使用字符数组 char s[]=\"hello\";，并且用 const char* 声明只读指针、从类型上杜绝改写——这也是 const 正确性的落实。",
       "explanation": "核心缺陷：改写字符串字面量。s 指向只读字面量，s[1]=.a. 非法。改进：用可写字符数组或 const char*。评审要点抓住字面量只读性与 const 的使用。与 103 相比，这里强调别名/类型更直接。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-115",
@@ -16959,7 +17890,10 @@
       "reference_answer": "buf 是未初始化的局部字符数组，循环只给 buf[0..4] 赋了 a..e，没有写结束符 \\0，buf[5..7] 仍是随机内容。strlen 从 buf 开始逐字节找 \\0，由于 buf 内没有可靠 \\0，它会继续读越界直到在栈上某个位置遇到 0，结果长度不可预测且读取了未定义的内存。评审要点：任何交给 strlen/strcpy/printf(%s) 的字符串都必须以 \\0 结尾；初始化时可用 char buf[8]={0}; 或显式 buf[5]=\\0; 确保终止。",
       "explanation": "核心缺陷：缓冲区未补结束符就调用 strlen。buf 无 \\0 终止，strlen 越界扫描、结果不可预测。改进：buf[5]=\\0; 或清零初始化。评审要点是字符串操作的终止符依赖与越界读。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-116",
@@ -16986,7 +17920,10 @@
       "reference_answer": "reverse 把反转结果写到局部数组 buf，并 return buf 返回其首地址。buf 是函数内部局部变量，其存储期在函数返回时结束，返回指向它的指针即为悬垂指针，主函数 printf(\"%s\", r) 读取的是已失效的栈内存，属于未定义行为。评审要点：函数不能返回指向\"自动存储期局部数组/变量\"的指针；正确做法是由调用者提供输出缓冲区并传入（改 char *out），或函数内部 malloc、由调用者 free，并明确所有权；同时注意固定 20 长度会截断超长输入。",
       "explanation": "核心缺陷：返回局部数组指针。buf 是函数栈上变量，返回即悬垂。改进：由调用者传输出缓冲区，或函数内 malloc 并约定调用者 free。评审要讲清存储期与所有权。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-117",
@@ -17013,7 +17950,10 @@
       "reference_answer": "把函数指针 f 声明为 int(*f)(int)，即\"指向一个 int 且带一个 int 参数的函数\"，而 add 的签名是 int add(int,int)。将 int(*)(int) 与 add 相互赋值，两者类型不一致，编译期即给出\"incompatible pointer type\"告警；调用 f(2) 只提供了一个实参，add 需要两个，第二个形参 b 将取到不确定的垃圾值，结果为未定义行为。评审要点：函数指针的类型与被指向函数必须完全一致（返回类型与每个参数类型），应写 int(*f)(int,int)=add;，这也是设计回调/函数表时的类型统一性要求。",
       "explanation": "核心缺陷：函数指针类型与被指函数签名不匹配。int(*f)(int) 却指向 int add(int,int)，调用未定义。改进：声明为 int(*f)(int,int)。评审要点是函数指针类型必须与函数签名完全一致。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-118",
@@ -17040,7 +17980,10 @@
       "reference_answer": "sq 接受 double 返回 double，而函数指针 f 被声明为 int(*)(int)，与 sq 的返回类型和参数类型都不一致。C 要求函数指针指向的函数在返回类型与各参数类型上完全匹配，否则调用 f(3) 属于未定义行为；由于 double 与 int 的调用约定和表示不同，即使能编译，结果也是错误的。评审要点：函数指针类型必须与被指函数一致；可引入 typedef double (*pfunc)(double); 之类的类型别名，让声明更统一、更易维护，避免手写复杂函数指针类型而出错。",
       "explanation": "核心缺陷：函数指针与被指函数返回/参数类型都不匹配。double(double) 赋给 int(*)(int) 导致调用未定义。改进：声明 double(*f)(double)。评审要点是类型一致性，并建议用 typedef 别名。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-119",
@@ -17067,7 +18010,10 @@
       "reference_answer": "int *ops[2] 定义的是一个\"指针数组\"，其每个元素类型为 int*，而 add 是函数，把它赋给 int* 元素属类型不匹配；随后用 (int(*)(int,int))ops[0] 把这个 int* 强转成函数指针再调用，属于\"对象指针与函数指针混用\"，在标准 C 中是被禁止的未定义行为。要保存一组状态相同、可统一调用的函数，应声明为函数指针数组：int (*ops[2])(int,int) = {add, add};，此后 ops[i](a,b) 等价于 (*ops[i])(a,b)。评审要点：[] 优先级高于 *，int* ops[2] 与 int (*ops)[2] 意义完全不同；函数表/分发应使用函数指针数组，而不是指针数组，更不能靠强转绕过类型检查。",
       "explanation": "核心缺陷：把函数指针数组误写成指针数组，并用强转绕过类型检查。int *ops[2] 是元素为 int* 的数组，不能存放函数指针；(int(*)(int,int))ops[0] 将 int* 强转为函数指针后调用，属\"对象指针/函数指针混用\"的未定义行为。改进：int (*ops[2])(int,int) 声明为函数指针数组。评审要辨析 [] 与 (*) 的优先级，厘清两种声明，并拒绝靠强转规避类型错误。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-120",
@@ -17094,7 +18040,10 @@
       "reference_answer": "void(*f)(void) 声明后没有初始化，唯一赋值 f=greet 位于 if(0) 分支内永远不会执行，因此调用 f() 时 f 是未初始化的野指针，程序会跳转到随机地址执行，通常立即崩溃或行为未定义。评审要点：函数指针同样需要初始化并判空后才能调用，声明时可写成 void(*f)(void)=greet;，调用前应检查 if(f!=NULL)；不要把赋值放在必然不执行的逻辑里，让函数指针始终有确定所指。",
       "explanation": "核心缺陷：调用未初始化的函数指针。f 仅在 if(0) 分支赋值，实际是野指针，f() 跳转随机地址。改进：声明时赋初值或调用前判空。评审要点是函数指针也须初始化与判空。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-121",
@@ -17121,7 +18070,10 @@
       "reference_answer": "get 内部定义局部变量 x（自动存储期），并返回 &x。当 get 返回时，x 的存储期结束，其内存失效；主函数再通过 *p 访问该地址，读取的是已失效的栈内存，属于未定义行为，可能得到垃圾值、崩溃或看似\"碰巧正确\"。评审要点：不能返回指向自动存储期局部变量的指针；若确需函数提供数据，可把 x 声明为 static（函数返回后仍存活，但注意线程/复入问题），或由调用者提供缓冲区、或函数内 malloc 并约定调用者 free。",
       "explanation": "核心缺陷：返回局部变量地址。x 自动存储期，函数返回后失效，*p 访问悬垂内存。改进：static 局部、调用者缓冲区或堆分配。评审要点是存储期与返回指针的存活约束。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-122",
@@ -17148,7 +18100,10 @@
       "reference_answer": "fmt 采用 static 局部缓冲区返回指针，避免悬垂。但 static 只有一份，第二次调用 fmt(9) 会覆盖第一次 fmt(5) 写入的 buf，于是 a 与 b 实际指向同一块内存、内容都是 \"num=9\"，printf 打印出两个 \"num=9\"，与预期不符。评审要点：static 返回虽然保证存储期，但引入\"共享同一缓冲、后文覆盖前文\"的复入问题；更稳妥的方案是让调用者提供输出缓冲区（传入 char* out），或每次 malloc 并约定调用者 free；static 方案在多线程/并行调用下还有数据竞争风险。",
       "explanation": "核心缺陷：static 缓冲被后续调用覆盖。a、b 指向同一 static buf，第二次调用覆盖第一次结果。改进：调用者提供缓冲区或堆分配。评审要点是 static 返回的复入性与共享覆盖问题。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-123",
@@ -17175,7 +18130,10 @@
       "reference_answer": "dup 在堆上 malloc(100) 并返回指针 p，主函数 x 取得该指针、打印后程序结束，但没有调用 free(x)，导致这 100 字节堆内存泄漏；若程序长期运行会持续耗尽内存。评审要点：函数返回堆指针时应明确\"由调用者负责 free\"的所有权契约，并写进注释；同时应在 malloc 后判断 p==NULL（失败时返回 NULL 或处理），并避免固定 100 容纳不足导致 strcpy 溢出，应使用 strlen+1 的精确长度。",
       "explanation": "核心缺陷：返回堆指针但调用者未 free，内存泄漏，且未判空。改进：明确所有权（调用者 free）、malloc 后判空、按实际长度分配。评审要点是所有权契约与泄漏/溢出防护。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-124",
@@ -17202,7 +18160,10 @@
       "reference_answer": "row 在函数体内定义局部数组 t，把 m[r] 每个元素乘 2 存入后 return t，返回的是局部数组首地址。t 为自动存储期，函数返回即失效，主函数用 q[0]、q[1] 读取的是已失效的栈内存，属于未定义行为。评审要点：函数不能返回自动存储期局部数组的指针；更优的做法是，既然只是要第 r 行的数据，可直接返回 m[r]（指向主函数存活数组的指针），或由调用者传入输出数组 int *out 并写入，需要新副本时用 malloc 并约定 free。",
       "explanation": "核心缺陷：返回函数内局部数组指针。t 自动存储期、返回即悬垂。改进：直接返回 m[r]（存活数组内指针）或调用者传输出缓冲。评审要点是避免返回局部数组并提供更优接口。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-125",
@@ -17229,7 +18190,10 @@
       "reference_answer": "本程序使用指针数组 int *p[2]={a[0],a[1]}，a[0]、a[1] 分别是二维数组两行的行首地址（int* 类型），因此 p 是元素为 int* 的指针数组。p[0][2] 等价 a[0][2]=3，*(p[1]+1) 等价 a[1][1]=5，访问正确。评审要指出：这里用指针数组表示行是可读的，但必须与 int(*p)[3]（行指针）严格区分；若后续以 p 作为整体处理行，行指针语义更清晰。此外数组访问部分没有越界，整体可用；可建议增加注释或统一用行指针以提升可读性。",
       "explanation": "评审要点：本例用 int *p[2]（指针数组）存行首地址，访问正确无越界缺陷；但需与 int(*p)[3]（行指针）区分——[] 优先级高于 *，两者语义不同。建议用行指针或注释增强可读性。核心是辨析两类声明的差异。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-126",
@@ -17256,7 +18220,10 @@
       "reference_answer": "set 的形参是 int**，*pp=NULL 修改的是主函数中 p 的指向（使 p= NULL），这是用二级指针在函数外重绑一级指针的正确方式，程序会输出 1（p 已为空）。评审要点：函数通过二级指针修改一级指针是合法且常见的；但接口语义不清——函数名 set 太宽泛，调用者难以预料\"会把 p 置空\"这一副作用；建议命名更明确，如 set_null(int**)，或在参数名/注释中说明对指针造成的修改，提高可读性与可维护性。",
       "explanation": "评审要点：set(int**) 经 *pp=NULL 修改主函数 p，二级指针用法正确；但接口语义含混，难以预见副作用。改进：命名 set_null(int**)，或在注释说明对实参指针的修改。突出接口可读性与副作用透明。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-127",
@@ -17283,7 +18250,10 @@
       "reference_answer": "本程序把指针数组 p 的每个元素都初始化为 NULL，随后逐元素 free。free(NULL) 是安全的空操作，因此不会崩溃；但整个程序既没分配也没持有任何堆内存，释放是空操作、无实际意义，属于\"为了演示而写、无业务价值\"。评审要点：更值得警惕的常见错误恰恰相反——分配了指针数组的每个元素（malloc）却在回收时只 free 掉数组、丢掉各元素指向的子块，造成内存泄漏；正确做法是逐个 free 元素后再释放数组本身。同时 malloc 可能返回 NULL，应检查分配是否成功，而非默认全部成功。",
       "explanation": "评审要点：本例 p 元素全 NULL，free(NULL) 空操作、不崩溃但无意义；真正隐患是\"只释放数组、漏释放各元素子块\"的泄漏，以及未检查 malloc 是否成功。改进：逐元素 free 且检查分配结果。强调指针数组释放的正确顺序与失败处理。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-128",
@@ -17310,7 +18280,10 @@
       "reference_answer": "程序中 malloc 两次得到 a、b 两块动态内存，但只调用了 free(a)，b 没有被释放。函数 main 结束时，b 指向的堆内存仍被占用却再无指针可访问，属于内存泄漏；函数返回后该内存既不能复用也不归还系统。评审要点：malloc/calloc/realloc 都必须与 free 配对，每块动态内存在使用完毕、且确不再需要时释放；泄漏在长生命周期程序或循环分配中会不断累积，最终耗尽可用内存导致分配失败。应补充 free(b);。",
       "explanation": "核心缺陷：漏释放，导致内存泄漏。主函数两次调用 malloc 分别得到 a、b 两块动态内存，却只调用 free(a)，b 始终没有释放。main 返回后，b 指向的堆内存既无法复用也无法归还系统，长期运行会持续耗尽内存。改进：为每次 malloc 补充对应的 free，在 b 不再使用时执行 free(b)。评审要点是动态内存必须与 free 一一配对，以及内存泄漏在长进程/循环中的累积危害。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-129",
@@ -17337,7 +18310,10 @@
       "reference_answer": "malloc(5*sizeof(int)) 可能因内存不足而返回 NULL，但程序没有检查 a 是否为 NULL 就直接用 a[i]=i 解引用。若分配失败，解引用空指针属于未定义行为，程序会崩溃。评审要点：malloc/calloc/realloc 的返回值必须检查；应用 if(a==NULL){ perror(...); return 1;} 之类的错误处理，使分配失败可被感知与恢复；不要假定分配必然成功，这是健壮动态内存代码的基本要求。",
       "explanation": "核心缺陷：未检查 malloc 返回值。分配失败返回 NULL 后仍解引用 a[i]，空指针崩溃。改进：使用前判空并做错误处理。评审要点是分配失败处理与健壮性。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "id": "c-ch09-rv-130",
@@ -17364,7 +18340,10 @@
       "reference_answer": "程序先 malloc 并 p[0]=10，随后 free(p) 释放该内存，接着又用 printf 读取 p[0]，这是典型的释放后使用（use-after-free）：指针 p 此时指向已归还系统的内存，其内容不再受控，读取是未定义行为；随后再一次 free(p) 构成双重释放（double free），将引发堆管理错误、通常导致崩溃或内存损坏。评审要点：free 之后该内存不再属于程序，禁止再次访问或再次释放；正确做法是 free 后立即 p=NULL，使后续误用/重复释放因空指针判空而被拦截，并确保每个内存块只释放一次。",
       "explanation": "核心缺陷：释放后使用 + 双重释放。free(p) 后仍读 p[0]，又再次 free(p)，均为未定义行为、常崩溃。改进：free 后置 p=NULL 且只释放一次。评审要点是释放后置空与一次释放原则。",
       "source": "自撰（依据《C程序设计》第9章 指针 知识点体系）",
-      "verified": true
+      "verified": true,
+      "variantOf": "",
+      "knowledgeIds": [],
+      "vizIds": []
     },
     {
       "category": "c",
