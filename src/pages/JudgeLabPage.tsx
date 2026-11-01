@@ -256,7 +256,7 @@ export function JudgeLabPage() {
         阶段 2 交付物 <code>src/judge/</code> 的验收页面。后端：
         <b>{client.backend.id}</b>（并发上限 {status?.concurrency ?? client.backend.maxConcurrency}，
         最小间隔 {client.backend.minIntervalMs} ms，软超时 {client.backend.timeoutMs} ms）。
-        这里跑的是真实网络请求，不是 mock。判分口径见 <code>04_题型规范与样例.md</code> 第〇节。
+        这里跑的是真实网络请求，不是 mock。判分口径见 <code>docs/specs/04-question-types.md</code> 第〇节。
       </p>
 
       <section className="rounded-xl border p-4" style={box}>

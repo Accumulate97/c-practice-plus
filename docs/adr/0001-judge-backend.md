@@ -3,7 +3,7 @@
 - 状态：**已接受**
 - 日期：2026-09-06
 - 决策：用户（裁决一）；阶段 0 spike 执行与取证：Codex
-- 关联条款：`AGENTS.md` 二·5（编译引擎）/ 二·7（实机验证）、`00_任务书.md` 第二节、`05_教材代码风格约定.md`
+- 关联条款：`AGENTS.md` 二·5（编译引擎）/ 二·7（实机验证）、`docs/specs/00-task-book.md` 第二节、`docs/specs/05-code-style.md`
 
 ---
 
@@ -236,7 +236,7 @@ export interface JudgeBackend {
 
 ## 9. 阶段 1 复校与阶段 2 实测记录（2026-09-06）
 
-### 9.1 用完整 Ajv 复校 `04_题型规范与样例.md` 的**全部**样例
+### 9.1 用完整 Ajv 复校 `docs/specs/04-question-types.md` 的**全部**样例
 
 前一轮只跑了 id 的 pattern 正则，那不叫校验。本轮以 `schema/Problem.schema.json` 为唯一真源，
 用 `ajv@8` + `ajv-formats@3`（draft 2020-12、`strict: false`、递归编译 `$defs`）对 04 里**每一个**
@@ -464,7 +464,7 @@ SOURCE（缺 `source`）· NONCODE-VERIFIED · VERIFIED-NO-PROOF。
 制造了 **56 insertions / 13 deletions** 的 diff——规范文档没法审。已改为
 `patchDocSample()`：按顶层键逐行定点替换（顶层键固定两空格缩进，嵌套同名键不会误伤），
 替换后**重新解析并断言除目标键外没有任何语义变化**，不满足就抛异常、一个字都不写。
-`04_题型规范与样例.md` 已用 `git cat-file blob <HEAD-sha>` 字节级还原后重跑，最终 diff 即 10.3 所列 4 行。
+`docs/specs/04-question-types.md` 已用 `git cat-file blob <HEAD-sha>` 字节级还原后重跑，最终 diff 即 10.3 所列 4 行。
 纪律：**任何写回规范文档的脚本，验收标准是 `git diff` 的行数，不是「跑成功了」**。
 
 ### 10.7 事故复盘：一次 HTTP 502 把已验证的题悄悄降级了

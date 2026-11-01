@@ -5,7 +5,7 @@
  * 具体每一步怎么画交给 renderStep（页面把渲染器传进来）。对比页复用同一个
  * usePlayback 实现同步步进，不留第二套播放逻辑。
  *
- * 两条硬约束（07_可视化演示规范.md 三、五）：
+ * 两条硬约束（docs/specs/07-viz-spec.md 三、五）：
  *   · 后退靠快照数组下标回退，不做逆运算 —— clampStep（Step.ts）统一收口；
  *   · 自动播放用 requestAnimationFrame 驱动，不用 setInterval（规范五：避免丢帧）。
  * 键盘（规范三·1）：空格=播放/暂停，←/→=单步，Home/End=跳首/尾；

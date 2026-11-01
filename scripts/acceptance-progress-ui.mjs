@@ -480,10 +480,10 @@ async function main() {
   const exportPath = join(TMP, 'acc-progress-export.json')
   await dl.saveAs(exportPath)
   const exported = JSON.parse(readFileSync(exportPath, 'utf8'))
-  check('导出：真的落了文件，文件名形如 c-practice-progress-YYYYMMDD-HHMM.json',
-    /^c-practice-progress-\d{8}-\d{4}\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename())
+  check('导出：真的落了文件，文件名形如 c-practice-plus-progress-YYYYMMDD-HHMM.json',
+    /^c-practice-plus-progress-\d{8}-\d{4}\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename())
   check('导出：自带 app/kind/schemaVersion，records 与 localStorage 逐字段相同',
-    exported.app === 'c-practice' && exported.kind === 'c-practice-progress' && exported.schemaVersion === 1
+    exported.app === 'c-practice-plus' && exported.kind === 'c-practice-plus-progress' && exported.schemaVersion === 1
     && JSON.stringify(exported.records) === JSON.stringify(before.records)
     && exported.recordCount === Object.keys(before.records).length,
     `schemaVersion=${exported.schemaVersion} recordCount=${exported.recordCount}`)
@@ -519,14 +519,14 @@ async function main() {
     String(await text('[data-role="transfer-report"]')).replace(/\s+/g, ' ').slice(0, 130))
 
   const badFile = join(TMP, 'acc-progress-import-bad.json')
-  writeFileSync(badFile, JSON.stringify({ app: 'c-practice', kind: 'c-practice-progress', exportedAt: 'x', records: {} }), 'utf8')
+  writeFileSync(badFile, JSON.stringify({ app: 'c-practice-plus', kind: 'c-practice-plus-progress', exportedAt: 'x', records: {} }), 'utf8')
   await page.locator('input[data-role="import-input"]').setInputFiles(badFile)
   await page.waitForSelector('[data-role="transfer-report"][data-tone="bad"]', { timeout: 20000 })
   check('导入防线：缺 schemaVersion 的文件一律拒收并说清原因（不猜含义、不动本地进度）',
     /schemaVersion/.test(String(await text('[data-role="transfer-report"]')))
     && JSON.stringify(await lsRecords()) === JSON.stringify(before.records),
     String(await text('[data-role="transfer-report"]')).replace(/\s+/g, ' ').slice(0, 120))
-  writeFileSync(badFile, JSON.stringify({ app: 'c-practice', kind: 'c-practice-progress', schemaVersion: 99, records: {} }), 'utf8')
+  writeFileSync(badFile, JSON.stringify({ app: 'c-practice-plus', kind: 'c-practice-plus-progress', schemaVersion: 99, records: {} }), 'utf8')
   await page.locator('input[data-role="import-input"]').setInputFiles(badFile)
   await page.waitForFunction(() => /更新版本的数据结构/.test(document.querySelector('[data-role="transfer-report"]')?.textContent ?? ''), null, { timeout: 20000 })
   check('导入防线：比本站更新的文件（schemaVersion=99）拒收，不降级解释', true)

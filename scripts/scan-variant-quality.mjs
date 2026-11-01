@@ -7,7 +7,7 @@
  *        ② 变式题相对母题到底改了什么（只改数值 / 改结构 / 改情境）？
  *        ③ 哪些题互相成簇（同一模板批量生成的家族）？
  *        ④ 高度相似的题之间，答案/输入是否自相矛盾？
- *      产出 docs/变式题质量报告.md（人读）+ tmp/variant-scan.json（机器可读全量）。
+ *      产出 docs/reports/变式题质量报告.md（人读）+ tmp/variant-scan.json（机器可读全量）。
  *
  * ── 两条相似度，必须分开看（v1 的教训）────────────────────────────────────
  *   · 掩码相似度：数字掩成 NUM/0、字符串掩成 STR 之后比 —— 度量「模板是否相同」
@@ -32,7 +32,7 @@ import { join } from 'node:path'
 
 const ROOT = process.cwd()
 const DIR = join(ROOT, 'public/data/problems')
-const OUT_MD = join(ROOT, 'docs', '变式题质量报告.md')
+const OUT_MD = join(ROOT, 'docs', 'reports', '变式题质量报告.md')
 const OUT_JSON = join(ROOT, 'tmp', 'variant-scan.json')
 
 const DUP_RAW = 0.90        // 原样相似度 ≥ 此值 = 真·雷同
@@ -397,7 +397,7 @@ L.push('## 三、关键发现')
 L.push('')
 L.push('### 3.1 变式题的「母题」在数据里不可追溯')
 L.push('')
-L.push('`source` 只写「变式（源自 c-chXX 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境）」，**没有具体母题 id**；schema 里也没有 `variantOf` 字段。')
+L.push('`source` 只写「变式（源自 c-chXX 既有题目，按 docs/specs/06-variant-methodology.md 改变数值/结构/情境）」，**没有具体母题 id**；schema 里也没有 `variantOf` 字段。')
 L.push('脚本只能按相似度反推，结果是 ' + variantOnly.filter((v) => v.parentLevel === 'untraceable').length + ' / ' + variantOnly.length + ' 道变式题在同类别既有题里找不到相似度 ≥ 0.25 的候选。')
 L.push('根因不是「变式题抄得太远」，而是**同章节既有题的题型与变式题对不上**：')
 L.push('')

@@ -2,7 +2,7 @@
  * 步骤模型 / 时间轴导航（阶段 7 · Viz 内核）。
  *
  * 类型（VizStep / VizSnapshot）在 types.ts；本文件只管「一条步骤数组上怎么移动光标」。
- * 设计原则（07_可视化演示规范.md 三·2）：后退 = 下标回退，快照是完整状态，绝不做逆运算。
+ * 设计原则（docs/specs/07-viz-spec.md 三·2）：后退 = 下标回退，快照是完整状态，绝不做逆运算。
  * 全部是纯函数：同样的 (index, count) 必得同样的结果，便于单测、便于 Player 与对比页共用。
  */
 import type { VizStep } from './types'

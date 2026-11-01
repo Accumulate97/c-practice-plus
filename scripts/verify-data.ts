@@ -435,7 +435,7 @@ for (const i of issues) console.log((i.level === 'error' ? '✗ ERROR ' : '! WAR
 let doc04Errors = 0
 if (args.includes('--doc04')) {
   const validate = buildValidator()
-  const doc = readFileSync(join(ROOT, '04_题型规范与样例.md'), 'utf8')
+  const doc = readFileSync(join(ROOT, 'docs', 'specs', '04-question-types.md'), 'utf8')
   const samples = readDocSamples(doc)
   let pass = 0
   for (const s of samples) {

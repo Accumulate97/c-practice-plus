@@ -5,7 +5,7 @@
  * 分层原则：
  *   后端适配器只做「传输 + 事实分类」，返回 ExecutionResult；
  *   client.ts 做「排队 / 节流 / 缓存 / 降级」，并把 ExecutionResult 判成 JudgeResponse；
- *   比对 expected 的归一化规则唯一来源是 04_题型规范与样例.md 第〇节。
+ *   比对 expected 的归一化规则唯一来源是 docs/specs/04-question-types.md 第〇节。
  */
 
 /** 一次「编译并（可选）运行」的请求 */

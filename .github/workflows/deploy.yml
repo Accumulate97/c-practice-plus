@@ -1,4 +1,4 @@
-# 部署到 GitHub Pages（项目站点：https://<user>.github.io/C-practice/）
+# 部署到 GitHub Pages（项目站点：https://<user>.github.io/c-practice-plus/）
 #
 # 站点是纯静态产物（AGENTS.md 二.1/2），部署形态由两件事决定，二者都已在仓库里落定：
 #   ① vite.config.ts base = './'  → dist/index.html 里全是相对引用，挂在任意子目录都能拉到资源
@@ -97,7 +97,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: 子目录部署形态验收（dist 挂在 /C-practice/ 下）
+      - name: 子目录部署形态验收（dist 挂在 /c-practice-plus/ 下）
         run: node scripts/acceptance-subpath.mjs
       - name: 三向联动闭环验收
         run: node scripts/acceptance-stage10.mjs

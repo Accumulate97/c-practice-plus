@@ -10,7 +10,7 @@
  * 与 scripts/judge-verify.ts 同一口径（那里加载判分后端，这里加载演示生成器）。
  *
  * 三条纪律：
- *   1. 语料一律脚本生成，禁止手写 JSON（07_可视化演示规范.md）；文件头写死 _generated 标记。
+ *   1. 语料一律脚本生成，禁止手写 JSON（docs/specs/07-viz-spec.md）；文件头写死 _generated 标记。
  *   2. 输出必须可复现：不写时间戳（generated_at 会让同一份规格每天产生 git diff 假变更），
  *      只写 generatedBy = gen-viz@<version>；同版本 + 同输入 = 字节相同的语料。
  *   3. 落盘前逐演示校验：n ≤ 50（规范五红线）、每步 description 非空、

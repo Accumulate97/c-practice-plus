@@ -2,7 +2,7 @@
  * R2 节点链演示生成器（阶段 7 · 会话 2）。
  *
  * 全部纯函数、产出 VizStep[]，每一步都是**完整状态快照**（后退只靠下标回退，不做逆运算）。
- * 教学重点统一落在「指针修改顺序」上（07_可视化演示规范.md 二·A/B 的关键教学点）：
+ * 教学重点统一落在「指针修改顺序」上（docs/specs/07-viz-spec.md 二·A/B 的关键教学点）：
  *   linearSinglyDelete      单链表删除 —— 先连（pre->next 绕过）后断（free）
  *   linearDoublyInsertDelete 双链表插删 —— 插入 4 次、删除 2 次指针修改的先后
  *   linearStackPushPop      顺序栈 —— top 指针 + 栈满/栈空判别

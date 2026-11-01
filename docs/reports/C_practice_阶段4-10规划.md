@@ -253,7 +253,7 @@
 ### 目标
 建立可视化的核心抽象，用 1 个演示验证整套机制。
 
-### 产物（严格照 `07_可视化演示规范.md`）
+### 产物（严格照 `docs/specs/07-viz-spec.md`）
 ```typescript
 interface VisualState { kind, nodes, edges, pointers, memory,
                         counters, callStack, annotations }
@@ -294,7 +294,7 @@ type VizRenderer = React.FC<RendererProps>
 ```
 【阶段 7：Viz 内核】
 
-严格照 07_可视化演示规范.md 实现核心抽象。
+严格照 docs/specs/07-viz-spec.md 实现核心抽象。
 
 产出：
 1. src/modules/viz/core/ —— step.ts / player.ts / usePlayer.ts /
@@ -385,7 +385,7 @@ bubble / insertion / selection / shell / merge / quick / heap / radix
 ## 八、阶段 9：剩余可视化 A–H
 
 ### 目标
-补齐 `07_可视化演示规范.md` 中 A–H 的全部演示（约 30 个组件）。
+补齐 `docs/specs/07-viz-spec.md` 中 A–H 的全部演示（约 30 个组件）。
 
 ### 清单
 
@@ -406,7 +406,7 @@ bubble / insertion / selection / shell / merge / quick / heap / radix
 A+B → C → D → F → H → G
 
 ### 验收
-逐条走 `07_可视化演示规范.md` 第七节 **7 项验收清单**：
+逐条走 `docs/specs/07-viz-spec.md` 第七节 **7 项验收清单**：
 - [ ] 能否单步执行并后退？
 - [ ] 当前步骤是否有文字解说？
 - [ ] 关键状态变化是否有高亮？
@@ -424,7 +424,7 @@ A+B → C → D → F → H → G
 ```
 【阶段 9：剩余可视化 A-H】
 
-按 07_可视化演示规范.md 的清单补齐，分批推进：
+按 docs/specs/07-viz-spec.md 的清单补齐，分批推进：
 第一批 A（线性表 4 个）+ B（栈与队列 5 个）
 验收后再做 C（树 6 个），依此类推：D → F → H → G
 

@@ -7,7 +7,7 @@
  * 故下沉到本文件，两处共用一份 —— 与 verdict-meta.ts 同理：标签映射只允许有一份，不要新增第三份。
  */
 
-/** schema/Problem.schema.json 的 type 枚举 → 中文名（04_题型规范与样例.md 的口径） */
+/** schema/Problem.schema.json 的 type 枚举 → 中文名（docs/specs/04-question-types.md 的口径） */
 export const TYPE_LABEL: Record<string, string> = {
   programming: '编程题',
   code_reading: '程序阅读写结果',

@@ -1,7 +1,7 @@
 /**
  * 可视化演示的统一类型（阶段 7 · Viz 内核）。
  *
- * 三层解耦（07_可视化演示规范.md）：
+ * 三层解耦（docs/specs/07-viz-spec.md）：
  *   算法生成器 src/modules/viz/algorithms/（纯函数，无 React/DOM）→ 产出 VizStep[]
  *   语料 public/data/viz/{id}.json（scripts/gen-viz.ts 生成，禁止手写 JSON）
  *   渲染器 src/modules/viz/renderers/（按 snapshot.kind 分发，5 套覆盖 30+ 演示）

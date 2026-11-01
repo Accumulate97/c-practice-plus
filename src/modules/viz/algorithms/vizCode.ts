@@ -2,7 +2,7 @@
  * R2–R5 演示的对照 C 源码（标准 C，仅上屏展示、不编译）。
  *
  * 键 = 演示 id，与 index.ts 的 VIZ_SPECS 一一对应；steps[].codeLine 指向这里的 1-based 行号。
- * 三条纪律（AGENTS.md 二·6 / 05_教材代码风格约定.md）：
+ * 三条纪律（AGENTS.md 二·6 / docs/specs/05-code-style.md）：
  *   1. 只写能编译的标准 C —— 不用 C++ 语法，不用严蔚敏教材的类 C 伪码；
  *   2. 不用 gets / conio.h / getch / system("pause")；
  *   3. 指针修改顺序必须与演示步骤严格一致（先连后断），这是学生最易错处。

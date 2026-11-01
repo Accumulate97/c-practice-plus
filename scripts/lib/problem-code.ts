@@ -24,7 +24,7 @@ export interface ProblemLike {
   [key: string]: unknown
 }
 
-/** 代码类题型：必须实机验证后才能置 verified: true（00_任务书.md 第四节） */
+/** 代码类题型：必须实机验证后才能置 verified: true（docs/specs/00-task-book.md 第四节） */
 export let CODE_TYPES: string[] = [
   'code_completion',
   'debug',

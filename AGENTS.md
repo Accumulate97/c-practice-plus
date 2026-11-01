@@ -85,15 +85,15 @@ C 语言 + 数据结构在线学习平台。纯静态网站，最终部署到 Gi
 
 | 文件 | 何时读 |
 |---|---|
-| `00_任务书.md` | 项目启动 |
-| `01_知识大纲_C语言.md` | 确定 C 语言章节与考点 |
-| `02_知识大纲_数据结构.md` | 确定数据结构章节与考点 |
-| `03_真实题目原文.md` | **建立"什么算好题"的质量直觉** |
-| `04_题型规范与样例.md` | 写任何一道题之前 |
-| `05_教材代码风格约定.md` | 写任何 C 代码之前 |
-| `06_变式出题方法论.md` | 由教材内容生成新题时 |
-| `07_可视化演示规范.md` | 实现演示功能时 |
-| `08_知识点汇总规范.md` | 编写知识点卡片时 |
+| `docs/specs/00-task-book.md` | 项目启动 |
+| `docs/specs/01-c-curriculum.md` | 确定 C 语言章节与考点 |
+| `docs/specs/02-ds-curriculum.md` | 确定数据结构章节与考点 |
+| `docs/specs/03-original-problems.md` | **建立"什么算好题"的质量直觉** |
+| `docs/specs/04-question-types.md` | 写任何一道题之前 |
+| `docs/specs/05-code-style.md` | 写任何 C 代码之前 |
+| `docs/specs/06-variant-methodology.md` | 由教材内容生成新题时 |
+| `docs/specs/07-viz-spec.md` | 实现演示功能时 |
+| `docs/specs/08-knowledge-spec.md` | 编写知识点卡片时 |
 | `schema/Problem.schema.json` | 输出题目 JSON 前 |
 | `schema/Knowledge.schema.json` | 输出知识卡片 JSON 前 |
 
@@ -107,7 +107,7 @@ C 语言 + 数据结构在线学习平台。纯静态网站，最终部署到 Gi
 - **用自己的 C 语言知识写正确代码，不要抄录教材正文**
 
 ### ⚠️ 版权
-- `03_真实题目原文.md` 中的原题仅作**风格参考**，不得照抄进仓库
+- `docs/specs/03-original-problems.md` 中的原题仅作**风格参考**，不得照抄进仓库
 - 题目依据教材知识点体系变式生成
 - `source` 字段如实注明出处
 

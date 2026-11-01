@@ -8,7 +8,7 @@
  * 这个不起任何服务，直接打线上。判分断言口径与 spotcheck-20.mjs 完全一致。
  *
  * 用法：node scripts/acceptance-online.mjs [base] [抽检代码题数]
- *   base 默认 https://accumulate97.github.io/c-practice/
+ *   base 默认 https://accumulate97.github.io/c-practice-plus/
  * 代码题严格串行（AGENTS.md 二·5：禁止并发打 Godbolt）。
  */
 import { readFileSync } from 'node:fs'
@@ -16,7 +16,7 @@ import { join } from 'node:path'
 import { chromium } from 'playwright-core'
 
 const ROOT = process.cwd()
-const BASE = (process.argv[2] ?? 'https://accumulate97.github.io/c-practice/').replace(/\/+$/, '') + '/'
+const BASE = (process.argv[2] ?? 'https://accumulate97.github.io/c-practice-plus/').replace(/\/+$/, '') + '/'
 const SAMPLE_N = Number(process.argv[3] ?? 3)
 
 const checks = []

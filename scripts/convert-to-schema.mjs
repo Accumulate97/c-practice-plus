@@ -22,7 +22,7 @@ import path from 'node:path';
 // ---------------------------------------------------------------- 配置
 const SRC_DIR = 'D:/C-practice-extract/batch';
 const ANS_DIR = 'D:/C-practice-extract/batch/_answers';
-const OUT_DIR = 'D:/C-practice/converted';
+const OUT_DIR = 'D:/C-practice/docs/source-data/converted';
 const GEN_DATE = '2026-09-08';
 const BOOK = '《C程序设计试题汇编》（谭浩强系列，12 章体例）';
 
@@ -46,7 +46,7 @@ const DRY = argv.includes('--dry');
 // 阶段4前置：10 道 code_completion 已人工补 solution + testCases，并经 Godbolt
 // cg132 (gcc 13.2) -std=c99 -w -O0 实机编译+执行复验（30/30 组用例 stdout 与独立
 // 模型预测逐字一致）。证据与原始记录见 rescued/*.json；verified 仍一律不写。
-const RESCUE_DIR = 'D:/C-practice/rescued';
+const RESCUE_DIR = 'D:/C-practice/docs/source-data/rescued';
 const RESCUE = new Map();
 // 收尾②/③ 补完层（2026-09-11 大会话2）：
 //  overrides.json = originalId -> 显式改判（双空选择题/概念填空等 schema 无法由 subType 直推的题）
@@ -88,7 +88,7 @@ function rescueOk(e) {
 //   ① bug 版能编译 ② bug 版至少一组输出与 expected 不同 ③ fixed_code 全组逐字一致。
 // 证据存 verification 字段并同步进 _judge-evidence.json；verified 仍一律不写，
 // 只由 npm run judge:verify 置位（AGENTS.md 二.7）。
-const AUTHORED_DIR = 'D:/C-practice/authored';
+const AUTHORED_DIR = 'D:/C-practice/docs/source-data/authored';
 const AUTHORED = [];
 if (fs.existsSync(AUTHORED_DIR)) {
   for (const f2 of fs.readdirSync(AUTHORED_DIR).filter(x => x.endsWith('.json'))) {

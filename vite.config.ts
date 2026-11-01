@@ -26,7 +26,7 @@ const CODEMIRROR_RUNTIME = /^.*node_modules[\\/](@codemirror|@lezer|codemirror|s
 
 const THREE_RUNTIME = /^.*node_modules[\\/](@react-three[\\/](?:drei|fiber)|three|three-stdlib|three-mesh-bvh|camera-controls|maath|suspend-react|its-fine|react-use-measure|stats-gl)[\\/]/
 
-// 部署到 GitHub Pages 的项目站点（https://<user>.github.io/C-practice/）时，
+// 部署到 GitHub Pages 的项目站点（https://<user>.github.io/c-practice-plus/）时，
 // 用相对 base + HashRouter 可做到零配置：任何子目录打开都不会 404。
 export default defineConfig({
   base: './',

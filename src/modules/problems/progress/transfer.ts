@@ -16,8 +16,8 @@
 import { PROGRESS_SCHEMA_VERSION, migrateRecords } from './schema'
 import type { AttemptRecord, ProgressMap } from './schema'
 
-export const EXPORT_APP = 'c-practice'
-export const EXPORT_KIND = 'c-practice-progress'
+export const EXPORT_APP = 'c-practice-plus'
+export const EXPORT_KIND = 'c-practice-plus-progress'
 
 /** 导出文件的形状。字段只增不改；改结构就升 PROGRESS_SCHEMA_VERSION 并补迁移步骤 */
 export interface ProgressExport {
@@ -49,10 +49,10 @@ export function serializeExport(file: ProgressExport): string {
   return JSON.stringify(file, null, 2) + '\n'
 }
 
-/** 文件名带本地时刻：c-practice-progress-20260909-2145.json（同一分钟内多次导出会重名，浏览器自己会加 (1)） */
+/** 文件名带本地时刻：c-practice-plus-progress-20260909-2145.json（同一分钟内多次导出会重名，浏览器自己会加 (1)） */
 export function exportFilename(now = new Date()): string {
   const p = (n: number): string => String(n).padStart(2, '0')
-  return `c-practice-progress-${now.getFullYear()}${p(now.getMonth() + 1)}${p(now.getDate())}-${p(now.getHours())}${p(now.getMinutes())}.json`
+  return `c-practice-plus-progress-${now.getFullYear()}${p(now.getMonth() + 1)}${p(now.getDate())}-${p(now.getHours())}${p(now.getMinutes())}.json`
 }
 
 /** 浏览器里落文件：Blob + 临时 a[download]。纯静态站没有服务端可以发附件 */

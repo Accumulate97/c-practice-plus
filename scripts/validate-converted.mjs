@@ -12,7 +12,7 @@ const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
 const validate = ajv.compile(schema);
 
-const dir = path.join(ROOT, 'converted');
+const dir = path.join(ROOT, 'docs', 'source-data', 'converted');
 const files = fs.readdirSync(dir).filter((f) => /^c-ch\d{2}\.json$/.test(f)).sort();
 
 let total = 0, pass = 0, fail = 0;

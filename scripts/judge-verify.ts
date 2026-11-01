@@ -15,7 +15,7 @@
  *   node scripts/judge-verify.ts                     校验 public/data 全部代码题并写回 verified
  *   node scripts/judge-verify.ts --no-write          只跑不改数据（复核用；注意此模式不落盘 answer，
  *                                                    占位符题的最终判定会如实报 FAIL）
- *   node scripts/judge-verify.ts --doc04             改校 04_题型规范与样例.md 的样例（裁决二第 1 条）
+ *   node scripts/judge-verify.ts --doc04             改校 docs/specs/04-question-types.md 的样例（裁决二第 1 条）
  *
  * 产物：public/data/problems/verification-report.json（真实 stdout 存档，后端下线也能复核）
  */
@@ -84,7 +84,7 @@ const asDoc04 = process.argv.includes('--doc04')
  * 不翻 verified、不冲掉已有证据、退出码非 0。它只影响本进程，不写进任何配置。
  */
 const simulate5xx = process.argv.includes('--simulate-5xx')
-const DOC04 = '04_题型规范与样例.md'
+const DOC04 = 'docs/specs/04-question-types.md'
 
 /**
  * libm 路由（阶段 5 · R5 收口）。

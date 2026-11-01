@@ -23,8 +23,8 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const DEBUG_FILE = join(ROOT, 'authored', 'debug-batch1.json')
-const RESCUE_FILE = join(ROOT, 'rescued', 'cc10b.json')
+const DEBUG_FILE = join(ROOT, 'docs', 'source-data', 'authored', 'debug-batch1.json')
+const RESCUE_FILE = join(ROOT, 'docs', 'source-data', 'rescued', 'cc10b.json')
 const RESULT_FILE = join(ROOT, 'tmp', 'authoring-verify-result.json')
 /** 出题期验证统一用 -O0：优化会把很多初学者错误「优化没了」，与教学目的相反 */
 const ARGS = '-std=c99 -w -O0'

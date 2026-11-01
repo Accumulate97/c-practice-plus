@@ -18,7 +18,7 @@
  *   node scripts/scan-full-quality.ts --limit=5  实机只跑前 5 题（调试）
  *
  * 产物：tmp/full-quality-scan.json（机器可读全量清单，不进 git）
- *       docs/全库质量报告.md（人读结论 + 待人工复核清单）
+ *       docs/reports/全库质量报告.md（人读结论 + 待人工复核清单）
  */
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
@@ -28,7 +28,7 @@ import { buildRunnableSource, isCodeType } from './lib/problem-code.ts'
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DIR = join(ROOT, 'public', 'data', 'problems')
 const OUT_JSON = join(ROOT, 'tmp', 'full-quality-scan.json')
-const OUT_MD = join(ROOT, 'docs', '全库质量报告.md')
+const OUT_MD = join(ROOT, 'docs', 'reports', '全库质量报告.md')
 const REPORT_JSON = join(DIR, 'verification-report.json')
 const SHARD = /^(c|ds)-ch\d+\.json$/
 const FENCE = String.fromCharCode(96, 96, 96)
@@ -666,4 +666,4 @@ function table(list: Finding[]): string[] {
   if (list.length > 40) out.push(`| …其余 ${list.length - 40} 条见 \`tmp/full-quality-scan.json\` | | | |`)
   return out
 }
-console.log(`报告写出：docs/全库质量报告.md（${(L.join('\n').length / 1024).toFixed(1)} KB）；P0=${p0} P1=${p1} P2=${p2}`)
+console.log(`报告写出：docs/reports/全库质量报告.md（${(L.join('\n').length / 1024).toFixed(1)} KB）；P0=${p0} P1=${p1} P2=${p2}`)

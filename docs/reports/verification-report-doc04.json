@@ -6,7 +6,7 @@
   "user_arguments": "-std=c99 -Wall -Wextra",
   "serial_only": true,
   "min_interval_ms": 100,
-  "scope": "04_题型规范与样例.md",
+  "scope": "docs/specs/04-question-types.md",
   "problems": 5,
   "requests": 9,
   "total_wall_ms": 7802,
@@ -16,7 +16,7 @@
     {
       "id": "c-ch09-cc-001",
       "type": "code_completion",
-      "file": "04_题型规范与样例.md",
+      "file": "docs/specs/04-question-types.md",
       "checked_field": "solution",
       "request_count": 1,
       "wall_ms": 1083,
@@ -42,7 +42,7 @@
     {
       "id": "c-ch09-dbg-001",
       "type": "debug",
-      "file": "04_题型规范与样例.md",
+      "file": "docs/specs/04-question-types.md",
       "checked_field": "fixed_code",
       "request_count": 1,
       "wall_ms": 838,
@@ -68,7 +68,7 @@
     {
       "id": "c-ch09-cr-001",
       "type": "code_reading",
-      "file": "04_题型规范与样例.md",
+      "file": "docs/specs/04-question-types.md",
       "checked_field": "answer",
       "request_count": 1,
       "wall_ms": 829,
@@ -94,7 +94,7 @@
     {
       "id": "c-ch05-pg-001",
       "type": "programming",
-      "file": "04_题型规范与样例.md",
+      "file": "docs/specs/04-question-types.md",
       "checked_field": "reference",
       "request_count": 4,
       "wall_ms": 3803,
@@ -159,7 +159,7 @@
     {
       "id": "c-ch05-co-001",
       "type": "code_ordering",
-      "file": "04_题型规范与样例.md",
+      "file": "docs/specs/04-question-types.md",
       "checked_field": "correct_order",
       "request_count": 2,
       "wall_ms": 1249,

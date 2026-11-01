@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const CONV = 'converted';
+const CONV = 'docs/source-data/converted';
 const PUB = 'public/data/problems';
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
