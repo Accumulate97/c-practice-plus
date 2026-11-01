@@ -4,11 +4,14 @@
 //       与「explanation 等元信息里的知情注记」分开统计。
 //       表面文本命中 = 未清理的存疑/OCR 残留 → exit 1（闸门不放行）；
 //       元信息命中 = 阶段 C 裁决留痕，属设计内保留 → 只计数，不失败。
+//       HINT_KEYS（code_starter）：作者写给学生的起始模板提示注释位，允许含
+//       「TODO:」等提示词，非 OCR/存疑残留 —— 从表面文本中排除，不计数。
 import { readFileSync, readdirSync } from 'node:fs'
 
 const DIR = 'public/data/problems'
 const RE = /\[\?\]|存疑|待裁决|待确认|TODO|FIXME|一>|″|＊|＝＝/g
 const META_KEYS = ['explanation', 'note', 'analysis', 'source', 'ai_generated', 'generated_at']
+const HINT_KEYS = ['code_starter']
 
 let surfaceHits = 0
 let metaHits = 0
@@ -23,7 +26,7 @@ for (const f of readdirSync(DIR).sort()) {
     const meta = {}
     for (const [k, v] of Object.entries(p)) {
       if (META_KEYS.includes(k)) meta[k] = v
-      else surface[k] = v
+      else if (!HINT_KEYS.includes(k)) surface[k] = v
     }
     const s = JSON.stringify(surface).match(RE)
     const m = JSON.stringify(meta).match(RE)

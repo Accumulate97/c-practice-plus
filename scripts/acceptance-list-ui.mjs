@@ -34,6 +34,13 @@ const CR_SHARD = JSON.parse(readFileSync(join(ROOT, 'public/data/problems/c-ch09
 const CR = CR_SHARD.problems.find((p) => p.id === CR_ID)
 const CR_ANSWER = (CR.answer ?? '').trim()
 const CH09 = countWhere((p) => shardKey(p.file) === 'c-ch09')
+// c-ch09 章内按 id 升序（与列表页「筛选到具体章节后章内 id 升序」同源），返回 id 在其中的 0-based 下标。
+const ch09Sorted = (id) => INDEX.problems.filter((p) => shardKey(p.file) === 'c-ch09').sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)).findIndex((p) => p.id === id)
+// 批2（指针 290 道）后 c-ch09 首屏被 100 道 alg-* 占据，CR_ID 落在 c-ch09 章内升序第 186 位，
+// 已超出每页最大 100。此块「状态三色」的列表页固定 chapter=c-ch09（章内按 id 升序）+size=100，
+// 故从章内过滤子集现算它所在页（与 Node 侧基准同源，不抄死数字），并在下方两处加载点显式带上 &page=CR_PAGE。
+const CR_LIST_SIZE = 100
+const CR_PAGE = Math.ceil((ch09Sorted(CR_ID) + 1) / CR_LIST_SIZE)
 const CH09_DEBUG = INDEX.problems.filter((p) => shardKey(p.file) === 'c-ch09' && p.type === 'debug').map((p) => p.id)
 const DEBUG_TOTAL = countWhere((p) => p.type === 'debug')
 // 阶段D 修正（2026-09-13）：原写死 { chapter: 'c-ch12', type: 'debug' }，但阶段B 新增 c-ch12-dbg-001..003 后
@@ -227,7 +234,7 @@ async function main() {
 
   // ── ⑪ 状态三色：答错 → 答对 → 刷新保留 ──
   await page.evaluate(() => localStorage.removeItem('cpractice:progress:v1'))
-  await load(`/problems?chapter=c-ch09&size=100`)
+  await load(`/problems?chapter=c-ch09&size=${CR_LIST_SIZE}&page=${CR_PAGE}`)
   check('初始状态：未做', (await rowAttr(CR_ID, 'status')) === 'todo', `行 ${CR_ID} data-status=${await rowAttr(CR_ID, 'status')}`)
 
   dataRequests = []
@@ -257,8 +264,12 @@ async function main() {
   await page.waitForSelector('[data-role="summary"][data-total]', { timeout: 20000 })
   await page.locator('select[aria-label="章节"]').selectOption('c-ch09')
   await waitFiltered(CH09)
-  await page.locator('select[aria-label="每页条数"]').selectOption('100')
+  await page.locator('select[aria-label="每页条数"]').selectOption(String(CR_LIST_SIZE))
   await waitFiltered(CH09)
+  // 批2 后 c-ch09 的 code_reading 题被 100 道 alg-* 挤到第 2 页；上方「章节+每页条数」筛选默认把页码复位到第 1 页，
+  // 需显式跳到 CR_ID 所在页再断言状态。
+  await page.evaluate(([size, p]) => { location.hash = `/problems?chapter=c-ch09&size=${size}&page=${p}` }, [CR_LIST_SIZE, CR_PAGE])
+  await page.waitForSelector(`[data-role="row"][data-id="${CR_ID}"]`, { timeout: 20000 })
   check('做对一道题后返回列表 → 状态变「已通过」（绿）', (await rowAttr(CR_ID, 'status')) === 'passed', `data-status=${await rowAttr(CR_ID, 'status')}`)
 
   const rawLs = await page.evaluate(() => localStorage.getItem('cpractice:progress:v1'))
@@ -274,9 +285,10 @@ async function main() {
   await load('/problems?status=todo')
   check(`状态筛选「只看未做」= ${TOTAL - 1} 题（全库减去流程里刚做对的那 1 道）`, (await sum()).filtered === TOTAL - 1, `UI ${(await sum()).filtered}`)
 
-  await load(`/problems?chapter=c-ch09&size=100`)
+  await load(`/problems?chapter=c-ch09&size=${CR_LIST_SIZE}&page=${CR_PAGE}`)
   await page.reload({ waitUntil: 'networkidle' })
   await page.waitForSelector('[data-role="summary"][data-total]', { timeout: 30000 })
+  await page.waitForSelector(`[data-role="row"][data-id="${CR_ID}"]`, { timeout: 20000 })
   check('F5 刷新后状态仍是「已通过」（localStorage 持久化）', (await rowAttr(CR_ID, 'status')) === 'passed', `data-status=${await rowAttr(CR_ID, 'status')}`)
   await page.screenshot({ path: join(ROOT, 'tmp', 'acc-list-status.png'), fullPage: true })
 

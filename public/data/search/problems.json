@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "9be88caadad3e11c",
+  "content_sha": "d2d7c663d9ea5ea5",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 2357,
+  "count": 2647,
   "docs": [
     {
       "id": "c-ch01-sc-001",
@@ -18224,6 +18224,4155 @@
       "chapter": "第9章 指针",
       "section": "9.4 指向指针的指针",
       "type": "essay_answer",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-101",
+      "file": "c-ch09.json",
+      "title": "输入两个整数 a 和 b",
+      "tags": [
+        "指针",
+        "函数参数",
+        "交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-102",
+      "file": "c-ch09.json",
+      "title": "输入两个整数 a、b",
+      "tags": [
+        "指针",
+        "函数参数",
+        "引用的替代"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-103",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "const",
+        "常量指针",
+        "只读"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-104",
+      "file": "c-ch09.json",
+      "title": "输入一个整数 a",
+      "tags": [
+        "空指针",
+        "NULL",
+        "防护"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-105",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针",
+        "遍历",
+        "求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-106",
+      "file": "c-ch09.json",
+      "title": "输入个数 n、n 个整数与一个下标 k",
+      "tags": [
+        "指针",
+        "指针下标",
+        "等价"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-107",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "数组名",
+        "指针",
+        "最大值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-108",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针算术",
+        "*p++",
+        "自增"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-109",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针",
+        "最大值",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-110",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针",
+        "反转",
+        "两指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-111",
+      "file": "c-ch09.json",
+      "title": "输入个数 n、一个已升序排列的数组",
+      "tags": [
+        "折半查找",
+        "两指针",
+        "二分"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-112",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针比较",
+        "回文",
+        "两指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-113",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针数组",
+        "指向指针",
+        "最大值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-114",
+      "file": "c-ch09.json",
+      "title": "输入一行字符串",
+      "tags": [
+        "字符串",
+        "char指针",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-115",
+      "file": "c-ch09.json",
+      "title": "输入两行字符串 s1 与 s2",
+      "tags": [
+        "字符串",
+        "strcat",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-116",
+      "file": "c-ch09.json",
+      "title": "输入行数 m、列数 n",
+      "tags": [
+        "二维数组",
+        "行指针",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-117",
+      "file": "c-ch09.json",
+      "title": "定义一个学生结构体 stu",
+      "tags": [
+        "结构体",
+        "指针",
+        "箭头"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-118",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针",
+        "多返回值",
+        "函数参数"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-119",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个已升序排列的整数",
+      "tags": [
+        "指针",
+        "去重",
+        "双指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-120",
+      "file": "c-ch09.json",
+      "title": "输入个数 n 与 n 个整数",
+      "tags": [
+        "指针",
+        "遍历",
+        "统计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-121",
+      "file": "c-ch09.json",
+      "title": "实现通用冒泡排序 void bubble",
+      "tags": [
+        "函数指针",
+        "排序",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-122",
+      "file": "c-ch09.json",
+      "title": "输入个数 n",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-123",
+      "file": "c-ch09.json",
+      "title": "输入个数 n",
+      "tags": [
+        "二级指针",
+        "指针的指针",
+        "动态分配"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-124",
+      "file": "c-ch09.json",
+      "title": "编写 int *maxptr",
+      "tags": [
+        "返回指针",
+        "函数返回值",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-125",
+      "file": "c-ch09.json",
+      "title": "实现一个用\"函数指针数组\"驱动的小型计算器",
+      "tags": [
+        "函数指针数组",
+        "计算器",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-126",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "双指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-127",
+      "file": "c-ch09.json",
+      "title": "输入一个仅含小写字母的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "频次统计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-128",
+      "file": "c-ch09.json",
+      "title": "输入两个不含空格的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "拼接"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-129",
+      "file": "c-ch09.json",
+      "title": "输入一个升序数组和待查找的整数 key",
+      "tags": [
+        "指针",
+        "数组",
+        "二分查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-130",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "冒泡排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-131",
+      "file": "c-ch09.json",
+      "title": "输入一个 r 行 c 列的二维数组",
+      "tags": [
+        "指针",
+        "二维数组",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-132",
+      "file": "c-ch09.json",
+      "title": "输入 r 和 c",
+      "tags": [
+        "二重指针",
+        "动态内存分配",
+        "malloc",
+        "二维数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-133",
+      "file": "c-ch09.json",
+      "title": "定义 add、sub、mul、div_ 四个函数",
+      "tags": [
+        "函数指针数组",
+        "指向函数的指针",
+        "分派"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-134",
+      "file": "c-ch09.json",
+      "title": "定义 add、sub 两个函数",
+      "tags": [
+        "指向函数的指针",
+        "函数指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-135",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组下标",
+        "等价性"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-136",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "奇偶统计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-137",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "拷贝"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-138",
+      "file": "c-ch09.json",
+      "title": "输入 n",
+      "tags": [
+        "指针",
+        "数组",
+        "最大值",
+        "次大值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-139",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数和一个待查找值 key",
+      "tags": [
+        "指针",
+        "数组",
+        "线性查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-140",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "字符串常量区",
+        "char*",
+        "字面量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-141",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "const指针",
+        "指针常量",
+        "只读访问"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-142",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "倒序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-143",
+      "file": "c-ch09.json",
+      "title": "输入 n 个实数",
+      "tags": [
+        "指针",
+        "数组",
+        "平均值",
+        "方差"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-144",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "插入排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-145",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "去重"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-146",
+      "file": "c-ch09.json",
+      "title": "输入两个不含空格的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "复制"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-147",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串和一个字符",
+      "tags": [
+        "指针",
+        "字符串",
+        "字符查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-148",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "长度"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-149",
+      "file": "c-ch09.json",
+      "title": "输入两个不含空格的字符串 s 和 sub",
+      "tags": [
+        "指针",
+        "字符串",
+        "子串查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-150",
+      "file": "c-ch09.json",
+      "title": "输入一个 r 行 c 列的矩阵",
+      "tags": [
+        "指针",
+        "二维数组",
+        "矩阵转置"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-151",
+      "file": "c-ch09.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "指针",
+        "数组",
+        "删除元素",
+        "写指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-152",
+      "file": "c-ch09.json",
+      "title": "输入一个整数 n、n 个整数、一个插入位置 pos",
+      "tags": [
+        "指针",
+        "数组",
+        "插入元素",
+        "后移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-153",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "查重",
+        "双重循环"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-154",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "数组",
+        "最小值",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-155",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数和一个整数 x",
+      "tags": [
+        "指针",
+        "数组",
+        "计数",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-156",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数和一个划分值 pivot",
+      "tags": [
+        "指针",
+        "分区",
+        "partition",
+        "快排"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-157",
+      "file": "c-ch09.json",
+      "title": "输入一个数组与移动次数 k",
+      "tags": [
+        "指针",
+        "循环左移",
+        "三次反转",
+        "两指针交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-158",
+      "file": "c-ch09.json",
+      "title": "输入一个 m 行 p 列的矩阵 A 与一个 p 行 n 列的矩阵 B",
+      "tags": [
+        "指针",
+        "二维数组",
+        "矩阵乘法",
+        "行指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-159",
+      "file": "c-ch09.json",
+      "title": "用结构体指针模拟单链表",
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-160",
+      "file": "c-ch09.json",
+      "title": "先读入 n 个整数构造单链表",
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "插入结点"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-161",
+      "file": "c-ch09.json",
+      "title": "先读入 n 个整数构造单链表",
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "删除结点"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-162",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数与一个 k",
+      "tags": [
+        "指针数组",
+        "多重指针",
+        "第k大",
+        "排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-163",
+      "file": "c-ch09.json",
+      "title": "编写递归函数 int *bsearch",
+      "tags": [
+        "指针",
+        "折半查找",
+        "递归",
+        "区间指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-164",
+      "file": "c-ch09.json",
+      "title": "输入一个已升序排列的数组与一个整数 x",
+      "tags": [
+        "指针",
+        "有序数组",
+        "插入",
+        "定位"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-165",
+      "file": "c-ch09.json",
+      "title": "输入一个已升序排列的数组与一个目标值 target",
+      "tags": [
+        "指针",
+        "有序数组",
+        "双指针",
+        "两数之和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-166",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "指针",
+        "众数",
+        "计数",
+        "最值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-167",
+      "file": "c-ch09.json",
+      "title": "给定一个可能带正负号、由数字组成的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "转整数",
+        "atoi"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-168",
+      "file": "c-ch09.json",
+      "title": "输入两个字符串 s1、s2",
+      "tags": [
+        "指针",
+        "字符串",
+        "比较",
+        "字典序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-169",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串和一个字符 c",
+      "tags": [
+        "指针",
+        "字符串",
+        "删除字符",
+        "写指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-170",
+      "file": "c-ch09.json",
+      "title": "输入一个由字母、数字等字符组成的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "数字统计",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-171",
+      "file": "c-ch09.json",
+      "title": "用指针实现快速排序",
+      "tags": [
+        "指针",
+        "快速排序",
+        "partition",
+        "递归"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-172",
+      "file": "c-ch09.json",
+      "title": "输入行数 m 与列数 n",
+      "tags": [
+        "动态内存分配",
+        "二重指针",
+        "malloc",
+        "列求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-173",
+      "file": "c-ch09.json",
+      "title": "先读入 n 个整数构造单链表",
+      "tags": [
+        "指针",
+        "链表",
+        "逆转",
+        "三指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-174",
+      "file": "c-ch09.json",
+      "title": "输入两个不含空格的字符串 s1、s2",
+      "tags": [
+        "指针",
+        "字符串",
+        "合并",
+        "交替"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-175",
+      "file": "c-ch09.json",
+      "title": "输入 n 个元素",
+      "tags": [
+        "指针",
+        "荷兰国旗",
+        "三分区",
+        "三指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-176",
+      "file": "c-ch09.json",
+      "title": "输入一个整数 n",
+      "tags": [
+        "连续子数组",
+        "最大和",
+        "指针算术"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-177",
+      "file": "c-ch09.json",
+      "title": "输入 n 与 n 个整数",
+      "tags": [
+        "计数排序",
+        "值域",
+        "指针遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-178",
+      "file": "c-ch09.json",
+      "title": "输入一个仅含英文字母的字符串",
+      "tags": [
+        "字符串",
+        "元音",
+        "辅音",
+        "指针遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-179",
+      "file": "c-ch09.json",
+      "title": "输入一个 m 行 n 列的矩阵",
+      "tags": [
+        "二维数组",
+        "行求和",
+        "行指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-180",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "峰值",
+        "边界",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-181",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "统计",
+        "正负零",
+        "指针遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-182",
+      "file": "c-ch09.json",
+      "title": "输入两个已按升序排列的数组",
+      "tags": [
+        "归并",
+        "双指针",
+        "合并有序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-183",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "奇偶分离",
+        "分段",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-184",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "字符串",
+        "去重",
+        "指针遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-185",
+      "file": "c-ch09.json",
+      "title": "输入 n 个学生",
+      "tags": [
+        "结构体",
+        "函数指针",
+        "qsort",
+        "排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-186",
+      "file": "c-ch09.json",
+      "title": "输入一个数组与移动次数 k",
+      "tags": [
+        "循环移动",
+        "三次反转",
+        "指针交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-187",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "第二小",
+        "最值",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-188",
+      "file": "c-ch09.json",
+      "title": "输入一个数组以及闭区间 [l",
+      "tags": [
+        "区间反转",
+        "指针交换",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-189",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "前缀和",
+        "指针遍历",
+        "累加"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-190",
+      "file": "c-ch09.json",
+      "title": "输入两个已按升序排列的数组",
+      "tags": [
+        "公共元素",
+        "双指针",
+        "有序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-191",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "回文",
+        "双指针",
+        "判断"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-192",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "冒泡排序",
+        "每趟输出",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-193",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "选择排序",
+        "指针",
+        "最值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-194",
+      "file": "c-ch09.json",
+      "title": "输入 n 名学生的成绩",
+      "tags": [
+        "平均值",
+        "统计",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-195",
+      "file": "c-ch09.json",
+      "title": "输入一个 m 行 n 列矩阵",
+      "tags": [
+        "鞍点",
+        "二维数组",
+        "行列最值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-196",
+      "file": "c-ch09.json",
+      "title": "编写一个「返回指针值」的函数 findMax",
+      "tags": [
+        "返回指针",
+        "函数指针",
+        "最大值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-197",
+      "file": "c-ch09.json",
+      "title": "用动态内存分配为数组申请空间",
+      "tags": [
+        "动态分配",
+        "malloc",
+        "指针",
+        "倒序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-198",
+      "file": "c-ch09.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "连续乘积",
+        "动态规划",
+        "指针",
+        "双极值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-199",
+      "file": "c-ch09.json",
+      "title": "输入一个已按升序排列的数组",
+      "tags": [
+        "去重",
+        "原地",
+        "双指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-alg-200",
+      "file": "c-ch09.json",
+      "title": "输入 n 个字符串",
+      "tags": [
+        "指针数组",
+        "双重指针",
+        "strcmp",
+        "排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-101",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "解引用",
+        "指针变量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-102",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "指针算术",
+        "自增"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-103",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "数组",
+        "指针",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-104",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "指针比较",
+        "地址"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-105",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "函数",
+        "参数传递"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-106",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "函数",
+        "返回指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-107",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "二级指针",
+        "多重指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-108",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-109",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "void",
+        "强制转换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-110",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "const",
+        "常量指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-111",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "数组",
+        "边界",
+        "越界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-112",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针数组",
+        "二维数组",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-113",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指向数组的指针",
+        "二维数组",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-114",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "函数指针",
+        "指针",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-115",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "结构体",
+        "成员访问"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-116",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "自增",
+        "解引用",
+        "优先级"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-117",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "NULL",
+        "空指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-118",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "指针算术",
+        "偏移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-119",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "二维数组",
+        "指针",
+        "行指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-120",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "交换",
+        "二级指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-121",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-122",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针数组",
+        "字符串",
+        "字符指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-123",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "多重指针",
+        "三级指针",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-124",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "指针差分",
+        "指针算术"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-125",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "取地址",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-126",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "返回指针",
+        "静态变量",
+        "字符串"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-127",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "遍历",
+        "求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-128",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "拷贝"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-129",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "字符数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-130",
+      "file": "c-ch09.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "函数指针",
+        "指针数组",
+        "分发"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-131",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "函数参数",
+        "值传递"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-132",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "返回值",
+        "static",
+        "野指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-133",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "指针算术",
+        "数组遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-134",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针数组",
+        "字符串",
+        "二级指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-135",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "函数指针",
+        "间接调用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-136",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "二级指针",
+        "改指针变量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-137",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "字符串字面量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-138",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "数组传参",
+        "函数"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-139",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "自增自减",
+        "优先级"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-140",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "结构体",
+        "箭头运算"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-141",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "多维数组",
+        "偏移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-142",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "比较",
+        "距离"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-143",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "malloc",
+        "free"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-144",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "const",
+        "常量指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-145",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "下标运算"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-146",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "NULL",
+        "判空"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-147",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "循环"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-148",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "步长",
+        "类型"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-149",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "sizeof",
+        "数组名退化"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-150",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "返回值",
+        "查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-151",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "行指针",
+        "二维数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-152",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "取地址",
+        "数组名"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-153",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "修改"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-154",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针数组",
+        "下标",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-155",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "函数指针",
+        "数组",
+        "间接调用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-156",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "数组",
+        "求极值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-157",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "自增",
+        "字符串长度"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-158",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "malloc",
+        "指针算术"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-159",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "二级指针",
+        "交换",
+        "字符串"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-pt-160",
+      "file": "c-ch09.json",
+      "title": "读下面的程序",
+      "tags": [
+        "指针",
+        "首尾交换",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "pointer_trace",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-101",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针变量",
+        "函数参数传递",
+        "交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-102",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针算术",
+        "自增",
+        "数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-103",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "数组名",
+        "取地址",
+        "等价关系"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-104",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针作为函数参数",
+        "修改调用者变量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-105",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "二级指针",
+        "多重指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-106",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针与字符串",
+        "字符串遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-107",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "函数指针",
+        "指向函数的指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-108",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针数组",
+        "取地址"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-109",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指向数组的指针",
+        "二维数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-110",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "结构体指针",
+        "箭头运算符"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-111",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "自增优先级",
+        "指针解引用",
+        "组合求值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-112",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针比较",
+        "指针减法",
+        "指针距离"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-113",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "空指针",
+        "NULL",
+        "空指针判断"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-114",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "常量指针",
+        "指针常量",
+        "const"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-115",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "返回指针值的函数",
+        "指针返回"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-116",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "二维数组",
+        "指向数组的指针",
+        "偏移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-117",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针步长",
+        "类型转换",
+        "char指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-118",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "动态内存分配",
+        "malloc",
+        "free"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-119",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "数组名退化",
+        "sizeof",
+        "指针传递"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-120",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "指针做数组下标",
+        "负数下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-121",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "字符串反转",
+        "首尾指针",
+        "交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-122",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "函数指针数组",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-123",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "返回函数指针",
+        "复杂函数指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-124",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "字符串比较",
+        "指针遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-125",
+      "file": "c-ch09.json",
+      "title": "写出下列程序的运行结果",
+      "tags": [
+        "二级指针",
+        "指针数组",
+        "多重指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-126",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "字符指针",
+        "字符串反转",
+        "双指针",
+        "strlen"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-127",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针数组",
+        "字符串指针",
+        "逆序遍历"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-128",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "函数指针数组",
+        "指向函数的指针",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-129",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "二维数组",
+        "行指针",
+        "指针传参"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-130",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针解引用",
+        "位运算",
+        "位移",
+        "统计1的个数"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-131",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "动态内存分配",
+        "malloc",
+        "二维数组",
+        "行指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-132",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针差值",
+        "指针比较",
+        "数组名",
+        "指针运算"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-133",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针递归",
+        "递归求和",
+        "指针步进"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-134",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "哨兵值",
+        "循环边界",
+        "指针步进",
+        "条件判断"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-135",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "结构体指针数组",
+        "结构体数组",
+        "箭头运算符"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-136",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针遍历",
+        "求最大值",
+        "指针偏移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-137",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数组越界",
+        "指针算术",
+        "边界风险"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-138",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针交换",
+        "地址与值",
+        "指针赋值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-139",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "返回指针的函数",
+        "指针链式调用",
+        "字符串指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-140",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "const指针",
+        "指向常量的指针",
+        "常量指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-141",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "字符串末尾",
+        "指针作条件",
+        "结束符"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-142",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "字符数组",
+        "解引用",
+        "偏移打印"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-143",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "二级指针",
+        "char**",
+        "双重解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-144",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "二级指针",
+        "指针赋值链",
+        "间接修改"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-145",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "sizeof",
+        "数组元素个数",
+        "指针差值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-146",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针传参",
+        "求最大值最小值",
+        "多返回值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-147",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "二级指针",
+        "交换指针",
+        "指针传址"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-148",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "结构体指针成员",
+        "指针作成员",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-149",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针遍历",
+        "字符统计",
+        "字符串"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-cr-150",
+      "file": "c-ch09.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "指针算术",
+        "折半查找",
+        "算法综合"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-101",
+      "file": "c-ch09.json",
+      "title": "输入两个整数",
+      "tags": [
+        "指针",
+        "函数",
+        "交换",
+        "值传递"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-102",
+      "file": "c-ch09.json",
+      "title": "输入两个整数存到数组 a",
+      "tags": [
+        "指针",
+        "解引用",
+        "交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-103",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "遍历",
+        "优先级"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-104",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-105",
+      "file": "c-ch09.json",
+      "title": "输入一个整数",
+      "tags": [
+        "指针",
+        "函数",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-106",
+      "file": "c-ch09.json",
+      "title": "输入一个整数 x",
+      "tags": [
+        "指针",
+        "自增",
+        "优先级"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-107",
+      "file": "c-ch09.json",
+      "title": "输入一个单词",
+      "tags": [
+        "字符串",
+        "指针",
+        "统计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-108",
+      "file": "c-ch09.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "字符串",
+        "指针",
+        "长度"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-109",
+      "file": "c-ch09.json",
+      "title": "输入 n、n 个整数和一个下标 pos",
+      "tags": [
+        "数组",
+        "指针",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-110",
+      "file": "c-ch09.json",
+      "title": "输入两个整数",
+      "tags": [
+        "函数指针",
+        "声明",
+        "调用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-111",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free",
+        "求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-112",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-113",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "最大值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-114",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "最小值"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-115",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-116",
+      "file": "c-ch09.json",
+      "title": "输入 2×3 矩阵",
+      "tags": [
+        "二维数组",
+        "行指针",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-117",
+      "file": "c-ch09.json",
+      "title": "输入 x",
+      "tags": [
+        "二级指针",
+        "解引用",
+        "int**"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-118",
+      "file": "c-ch09.json",
+      "title": "输入 x、y",
+      "tags": [
+        "二级指针",
+        "交换",
+        "int**"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-119",
+      "file": "c-ch09.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "字符串",
+        "指针",
+        "统计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-120",
+      "file": "c-ch09.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "字符串",
+        "指针",
+        "翻转"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-121",
+      "file": "c-ch09.json",
+      "title": "输入两个单词",
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat",
+        "循环边界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-122",
+      "file": "c-ch09.json",
+      "title": "输入两个单词",
+      "tags": [
+        "字符串",
+        "指针",
+        "strcpy"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-123",
+      "file": "c-ch09.json",
+      "title": "输入 n、n 个整数和 k",
+      "tags": [
+        "数组",
+        "指针",
+        "排序",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-124",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "众数",
+        "双重循环"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-125",
+      "file": "c-ch09.json",
+      "title": "输入 3×3 矩阵",
+      "tags": [
+        "数组",
+        "指针",
+        "矩阵",
+        "转置"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-126",
+      "file": "c-ch09.json",
+      "title": "输入两个 2×2 矩阵",
+      "tags": [
+        "数组",
+        "指针",
+        "矩阵",
+        "乘法"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-127",
+      "file": "c-ch09.json",
+      "title": "输入若干个单词",
+      "tags": [
+        "指针数组",
+        "字符串",
+        "排序",
+        "strcmp"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-128",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "指针数组",
+        "数组",
+        "排序"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-129",
+      "file": "c-ch09.json",
+      "title": "输入操作码 op",
+      "tags": [
+        "函数指针",
+        "回调",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-130",
+      "file": "c-ch09.json",
+      "title": "输入操作码 op",
+      "tags": [
+        "函数指针数组",
+        "分派",
+        "下标"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-131",
+      "file": "c-ch09.json",
+      "title": "输入 n",
+      "tags": [
+        "返回指针",
+        "局部变量",
+        "悬垂指针",
+        "static"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-132",
+      "file": "c-ch09.json",
+      "title": "输入一个字符串",
+      "tags": [
+        "返回指针",
+        "字符串",
+        "static",
+        "ASCII"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-133",
+      "file": "c-ch09.json",
+      "title": "对升序数组 {1",
+      "tags": [
+        "数组",
+        "指针",
+        "二分查找",
+        "边界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-134",
+      "file": "c-ch09.json",
+      "title": "输入 n、删除位置 pos 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "删除",
+        "移位"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-135",
+      "file": "c-ch09.json",
+      "title": "输入 n、插入位置 pos、插入值 x 和 n 个整数",
+      "tags": [
+        "数组",
+        "指针",
+        "插入",
+        "移位"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-136",
+      "file": "c-ch09.json",
+      "title": "输入 n、n 个整数和一个待查值 x",
+      "tags": [
+        "指针",
+        "数组",
+        "查找"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-137",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "指针数组",
+        "取地址",
+        "初始化"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-138",
+      "file": "c-ch09.json",
+      "title": "输入学生姓名和成绩",
+      "tags": [
+        "结构体",
+        "指针",
+        "箭头",
+        "传地址"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-139",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "指针",
+        "自增",
+        "优先级",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mdb-140",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "指针",
+        "算术",
+        "越界",
+        "偏移"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-101",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "空指针",
+        "NULL",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-102",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "未初始化",
+        "野指针",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-103",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "字面量",
+        "const"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-104",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "参数传递",
+        "二级指针",
+        "交换"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-105",
+      "file": "c-ch09.json",
+      "title": "评审下列函数",
+      "tags": [
+        "指针",
+        "const",
+        "只读",
+        "接口设计"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-106",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "自增",
+        "优先级",
+        "解引用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-107",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "NULL",
+        "参数校验",
+        "健壮性"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-108",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "数组",
+        "越界",
+        "边界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-109",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "指针算术",
+        "偏移",
+        "逻辑"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-110",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "二维数组",
+        "类型匹配",
+        "行指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-111",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "指针差分",
+        "未定义行为",
+        "类型"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-112",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "边界",
+        "越界",
+        "数组"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-113",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "拷贝",
+        "越界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-114",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "字面量",
+        "只读"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-115",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "字符串",
+        "strlen",
+        "越界"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-116",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针",
+        "返回指针",
+        "局部变量",
+        "悬垂"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-117",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "函数指针",
+        "接口设计",
+        "类型",
+        "回调"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-118",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "函数指针",
+        "类型匹配",
+        "赋值",
+        "签名"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-119",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "函数指针",
+        "指针数组",
+        "声明",
+        "优先级"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-120",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "函数指针",
+        "空指针",
+        "调用",
+        "健壮性"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-121",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "返回指针",
+        "局部变量",
+        "悬垂",
+        "存储期"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-122",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "返回指针",
+        "static",
+        "复入",
+        "覆盖"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-123",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "返回指针",
+        "malloc",
+        "free",
+        "内存泄漏"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-124",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "返回指针",
+        "局部数组",
+        "悬垂",
+        "二维"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-125",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针数组",
+        "行指针",
+        "声明",
+        "类型"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-126",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "二级指针",
+        "类型匹配",
+        "参数",
+        "指针"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-127",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "指针数组",
+        "malloc",
+        "free",
+        "未定义行为"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-128",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free",
+        "内存泄漏"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-129",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "动态内存",
+        "malloc",
+        "空指针",
+        "健壮性"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-rv-130",
+      "file": "c-ch09.json",
+      "title": "评审下列程序",
+      "tags": [
+        "动态内存",
+        "free",
+        "悬垂",
+        "重复释放"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "code_review",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-101",
+      "file": "c-ch09.json",
+      "title": "输入两个整数 a 和 b",
+      "tags": [
+        "指针",
+        "取地址运算符",
+        "解引用",
+        "指针变量"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-102",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "tags": [
+        "指针",
+        "指针算术",
+        "数组",
+        "数组名作地址",
+        "遍历求和"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-103",
+      "file": "c-ch09.json",
+      "title": "给定交换函数 swap",
+      "tags": [
+        "指针",
+        "指针参数",
+        "解引用",
+        "函数调用",
+        "值传递与地址传递"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-104",
+      "file": "c-ch09.json",
+      "title": "在整型数组 a",
+      "tags": [
+        "指针",
+        "空指针",
+        "NULL",
+        "返回指针",
+        "解引用判空"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-105",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数",
+      "tags": [
+        "指针",
+        "动态内存",
+        "malloc",
+        "sizeof",
+        "free",
+        "内存泄漏"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-106",
+      "file": "c-ch09.json",
+      "title": "输入一个不含空格的字符串",
+      "tags": [
+        "指针",
+        "字符串",
+        "字符数组",
+        "指针遍历",
+        "字符串结束符"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-107",
+      "file": "c-ch09.json",
+      "title": "定义了两个函数 add",
+      "tags": [
+        "指针",
+        "函数指针",
+        "函数名作地址",
+        "函数调用"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-108",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "tags": [
+        "指针",
+        "返回指针的函数",
+        "指针比较",
+        "数组名作实参"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-109",
+      "file": "c-ch09.json",
+      "title": "输入 12 个整数存入 3 行 4 列的二维数组 a",
+      "tags": [
+        "指针",
+        "二维数组",
+        "行指针",
+        "数组指针",
+        "二级定位"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch09-mb-110",
+      "file": "c-ch09.json",
+      "title": "输入 n 和 n 个不含空格的字符串",
+      "tags": [
+        "指针",
+        "指针数组",
+        "字符串",
+        "strlen",
+        "下标记录"
+      ],
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "type": "multi_blank",
       "category": "c"
     },
     {

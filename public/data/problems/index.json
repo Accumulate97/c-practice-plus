@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "3079c16eb7f214ee",
+  "content_sha": "e819166ed8496f81",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 2357,
+  "count": 2647,
   "shard_count": 20,
   "shards": [
     {
@@ -66,7 +66,7 @@
       "file": "c-ch09.json",
       "category": "c",
       "chapter": "第9章 指针",
-      "count": 258,
+      "count": 548,
       "url": "data/problems/c-ch09.json"
     },
     {
@@ -9195,7 +9195,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累加"
@@ -9211,7 +9211,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "条件判断"
@@ -9227,7 +9227,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "步长"
@@ -9243,7 +9243,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "累加"
@@ -9259,7 +9259,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "累加"
@@ -9275,7 +9275,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "平均数"
@@ -9291,7 +9291,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最大值"
@@ -9307,7 +9307,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位"
@@ -9323,7 +9323,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位",
@@ -9340,7 +9340,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位"
@@ -9356,7 +9356,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位",
@@ -9373,7 +9373,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "回文"
@@ -9389,7 +9389,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘"
@@ -9405,7 +9405,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "平方和"
@@ -9421,7 +9421,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "等差数列"
@@ -9437,7 +9437,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "幂运算"
@@ -9453,7 +9453,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "等比数列"
@@ -9469,7 +9469,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位统计"
@@ -9485,7 +9485,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "完数"
@@ -9501,7 +9501,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "数字数列"
@@ -9517,7 +9517,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "分数序列"
@@ -9533,7 +9533,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "统计"
@@ -9549,7 +9549,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累乘"
@@ -9565,7 +9565,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数"
@@ -9581,7 +9581,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最大公约数"
@@ -9597,7 +9597,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最小公倍数"
@@ -9613,7 +9613,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "进制转换"
@@ -9629,7 +9629,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契"
@@ -9645,7 +9645,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘和"
@@ -9661,7 +9661,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "交错级数"
@@ -9677,7 +9677,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "提前终止"
@@ -9693,7 +9693,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "continue"
@@ -9709,7 +9709,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘"
@@ -9725,7 +9725,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "倍数和"
@@ -9741,7 +9741,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "约数/倍数"
@@ -9757,7 +9757,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "素数",
@@ -9774,7 +9774,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数"
@@ -9790,7 +9790,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数",
@@ -9807,7 +9807,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "素数",
@@ -9824,7 +9824,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数",
@@ -9841,7 +9841,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "质因数",
@@ -9858,7 +9858,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -9875,7 +9875,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -9892,7 +9892,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -9909,7 +9909,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -9926,7 +9926,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最大公约数"
@@ -9942,7 +9942,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最小公倍数"
@@ -9958,7 +9958,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最大公约数"
@@ -9974,7 +9974,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "进制转换"
@@ -9990,7 +9990,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "进制转换"
@@ -10006,7 +10006,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "进制转换",
@@ -10023,7 +10023,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "进制转换",
@@ -10040,7 +10040,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "交错级数"
@@ -10056,7 +10056,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘",
@@ -10073,7 +10073,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "交错级数",
@@ -10090,7 +10090,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘",
@@ -10107,7 +10107,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘",
@@ -10124,7 +10124,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "级数求和"
@@ -10140,7 +10140,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "级数求和",
@@ -10157,7 +10157,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "级数求和",
@@ -10174,7 +10174,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10191,7 +10191,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10208,7 +10208,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10225,7 +10225,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10242,7 +10242,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10259,7 +10259,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10276,7 +10276,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "乘法表",
@@ -10293,7 +10293,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10310,7 +10310,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10327,7 +10327,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10344,7 +10344,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "字母图案",
@@ -10361,7 +10361,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "数字图案",
@@ -10378,7 +10378,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "数字图案",
@@ -10395,7 +10395,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10412,7 +10412,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案",
@@ -10429,7 +10429,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10446,7 +10446,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10463,7 +10463,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵乘法",
@@ -10480,7 +10480,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10497,7 +10497,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10514,7 +10514,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10531,7 +10531,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10548,7 +10548,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10565,7 +10565,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10582,7 +10582,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "矩阵",
@@ -10599,7 +10599,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "for循环"
@@ -10615,7 +10615,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "素数",
@@ -10632,7 +10632,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "while循环"
@@ -10648,7 +10648,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "素数",
@@ -10665,7 +10665,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "while循环",
@@ -10682,7 +10682,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环",
@@ -10699,7 +10699,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环",
@@ -10716,7 +10716,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环",
@@ -10733,7 +10733,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环",
@@ -10750,7 +10750,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环",
@@ -10767,7 +10767,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "统计",
         "for循环",
@@ -10784,7 +10784,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "统计",
         "for循环",
@@ -10801,7 +10801,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "统计",
         "while循环",
@@ -10818,7 +10818,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "统计",
         "for循环",
@@ -10835,7 +10835,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "统计",
         "for循环",
@@ -10853,7 +10853,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "EOF",
@@ -10870,7 +10870,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "EOF",
@@ -10887,7 +10887,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "哨兵",
@@ -10904,7 +10904,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "EOF",
@@ -10921,7 +10921,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "哨兵",
@@ -10938,7 +10938,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "完数",
@@ -10955,7 +10955,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "数位",
@@ -10972,7 +10972,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数位",
@@ -10989,7 +10989,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "for循环",
@@ -11006,7 +11006,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "水仙花数",
@@ -11023,7 +11023,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累加求和"
@@ -11039,7 +11039,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "逆序输出"
@@ -11055,7 +11055,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "累加求和"
@@ -11071,7 +11071,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "计数"
@@ -11087,7 +11087,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "打印图形"
@@ -11103,7 +11103,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "for循环"
@@ -11119,7 +11119,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "for循环"
@@ -11135,7 +11135,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字处理"
@@ -11151,7 +11151,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字处理"
@@ -11167,7 +11167,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字处理"
@@ -11183,7 +11183,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘"
@@ -11199,7 +11199,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "乘法表"
@@ -11215,7 +11215,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "复合表达式"
@@ -11231,7 +11231,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "累加求和"
@@ -11247,7 +11247,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "break"
@@ -11263,7 +11263,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "continue"
@@ -11279,7 +11279,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "步长控制"
@@ -11295,7 +11295,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "字符处理"
@@ -11311,7 +11311,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "哨兵值"
@@ -11327,7 +11327,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "打印图形"
@@ -11343,7 +11343,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数字反转",
         "do-while",
@@ -11360,7 +11360,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数位统计",
         "while",
@@ -11377,7 +11377,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "至少执行一次",
@@ -11394,7 +11394,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "嵌套循环",
@@ -11411,7 +11411,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "跳过偶数",
@@ -11428,7 +11428,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "数字三角形",
@@ -11445,7 +11445,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "数字金字塔",
@@ -11462,7 +11462,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数位统计",
         "偶数判断",
@@ -11479,7 +11479,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "累加",
@@ -11496,7 +11496,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "break",
         "continue",
@@ -11513,7 +11513,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "乘法表",
@@ -11530,7 +11530,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "约数统计",
         "for循环",
@@ -11547,7 +11547,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数位累加",
         "while",
@@ -11564,7 +11564,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "倍数计数",
@@ -11581,7 +11581,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "自然数累加",
@@ -11598,7 +11598,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环边界",
         "循环次数",
@@ -11615,7 +11615,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号三角形",
@@ -11632,7 +11632,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "break",
@@ -11649,7 +11649,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数位乘积",
         "while",
@@ -11666,7 +11666,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "奇数和",
@@ -11683,7 +11683,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "数字三角形"
@@ -11699,7 +11699,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "倒三角形"
@@ -11715,7 +11715,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "乘法表"
@@ -11731,7 +11731,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "计数递增"
@@ -11747,7 +11747,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while",
         "复合条件"
@@ -11763,7 +11763,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "先执行后判断"
@@ -11779,7 +11779,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for",
         "阶乘"
@@ -11795,7 +11795,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "累加"
@@ -11811,7 +11811,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while",
         "数位"
@@ -11827,7 +11827,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "空格对齐"
@@ -11843,7 +11843,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for",
         "continue"
@@ -11859,7 +11859,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "行累加"
@@ -11875,7 +11875,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while",
         "哨兵"
@@ -11891,7 +11891,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for",
         "复合条件"
@@ -11907,7 +11907,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "对角线判断"
@@ -11923,7 +11923,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while",
         "阶乘"
@@ -11939,7 +11939,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "行号重复"
@@ -11955,7 +11955,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "倒序"
@@ -11971,7 +11971,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for",
         "正负交替"
@@ -11987,7 +11987,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套for",
         "乘积"
@@ -12003,7 +12003,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累加求和"
@@ -12019,7 +12019,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字拆分"
@@ -12035,7 +12035,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "位数统计"
@@ -12051,7 +12051,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字反转"
@@ -12067,7 +12067,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "素数",
         "for循环"
@@ -12083,7 +12083,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契"
@@ -12099,7 +12099,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最大公约数"
@@ -12115,7 +12115,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘"
@@ -12131,7 +12131,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图形"
@@ -12147,7 +12147,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "乘法口诀"
@@ -12163,7 +12163,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "浮点累加"
@@ -12179,7 +12179,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "求最值"
@@ -12195,7 +12195,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字统计"
@@ -12211,7 +12211,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "回文数"
@@ -12227,7 +12227,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "因子"
@@ -12243,7 +12243,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "continue语句"
@@ -12259,7 +12259,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "结束标志"
@@ -12275,7 +12275,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最小公倍数"
@@ -12291,7 +12291,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "数字图形"
@@ -12307,7 +12307,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数"
@@ -12323,7 +12323,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12340,7 +12340,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12357,7 +12357,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12374,7 +12374,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12391,7 +12391,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12408,7 +12408,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "循环嵌套",
@@ -12425,7 +12425,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "循环嵌套",
@@ -12442,7 +12442,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "循环嵌套",
@@ -12459,7 +12459,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "循环嵌套",
@@ -12476,7 +12476,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "循环嵌套",
@@ -12493,7 +12493,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "break语句",
@@ -12510,7 +12510,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "continue语句",
@@ -12527,7 +12527,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "break语句",
@@ -12544,7 +12544,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "continue语句",
@@ -12561,7 +12561,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "break语句",
@@ -12578,7 +12578,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "while语句",
@@ -12595,7 +12595,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "for语句",
@@ -12612,7 +12612,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "while语句",
@@ -12629,7 +12629,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "while语句",
@@ -12646,7 +12646,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环结构",
         "do-while语句",
@@ -12663,7 +12663,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "循环边界",
@@ -12680,7 +12680,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘",
@@ -12697,7 +12697,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do...while",
         "数字拆分",
@@ -12714,7 +12714,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -12731,7 +12731,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "素数判定",
@@ -12748,7 +12748,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "辗转相除",
@@ -12765,7 +12765,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "位数统计",
@@ -12782,7 +12782,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "scanf取地址",
@@ -12799,7 +12799,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "缺花括号",
@@ -12816,7 +12816,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "continue",
         "break",
@@ -12833,7 +12833,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "赋值号",
         "等号",
@@ -12850,7 +12850,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "整数除法",
@@ -12867,7 +12867,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字反转",
@@ -12884,7 +12884,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环嵌套",
         "循环变量",
@@ -12901,7 +12901,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "步长",
@@ -12918,7 +12918,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "循环边界",
@@ -12935,7 +12935,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "累加",
@@ -12952,7 +12952,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "计数",
@@ -12969,7 +12969,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累乘",
@@ -12986,7 +12986,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "幂运算",
@@ -13003,7 +13003,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "辗转相除",
@@ -13020,7 +13020,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "最小公倍数"
@@ -13036,7 +13036,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "数字反转",
@@ -13053,7 +13053,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "素数",
@@ -13070,7 +13070,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "累乘",
@@ -13087,7 +13087,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "getchar",
         "字符统计",
@@ -13104,7 +13104,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "星号图案"
@@ -13120,7 +13120,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "EOF",
@@ -13137,7 +13137,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "分数累加",
@@ -13154,7 +13154,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "嵌套循环",
         "质因数",
@@ -13171,7 +13171,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "累加求和"
@@ -13187,7 +13187,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "累加求和"
@@ -13203,7 +13203,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "累加求和"
@@ -13219,7 +13219,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "阶乘",
@@ -13236,7 +13236,7 @@
       "section": "5.8 循环程序举例",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "条件分支",
@@ -13253,7 +13253,7 @@
       "section": "5.3 用 do...while 语句实现循环",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "do-while循环",
         "数字拆分"
@@ -13269,7 +13269,7 @@
       "section": "5.7 改变循环执行的状态",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "break",
@@ -13286,7 +13286,7 @@
       "section": "5.2 用 while 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "while循环",
         "辗转相除"
@@ -13302,7 +13302,7 @@
       "section": "5.4 用 for 语句实现循环",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "for循环",
         "斐波那契",
@@ -13319,7 +13319,7 @@
       "section": "5.5 循环的嵌套",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环嵌套",
         "乘法表"
@@ -23040,6 +23040,5025 @@
         "二级指针"
       ],
       "title": "论述",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-101",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数参数",
+        "交换"
+      ],
+      "title": "输入两个整数 a 和 b",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-102",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数参数",
+        "引用的替代"
+      ],
+      "title": "输入两个整数 a、b",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-103",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "const",
+        "常量指针",
+        "只读"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-104",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "空指针",
+        "NULL",
+        "防护"
+      ],
+      "title": "输入一个整数 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-105",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "遍历",
+        "求和"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-106",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针下标",
+        "等价"
+      ],
+      "title": "输入个数 n、n 个整数与一个下标 k",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-107",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "数组名",
+        "指针",
+        "最大值"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-108",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针算术",
+        "*p++",
+        "自增"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-109",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "最大值",
+        "下标"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-110",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "反转",
+        "两指针"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-111",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "折半查找",
+        "两指针",
+        "二分"
+      ],
+      "title": "输入个数 n、一个已升序排列的数组",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-112",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针比较",
+        "回文",
+        "两指针"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-113",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "指向指针",
+        "最大值"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-114",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "char指针",
+        "遍历"
+      ],
+      "title": "输入一行字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-115",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "strcat",
+        "指针"
+      ],
+      "title": "输入两行字符串 s1 与 s2",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-116",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "行指针",
+        "指针"
+      ],
+      "title": "输入行数 m、列数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-117",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "结构体",
+        "指针",
+        "箭头"
+      ],
+      "title": "定义一个学生结构体 stu",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-118",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "多返回值",
+        "函数参数"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-119",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "去重",
+        "双指针"
+      ],
+      "title": "输入个数 n 与 n 个已升序排列的整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-120",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "遍历",
+        "统计"
+      ],
+      "title": "输入个数 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-121",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "排序",
+        "回调"
+      ],
+      "title": "实现通用冒泡排序 void bubble",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-122",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free"
+      ],
+      "title": "输入个数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-123",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "指针的指针",
+        "动态分配"
+      ],
+      "title": "输入个数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-124",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "函数返回值",
+        "指针"
+      ],
+      "title": "编写 int *maxptr",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-125",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针数组",
+        "计算器",
+        "回调"
+      ],
+      "title": "实现一个用\"函数指针数组\"驱动的小型计算器",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-126",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "双指针"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-127",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "频次统计"
+      ],
+      "title": "输入一个仅含小写字母的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-128",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "拼接"
+      ],
+      "title": "输入两个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-129",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "二分查找"
+      ],
+      "title": "输入一个升序数组和待查找的整数 key",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-130",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "冒泡排序"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-131",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二维数组",
+        "遍历"
+      ],
+      "title": "输入一个 r 行 c 列的二维数组",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-132",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二重指针",
+        "动态内存分配",
+        "malloc",
+        "二维数组"
+      ],
+      "title": "输入 r 和 c",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-133",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "函数指针数组",
+        "指向函数的指针",
+        "分派"
+      ],
+      "title": "定义 add、sub、mul、div_ 四个函数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-134",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指向函数的指针",
+        "函数指针"
+      ],
+      "title": "定义 add、sub 两个函数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-135",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组下标",
+        "等价性"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-136",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "奇偶统计"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-137",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "拷贝"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-138",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "最大值",
+        "次大值"
+      ],
+      "title": "输入 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-139",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "线性查找"
+      ],
+      "title": "输入 n 个整数和一个待查找值 key",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-140",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "字符串常量区",
+        "char*",
+        "字面量"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-141",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "const指针",
+        "指针常量",
+        "只读访问"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-142",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "倒序"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-143",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "平均值",
+        "方差"
+      ],
+      "title": "输入 n 个实数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-144",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "插入排序"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-145",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "去重"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-146",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "复制"
+      ],
+      "title": "输入两个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-147",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "字符查找"
+      ],
+      "title": "输入一个不含空格的字符串和一个字符",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-148",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "长度"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-149",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "子串查找"
+      ],
+      "title": "输入两个不含空格的字符串 s 和 sub",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-150",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二维数组",
+        "矩阵转置"
+      ],
+      "title": "输入一个 r 行 c 列的矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-151",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "删除元素",
+        "写指针"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-152",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "插入元素",
+        "后移"
+      ],
+      "title": "输入一个整数 n、n 个整数、一个插入位置 pos",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-153",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "查重",
+        "双重循环"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-154",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "最小值",
+        "下标"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-155",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "计数",
+        "遍历"
+      ],
+      "title": "输入 n 个整数和一个整数 x",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-156",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "分区",
+        "partition",
+        "快排"
+      ],
+      "title": "输入 n 个整数和一个划分值 pivot",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-157",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "循环左移",
+        "三次反转",
+        "两指针交换"
+      ],
+      "title": "输入一个数组与移动次数 k",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-158",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二维数组",
+        "矩阵乘法",
+        "行指针"
+      ],
+      "title": "输入一个 m 行 p 列的矩阵 A 与一个 p 行 n 列的矩阵 B",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-159",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "遍历"
+      ],
+      "title": "用结构体指针模拟单链表",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-160",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "插入结点"
+      ],
+      "title": "先读入 n 个整数构造单链表",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-161",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "结构体",
+        "链表",
+        "删除结点"
+      ],
+      "title": "先读入 n 个整数构造单链表",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-162",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "多重指针",
+        "第k大",
+        "排序"
+      ],
+      "title": "输入 n 个整数与一个 k",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-163",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "折半查找",
+        "递归",
+        "区间指针"
+      ],
+      "title": "编写递归函数 int *bsearch",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-164",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "有序数组",
+        "插入",
+        "定位"
+      ],
+      "title": "输入一个已升序排列的数组与一个整数 x",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-165",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "有序数组",
+        "双指针",
+        "两数之和"
+      ],
+      "title": "输入一个已升序排列的数组与一个目标值 target",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-166",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "众数",
+        "计数",
+        "最值"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-167",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "转整数",
+        "atoi"
+      ],
+      "title": "给定一个可能带正负号、由数字组成的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-168",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "比较",
+        "字典序"
+      ],
+      "title": "输入两个字符串 s1、s2",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-169",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "删除字符",
+        "写指针"
+      ],
+      "title": "输入一个不含空格的字符串和一个字符 c",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-170",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "数字统计",
+        "遍历"
+      ],
+      "title": "输入一个由字母、数字等字符组成的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-171",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "快速排序",
+        "partition",
+        "递归"
+      ],
+      "title": "用指针实现快速排序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-172",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态内存分配",
+        "二重指针",
+        "malloc",
+        "列求和"
+      ],
+      "title": "输入行数 m 与列数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-173",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "链表",
+        "逆转",
+        "三指针"
+      ],
+      "title": "先读入 n 个整数构造单链表",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-174",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "合并",
+        "交替"
+      ],
+      "title": "输入两个不含空格的字符串 s1、s2",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-175",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "荷兰国旗",
+        "三分区",
+        "三指针"
+      ],
+      "title": "输入 n 个元素",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-176",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "连续子数组",
+        "最大和",
+        "指针算术"
+      ],
+      "title": "输入一个整数 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-177",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "计数排序",
+        "值域",
+        "指针遍历"
+      ],
+      "title": "输入 n 与 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-178",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "元音",
+        "辅音",
+        "指针遍历"
+      ],
+      "title": "输入一个仅含英文字母的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-179",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "行求和",
+        "行指针"
+      ],
+      "title": "输入一个 m 行 n 列的矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-180",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "峰值",
+        "边界",
+        "下标"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-181",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "统计",
+        "正负零",
+        "指针遍历"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-182",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "归并",
+        "双指针",
+        "合并有序"
+      ],
+      "title": "输入两个已按升序排列的数组",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-183",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "奇偶分离",
+        "分段",
+        "指针"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-184",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "去重",
+        "指针遍历"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-185",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "结构体",
+        "函数指针",
+        "qsort",
+        "排序"
+      ],
+      "title": "输入 n 个学生",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-186",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环移动",
+        "三次反转",
+        "指针交换"
+      ],
+      "title": "输入一个数组与移动次数 k",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-187",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "第二小",
+        "最值",
+        "指针"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-188",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "区间反转",
+        "指针交换",
+        "下标"
+      ],
+      "title": "输入一个数组以及闭区间 [l",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-189",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "前缀和",
+        "指针遍历",
+        "累加"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-190",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "公共元素",
+        "双指针",
+        "有序"
+      ],
+      "title": "输入两个已按升序排列的数组",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-191",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "回文",
+        "双指针",
+        "判断"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-192",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "冒泡排序",
+        "每趟输出",
+        "指针"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-193",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "选择排序",
+        "指针",
+        "最值"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-194",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "平均值",
+        "统计",
+        "指针"
+      ],
+      "title": "输入 n 名学生的成绩",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-195",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "鞍点",
+        "二维数组",
+        "行列最值"
+      ],
+      "title": "输入一个 m 行 n 列矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-196",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "函数指针",
+        "最大值"
+      ],
+      "title": "编写一个「返回指针值」的函数 findMax",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-197",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态分配",
+        "malloc",
+        "指针",
+        "倒序"
+      ],
+      "title": "用动态内存分配为数组申请空间",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-198",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "连续乘积",
+        "动态规划",
+        "指针",
+        "双极值"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-199",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "去重",
+        "原地",
+        "双指针"
+      ],
+      "title": "输入一个已按升序排列的数组",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-alg-200",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 5,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "双重指针",
+        "strcmp",
+        "排序"
+      ],
+      "title": "输入 n 个字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-101",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "解引用",
+        "指针变量"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-102",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针算术",
+        "自增"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-103",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "下标"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-104",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针比较",
+        "地址"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-105",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数",
+        "参数传递"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-106",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数",
+        "返回指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-107",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二级指针",
+        "多重指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-108",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "遍历"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-109",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "void",
+        "强制转换"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-110",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "const",
+        "常量指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-111",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "边界",
+        "越界"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-112",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "二维数组",
+        "指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-113",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指向数组的指针",
+        "二维数组",
+        "指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-114",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "指针",
+        "回调"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-115",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "结构体",
+        "成员访问"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-116",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增",
+        "解引用",
+        "优先级"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-117",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "NULL",
+        "空指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-118",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针算术",
+        "偏移"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-119",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "指针",
+        "行指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-120",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "交换",
+        "二级指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-121",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-122",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "字符串",
+        "字符指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-123",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "多重指针",
+        "三级指针",
+        "指针"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-124",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针差分",
+        "指针算术"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-125",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "取地址",
+        "解引用"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-126",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "静态变量",
+        "字符串"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-127",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "遍历",
+        "求和"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-128",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "拷贝"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-129",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "字符数组"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-130",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "指针数组",
+        "分发"
+      ],
+      "title": "阅读下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-131",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数参数",
+        "值传递"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-132",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "返回值",
+        "static",
+        "野指针"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-133",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针算术",
+        "数组遍历"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-134",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "字符串",
+        "二级指针"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-135",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "间接调用"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-136",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "改指针变量"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-137",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串字面量"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-138",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组传参",
+        "函数"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-139",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增自减",
+        "优先级"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-140",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "结构体",
+        "箭头运算"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-141",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "多维数组",
+        "偏移"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-142",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "比较",
+        "距离"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-143",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "malloc",
+        "free"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-144",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "const",
+        "常量指针"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-145",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "下标运算"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-146",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "NULL",
+        "判空"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-147",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "循环"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-148",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "步长",
+        "类型"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-149",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "sizeof",
+        "数组名退化"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-150",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "返回值",
+        "查找"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-151",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "行指针",
+        "二维数组"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-152",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "取地址",
+        "数组名"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-153",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "修改"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-154",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "下标",
+        "解引用"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-155",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "数组",
+        "间接调用"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-156",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "求极值"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-157",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增",
+        "字符串长度"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-158",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "malloc",
+        "指针算术"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-159",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "交换",
+        "字符串"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-pt-160",
+      "type": "pointer_trace",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针",
+        "首尾交换",
+        "解引用"
+      ],
+      "title": "读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-101",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针变量",
+        "函数参数传递",
+        "交换"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-102",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针算术",
+        "自增",
+        "数组"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-103",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": true,
+      "tags": [
+        "数组名",
+        "取地址",
+        "等价关系"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-104",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针作为函数参数",
+        "修改调用者变量"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-105",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "多重指针"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-106",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针与字符串",
+        "字符串遍历"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-107",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "指向函数的指针"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-108",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "取地址"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-109",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指向数组的指针",
+        "二维数组"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-110",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "结构体指针",
+        "箭头运算符"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-111",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "自增优先级",
+        "指针解引用",
+        "组合求值"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-112",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针比较",
+        "指针减法",
+        "指针距离"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-113",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "空指针",
+        "NULL",
+        "空指针判断"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-114",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "常量指针",
+        "指针常量",
+        "const"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-115",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "返回指针值的函数",
+        "指针返回"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-116",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "指向数组的指针",
+        "偏移"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-117",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针步长",
+        "类型转换",
+        "char指针"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-118",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态内存分配",
+        "malloc",
+        "free"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-119",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组名退化",
+        "sizeof",
+        "指针传递"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-120",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针做数组下标",
+        "负数下标"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-121",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符串反转",
+        "首尾指针",
+        "交换"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-122",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "函数指针数组",
+        "回调"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-123",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回函数指针",
+        "复杂函数指针"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-124",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串比较",
+        "指针遍历"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-125",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "指针数组",
+        "多重指针"
+      ],
+      "title": "写出下列程序的运行结果",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-126",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "字符指针",
+        "字符串反转",
+        "双指针",
+        "strlen"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-127",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "字符串指针",
+        "逆序遍历"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-128",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "函数指针数组",
+        "指向函数的指针",
+        "回调"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-129",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "行指针",
+        "指针传参"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-130",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针解引用",
+        "位运算",
+        "位移",
+        "统计1的个数"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-131",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "动态内存分配",
+        "malloc",
+        "二维数组",
+        "行指针"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-132",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "指针差值",
+        "指针比较",
+        "数组名",
+        "指针运算"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-133",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针递归",
+        "递归求和",
+        "指针步进"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-134",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "哨兵值",
+        "循环边界",
+        "指针步进",
+        "条件判断"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-135",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "结构体指针数组",
+        "结构体数组",
+        "箭头运算符"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-136",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针遍历",
+        "求最大值",
+        "指针偏移"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-137",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组越界",
+        "指针算术",
+        "边界风险"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-138",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针交换",
+        "地址与值",
+        "指针赋值"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-139",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "返回指针的函数",
+        "指针链式调用",
+        "字符串指针"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-140",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "const指针",
+        "指向常量的指针",
+        "常量指针"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-141",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "字符串末尾",
+        "指针作条件",
+        "结束符"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-142",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "字符数组",
+        "解引用",
+        "偏移打印"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-143",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "char**",
+        "双重解引用"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-144",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "指针赋值链",
+        "间接修改"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-145",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "sizeof",
+        "数组元素个数",
+        "指针差值"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-146",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针传参",
+        "求最大值最小值",
+        "多返回值"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-147",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "交换指针",
+        "指针传址"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-148",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "结构体指针成员",
+        "指针作成员",
+        "解引用"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-149",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针遍历",
+        "字符统计",
+        "字符串"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-cr-150",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针算术",
+        "折半查找",
+        "算法综合"
+      ],
+      "title": "阅读下面的程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-101",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数",
+        "交换",
+        "值传递"
+      ],
+      "title": "输入两个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-102",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "解引用",
+        "交换"
+      ],
+      "title": "输入两个整数存到数组 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-103",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "遍历",
+        "优先级"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-104",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "求和"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-105",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数",
+        "解引用"
+      ],
+      "title": "输入一个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-106",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增",
+        "优先级"
+      ],
+      "title": "输入一个整数 x",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-107",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "统计"
+      ],
+      "title": "输入一个单词",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-108",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "长度"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-109",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "下标"
+      ],
+      "title": "输入 n、n 个整数和一个下标 pos",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-110",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "声明",
+        "调用"
+      ],
+      "title": "输入两个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-111",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free",
+        "求和"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-112",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-113",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "最大值"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-114",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "最小值"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-115",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "求和"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-116",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二维数组",
+        "行指针",
+        "解引用"
+      ],
+      "title": "输入 2×3 矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-117",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "解引用",
+        "int**"
+      ],
+      "title": "输入 x",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-118",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "交换",
+        "int**"
+      ],
+      "title": "输入 x、y",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-119",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "统计"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-120",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "翻转"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-121",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "strcat",
+        "循环边界"
+      ],
+      "title": "输入两个单词",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-122",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "字符串",
+        "指针",
+        "strcpy"
+      ],
+      "title": "输入两个单词",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-123",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "排序",
+        "下标"
+      ],
+      "title": "输入 n、n 个整数和 k",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-124",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "众数",
+        "双重循环"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-125",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "矩阵",
+        "转置"
+      ],
+      "title": "输入 3×3 矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-126",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "矩阵",
+        "乘法"
+      ],
+      "title": "输入两个 2×2 矩阵",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-127",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "字符串",
+        "排序",
+        "strcmp"
+      ],
+      "title": "输入若干个单词",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-128",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "数组",
+        "排序"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-129",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "回调",
+        "指针"
+      ],
+      "title": "输入操作码 op",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-130",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针数组",
+        "分派",
+        "下标"
+      ],
+      "title": "输入操作码 op",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-131",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "局部变量",
+        "悬垂指针",
+        "static"
+      ],
+      "title": "输入 n",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-132",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "字符串",
+        "static",
+        "ASCII"
+      ],
+      "title": "输入一个字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-133",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "二分查找",
+        "边界"
+      ],
+      "title": "对升序数组 {1",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-134",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "删除",
+        "移位"
+      ],
+      "title": "输入 n、删除位置 pos 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-135",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "指针",
+        "插入",
+        "移位"
+      ],
+      "title": "输入 n、插入位置 pos、插入值 x 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-136",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "查找"
+      ],
+      "title": "输入 n、n 个整数和一个待查值 x",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-137",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "取地址",
+        "初始化"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-138",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "结构体",
+        "指针",
+        "箭头",
+        "传地址"
+      ],
+      "title": "输入学生姓名和成绩",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-139",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增",
+        "优先级",
+        "解引用"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mdb-140",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "算术",
+        "越界",
+        "偏移"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-101",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "空指针",
+        "NULL",
+        "解引用"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-102",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "未初始化",
+        "野指针",
+        "解引用"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-103",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "字面量",
+        "const"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-104",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "参数传递",
+        "二级指针",
+        "交换"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-105",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "const",
+        "只读",
+        "接口设计"
+      ],
+      "title": "评审下列函数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-106",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "自增",
+        "优先级",
+        "解引用"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-107",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "NULL",
+        "参数校验",
+        "健壮性"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-108",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "数组",
+        "越界",
+        "边界"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-109",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针算术",
+        "偏移",
+        "逻辑"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-110",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二维数组",
+        "类型匹配",
+        "行指针"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-111",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针差分",
+        "未定义行为",
+        "类型"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-112",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "边界",
+        "越界",
+        "数组"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-113",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "拷贝",
+        "越界"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-114",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "字面量",
+        "只读"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-115",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "strlen",
+        "越界"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-116",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针",
+        "返回指针",
+        "局部变量",
+        "悬垂"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-117",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "接口设计",
+        "类型",
+        "回调"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-118",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "类型匹配",
+        "赋值",
+        "签名"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-119",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "指针数组",
+        "声明",
+        "优先级"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-120",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "函数指针",
+        "空指针",
+        "调用",
+        "健壮性"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-121",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "局部变量",
+        "悬垂",
+        "存储期"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-122",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "static",
+        "复入",
+        "覆盖"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-123",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "malloc",
+        "free",
+        "内存泄漏"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-124",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "返回指针",
+        "局部数组",
+        "悬垂",
+        "二维"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-125",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "行指针",
+        "声明",
+        "类型"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-126",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "二级指针",
+        "类型匹配",
+        "参数",
+        "指针"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-127",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "指针数组",
+        "malloc",
+        "free",
+        "未定义行为"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-128",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "free",
+        "内存泄漏"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-129",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "malloc",
+        "空指针",
+        "健壮性"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-rv-130",
+      "type": "code_review",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "动态内存",
+        "free",
+        "悬垂",
+        "重复释放"
+      ],
+      "title": "评审下列程序",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-101",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "取地址运算符",
+        "解引用",
+        "指针变量"
+      ],
+      "title": "输入两个整数 a 和 b",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-102",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针算术",
+        "数组",
+        "数组名作地址",
+        "遍历求和"
+      ],
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-103",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.2 指针变量",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针参数",
+        "解引用",
+        "函数调用",
+        "值传递与地址传递"
+      ],
+      "title": "给定交换函数 swap",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-104",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.1 指针的基本概念",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "空指针",
+        "NULL",
+        "返回指针",
+        "解引用判空"
+      ],
+      "title": "在整型数组 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-105",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.8 动态内存分配",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "动态内存",
+        "malloc",
+        "sizeof",
+        "free",
+        "内存泄漏"
+      ],
+      "title": "输入 n 和 n 个整数",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-106",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.4 通过指针引用字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "字符串",
+        "字符数组",
+        "指针遍历",
+        "字符串结束符"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-107",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.5 指向函数的指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "函数指针",
+        "函数名作地址",
+        "函数调用"
+      ],
+      "title": "定义了两个函数 add",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-108",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.6 返回指针值的函数",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "返回指针的函数",
+        "指针比较",
+        "数组名作实参"
+      ],
+      "title": "输入 n 和 n 个整数存入数组 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-109",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.3 通过指针引用数组",
+      "difficulty": 5,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "二维数组",
+        "行指针",
+        "数组指针",
+        "二级定位"
+      ],
+      "title": "输入 12 个整数存入 3 行 4 列的二维数组 a",
+      "file": "c-ch09.json"
+    },
+    {
+      "id": "c-ch09-mb-110",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第9章 指针",
+      "section": "9.7 指针数组与多重指针",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "指针",
+        "指针数组",
+        "字符串",
+        "strlen",
+        "下标记录"
+      ],
+      "title": "输入 n 和 n 个不含空格的字符串",
       "file": "c-ch09.json"
     },
     {
