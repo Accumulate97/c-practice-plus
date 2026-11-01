@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "e819166ed8496f81",
+  "content_sha": "a6f50c0e0e5fd208",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 2647,
+  "count": 2857,
   "shard_count": 20,
   "shards": [
     {
@@ -45,7 +45,7 @@
       "file": "c-ch06.json",
       "category": "c",
       "chapter": "第6章 数组",
-      "count": 190,
+      "count": 400,
       "url": "data/problems/c-ch06.json"
     },
     {
@@ -15973,6 +15973,3584 @@
         "memcpy"
       ],
       "title": "输入一个字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-101",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "遍历",
+        "求和",
+        "平均值"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-102",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "最大值",
+        "最小值"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-103",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "逆序",
+        "下标"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-104",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "初始化",
+        "补零"
+      ],
+      "title": "程序里定义了 int a[8] = {10",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-105",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "计数",
+        "边界",
+        "越界"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-106",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "次大值",
+        "最值"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-107",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "去重",
+        "稳定性"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-108",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "计数",
+        "查找"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-109",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "区间计数",
+        "负值",
+        "下标"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-110",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "左旋",
+        "轮转"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-111",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "右旋",
+        "轮转"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-112",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "合并有序数组",
+        "双指针"
+      ],
+      "title": "读入两个已经按升序排好的数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-113",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "指针",
+        "数组名",
+        "求和"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-114",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "定义",
+        "行列"
+      ],
+      "title": "读入一个 r 行 c 列的矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-115",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "函数参数",
+        "列数",
+        "陷阱"
+      ],
+      "title": "把矩阵的打印封装成一个函数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-116",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "行求和",
+        "下标"
+      ],
+      "title": "读入一个 r 行 c 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-117",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "转置",
+        "行列互换"
+      ],
+      "title": "读入一个 r 行 c 列的矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-118",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "杨辉三角",
+        "递推"
+      ],
+      "title": "读入一个整数 n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-119",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "对角线",
+        "方阵"
+      ],
+      "title": "读入一个 n 行 n 列的方阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-120",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "马鞍点",
+        "行最小列最大"
+      ],
+      "title": "读入一个 r 行 c 列的矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-121",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串",
+        "计数"
+      ],
+      "title": "读入一个字符串和一个字符",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-122",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串",
+        "回文"
+      ],
+      "title": "读入一个字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-123",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "顺序查找",
+        "下标"
+      ],
+      "title": "读入一组整数和一个待查值 key",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-124",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分查找",
+        "升序"
+      ],
+      "title": "读入一个已经按升序排好的整数数组和一个待查值 key",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-125",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分",
+        "插入位置",
+        "lower_bound"
+      ],
+      "title": "读入一个升序数组和一个 key",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-126",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "冒泡排序",
+        "升序"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-127",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "选择排序",
+        "升序"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-128",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "插入排序",
+        "升序"
+      ],
+      "title": "读入一组整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-129",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "排序",
+        "稳定性",
+        "结构体",
+        "插入排序"
+      ],
+      "title": "读入 n 条记录",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-130",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "螺旋遍历",
+        "边界"
+      ],
+      "title": "读入一个 r 行 c 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-131",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "有序数组",
+        "双指针",
+        "去重"
+      ],
+      "title": "给定一个已按升序排列的整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-132",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "有序数组",
+        "二分查找",
+        "下标"
+      ],
+      "title": "给定一个不含重复元素的升序整数数组和一个整数 x",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-133",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "快速排序",
+        "划分",
+        "partition"
+      ],
+      "title": "对整数数组执行一趟快速排序划分",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-134",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "快速排序",
+        "递归",
+        "排序"
+      ],
+      "title": "用递归快速排序把一个整数数组按升序排好并输出",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-135",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "归并",
+        "有序数组",
+        "双指针"
+      ],
+      "title": "给定两个已经按升序排好的整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-136",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "归并排序",
+        "递归",
+        "分治"
+      ],
+      "title": "用自顶向下的归并排序把一个整数数组按升序排好并输出",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-137",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "堆调整"
+      ],
+      "title": "用堆排序把一个整数数组按升序排列并输出",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-138",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "计数排序",
+        "非负整数",
+        "值域"
+      ],
+      "title": "给定 n 个范围为 0 到 99 的非负整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-139",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "计数排序",
+        "负数",
+        "偏移"
+      ],
+      "title": "给定 n 个取值范围在 -50 到 50 之间的整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-140",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "桶排序",
+        "分桶",
+        "频率统计"
+      ],
+      "title": "读入若干 0~100 之间的成绩",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-141",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "奇偶重排",
+        "一维数组",
+        "稳定"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-142",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "正负重排",
+        "双指针",
+        "划分"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-143",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "稳定性",
+        "归并排序",
+        "键值排序"
+      ],
+      "title": "给定若干整数键值",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-144",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "左边界",
+        "下界"
+      ],
+      "title": "给定一个升序整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-145",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "右边界",
+        "上界"
+      ],
+      "title": "给定一个升序整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-146",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "出现次数",
+        "上下界"
+      ],
+      "title": "给定一个升序整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-147",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "旋转数组",
+        "二分查找",
+        "最小值"
+      ],
+      "title": "一个原本升序、元素互不相同的整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-148",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "旋转数组",
+        "二分查找",
+        "查找目标"
+      ],
+      "title": "一个原本升序、元素互不相同的整数数组被整体旋转了若干次",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-149",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "重复元素",
+        "数组计数",
+        "哈希"
+      ],
+      "title": "给定一个长度为 n 的整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-150",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "两数之和",
+        "哈希",
+        "下标"
+      ],
+      "title": "给定一个整数数组和一个目标和 t",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-151",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "多数元素",
+        "摩尔投票",
+        "Boyer-Moore"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-152",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "最大子数组",
+        "Kadane",
+        "动态规划"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-153",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "最大子数组",
+        "Kadane",
+        "下标边界"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-154",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "区间合并",
+        "排序",
+        "区间"
+      ],
+      "title": "给定 n 个整数闭区间 [l",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-155",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "前缀和",
+        "区间查询",
+        "预处理"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-156",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "二维前缀和",
+        "子矩阵"
+      ],
+      "title": "给定一个 n 行 m 列的整数矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-157",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "差分",
+        "区间修改",
+        "差分数组"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-158",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "滑动窗口",
+        "单调队列",
+        "最大值"
+      ],
+      "title": "给定一个整数数组和一个窗口大小 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-159",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "滑动窗口",
+        "字符串",
+        "最长无重复"
+      ],
+      "title": "给定一个字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-160",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "计数",
+        "字符串"
+      ],
+      "title": "给定一个字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-161",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环右移",
+        "取模",
+        "元素搬移"
+      ],
+      "title": "给定一个整数数组与一个整数 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-162",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "指针遍历",
+        "数组名",
+        "累加"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-163",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "sizeof",
+        "函数参数退化",
+        "传长度"
+      ],
+      "title": "编写函数 int maxVal",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-164",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "计数数组",
+        "负下标",
+        "初始化补零"
+      ],
+      "title": "输入 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-165",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "移动零",
+        "双指针",
+        "稳定"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-166",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "稳定划分",
+        "负数",
+        "相对顺序"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-167",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "区间合并",
+        "排序",
+        "qsort"
+      ],
+      "title": "输入 n 个闭区间 [l",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-168",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "区间覆盖",
+        "合并",
+        "总长度"
+      ],
+      "title": "输入 n 个闭区间 [l",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-169",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "三数之和",
+        "嵌套循环",
+        "计数"
+      ],
+      "title": "给定 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-170",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "四数之和",
+        "四层循环",
+        "计数"
+      ],
+      "title": "给定 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-171",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "前缀和",
+        "子数组",
+        "k"
+      ],
+      "title": "给定整数数组与目标值 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-172",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "约瑟夫环",
+        "数组模拟",
+        "取模"
+      ],
+      "title": "n 个人编号 1 到 n 围成一圈",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-173",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组参数",
+        "列数",
+        "行和"
+      ],
+      "title": "编写函数 int maxRowSum",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-174",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "主对角线",
+        "副对角线",
+        "方阵"
+      ],
+      "title": "给定 n 阶方阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-175",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "转置",
+        "行列互换",
+        "二维"
+      ],
+      "title": "给定 m 行 n 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-176",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "边界元素",
+        "越界",
+        "二维遍历"
+      ],
+      "title": "给定 m 行 n 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-177",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "旋转90度",
+        "映射",
+        "方阵"
+      ],
+      "title": "给定 n 阶方阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-178",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "螺旋遍历",
+        "边界收缩"
+      ],
+      "title": "给定 m 行 n 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-179",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "杨辉三角",
+        "递推",
+        "二维"
+      ],
+      "title": "输出杨辉三角的前 n 行",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-180",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "鞍点",
+        "行最大",
+        "列最小"
+      ],
+      "title": "给定 m 行 n 列矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-181",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "托普利茨",
+        "对角线",
+        "判断"
+      ],
+      "title": "托普利茨矩阵指",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-182",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "生命游戏",
+        "邻居计数",
+        "演化"
+      ],
+      "title": "康威生命游戏",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-183",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "回文",
+        "字符数组",
+        "strlen"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-184",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符判断",
+        "数字",
+        "遍历"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-185",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "单词计数",
+        "fgets",
+        "分隔符"
+      ],
+      "title": "输入一行可能含空格的文本",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-186",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "逆序",
+        "字符串",
+        "strlen"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-187",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "连续递增",
+        "一趟扫描",
+        "长度"
+      ],
+      "title": "给定一个整数数组",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-188",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "折半查找",
+        "插入位置",
+        "下界"
+      ],
+      "title": "给定一个已按升序排列的数组与目标值 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-189",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "第k大",
+        "选择排序",
+        "部分排序"
+      ],
+      "title": "给定一个整数数组与 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-alg-190",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "报数出列",
+        "数组模拟",
+        "出列顺序"
+      ],
+      "title": "n 个人编号 1 到 n 围成一圈",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-101",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "sizeof",
+        "数组长度"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-102",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "部分初始化",
+        "补零"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-103",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "a[i]与i[a]等价",
+        "指针"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-104",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "指针自增",
+        "负下标",
+        "数组名不可增"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-105",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "数组名作函数参数",
+        "传址"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-106",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "求最值"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-107",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "倒序输出"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-108",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "逗号表达式",
+        "赋值",
+        "自增副作用"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-109",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "未初始化数组",
+        "数组越界",
+        "未定义行为"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-110",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "初始化",
+        "嵌套循环"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-111",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "a[i][j]与*(*(a+i)+j)",
+        "行指针"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-112",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "内存连续",
+        "行指针"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-113",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "部分初始化",
+        "省略行数"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-114",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "转置输出",
+        "行列互换"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-115",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "矩阵转置",
+        "元素交换"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-116",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "矩阵乘法"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-117",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 1,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "strlen与sizeof",
+        "字符串"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-118",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "strcat",
+        "strcpy"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-119",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "遍历",
+        "字符判断"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-120",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串逆序",
+        "首尾交换"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-121",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "内嵌\\0",
+        "strlen与sizeof"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-122",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "有序数组"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-123",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "冒泡排序",
+        "单趟"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-124",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "选择排序",
+        "单步"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-125",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "插入排序",
+        "元素插入"
+      ],
+      "title": "阅读下面的 C 程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-126",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "越界读",
+        "二维数组",
+        "下标越界"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-127",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "数组名退化",
+        "sizeof",
+        "函数形参"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-128",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "指针自增",
+        "数组名退化",
+        "遍历"
+      ],
+      "title": "a++ 是非法的",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-129",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "部分初始化",
+        "补零",
+        "一维数组"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-130",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "负下标",
+        "指针",
+        "数组"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-131",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "二维传参",
+        "数组名退化",
+        "行指针"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-132",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "自增自减",
+        "指针",
+        "解引用"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-133",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "遍历",
+        "求和",
+        "最值"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-134",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "转置",
+        "二维数组",
+        "行列互换"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-135",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "strlen",
+        "sizeof",
+        "字符数组"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-136",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "strcpy",
+        "字符数组",
+        "字符串"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-137",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "getchar",
+        "字符读入",
+        "字符串"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-138",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "冒泡排序",
+        "单趟",
+        "交换"
+      ],
+      "title": "下面程序只做了冒泡排序的【第一趟】",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-139",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "选择排序",
+        "最小值",
+        "交换"
+      ],
+      "title": "下面程序是选择排序的【第一趟】",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-140",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "插入排序",
+        "单步",
+        "移位"
+      ],
+      "title": "下面程序把 a[1]=2 插入到已有序的左段中",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-141",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二分查找",
+        "mid",
+        "区间收缩"
+      ],
+      "title": "下面程序只做了二分查找的【一趟】",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-142",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "杨辉三角",
+        "二维数组",
+        "递推"
+      ],
+      "title": "下面程序用二维数组生成杨辉三角并逐行输出",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-143",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "指针运算",
+        "二维数组",
+        "解引用"
+      ],
+      "title": "阅读下面程序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-144",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "逆序",
+        "一维数组",
+        "交换"
+      ],
+      "title": "下面程序将数组逆序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cr-145",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "计数排序",
+        "数组应用",
+        "统计"
+      ],
+      "title": "下面程序用计数数组对一组小范围整数排序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-101",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "遍历",
+        "求和"
+      ],
+      "title": "从键盘读入整数 n 和 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-102",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "逆序",
+        "下标"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-103",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "元素交换",
+        "下标"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-104",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "初始化",
+        "部分初始化"
+      ],
+      "title": "定义大小为 5 的一维数组并整体初始化为 0",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-105",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "最大值",
+        "最值下标"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-106",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "逆序",
+        "原地交换"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-107",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "平均值",
+        "条件统计"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-108",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "去重",
+        "线性查找"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-109",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "轮转",
+        "取模"
+      ],
+      "title": "读入整数 n 和 k",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-110",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "有序数组",
+        "归并"
+      ],
+      "title": "输入两个已按从小到大排序的数组 a 和 b",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-111",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "计数",
+        "顺序查找"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-112",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "插入",
+        "元素后移"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-113",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "读写",
+        "双层循环"
+      ],
+      "title": "读入整数 m、n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-114",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "对角线",
+        "方阵"
+      ],
+      "title": "读入整数 n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-115",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "行列互换",
+        "按列访问"
+      ],
+      "title": "读入整数 m、n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-116",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 1,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "初始化",
+        "部分初始化"
+      ],
+      "title": "定义 3×3 二维数组并按下表部分初始化",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-117",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "转置",
+        "方阵"
+      ],
+      "title": "读入整数 n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-118",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "杨辉三角",
+        "递推"
+      ],
+      "title": "读入整数 n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-119",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "矩阵乘法",
+        "三层循环"
+      ],
+      "title": "输入矩阵 A",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-120",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "螺旋遍历",
+        "边界收缩"
+      ],
+      "title": "读入整数 m、n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-121",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "马鞍点",
+        "最值"
+      ],
+      "title": "读入整数 m、n",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-122",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strlen",
+        "遍历"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-123",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "strcpy",
+        "拷贝"
+      ],
+      "title": "输入一个不含空格的字符串 src",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-124",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "逆序",
+        "原地交换"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-125",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "字符统计",
+        "ASCII"
+      ],
+      "title": "输入一个不含空格的字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-126",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符串",
+        "元音统计",
+        "条件逻辑"
+      ],
+      "title": "输入一个不含空格的小写字符串",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-127",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "查找",
+        "顺序查找",
+        "下标"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-128",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分查找",
+        "有序序列"
+      ],
+      "title": "读入 n 个已按升序排列的整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-129",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "冒泡排序",
+        "相邻交换"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-cc-130",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "插入排序",
+        "后移插入"
+      ],
+      "title": "读入 n 个整数存入数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-101",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "求和",
+        "下标越界",
+        "循环边界"
+      ],
+      "title": "以下程序求数组 a 中 n 个元素之和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-102",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "求最大值",
+        "初始化"
+      ],
+      "title": "以下程序求数组 a 中的最大值并输出",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-103",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "输入",
+        "scanf",
+        "取地址"
+      ],
+      "title": "以下程序读入 n 个整数并求和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-104",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "逆序",
+        "下标越界",
+        "循环边界"
+      ],
+      "title": "以下程序将数组 a 中的元素逆序存放",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-105",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "指针遍历",
+        "求和"
+      ],
+      "title": "以下程序用指针遍历数组 a 求 n 个元素之和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-106",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "查找",
+        "赋值与比较"
+      ],
+      "title": "以下程序在数组 a 中查找 x 首次出现的下标",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-107",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "倒序输出",
+        "无符号类型",
+        "死循环"
+      ],
+      "title": "以下程序把数组 a 的元素倒序打印",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-108",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "函数参数",
+        "sizeof",
+        "数组退化"
+      ],
+      "title": "以下程序定义一个函数求数组元素和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-109",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "求和",
+        "初始化",
+        "越界"
+      ],
+      "title": "以下程序求 3×3 矩阵所有元素之和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-110",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "元素引用",
+        "scanf",
+        "行列颠倒"
+      ],
+      "title": "以下程序读入 3×3 矩阵并输出 a[1][2]",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-111",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "主对角线",
+        "下标",
+        "越界"
+      ],
+      "title": "以下程序读入 3×3 矩阵并求主对角线元素之和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-112",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "转置",
+        "循环边界",
+        "临时变量"
+      ],
+      "title": "以下程序把 3×3 矩阵就地转置",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-113",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "杨辉三角",
+        "边界"
+      ],
+      "title": "以下程序输出杨辉三角的前 n 行",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-114",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "求最大值",
+        "位置",
+        "逆向"
+      ],
+      "title": "以下程序求 3×3 矩阵中最大值及其行列下标",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-115",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串长度",
+        "循环"
+      ],
+      "title": "以下程序统计字符串 s 的长度",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-116",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串拼接",
+        "覆盖",
+        "结束符"
+      ],
+      "title": "以下程序把字符串 b 拼接到字符串 a 之后",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-117",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "大小写转换",
+        "逻辑运算",
+        "字符串长度"
+      ],
+      "title": "以下程序把字符串中的小写字母转换为大写",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-118",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "统计字符",
+        "赋值与比较"
+      ],
+      "title": "以下程序统计字符串 s 中字符 c 出现的次数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-119",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "回文",
+        "初始化"
+      ],
+      "title": "以下程序判断字符串 s 是否为回文",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-120",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "排序",
+        "冒泡排序",
+        "比较方向",
+        "循环边界"
+      ],
+      "title": "以下程序用冒泡排序把数组升序排列",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-121",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "排序",
+        "选择排序",
+        "求最小"
+      ],
+      "title": "以下程序用选择排序把数组升序排列",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-122",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分查找",
+        "边界更新"
+      ],
+      "title": "以下程序在有序数组 a 中使用二分查找判断 x 是否存在",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-123",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "查找",
+        "插入",
+        "有序",
+        "移动"
+      ],
+      "title": "以下程序把 x 插入有序数组 a",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-124",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "查找",
+        "线性查找",
+        "首次出现",
+        "break"
+      ],
+      "title": "以下程序在数组 a 中查找 x 首次出现的下标",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mdb-125",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "排序",
+        "合并",
+        "有序数组",
+        "归并"
+      ],
+      "title": "以下程序把两个升序数组 a、b 合并到数组 c",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-101",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "remember",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "定义",
+        "初始化",
+        "下标引用"
+      ],
+      "title": "下面程序读入 5 个整数后按输入顺序输出它们",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-102",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.1 一维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "部分初始化",
+        "补零"
+      ],
+      "title": "数组 int a[10]={1",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-103",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "最值"
+      ],
+      "title": "读入 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-104",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "求和",
+        "平均值"
+      ],
+      "title": "读入 n 个整数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-105",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "逆序"
+      ],
+      "title": "把数组逆序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-106",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "去重",
+        "计数",
+        "嵌套循环"
+      ],
+      "title": "统计数组中不同元素的个数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-107",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.2 一维数组的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "一维数组",
+        "轮转"
+      ],
+      "title": "把数组整体左移一位",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-108",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "初始化",
+        "下标引用"
+      ],
+      "title": "读入一个 3 行 4 列的矩阵",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-109",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.3 二维数组的定义和引用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "矩阵转置",
+        "行列交换"
+      ],
+      "title": "把 3x3 矩阵转置",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-110",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "矩阵乘法"
+      ],
+      "title": "计算两个 2x2 矩阵的乘积 C=A*B",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-111",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "杨辉三角"
+      ],
+      "title": "生成并打印 n 行杨辉三角",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-112",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.4 二维数组的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "对角线"
+      ],
+      "title": "求 n 阶方阵主对角线与副对角线元素之和",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-113",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串",
+        "strlen"
+      ],
+      "title": "统计读入字符串的长度",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-114",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串拷贝",
+        "strcpy"
+      ],
+      "title": "把字符串 src 复制到 dst",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-115",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符串逆序"
+      ],
+      "title": "把字符串 s 原地逆序",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-116",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.5 字符数组与字符串",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "字符数组",
+        "字符统计",
+        "ASCII"
+      ],
+      "title": "统计字符串中字母、数字和其他字符的个数",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-117",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "冒泡排序"
+      ],
+      "title": "用冒泡排序把数组升序排列",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-118",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "排序",
+        "选择排序"
+      ],
+      "title": "用选择排序把数组升序排列",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-119",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "查找",
+        "二分查找"
+      ],
+      "title": "在升序数组中用二分查找定位目标值 x",
+      "file": "c-ch06.json"
+    },
+    {
+      "id": "c-ch06-mb-120",
+      "type": "multi_blank",
+      "category": "c",
+      "chapter": "第6章 数组",
+      "section": "6.6 数组的排序与查找",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "二维数组",
+        "函数传参",
+        "陷阱"
+      ],
+      "title": "函数 print 打印一个 2 行 3 列的整型矩阵",
       "file": "c-ch06.json"
     },
     {
@@ -40479,6 +44057,6 @@
     }
   ],
   "defects": {
-    "codeReadingNoAnswer": 6
+    "codeReadingNoAnswer": 7
   }
 }
