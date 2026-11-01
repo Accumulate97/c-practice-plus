@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "7e2cc47a7296afa2",
+  "content_sha": "bde0cbb30d39a566",
   "schema_version": 1,
   "data_version": "0.1.0",
   "count": 3007,
@@ -36655,7 +36655,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "qsort",
@@ -36673,7 +36673,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "qsort",
@@ -36691,7 +36691,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "结构体",
@@ -36709,7 +36709,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "bsearch",
@@ -36726,7 +36726,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strstr",
@@ -36743,7 +36743,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strtok",
@@ -36760,7 +36760,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "格式化",
         "sprintf",
@@ -36777,7 +36777,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "格式化",
         "snprintf",
@@ -36794,7 +36794,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strchr",
@@ -36811,7 +36811,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strrchr",
@@ -36828,7 +36828,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组",
         "memcpy",
@@ -36845,7 +36845,7 @@
       "section": "13.3 API 练习",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "memmove",
@@ -36862,7 +36862,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组",
         "memset",
@@ -36879,7 +36879,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "atoi",
@@ -36896,7 +36896,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "atof",
@@ -36913,7 +36913,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "整除",
         "div",
@@ -36931,7 +36931,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "malloc",
@@ -36948,7 +36948,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strlen",
@@ -36965,7 +36965,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strcat",
@@ -36982,7 +36982,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strcmp",
@@ -36999,7 +36999,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "qsort",
         "字符串",
@@ -37017,7 +37017,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "qsort",
         "double",
@@ -37035,7 +37035,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "bsearch",
         "查找",
@@ -37053,7 +37053,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strncpy",
         "字符串",
@@ -37070,7 +37070,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strncat",
         "字符串",
@@ -37087,7 +37087,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strspn",
         "字符串",
@@ -37104,7 +37104,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strcspn",
         "字符串",
@@ -37121,7 +37121,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strpbrk",
         "查找",
@@ -37138,7 +37138,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strcasecmp",
         "字符串",
@@ -37155,7 +37155,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "memchr",
         "查找",
@@ -37172,7 +37172,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "realloc",
         "动态内存",
@@ -37189,7 +37189,7 @@
       "section": "13.3 API 练习",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "calloc",
         "动态内存",
@@ -37207,7 +37207,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "time",
         "时间戳",
@@ -37224,7 +37224,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "fgets",
         "输入",
@@ -37241,7 +37241,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "fprintf",
         "fscanf",
@@ -37259,7 +37259,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "abs",
         "绝对值",
@@ -37276,7 +37276,7 @@
       "section": "13.3 API 练习",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "atol",
         "字符串转长整型",
@@ -37293,7 +37293,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "qsort",
         "二维数组",
@@ -37311,7 +37311,7 @@
       "section": "13.3 API 练习",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "sprintf",
         "格式化",
@@ -37328,7 +37328,7 @@
       "section": "13.3 API 练习",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "strtok",
         "分割",
@@ -37345,7 +37345,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "求和",
         "公式",
@@ -37363,7 +37363,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平方和",
         "公式",
@@ -37380,7 +37380,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "两数之和",
         "双指针",
@@ -37398,7 +37398,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "最大值",
         "单遍",
@@ -37415,7 +37415,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "反转",
@@ -37433,7 +37433,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "移动零",
         "双指针",
@@ -37450,7 +37450,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "去重",
         "计数",
@@ -37468,7 +37468,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "快速排序",
@@ -37485,7 +37485,7 @@
       "section": "13.4 代码优化",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "滑动窗口",
         "子串",
@@ -37502,7 +37502,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "前缀和",
         "区间和",
@@ -37519,7 +37519,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "归并",
         "双指针",
@@ -37537,7 +37537,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "位运算",
         "2 的幂",
@@ -37554,7 +37554,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串压缩",
         "扫描",
@@ -37571,7 +37571,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "去重",
         "有序数组",
@@ -37589,7 +37589,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "频数",
         "计数数组",
@@ -37606,7 +37606,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "极值",
         "最大最小",
@@ -37624,7 +37624,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "旋转",
         "字符串",
@@ -37642,7 +37642,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "集合",
         "交集",
@@ -37660,7 +37660,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "计数",
@@ -37677,7 +37677,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "双指针",
@@ -37694,7 +37694,7 @@
       "section": "13.4 代码优化",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "组合数",
@@ -37711,7 +37711,7 @@
       "section": "13.4 代码优化",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "前缀和",
@@ -37728,7 +37728,7 @@
       "section": "13.4 代码优化",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "等差数列"
@@ -37744,7 +37744,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "堆排序",
@@ -37761,7 +37761,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "完全平方数",
@@ -37778,7 +37778,7 @@
       "section": "13.4 代码优化",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "滑动窗口",
@@ -37795,7 +37795,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "区间合并",
@@ -37812,7 +37812,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "螺旋矩阵",
@@ -37829,7 +37829,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "遍历",
@@ -37846,7 +37846,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "字符串",
@@ -37863,7 +37863,7 @@
       "section": "13.4 代码优化",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "股票",
@@ -37880,7 +37880,7 @@
       "section": "13.4 代码优化",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "位运算",
@@ -37897,7 +37897,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "快速选择",
@@ -37914,7 +37914,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "动态规划",
@@ -37931,7 +37931,7 @@
       "section": "13.4 代码优化",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "优化",
         "Floyd判圈",
@@ -37948,7 +37948,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "指针",
@@ -37965,7 +37965,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "指针",
@@ -37982,7 +37982,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "指针",
@@ -37999,7 +37999,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "指针",
@@ -38016,7 +38016,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "指针",
@@ -38033,7 +38033,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "比较",
@@ -38050,7 +38050,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "比较",
@@ -38067,7 +38067,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "查找",
@@ -38084,7 +38084,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "查找",
@@ -38101,7 +38101,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "子串",
@@ -38118,7 +38118,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "分割",
@@ -38135,7 +38135,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "指针",
@@ -38152,7 +38152,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "指针",
@@ -38170,7 +38170,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "赋值",
@@ -38187,7 +38187,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "比较",
@@ -38204,7 +38204,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "转换",
@@ -38221,7 +38221,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "整数",
         "转换",
@@ -38238,7 +38238,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数值算法",
         "gcd",
@@ -38255,7 +38255,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "函数指针",
@@ -38272,7 +38272,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "快速排序",
@@ -38289,7 +38289,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "归并排序",
@@ -38306,7 +38306,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "排序",
         "堆排序",
@@ -38323,7 +38323,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "二分查找",
@@ -38340,7 +38340,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分治",
         "快速幂",
@@ -38357,7 +38357,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "动态内存",
@@ -38374,7 +38374,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strspn",
@@ -38391,7 +38391,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strcspn",
@@ -38408,7 +38408,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strpbrk",
@@ -38425,7 +38425,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strcasecmp",
@@ -38442,7 +38442,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "内存",
         "memchr",
@@ -38459,7 +38459,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strrev",
@@ -38476,7 +38476,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strlwr",
@@ -38493,7 +38493,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strupr",
@@ -38510,7 +38510,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "strtol",
@@ -38527,7 +38527,7 @@
       "section": "13.2 标准库重实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "查找",
         "bsearch",
@@ -38544,7 +38544,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "remember",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环",
         "求和"
@@ -38560,7 +38560,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组",
         "最大值"
@@ -38576,7 +38576,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环",
         "计数",
@@ -38593,7 +38593,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "素数",
         "循环",
@@ -38610,7 +38610,7 @@
       "section": "13.1 限时实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环",
         "阶乘",
@@ -38627,7 +38627,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "循环",
         "斐波那契",
@@ -38644,7 +38644,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "辗转相除",
         "最大公约数",
@@ -38661,7 +38661,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组",
         "逆序",
@@ -38678,7 +38678,7 @@
       "section": "13.1 限时实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "长度",
@@ -38695,7 +38695,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "冒泡排序",
         "数组",
@@ -38712,7 +38712,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二分查找",
         "数组",
@@ -38729,7 +38729,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "元音",
@@ -38746,7 +38746,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二维数组",
         "转置",
@@ -38763,7 +38763,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "取模",
         "数位",
@@ -38780,7 +38780,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "回文",
         "字符串",
@@ -38797,7 +38797,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "鸡兔同笼",
         "方程",
@@ -38814,7 +38814,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "杨辉三角",
         "二维数组",
@@ -38831,7 +38831,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "位运算",
         "进制",
@@ -38848,7 +38848,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "求和",
         "平均值",
@@ -38865,7 +38865,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "次大值",
         "数组",
@@ -38882,7 +38882,7 @@
       "section": "13.1 限时实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "整数反转",
         "循环",
@@ -38899,7 +38899,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平均值",
         "循环",
@@ -38916,7 +38916,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "字符数组",
@@ -38933,7 +38933,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "插入排序",
         "排序"
@@ -38949,7 +38949,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "选择排序",
         "排序"
@@ -38965,7 +38965,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "字符串",
         "单词计数",
@@ -38982,7 +38982,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "闰年",
         "条件判断"
@@ -38998,7 +38998,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "日期",
         "闰年",
@@ -39015,7 +39015,7 @@
       "section": "13.1 限时实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "水仙花数",
         "循环",
@@ -39032,7 +39032,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "完数",
         "因子",
@@ -39049,7 +39049,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "乘法口诀表",
         "嵌套循环",
@@ -39066,7 +39066,7 @@
       "section": "13.1 限时实现",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "最大子段和",
         "Kadane算法",
@@ -39083,7 +39083,7 @@
       "section": "13.1 限时实现",
       "difficulty": 5,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "约瑟夫环",
         "模拟",
@@ -39100,7 +39100,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "素数",
         "区间",
@@ -39117,7 +39117,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数组去重",
         "查找"
@@ -39133,7 +39133,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "中位数",
         "排序"
@@ -39149,7 +39149,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "汉诺塔",
         "递归"
@@ -39165,7 +39165,7 @@
       "section": "13.1 限时实现",
       "difficulty": 1,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "大小写转换",
         "ASCII",
@@ -39182,7 +39182,7 @@
       "section": "13.1 限时实现",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "完全平方数",
         "循环"
@@ -39198,7 +39198,7 @@
       "section": "13.1 限时实现",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "数字统计",
         "数组计数",
