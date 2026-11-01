@@ -276,7 +276,7 @@
       "stem": "输入 base、exp、mod 三个非负整数（mod > 0），用\"快速幂\"算法计算 base^exp mod mod 并输出。要求：利用 exp 的二进制位来减少乘法次数，用 exp & 1 判断当前最低位、exp >>= 1 右移，必须使用位运算实现。",
       "input_format": "三个整数 base、exp、mod（0 ≤ base < 2^64，0 ≤ exp < 2^64，mod > 0），空格分隔",
       "output_format": "base^exp mod mod 的值",
-      "code_starter": "#include <stdio.h>\nint main(void){\n    unsigned long long base, exp, mod, result = 1;\n    scanf(\"%llu %llu %llu\", &base, &exp, &mod);\n    /* 快速幂：base %= mod; while(exp){ if(exp&1)...; base...; exp>>=1; } */\n    return 1;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    unsigned long long base, exp, mod, result = 1;\n    scanf(\"%llu %llu %llu\", &base, &exp, &mod);\n    /* 快速幂：base %= mod; while(exp){ if(exp&1)...; base...; exp>>=1; } */\n    return 1;\n}",
       "reference": "#include <stdio.h>\nint main(void){\n    unsigned long long base, exp, mod, result = 1;\n    if (scanf(\"%llu %llu %llu\", &base, &exp, &mod) != 3)\n        return 1;\n    if (mod == 0)\n        return 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1)\n            result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    result %= mod;\n    printf(\"%llu\\n\", result);\n    return 0;\n}",
       "testCases": [
         {

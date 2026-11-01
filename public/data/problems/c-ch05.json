@@ -4831,7 +4831,7 @@
       "stem": "输入一个正整数 n，输出 1+2+…+n 的和。",
       "input_format": "一个正整数 n（1 ≤ n ≤ 10000）。",
       "output_format": "一个整数，表示 1 到 n 的和。",
-      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 1; i <= n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, s = 0;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 1; i <= n; ++i)\n        s += i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -4879,7 +4879,7 @@
       "stem": "输入一个正整数 n，输出 2 到 n 之间的所有素数，每个素数后跟一个空格。",
       "input_format": "一个正整数 n（2 ≤ n ≤ 1000）。",
       "output_format": "2 到 n 之间的所有素数，用空格分隔，最后一个素数后也跟一个空格。",
-      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, i, j, isp;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 2; i <= n; ++i) {\n              isp = 1;\n              for (j = 2; j * j <= i; ++j) {\n                  if (i % j == 0) { isp = 0; break; }\n              }\n              if (isp) printf(\"%d \", i);\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, isp;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; ++i) {\n        isp = 1;\n        for (j = 2; j * j <= i; ++j) {\n            if (i % j == 0) {\n                isp = 0;\n                break;\n            }\n        }\n        if (isp)\n            printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10\n",
@@ -4922,7 +4922,7 @@
       "stem": "按从小到大顺序，输出所有三位「水仙花数」（各位数字的立方和等于它本身），每个数后跟一个空格。",
       "input_format": "本题无输入。",
       "output_format": "从小到大输出三位水仙花数，用空格分隔，最后一个数后也跟一个空格。",
-      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, a, b, c;\n          for (n = 100; n <= 999; ++n) {\n              a = n / 100;\n              b = (n / 10) % 10;\n              c = n % 10;\n              if (a*a*a + b*b*b + c*c*c == n) printf(\"%d \", n);\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, a, b, c;\n    for (n = 100; n <= 999; ++n) {\n        a = n / 100;\n        b = (n / 10) % 10;\n        c = n % 10;\n        if (a * a * a + b * b * b + c * c * c == n)\n            printf(\"%d \", n);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -4953,12 +4953,12 @@
         "累加"
       ],
       "stem": "下面程序本应输出 1+2+…+n 的和，但有两处错误。请把修正后的完整程序写出来（一开始的循环变量初始化也有问题）。",
-      "code": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          scanf(\"%d\", &n);\n          for (i = 0; i < n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, s = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; ++i)\n        s += i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "bugs": [
         "for 循环初始化 i=0 导致从 0 开始累加，且 i<n 使最后一项 n 被漏掉；应从 i=1 开始，并用 i<=n。",
         "scanf 未检查返回值（健壮性不足），应判断 scanf 返回值。"
       ],
-      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 1; i <= n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "fixed_code": "#include <stdio.h>\nint main(void) {\n    int n, i, s = 0;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 1; i <= n; ++i)\n        s += i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -4994,12 +4994,12 @@
         "素数"
       ],
       "stem": "下面程序本应判断输入的正整数 n 是否为素数（是输出 YES，不是输出 NO），但有两处错误。请写出修正后的完整程序。",
-      "code": "#include <stdio.h>\n      int main(void) {\n          int n, i, isp = 1;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 2; i <= n; ++i) {\n              if (n % i == 0) isp = 0;\n          }\n          if (isp) printf(\"YES\\n\"); else printf(\"NO\\n\");\n          return 0;\n      }",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, isp = 1;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; ++i) {\n        if (n % i == 0)\n            isp = 0;\n    }\n    if (isp)\n        printf(\"YES\\n\");\n    else\n        printf(\"NO\\n\");\n    return 0;\n}",
       "bugs": [
         "循环到 i<=n 时，i==n 必然使 n%n==0，任何数都被判为合数；应改为 i*i<=n 或 i<n（判断到 sqrt(n) 即可）。",
         "isp 初始为 1，但当 n=1 时循环不执行，1 被误判为素数；特殊处理 n<=1 的情况。"
       ],
-      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n, i, isp = 1;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          if (n <= 1) isp = 0;\n          for (i = 2; i * i <= n; ++i) {\n              if (n % i == 0) { isp = 0; break; }\n          }\n          if (isp) printf(\"YES\\n\"); else printf(\"NO\\n\");\n          return 0;\n      }",
+      "fixed_code": "#include <stdio.h>\nint main(void) {\n    int n, i, isp = 1;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n <= 1)\n        isp = 0;\n    for (i = 2; i * i <= n; ++i) {\n        if (n % i == 0) {\n            isp = 0;\n            break;\n        }\n    }\n    if (isp)\n        printf(\"YES\\n\");\n    else\n        printf(\"NO\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "7\n",
@@ -5039,14 +5039,14 @@
         "循环",
         "数位"
       ],
-      "stem": "下面程序本应把输入的正整数 n 的各位数字逆序输出（如输入 12345 输出 54321），但有三处错误。请写出修正后的完整程序。",
-      "code": "#include <stdio.h>\n      int main(void) {\n          int n;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          while (n > 0) {\n              printf(\"%d\", n % 10);\n              n = n % 10;\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "stem": "下面程序本应把输入的非负整数 n 的各位数字逆序输出（如输入 12345 输出 54321），但有三处错误。请写出修正后的完整程序。",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    while (n > 0) {\n        printf(\"%d\", n % 10);\n        n = n % 10;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "循环里用 n = n % 10 让 n 只保留个位，循环永不终止；应改为 n = n / 10 去掉末位。",
         "未处理 n=0 的情况，循环一次不执行，什么也不输出；特殊处理 n==0 直接输出 0。",
         "printf(\"%d\", n % 10) 输出的是数字紧连，若要求每位数间有分隔可保留，但这里题意是整串逆序，保留即可。"
       ],
-      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          if (n == 0) { printf(\"0\\n\"); return 0; }\n          while (n > 0) {\n              printf(\"%d\", n % 10);\n              n = n / 10;\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "fixed_code": "#include <stdio.h>\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n == 0) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    while (n > 0) {\n        printf(\"%d\", n % 10);\n        n = n / 10;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12345\n",
@@ -5088,8 +5088,8 @@
       "stem": "输入一个正整数 n，使用 for 循环计算 1+2+3+…+n 的和并输出。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "1+2+…+n 的和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;/*__BLANK__*/printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<=n;i++)s+=i;printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0; /*__BLANK__*/\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++)\n        s += i;\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5127,8 +5127,8 @@
       "stem": "输入一个正整数 n，计算 1 到 n 中所有奇数的和并输出。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "1 到 n 中奇数之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<=n;i++){if(i%2)s+=i;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 2)\n            s += i;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5166,8 +5166,8 @@
       "stem": "输入一个正整数 n，用步长为 2 的 for 循环计算 1 到 n 中所有偶数的和并输出。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "偶数之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=2;i<=n;i+=2)s+=i;printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=2;i<=n;i+=2)s+=i;printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 2; i <= n; i += 2)\n        s += i;\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 2; i <= n; i += 2)\n        s += i;\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5205,8 +5205,8 @@
       "stem": "输入一个正整数 n，用 while 循环计算 1+2+…+n 并输出。",
       "input_format": "一个正整数 n",
       "output_format": "和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0,i=1;while(i<=n){/*__BLANK__*/}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0,i=1;while(i<=n){s+=i;i++;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0, i = 1;\n    while (i <= n) { /*__BLANK__*/\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0, i = 1;\n    while (i <= n) {\n        s += i;\n        i++;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5",
@@ -5240,8 +5240,8 @@
       "stem": "输入一个正整数 n，用 do-while 循环计算 1+2+…+n 并输出。",
       "input_format": "一个正整数 n",
       "output_format": "和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0,i=1;do{s+=i;/*__BLANK__*/}while(i<=n);printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0,i=1;do{s+=i;i++;}while(i<=n);printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0, i = 1;\n    do {\n        s += i; /*__BLANK__*/\n    } while (i <= n);\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0, i = 1;\n    do {\n        s += i;\n        i++;\n    } while (i <= n);\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6",
@@ -5275,8 +5275,8 @@
       "stem": "先输入整数个数 n，再输入 n 个整数，计算它们的平均值（四舍五入取整）并输出。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "平均值（整数，四舍五入）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);s+=x;}printf(\"%d\",(int)((long double)s/n+0.5));}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);s+=x;}printf(\"%d\",(int)((long double)s/n+0.5));return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        s += x;\n    }\n    printf(\"%d\", (int)((long double)s / n + 0.5));\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        s += x;\n    }\n    printf(\"%d\", (int)((long double)s / n + 0.5));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
@@ -5314,8 +5314,8 @@
       "stem": "输入 n 个整数，找出其中的最大值并输出。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "最大值。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int max;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(i==0||x>max)max=x;}printf(\"%d\",max);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int max;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(i==0||x>max)max=x;}printf(\"%d\",max);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int max;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (i == 0 || x > max)\n            max = x;\n    }\n    printf(\"%d\", max);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int max;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (i == 0 || x > max)\n            max = x;\n    }\n    printf(\"%d\", max);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 8 1 9 2",
@@ -5353,8 +5353,8 @@
       "stem": "输入一个非负整数 n，用 while 循环求其各位数字之和并输出。",
       "input_format": "一个非负整数 n（0≤n≤10^9）",
       "output_format": "各位数字之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;while(n){s+=n%10;/*__BLANK__*/}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;while(n){s+=n%10;n/=10;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    while (n) {\n        s += n % 10; /*__BLANK__*/\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    while (n) {\n        s += n % 10;\n        n /= 10;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -5393,8 +5393,8 @@
       "stem": "输入一个正整数 n，将其各位数字逆序得到一个新数并输出（去掉前导零）。",
       "input_format": "一个正整数 n",
       "output_format": "逆序后的整数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int r=0;while(n){r=r*10+n%10;n/=10;}printf(\"%d\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int r=0;while(n){r=r*10+n%10;n/=10;}printf(\"%d\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    while (n) {\n        r = r * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    while (n) {\n        r = r * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "123",
@@ -5432,8 +5432,8 @@
       "stem": "输入一个正整数 n，统计它是几位数并输出。",
       "input_format": "一个正整数 n（1≤n≤10^9）",
       "output_format": "位数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;while(n){c++;n/=10;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;while(n){c++;n/=10;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    while (n) {\n        c++;\n        n /= 10;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    while (n) {\n        c++;\n        n /= 10;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5472,8 +5472,8 @@
       "stem": "输入一个三位数，判断它是否为水仙花数（各位数字的立方和等于它本身），是输出 1，否则输出 0。",
       "input_format": "一个三位数 n（100≤n≤999）",
       "output_format": "1 或 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int a=n/100,b=n/10%10,c=n%10;printf(\"%d\",a*a*a+b*b*b+c*c*c==n);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int a=n/100,b=n/10%10,c=n%10;printf(\"%d\",a*a*a+b*b*b+c*c*c==n);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a = n / 100, b = n / 10 % 10, c = n % 10;\n    printf(\"%d\", a * a * a + b * b * b + c * c * c == n);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a = n / 100, b = n / 10 % 10, c = n % 10;\n    printf(\"%d\", a * a * a + b * b * b + c * c * c == n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "153",
@@ -5511,8 +5511,8 @@
       "stem": "输入一个正整数 n，判断它是否为回文数（正读反读相同），是输出 1，否则输出 0。",
       "input_format": "一个正整数 n",
       "output_format": "1 或 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int o=n,r=0;while(n){r=r*10+n%10;n/=10;}printf(\"%d\",r==o);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int o=n,r=0;while(n){r=r*10+n%10;n/=10;}printf(\"%d\",r==o);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int o = n, r = 0;\n    while (n) {\n        r = r * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\", r == o);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int o = n, r = 0;\n    while (n) {\n        r = r * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\", r == o);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "121",
@@ -5550,8 +5550,8 @@
       "stem": "输入一个正整数 n（n≤12），计算 n! 并输出。",
       "input_format": "一个正整数 n（1≤n≤12）",
       "output_format": "n!。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long f=1;for(int i=1;i<=n;i++)f*=i;printf(\"%lld\",f);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long f=1;for(int i=1;i<=n;i++)f*=i;printf(\"%lld\",f);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1;\n    for (int i = 1; i <= n; i++)\n        f *= i;\n    printf(\"%lld\", f);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1;\n    for (int i = 1; i <= n; i++)\n        f *= i;\n    printf(\"%lld\", f);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5589,8 +5589,8 @@
       "stem": "输入一个正整数 n，计算 1²+2²+…+n² 并输出。",
       "input_format": "一个正整数 n（1≤n≤10^3）",
       "output_format": "平方和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=1;i<=n;i++)s+=1LL*i*i;printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=1;i<=n;i++)s+=1LL*i*i;printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 1; i <= n; i++)\n        s += 1LL * i * i;\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 1; i <= n; i++)\n        s += 1LL * i * i;\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3",
@@ -5624,8 +5624,8 @@
       "stem": "输入首项 a、公差 d 和项数 n，用 for 循环计算该等差数列前 n 项的和并输出。",
       "input_format": "三个整数 a d n。",
       "output_format": "等差数列前 n 项之和。",
-      "code_starter": "int main(){int a,d,n;scanf(\"%d%d%d\",&a,&d,&n);long long s=0;for(int i=0;i<n;i++)s+=a+(long long)i*d;printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int a,d,n;scanf(\"%d%d%d\",&a,&d,&n);long long s=0;for(int i=0;i<n;i++)s+=a+(long long)i*d;printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, d, n;\n    scanf(\"%d%d%d\", &a, &d, &n);\n    long long s = 0;\n    for (int i = 0; i < n; i++)\n        s += a + (long long)i * d;\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, d, n;\n    scanf(\"%d%d%d\", &a, &d, &n);\n    long long s = 0;\n    for (int i = 0; i < n; i++)\n        s += a + (long long)i * d;\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 1 5",
@@ -5663,8 +5663,8 @@
       "stem": "输入底数 x 和指数 n（≥0），用 for 循环计算 x 的 n 次幂并输出。",
       "input_format": "两个整数 x n。",
       "output_format": "x^n。",
-      "code_starter": "int main(){int x,n;scanf(\"%d%d\",&x,&n);long long r=1;for(int i=0;i<n;i++)r*=x;printf(\"%lld\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int x,n;scanf(\"%d%d\",&x,&n);long long r=1;for(int i=0;i<n;i++)r*=x;printf(\"%lld\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int x, n;\n    scanf(\"%d%d\", &x, &n);\n    long long r = 1;\n    for (int i = 0; i < n; i++)\n        r *= x;\n    printf(\"%lld\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int x, n;\n    scanf(\"%d%d\", &x, &n);\n    long long r = 1;\n    for (int i = 0; i < n; i++)\n        r *= x;\n    printf(\"%lld\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 0",
@@ -5702,8 +5702,8 @@
       "stem": "输入首项 a、公比 q 和项数 n，计算等比数列前 n 项和并输出。",
       "input_format": "三个整数 a q n。",
       "output_format": "前 n 项之和。",
-      "code_starter": "int main(){int a,q,n;scanf(\"%d%d%d\",&a,&q,&n);long long s=0,t=a;for(int i=0;i<n;i++){s+=t;t*=q;}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int a,q,n;scanf(\"%d%d%d\",&a,&q,&n);long long s=0,t=a;for(int i=0;i<n;i++){s+=t;t*=q;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, q, n;\n    scanf(\"%d%d%d\", &a, &q, &n);\n    long long s = 0, t = a;\n    for (int i = 0; i < n; i++) {\n        s += t;\n        t *= q;\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, q, n;\n    scanf(\"%d%d%d\", &a, &q, &n);\n    long long s = 0, t = a;\n    for (int i = 0; i < n; i++) {\n        s += t;\n        t *= q;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 5",
@@ -5741,8 +5741,8 @@
       "stem": "输入整数 n 和数字 d（0-9），统计 d 在 n 的十进制表示中出现的次数并输出。",
       "input_format": "两个整数 n d。",
       "output_format": "出现次数。",
-      "code_starter": "int main(){int n,d;scanf(\"%d%d\",&n,&d);int c=0;while(n){if(n%10==d)c++;n/=10;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n,d;scanf(\"%d%d\",&n,&d);int c=0;while(n){if(n%10==d)c++;n/=10;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n, d;\n    scanf(\"%d%d\", &n, &d);\n    int c = 0;\n    while (n) {\n        if (n % 10 == d)\n            c++;\n        n /= 10;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n, d;\n    scanf(\"%d%d\", &n, &d);\n    int c = 0;\n    while (n) {\n        if (n % 10 == d)\n            c++;\n        n /= 10;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "122 2",
@@ -5780,8 +5780,8 @@
       "stem": "输入一个正整数 n，判断它是否为完数（等于其所有真因子之和），是输出 1，否则输出 0。",
       "input_format": "一个正整数 n。",
       "output_format": "1 或 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<n;i++)if(n%i==0)s+=i;printf(\"%d\",s==n);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<n;i++)if(n%i==0)s+=i;printf(\"%d\",s==n);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i < n; i++)\n        if (n % i == 0)\n            s += i;\n    printf(\"%d\", s == n);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i < n; i++)\n        if (n % i == 0)\n            s += i;\n    printf(\"%d\", s == n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6",
@@ -5819,8 +5819,8 @@
       "stem": "输入项数 n，计算 1+11+111+…（每项由 n 位全 1 组成）前 n 项之和并输出。",
       "input_format": "一个正整数 n（1≤n≤9）。",
       "output_format": "前 n 项之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0,t=0;for(int i=0;i<n;i++){t=t*10+1;s+=t;}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0,t=0;for(int i=0;i<n;i++){t=t*10+1;s+=t;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0, t = 0;\n    for (int i = 0; i < n; i++) {\n        t = t * 10 + 1;\n        s += t;\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0, t = 0;\n    for (int i = 0; i < n; i++) {\n        t = t * 10 + 1;\n        s += t;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5858,8 +5858,8 @@
       "stem": "输入 n，计算 1/1! + 1/2! + … + 1/n! 的值（保留 6 位小数）并输出。",
       "input_format": "一个正整数 n（1≤n≤20）。",
       "output_format": "结果，保留 6 位小数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0,t=1;for(int i=1;i<=n;i++){t*=i;s+=1.0/t;}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0,t=1;for(int i=1;i<=n;i++){t*=i;s+=1.0/t;}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0, t = 1;\n    for (int i = 1; i <= n; i++) {\n        t *= i;\n        s += 1.0 / t;\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0, t = 1;\n    for (int i = 1; i <= n; i++) {\n        t *= i;\n        s += 1.0 / t;\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -5897,8 +5897,8 @@
       "stem": "输入 n 个整数，统计其中奇数的个数与偶数的个数并依次输出。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "奇数个数 偶数个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int o=0,e=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x%2)o++;else e++;}printf(\"%d %d\",o,e);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int o=0,e=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x%2)o++;else e++;}printf(\"%d %d\",o,e);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int o = 0, e = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x % 2)\n            o++;\n        else\n            e++;\n    }\n    printf(\"%d %d\", o, e);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int o = 0, e = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x % 2)\n            o++;\n        else\n            e++;\n    }\n    printf(\"%d %d\", o, e);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5",
@@ -5936,8 +5936,8 @@
       "stem": "输入 n 个整数，求它们的乘积并输出。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "乘积。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long p=1;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);p*=x;}printf(\"%lld\",p);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long p=1;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);p*=x;}printf(\"%lld\",p);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long p = 1;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        p *= x;\n    }\n    printf(\"%lld\", p);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long p = 1;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        p *= x;\n    }\n    printf(\"%lld\", p);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n2 3 4",
@@ -5975,8 +5975,8 @@
       "stem": "输入正整数 n，用循环统计 2 到 n 之间素数的个数并输出。",
       "input_format": "一个正整数 n（2≤n≤1000）。",
       "output_format": "素数个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;for(int x=2;x<=n;x++){int ok=1;for(int i=2;i*i<=x;i++)if(x%i==0){ok=0;break;}if(ok)c++;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;for(int x=2;x<=n;x++){int ok=1;for(int i=2;i*i<=x;i++)if(x%i==0){ok=0;break;}if(ok)c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int x = 2; x <= n; x++) {\n        int ok = 1;\n        for (int i = 2; i * i <= x; i++)\n            if (x % i == 0) {\n                ok = 0;\n                break;\n            }\n        if (ok)\n            c++;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int x = 2; x <= n; x++) {\n        int ok = 1;\n        for (int i = 2; i * i <= x; i++)\n            if (x % i == 0) {\n                ok = 0;\n                break;\n            }\n        if (ok)\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -6014,8 +6014,8 @@
       "stem": "输入两个正整数 a、b，用辗转相除法（while 循环）求它们的最大公约数并输出。",
       "input_format": "两个整数 a b。",
       "output_format": "最大公约数。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);while(b){int t=a%b;a=b;b=t;}printf(\"%d\",a);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);while(b){int t=a%b;a=b;b=t;}printf(\"%d\",a);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    while (b) {\n        int t = a % b;\n        a = b;\n        b = t;\n    }\n    printf(\"%d\", a);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    while (b) {\n        int t = a % b;\n        a = b;\n        b = t;\n    }\n    printf(\"%d\", a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 8",
@@ -6053,8 +6053,8 @@
       "stem": "输入两个正整数 a、b，利用最大公约数求它们的最小公倍数并输出。",
       "input_format": "两个整数 a b。",
       "output_format": "最小公倍数。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}printf(\"%d\",a/x*b);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}printf(\"%d\",a/x*b);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%d\", a / x * b);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%d\", a / x * b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4 6",
@@ -6092,8 +6092,8 @@
       "stem": "输入一个正整数 n，将其转换为二进制数（去掉前导零）并输出。",
       "input_format": "一个正整数 n（1≤n≤10^6）。",
       "output_format": "二进制表示。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int bit[32],k=0;while(n){bit[k++]=n%2;n/=2;}for(int i=k-1;i>=0;i--)printf(\"%d\",bit[i]);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int bit[32],k=0;while(n){bit[k++]=n%2;n/=2;}for(int i=k-1;i>=0;i--)printf(\"%d\",bit[i]);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int bit[32], k = 0;\n    while (n) {\n        bit[k++] = n % 2;\n        n /= 2;\n    }\n    for (int i = k - 1; i >= 0; i--)\n        printf(\"%d\", bit[i]);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int bit[32], k = 0;\n    while (n) {\n        bit[k++] = n % 2;\n        n /= 2;\n    }\n    for (int i = k - 1; i >= 0; i--)\n        printf(\"%d\", bit[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6131,8 +6131,8 @@
       "stem": "斐波那契数列前两项为 1、1，求第 n 项（n 从 1 开始）并输出。",
       "input_format": "一个正整数 n（1≤n≤40）。",
       "output_format": "第 n 项。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long a=1,b=1;for(int i=3;i<=n;i++){long long c=a+b;a=b;b=c;}printf(\"%lld\",n==1?1:b);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long a=1,b=1;for(int i=3;i<=n;i++){long long c=a+b;a=b;b=c;}printf(\"%lld\",n==1?1:b);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    for (int i = 3; i <= n; i++) {\n        long long c = a + b;\n        a = b;\n        b = c;\n    }\n    printf(\"%lld\", n == 1 ? 1 : b);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    for (int i = 3; i <= n; i++) {\n        long long c = a + b;\n        a = b;\n        b = c;\n    }\n    printf(\"%lld\", n == 1 ? 1 : b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6170,8 +6170,8 @@
       "stem": "输入 n（n≤12），计算 1!+2!+…+n! 并输出。",
       "input_format": "一个正整数 n（1≤n≤12）。",
       "output_format": "阶乘之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0,f=1;for(int i=1;i<=n;i++){f*=i;s+=f;}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0,f=1;for(int i=1;i<=n;i++){f*=i;s+=f;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0, f = 1;\n    for (int i = 1; i <= n; i++) {\n        f *= i;\n        s += f;\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0, f = 1;\n    for (int i = 1; i <= n; i++) {\n        f *= i;\n        s += f;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6209,8 +6209,8 @@
       "stem": "计算 1 - 1/2 + 1/3 - 1/4 + … 前 n 项的值（保留 6 位小数）并输出。",
       "input_format": "一个正整数 n。",
       "output_format": "结果，保留 6 位小数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0;for(int i=1;i<=n;i++){if(i%2)s+=1.0/i;else s-=1.0/i;}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0;for(int i=1;i<=n;i++){if(i%2)s+=1.0/i;else s-=1.0/i;}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 2)\n            s += 1.0 / i;\n        else\n            s -= 1.0 / i;\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 2)\n            s += 1.0 / i;\n        else\n            s -= 1.0 / i;\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6248,8 +6248,8 @@
       "stem": "不断输入整数并累加，当累加和首次达到或超过 100 时停止，输出此时的累加和。",
       "input_format": "若干行整数（每行一个）。",
       "output_format": "达到或超过 100 时的累加和。",
-      "code_starter": "int main(){int s=0,x;while(scanf(\"%d\",&x)==1){s+=x;if(s>=100)break;}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int s=0,x;while(scanf(\"%d\",&x)==1){s+=x;if(s>=100)break;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int s = 0, x;\n    while (scanf(\"%d\", &x) == 1) {\n        s += x;\n        if (s >= 100)\n            break;\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int s = 0, x;\n    while (scanf(\"%d\", &x) == 1) {\n        s += x;\n        if (s >= 100)\n            break;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "30\n40\n20\n10\n",
@@ -6283,8 +6283,8 @@
       "stem": "输入 n 个整数，跳过负数，统计非负数之和及个数并输出。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "非负数之和 非负数个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0;int c=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x<0)continue;s+=x;c++;}printf(\"%lld %d\",s,c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0;int c=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x<0)continue;s+=x;c++;}printf(\"%lld %d\",s,c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    int c = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x < 0)\n            continue;\n        s += x;\n        c++;\n    }\n    printf(\"%lld %d\", s, c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    int c = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x < 0)\n            continue;\n        s += x;\n        c++;\n    }\n    printf(\"%lld %d\", s, c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 -2 3 -4 5",
@@ -6322,8 +6322,8 @@
       "stem": "输入非负整数 n（n≤12），用 for 循环计算 n!（0!=1）并输出。",
       "input_format": "一个非负整数 n（0≤n≤12）。",
       "output_format": "n!。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long f=1;for(int i=2;i<=n;i++)f*=i;printf(\"%lld\",f);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long f=1;for(int i=2;i<=n;i++)f*=i;printf(\"%lld\",f);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1;\n    for (int i = 2; i <= n; i++)\n        f *= i;\n    printf(\"%lld\", f);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1;\n    for (int i = 2; i <= n; i++)\n        f *= i;\n    printf(\"%lld\", f);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -6361,8 +6361,8 @@
       "stem": "输入正整数 n，计算 1 到 n 中所有能被 3 整除的数之和并输出。",
       "input_format": "一个正整数 n。",
       "output_format": "能被 3 整除的数之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=3;i<=n;i+=3)s+=i;printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=3;i<=n;i+=3)s+=i;printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 3; i <= n; i += 3)\n        s += i;\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 3; i <= n; i += 3)\n        s += i;\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10",
@@ -6400,8 +6400,8 @@
       "stem": "输入两个正整数 a、b，求它们的最大公约数与最小公倍数，输出 gcd*lcm 的结果（即 a*b）并输出。",
       "input_format": "两个整数 a b。",
       "output_format": "a*b（数值）。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);printf(\"%d\",a*b);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);printf(\"%d\",a*b);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"%d\", a * b);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"%d\", a * b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 5",
@@ -6440,8 +6440,8 @@
       "stem": "输入一个正整数 n，判断它是否为素数（质数）。若是素数输出 1，否则输出 0。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "1（是素数）或 0（不是素数）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int p=1;if(n<2){printf(\"0\");return 0;}for(int i=2;i*i<=n;i++){/*__BLANK__*/}printf(\"%d\",p);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int p=1;if(n<2){printf(\"0\");return 0;}for(int i=2;i*i<=n;i++){if(n%i==0){p=0;break;}}printf(\"%d\",p);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 1;\n    if (n < 2) {\n        printf(\"0\");\n        return 0;\n    }\n    for (int i = 2; i * i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", p);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 1;\n    if (n < 2) {\n        printf(\"0\");\n        return 0;\n    }\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            p = 0;\n            break;\n        }\n    }\n    printf(\"%d\", p);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -6487,8 +6487,8 @@
       "stem": "输入一个正整数 n，输出 1 到 n 之间所有的素数，用空格分隔。",
       "input_format": "一个正整数 n（2≤n≤10^3）",
       "output_format": "升序排列的素数，两两之间用一个空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int first=1;for(int i=2;i<=n;i++){int p=1;for(int j=2;j*j<=i;j++){/*__BLANK__*/}if(p){if(!first)printf(\" \");printf(\"%d\",i);first=0;}}}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int first=1;for(int i=2;i<=n;i++){int p=1;for(int j=2;j*j<=i;j++){if(i%j==0){p=0;break;}}if(p){if(!first)printf(\" \");printf(\"%d\",i);first=0;}}return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int first = 1;\n    for (int i = 2; i <= n; i++) {\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) { /*__BLANK__*/\n        }\n        if (p) {\n            if (!first)\n                printf(\" \");\n            printf(\"%d\", i);\n            first = 0;\n        }\n    }\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int first = 1;\n    for (int i = 2; i <= n; i++) {\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) {\n            if (i % j == 0) {\n                p = 0;\n                break;\n            }\n        }\n        if (p) {\n            if (!first)\n                printf(\" \");\n            printf(\"%d\", i);\n            first = 0;\n        }\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10",
@@ -6535,8 +6535,8 @@
       "stem": "输入一个正整数 n，统计 1 到 n 之间共有多少个素数并输出。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "素数的个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;for(int i=2;i<=n;i++){int p=1;for(int j=2;j*j<=i;j++){/*__BLANK__*/}if(p)c++;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;for(int i=2;i<=n;i++){int p=1;for(int j=2;j*j<=i;j++){if(i%j==0){p=0;break;}}if(p)c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 2; i <= n; i++) {\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) { /*__BLANK__*/\n        }\n        if (p)\n            c++;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 2; i <= n; i++) {\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) {\n            if (i % j == 0) {\n                p = 0;\n                break;\n            }\n        }\n        if (p)\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10",
@@ -6583,8 +6583,8 @@
       "stem": "输入一个正整数 n，输出第 n 个素数（2 是第 1 个素数）。",
       "input_format": "一个正整数 n（1≤n≤1000）",
       "output_format": "第 n 个素数的值。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0,cur=1;while(c<n){cur++;int p=1;for(int j=2;j*j<=cur;j++){/*__BLANK__*/}if(p)c++;}printf(\"%d\",cur);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0,cur=1;while(c<n){cur++;int p=1;for(int j=2;j*j<=cur;j++){if(cur%j==0){p=0;break;}}if(p)c++;}printf(\"%d\",cur);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0, cur = 1;\n    while (c < n) {\n        cur++;\n        int p = 1;\n        for (int j = 2; j * j <= cur; j++) { /*__BLANK__*/\n        }\n        if (p)\n            c++;\n    }\n    printf(\"%d\", cur);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0, cur = 1;\n    while (c < n) {\n        cur++;\n        int p = 1;\n        for (int j = 2; j * j <= cur; j++) {\n            if (cur % j == 0) {\n                p = 0;\n                break;\n            }\n        }\n        if (p)\n            c++;\n    }\n    printf(\"%d\", cur);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6631,8 +6631,8 @@
       "stem": "输入两个正整数 m、n（m≤n），求闭区间 [m,n] 内所有素数之和并输出。",
       "input_format": "两个正整数 m n（1≤m≤n≤10^4）",
       "output_format": "区间内素数之和。",
-      "code_starter": "int main(){int m,n;scanf(\"%d%d\",&m,&n);long long s=0;for(int i=m;i<=n;i++){if(i<2)/*__BLANK__*/;int p=1;for(int j=2;j*j<=i;j++){if(i%j==0){p=0;/*__BLANK__*/;}}if(p)s+=i;}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int m,n;scanf(\"%d%d\",&m,&n);long long s=0;for(int i=m;i<=n;i++){if(i<2)continue;int p=1;for(int j=2;j*j<=i;j++){if(i%j==0){p=0;break;}}if(p)s+=i;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    long long s = 0;\n    for (int i = m; i <= n; i++) {\n        if (i < 2) /*__BLANK__*/\n            ;\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) {\n            if (i % j == 0) {\n                p = 0; /*__BLANK__*/\n                ;\n            }\n        }\n        if (p)\n            s += i;\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    long long s = 0;\n    for (int i = m; i <= n; i++) {\n        if (i < 2)\n            continue;\n        int p = 1;\n        for (int j = 2; j * j <= i; j++) {\n            if (i % j == 0) {\n                p = 0;\n                break;\n            }\n        }\n        if (p)\n            s += i;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 10",
@@ -6679,8 +6679,8 @@
       "stem": "输入一个大于 1 的整数 n，将其分解为质因数的连乘积，按 n=... 的格式输出。",
       "input_format": "一个正整数 n（2≤n≤10^6）",
       "output_format": "形如 n=p1*p2*... 的质因数连乘式，因子从小到大。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);printf(\"%d=\",n);int first=1;for(int i=2;i*i<=n;i++){while(n%i==0){/*__BLANK__*/;n/=i;}}if(n>1){if(!first)printf(\"*\");printf(\"%d\",n);}}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);printf(\"%d=\",n);int first=1;for(int i=2;i*i<=n;i++){while(n%i==0){if(!first)printf(\"*\");printf(\"%d\",i);first=0;n/=i;}}if(n>1){if(!first)printf(\"*\");printf(\"%d\",n);}return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d=\", n);\n    int first = 1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) { /*__BLANK__*/\n            ;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        if (!first)\n            printf(\"*\");\n        printf(\"%d\", n);\n    }\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d=\", n);\n    int first = 1;\n    for (int i = 2; i * i <= n; i++) {\n        while (n % i == 0) {\n            if (!first)\n                printf(\"*\");\n            printf(\"%d\", i);\n            first = 0;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        if (!first)\n            printf(\"*\");\n        printf(\"%d\", n);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12",
@@ -6727,8 +6727,8 @@
       "stem": "斐波那契数列前两项为 1、1，之后每项等于前两项之和。输入 n，输出第 n 项。",
       "input_format": "一个正整数 n（1≤n≤90）",
       "output_format": "第 n 项的值（用 long long 输出）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long a=1,b=1;if(n==1||n==2){printf(\"1\");return 0;}for(int i=3;i<=n;i++){/*__BLANK__*/}printf(\"%lld\",b);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long a=1,b=1;if(n==1||n==2){printf(\"1\");return 0;}for(int i=3;i<=n;i++){long long t=a+b;a=b;b=t;}printf(\"%lld\",b);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    if (n == 1 || n == 2) {\n        printf(\"1\");\n        return 0;\n    }\n    for (int i = 3; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%lld\", b);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    if (n == 1 || n == 2) {\n        printf(\"1\");\n        return 0;\n    }\n    for (int i = 3; i <= n; i++) {\n        long long t = a + b;\n        a = b;\n        b = t;\n    }\n    printf(\"%lld\", b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6775,8 +6775,8 @@
       "stem": "求斐波那契数列前 n 项之和（第 1 项到第 n 项），序列为 1,1,2,3,5,8,…。",
       "input_format": "一个正整数 n（1≤n≤60）",
       "output_format": "前 n 项之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long a=1,b=1,s=0;for(int i=1;i<=n;i++){s+=a;/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long a=1,b=1,s=0;for(int i=1;i<=n;i++){s+=a;long long t=a+b;a=b;b=t;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        s += a; /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        s += a;\n        long long t = a + b;\n        a = b;\n        b = t;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6823,8 +6823,8 @@
       "stem": "输入 n，输出斐波那契数列的前 n 项（1,1,2,3,5,8,…），用空格分隔。",
       "input_format": "一个正整数 n（1≤n≤60）",
       "output_format": "前 n 项，两两之间用一个空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long a=1,b=1;for(int i=1;i<=n;i++){if(i>1)printf(\" \");printf(\"%lld\",a);/*__BLANK__*/}}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long a=1,b=1;for(int i=1;i<=n;i++){if(i>1)printf(\" \");printf(\"%lld\",a);long long t=a+b;a=b;b=t;}return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    for (int i = 1; i <= n; i++) {\n        if (i > 1)\n            printf(\" \");\n        printf(\"%lld\", a); /*__BLANK__*/\n    }\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1;\n    for (int i = 1; i <= n; i++) {\n        if (i > 1)\n            printf(\" \");\n        printf(\"%lld\", a);\n        long long t = a + b;\n        a = b;\n        b = t;\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6871,8 +6871,8 @@
       "stem": "求斐波那契数列前 n 项中所有值为偶数的项之和。",
       "input_format": "一个正整数 n（1≤n≤60）",
       "output_format": "偶数项之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long a=1,b=1,s=0;for(int i=1;i<=n;i++){if(a%2==0)s+=a;/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long a=1,b=1,s=0;for(int i=1;i<=n;i++){if(a%2==0)s+=a;long long t=a+b;a=b;b=t;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (a % 2 == 0)\n            s += a; /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long a = 1, b = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (a % 2 == 0)\n            s += a;\n        long long t = a + b;\n        a = b;\n        b = t;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -6918,8 +6918,8 @@
       "stem": "输入两个正整数 a、b，用辗转相除法求它们的最大公约数并输出。",
       "input_format": "两个正整数 a b。",
       "output_format": "最大公约数。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);while(b){/*__BLANK__*/}printf(\"%d\",a);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);while(b){int t=a%b;a=b;b=t;}printf(\"%d\",a);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    while (b) { /*__BLANK__*/\n    }\n    printf(\"%d\", a);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    while (b) {\n        int t = a % b;\n        a = b;\n        b = t;\n    }\n    printf(\"%d\", a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 18",
@@ -6965,8 +6965,8 @@
       "stem": "输入两个正整数 a、b，求它们的最小公倍数并输出。",
       "input_format": "两个正整数 a b。",
       "output_format": "最小公倍数。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}printf(\"%lld\",(long long)a/x*b);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}printf(\"%lld\",(long long)a/x*b);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%lld\", (long long)a / x * b);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%lld\", (long long)a / x * b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4 6",
@@ -7012,8 +7012,8 @@
       "stem": "输入三个正整数 a、b、c，利用 gcd 的结合律求它们三个数的最大公约数并输出。",
       "input_format": "三个正整数 a b c。",
       "output_format": "三个数的最大公约数。",
-      "code_starter": "int main(){int a,b,c;scanf(\"%d%d%d\",&a,&b,&c);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}int g=x;x=g;y=c;while(y){int t=x%y;x=y;y=t;}printf(\"%d\",x);}",
-      "reference": "#include <stdio.h>\nint main(){int a,b,c;scanf(\"%d%d%d\",&a,&b,&c);int x=a,y=b;while(y){int t=x%y;x=y;y=t;}int g=x;x=g;y=c;while(y){int t=x%y;x=y;y=t;}printf(\"%d\",x);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d%d%d\", &a, &b, &c);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    int g = x;\n    x = g;\n    y = c;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%d\", x);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d%d%d\", &a, &b, &c);\n    int x = a, y = b;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    int g = x;\n    x = g;\n    y = c;\n    while (y) {\n        int t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%d\", x);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6 9 15",
@@ -7059,8 +7059,8 @@
       "stem": "输入一个非负整数 n，输出它的二进制表示。",
       "input_format": "一个非负整数 n（0≤n≤10^6）",
       "output_format": "n 的二进制表示（不含前导零）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);if(n==0){printf(\"0\");return 0;}int a[40],c=0;while(n){a[c++]=n%2;/*__BLANK__*/}for(int i=c-1;i>=0;i--)printf(\"%d\",a[i]);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);if(n==0){printf(\"0\");return 0;}int a[40],c=0;while(n){a[c++]=n%2;n/=2;}for(int i=c-1;i>=0;i--)printf(\"%d\",a[i]);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"0\");\n        return 0;\n    }\n    int a[40], c = 0;\n    while (n) {\n        a[c++] = n % 2; /*__BLANK__*/\n    }\n    for (int i = c - 1; i >= 0; i--)\n        printf(\"%d\", a[i]);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"0\");\n        return 0;\n    }\n    int a[40], c = 0;\n    while (n) {\n        a[c++] = n % 2;\n        n /= 2;\n    }\n    for (int i = c - 1; i >= 0; i--)\n        printf(\"%d\", a[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -7106,8 +7106,8 @@
       "stem": "输入一个非负整数 n，输出它的八进制表示。",
       "input_format": "一个非负整数 n（0≤n≤10^6）",
       "output_format": "n 的八进制表示（不含前导零）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);if(n==0){printf(\"0\");return 0;}int a[40],c=0;while(n){a[c++]=n%8;/*__BLANK__*/}for(int i=c-1;i>=0;i--)printf(\"%d\",a[i]);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);if(n==0){printf(\"0\");return 0;}int a[40],c=0;while(n){a[c++]=n%8;n/=8;}for(int i=c-1;i>=0;i--)printf(\"%d\",a[i]);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"0\");\n        return 0;\n    }\n    int a[40], c = 0;\n    while (n) {\n        a[c++] = n % 8; /*__BLANK__*/\n    }\n    for (int i = c - 1; i >= 0; i--)\n        printf(\"%d\", a[i]);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"0\");\n        return 0;\n    }\n    int a[40], c = 0;\n    while (n) {\n        a[c++] = n % 8;\n        n /= 8;\n    }\n    for (int i = c - 1; i >= 0; i--)\n        printf(\"%d\", a[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -7154,8 +7154,8 @@
       "stem": "输入一个二进制数（由 0/1 组成的字符串），把它转换为十进制数并输出。",
       "input_format": "一个二进制字符串（长度≤20，不含前导零）。",
       "output_format": "对应的十进制整数。",
-      "code_starter": "int main(){char s[40];scanf(\"%s\",s);long long v=0;for(int i=0;s[i];i++){/*__BLANK__*/}printf(\"%lld\",v);}",
-      "reference": "#include <stdio.h>\nint main(){char s[40];scanf(\"%s\",s);long long v=0;for(int i=0;s[i];i++){v=v*2+(s[i]-'0');}printf(\"%lld\",v);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[40];\n    scanf(\"%s\", s);\n    long long v = 0;\n    for (int i = 0; s[i]; i++) { /*__BLANK__*/\n    }\n    printf(\"%lld\", v);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[40];\n    scanf(\"%s\", s);\n    long long v = 0;\n    for (int i = 0; s[i]; i++) {\n        v = v * 2 + (s[i] - '0');\n    }\n    printf(\"%lld\", v);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -7202,8 +7202,8 @@
       "stem": "输入一个八进制数（由 0-7 组成的字符串），把它转换为十进制数并输出。",
       "input_format": "一个八进制字符串（长度≤20，不含前导零）。",
       "output_format": "对应的十进制整数。",
-      "code_starter": "int main(){char s[40];scanf(\"%s\",s);long long v=0;for(int i=0;s[i];i++){/*__BLANK__*/}printf(\"%lld\",v);}",
-      "reference": "#include <stdio.h>\nint main(){char s[40];scanf(\"%s\",s);long long v=0;for(int i=0;s[i];i++){v=v*8+(s[i]-'0');}printf(\"%lld\",v);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[40];\n    scanf(\"%s\", s);\n    long long v = 0;\n    for (int i = 0; s[i]; i++) { /*__BLANK__*/\n    }\n    printf(\"%lld\", v);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[40];\n    scanf(\"%s\", s);\n    long long v = 0;\n    for (int i = 0; s[i]; i++) {\n        v = v * 8 + (s[i] - '0');\n    }\n    printf(\"%lld\", v);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -7249,8 +7249,8 @@
       "stem": "输入项数 n，计算交错级数 S=1-1/2+1/3-1/4+… 前 n 项的和，结果保留 6 位小数。",
       "input_format": "一个正整数 n（1≤n≤1000）",
       "output_format": "保留 6 位小数的和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0;int sign=1;for(int i=1;i<=n;i++){s+=sign*(1.0/i);/*__BLANK__*/}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0;int sign=1;for(int i=1;i<=n;i++){s+=sign*(1.0/i);sign=-sign;}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    int sign = 1;\n    for (int i = 1; i <= n; i++) {\n        s += sign * (1.0 / i); /*__BLANK__*/\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    int sign = 1;\n    for (int i = 1; i <= n; i++) {\n        s += sign * (1.0 / i);\n        sign = -sign;\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6",
@@ -7297,8 +7297,8 @@
       "stem": "输入一个正整数 n，计算 1!+2!+3!+…+n! 的和并输出。",
       "input_format": "一个正整数 n（1≤n≤20）",
       "output_format": "阶乘累加和（long long）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long f=1,s=0;for(int i=1;i<=n;i++){f*=i;/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long f=1,s=0;for(int i=1;i<=n;i++){f*=i;s+=f;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        f *= i; /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1, s = 0;\n    for (int i = 1; i <= n; i++) {\n        f *= i;\n        s += f;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -7345,8 +7345,8 @@
       "stem": "利用莱布尼茨级数 π=4×(1-1/3+1/5-1/7+…)，输入项数 n，输出 π 的近似值，保留 6 位小数。",
       "input_format": "一个正整数 n（1≤n≤1000）",
       "output_format": "保留 6 位小数的 π 近似值。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0;int sign=1;for(int i=0;i<n;i++){s+=sign*(1.0/(2*i+1));/*__BLANK__*/}printf(\"%.6f\",4.0*s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0;int sign=1;for(int i=0;i<n;i++){s+=sign*(1.0/(2*i+1));sign=-sign;}printf(\"%.6f\",4.0*s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    int sign = 1;\n    for (int i = 0; i < n; i++) {\n        s += sign * (1.0 / (2 * i + 1)); /*__BLANK__*/\n    }\n    printf(\"%.6f\", 4.0 * s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    int sign = 1;\n    for (int i = 0; i < n; i++) {\n        s += sign * (1.0 / (2 * i + 1));\n        sign = -sign;\n    }\n    printf(\"%.6f\", 4.0 * s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4",
@@ -7393,8 +7393,8 @@
       "stem": "输入一个正整数 n，计算 S=1/1!+1/2!+1/3!+…+1/n!，保留 6 位小数。",
       "input_format": "一个正整数 n（1≤n≤50）",
       "output_format": "保留 6 位小数的和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0,f=1;for(int i=1;i<=n;i++){f=f*i;/*__BLANK__*/}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0,f=1;for(int i=1;i<=n;i++){f=f*i;s+=1.0/f;}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0, f = 1;\n    for (int i = 1; i <= n; i++) {\n        f = f * i; /*__BLANK__*/\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0, f = 1;\n    for (int i = 1; i <= n; i++) {\n        f = f * i;\n        s += 1.0 / f;\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "7",
@@ -7441,8 +7441,8 @@
       "stem": "输入一个正整数 n，计算交错阶乘之和 S=1!-2!+3!-4!+…+(-1)^(n+1)·n!。",
       "input_format": "一个正整数 n（1≤n≤20）",
       "output_format": "交错阶乘之和（long long）。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long f=1,s=0,sign=1;for(int i=1;i<=n;i++){f*=i;s+=sign*f;/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long f=1,s=0,sign=1;for(int i=1;i<=n;i++){f*=i;s+=sign*f;sign=-sign;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1, s = 0, sign = 1;\n    for (int i = 1; i <= n; i++) {\n        f *= i;\n        s += sign * f; /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long f = 1, s = 0, sign = 1;\n    for (int i = 1; i <= n; i++) {\n        f *= i;\n        s += sign * f;\n        sign = -sign;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3",
@@ -7488,8 +7488,8 @@
       "stem": "输入一个正整数 n，计算 S=1×2+2×3+3×4+…+n×(n+1) 并输出。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "级数之和（long long）。",
-      "code_starter": "int main(){long long n;scanf(\"%lld\",&n);long long s=0;for(long long i=1;i<=n;i++){/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){long long n;scanf(\"%lld\",&n);long long s=0;for(long long i=1;i<=n;i++){s+=i*(i+1);}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    long long n;\n    scanf(\"%lld\", &n);\n    long long s = 0;\n    for (long long i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    long long n;\n    scanf(\"%lld\", &n);\n    long long s = 0;\n    for (long long i = 1; i <= n; i++) {\n        s += i * (i + 1);\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -7536,8 +7536,8 @@
       "stem": "输入一个正整数 n，计算 S=1/(1×2)+1/(2×3)+…+1/(n×(n+1))，保留 6 位小数。",
       "input_format": "一个正整数 n（1≤n≤1000）",
       "output_format": "保留 6 位小数的和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0;for(int i=1;i<=n;i++){s+=1.0/(i*(i+1));}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    for (int i = 1; i <= n; i++) {\n        s += 1.0 / (i * (i + 1));\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4",
@@ -7584,8 +7584,8 @@
       "stem": "输入一个正整数 n，计算 S=1+1/(1+2)+1/(1+2+3)+…+1/(1+2+…+n)，保留 6 位小数。",
       "input_format": "一个正整数 n（1≤n≤1000）",
       "output_format": "保留 6 位小数的和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);double s=0;long long acc=0;for(int i=1;i<=n;i++){acc+=i;/*__BLANK__*/}printf(\"%.6f\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);double s=0;long long acc=0;for(int i=1;i<=n;i++){acc+=i;s+=1.0/acc;}printf(\"%.6f\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    long long acc = 0;\n    for (int i = 1; i <= n; i++) {\n        acc += i; /*__BLANK__*/\n    }\n    printf(\"%.6f\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double s = 0;\n    long long acc = 0;\n    for (int i = 1; i <= n; i++) {\n        acc += i;\n        s += 1.0 / acc;\n    }\n    printf(\"%.6f\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5",
@@ -7968,7 +7968,7 @@
       "stem": "输入两个正整数 m、n，打印一个 m 行 n 列的空心矩形：上下两整行星号，左右两列星号，中间部分为空格。",
       "input_format": "两个正整数 m 和 n（1≤m≤9，1≤n≤9）。",
       "output_format": "m 行，每行 n 个字符：四周边框为星号，内部为空格。",
-      "code_starter": "#include <stdio.h>\nint main(void){\n  int m,n,i,j;\n  scanf(\"%d%d\",&m,&n);\n  // TODO: 判定是否在边框上 i==1||i==m||j==1||j==n\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void){\n  int m,n,i,j;\n  scanf(\"%d%d\",&m,&n);\n  // TODO: 在此补全\n  return 0;\n}",
       "reference": "#include <stdio.h>\nint main(void){\n  int m,n,i,j;\n  scanf(\"%d%d\",&m,&n);\n  for(i=1;i<=m;i++){\n    for(j=1;j<=n;j++){\n      if(i==1||i==m||j==1||j==n) printf(\"*\");\n      else printf(\" \");\n    }\n    printf(\"\\n\");\n  }\n  return 0;\n}",
       "testCases": [
         {
@@ -8593,7 +8593,7 @@
       "input_format": "先输入两个整数 m 和 n，再输入 m*n 个整数，按行优先排列。",
       "output_format": "一行三个整数：最大值、行号、列号，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main(void){\n  int m,n,i,j,max,maxi,maxj,a[100][100];\n  scanf(\"%d%d\",&m,&n);\n  // TODO: 读入矩阵并跟踪最大元素及其位置\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n  int m,n,i,j,max,maxi,maxj,a[100][100];\n  scanf(\"%d%d\",&m,&n);\n  for(i=0;i<m;i++)\n    for(j=0;j<n;j++)\n      scanf(\"%d\",&a[i][j]);\n  max=a[0][0]; maxi=1; maxj=1;\n  for(i=0;i<m;i++)\n    for(j=0;j<n;j++)\n      if(a[i][j]>max){ max=a[i][j]; maxi=i+1; maxj=j+1; }\n  printf(\"%d %d %d\\n\", max, maxi, maxj);\n  return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, max, maxi, maxj, a[100][100];\n    scanf(\"%d%d\", &m, &n);\n    for (i = 0; i < m; i++)\n        for (j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    max = a[0][0];\n    maxi = 1;\n    maxj = 1;\n    for (i = 0; i < m; i++)\n        for (j = 0; j < n; j++)\n            if (a[i][j] > max) {\n                max = a[i][j];\n                maxi = i + 1;\n                maxj = j + 1;\n            }\n    printf(\"%d %d %d\\n\", max, maxi, maxj);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4\n1 2 3 4\n5 6 7 8\n9 10 0 12",
@@ -8689,7 +8689,7 @@
       "input_format": "先输入两个整数 m 和 n，再输入 m*n 个整数，按行优先排列。",
       "output_format": "每个鞍点的值占一行，按行优先顺序输出；若不存在鞍点，输出 NONE。",
       "code_starter": "#include <stdio.h>\nint main(void){\n  int m,n,i,j,k,found=0,a[100][100];\n  scanf(\"%d%d\",&m,&n);\n  // TODO: 对每个元素判断是否为行最大且列最小\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n  int m,n,i,j,k,found=0,a[100][100];\n  scanf(\"%d%d\",&m,&n);\n  for(i=0;i<m;i++)\n    for(j=0;j<n;j++)\n      scanf(\"%d\",&a[i][j]);\n  for(i=0;i<m;i++){\n    for(j=0;j<n;j++){\n      int maxr=1, minc=1;\n      for(k=0;k<n;k++) if(a[i][k]>a[i][j]) maxr=0;\n      for(k=0;k<m;k++) if(a[k][j]<a[i][j]) minc=0;\n      if(maxr&&minc){ printf(\"%d\\n\", a[i][j]); found=1; }\n    }\n  }\n  if(!found) printf(\"NONE\\n\");\n  return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, k, found = 0, a[100][100];\n    scanf(\"%d%d\", &m, &n);\n    for (i = 0; i < m; i++)\n        for (j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < m; i++) {\n        for (j = 0; j < n; j++) {\n            int maxr = 1, minc = 1;\n            for (k = 0; k < n; k++)\n                if (a[i][k] > a[i][j])\n                    maxr = 0;\n            for (k = 0; k < m; k++)\n                if (a[k][j] < a[i][j])\n                    minc = 0;\n            if (maxr && minc) {\n                printf(\"%d\\n\", a[i][j]);\n                found = 1;\n            }\n        }\n    }\n    if (!found)\n        printf(\"NONE\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 2\n1 2\n2 1",
@@ -8737,7 +8737,7 @@
       "input_format": "一个正整数 n（1≤n≤10）。",
       "output_format": "n 行，每行 n 个整数，右对齐（用等宽列对齐），行末无多余空格。",
       "code_starter": "#include <stdio.h>\nint main(void){\n  int n,i,j,val=1,a[100][100];\n  scanf(\"%d\",&n);\n  // TODO: 偶数行从左到右，奇数行从右到左填充\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n  int n,i,j,val=1,a[100][100];\n  scanf(\"%d\",&n);\n  for(i=0;i<n;i++){\n    if(i%2==0){\n      for(j=0;j<n;j++) a[i][j]=val++;\n    } else {\n      for(j=n-1;j>=0;j--) a[i][j]=val++;\n    }\n  }\n  {\n    int w=0, t=n*n;\n    while(t>0){ w++; t/=10; }\n    if(w<1) w=1;\n    for(i=0;i<n;i++){\n      for(j=0;j<n;j++) printf(\"%*d \", w, a[i][j]);\n      printf(\"\\n\");\n    }\n  }\n  return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, val = 1, a[100][100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        if (i % 2 == 0) {\n            for (j = 0; j < n; j++)\n                a[i][j] = val++;\n        } else {\n            for (j = n - 1; j >= 0; j--)\n                a[i][j] = val++;\n        }\n    }\n    {\n        int w = 0, t = n * n;\n        while (t > 0) {\n            w++;\n            t /= 10;\n        }\n        if (w < 1)\n            w = 1;\n        for (i = 0; i < n; i++) {\n            for (j = 0; j < n; j++)\n                printf(\"%*d \", w, a[i][j]);\n            printf(\"\\n\");\n        }\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -8831,8 +8831,8 @@
       "stem": "输入一个正整数 n，用 for 循环找出 1 到 n 中第一个能被 6 整除的数并输出；若不存在则输出 0。找到后应使用 break 提前结束循环。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "第一个能被 6 整除的数，若无则输出 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int found=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%d\",found);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int found=0;for(int i=1;i<=n;i++){if(i%6==0){found=i;break;}}printf(\"%d\",found);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int found = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", found);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int found = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 6 == 0) {\n            found = i;\n            break;\n        }\n    }\n    printf(\"%d\", found);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6",
@@ -8879,8 +8879,8 @@
       "stem": "输入一个正整数 n（n≥1），判断它是否为素数。素数是只能被 1 和它自身整除的大于 1 的整数。请用 for 循环从 2 试除到 √n，一旦发现能整除立即 break，是素数输出 1，否则输出 0。",
       "input_format": "一个正整数 n（1≤n≤10^9）",
       "output_format": "是素数输出 1，否则输出 0。",
-      "code_starter": "int main(){long long n;scanf(\"%lld\",&n);if(n<2){printf(\"0\");return 0;}int p=1;for(long long i=2;i*i<=n;i++){/*__BLANK__*/}printf(\"%d\",p);}",
-      "reference": "#include <stdio.h>\nint main(){long long n;scanf(\"%lld\",&n);if(n<2){printf(\"0\");return 0;}int p=1;for(long long i=2;i*i<=n;i++){if(n%i==0){p=0;break;}}printf(\"%d\",p);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    long long n;\n    scanf(\"%lld\", &n);\n    if (n < 2) {\n        printf(\"0\");\n        return 0;\n    }\n    int p = 1;\n    for (long long i = 2; i * i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", p);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    long long n;\n    scanf(\"%lld\", &n);\n    if (n < 2) {\n        printf(\"0\");\n        return 0;\n    }\n    int p = 1;\n    for (long long i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            p = 0;\n            break;\n        }\n    }\n    printf(\"%d\", p);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -8926,8 +8926,8 @@
       "stem": "先输入整数个数 n，再依次输入 n 个整数，找出其中第一个出现的负数并输出；若这 n 个数中没有负数则输出 0。找到第一个负数后应用 break 立即终止循环。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "第一个负数，若无负数输出 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int r=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);/*__BLANK__*/}printf(\"%d\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int r=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x<0){r=x;break;}}printf(\"%d\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x); /*__BLANK__*/\n    }\n    printf(\"%d\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x < 0) {\n            r = x;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n5 8 -2",
@@ -8974,8 +8974,8 @@
       "stem": "输入一个正整数 n，求出不大于 n 的最大素数并输出；若 n<2 则输出 0。请从 n 开始向下枚举，用嵌套循环判断素性，找到第一个素数后立即 break 结束外层循环。",
       "input_format": "一个正整数 n（2≤n≤10^4）",
       "output_format": "不大于 n 的最大素数，若不存在输出 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int r=0;for(int x=n;x>=2;x--){int p=1;for(int i=2;i*i<=x;i++){/*__BLANK__*/}if(p){r=x;break;}}printf(\"%d\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int r=0;for(int x=n;x>=2;x--){int p=1;for(int i=2;i*i<=x;i++){if(x%i==0){p=0;break;}}if(p){r=x;break;}}printf(\"%d\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    for (int x = n; x >= 2; x--) {\n        int p = 1;\n        for (int i = 2; i * i <= x; i++) { /*__BLANK__*/\n        }\n        if (p) {\n            r = x;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    for (int x = n; x >= 2; x--) {\n        int p = 1;\n        for (int i = 2; i * i <= x; i++) {\n            if (x % i == 0) {\n                p = 0;\n                break;\n            }\n        }\n        if (p) {\n            r = x;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -9022,8 +9022,8 @@
       "stem": "依次输入若干整数，以 0 作为结束标志（0 不参与判断）。请找出序列中第一个不小于 100 的数并输出；若在遇到 0 之前没有这样的数则输出 0。找到后应立即 break 退出循环。",
       "input_format": "若干整数，最后一个为 0。",
       "output_format": "第一个不小于 100 的数，若没有输出 0。",
-      "code_starter": "int main(){int x;int r=0;while(scanf(\"%d\",&x)==1){/*__BLANK__*/}printf(\"%d\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int x;int r=0;while(scanf(\"%d\",&x)==1){if(x==0)break;if(x>=100){r=x;break;}}printf(\"%d\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int x;\n    int r = 0;\n    while (scanf(\"%d\", &x) == 1) { /*__BLANK__*/\n    }\n    printf(\"%d\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int x;\n    int r = 0;\n    while (scanf(\"%d\", &x) == 1) {\n        if (x == 0)\n            break;\n        if (x >= 100) {\n            r = x;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "50 80 0",
@@ -9070,8 +9070,8 @@
       "stem": "输入一个正整数 n，用 for 循环计算 1 到 n 中所有不能被 3 整除的整数之和。循环体内遇到能被 3 整除的数时用 continue 跳过本次累加。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "1 到 n 中不能被 3 整除的数之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<=n;i++){if(i%3==0)continue;s+=i;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 3 == 0)\n            continue;\n        s += i;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -9118,8 +9118,8 @@
       "stem": "输入一个正整数 n，统计 1 到 n 中能被 3 或 5 整除、但不能同时被 15 整除的数的个数。用 continue 跳过不符合第一重条件的数，再跳过能被 15 整除的数。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "满足条件的数的个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){if(!(i%3==0||i%5==0))continue;if(i%15==0)continue;c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) {\n        if (!(i % 3 == 0 || i % 5 == 0))\n            continue;\n        if (i % 15 == 0)\n            continue;\n        c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "15",
@@ -9166,8 +9166,8 @@
       "stem": "输入一个正整数 n，按从小到大依次打印 1 到 n 中所有十进制表示中不含数字 5 的整数，各数之间用一个空格分隔。用 continue 跳过任何含数字 5 的数。",
       "input_format": "一个正整数 n（1≤n≤10^3）",
       "output_format": "1 到 n 中不含数字 5 的数，空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);for(int i=1;i<=n;i++){int t=i,has=0;while(t){/*__BLANK__*/}if(has)continue;printf(\"%d \",i);}}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);for(int i=1;i<=n;i++){int t=i,has=0;while(t){if(t%10==5){has=1;break;}t/=10;}if(has)continue;printf(\"%d \",i);}return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        int t = i, has = 0;\n        while (t) { /*__BLANK__*/\n        }\n        if (has)\n            continue;\n        printf(\"%d \", i);\n    }\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        int t = i, has = 0;\n        while (t) {\n            if (t % 10 == 5) {\n                has = 1;\n                break;\n            }\n            t /= 10;\n        }\n        if (has)\n            continue;\n        printf(\"%d \", i);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5",
@@ -9214,8 +9214,8 @@
       "stem": "先输入整数个数 n，再输入 n 个整数，计算其中所有正偶数（既大于 0 又是偶数）的和并输出。循环体内用 continue 跳过不符合条件的数。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "所有正偶数之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);/*__BLANK__*/}printf(\"%d\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(!(x>0&&x%2==0))continue;s+=x;}printf(\"%d\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x); /*__BLANK__*/\n    }\n    printf(\"%d\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (!(x > 0 && x % 2 == 0))\n            continue;\n        s += x;\n    }\n    printf(\"%d\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n2 3 4 5",
@@ -9262,8 +9262,8 @@
       "stem": "输入一个正整数 n，用 for 循环计算 1 到 n 中所有奇数的平方之和并输出。循环体内用 continue 跳过偶数，只对奇数累加其平方。",
       "input_format": "一个正整数 n（1≤n≤10^3）",
       "output_format": "1 到 n 中所有奇数的平方之和。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=1;i<=n;i++){/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);long long s=0;for(int i=1;i<=n;i++){if(i%2==0)continue;s+=1LL*i*i;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 1; i <= n; i++) { /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long long s = 0;\n    for (int i = 1; i <= n; i++) {\n        if (i % 2 == 0)\n            continue;\n        s += 1LL * i * i;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -9310,8 +9310,8 @@
       "stem": "先输入整数个数 n，再输入 n 个整数，分别统计其中正数、负数、零的个数，并依次输出三个数。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "正数个数、负数个数、零的个数，空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int p=0,ne=0,z=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);/*__BLANK__*/}printf(\"%d %d %d\",p,ne,z);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int p=0,ne=0,z=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x>0)p++;else if(x<0)ne++;else z++;}printf(\"%d %d %d\",p,ne,z);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 0, ne = 0, z = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x); /*__BLANK__*/\n    }\n    printf(\"%d %d %d\", p, ne, z);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int p = 0, ne = 0, z = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x > 0)\n            p++;\n        else if (x < 0)\n            ne++;\n        else\n            z++;\n    }\n    printf(\"%d %d %d\", p, ne, z);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n-1 2 -3 0 4",
@@ -9358,8 +9358,8 @@
       "stem": "先输入学生人数 n，再输入 n 个 0 到 100 之间的整数成绩，统计优秀（≥90）、良好（80～89）、及格（60～79）、不及格（<60）四个分数段的人数，依次输出四个数。",
       "input_format": "第一行 n，第二行 n 个整数成绩。",
       "output_format": "优秀、良好、及格、不及格的人数，空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int a=0,b=0,c=0,d=0;for(int i=0;i<n;i++){int g;scanf(\"%d\",&g);/*__BLANK__*/}printf(\"%d %d %d %d\",a,b,c,d);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int a=0,b=0,c=0,d=0;for(int i=0;i<n;i++){int g;scanf(\"%d\",&g);if(g>=90)a++;else if(g>=80)b++;else if(g>=60)c++;else d++;}printf(\"%d %d %d %d\",a,b,c,d);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a = 0, b = 0, c = 0, d = 0;\n    for (int i = 0; i < n; i++) {\n        int g;\n        scanf(\"%d\", &g); /*__BLANK__*/\n    }\n    printf(\"%d %d %d %d\", a, b, c, d);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a = 0, b = 0, c = 0, d = 0;\n    for (int i = 0; i < n; i++) {\n        int g;\n        scanf(\"%d\", &g);\n        if (g >= 90)\n            a++;\n        else if (g >= 80)\n            b++;\n        else if (g >= 60)\n            c++;\n        else\n            d++;\n    }\n    printf(\"%d %d %d %d\", a, b, c, d);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n95 85 70 55 100",
@@ -9406,8 +9406,8 @@
       "stem": "输入一个非负整数 n 和一个数字 d（0≤d≤9），统计数字 d 在 n 的十进制表示中出现的次数并输出。注意当 n 为 0 时，其十进制表示只有一个数字 0。",
       "input_format": "两个整数 n 和 d，空格分隔。",
       "output_format": "数字 d 在 n 中出现的次数。",
-      "code_starter": "int main(){int n,d;scanf(\"%d%d\",&n,&d);int c=0;if(n==0){printf(\"%d\",d==0?1:0);return 0;}/*__BLANK__*/printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n,d;scanf(\"%d%d\",&n,&d);int c=0;if(n==0){printf(\"%d\",d==0?1:0);return 0;}while(n){if(n%10==d)c++;n/=10;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n, d;\n    scanf(\"%d%d\", &n, &d);\n    int c = 0;\n    if (n == 0) {\n        printf(\"%d\", d == 0 ? 1 : 0);\n        return 0;\n    } /*__BLANK__*/\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n, d;\n    scanf(\"%d%d\", &n, &d);\n    int c = 0;\n    if (n == 0) {\n        printf(\"%d\", d == 0 ? 1 : 0);\n        return 0;\n    }\n    while (n) {\n        if (n % 10 == d)\n            c++;\n        n /= 10;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1234 2",
@@ -9454,8 +9454,8 @@
       "stem": "先输入整数个数 n，再输入 n 个整数，统计其中偶数（能被 2 整除）与奇数的个数，依次输出两个数。",
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "偶数个数、奇数个数，空格分隔。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int e=0,o=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);/*__BLANK__*/}printf(\"%d %d\",e,o);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int e=0,o=0;for(int i=0;i<n;i++){int x;scanf(\"%d\",&x);if(x%2==0)e++;else o++;}printf(\"%d %d\",e,o);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int e = 0, o = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x); /*__BLANK__*/\n    }\n    printf(\"%d %d\", e, o);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int e = 0, o = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (x % 2 == 0)\n            e++;\n        else\n            o++;\n    }\n    printf(\"%d %d\", e, o);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n2 3 4 5 6",
@@ -9503,8 +9503,8 @@
       "stem": "输入一个正整数 n，统计 1 到 n 中十进制各位数字之和恰好等于 8 的整数个数并输出。对每个数需先分解各位数字再求和判断。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "各位数字之和等于 8 的数的个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){int t=i,s=0;while(t){/*__BLANK__*/}if(s==8)c++;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){int t=i,s=0;while(t){s+=t%10;t/=10;}if(s==8)c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) {\n        int t = i, s = 0;\n        while (t) { /*__BLANK__*/\n        }\n        if (s == 8)\n            c++;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) {\n        int t = i, s = 0;\n        while (t) {\n            s += t % 10;\n            t /= 10;\n        }\n        if (s == 8)\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "8",
@@ -9551,8 +9551,8 @@
       "stem": "不断读取整数，直到输入结束（EOF）。用 while(scanf(\"%d\",&x)!=EOF) 读取，并将所有读到的整数求和后输出。输入为空时输出 0。",
       "input_format": "若干整数，以文件结束标志结束。",
       "output_format": "所有整数之和。",
-      "code_starter": "int main(){long long s=0;int x;while(scanf(\"%d\",&x)!=EOF){/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){long long s=0;int x;while(scanf(\"%d\",&x)!=EOF)s+=x;printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    long long s = 0;\n    int x;\n    while (scanf(\"%d\", &x) != EOF) { /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    long long s = 0;\n    int x;\n    while (scanf(\"%d\", &x) != EOF)\n        s += x;\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3 4 5",
@@ -9599,8 +9599,8 @@
       "stem": "不断读取整数，直到输入结束（EOF）。用 while(scanf(\"%d\",&x)!=EOF) 读取，统计其中大于 0 的正数个数并输出。",
       "input_format": "若干整数，以 EOF 结束。",
       "output_format": "正数的个数。",
-      "code_starter": "int main(){int c=0,x;while(scanf(\"%d\",&x)!=EOF){/*__BLANK__*/}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int c=0,x;while(scanf(\"%d\",&x)!=EOF)if(x>0)c++;printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int c = 0, x;\n    while (scanf(\"%d\", &x) != EOF) { /*__BLANK__*/\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int c = 0, x;\n    while (scanf(\"%d\", &x) != EOF)\n        if (x > 0)\n            c++;\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 -2 3 0 4",
@@ -9647,8 +9647,8 @@
       "stem": "依次读取若干整数，以 0 作为结束标志（0 不参与求和）。用 while 循环读取，遇到 0 时用 break 退出，把其余所有整数累加后输出。",
       "input_format": "若干整数，最后一个为 0。",
       "output_format": "所有非零整数之和。",
-      "code_starter": "int main(){int x;long long s=0;while(scanf(\"%d\",&x)==1){/*__BLANK__*/}printf(\"%lld\",s);}",
-      "reference": "#include <stdio.h>\nint main(){int x;long long s=0;while(scanf(\"%d\",&x)==1){if(x==0)break;s+=x;}printf(\"%lld\",s);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int x;\n    long long s = 0;\n    while (scanf(\"%d\", &x) == 1) { /*__BLANK__*/\n    }\n    printf(\"%lld\", s);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int x;\n    long long s = 0;\n    while (scanf(\"%d\", &x) == 1) {\n        if (x == 0)\n            break;\n        s += x;\n    }\n    printf(\"%lld\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4 5 0",
@@ -9695,8 +9695,8 @@
       "stem": "不断读取整数，直到输入结束（EOF）。用 while(scanf(\"%d\",&x)!=EOF) 读取，分别统计奇数与偶数的个数，依次输出两个数。",
       "input_format": "若干整数，以 EOF 结束。",
       "output_format": "奇数个数、偶数个数，空格分隔。",
-      "code_starter": "int main(){int o=0,e=0,x;while(scanf(\"%d\",&x)!=EOF){/*__BLANK__*/}printf(\"%d %d\",o,e);}",
-      "reference": "#include <stdio.h>\nint main(){int o=0,e=0,x;while(scanf(\"%d\",&x)!=EOF){if(x%2==0)e++;else o++;}printf(\"%d %d\",o,e);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int o = 0, e = 0, x;\n    while (scanf(\"%d\", &x) != EOF) { /*__BLANK__*/\n    }\n    printf(\"%d %d\", o, e);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int o = 0, e = 0, x;\n    while (scanf(\"%d\", &x) != EOF) {\n        if (x % 2 == 0)\n            e++;\n        else\n            o++;\n    }\n    printf(\"%d %d\", o, e);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3 4 5",
@@ -9743,8 +9743,8 @@
       "stem": "依次读取若干整数，以 -1 作为结束标志（-1 不参与统计）。用 while 循环读取，统计其中大于 100 的数的个数并输出。",
       "input_format": "若干整数，最后一个为 -1。",
       "output_format": "大于 100 的数的个数。",
-      "code_starter": "int main(){int x,c=0;while(scanf(\"%d\",&x)==1){/*__BLANK__*/}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int x,c=0;while(scanf(\"%d\",&x)==1){if(x==-1)break;if(x>100)c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int x, c = 0;\n    while (scanf(\"%d\", &x) == 1) { /*__BLANK__*/\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int x, c = 0;\n    while (scanf(\"%d\", &x) == 1) {\n        if (x == -1)\n            break;\n        if (x > 100)\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "50 200 300 -1",
@@ -9791,8 +9791,8 @@
       "stem": "输入一个正整数 n，判断它是否为完数。完数是指恰好等于它所有真因子（小于它本身的因子）之和的数。用 for 循环枚举 1 到 n-1 之间能整除 n 的因子并求和，若和等于 n 则输出 1，否则输出 0。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "是完数输出 1，否则输出 0。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<n;i++){/*__BLANK__*/}printf(\"%d\",s==n?1:0);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int s=0;for(int i=1;i<n;i++){if(n%i==0)s+=i;}printf(\"%d\",s==n?1:0);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i < n; i++) { /*__BLANK__*/\n    }\n    printf(\"%d\", s == n ? 1 : 0);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int s = 0;\n    for (int i = 1; i < n; i++) {\n        if (n % i == 0)\n            s += i;\n    }\n    printf(\"%d\", s == n ? 1 : 0);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6",
@@ -9839,8 +9839,8 @@
       "stem": "输入一个正整数 n，统计 1 到 n 中十进制各位数字之和为偶数的整数个数并输出。对每个数先分解各位数字求得和，再用双重条件判断和是否为偶数。",
       "input_format": "一个正整数 n（1≤n≤10^4）",
       "output_format": "各位数字之和为偶数的数的个数。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){int t=i,s=0;while(t){/*__BLANK__*/}if(s%2==0)c++;}printf(\"%d\",c);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int c=0;for(int i=1;i<=n;i++){int t=i,s=0;while(t){s+=t%10;t/=10;}if(s%2==0)c++;}printf(\"%d\",c);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) {\n        int t = i, s = 0;\n        while (t) { /*__BLANK__*/\n        }\n        if (s % 2 == 0)\n            c++;\n    }\n    printf(\"%d\", c);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int c = 0;\n    for (int i = 1; i <= n; i++) {\n        int t = i, s = 0;\n        while (t) {\n            s += t % 10;\n            t /= 10;\n        }\n        if (s % 2 == 0)\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -9887,8 +9887,8 @@
       "stem": "输入一个非负整数 n，用 while 循环逐位取出它的各位数字，找出其中最大的一位数字并输出。",
       "input_format": "一个非负整数 n（0≤n≤10^9）",
       "output_format": "各位数字中的最大值。",
-      "code_starter": "int main(){int n;scanf(\"%d\",&n);int mx=0;while(n){/*__BLANK__*/}printf(\"%d\",mx);}",
-      "reference": "#include <stdio.h>\nint main(){int n;scanf(\"%d\",&n);int mx=0;while(n){int d=n%10;if(d>mx)mx=d;n/=10;}printf(\"%d\",mx);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int mx = 0;\n    while (n) { /*__BLANK__*/\n    }\n    printf(\"%d\", mx);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int mx = 0;\n    while (n) {\n        int d = n % 10;\n        if (d > mx)\n            mx = d;\n        n /= 10;\n    }\n    printf(\"%d\", mx);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12345",
@@ -9935,8 +9935,8 @@
       "stem": "输入一个正整数 m，找出 1 到 m 中第一个同时满足「能被 3 整除」且「各位数字之和大于等于 10」的数并输出；若不存在则输出 0。循环中先判断被 3 整除，再判断数位和，命中即用 break 提前结束。",
       "input_format": "一个正整数 m（1≤m≤10^5）",
       "output_format": "第一个满足条件的数，若不存在输出 0。",
-      "code_starter": "int main(){int m;scanf(\"%d\",&m);int r=0;for(int i=1;i<=m;i++){if(i%3!=0)continue;int t=i,s=0;while(t){/*__BLANK__*/}if(s>=10){r=i;break;}}printf(\"%d\",r);}",
-      "reference": "#include <stdio.h>\nint main(){int m;scanf(\"%d\",&m);int r=0;for(int i=1;i<=m;i++){if(i%3!=0)continue;int t=i,s=0;while(t){s+=t%10;t/=10;}if(s>=10){r=i;break;}}printf(\"%d\",r);return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int m;\n    scanf(\"%d\", &m);\n    int r = 0;\n    for (int i = 1; i <= m; i++) {\n        if (i % 3 != 0)\n            continue;\n        int t = i, s = 0;\n        while (t) { /*__BLANK__*/\n        }\n        if (s >= 10) {\n            r = i;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int m;\n    scanf(\"%d\", &m);\n    int r = 0;\n    for (int i = 1; i <= m; i++) {\n        if (i % 3 != 0)\n            continue;\n        int t = i, s = 0;\n        while (t) {\n            s += t % 10;\n            t /= 10;\n        }\n        if (s >= 10) {\n            r = i;\n            break;\n        }\n    }\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10",
@@ -9983,8 +9983,8 @@
       "stem": "输入两个整数 a、b（100≤a≤b≤999），找出区间 [a,b] 内所有水仙花数（各位数字的立方和等于它本身的三位数）并按从小到大依次输出，各数之间用一个空格分隔。",
       "input_format": "两个整数 a 和 b，空格分隔。",
       "output_format": "区间内所有的水仙花数，空格分隔。",
-      "code_starter": "int main(){int a,b;scanf(\"%d%d\",&a,&b);for(int i=a;i<=b;i++){int x=i/100,y=i/10%10,z=i%10;/*__BLANK__*/}}",
-      "reference": "#include <stdio.h>\nint main(){int a,b;scanf(\"%d%d\",&a,&b);for(int i=a;i<=b;i++){int x=i/100,y=i/10%10,z=i%10;if(x*x*x+y*y*y+z*z*z==i)printf(\"%d \",i);}return 0;}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    for (int i = a; i <= b; i++) {\n        int x = i / 100, y = i / 10 % 10, z = i % 10; /*__BLANK__*/\n    }\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    for (int i = a; i <= b; i++) {\n        int x = i / 100, y = i / 10 % 10, z = i % 10;\n        if (x * x * x + y * y * y + z * z * z == i)\n            printf(\"%d \", i);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "100 999",
@@ -10647,7 +10647,7 @@
         "复合语句"
       ],
       "stem": "阅读下面的程序，写出当依次输入 2、0、5、0、9、-1 时程序输出的结果。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int x, s = 0, c = 0;\n    while (scanf(\"%d\", &x) == 1) {\n        if (x < 0) break;\n        if (x == 0) { c++; continue; }\n        s = s + x;\n    }\n    printf(\"%d %d\\n\", s, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int x, s = 0, c = 0;\n    while (scanf(\"%d\", &x) == 1) {\n        if (x < 0)\n            break;\n        if (x == 0) {\n            c++;\n            continue;\n        }\n        s = s + x;\n    }\n    printf(\"%d %d\\n\", s, c);\n    return 0;\n}",
       "stdin": "2 0 5 0 9 -1",
       "answer": "16 2",
       "answerIsDescription": false,
@@ -11307,7 +11307,7 @@
         "for循环",
         "累加求和"
       ],
-      "stem": "读入一个正整数 n，用 for 循环计算并输出 1+2+…+n 的和。",
+      "stem": "读入一个非负整数 n，用 for 循环计算并输出 1+2+…+n 的和。",
       "code": "#include <stdio.h>\nint main(void) {\n  int n, i, sum = 0;\n  scanf(\"%d\", &n);\n  for (/*__BLANK_1__*/; /*__BLANK_2__*/; /*__BLANK_3__*/) {\n    sum += i;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
       "blanks": [
         {
@@ -11493,7 +11493,7 @@
         "while循环",
         "数字反转"
       ],
-      "stem": "读入一个正整数 n，用 while 循环把它的数字逆序后输出。",
+      "stem": "读入一个非负整数 n，用 while 循环把它的数字逆序后输出。",
       "code": "#include <stdio.h>\nint main(void) {\n  int n, rev = 0;\n  scanf(\"%d\", &n);\n  while (/*__BLANK_1__*/) {\n    rev = /*__BLANK_2__*/;\n    n = /*__BLANK_3__*/;\n  }\n  printf(\"%d\\n\", rev);\n  return 0;\n}",
       "blanks": [
         {
@@ -12526,7 +12526,7 @@
         "for语句",
         "累加求和"
       ],
-      "stem": "输入一个正整数 n，用 for 语句计算并输出 1+2+3+…+n 的和。请在\"___\"处填入正确的循环控制条件与累加表达式，使程序输出正确结果。",
+      "stem": "输入一个非负整数 n，用 for 语句计算并输出 1+2+3+…+n 的和。请在\"___\"处填入正确的循环控制条件与累加表达式，使程序输出正确结果。",
       "code": "#include <stdio.h>\nint main()\n{   int n, i, s=0;\n    scanf(\"%d\",&n);\n    for(i=1;/*__BLANK_1__*/;i++)\n        s=/*__BLANK_2__*/;\n    printf(\"%d\\n\",s);\n    return 0;\n}",
       "blanks": [
         {
@@ -12642,7 +12642,7 @@
         "for语句",
         "计数器"
       ],
-      "stem": "输入一个正整数 n，统计并输出 1 到 n 之间（含 1 与 n）所有偶数的个数。请在\"___\"处填入循环控制条件、偶数判定条件与计数器更新表达式。",
+      "stem": "输入一个非负整数 n，统计并输出 1 到 n 之间（含 1 与 n）所有偶数的个数。请在\"___\"处填入循环控制条件、偶数判定条件与计数器更新表达式。",
       "code": "#include <stdio.h>\nint main()\n{   int n, i, cnt=0;\n    scanf(\"%d\",&n);\n    for(i=1;/*__BLANK_1__*/;i++)\n        if(/*__BLANK_2__*/) cnt=/*__BLANK_3__*/;\n    printf(\"%d\\n\",cnt);\n    return 0;\n}",
       "blanks": [
         {
@@ -12705,7 +12705,7 @@
         "for语句",
         "累加求和"
       ],
-      "stem": "输入一个正整数 n，用 for 语句计算并输出 1²+2²+…+n² 的值。请在\"___\"处填入正确的循环控制条件与累加表达式，注意要先求平方再累加。",
+      "stem": "输入一个非负整数 n，用 for 语句计算并输出 1²+2²+…+n² 的值。请在\"___\"处填入正确的循环控制条件与累加表达式，注意要先求平方再累加。",
       "code": "#include <stdio.h>\nint main()\n{   int n, i, s=0;\n    scanf(\"%d\",&n);\n    for(i=1;/*__BLANK_1__*/;i++)\n        s=/*__BLANK_2__*/;\n    printf(\"%d\\n\",s);\n    return 0;\n}",
       "blanks": [
         {
@@ -13112,7 +13112,7 @@
         "素数判定"
       ],
       "stem": "输入一个大于等于 2 的整数 n，判断它是否为素数：素数即只能被 1 和自身整除的数。程序用 i 从 2 试除到 n-1，一旦发现 n 能被 i 整除就标记为非素数并终止循环，最后输出 \"yes\" 或 \"no\"。请在\"___\"处填入试除范围、整除判定与提前终止语句。",
-      "code": "#include <stdio.h>\nint main()\n{   int n, i, flag=1;\n    scanf(\"%d\",&n);\n    for(i=2;/*__BLANK_1__*/;i++)\n        if(/*__BLANK_2__*/){ flag=0; /*__BLANK_3__*/; }\n    if(flag) printf(\"yes\\n\");\n    else printf(\"no\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n, i, flag = 1;\n    scanf(\"%d\", &n);\n    for (i = 2; /*__BLANK_1__*/; i++)\n        if (/*__BLANK_2__*/) {\n            flag = 0; /*__BLANK_3__*/\n            ;\n        }\n    if (flag)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -13130,7 +13130,7 @@
           "answer": "break"
         }
       ],
-      "solution": "#include <stdio.h>\nint main()\n{   int n, i, flag=1;\n    scanf(\"%d\",&n);\n    for(i=2;i<=n-1;i++)\n        if(n%i==0){ flag=0; break; }\n    if(flag) printf(\"yes\\n\");\n    else printf(\"no\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n, i, flag = 1;\n    scanf(\"%d\", &n);\n    for (i = 2; i <= n - 1; i++)\n        if (n % i == 0) {\n            flag = 0;\n            break;\n        }\n    if (flag)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -13174,7 +13174,7 @@
         "continue语句",
         "累加求和"
       ],
-      "stem": "输入一个正整数 n，求 1 到 n 之间所有奇数的和。程序用 for 循环遍历 1..n，当 i 为偶数时用 continue 跳过累加，只把奇数累加到 s 中。请在\"___\"处填入 for 循环头与实现\"跳过本次循环\"的语句。",
+      "stem": "输入一个非负整数 n，求 1 到 n 之间所有奇数的和。程序用 for 循环遍历 1..n，当 i 为偶数时用 continue 跳过累加，只把奇数累加到 s 中。请在\"___\"处填入 for 循环头与实现\"跳过本次循环\"的语句。",
       "code": "#include <stdio.h>\nint main()\n{   int n, i, s=0;\n    scanf(\"%d\",&n);\n    for(/*__BLANK_1__*/)\n    {   if(i%2==0) /*__BLANK_2__*/;\n        s=s+i;\n    }\n    printf(\"%d\\n\",s);\n    return 0;\n}",
       "blanks": [
         {
@@ -13233,7 +13233,7 @@
         "查找"
       ],
       "stem": "第一行输入整数个数 n，随后输入 n 个整数。程序依次读取并判断，一旦遇到第一个大于 100 的数就输出该数并停止查找；若 n 个数中都没有超过 100 的，则输出 \"none\"。请在\"___\"处填入循环控制条件与提前终止循环的语句。",
-      "code": "#include <stdio.h>\nint main()\n{   int n, i, x, found=0;\n    scanf(\"%d\",&n);\n    for(i=0;/*__BLANK_1__*/;i++)\n    {   scanf(\"%d\",&x);\n        if(x>100){ printf(\"%d\\n\",x); found=1; /*__BLANK_2__*/; }\n    }\n    if(!found) printf(\"none\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n, i, x, found = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; /*__BLANK_1__*/; i++) {\n        scanf(\"%d\", &x);\n        if (x > 100) {\n            printf(\"%d\\n\", x);\n            found = 1; /*__BLANK_2__*/\n            ;\n        }\n    }\n    if (!found)\n        printf(\"none\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -13246,7 +13246,7 @@
           "answer": "break"
         }
       ],
-      "solution": "#include <stdio.h>\nint main()\n{   int n, i, x, found=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++)\n    {   scanf(\"%d\",&x);\n        if(x>100){ printf(\"%d\\n\",x); found=1; break; }\n    }\n    if(!found) printf(\"none\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n, i, x, found = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        if (x > 100) {\n            printf(\"%d\\n\", x);\n            found = 1;\n            break;\n        }\n    }\n    if (!found)\n        printf(\"none\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n10 20 150 30",
@@ -15185,7 +15185,7 @@
         "for循环",
         "累加求和"
       ],
-      "stem": "读入正整数 n，用 for 循环计算 1+2+…+n 的和并输出。请补全下面程序的两处空白。",
+      "stem": "读入非负整数 n，用 for 循环计算 1+2+…+n 的和并输出。请补全下面程序的两处空白。",
       "code": "#include <stdio.h>\nint main(void) {\n  int n, i, sum = 0;\n  scanf(\"%d\", &n);\n  for (i = 1; i /*__BLANK_1__*/ n; i++) {\n    sum /*__BLANK_2__*/ i;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
       "blanks": [
         {
@@ -15249,7 +15249,7 @@
         "while循环",
         "累加求和"
       ],
-      "stem": "读入正整数 n，用 while 循环计算 1+2+…+n 的和并输出。请补全下面程序的三处空白。",
+      "stem": "读入非负整数 n，用 while 循环计算 1+2+…+n 的和并输出。请补全下面程序的三处空白。",
       "code": "#include <stdio.h>\nint main(void) {\n  int n, i = 1, sum = 0;\n  scanf(\"%d\", &n);\n  while (i /*__BLANK_1__*/ n) {\n    sum /*__BLANK_2__*/ i;\n    i /*__BLANK_3__*/;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
       "blanks": [
         {

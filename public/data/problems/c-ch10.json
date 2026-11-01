@@ -81,7 +81,7 @@
       "input_format": "第一行一个整数 n（0 <= n <= 100）；接下来 n 行每行两个整数 x y。",
       "output_format": "输出距离原点最远的点的坐标\"x y\"。n=0 时输出 0 0。",
       "code_starter": "#include <stdio.h>\nstruct Point { int x; int y; };\nint main(void) {\n    struct Point p[100];\n    int n, i;\n    scanf(\"%d\", &n);\n    /* 在此编写 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nstruct Point { int x; int y; };\nint main(void) {\n    struct Point p[100];\n    int n, i, best = 0, bd = -1;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d%d\", &p[i].x, &p[i].y);\n    if (n == 0) { printf(\"0 0\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        int d = p[i].x * p[i].x + p[i].y * p[i].y;\n        if (d > bd) { bd = d; best = i; }\n    }\n    printf(\"%d %d\\n\", p[best].x, p[best].y);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nstruct Point {\n    int x;\n    int y;\n};\nint main(void) {\n    struct Point p[100];\n    int n, i, best = 0, bd = -1;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d%d\", &p[i].x, &p[i].y);\n    if (n == 0) {\n        printf(\"0 0\\n\");\n        return 0;\n    }\n    for (i = 0; i < n; i++) {\n        int d = p[i].x * p[i].x + p[i].y * p[i].y;\n        if (d > bd) {\n            bd = d;\n            best = i;\n        }\n    }\n    printf(\"%d %d\\n\", p[best].x, p[best].y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 1\n-2 0\n0 3",
@@ -3750,7 +3750,7 @@
         "typedef"
       ],
       "stem": "用 typedef 定义链表结点 Node，程序读入 n 个整数并尾插法建链表，再按顺序输出。请补全：第 1 空是分配结点时的 sizeof 对象，第 2 空是头指针为 NULL 时把头指针指向哪个结点，第 3 空是遍历时让指针向前移动。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nint main(void) {\n    Node *head = NULL, *p, *tail = NULL;\n    int n, i, x;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        p = (Node *)malloc(sizeof(/*__BLANK_1__*/));\n        p->data = x;\n        p->next = NULL;\n        if (head == NULL) head = /*__BLANK_2__*/;\n        else tail->next = p;\n        tail = p;\n    }\n    for (p = head; p != NULL; p = /*__BLANK_3__*/)\n        printf(\"%d \", p->data);\n    printf(\"\\n\");\n    while (head != NULL) { Node *q = head; head = head->next; free(q); }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nint main(void) {\n    Node *head = NULL, *p, *tail = NULL;\n    int n, i, x;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        p = (Node *)malloc(sizeof(/*__BLANK_1__*/));\n        p->data = x;\n        p->next = NULL;\n        if (head == NULL)\n            head = /*__BLANK_2__*/;\n        else\n            tail->next = p;\n        tail = p;\n    }\n    for (p = head; p != NULL; p = /*__BLANK_3__*/)\n        printf(\"%d \", p->data);\n    printf(\"\\n\");\n    while (head != NULL) {\n        Node *q = head;\n        head = head->next;\n        free(q);\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -3768,7 +3768,7 @@
           "hint": "遍历时沿指针域前进"
         }
       ],
-      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nint main(void) {\n    Node *head = NULL, *p, *tail = NULL;\n    int n, i, x;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        p = (Node *)malloc(sizeof(Node));\n        p->data = x;\n        p->next = NULL;\n        if (head == NULL) head = p;\n        else tail->next = p;\n        tail = p;\n    }\n    for (p = head; p != NULL; p = p->next)\n        printf(\"%d \", p->data);\n    printf(\"\\n\");\n    while (head != NULL) { Node *q = head; head = head->next; free(q); }\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nint main(void) {\n    Node *head = NULL, *p, *tail = NULL;\n    int n, i, x;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        p = (Node *)malloc(sizeof(Node));\n        p->data = x;\n        p->next = NULL;\n        if (head == NULL)\n            head = p;\n        else\n            tail->next = p;\n        tail = p;\n    }\n    for (p = head; p != NULL; p = p->next)\n        printf(\"%d \", p->data);\n    printf(\"\\n\");\n    while (head != NULL) {\n        Node *q = head;\n        head = head->next;\n        free(q);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
