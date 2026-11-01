@@ -29,6 +29,8 @@ export const TYPE_LABEL: Record<string, string> = {
   code_review: '代码评审',
   term_explanation: '术语解释',
   essay_answer: '论述题',
+  algorithm_impl: '算法实现',
+  multi_bug_debug: '多错改错',
 }
 
 export function typeLabel(type: string): string {
@@ -91,6 +93,8 @@ export const RENDERABLE_TYPES: ReadonlySet<string> = new Set([
   'code_review',
   'term_explanation',
   'essay_answer',
+  'algorithm_impl',
+  'multi_bug_debug',
 ])
 
 /**
@@ -113,6 +117,8 @@ export const TYPE_ORDER: readonly string[] = [
   'multi_blank',
   'term_explanation',
   'essay_answer',
+  'algorithm_impl',
+  'multi_bug_debug',
   'single_choice',
   'fill_blank',
   'short_answer',

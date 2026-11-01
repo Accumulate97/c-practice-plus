@@ -188,6 +188,9 @@ const PLAYGROUND_TYPES = new Set([
   'stdlib_reimpl',
   'api_drill',
   'code_optimization',
+  // 任务04 量产主力：算法实现（同编程题）/ 多错改错（同改错题）
+  'algorithm_impl',
+  'multi_bug_debug',
 ])
 
 function PlaygroundLink({ problem }: { problem: ProblemRecord }) {
@@ -303,6 +306,9 @@ function TypeRenderer({ problem }: { problem: ProblemRecord }) {
       problem.type === 'api_drill' || problem.type === 'code_optimization') {
     return <ProgrammingRenderer problem={problem} />
   }
+  // 任务04 量产主力：algorithm_impl 与编程题同构，multi_bug_debug 与改错题同构，直接复用渲染器。
+  if (problem.type === 'algorithm_impl') return <ProgrammingRenderer problem={problem} />
+  if (problem.type === 'multi_bug_debug') return <DebugRenderer problem={problem} />
   // 任务04 新增概念型：前端即时判定（term_explanation / code_review）与自评（essay_answer）
   if (problem.type === 'term_explanation') return <TermExplanationRenderer problem={problem} />
   if (problem.type === 'code_review') return <CodeReviewRenderer problem={problem} />

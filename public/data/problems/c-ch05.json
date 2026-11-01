@@ -2,7 +2,7 @@
   "category": "c",
   "chapter": "第5章 循环结构",
   "generated_at": "2026-09-08",
-  "count": 166,
+  "count": 172,
   "problems": [
     {
       "category": "c",
@@ -4813,6 +4813,263 @@
         }
       ],
       "explanation": "若 n 有大于 sqrt(n) 的因子，必然同时存在一个小于 sqrt(n) 的因子，所以只需试除到 sqrt(n)。用 `i*i <= n` 避免开方（浮点不精确且更慢）。这样最坏情况从 n-1 次降到 sqrt(n) 次，n=10^9 时从 10 亿次降到约 3 万次。注意 i 从 2 开始，n=2 时循环不执行，is_p 保持 1（正确）。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-alg-001",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 1,
+      "bloom": "apply",
+      "tags": [
+        "循环",
+        "累加"
+      ],
+      "stem": "输入一个正整数 n，输出 1+2+…+n 的和。",
+      "input_format": "一个正整数 n（1 ≤ n ≤ 10000）。",
+      "output_format": "一个整数，表示 1 到 n 的和。",
+      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 1; i <= n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "5\n",
+          "expected": "15",
+          "note": "常规"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "5050",
+          "note": "中等规模"
+        },
+        {
+          "stdin": "10000\n",
+          "expected": "50005000",
+          "note": "上限"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "6",
+          "note": "小输入"
+        }
+      ],
+      "explanation": "用 for 循环从 1 累加到 n 即可。s 从 0 开始，每个 i 累加进 s。注意 i <= n 而不是 i < n，否则漏掉最后一项。n 取到 10000 时和为 50005000，在 int（约 21 亿）以内，不会溢出。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-alg-002",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.4 循环的嵌套",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "循环",
+        "嵌套循环",
+        "素数"
+      ],
+      "stem": "输入一个正整数 n，输出 2 到 n 之间的所有素数，每个素数后跟一个空格。",
+      "input_format": "一个正整数 n（2 ≤ n ≤ 1000）。",
+      "output_format": "2 到 n 之间的所有素数，用空格分隔，最后一个素数后也跟一个空格。",
+      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, i, j, isp;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 2; i <= n; ++i) {\n              isp = 1;\n              for (j = 2; j * j <= i; ++j) {\n                  if (i % j == 0) { isp = 0; break; }\n              }\n              if (isp) printf(\"%d \", i);\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "10\n",
+          "expected": "2 3 5 7 ",
+          "note": "常规"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "2 ",
+          "note": "n=2，最小素数"
+        },
+        {
+          "stdin": "7\n",
+          "expected": "2 3 5 7 ",
+          "note": "含 n 本身"
+        },
+        {
+          "stdin": "20\n",
+          "expected": "2 3 5 7 11 13 17 19 ",
+          "note": "稍大"
+        }
+      ],
+      "explanation": "对每个 i 判断是否为素数：从 2 试除到 sqrt(i)（写成 j*j<=i 避免浮点与 sqrt 头文件），只要有一个整除就不是素数。外层循环遍历 2..n，内层做试除。isp 标志记录是否素数。试除到 sqrt(i) 即可：若 i 有因子，必有一个因子 ≤ sqrt(i)。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-alg-003",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "循环",
+        "穷举",
+        "水仙花数"
+      ],
+      "stem": "按从小到大顺序，输出所有三位「水仙花数」（各位数字的立方和等于它本身），每个数后跟一个空格。",
+      "input_format": "本题无输入。",
+      "output_format": "从小到大输出三位水仙花数，用空格分隔，最后一个数后也跟一个空格。",
+      "reference": "#include <stdio.h>\n      int main(void) {\n          int n, a, b, c;\n          for (n = 100; n <= 999; ++n) {\n              a = n / 100;\n              b = (n / 10) % 10;\n              c = n % 10;\n              if (a*a*a + b*b*b + c*c*c == n) printf(\"%d \", n);\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "",
+          "expected": "153 370 371 407 ",
+          "note": "常规"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "153 370 371 407 ",
+          "note": "带无用输入也不变"
+        }
+      ],
+      "explanation": "遍历 100~999 每个数 n，用除法和取余拆出百位 a、十位 b、个位 c（n/100 得百位，n%10 得个位，中间 (n/10)%10 得十位）。若 a³+b³+c³ == n 则是水仙花数，输出。100~999 中只有 153、370、371、407 四个。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "改错",
+        "循环",
+        "累加"
+      ],
+      "stem": "下面程序本应输出 1+2+…+n 的和，但有两处错误。请把修正后的完整程序写出来（一开始的循环变量初始化也有问题）。",
+      "code": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          scanf(\"%d\", &n);\n          for (i = 0; i < n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "bugs": [
+        "for 循环初始化 i=0 导致从 0 开始累加，且 i<n 使最后一项 n 被漏掉；应从 i=1 开始，并用 i<=n。",
+        "scanf 未检查返回值（健壮性不足），应判断 scanf 返回值。"
+      ],
+      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n, i, s = 0;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 1; i <= n; ++i) s += i;\n          printf(\"%d\\n\", s);\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "5\n",
+          "expected": "15",
+          "note": "常规"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "5050",
+          "note": "中等"
+        }
+      ],
+      "explanation": "原程序用 for(i=0; i<n; ++i) 会从 0 累加到 n-1，多加了 0（无影响）但漏掉了 n（本应加到 n）。应改为 for(i=1; i<=n; ++i)，从 1 到 n。同时 scanf 返回值应被检查，输入失败时提前 return，避免用到未初始化的 n。这两处都修才算完全正确。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "改错",
+        "循环",
+        "素数"
+      ],
+      "stem": "下面程序本应判断输入的正整数 n 是否为素数（是输出 YES，不是输出 NO），但有两处错误。请写出修正后的完整程序。",
+      "code": "#include <stdio.h>\n      int main(void) {\n          int n, i, isp = 1;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          for (i = 2; i <= n; ++i) {\n              if (n % i == 0) isp = 0;\n          }\n          if (isp) printf(\"YES\\n\"); else printf(\"NO\\n\");\n          return 0;\n      }",
+      "bugs": [
+        "循环到 i<=n 时，i==n 必然使 n%n==0，任何数都被判为合数；应改为 i*i<=n 或 i<n（判断到 sqrt(n) 即可）。",
+        "isp 初始为 1，但当 n=1 时循环不执行，1 被误判为素数；特殊处理 n<=1 的情况。"
+      ],
+      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n, i, isp = 1;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          if (n <= 1) isp = 0;\n          for (i = 2; i * i <= n; ++i) {\n              if (n % i == 0) { isp = 0; break; }\n          }\n          if (isp) printf(\"YES\\n\"); else printf(\"NO\\n\");\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "7\n",
+          "expected": "YES",
+          "note": "素数"
+        },
+        {
+          "stdin": "8\n",
+          "expected": "NO",
+          "note": "合数"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "YES",
+          "note": "最小素数"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "NO",
+          "note": "1 不是素数"
+        }
+      ],
+      "explanation": "原程序循环到 i<=n，当 i=n 时 n%n==0 恒成立，任何数都会被判成合数。改为判断到 sqrt(n)（i*i<=n）即可：若 n 有因子，必有一个 ≤ sqrt(n)。另外 n=1 时循环不执行且 isp 初始为 1，会被误判为素数，需先处理 n<=1。加入 break 提前退出更高效。",
+      "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch05-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.6 while 语句",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "改错",
+        "循环",
+        "数位"
+      ],
+      "stem": "下面程序本应把输入的正整数 n 的各位数字逆序输出（如输入 12345 输出 54321），但有三处错误。请写出修正后的完整程序。",
+      "code": "#include <stdio.h>\n      int main(void) {\n          int n;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          while (n > 0) {\n              printf(\"%d\", n % 10);\n              n = n % 10;\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "bugs": [
+        "循环里用 n = n % 10 让 n 只保留个位，循环永不终止；应改为 n = n / 10 去掉末位。",
+        "未处理 n=0 的情况，循环一次不执行，什么也不输出；特殊处理 n==0 直接输出 0。",
+        "printf(\"%d\", n % 10) 输出的是数字紧连，若要求每位数间有分隔可保留，但这里题意是整串逆序，保留即可。"
+      ],
+      "fixed_code": "#include <stdio.h>\n      int main(void) {\n          int n;\n          if (scanf(\"%d\", &n) != 1) return 1;\n          if (n == 0) { printf(\"0\\n\"); return 0; }\n          while (n > 0) {\n              printf(\"%d\", n % 10);\n              n = n / 10;\n          }\n          printf(\"\\n\");\n          return 0;\n      }",
+      "testCases": [
+        {
+          "stdin": "12345\n",
+          "expected": "54321",
+          "note": "常规"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0",
+          "note": "n=0"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "001",
+          "note": "末尾含零"
+        },
+        {
+          "stdin": "7\n",
+          "expected": "7",
+          "note": "一位数"
+        }
+      ],
+      "explanation": "原程序 n = n % 10 只保留个位，while 条件 n>0 永远成立，形成死循环。应改为 n = n / 10 去掉最后一位，才能逐步缩位直至 0。另外 n=0 时循环不执行什么也不输出，需要单独处理输出 0。注意 100 逆序是 001（前导零也被输出，符合「各位数字逆序」的字面含义，若要忽略前导零则另当别论）。",
       "source": "自撰（依据《C程序设计》第5章 循环结构 知识点体系）",
       "verified": true
     }

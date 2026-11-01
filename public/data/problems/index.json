@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "c6492686f1da1549",
+  "content_sha": "26fc57a8837b37c5",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 2101,
+  "count": 2107,
   "shard_count": 20,
   "shards": [
     {
@@ -38,7 +38,7 @@
       "file": "c-ch05.json",
       "category": "c",
       "chapter": "第5章 循环结构",
-      "count": 166,
+      "count": 172,
       "url": "data/problems/c-ch05.json"
     },
     {
@@ -9084,6 +9084,107 @@
         "提前退出"
       ],
       "title": "下面的程序判断 n 是否为素数",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-alg-001",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 1,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "累加"
+      ],
+      "title": "输入一个正整数 n",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-alg-002",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.4 循环的嵌套",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "嵌套循环",
+        "素数"
+      ],
+      "title": "输入一个正整数 n",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-alg-003",
+      "type": "algorithm_impl",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "循环",
+        "穷举",
+        "水仙花数"
+      ],
+      "title": "按从小到大顺序",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "改错",
+        "循环",
+        "累加"
+      ],
+      "title": "下面程序本应输出 1+2+…+n 的和",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "改错",
+        "循环",
+        "素数"
+      ],
+      "title": "下面程序本应判断输入的正整数 n 是否为素数",
+      "file": "c-ch05.json"
+    },
+    {
+      "id": "c-ch05-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "c",
+      "chapter": "第5章 循环结构",
+      "section": "5.6 while 语句",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "改错",
+        "循环",
+        "数位"
+      ],
+      "title": "下面程序本应把输入的正整数 n 的各位数字逆序输出",
       "file": "c-ch05.json"
     },
     {

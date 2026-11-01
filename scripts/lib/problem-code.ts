@@ -36,7 +36,9 @@ export let CODE_TYPES: string[] = [
   'timed_impl',
   'stdlib_reimpl',
   'api_drill',
-  'code_optimization'
+  'code_optimization',
+  'algorithm_impl',
+  'multi_bug_debug'
 ]
 
 export function isCodeType(type: string): boolean {
@@ -137,6 +139,18 @@ export function buildRunnableSource(p: ProblemLike): Runnable | null {
       let code = str(p, 'reference')
       if (!code) return null
       return { code, cases: casesOf(p), checkedField: 'reference' }
+    }
+    case 'algorithm_impl': {
+      // 算法实现：编程题同构（reference + testCases），学生实现后跑测试用例。
+      let code = str(p, 'reference')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'reference' }
+    }
+    case 'multi_bug_debug': {
+      // 多错改错：与 debug 同构（code + bugs + fixed_code + testCases），判分取修正后的 fixed_code。
+      let code = str(p, 'fixed_code')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'fixed_code' }
     }
     default:
       return null

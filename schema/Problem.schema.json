@@ -7,8 +7,8 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt|pt|mb|ti|sr|ad|opt|rv|te|ea)-[0-9]{3}$",
-      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配 pt指针追踪 mb多空填空 ti限时实现 sr标准库重实现 adAPI练习 opt代码优化 rv代码评审 te术语解释 ea论述"
+      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt|pt|mb|ti|sr|ad|opt|rv|te|ea|alg|mdb)-[0-9]{3}$",
+      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配 pt指针追踪 mb多空填空 ti限时实现 sr标准库重实现 adAPI练习 opt代码优化 rv代码评审 te术语解释 ea论述 alg算法实现 mdb多错改"
     },
     "type": {
       "type": "string",
@@ -17,8 +17,9 @@
                "code_ordering", "short_answer", "complexity", "matching",
                "pointer_trace", "multi_blank", "timed_impl", "stdlib_reimpl",
                "api_drill", "code_optimization", "code_review",
-               "term_explanation", "essay_answer"],
-      "description": "主力题型为前四种；pointer_trace/timed_impl/stdlib_reimpl/api_drill/code_optimization/code_review/multi_blank 为扩张主力；term_explanation/essay_answer 为概念型"
+               "term_explanation", "essay_answer",
+               "algorithm_impl", "multi_bug_debug"],
+      "description": "主力题型为前四种；pointer_trace/timed_impl/stdlib_reimpl/api_drill/code_optimization/code_review/multi_blank 为扩张主力；algorithm_impl/multi_bug_debug 为任务04量产主力；term_explanation/essay_answer 为概念型"
     },
     "category": {
       "type": "string",
@@ -369,6 +370,35 @@
             "type": "array", "items": { "type": "string" },
             "description": "评分要点，供学生自评"
           }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "algorithm_impl" } } },
+      "then": {
+        "required": ["reference", "testCases"],
+        "properties": {
+          "input_format": { "type": "string" },
+          "output_format": { "type": "string" },
+          "code_starter": { "type": "string" },
+          "reference": { "type": "string" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "multi_bug_debug" } } },
+      "then": {
+        "required": ["code", "bugs", "fixed_code", "testCases"],
+        "properties": {
+          "code": { "type": "string" },
+          "bugs": {
+            "type": "array", "minItems": 2, "maxItems": 3,
+            "items": { "type": "string" },
+            "description": "植入的错误说明，不展示给学生"
+          },
+          "fixed_code": { "type": "string" },
+          "testCases": { "$ref": "#/definitions/testCases" }
         }
       }
     }

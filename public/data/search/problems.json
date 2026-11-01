@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "d743120cc22a0960",
+  "content_sha": "8ed64e28e5c8b5a1",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 2101,
+  "count": 2107,
   "docs": [
     {
       "id": "c-ch01-sc-001",
@@ -7100,6 +7100,89 @@
       "chapter": "第5章 循环结构",
       "section": "5.5 break 与 continue",
       "type": "code_optimization",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-001",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-002",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环",
+        "嵌套循环",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-003",
+      "file": "c-ch05.json",
+      "title": "按从小到大顺序",
+      "tags": [
+        "循环",
+        "穷举",
+        "水仙花数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-001",
+      "file": "c-ch05.json",
+      "title": "下面程序本应输出 1+2+…+n 的和",
+      "tags": [
+        "改错",
+        "循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 for 语句",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-002",
+      "file": "c-ch05.json",
+      "title": "下面程序本应判断输入的正整数 n 是否为素数",
+      "tags": [
+        "改错",
+        "循环",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 break 与 continue",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-003",
+      "file": "c-ch05.json",
+      "title": "下面程序本应把输入的正整数 n 的各位数字逆序输出",
+      "tags": [
+        "改错",
+        "循环",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.6 while 语句",
+      "type": "multi_bug_debug",
       "category": "c"
     },
     {
