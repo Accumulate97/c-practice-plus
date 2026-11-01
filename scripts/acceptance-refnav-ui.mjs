@@ -155,7 +155,28 @@ async function main() {
   const contHref = await page.locator('[data-role="continue-last"]').getAttribute('href')
   check(`首页出现「继续上次」入口`, typeof contHref === 'string' && contHref.startsWith('#/problems/p/'), contHref)
 
-  // ── ⑧ 控制台 ──
+  // ── ⑧ §3.3 返回列表恢复筛选条件（面包屑「在线刷题」） ──
+  // 先带筛选进列表，点进一题 → 面包屑「在线刷题」应回带 ?chapter=..&type=..
+  await page.goto(`${BASE}#/problems?chapter=c-ch01&type=programming`, { waitUntil: 'networkidle' })
+  // 列表页就绪：等第一行题目行（data-role=row，带 data-chapter 的才算列表行；工具栏「继续上次」等链接不算）
+  await page.waitForSelector('tr[data-role="row"] a[href*="/problems/p/"]', { timeout: 30000 })
+  // 点一个列表行进入题目
+  const firstRow = page.locator('tr[data-role="row"] a[href*="/problems/p/"]').first()
+  const rowHref = await firstRow.getAttribute('href')
+  await firstRow.click()
+  await page.waitForFunction((h) => window.location.hash === h, rowHref, { timeout: 5000 })
+  // 面包屑「在线刷题」用 nav-context 还原筛选 query
+  const crumb = page.locator('[data-role="problem-breadcrumb"] a[href*="/problems"]').first()
+  const crumbHref = await crumb.getAttribute('href')
+  check(`面包屑「在线刷题」回带筛选条件`, typeof crumbHref === 'string' && crumbHref.includes('chapter=c-ch01') && crumbHref.includes('type=programming'),
+    crumbHref ?? '(无 href)')
+  // 点面包屑回到列表，URL 带筛选
+  await crumb.click()
+  await page.waitForTimeout(800)
+  const listHash = await page.evaluate(() => window.location.hash)
+  check(`点面包屑返回列表且筛选仍生效`, listHash.includes('chapter=c-ch01') && listHash.includes('type=programming'), listHash)
+
+  // ── ⑨ 控制台 ──
   const bad = consoleMsgs.filter((m) => m.type === 'error' || m.type === 'warning')
   check('全流程控制台 error/warn 为空', bad.length === 0 && pageErrors.length === 0,
     bad.length === 0 && pageErrors.length === 0 ? `共 ${consoleMsgs.length} 条其它消息，0 error 0 warn 0 pageerror`
