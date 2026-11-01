@@ -22,6 +22,7 @@ import { loadTotals } from '../modules/search/totals'
 import type { SearchTotals } from '../modules/search/totals'
 import { statusOf, useProgress } from '../modules/problems/progress/store'
 import { inWrongBook } from '../modules/problems/progress/wrongbook'
+import { ContinueLast } from '../modules/problems/ContinueLast'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -257,6 +258,7 @@ export function HomePage() {
         <div className="mt-2 flex flex-wrap gap-2">
           <Link to="/problems?pick=daily" data-role="home-pick-daily" className="rounded-lg border px-3 py-1.5" style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)', textDecoration: 'none' }}>📅 每日一题</Link>
           <Link to="/problems?pick=random" data-role="home-pick-random" className="rounded-lg border px-3 py-1.5" style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)', textDecoration: 'none' }}>🎲 随机练习</Link>
+          <ContinueLast />
           <Link to="/problems?status=todo" className="rounded-lg border px-3 py-1.5" style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)', textDecoration: 'none' }}>📝 只做没做过的</Link>
           <Link to="/search" className="rounded-lg border px-3 py-1.5" style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)', textDecoration: 'none' }}>🔍 全站搜索</Link>
         </div>

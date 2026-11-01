@@ -215,12 +215,17 @@ function readPersisted(): Persisted | null {
 const asText = (v: unknown): string | null => (typeof v === 'string' ? v : null)
 
 /** 题目记录是宽类型（[key: string]: unknown），取代码字段必须逐个验类型 */
-function pickCode(rec: Record<string, unknown>): string | null {
-  for (const k of ['code', 'code_starter', 'fixed_code', 'solution', 'reference']) {
+function pickCode(rec: Record<string, unknown>, prefer?: string): string | null {
+  // 参考答案「在游乐场打开」：?src=reference 时优先取参考解（reference），否则按常规顺序找完整代码
+  const order =
+    prefer && ['reference', 'solution', 'fixed_code'].includes(prefer)
+      ? [prefer, ...['code', 'code_starter', 'fixed_code', 'solution', 'reference'].filter((x) => x !== prefer)]
+      : ['code', 'code_starter', 'fixed_code', 'solution', 'reference']
+  for (const k of order) {
     const v = asText(rec[k])
     if (v && v.includes('#include')) return v
   }
-  for (const k of ['code', 'code_starter', 'fixed_code', 'solution', 'reference']) {
+  for (const k of order) {
     const v = asText(rec[k])
     if (v && v.trim().length > 0) return v
   }
@@ -230,6 +235,8 @@ function pickCode(rec: Record<string, unknown>): string | null {
 export function PlaygroundPage() {
   const [params] = useSearchParams()
   const problemId = params.get('problem') ?? ''
+  // 参考答案「在游乐场打开」：?src=reference 表示优先加载参考解字段
+  const preferField = params.get('src') ?? undefined
   const savedRef = useRef<Persisted | null>(null)
   if (savedRef.current === null) savedRef.current = readPersisted() ?? {}
   // 取成局部常量再用：ref.current 在 useState 的初始化闭包里不参与 TS 的 null 收窄
@@ -280,7 +287,7 @@ export function PlaygroundPage() {
       (loaded) => {
         if (!alive) return
         const rec = loaded.problem as unknown as Record<string, unknown>
-        const picked = pickCode(rec)
+        const picked = pickCode(rec, preferField)
         if (!picked) { setLoadError(`题目 ${problemId} 没有可直接运行的完整代码（可能是选择题或填空题）`); return }
         const cases = Array.isArray(rec.testCases) ? (rec.testCases as { stdin?: unknown }[]) : []
         setCode(picked)
@@ -295,7 +302,7 @@ export function PlaygroundPage() {
       },
     )
     return () => { alive = false }
-  }, [problemId])
+  }, [problemId, preferField])
 
   const run = useCallback(async (only: 'exec' | 'build') => {
     if (running) return

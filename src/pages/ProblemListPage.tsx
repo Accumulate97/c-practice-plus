@@ -20,6 +20,8 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { pickDaily, pickRandom } from '../modules/problems/random'
 import { loadIndex } from '../modules/problems/data/loader'
 import type { ProblemIndex, ProblemIndexEntry } from '../modules/problems/data/loader'
+import { writeNavContext } from '../modules/problems/nav-context'
+import { ContinueLast } from '../modules/problems/ContinueLast'
 import { statusOf, useProgress } from '../modules/problems/progress/store'
 import type { ListStatus } from '../modules/problems/progress/store'
 // TYPE_ORDER 阶段 5 下沉到 type-meta（进度页「按题型统计」要用同一份顺序，不留第二份）
@@ -272,6 +274,23 @@ function Ready({ index }: { index: ProblemIndex }) {
   const activeFilterCount = [chapter, type, difficulty, status, query].filter((v) => v.length > 0).length
   const chapterName = chapters.find((c) => c.key === chapter)?.name ?? ''
 
+  /** 点进题目时 snapshot 导航上下文：筛选题集 + 当时排序，供详情页上一题/下一题还原同一序 */
+  const snapshotNav = useCallback(
+    (from: string) => {
+      writeNavContext({
+        chapter,
+        type,
+        difficulty,
+        status,
+        q: query,
+        sort: sortKey,
+        order: sorted.map((p) => p.id),
+        from,
+      })
+    },
+    [chapter, type, difficulty, status, query, sortKey, sorted],
+  )
+
   return (
     <>
       <section className="space-y-3 rounded-xl border p-4" style={panel}>
@@ -279,6 +298,7 @@ function Ready({ index }: { index: ProblemIndex }) {
           <span style={muted}>快速开始：</span>
           <Link to="/problems?pick=daily" data-role="pick-daily" className="rounded-lg border px-3 py-1.5" style={{ ...control, textDecoration: 'none' }}>📅 每日一题</Link>
           <button type="button" data-role="pick-random" onClick={doRandom} className="rounded-lg border px-3 py-1.5" style={control}>🎲 随机练习</button>
+          <ContinueLast />
           <span style={muted}>每日一题当天固定；随机练习每点一次换一道</span>
         </div>
         <div className="flex flex-wrap items-end gap-3">
@@ -466,7 +486,7 @@ function Ready({ index }: { index: ProblemIndex }) {
               </thead>
               <tbody>
                 {rows.map((p) => (
-                  <ProblemRow key={p.id} problem={p} status={statusOf(records[p.id])} />
+                  <ProblemRow key={p.id} problem={p} status={statusOf(records[p.id])} onOpen={snapshotNav} />
                 ))}
               </tbody>
             </table>
@@ -499,7 +519,7 @@ function Ready({ index }: { index: ProblemIndex }) {
   )
 }
 
-function ProblemRow({ problem, status }: { problem: ProblemIndexEntry; status: ListStatus }) {
+function ProblemRow({ problem, status, onOpen }: { problem: ProblemIndexEntry; status: ListStatus; onOpen: (id: string) => void }) {
   const meta = STATUS_META[status]
   const renderable = RENDERABLE_TYPES.has(problem.type)
   const to = `/problems/p/${problem.id}`
@@ -515,7 +535,7 @@ function ProblemRow({ problem, status }: { problem: ProblemIndexEntry; status: L
       style={{ borderColor: 'var(--border)' }}
     >
       <td className="px-3 py-2 whitespace-nowrap text-xs">
-        <Link to={to} title={problem.id} className="font-mono hover:underline" style={{ color: 'var(--fg-link)' }}>
+        <Link to={to} onClick={() => onOpen(problem.id)} title={problem.id} className="font-mono hover:underline" style={{ color: 'var(--fg-link)' }}>
           {shortId(problem.id)}
         </Link>
       </td>
@@ -537,7 +557,7 @@ function ProblemRow({ problem, status }: { problem: ProblemIndexEntry; status: L
         {difficultyStars(problem.difficulty)}
       </td>
       <td className="px-3 py-2">
-        <Link to={to} className="block max-w-[32rem] truncate hover:underline" style={{ color: 'var(--fg)' }} title={problem.title || problem.id}>
+        <Link to={to} onClick={() => onOpen(problem.id)} className="block max-w-[32rem] truncate hover:underline" style={{ color: 'var(--fg)' }} title={problem.title || problem.id}>
           {problem.title.length > 0 ? problem.title : '（索引里没有题干摘要）'}
         </Link>
       </td>

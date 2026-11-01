@@ -17,6 +17,9 @@ import { ComplexityRenderer } from '../modules/problems/renderers/ComplexityRend
 import { ShortAnswerRenderer } from '../modules/problems/renderers/ShortAnswerRenderer'
 import { MatchingRenderer } from '../modules/problems/renderers/MatchingRenderer'
 import { ProgressPanel } from '../modules/problems/progress/ProgressPanel'
+import { ReferenceAnswerPanel } from '../modules/problems/renderers/ReferenceAnswerPanel'
+import { Breadcrumb, ProblemNav } from '../modules/problems/ProblemNav'
+import { NextProblemCTA } from '../modules/problems/NextProblemCTA'
 import { difficultyStars, typeLabel } from '../modules/problems/type-meta'
 import { loadVizIndex, type VizIndexEntry } from '../modules/viz/data/loader'
 import { RelatedCardsForProblem } from '../modules/knowledge/links'
@@ -83,11 +86,13 @@ export function ProblemDetailPage() {
 
   return (
     <div className="space-y-4">
-      <nav className="text-xs" style={muted}>
-        <Link to="/problems" className="hover:underline">✍️ 在线刷题</Link>
-        <span className="px-1">/</span>
-        <span>{id || '（缺少题目 id）'}</span>
-      </nav>
+      {phase.kind !== 'ready' && (
+        <nav className="text-xs" style={muted}>
+          <Link to="/problems" className="hover:underline">✍️ 在线刷题</Link>
+          <span className="px-1">/</span>
+          <span>{id || '（缺少题目 id）'}</span>
+        </nav>
+      )}
 
       {phase.kind === 'loading' && (
         <p className="text-sm" style={muted}>正在从题库分片加载 {id} …</p>
@@ -127,6 +132,10 @@ function Ready({ data }: { data: LoadedProblem }) {
   const { entry, problem } = data
   return (
     <>
+      <Breadcrumb entry={entry} />
+
+      <ProblemNav id={problem.id} position="top" />
+
       <header className="rounded-xl border p-4" style={panel}>
         <div className="flex flex-wrap items-center gap-2 text-xs" style={muted}>
           <span className="rounded-full border px-2 py-0.5" style={{ borderColor: 'var(--border)' }}>
@@ -155,6 +164,8 @@ function Ready({ data }: { data: LoadedProblem }) {
 
       <PlaygroundLink problem={problem} />
 
+      <ReferenceAnswerPanel problem={problem} />
+
       <RelatedVizLinks vizIds={problem.vizIds} />
 
       {/* 阶段 10-1 反向通路：题目 → 知识卡片。题目侧没有 knowledgeIds（实测 518 题 0 条），
@@ -166,6 +177,10 @@ function Ready({ data }: { data: LoadedProblem }) {
       />
 
       <ProgressPanel problemId={problem.id} />
+
+      <NextProblemCTA id={problem.id} />
+
+      <ProblemNav id={problem.id} position="bottom" />
     </>
   )
 }

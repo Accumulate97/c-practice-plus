@@ -14,6 +14,7 @@
     "acceptance:list-ui": "node scripts/acceptance-list-ui.mjs",
     "acceptance:progress-ui": "node scripts/acceptance-progress-ui.mjs",
     "acceptance:site-ui": "node scripts/acceptance-site-ui.mjs",
+    "acceptance:refnav-ui": "node scripts/acceptance-refnav-ui.mjs",
     "acceptance:all": "node scripts/acceptance-all.mjs",
     "a11y:probe": "node scripts/a11y-probe.mjs",
     "spotcheck:20": "node scripts/spotcheck-20.mjs",
@@ -46,6 +47,7 @@
     "typecheck": "tsc -b --pretty false",
     "verify:data": "node scripts/verify-data.ts",
     "verify:pages": "node scripts/verify-pages-dist.mjs",
+    "verify:answers": "node scripts/verify-answers.ts",
     "build:search": "node scripts/build-search-index.mjs",
     "verify:spec": "node scripts/verify-spec.ts"
   },
