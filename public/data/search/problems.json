@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "8ed64e28e5c8b5a1",
+  "content_sha": "9be88caadad3e11c",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 2107,
+  "count": 2357,
   "docs": [
     {
       "id": "c-ch01-sc-001",
@@ -7183,6 +7183,3396 @@
       "chapter": "第5章 循环结构",
       "section": "5.6 while 语句",
       "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-101",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-102",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "条件判断"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-103",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "步长"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-104",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-105",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "do-while循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-106",
+      "file": "c-ch05.json",
+      "title": "先输入整数个数 n",
+      "tags": [
+        "while循环",
+        "平均数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-107",
+      "file": "c-ch05.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "while循环",
+        "最大值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-108",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "while循环",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-109",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "数位",
+        "逆序"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-110",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-111",
+      "file": "c-ch05.json",
+      "title": "输入一个三位数",
+      "tags": [
+        "while循环",
+        "数位",
+        "水仙花数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-112",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "回文"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-113",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-114",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "平方和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-115",
+      "file": "c-ch05.json",
+      "title": "输入首项 a、公差 d 和项数 n",
+      "tags": [
+        "for循环",
+        "等差数列"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-501",
+      "file": "c-ch05.json",
+      "title": "输入底数 x 和指数 n",
+      "tags": [
+        "for循环",
+        "幂运算"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-502",
+      "file": "c-ch05.json",
+      "title": "输入首项 a、公比 q 和项数 n",
+      "tags": [
+        "for循环",
+        "等比数列"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-503",
+      "file": "c-ch05.json",
+      "title": "输入整数 n 和数字 d",
+      "tags": [
+        "while循环",
+        "数位统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-504",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "完数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-505",
+      "file": "c-ch05.json",
+      "title": "输入项数 n",
+      "tags": [
+        "for循环",
+        "数字数列"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-506",
+      "file": "c-ch05.json",
+      "title": "输入 n",
+      "tags": [
+        "for循环",
+        "分数序列"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-507",
+      "file": "c-ch05.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "for循环",
+        "统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-508",
+      "file": "c-ch05.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "for循环",
+        "累乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-509",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "嵌套循环",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-510",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "最大公约数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-511",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "最小公倍数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-512",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "进制转换"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-513",
+      "file": "c-ch05.json",
+      "title": "斐波那契数列前两项为 1、1",
+      "tags": [
+        "for循环",
+        "斐波那契"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-514",
+      "file": "c-ch05.json",
+      "title": "输入 n",
+      "tags": [
+        "for循环",
+        "阶乘和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-515",
+      "file": "c-ch05.json",
+      "title": "计算 1 - 1/2 + 1/3 - 1/4 + … 前 n 项的值",
+      "tags": [
+        "for循环",
+        "交错级数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-516",
+      "file": "c-ch05.json",
+      "title": "不断输入整数并累加",
+      "tags": [
+        "while循环",
+        "提前终止"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-517",
+      "file": "c-ch05.json",
+      "title": "输入 n 个整数",
+      "tags": [
+        "for循环",
+        "continue"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-518",
+      "file": "c-ch05.json",
+      "title": "输入非负整数 n",
+      "tags": [
+        "for循环",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-519",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "倍数和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-520",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "约数/倍数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-201",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "素数",
+        "break"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-202",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-203",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "素数",
+        "计数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-204",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "素数",
+        "break"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-205",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 m、n",
+      "tags": [
+        "嵌套循环",
+        "素数",
+        "continue"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-206",
+      "file": "c-ch05.json",
+      "title": "输入一个大于 1 的整数 n",
+      "tags": [
+        "for循环",
+        "质因数",
+        "while"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-207",
+      "file": "c-ch05.json",
+      "title": "斐波那契数列前两项为 1、1",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "递推"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-208",
+      "file": "c-ch05.json",
+      "title": "求斐波那契数列前 n 项之和",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-209",
+      "file": "c-ch05.json",
+      "title": "输入 n",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "格式"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-210",
+      "file": "c-ch05.json",
+      "title": "求斐波那契数列前 n 项中所有值为偶数的项之和",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-211",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "最大公约数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-212",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "最小公倍数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-213",
+      "file": "c-ch05.json",
+      "title": "输入三个正整数 a、b、c",
+      "tags": [
+        "while循环",
+        "最大公约数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-214",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "while循环",
+        "进制转换"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-215",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "while循环",
+        "进制转换"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-216",
+      "file": "c-ch05.json",
+      "title": "输入一个二进制数",
+      "tags": [
+        "for循环",
+        "进制转换",
+        "字符串"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-217",
+      "file": "c-ch05.json",
+      "title": "输入一个八进制数",
+      "tags": [
+        "for循环",
+        "进制转换",
+        "字符串"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-218",
+      "file": "c-ch05.json",
+      "title": "输入项数 n",
+      "tags": [
+        "for循环",
+        "交错级数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-219",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "阶乘",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-220",
+      "file": "c-ch05.json",
+      "title": "利用莱布尼茨级数 π=4×",
+      "tags": [
+        "for循环",
+        "交错级数",
+        "π"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-221",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "阶乘",
+        "浮点数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-222",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "阶乘",
+        "交错"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-223",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "级数求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-224",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "级数求和",
+        "浮点数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-225",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "级数求和",
+        "累积"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-301",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "直角三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-302",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "直角三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-303",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "直角三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-304",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "直角三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-305",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "等腰三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-306",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "倒等腰三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-307",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "乘法表",
+        "下三角"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-308",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 m、n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "空心矩形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-309",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "菱形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-310",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "沙漏"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-311",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "字母图案",
+        "字母金字塔"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-312",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "数字图案",
+        "数字三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-313",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "数字图案",
+        "数字金字塔"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-314",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "空心菱形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-315",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案",
+        "平行四边形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-316",
+      "file": "c-ch05.json",
+      "title": "输入一个 m 行 n 列矩阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "转置"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-317",
+      "file": "c-ch05.json",
+      "title": "输入两个 m 行 n 列的矩阵 A 和 B",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "加法"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-318",
+      "file": "c-ch05.json",
+      "title": "输入一个 m 行 p 列的矩阵 A 和一个 p 行 n 列的矩阵 B",
+      "tags": [
+        "嵌套循环",
+        "矩阵乘法",
+        "三重循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-319",
+      "file": "c-ch05.json",
+      "title": "输入一个 n 阶方阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "对角线"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-320",
+      "file": "c-ch05.json",
+      "title": "输入一个 n 阶方阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "副对角线"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-321",
+      "file": "c-ch05.json",
+      "title": "输入一个 m 行 n 列的矩阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "最大值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-322",
+      "file": "c-ch05.json",
+      "title": "输入一个 m 行 n 列的矩阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "行求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-323",
+      "file": "c-ch05.json",
+      "title": "输入一个 m 行 n 列的矩阵",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "鞍点"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-324",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "蛇形矩阵"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-325",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "矩阵",
+        "杨辉三角"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-401",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "break",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-402",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "break",
+        "素数",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-403",
+      "file": "c-ch05.json",
+      "title": "先输入整数个数 n",
+      "tags": [
+        "break",
+        "while循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-404",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "break",
+        "素数",
+        "嵌套循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-405",
+      "file": "c-ch05.json",
+      "title": "依次输入若干整数",
+      "tags": [
+        "break",
+        "while循环",
+        "哨兵"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-406",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "continue",
+        "for循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-407",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "continue",
+        "for循环",
+        "统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-408",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "continue",
+        "for循环",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-409",
+      "file": "c-ch05.json",
+      "title": "先输入整数个数 n",
+      "tags": [
+        "continue",
+        "for循环",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-410",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "continue",
+        "for循环",
+        "平方和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-411",
+      "file": "c-ch05.json",
+      "title": "先输入整数个数 n",
+      "tags": [
+        "统计",
+        "for循环",
+        "条件分支"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-412",
+      "file": "c-ch05.json",
+      "title": "先输入学生人数 n",
+      "tags": [
+        "统计",
+        "for循环",
+        "分段"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-413",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n 和一个数字 d",
+      "tags": [
+        "统计",
+        "while循环",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-414",
+      "file": "c-ch05.json",
+      "title": "先输入整数个数 n",
+      "tags": [
+        "统计",
+        "for循环",
+        "奇偶"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-415",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "统计",
+        "for循环",
+        "数位",
+        "多重条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-416",
+      "file": "c-ch05.json",
+      "title": "不断读取整数",
+      "tags": [
+        "while循环",
+        "EOF",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-417",
+      "file": "c-ch05.json",
+      "title": "不断读取整数",
+      "tags": [
+        "while循环",
+        "EOF",
+        "统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-418",
+      "file": "c-ch05.json",
+      "title": "依次读取若干整数",
+      "tags": [
+        "while循环",
+        "哨兵",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-419",
+      "file": "c-ch05.json",
+      "title": "不断读取整数",
+      "tags": [
+        "while循环",
+        "EOF",
+        "奇偶"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-420",
+      "file": "c-ch05.json",
+      "title": "依次读取若干整数",
+      "tags": [
+        "while循环",
+        "哨兵",
+        "统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-421",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "完数",
+        "多重条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-422",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "for循环",
+        "数位",
+        "多重条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-423",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "while循环",
+        "数位",
+        "比较"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-424",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 m",
+      "tags": [
+        "break",
+        "for循环",
+        "多重条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-alg-425",
+      "file": "c-ch05.json",
+      "title": "输入两个整数 a、b",
+      "tags": [
+        "for循环",
+        "水仙花数",
+        "多重条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "algorithm_impl",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-501",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "for循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-502",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "for循环",
+        "逆序输出"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-503",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-504",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "do-while循环",
+        "计数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-505",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "嵌套循环",
+        "打印图形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-506",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "break",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-507",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "continue",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-508",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "数字处理"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-509",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "数字处理"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-510",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "数字处理"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-511",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "for循环",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-512",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "嵌套循环",
+        "乘法表"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-513",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "for循环",
+        "复合表达式"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-514",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-515",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "嵌套循环",
+        "break"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-516",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "嵌套循环",
+        "continue"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-517",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "for循环",
+        "步长控制"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-518",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "while循环",
+        "字符处理"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-519",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "do-while循环",
+        "哨兵值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-520",
+      "file": "c-ch05.json",
+      "title": "阅读以下程序",
+      "tags": [
+        "嵌套循环",
+        "打印图形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-601",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数字反转",
+        "do-while",
+        "取余整除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-602",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数位统计",
+        "while",
+        "整除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-603",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "do-while",
+        "至少执行一次",
+        "循环边界"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-604",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "break",
+        "嵌套循环",
+        "只退出内层"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-605",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "continue",
+        "跳过偶数",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-606",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "嵌套循环",
+        "数字三角形",
+        "换行"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-607",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "嵌套循环",
+        "数字金字塔",
+        "空格控制"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-608",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数位统计",
+        "偶数判断",
+        "while"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-609",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "do-while",
+        "累加",
+        "哨兵0"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-610",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "break",
+        "continue",
+        "复合语句"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-611",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "嵌套循环",
+        "乘法表",
+        "下三角"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-612",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "约数统计",
+        "for循环",
+        "取余"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-613",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数位累加",
+        "while",
+        "取余整除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-614",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "continue",
+        "倍数计数",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-615",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "嵌套循环",
+        "自然数累加",
+        "宽度输出"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-616",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "循环边界",
+        "循环次数",
+        "整除递减"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-617",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "嵌套循环",
+        "星号三角形",
+        "空格控制"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-618",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "do-while",
+        "break",
+        "continue"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-619",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "数位乘积",
+        "while",
+        "取余整除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-620",
+      "file": "c-ch05.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "do-while",
+        "奇数和",
+        "循环边界"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-701",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "数字三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-702",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "倒三角形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-703",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "乘法表"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-704",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "计数递增"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-705",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "while",
+        "复合条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-706",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "do-while",
+        "先执行后判断"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-707",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "for",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-708",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-709",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "while",
+        "数位"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-710",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "空格对齐"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-711",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "for",
+        "continue"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-712",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "行累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-713",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "do-while",
+        "哨兵"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-714",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "for",
+        "复合条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-715",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "对角线判断"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-716",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "while",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-717",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "行号重复"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-718",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "倒序"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-719",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "for",
+        "正负交替"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cr-720",
+      "file": "c-ch05.json",
+      "title": "阅读下列程序",
+      "tags": [
+        "嵌套for",
+        "乘积"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_reading",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-801",
+      "file": "c-ch05.json",
+      "title": "读入一个正整数 n",
+      "tags": [
+        "for循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-802",
+      "file": "c-ch05.json",
+      "title": "读入一个整数 n",
+      "tags": [
+        "while循环",
+        "数字拆分"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-803",
+      "file": "c-ch05.json",
+      "title": "读入一个整数 n",
+      "tags": [
+        "do-while循环",
+        "位数统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-804",
+      "file": "c-ch05.json",
+      "title": "读入一个正整数 n",
+      "tags": [
+        "while循环",
+        "数字反转"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-805",
+      "file": "c-ch05.json",
+      "title": "读入一个整数 n",
+      "tags": [
+        "素数",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-806",
+      "file": "c-ch05.json",
+      "title": "读入项数 n",
+      "tags": [
+        "for循环",
+        "斐波那契"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-807",
+      "file": "c-ch05.json",
+      "title": "读入两个整数 a、b",
+      "tags": [
+        "while循环",
+        "最大公约数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-808",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "阶乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-809",
+      "file": "c-ch05.json",
+      "title": "读入行数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-810",
+      "file": "c-ch05.json",
+      "title": "读入行数 n",
+      "tags": [
+        "嵌套循环",
+        "乘法口诀"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-811",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "浮点累加"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-812",
+      "file": "c-ch05.json",
+      "title": "先读入个数 n",
+      "tags": [
+        "for循环",
+        "求最值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-813",
+      "file": "c-ch05.json",
+      "title": "读入整数 n 和数字 d",
+      "tags": [
+        "while循环",
+        "数字统计"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-814",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "while循环",
+        "回文数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-815",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "因子"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-816",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "continue语句"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-817",
+      "file": "c-ch05.json",
+      "title": "连续读入整数",
+      "tags": [
+        "while循环",
+        "结束标志"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-818",
+      "file": "c-ch05.json",
+      "title": "读入两个整数",
+      "tags": [
+        "while循环",
+        "最小公倍数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-819",
+      "file": "c-ch05.json",
+      "title": "读入行数 n",
+      "tags": [
+        "嵌套循环",
+        "数字图形"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-820",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "嵌套循环",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-901",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-902",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "连乘"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-903",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "计数器"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-904",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-905",
+      "file": "c-ch05.json",
+      "title": "第一行输入整数个数 n",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "求最值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-906",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "循环嵌套",
+        "图形打印"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-907",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "循环嵌套",
+        "图形打印"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-908",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "循环嵌套",
+        "乘法表"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-909",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "循环嵌套",
+        "图形打印"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-910",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "循环嵌套",
+        "图形打印"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-911",
+      "file": "c-ch05.json",
+      "title": "输入一个大于等于 2 的整数 n",
+      "tags": [
+        "循环结构",
+        "break语句",
+        "素数判定"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-912",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "continue语句",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-913",
+      "file": "c-ch05.json",
+      "title": "第一行输入整数个数 n",
+      "tags": [
+        "循环结构",
+        "break语句",
+        "查找"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-914",
+      "file": "c-ch05.json",
+      "title": "第一行输入整数个数 n",
+      "tags": [
+        "循环结构",
+        "continue语句",
+        "计数器"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-915",
+      "file": "c-ch05.json",
+      "title": "不断输入整数并累加求和",
+      "tags": [
+        "循环结构",
+        "break语句",
+        "while语句"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-916",
+      "file": "c-ch05.json",
+      "title": "不断读入整数",
+      "tags": [
+        "循环结构",
+        "while语句",
+        "输入哨兵值"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-917",
+      "file": "c-ch05.json",
+      "title": "斐波那契数列前两项都是 1",
+      "tags": [
+        "循环结构",
+        "for语句",
+        "递推"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-918",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "循环结构",
+        "while语句",
+        "数字位运算"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-919",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "循环结构",
+        "while语句",
+        "算法"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-cc-920",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "循环结构",
+        "do-while语句",
+        "计数器"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "code_completion",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-101",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "循环边界",
+        "累加器初始化"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-102",
+      "file": "c-ch05.json",
+      "title": "输入非负整数 n",
+      "tags": [
+        "for循环",
+        "阶乘",
+        "累乘器初始化"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-103",
+      "file": "c-ch05.json",
+      "title": "输入非负整数 n",
+      "tags": [
+        "do...while",
+        "数字拆分",
+        "取余与整除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-104",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "变量交换"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-105",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "for循环",
+        "素数判定",
+        "条件取反"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-106",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a、b",
+      "tags": [
+        "while循环",
+        "辗转相除",
+        "取余运算"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-107",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "while循环",
+        "位数统计",
+        "循环条件"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-108",
+      "file": "c-ch05.json",
+      "title": "输入整数 n 及随后 n 个整数",
+      "tags": [
+        "for循环",
+        "scanf取地址",
+        "奇偶判断"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-109",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "缺花括号",
+        "循环体"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-110",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "continue",
+        "break",
+        "循环控制"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-111",
+      "file": "c-ch05.json",
+      "title": "输入整数 n 及随后 n 个整数",
+      "tags": [
+        "赋值号",
+        "等号",
+        "for循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-112",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "整数除法",
+        "浮点运算"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-113",
+      "file": "c-ch05.json",
+      "title": "输入一个非负整数 n",
+      "tags": [
+        "while循环",
+        "数字反转",
+        "累乘10"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-114",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "循环嵌套",
+        "循环变量",
+        "循环边界"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-115",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "步长",
+        "循环边界"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-201",
+      "file": "c-ch05.json",
+      "title": "输入正整数 n",
+      "tags": [
+        "for循环",
+        "循环边界",
+        "累加器"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-202",
+      "file": "c-ch05.json",
+      "title": "先输入整数 n",
+      "tags": [
+        "while循环",
+        "累加",
+        "求平均"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-203",
+      "file": "c-ch05.json",
+      "title": "输入若干整数",
+      "tags": [
+        "do-while循环",
+        "计数",
+        "分支"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-204",
+      "file": "c-ch05.json",
+      "title": "输入非负整数 n",
+      "tags": [
+        "for循环",
+        "累乘",
+        "溢出"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-205",
+      "file": "c-ch05.json",
+      "title": "输入整数 a 和 n",
+      "tags": [
+        "for循环",
+        "幂运算",
+        "溢出"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-206",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a 和 b",
+      "tags": [
+        "while循环",
+        "辗转相除",
+        "最大公约数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-207",
+      "file": "c-ch05.json",
+      "title": "输入两个正整数 a 和 b",
+      "tags": [
+        "while循环",
+        "最小公倍数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-208",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "while循环",
+        "数字反转",
+        "回文数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-209",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "嵌套循环",
+        "素数",
+        "数据类型判断"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-210",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "嵌套循环",
+        "累乘",
+        "数列求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-211",
+      "file": "c-ch05.json",
+      "title": "输入一行字符",
+      "tags": [
+        "getchar",
+        "字符统计",
+        "逻辑运算符"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-212",
+      "file": "c-ch05.json",
+      "title": "输入行数 n",
+      "tags": [
+        "嵌套循环",
+        "星号图案"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-213",
+      "file": "c-ch05.json",
+      "title": "输入若干行",
+      "tags": [
+        "while循环",
+        "EOF",
+        "多组数据"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-214",
+      "file": "c-ch05.json",
+      "title": "输入整数 n",
+      "tags": [
+        "for循环",
+        "分数累加",
+        "整数除法"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mdb-215",
+      "file": "c-ch05.json",
+      "title": "输入一个正整数 n",
+      "tags": [
+        "嵌套循环",
+        "质因数",
+        "while循环"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_bug_debug",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-101",
+      "file": "c-ch05.json",
+      "title": "读入正整数 n",
+      "tags": [
+        "for循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-102",
+      "file": "c-ch05.json",
+      "title": "读入正整数 n",
+      "tags": [
+        "while循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-103",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "do-while循环",
+        "累加求和"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-104",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "阶乘",
+        "自增"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-105",
+      "file": "c-ch05.json",
+      "title": "读入整数 n",
+      "tags": [
+        "for循环",
+        "条件分支",
+        "计数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.8 循环程序举例",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-106",
+      "file": "c-ch05.json",
+      "title": "读入一个整数 n",
+      "tags": [
+        "do-while循环",
+        "数字拆分"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.3 用 do...while 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-107",
+      "file": "c-ch05.json",
+      "title": "读入正整数 n",
+      "tags": [
+        "for循环",
+        "break",
+        "素数"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.7 改变循环执行的状态",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-108",
+      "file": "c-ch05.json",
+      "title": "读入两个整数 m、n",
+      "tags": [
+        "while循环",
+        "辗转相除"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.2 用 while 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-109",
+      "file": "c-ch05.json",
+      "title": "读入正整数 n",
+      "tags": [
+        "for循环",
+        "斐波那契",
+        "递推"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.4 用 for 语句实现循环",
+      "type": "multi_blank",
+      "category": "c"
+    },
+    {
+      "id": "c-ch05-mb-110",
+      "file": "c-ch05.json",
+      "title": "读入正整数 n",
+      "tags": [
+        "循环嵌套",
+        "乘法表"
+      ],
+      "chapter": "第5章 循环结构",
+      "section": "5.5 循环的嵌套",
+      "type": "multi_blank",
       "category": "c"
     },
     {
