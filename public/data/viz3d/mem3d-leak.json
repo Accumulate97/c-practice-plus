@@ -6,9 +6,9 @@
   "category": "memory",
   "chapter": "第9章 指针",
   "relatedProblems": [
-    "c-ch09-pg-009",
     "c-ch09-fb-033",
-    "c-ch09-dbg-017"
+    "c-ch09-pg-009",
+    "c-ch09-alg-197"
   ],
   "code": "#include <stdlib.h>\n\nint main(void) {\n    for (int i = 0; i < 4; i++) {\n        int *p = malloc(sizeof(int) * 4);  /* 每轮申请 16 字节 */\n        p[0] = i;                          /* 用完之后...... */\n    }                                      /* p 出了作用域，从未 free */\n    /* 四块堆内存的入口永久丢失：内存泄漏 */\n    return 0;\n}\n",
   "meta": {

@@ -2,1161 +2,8 @@
   "category": "c",
   "chapter": "第3章 最简单的C程序设计",
   "generated_at": "2026-09-08",
-  "count": 55,
+  "count": 115,
   "problems": [
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.1（PDF p20 / 书页 p9）",
-      "difficulty": 3,
-      "stem": "以下程序的运行结果是______。\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n\n```c\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n```",
-      "explanation": "**答案 A（输出 `5,9`）**。`m++` 是后缀自增，「先用后加」：作为 `printf` 的实参时传入的是**旧值 5**，m 自身在语句结束后才变 6；`--n` 是前缀自减，「先减后用」：n 先变成 9，传入的就是 9。所以输出 `5,9`。补充：C 中函数实参的求值顺序是**未指定**的，但这里两个自增作用于不同变量、互不影响，所以结果确定。易错点：若写成 `++m` 就会输出 `6,9`；同一个变量在一次调用里既自增又被使用才是未定义行为。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 5,9",
-        "B) 6,9",
-        "C) 5,10",
-        "D) 6,10"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-001",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.2（PDF p20 / 书页 p9）",
-      "difficulty": 3,
-      "stem": "设有以下程序：\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n```",
-      "explanation": "**答案 B（输出 `201,10`）**。`a=201` 是十进制常量，值 201；`b=012` 以 `0` 开头是**八进制**常量，值为 1×8+2 = 10。`%2d` 中的 2 是**最小字段宽度**：数据位数不足 2 位时用空格补齐（默认右对齐），超过 2 位则**原样输出、不截断**。所以 a 输出 3 位的 `201`，b 输出 2 位的 `10`，中间是格式串里的逗号，结果 `201,10`。易错点：宽度不会截断数据；`%d` 输出的永远是十进制，与常量书写时的进制无关。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 01,12",
-        "B) 201,10",
-        "C) 01,10",
-        "D) 20,01"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-002",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.3（PDF p20 / 书页 p9）",
-      "difficulty": 2,
-      "stem": "有定义语句int a,b;，若要通过语句scanf(\"%d,%d\",&a,&b);使变量a得到数值6，变量b得到数值5，下面输入形式中错误的是______。（注：□代表空格）",
-      "explanation": "**答案 C（`6 5<回车>` 是错误的输入形式）**。格式串 `\"%d,%d\"` 中的逗号是**普通字符**，`scanf` 会要求输入流在同一位置出现一个完全相同的逗号，匹配不上就终止读取。A 项 `6,5` 完全对应；B 项 `6,  5` 中 `%d` 在读取前会自动跳过前导空白（空格、制表、换行），逗号后的空格被吃掉，仍能读到 5；D 项 `6,` 换行后 `5` 同理，换行也是空白字符。只有 C 项用空格代替了逗号，`scanf` 找不到逗号，第二个 `%d` 无法匹配，b 得不到 5。易错点：`%d` 跳空白，但格式串里的普通字符必须逐字符精确匹配。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 6,5<回车>",
-        "B) 6,□□5<回车>",
-        "C) 6 5<回车>",
-        "D) 6,<回车>\n5<回车>"
-      ],
-      "answer": 2,
-      "id": "c-ch03-sc-003",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.4（PDF p20 / 书页 p9）",
-      "difficulty": 3,
-      "stem": "设有如下程序：\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n则以下叙述中正确的是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n```",
-      "explanation": "**答案 B（输出小写字母 `a`）**。`(ch1,ch2)` 是一个用括号括起的**逗号表达式**：先求 `ch1`（值被丢弃），再求 `ch2`，整个表达式的值取**最右**一项，即 `'a'`。因此 `printf` 只有一个实参 `'a'`，与格式串里唯一的 `%c` 正好对应，程序能正常编译运行，输出 `a`。易错点：不要以为「两个变量、一个格式符」会导致编译出错（D）——括号把它们合并成了一个表达式；逗号表达式的口诀是「先左后右，值取最右」。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 程序的输出结果为大写字母 A",
-        "B) 程序的输出结果为小写字母 a",
-        "C) 运行时产生错误信息",
-        "D) 格式说明符的个数少于输出项的个数，编译出错"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-004",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.5（PDF p21 / 书页 p10）",
-      "difficulty": 3,
-      "stem": "【题 3.5】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x1=0xabc,x2=0xdef;\n  x2-=x1;\n  printf(\"%X\\n\",x2);\n  return 0\n}\n```",
-      "explanation": "**答案 D（输出 `333`）**。`x1=0xabc`、`x2=0xdef` 都是十六进制常量，参与运算时就是普通整数：`x2 -= x1` 即 `0xdef - 0xabc`，逐位相减（e-a=4、d-b=2、f-c=3）得 `0x333`。`%X` 按**十六进制**输出且字母用**大写**，但 `0x` 前缀不会打印，所以结果是 `333`。易错点：`%X` 只改变显示方式，不改变数值；要显示前缀得加 `#` 标志写成 `%#X`（会输出 `0X333`）。另外原题代码 `return 0` 后漏了分号，实际编译会报错，但不影响对输出值的判断。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) ABC",
-        "B) 0Xabc",
-        "C) 0X333",
-        "D) 333"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-005",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.6（PDF p21 / 书页 p10）",
-      "difficulty": 3,
-      "stem": "【题 3.6】以下程序的输出结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ printf(\"\\n * s1=%15s *\",\"chinabeijing\");\n  printf(\"\\n * s2=%-5s *\",\"chi\");\n  return 0;\n}\n```",
-      "explanation": "**答案 D**。`%15s` 表示字符串右对齐、最小宽度 15：`\"chinabeijing\"` 长 12 个字符，前面补 3 个空格，输出 ` * s1=□□□chinabeijing *`。`%-5s` 中的 `-` 标志表示**左对齐**：`\"chi\"` 长 3，后面补 2 个空格，输出 ` * s2=chi□□ *`。易错点：`-` 是对齐标志而非负号，`%-5s` 与 `%5s` 宽度相同、方向相反；字符串长度超过宽度时同样不截断。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) * s1=chinabeijing□□□ *\n * s2= ** chi *",
-        "B) * s1=chinabeijing□□□ *\n * s2=chi□□ *",
-        "C) * s1= * □□chinabeijing *\n * s2=□□chi *",
-        "D) * s1=□□□chinabeijing *\n * s2=chi□□ *"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-006",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.7（PDF p21 / 书页 p10）",
-      "difficulty": 2,
-      "stem": "【题 3.7】已有定义int a=-2;和输出语句：printf(\"%8lx\",a);以下正确的叙述是______。",
-      "explanation": "**答案 D**。格式说明符的完整结构是 `%[标志][宽度][.精度][长度修饰]类型字符`。`%8lx` 中：`8` 是输出字段宽度，`l` 是长度修饰符（表示 `long`），`x` 是类型字符（无符号十六进制、小写字母），完全合法，所以 D 的叙述正确。A 错，整型还有 `%o`、`%x`、`%u`、`%ld` 等；B 错，`%x` 只能用于整型，对浮点数用 `%x` 是错的；C 错，`%8lx` 语法上成立。补充：本题 `a` 是 `int` 而格式用了 `l`，实参类型与 `unsigned long` 不匹配，严格讲是未定义行为，但题目考的是格式符本身的结构。易错点：宽度写在类型字符之前，精度才用 `.` 引出。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 整型变量的输出格式符只有%d一种",
-        "B) %x是格式符的一种，它可以适用于任何一种类型的数据",
-        "C) %x是格式符的一种，其变量的值按十六进制输出，但%8lx是错误的",
-        "D) %8lx不是错误的格式符，其中数字8规定了输出字段的宽度"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-007",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.8（PDF p21 / 书页 p10）",
-      "difficulty": 3,
-      "stem": "【题 3.8】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=-43456;\n  printf(\"y=%-8ld\\n\",y);\n  printf(\"y=%-08ld\\n\",y);\n  printf(\"y=%08ld\\n\",y);\n  printf(\"y=%+8ld\\n\",y);\n  return 0;\n}\n```",
-      "explanation": "**答案 C**。逐条分析（y = -43456，共 6 个字符）：①`%-8ld` 左对齐、宽度 8 → `-43456` 后补 2 个空格，行尾空格看不见，显示 `y=-43456`；②`%-08ld` 同时给了 `-` 和 `0` 两个标志，标准规定此时 `0` 被**忽略**，效果与 `%-8ld` 相同，仍是 `y=-43456`；③`%08ld` 右对齐、用 `0` 填充到 8 位 → 符号占一位、数字补两个 0，得 `-0043456`；④`%+8ld` 中 `+` 要求正数也带符号，但 y 本身是负数已有 `-`，故只按宽度 8 右对齐补空格，得 `□□-43456`。易错点：`-` 与 `0` 冲突时 `-` 胜出；`+` 不会把负号变成两个符号。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) y=□□-43456\ny=-□□43456\ny=-0043456\ny=-43456",
-        "B) y=-43456\ny=-43456\ny=-0043456\ny=+□-43456",
-        "C) y=-43456\ny=-43456\ny=-0043456\ny=□□-43456",
-        "D) y=□□-43456\ny=-0043456\ny=00043456\ny=+43456"
-      ],
-      "answer": 2,
-      "id": "c-ch03-sc-008",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.9（PDF p22 / 书页 p11）",
-      "difficulty": 3,
-      "stem": "【题 3.9】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ int y=2456;\n  printf(\"y=%3o\\n\",y);\n  printf(\"y=%8o\\n\",y);\n  printf(\"y=%#8o\\n\",y);\n  return 0;\n}\n```",
-      "explanation": "**答案 D**。先把 2456 换成八进制：2456 = 4×512 + 6×64 + 3×8 + 0 = `4630`（八进制）。①`%3o`：数据 4 位已超过宽度 3，**原样输出**，得 `y=4630`；②`%8o`：右对齐补空格到 8 位，得 `y=□□□□4630`；③`%#8o`：`#` 标志要求为八进制加上前导 `0`，变成 `04630` 共 5 个字符，**前缀计入宽度**，再补 3 个空格，得 `y=□□□04630`。易错点：`#` 对不同进制的效果不同——八进制加 `0`、十六进制加 `0x`、浮点数则强制带小数点；宽度不足时一律不截断。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) y=□□□2456\ny=□□□□□□□□2456\ny=########2456",
-        "B) y=□□□4630\ny=□□□□□□□□4630\ny=########4630",
-        "C) y=2456\ny=□□□□2456\ny=□□□02456",
-        "D) y=4630\ny=□□□□4630\ny=□□□04630"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-009",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.10（PDF p22 / 书页 p11）",
-      "difficulty": 3,
-      "stem": "【题 3.10】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=23456;\n  printf(\"y=%3x\\n\",y);\n  printf(\"y=%8x\\n\",y);\n  printf(\"y=%#8x\\n\",y);\n  return 0;\n}\n```",
-      "explanation": "**答案 A**。23456 的十六进制是 `5ba0`（5×4096 + 11×256 + 10×16 = 23456）。①`%3x`：4 位超过宽度 3，原样输出小写 `5ba0`；②`%8x`：右对齐补 4 个空格，得 `□□□□5ba0`；③`%#8x`：`#` 为十六进制加上 `0x` 前缀，前缀计入宽度，`0x5ba0` 共 6 字符，再补 2 个空格，得 `□□0x5ba0`。易错点：`%x` 输出小写字母 a~f，`%X` 输出大写；`#` 加的前缀会占用宽度名额，这与八进制的 `%#o` 同理。另外 `long` 型用 `%x` 严格讲应写 `%lx`，本题只考格式效果。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) y=5ba0\ny=□□□□5ba0\ny=□□0x5ba0",
-        "B) y=□□□5ba0\ny=□□□□□□□5ba0\ny=□□0x5ba0",
-        "C) y=5ba0\ny=5ba0\ny=0x5ba0",
-        "D) y=5ba0\ny=□□□□5ba0\ny=####5ba0"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-010",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.11（PDF p23 / 书页 p12）",
-      "difficulty": 2,
-      "stem": "【题 3.11】若x,y均定义为int型，z定义为double型，以下不合法的scanf函数调用语句是______。",
-      "explanation": "**答案 D**。`scanf` 的格式说明符**不允许指定精度**：`%6.2f` 中的 `.2` 是非法的（精度只对 `printf` 有意义，因为输入时小数位数由数据本身决定），所以 D 不合法。A 项 `%d%lx,%le` 结构合法（`,` 是普通字符，`%le` 对应 `double`）；B 项 `%2d*%d%lf` 中的 `*` 是格式串里的普通字符，要求输入中出现一个星号，宽度 `2` 也合法；C 项 `%x%*d%o` 中的 `%*d` 是**赋值抑制符**，读入但丢弃、不需要对应实参，所以只给 `&x,&y` 两个参数是正确的。补充：A 项用 `%lx` 读入 `int` 型变量属类型不匹配（UB），但题目考的是格式串本身是否合法。易错点：`scanf` 里的 `*` 有两种身份——写在 `%` 之后是抑制赋值，写在别处是普通字符。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) scanf(\"%d%lx,%le\",&x,&y,&z);",
-        "B) scanf(\"%2d*%d%lf\",&x,&y,&z);",
-        "C) scanf(\"%x%*d%o\",&x,&y);",
-        "D) scanf(\"%x%o%6.2f\",&x,&y,&z);"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-011",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.12（PDF p23 / 书页 p12）",
-      "difficulty": 3,
-      "stem": "【题 3.12】已有如下定义和输入语句，若要求a1,a2,c1,c2的值分别为10、20、A和B，当从第一列开始输入数据时，正确的数据输入方式是______。（注：□表示空格）\n\n```c\nint a1,a2; char c1,c2;\nscanf(\"%d%c%d%c\",&a1,&c1,&a2,&c2);\n```",
-      "explanation": "**答案 A（`10A□20B<回车>`）**。格式串 `%d%c%d%c` 中没有任何普通字符，所以输入必须严丝合缝：第一个 `%d` 读 `10`（遇非数字停止）；紧接的 `%c` **不跳过空白**，读走紧跟的 `A`；第二个 `%d` 会跳过前导空格再读 `20`；最后一个 `%c` 读紧跟的 `B`。于是 `10A□20B` 恰好满足。B 项 `10□A□20□B` 中第一个 `%c` 会读到空格，c1 变成 `' '`；D 项 `10A20□B` 中最后的 `%c` 读到空格，c2 变成 `' '`。补充：本题选项 A 与 C 文本相同（原题排版重复），按给定答案取 A。易错点：`%c` 是唯一不自动跳过空白的常用转换符，这是所有「混合输入」题目的关键陷阱。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 10A□20B<回车>",
-        "B) 10□A□20□B<回车>",
-        "C) 10A□20B<回车>",
-        "D) 10A20□B<回车>"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-012",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.14（PDF p23 / 书页 p12）",
-      "difficulty": 2,
-      "stem": "【题 3.14】根据以下定义语句和数据的输入方式，scanf语句的正确形式应为______。\n已有定义：float f1,f2;\n数据的输入方式：4.52<回车>\n　　　　　　　3.5<回车>",
-      "explanation": "**答案 B（`scanf(\"%f%f\",&f1,&f2);`）**。输入形式是两行 `4.52` 与 `3.5`，中间只有换行（空白字符）。`%f` 在读取前会自动跳过前导空白，包括换行，所以两个 `%f` 连着写就能依次读入两个浮点数，格式串里不需要也不应该加任何分隔字符。A 项 `%f,%f` 要求输入中出现逗号，而实际输入没有；C、D 项在 `scanf` 里写了精度 `%3.2f`、`%2.1f`，这是非法的——`scanf` 不支持精度修饰。易错点：`printf` 的 `%.2f` 控制输出小数位，`scanf` 里没有对应机制，输入的小数位数完全由用户敲的数据决定。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) scanf(\"%f,%f\",&f1,&f2);",
-        "B) scanf(\"%f%f\",&f1,&f2);",
-        "C) scanf(\"%3.2f %2.1f\",&f1,&f2);",
-        "D) scanf(\"%3.2f%2.1f\",&f1,&f2);"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-013",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.15（PDF p23 / 书页 p12）",
-      "difficulty": 3,
-      "stem": "【题 3.15】阅读以下程序，当输入数据的形式为25,13,10<回车>，程序的输出结果为______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x,y,z;\n  scanf(\"%d%d%d\",&x,&y,&z);\n  printf(\"x+y+z=%d\\n\",x+y+z);\n  return 0;\n}\n```",
-      "explanation": "**答案 D（不确定值）**。`scanf(\"%d%d%d\",&x,&y,&z)` 期望三个由空白分隔的整数，而实际输入是 `25,13,10`。执行过程：第一个 `%d` 读入 25，x=25；第二个 `%d` 跳过空白后遇到字符 `,`，它不是数字也不是合法前缀，**匹配失败**，`scanf` 立即停止并返回 1，y 和 z 根本没有被赋值。由于 y、z 是未初始化的局部变量，它们的值是栈上的垃圾数据，`x+y+z` 因此是不确定值。易错点：`scanf` 的返回值是「成功赋值的项数」，实际编程中必须检查它；不要以为格式串写三个 `%d` 就一定会读进三个数。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) x+y+z=48",
-        "B) x+y+z=35",
-        "C) x+z=35",
-        "D) 不确定值"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-014",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.16（PDF p24 / 书页 p13）",
-      "difficulty": 3,
-      "stem": "【题 3.16】设有以下程序：\n若运行时从键盘输入数据：\nabc<回车>\ndefg<回车>，则输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char c1,c2,c3,c4,c5,c6;\n  scanf(\"%c%c%c%c\",&c1,&c2,&c3,&c4);\n  c5=getchar();\n  c6=getchar();\n  putchar(c1);\n  putchar(c2);\n  printf(\"%c%c\\n\",c5,c6);\n  return 0;\n}\n```",
-      "explanation": "**答案 B（输出 `abde`）**。输入流是 `abc` 换行 `defg` 换行，即字符序列 `a b c \\n d e f g \\n`。`scanf(\"%c%c%c%c\",...)` 中 `%c` 不跳空白，依次读走 `a`、`b`、`c`、`\\n`，所以 c1='a'、c2='b'、c3='c'、c4='\\n'。接着 `c5=getchar()` 读到 `d`，`c6=getchar()` 读到 `e`。输出部分只用到 c1、c2、c5、c6：`putchar(c1)` 打 `a`，`putchar(c2)` 打 `b`，`printf(\"%c%c\\n\",c5,c6)` 打 `de`，合计 `abde`。易错点：回车符 `\\n` 也是一个实实在在的字符，会被 `%c` 和 `getchar` 读走——这正是「输入缓冲区残留」问题的根源。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) abcd",
-        "B) abde",
-        "C) abef",
-        "D) abfg"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-015",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.17（PDF p24 / 书页 p13）",
-      "difficulty": 2,
-      "stem": "【题 3.17】以下针对scanf函数的叙述中，正确的是______。",
-      "explanation": "**答案 D**。`scanf` 的作用是把输入流中的数据按格式**写入内存**，因此每个输入项都必须给出目标变量的**地址**（用 `&` 取地址，或直接传数组名、指针）。A 项把常量 `3.5` 当输入项，常量没有可写的存储单元，非法；B 项只有格式串没有输入项，数据无处存放，什么也读不进来；C 项在 `scanf` 里写 `%4.2f` 指定小数位数，`scanf` 不支持精度修饰，非法。易错点：漏写 `&`（如 `scanf(\"%d\", a)`）是初学者最常见的错误，编译可能只给警告，运行时却会崩溃或读到垃圾值。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 输入项可以为一实型常量，如scanf(\"%f\",3.5);",
-        "B) 只有格式控制，没有输入项，也能进行正确输入，如scanf(\"a=%d,b=%d\");",
-        "C) 当输入一个实型数据时，格式控制部分应规定小数点后的位数，如scanf(\"%4.2f\",&f);",
-        "D) 当输入数据时，必须指明变量的地址，如scanf(\"%f\",&f);"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-016",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.18（PDF p24 / 书页 p13）",
-      "difficulty": 3,
-      "stem": "【题 3.18】根据下面的程序及数据的输入方式和输出形式，程序中输入语句的正确形式应该为______。（注：□表示空格）\n输入形式：A□B□C<回车>\n输出形式：A□B\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1,ch2,ch3;\n  输入语句\n  printf(\"%c%c%c\",ch1,ch2,ch3);\n  return 0;\n}\n```",
-      "explanation": "**答案 A（`scanf(\"%c%c%c\",&ch1,&ch2,&ch3);`）**。输入流是 `A□B□C`（□为空格）。`%c` **不跳过空白**，所以三个 `%c` 依次读走 `A`、`□`、`B`，得到 ch1='A'、ch2=' '、ch3='B'；`printf(\"%c%c%c\",...)` 把它们连起来打印，正是题目要求的输出形式 `A□B`。B 项 `%c,%c,%c` 要求输入中有逗号，实际没有；C 项 `%c %c %c` 中格式串里的空格会吃掉输入中的所有空白，读到的就是 `A`、`B`、`C`，输出 `ABC`；D 项转换符与实参个数不匹配（3 个实参只配 2 个 `%c`），多余实参被忽略但属误用。易错点：这道题的「正确」是由输出反推的——想输出带空格，就得让 `%c` 把空格当数据读进来。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) scanf(\"%c%c%c\",&ch1,&ch2,&ch3);",
-        "B) scanf(\"%c,%c,%c\",&ch1,&ch2,&ch3);",
-        "C) scanf(\"%c %c %c \",&ch1,&ch2,&ch3);",
-        "D) scanf(\"%c%c\",&ch1,&ch2,&ch3);"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-017",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.19（PDF p24 / 书页 p13）",
-      "difficulty": 2,
-      "stem": "【题 3.19】有输入语句：scanf(\"a=%d,b=%d,c=%d\",&a,&b,&c); 为使变量a的值为1,b的值为3,c的值为2；从键盘输入数据的正确形式应当是______。（注：□表示空格）",
-      "explanation": "**答案 D（`a=1,b=3,c=2<回车>`）**。格式串 `\"a=%d,b=%d,c=%d\"` 里的 `a=`、`,`、`b=`、`c=` 全是**普通字符**，`scanf` 要求输入流在对应位置逐个精确匹配它们，只有 `%d` 的位置才去读数字。所以键盘上必须原样敲出 `a=1,b=3,c=2`：先匹配字符 `a` 和 `=`，再用 `%d` 读 1 存入 a；匹配 `,`、`b`、`=`，读 3 存入 b；匹配 `,`、`c`、`=`，读 2 存入 c。A、B 项没有 `a=`、`b=`、`c=` 这些前缀，第一个字符就匹配失败；C 项用空格代替逗号，也不匹配。易错点：格式串中的普通字符是「输入模板」的一部分，用户必须照抄，这也是给输入加提示的常用手法。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) 132<回车>",
-        "B) 1,3,2<回车>",
-        "C) a=1□b=3□c=2<回车>",
-        "D) a=1,b=3,c=2<回车>"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-018",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.20（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.20】以下不符合C语法的赋值语句是______。",
-      "explanation": "**答案 C（`m=1,n=2`）**。C 语言的**语句必须以分号结束**，`m=1,n=2` 没有分号，它只是一个逗号表达式，不构成语句，因此不符合 C 语法。A 项 `m=(2+1,m=1);` 合法：括号内是逗号表达式，先算 `2+1`（丢弃），再算 `m=1`，整个括号值为 1，赋给 m，最终 m=1。B 项 `m=n=0;` 合法：`=` 右结合，先把 0 赋给 n，表达式的值 0 再赋给 m。D 项 `n++;` 是合法的自增语句。易错点：分号是 C 语句的终止符而不是「可选的标点」；表达式加上分号才变成表达式语句。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) m=(2+1,m=1);",
-        "B) m=n=0;",
-        "C) m=1,n=2",
-        "D) n++;"
-      ],
-      "answer": 2,
-      "id": "c-ch03-sc-019",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.21（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.21】以下能正确地定义整型变量a,b和c并为其赋初值5的语句是______。",
-      "explanation": "依书末答案取 A，但本题四个选项均有瑕疵，属存疑题。C 中给多个变量赋同一初值的合法写法是 int a=5,b=5,c=5;：A) int a=b=c=5; 中的 b、c 此刻尚未声明，标准 C 编译不过，只有按「连等赋初值」的出题意图才讲得通；B) int a,b,c=5; 只初始化了 c，a、b 是不确定的值；C)、D) 没有 int，只是对未声明变量的赋值表达式。易错点：把 int a=b=c=5; 当合法语法背下来，实际编码必须逐个写初值。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) int a=b=c=5;",
-        "B) int a,b,c=5;",
-        "C) a=5,b=5,c=5;",
-        "D) a=b=c=5;"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-020",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.22（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.22】已知ch是字符型变量，下面不正确的赋值语句是______。",
-      "explanation": "**答案 A（`ch='a+b';` 不正确）**。字符常量的单引号里只能放**一个**字符或**一个**转义序列，`'a+b'` 放了三个字符，属于非法的多字符常量。B 项 `ch='\\0';` 是八进制转义字符，表示 ASCII 码 0 的空字符 NUL，合法。C 项 `ch='7'+'9';` 中两个字符常量按 ASCII 码参与运算（55+57=112），结果是 `int`，赋给 `char` 时截断为 112（即字符 `'p'`），语法完全合法。D 项 `ch=5+9;` 把整数 14 赋给 `char`，也合法（对应 ASCII 14 的控制字符）。易错点：C 允许把整数赋给 `char`，但单引号里绝不允许出现多个字符。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) ch='a+b';",
-        "B) ch='\\0';",
-        "C) ch='7'+'9';",
-        "D) ch=5+9;"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-021",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.23（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.23】已知ch是字符型变量，下面正确的赋值语句是______。",
-      "explanation": "**答案 B（`ch='\\xff';`）**。`\\x` 后跟十六进制数字构成**十六进制转义字符**，`\\xff` 表示码值 255 的字符，是一个字符常量，赋给 `char` 合法（是否溢出取决于 `char` 的符号性，但语法成立）。A 项 `'123'` 单引号里三个字符，是非法的多字符常量。C 项 `'\\08'` 中八进制转义只允许 0~7 的数字，`8` 不合法。D 项 `ch=\"\\\";` 有两处错误：双引号是字符串常量，不能赋给 `char`；而且 `\"\\\"` 里的反斜杠把后面的双引号转义掉了，字符串根本没有闭合。易错点：`\\x` 十六进制转义的位数不受「最多 3 位」限制，而八进制转义 `\\ddd` 最多 3 位。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) ch='123';",
-        "B) ch='\\xff';",
-        "C) ch='\\08';",
-        "D) ch=\"\\\";"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-022",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.24（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.24】若有以下定义，则正确的赋值语句是______。\nint a,b;    float x;",
-      "explanation": "**答案 B（`b++;`）**。`b` 是已定义的 `int` 变量，`b++` 加上分号构成一条合法的表达式语句。A 项 `a=1,b=2,` 结尾多了一个逗号，后面没有运算对象，语法错误。C 项 `a=b=5` 缺少分号，只是表达式不是语句。D 项 `b=int(x);` 的强制类型转换写法错误，C 中类型名必须用括号括起来放在表达式前面，正确写法是 `b=(int)x;`；`int(x)` 是 C++ 的函数式转换语法。易错点：判断「是不是语句」先看有没有分号，再看内部语法是否成立。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) a=1,b=2,",
-        "B) b++;",
-        "C) a=b=5",
-        "D) b=int(x);"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-023",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.25（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.25】设x、y均为float型变量，则以下不合法的赋值语句是______。",
-      "explanation": "**答案 B（`y=(x%2)/10;` 不合法）**。`%` 是求余运算符，C 标准规定它的两个运算数必须都是**整型**；x 是 `float`，`x%2` 无法通过编译。A 项 `++x;` 合法，`++`/`--` 可以用于浮点变量（要求是可修改的左值，与类型无关）。C 项 `x*=y+8;` 是合法的复合赋值，等价于 `x=x*(y+8)`。D 项 `x=y=0;` 合法，`=` 右结合，先把 0 赋给 y，再赋给 x（整数 0 会隐式转换为 0.0f）。易错点：想对浮点数取小数部分要用 `<math.h>` 的 `fmod(x,2.0)`，`%` 无论如何不行。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) ++x;",
-        "B) y=(x%2)/10;",
-        "C) x*=y+8;",
-        "D) x=y=0;"
-      ],
-      "answer": 1,
-      "id": "c-ch03-sc-024",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.26（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.26】设x、y和z均为int型变量，则执行语句x=(y=(z=10)+5)-5;后，x、y和z的值是______。",
-      "explanation": "**答案 A（x=10、y=15、z=10）**。`=` 是右结合的，`x=(y=(z=10)+5)-5` 从最内层开始：①`z=10`，该赋值表达式的值为 10，z 变成 10；②`(z=10)+5 = 15`，赋给 y，y 变成 15；③`y` 的值 15 减去 5 得 10，赋给 x，x 变成 10。注意第 ③ 步用的是 y 已经更新后的值 15，而不是括号里的 `(z=10)+5` 再算一遍。易错点：赋值表达式的值就是「被赋进去的那个值」，正因为如此才能连等；括号只改变结合顺序，不改变赋值本身产生的副作用。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) x=10\ny=15\nz=10",
-        "B) x=10\ny=10\nz=10",
-        "C) x=10\ny=10\nz=15",
-        "D) x=10\ny=5\nz=10"
-      ],
-      "answer": 0,
-      "id": "c-ch03-sc-025",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.27（PDF p25 / 书页 p14）",
-      "difficulty": 2,
-      "stem": "【题 3.27】设有说明：double y=0.5,z=1.5; int x=10; 则能够正确使用C语言库函数的赋值语句是______。",
-      "explanation": "**答案 D**。`atan2` 的原型是 `double atan2(double y, double x)`，需要**两个**实参，D 项 `atan2((double)x,y)` 参数个数正确，且用 `(double)x` 做了显式转换；`exp(y-0.2)` 返回 `double`；两者相加仍是 `double`，外面用 `(int)` 截断后赋给 `int x`，形式规范。B 项 `pow(y)` 只给了一个实参，而 `pow` 需要两个，编译报错。C 项 `sqrt(y-z)` 中 `y-z = 0.5-1.5 = -1.0`，对负数开平方会得到 NaN 并触发定义域错误，属于误用。说明：A 项 `exp(y)+fabs(x)` 在多数编译器下也能通过（`int` 会隐式提升为 `double`），但原题答案取 D——它同时考察了 `atan2` 的双参数形式与显式类型转换。易错点：`fabs`（`<math.h>`，浮点）与 `abs`（`<stdlib.h>`，整数）不能互换。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "single_choice",
-      "bloom": "understand",
-      "options": [
-        "A) z=exp(y)+fabs(x);",
-        "B) y=log10(y)+pow(y);",
-        "C) z=sqrt(y-z);",
-        "D) x=(int)(atan2((double)x,y)+exp(y-0.2));"
-      ],
-      "answer": 3,
-      "id": "c-ch03-sc-026",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.28（PDF p25 / 书页 p14）",
-      "difficulty": 3,
-      "stem": "【题 3.28】以下程序的输出结果为【 】。",
-      "explanation": "结论：先换行，再输出 i: dec=-4, oct=37777777774, hex=fffffffc, unsigned=4294967292。关键：short 型 -4 传参时整型提升为 32 位 int，补码位模式 0xFFFFFFFC；%o/%x/%u 都把这 32 位按无符号数解释，故得 11 位八进制、8 位十六进制与 4294967292。易错点：误按 short 的 16 位值（0xFFFC）推算八/十六进制——负数提升后一律按 32 位补码输出。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ short i;\n  i=-4;\n  printf(\"\\ni: dec=%d, oct=%o, hex=%x, unsigned=%u\\n\",i,i,i,i);\n  return 0;\n }",
-      "answer": "\ni: dec=-4, oct=37777777774, hex=fffffffc, unsigned=4294967292",
-      "id": "c-ch03-cr-001",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.29（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.29】以下程序的输出结果为【 】。",
-      "explanation": "结论：输出 *3.140000,3.142*。关键：%f 默认精度 6 位小数得 3.140000；%4.3f 四舍五入保留 3 位，字面量 3.1415 按 double 存储的实际值略大于 3.1415，进位成 3.142；宽度 4 小于实占 5 字符，按原样全输出。易错点：把精度 .3 当\"截断\"、把字段宽度当\"上限\"——宽度只是最小占位，超长不截断。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ printf(\"*%f,%4.3f*\\n\",3.14,3.1415);\n  return 0;  }",
-      "answer": "*3.140000,3.142*",
-      "id": "c-ch03-cr-002",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.30（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.30】以下程序的输出结果为【 】。",
-      "explanation": "结论：输出 c: dec=120, oct=170, hex=78, ASCII=x。关键：char 本质是小整数，'x' 的 ASCII 码 120；%d/%o/%x 把 120 分别按十进制、八进制（170）、十六进制（78）打印，%c 再还原成字符 x。易错点：以为 %o 会带前缀 0——只有加 # 标志才有；同一内存值在不同转换符下形态完全不同。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char c='x';\n  printf(\"c: dec=%d, oct=%o, hex=%x, ASCII=%c\\n\",c,c,c,c);\n  return 0;\n }",
-      "answer": "c: dec=120, oct=170, hex=78, ASCII=x",
-      "id": "c-ch03-cr-003",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.31（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.31】已有定义 int d=-2；执行以下语句后的输出结果是【 】。",
-      "explanation": "结论：两行分别为 *d(1)=-2*d(2)= -2*d(3)=-2 * 与 *d(4)=37777777776*d(5)=37777777776*d(6)=37777777776*。关键：%3d 右对齐前补 1 空格，%-3d 左对齐后补 1 空格；-2 的 32 位补码按无符号八进制是 37777777776，共 11 位，超出宽度 7，%7o/%-7o 均按原样全输出。易错点：以为 %o 会给负数输出\"-2\"的八进制——负数一律按无符号补码打印，且字段宽度不截断内容。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 int d=-2，此处补入以便实机运行。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%o*d(5)=%7o*d(6)=%-7o*\\n\",d,d,d);\n    return 0;\n}",
-      "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=37777777776*d(5)=37777777776*d(6)=37777777776*",
-      "id": "c-ch03-cr-004",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.32（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.32】已有定义 int d=-2；执行以下语句后的输出结果是【 】。",
-      "explanation": "结论：第一行同十进制形式，第二行为 *d(4)=fffffffe*d(5)=fffffffe*d(6)=fffffffe*。关键：-2 的 32 位补码十六进制是 fffffffe，共 8 位，均超出宽度 6，%6x/%-6x 都按原样全输出，左右对齐差异消失。易错点：负数用 %x 输出的是无符号补码而非\"-2\"；宽度不足时不截断、对齐失效。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 int d=-2，此处补入以便实机运行。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%x*d(5)=%6x*d(6)=%-6x*\\n\",d,d,d);\n    return 0;\n}",
-      "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=fffffffe*d(5)=fffffffe*d(6)=fffffffe*",
-      "id": "c-ch03-cr-005",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.33（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.33】已有定义 float d1=3.5,d2=-3.5；执行以下语句后的输出结果是【 】。",
-      "explanation": "结论：两行分别为 *d(1)=3.500000e+00*d(2)=3.5000e+00*d(3)=3.5000e+00* 与 *d(4)=-3.500000e+00*d(5)=-3.500000e+00*d(6)=-3.50000e+00*。关键：%e 默认精度 6 位小数，精度指小数点后的位数；\"3.5000e+00\"恰好 10 字符、\"-3.50000e+00\"恰好 12 字符，%10.4e 与 %-12.5e 都无需补齐，对齐无差别。易错点：算总宽时漏掉指数部分 e+00 占 4 位、负号占 1 位，误以为要补空格。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 float d1=3.5,d2=-3.5，此处补入。%e 输出以实机为准。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    float d1 = 3.5, d2 = -3.5;\nprintf(\"*d(1)=%e*d(2)=%.4e*d(3)=%10.4e*\\n\",d1,d1,d1);\nprintf(\"*d(4)=%e*d(5)=%.6e*d(6)=%-12.5e*\\n\",d2,d2,d2);\n    return 0;\n}",
-      "answer": "*d(1)=3.500000e+00*d(2)=3.5000e+00*d(3)=3.5000e+00*\n*d(4)=-3.500000e+00*d(5)=-3.500000e+00*d(6)=-3.50000e+00*",
-      "id": "c-ch03-cr-006",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.34（PDF p26 / 书页 p15）",
-      "difficulty": 3,
-      "stem": "【题 3.34】以下程序的输出结果是【 】。",
-      "explanation": "结论：输出两行：x=1 y=2 * sum * =3 与 10 Squared is : 100。关键：格式串里的普通字符（含 * 与空格）原样输出，%d 依次打印 x、y、x+y=3；表达式 10*10 先求值 100 再输出。易错点：误把 * 当成 printf 的动态宽度符——只有紧跟在 % 之后的 * 才有该含义，此处是普通文本。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x=1,y=2;\n  printf(\"x=%d y=%d * sum * =%d\\n\",x,y,x+y);\n  printf(\"10 Squared is : %d\\n\",10 * 10);\n  return 0;\n }",
-      "answer": "x=1 y=2 * sum * =3\n10 Squared is : 100",
-      "id": "c-ch03-cr-007",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.35（PDF p26 / 书页 p15）",
-      "difficulty": 4,
-      "stem": "【题 3.35】以下程序的输出结果是【 】。",
-      "explanation": "结论：8 行依次为 10、右对齐的\"    10\"、56.100000、14 宽右对齐的 3.141600、5.681000e+02、14 宽右对齐的 3.141600e+00、3.1416、12 宽右对齐的 3.1416。关键：%f 默认 6 位小数；%e 默认 6 位小数带指数；%g 自动去掉尾零并选较短形式；数值不足字段宽度时右对齐、前补空格。易错点：%g 输出 3.1416 而非 3.141600——未加 # 标志时尾零不保留。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x=10; float pi=3.1416;\n  printf(\"(1) %d\\n\",x);\n  printf(\"(2) %6d\\n\",x);\n  printf(\"(3) %f\\n\",56.1);\n  printf(\"(4) %14f\\n\",pi);\n  printf(\"(5) %e\\n\",568.1);\n  printf(\"(6) %14e\\n\",pi);\n  printf(\"(7) %g\\n\",pi);\n  printf(\"(8) %12g\\n\",pi);\n  return 0;\n }",
-      "answer": "(1) 10\n(2)     10\n(3) 56.100000\n(4)       3.141600\n(5) 5.681000e+02\n(6)   3.141600e+00\n(7) 3.1416\n(8)       3.1416",
-      "id": "c-ch03-cr-008",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.36（PDF p27 / 书页 p16）",
-      "difficulty": 3,
-      "stem": "【题 3.36】以下程序的输出结果是【 】。",
-      "explanation": "结论：依次为 123.456001、右对齐\"       123.456\"、123.4560、8765.456700、右对齐\"      8765.457\"、8765.4567、8765.4567。关键：float 只有约 7 位有效数字，123.456 的二进制近似值按 %f 展开成 123.456001；double 精度高，8765.4567 各形式都准确；宽度不足时按实际位数全输出。易错点：以为 float 会精确打印 123.456000——十进制小数常无法被二进制精确表示，%f 把存储值的误差暴露出来。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ float a=123.456; double b=8765.4567;\n  printf(\"(1) %f\\n\",a);\n  printf(\"(2) %14.3f\\n\",a);\n  printf(\"(3) %6.4f\\n\",a);\n  printf(\"(4) %lf\\n\",b);\n  printf(\"(5) %14.3lf\\n\",b);\n  printf(\"(6) %8.4lf\\n\",b);\n  printf(\"(7) %.4f\\n\",b);\n  return 0;\n }",
-      "answer": "(1) 123.456001\n(2)        123.456\n(3) 123.4560\n(4) 8765.456700\n(5)       8765.457\n(6) 8765.4567\n(7) 8765.4567",
-      "id": "c-ch03-cr-009",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.39（PDF p28 / 书页 p17）",
-      "difficulty": 3,
-      "stem": "【题 3.39】以下程序的输出结果是【 】。",
-      "explanation": "结论：输出 a=+00325 x=+3.141593e+00。关键：%+06d 中 + 强制显示符号、0 用零填充、总宽 6 位含符号，得 +00325；%+e 默认精度 6 位，3.1415926 四舍五入为 3.141593e+00。易错点：补零发生在符号之后，是\"+00325\"而不是\"0+0325\"；+ 标志对正负数都占一位宽度。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=325; double x=3.1415926;\n  printf(\"a=%+06d x=%+e\\n\",a,x);\n  return 0;\n }",
-      "answer": "a=+00325 x=+3.141593e+00",
-      "id": "c-ch03-cr-010",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.40（PDF p28 / 书页 p17）",
-      "difficulty": 3,
-      "stem": "【题 3.40】以下程序的输出结果是【 】。",
-      "explanation": "结论：两行为 a=374 a=0374 与 a=fc a=0xfc。关键：252=2×64+7×8+4，八进制 374、十六进制 fc；# 标志分别在八进制/十六进制前加前缀 0 与 0x。易错点：不加 # 时 %o/%x 绝不输出前缀；加了 # 前缀也计入字段宽度。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=252;\n  printf(\"a=%o a=%#o\\n\",a,a);\n  printf(\"a=%x a=%#x\\n\",a,a);\n  return 0;\n }",
-      "answer": "a=374 a=0374\na=fc a=0xfc",
-      "id": "c-ch03-cr-011",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.41（PDF p28 / 书页 p17）",
-      "difficulty": 3,
-      "stem": "【题 3.41】以下程序的运行结果是【 】。",
-      "explanation": "结论：输出 2 48 20.0 20.0。关键：连续赋值自右向左结合：c=48；n/=48 即 n=100/48=2，该子式值 2；f*=2 得 f=20.0；x=f 得 20.0。易错点：整数除法 100/48 截断为 2；f*=n 用的是 n 被改写后的新值 2，不是原值 100。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int n=100; char c;\n  float f=10.0; double x;\n  x=f*=n/=(c=48);\n  printf(\"%d %d %3.1f %3.1f\\n\",n,c,f,x);\n  return 0;\n }",
-      "answer": "2 48 20.0 20.0",
-      "id": "c-ch03-cr-012",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.42（PDF p28 / 书页 p17）",
-      "difficulty": 3,
-      "stem": "【题 3.42】有以下程序：\n\n若运行时从键盘输入：55 A B<回车>，则输出结果是【 】。",
-      "explanation": "结论：输出 55, ,A。关键：%d 读入 55；%c 不跳过空白，第一个 %c 读到 55 后面的空格存入 c1，第二个 %c 读到 'A' 存入 c2；其余输入 \"B回车\" 留在缓冲区未被读取。易错点：误以为 %c 会像 %d 一样自动跳过空格——空格恰被当作有效字符读入，输出中 c1 位置显示为空白。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int k=0; char c1='a',c2='b';\n  scanf(\"%d%c%c\",&k,&c1,&c2);\n  printf(\"%d,%c,%c\\n\",k,c1,c2);\n  return 0;\n }",
-      "stdin": "55 A B\n",
-      "answer": "55, ,A",
-      "id": "c-ch03-cr-013",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.43（PDF p28 / 书页 p17）",
-      "difficulty": 3,
-      "stem": "【题 3.43】以下程序的运行结果是【 】。",
-      "explanation": "结论：输出 261。关键：177=2×64+6×8+1，八进制为 261。易错点：%o 不带 # 标志不加前缀 0，输出是 261 而不是 0261。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int m=177;\n  printf(\"%o\\n\",m);\n  return 0;\n }",
-      "answer": "261",
-      "id": "c-ch03-cr-014",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.44（PDF p29 / 书页 p18）",
-      "difficulty": 3,
-      "stem": "【题 3.44】以下程序的运行结果是【 】。",
-      "explanation": "结论：输出 20（本题以 gcc -O0 实测为准）。关键：子表达式 (n=10) 先把 n 改成 10，随后 += 用新的 n 与自身相加得 20。这是 UB：两个序列点之间对同一对象 n 修改两次，输出依赖编译器与优化级别，不同环境可能是 10 或 20。易错点：按\"取旧值 n=0 再累加\"推成 10——UB 代码的结果不可依赖，实际工程中禁止这种写法。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int n=0;\n  n+=(n=10);\n  printf(\"%d\\n\",n);\n  return 0;\n }",
-      "answer": "20",
-      "id": "c-ch03-cr-015",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.46（PDF p29 / 书页 p18）",
-      "difficulty": 3,
-      "stem": "【题 3.46】已知字母 A 的 ASCII 码值为 65。以下程序的输出结果是【 】。",
-      "explanation": "结论：输出 a=66,b=E。关键：字符按 ASCII 码参与算术：'A'+'4'-'3'=65+52-51=66；'A'+'6'-'2'=65+54-50=69，对应字符 'E'。易错点：'4' 是字符，其 ASCII 码为 52 而不是数值 4；同一变量 %d 打印出数值 66、%c 打印出字符，形式由转换符决定。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char a,b;\n  a='A'+'4'-'3';\n  b='A'+'6'-'2';\n  printf(\"a=%d,b=%c\\n\",a,b);\n  return 0;\n }",
-      "answer": "a=66,b=E",
-      "id": "c-ch03-cr-016",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.47（PDF p29 / 书页 p18）",
-      "difficulty": 2,
-      "stem": "【题 3.47】假设变量 a 和 b 均为整型，以下语句可以不借助任何变量把 a、b 中的值进行交换。请填空。\na+=【1】; b=a-【2】; a-=【3】;",
-      "explanation": "**答案：三处都填 `b`**。即 `a+=b; b=a-b; a-=b;`，这是不借助第三个变量交换两个整数的经典写法。推导：设初值 a=A、b=B。①`a+=b` 后 a=A+B；②`b=a-b` 即 b=(A+B)-B=A，b 拿到了 a 的原值；③`a-=b` 即 a=(A+B)-A=B，a 拿到了 b 的原值。交换完成。易错点：①三步的顺序不能调换，第一步必须先把两数之和存进 a；②当 A+B 超出 `int` 范围时会溢出，结果错误——工程上更安全的写法是 `t=a; a=b; b=t;`，或者用 `a^=b; b^=a; a^=b;`（同样有 a、b 为同一对象时清零的坑）。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "fill_blank",
-      "bloom": "remember",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "b"
-        },
-        {
-          "index": 2,
-          "answer": "b"
-        },
-        {
-          "index": 3,
-          "answer": "b"
-        }
-      ],
-      "id": "c-ch03-fb-001",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.48（PDF p29 / 书页 p18）",
-      "difficulty": 2,
-      "stem": "【题 3.48】假设变量 a、b 和 c 均为整型，以下语句借助中间变量 t 把 a、b 和 c 中的值进行交换，即把 b 中的值给 a，把 c 中的值给 b，把 a 中的值给 c。例如：交换前，a=10、b=20、c=30；交换后，a=20、b=30、c=10。请填空。\n【1】; a=b; b=c; 【2】;",
-      "explanation": "**答案：`t=a`、`c=t`**。完整语句是 `t=a; a=b; b=c; c=t;`，实现「b 给 a、c 给 b、a 给 c」的轮转。推导（初值 a=10、b=20、c=30）：①`t=a` 把 a 的原值 10 暂存到 t；②`a=b` 使 a=20；③`b=c` 使 b=30；④`c=t` 使 c=10。结果 a=20、b=30、c=10，符合要求。易错点：必须**先**把 a 存起来再覆盖它——若把 `t=a` 放到 `a=b` 之后，a 的原值就永久丢失了；这是「轮转交换」与「两两交换」的关键差别，顺序错了就再也找不回来。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "fill_blank",
-      "bloom": "remember",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "t=a"
-        },
-        {
-          "index": 2,
-          "answer": "c=t"
-        }
-      ],
-      "id": "c-ch03-fb-002",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.49（PDF p29 / 书页 p18）",
-      "difficulty": 2,
-      "stem": "【题 3.49】设有一输入函数 scanf(\"%d\",k)；它不能使 float 类型变量 k 得到正确数值的原因是【1】未指明变量 k 的地址和【2】格式控制符与变量类型不匹配。",
-      "explanation": "**答案要点：一是缺少取地址运算符 `&`，二是格式符 `%d` 与 `float` 类型不匹配**（正确写法是 `scanf(\"%f\",&k);`）。两处错误各自独立且都致命：①`scanf(\"%d\",k)` 把 k 的**值**当参数传入，而 `scanf` 需要的是变量的**地址**才能把数据写回去，传值等于给了一个野指针，运行时通常直接崩溃；②即使补上 `&` 写成 `scanf(\"%d\",&k)`，`%d` 会按 `int` 的位模式往 4 字节里写整数，而 k 是 `float`，需要的是 IEEE 754 浮点位模式，读到的数值必然错乱。说明：本题 blanks 里两条答案的文字与题干两个空格的先后顺序相反（题干【1】位置对应「未指明地址」，【2】对应「格式符不匹配」），内容本身无误。易错点：`printf` 传值、`scanf` 传地址，这一「一进一出」的不对称是 C 输入输出最容易搞反的地方。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "fill_blank",
-      "bloom": "remember",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "格式控制符与变量类型不匹配。scanf 语句的正确形式应该是：scanf(\"%f\",&k);"
-        },
-        {
-          "index": 2,
-          "answer": "未指明变量 k 的地址。"
-        }
-      ],
-      "id": "c-ch03-fb-003",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.50（PDF p30 / 书页 p19）",
-      "difficulty": 2,
-      "stem": "【题 3.50】已有定义 int a；float b,x；char c1,c2；为使 a=3、b=6.5、x=12.6、c1='a'、c2='A'，正确的 scanf 函数调用语句是【1】，数据输入的形式应为【2】。",
-      "explanation": "【1】scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2);【2】3 6.5 12.6aA<回车>。五个转换符必须一一对应五个地址：%d→&a，两个 %f→&b 与 &x（b=6.5、x=12.6），两个 %c→&c1、&c2；少一个实参就会让后面的数据整体错位。%c 不跳过空白，所以 'a'、'A' 必须紧贴在 12.6 之后输入，中间不能有空格或换行。勘误：原书答案的实参表漏印了 &x（只给了 4 个实参），此处按题干变量名补全，其余照印。易错点：写成 scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2) 后输入 3 6.5 12.6 a A，c1 会读到空格。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "fill_blank",
-      "bloom": "remember",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2);"
-        },
-        {
-          "index": 2,
-          "answer": "3 6.5 12.6aA<回车>"
-        }
-      ],
-      "id": "c-ch03-fb-004",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.51（PDF p30 / 书页 p19）",
-      "difficulty": 3,
-      "stem": "【题 3.51】若有以下定义和语句，为使变量 c1 得到字符'A'，变量 c2 得到字符'B'，正确的输入形式是【 】。",
-      "explanation": "本题问\"为使 c1 得到 'A'、c2 得到 'B' 的正确输入形式\"，属描述性试题，不进自动判分（answerIsDescription=true）。范本输入：A 后跟 3 个空格、再 B 后跟 3 个空格，即\"A□□□B□□□\"（□表示空格）。理由：scanf 的 %4c 把连续 4 个字符当作一个字段读入，要让 c1 拿到 'A'、c2 拿到 'B'，需让每个字段占满 4 个字符位（字母 + 3 个空格），中间不能回车。易错点/争议：把 %4c 对应到单个 char 变量是教材理想化写法；真实 C 中 %4c 需要能容纳 4 字符的数组，否则会越界写。本题保留教材认知模型，只考查\"输入形式\"，故不做实机判分。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "char c1,c2;\nscanf(\"%4c%4c\",&c1,&c2);",
-      "answer": "",
-      "id": "c-ch03-cr-017",
-      "verified": false,
-      "answerIsDescription": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.52（PDF p30 / 书页 p19）",
-      "difficulty": 3,
-      "stem": "【题 3.52】执行以下程序时，若从第一列开始输入数据，为使变量 a=3、b=7、x=8.5、y=71.82、c1='A'、c2='a'，正确的数据输入形式是【 】。",
-      "explanation": "本题问\"正确的数据输入形式\"，属描述性试题，不进自动判分。scanf 格式串里含 a=、b=、x=、y=、c1=、c2= 等普通字符，输入必须逐字符原样匹配。范本输入（三行，分别对应三次 scanf）：第一行 a=3 b=7，第二行 x=8.5 y=71.82，第三行 c1=A c2=a（也可写在同一行、字段间用空格分隔，但 a=/b= 等前缀不能省）。易错点：漏写格式串中的普通字符前缀；%c 前的空格会吃掉分隔空白，若输入排版不当会把空格/回车读入字符变量，导致 c1、c2 取值错位。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "code_reading",
-      "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a,b; float x,y; char c1,c2;\n  scanf(\"a=%d b=%d\",&a,&b);\n  scanf(\"x=%f y=%f\",&x,&y);\n  scanf(\"c1=%c c2=%c\",&c1,&c2);\n  printf(\"a=%d,b=%d,x=%f,y=%f,c1=%c,c2=%c\",a,b,x,y,c1,c2);\n  return 0;\n }",
-      "answer": "",
-      "id": "c-ch03-cr-018",
-      "verified": false,
-      "answerIsDescription": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.3 编程题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.53（PDF p30 / 书页 p19）",
-      "difficulty": 2,
-      "stem": "【题 3.53】编写程序，从终端键盘输入圆的半径 r，圆柱的高 h，分别计算出圆周长 cl、圆面积 cs 和圆柱的体积 cvz。输出计算结果时要求有文字说明，并取小数点后 2 位数字。 输出格式：三行，依次为 cl=<值>、cs=<值>、cvz=<值>，均保留 2 位小数。",
-      "explanation": "**思路与关键步骤**。①输入：`scanf(\"%f%f\", &r, &h)` 一次读入半径和高，`%f` 会自动跳过空白，所以 `1.5 3` 这种用空格分隔的输入可直接读入；②计算：周长 `cl = 2*PI*r`，面积 `cs = PI*r*r`，圆柱体积 `cvz = cs*h`（即 `PI*r*r*h`）；③输出：三次 `printf` 各占一行，格式串写成 `\"cl=%.2f\\n\"` 之类，`%.2f` 负责保留两位小数并对第三位四舍五入。`PI` 用 `const double PI = 3.14159265358979;` 或直接 `#define PI 3.14159265` 定义，精度要足够，否则 `r=100` 时 `cs=31415.93` 这类结果会因 PI 位数不足而对不上。易错点：①变量必须是 `float`/`double`，用 `int` 会把 1.5 截成 1；②`%.2f` 是**四舍五入**而非截断，与手工算的 `cvz=15707.963→15707.96` 一致；③输出中的 `cl=`、`cs=`、`cvz=` 是格式串里的普通文字，必须原样写出，且不能有多余空格。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "programming",
-      "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n#define PI 3.1415926535897932\n\nint main(void)\n{\n    double r, h;\n    double cl, cs, cvz;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2)\n        return 1;\n\n    cl = 2 * PI * r;\n    cs = PI * r * r;\n    cvz = cs * h;\n\n    printf(\"cl=%.2f\\n\", cl);\n    printf(\"cs=%.2f\\n\", cs);\n    printf(\"cvz=%.2f\\n\", cvz);\n\n    return 0;\n}\n",
-      "testCases": [
-        {
-          "stdin": "1.5 3",
-          "expected": "cl=9.42\ncs=7.07\ncvz=21.21",
-          "note": "常规"
-        },
-        {
-          "stdin": "0 5",
-          "expected": "cl=0.00\ncs=0.00\ncvz=0.00",
-          "note": "边界 r=0"
-        },
-        {
-          "stdin": "100 0.5",
-          "expected": "cl=628.32\ncs=31415.93\ncvz=15707.96",
-          "note": "大数 小数高"
-        }
-      ],
-      "id": "c-ch03-pg-001",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.3 编程题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.54（PDF p30 / 书页 p19）",
-      "difficulty": 2,
-      "stem": "【题 3.54】编写程序，读入一个字母，输出与之对应的 ASCII 码，输入输出都要有相应的文字提示。 输出格式：第一行提示 Please input a letter:，第二行 The ASCII code of <字母> is <十进制码>。",
-      "explanation": "**思路与关键步骤**。①先输出提示：`printf(\"Please input a letter:\");`——注意提示串末尾**不能**带 `\\n`，否则第二行输出会另起一行，与要求的两行格式不符；②读入一个字符：`scanf(\"%c\", &ch)` 或 `ch = getchar()`；③输出结果：`printf(\"The ASCII code of %c is %d\\n\", ch, ch);`——同一个 `ch` 用两种格式符输出，`%c` 显示字符本身，`%d` 显示它的 ASCII 码值（`char` 会整型提升为 `int` 后传入）。易错点：①`char` 与 `int` 之间是天然互通的，求码值不需要任何转换函数；②格式串里的文字（含大小写、空格、冒号）必须与题目要求逐字符一致；③若前面有别的输入残留，`%c` 会把换行符读进来，必要时先用 `getchar()` 清缓冲。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "programming",
-      "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char ch;\n\n    printf(\"Please input a letter:\\n\");\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    printf(\"The ASCII code of %c is %d\\n\", ch, ch);\n\n    return 0;\n}\n",
-      "testCases": [
-        {
-          "stdin": "A",
-          "expected": "Please input a letter:\nThe ASCII code of A is 65",
-          "note": "大写字母"
-        },
-        {
-          "stdin": "a",
-          "expected": "Please input a letter:\nThe ASCII code of a is 97",
-          "note": "小写字母"
-        },
-        {
-          "stdin": "Z",
-          "expected": "Please input a letter:\nThe ASCII code of Z is 90",
-          "note": "边界 Z"
-        }
-      ],
-      "id": "c-ch03-pg-002",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.3 编程题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.55（PDF p30 / 书页 p19）",
-      "difficulty": 2,
-      "stem": "【题 3.55】编写程序，从键盘输入两个整数，分别计算出它们的商和余数。输出时，商要求保留 2 位小数，并对第三位进行四舍五入。 输出格式：一行 quotient=<商> remainder=<余数>。",
-      "explanation": "**思路与关键步骤**。①读入两个整数：`scanf(\"%d%d\", &a, &b)`；②商要求保留两位小数并四舍五入，所以**不能**用整数除法 `a/b`（那会截断小数），必须让至少一个运算数是浮点：`(double)a / b`；③余数用整数求余 `a % b`，`%` 两侧必须都是整型；④输出：`printf(\"quotient=%.2f remainder=%d\\n\", (double)a/b, a%b);`——`%.2f` 本身就完成了「保留两位、第三位四舍五入」。验证：7/2=3.5→`3.50`，余 1；2/3=0.666…→`0.67`，余 2；10/4=2.5→`2.50`，余 2。易错点：①写成 `a/b` 会得 3.00、0.00、2.00，全错；②`(double)(a/b)` 是先整数除再转换，同样错，括号位置必须是 `(double)a/b`；③输出中 `quotient=`、`remainder=` 之间是一个空格，不是制表符。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "type": "programming",
-      "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"quotient=%.2f remainder=%d\\n\", (double)a / b, a % b);\n\n    return 0;\n}\n",
-      "testCases": [
-        {
-          "stdin": "7 2",
-          "expected": "quotient=3.50 remainder=1",
-          "note": "常规"
-        },
-        {
-          "stdin": "2 3",
-          "expected": "quotient=0.67 remainder=2",
-          "note": "商小于 1"
-        },
-        {
-          "stdin": "10 4",
-          "expected": "quotient=2.50 remainder=2",
-          "note": "余数为 2"
-        }
-      ],
-      "id": "c-ch03-pg-003",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.1 选择题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.13（PDF p23 / 书页 p12）",
-      "difficulty": 2,
-      "stem": "【题 3.13】已有定义 int x; float y; 且执行 scanf(\"%3d%f\",&x,&y); 语句，若从第一列开始输入数据 12345□678<回车>（□表示空格），则 x 的值为【1】，y 的值为【2】。\n\n【1】的候选项：\nA) 12345\nB) 123\nC) 45\nD) 345\n\n【2】的候选项：\nA) 无定值\nB) 45.000000\nC) 678.000000\nD) 123.000000\n\n请分别填写两个空的选项字母。",
-      "explanation": "**答案：B、B**。`%3d` 中的宽度 3 表示最多读入 3 位十进制数字，输入流 `12345□678` 的前 3 位 `123` 被读给 x，剩下的 `45□678` 留给 `%f`；`%f` 读到空格即停止，故 y=45.000000。易错点：一是把 `%3d` 误解成「跳过 3 位再读」而选 C；二是忽略空白符是 `%f` 的终止符，以为 y 会读到 678 或读不到值。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "bloom": "apply",
-      "type": "fill_blank",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "B"
-        },
-        {
-          "index": 2,
-          "answer": "B"
-        }
-      ],
-      "id": "c-ch03-fb-005",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.37（PDF p27 / 书页 p16）",
-      "difficulty": 3,
-      "stem": "【题 3.37】以下 printf 语句中 * 号的作用是【1】，输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int i=1;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  return 0;\n }\n```",
-      "explanation": "考点是 printf 宽度域的 `*` 修饰符。`%*d` 会**额外**从实参表取一个 int 作为字段宽度，所以 `printf(\"##%*d\\n\",i,i)` 必须传两个 i：前一个决定宽度，后一个才是要打印的数值。i 依次为 1、2、3，宽度跟着变为 1、2、3，默认右对齐、不足处用空格左填，于是三行分别是 `##1`、`##□2`、`##□□3`。易错点：把 `%*d` 当成「输出一个星号」；或只写一个实参 `printf(\"##%*d\",i)`，导致宽度取到不定值（未定义行为）。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "bloom": "analyze",
-      "type": "short_answer",
-      "reference_answer": "**【1】**`%*d` 中的 `*` 表示该输出项的**宽度不在格式串里写死，而是由实参列表中对应位置的参数给出**：本例第 1 个 i 充当宽度，第 2 个 i 才是要输出的值。因此同一条 printf 语句在 i 变化时输出宽度随之改变。\n\n**【2】**共三行输出（`□` 表示空格，`#` 是字面字符）：\n第 1 行：`##1`（i=1，宽度 1，无需补空格）\n第 2 行：`##□2`（i=2，宽度 2，数字右对齐左侧补 1 个空格）\n第 3 行：`##□□3`（i=3，宽度 3，左侧补 2 个空格）",
-      "grading_points": [
-        "* 号使输出宽度由实参给出，同一条语句宽度可变",
-        "%*d 需要两个实参：前一个是宽度，后一个是被输出的值",
-        "三行输出宽度依次为 1、2、3",
-        "默认右对齐，空格补在数字左侧"
-      ],
-      "id": "c-ch03-sa-001",
-      "verified": true
-    },
-    {
-      "category": "c",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.2 填空题",
-      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.38（PDF p27 / 书页 p16）",
-      "difficulty": 3,
-      "stem": "【题 3.38】以下 printf 语句中的负号的作用是【1】，该程序的输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x=12; double a=3.1415926;\n  printf(\"%6d##\\n\",x);\n  printf(\"%-6d##\\n\",x);\n  printf(\"%14.10lf##\\n\",a);\n  printf(\"%-14.10lf##\\n\",a);\n  return 0;\n }\n```",
-      "explanation": "考点是对齐标志与「宽度 / 精度」的分工：`-` 决定左对齐，`6`、`14` 是最小字段宽度（不足补空格，超出则按实际长度输出，不截断），`.10` 是精度，对 f 转换表示保留 10 位小数。`3.1415926` 补零到 10 位小数得 `3.1415926000`，共 12 个字符，比宽度 14 少 2，所以第 3 行左侧补 2 个空格、第 4 行右侧补 2 个空格。易错点：把 `.10` 误当宽度；或以为左对齐时会补零而不是补空格。",
-      "ai_generated": false,
-      "generated_at": "2026-09-08",
-      "bloom": "analyze",
-      "type": "short_answer",
-      "reference_answer": "**【1】**宽度前的负号 `-` 是**左对齐标志**：数据先输出，字段宽度不足的部分用空格补在**右侧**；不加负号时默认右对齐，空格补在左侧。\n\n**【2】**四行输出（`□` 表示空格，`#` 是字面字符）：\n第 1 行：`□□□□12##`（%6d 右对齐，12 前补 4 个空格）\n第 2 行：`12□□□□##`（%-6d 左对齐，12 后补 4 个空格）\n第 3 行：`□□3.1415926000##`（%14.10lf，10 位小数共 12 个字符，右对齐前补 2 个空格）\n第 4 行：`3.1415926000□□##`（%-14.10lf，左对齐后补 2 个空格）",
-      "grading_points": [
-        "负号表示左对齐，空格补在数据右侧",
-        "%6d 与 %-6d 输出 12，分别为「4 空格+12」与「12+4 空格」",
-        "%.10lf 把 3.1415926 补足为 3.1415926000（共 12 字符）",
-        "宽度 14 比 12 多 2，故第 3 行左补 2 空格、第 4 行右补 2 空格"
-      ],
-      "id": "c-ch03-sa-002",
-      "verified": true
-    },
     {
       "category": "c",
       "chapter": "第3章 最简单的C程序设计",
@@ -1188,508 +35,6 @@
         }
       ],
       "id": "c-ch03-cc-001",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-019",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "25|   25|25   |\n31 19 19\n3.14|    3.14|\nA  65",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='A' 码值为 65。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
-      "tags": [
-        "printf",
-        "字段宽度",
-        "精度",
-        "进制输出"
-      ],
-      "knowledgeIds": [
-        "c-ch03-08"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-020",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "-7|   -7|-7   |\n37777777771 fffffff9 FFFFFFF9\n-2.50|   -2.50|\nz 122",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='z' 码值为 122。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
-      "tags": [
-        "printf",
-        "字段宽度",
-        "精度",
-        "进制输出"
-      ],
-      "knowledgeIds": [
-        "c-ch03-08"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-021",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "255|  255|255  |\n377 ff FF\n12.35|   12.35|\n0  48",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='0' 码值为 48。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
-      "tags": [
-        "printf",
-        "字段宽度",
-        "精度",
-        "进制输出"
-      ],
-      "knowledgeIds": [
-        "c-ch03-08"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-022",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "8|    8|8    |\n10 8 8\n0.50|    0.50|\nM  77",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='M' 码值为 77。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
-      "tags": [
-        "printf",
-        "字段宽度",
-        "精度",
-        "进制输出"
-      ],
-      "knowledgeIds": [
-        "c-ch03-08"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-023",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n12 34\nAB\n```",
-      "answer": "12 34 A B\n177",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
-      "stdin": "12 34\nAB\n",
-      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「12 34」，两个 %d 读到 12 与 34，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「AB」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
-      "tags": [
-        "scanf",
-        "getchar",
-        "缓冲区",
-        "赋值抑制符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-14"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-024",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n5 7\nxy\n```",
-      "answer": "5 7 x y\n253",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
-      "stdin": "5 7\nxy\n",
-      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「5 7」，两个 %d 读到 5 与 7，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「xy」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
-      "tags": [
-        "scanf",
-        "getchar",
-        "缓冲区",
-        "赋值抑制符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-14"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-025",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n-3 100\nM9\n```",
-      "answer": "-3 100 M 9\n231",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
-      "stdin": "-3 100\nM9\n",
-      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「-3 100」，两个 %d 读到 -3 与 100，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「M9」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
-      "tags": [
-        "scanf",
-        "getchar",
-        "缓冲区",
-        "赋值抑制符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-14"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-026",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n0 0\nZz\n```",
-      "answer": "0 0 Z z\n212",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
-      "stdin": "0 0\nZz\n",
-      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「0 0」，两个 %d 读到 0 与 0，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「Zz」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
-      "tags": [
-        "scanf",
-        "getchar",
-        "缓冲区",
-        "赋值抑制符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-14"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-027",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "+42|42|  +42|\n00003.50|    3.50|\n42 42",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
-      "tags": [
-        "printf",
-        "标志字符",
-        "长度修饰符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-09"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-028",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "-42|-42|  -42|\n-0000.75|   -0.75|\n-42 4294967254",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 -42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
-      "tags": [
-        "printf",
-        "标志字符",
-        "长度修饰符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-09"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-029",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "+0|0|   +0|\n01234.57| 1234.57|\n0 0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 0 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
-      "tags": [
-        "printf",
-        "标志字符",
-        "长度修饰符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-09"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-030",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "+300|300| +300|\n00000.12|    0.12|\n300 300",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 300 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。\n\n【实机验证·Godbolt cg132 -O0】程序本就完整。%08.2f 对 0.125 采用 round-half-even 得 00000.12；书末答案 0.13 为印刷/四舍五入误，以实机为准。",
-      "tags": [
-        "printf",
-        "标志字符",
-        "长度修饰符"
-      ],
-      "knowledgeIds": [
-        "c-ch03-09"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-031",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nHello, World!\n```",
-      "answer": "HELLO, WORLD!\n13",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
-      "stdin": "Hello, World!\n",
-      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「Hello, World!」共 13 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
-      "tags": [
-        "getchar",
-        "putchar",
-        "字符处理"
-      ],
-      "knowledgeIds": [
-        "c-ch03-16"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-032",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nC Language 2026\n```",
-      "answer": "C LANGUAGE 2026\n15",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
-      "stdin": "C Language 2026\n",
-      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「C Language 2026」共 15 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
-      "tags": [
-        "getchar",
-        "putchar",
-        "字符处理"
-      ],
-      "knowledgeIds": [
-        "c-ch03-16"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-033",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 2,
-      "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\naBcDeF\n```",
-      "answer": "ABCDEF\n6",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
-      "stdin": "aBcDeF\n",
-      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「aBcDeF」共 6 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
-      "tags": [
-        "getchar",
-        "putchar",
-        "字符处理"
-      ],
-      "knowledgeIds": [
-        "c-ch03-16"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-034",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "100 144 64\n0144 0x64\n100 100\n100 100",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=100 时得到 100；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
-      "tags": [
-        "进制输出",
-        "无符号",
-        "类型截断"
-      ],
-      "knowledgeIds": [
-        "c-ch03-11"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-035",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "-1 37777777777 ffffffff\n037777777777 0xffffffff\n4294967295 -1\n-1 -1",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=-1 时得到 -1；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
-      "tags": [
-        "进制输出",
-        "无符号",
-        "类型截断"
-      ],
-      "knowledgeIds": [
-        "c-ch03-11"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-036",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "8 10 8\n010 0x8\n8 8\n8 8",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=8 时得到 8；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
-      "tags": [
-        "进制输出",
-        "无符号",
-        "类型截断"
-      ],
-      "knowledgeIds": [
-        "c-ch03-11"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
-      "verified": true
-    },
-    {
-      "id": "c-ch03-cr-037",
-      "category": "c",
-      "type": "code_reading",
-      "chapter": "第3章 最简单的C程序设计",
-      "section": "3.5 变式练习（代码类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
-      "answer": "200 310 c8\n0310 0xc8\n0 0\n-56 200",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
-      "stdin": "",
-      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=200 时得到 -56；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
-      "tags": [
-        "进制输出",
-        "无符号",
-        "类型截断"
-      ],
-      "knowledgeIds": [
-        "c-ch03-11"
-      ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
       "verified": true
     },
     {
@@ -2328,6 +673,1001 @@
       "verified": true
     },
     {
+      "id": "c-ch03-cc-015",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 格式化输入输出",
+      "difficulty": 1,
+      "bloom": "understand",
+      "tags": [
+        "scanf",
+        "整数",
+        "求和"
+      ],
+      "stem": "补全下面程序，使其读入两个整数并输出它们的差。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    /*__BLANK_1__*/\n    printf(\"%d\\n\", a - b);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "scanf(\"%d %d\", &a, &b);"
+        }
+      ],
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", a - b);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "10 3",
+          "expected": "7"
+        }
+      ],
+      "explanation": "本题考察 scanf 读入两个整数。需对变量取地址传入 scanf：`scanf(\"%d %d\", &a, &b);`。输入 `10 3` 后 a=10、b=3，`printf(\"%d\\n\", a - b)` 计算 10 - 3 = 7 并输出。注意 scanf 必须传地址（`&`），这是与 printf 的关键区别；两个格式符 `%d %d` 之间的空格用于跳过输入中的空白。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cc-016",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.4 程序举例",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "浮点",
+        "scanf",
+        "平均数"
+      ],
+      "stem": "补全下面程序，使其读入两个实数并输出它们的平均数（保留 2 位小数）。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    double a, b;\n    /*__BLANK_1__*/\n    printf(\"%.2f\\n\", (a + b) / 2);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "scanf(\"%lf %lf\", &a, &b);"
+        }
+      ],
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    double a, b;\n    scanf(\"%lf %lf\", &a, &b);\n    printf(\"%.2f\\n\", (a + b) / 2);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3.0 5.0",
+          "expected": "4.00"
+        }
+      ],
+      "explanation": "本题考察 double 类型的输入。读入两个实数需用 `scanf(\"%lf %lf\", &a, &b);`，`%lf` 是 double 的正确输入格式符。输入 `3.0 5.0` 后 a=3.0、b=5.0，`(a + b) / 2` = 4.0，`printf(\"%.2f\", ...)` 输出 `4.00`。注意 double 的 scanf 用 `%lf`，而 printf 可用 `%f` 或 `%lf`。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cc-017",
+      "type": "code_completion",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 数据的输入输出",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "赋值",
+        "交换",
+        "中间变量"
+      ],
+      "stem": "补全下面程序，使其交换变量 a 与 b 的值后输出。程序已给出交换所用中间变量的部分。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 3, b = 9, t;\n    /*__BLANK_1__*/\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "t = a; a = b; b = t;"
+        }
+      ],
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a = 3, b = 9, t;\n    t = a; a = b; b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "",
+          "expected": "9 3"
+        }
+      ],
+      "explanation": "本题考察用中间变量交换两个数。完整步骤为 `t = a; a = b; b = t;`：先把 a 的原值存入 t，再把 b 赋值给 a，最后把 t（即原 a）赋值给 b。执行后 a、b 互换，a=9、b=3，输出 `9 3`。要注意三条语句的顺序，如果改动顺序会丢失其中一个原值。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.28（PDF p25 / 书页 p14）",
+      "difficulty": 3,
+      "stem": "【题 3.28】以下程序的输出结果为【 】。",
+      "explanation": "结论：先换行，再输出 i: dec=-4, oct=37777777774, hex=fffffffc, unsigned=4294967292。关键：short 型 -4 传参时整型提升为 32 位 int，补码位模式 0xFFFFFFFC；%o/%x/%u 都把这 32 位按无符号数解释，故得 11 位八进制、8 位十六进制与 4294967292。易错点：误按 short 的 16 位值（0xFFFC）推算八/十六进制——负数提升后一律按 32 位补码输出。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ short i;\n  i=-4;\n  printf(\"\\ni: dec=%d, oct=%o, hex=%x, unsigned=%u\\n\",i,i,i,i);\n  return 0;\n }",
+      "answer": "\ni: dec=-4, oct=37777777774, hex=fffffffc, unsigned=4294967292",
+      "id": "c-ch03-cr-001",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.29（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.29】以下程序的输出结果为【 】。",
+      "explanation": "结论：输出 *3.140000,3.142*。关键：%f 默认精度 6 位小数得 3.140000；%4.3f 四舍五入保留 3 位，字面量 3.1415 按 double 存储的实际值略大于 3.1415，进位成 3.142；宽度 4 小于实占 5 字符，按原样全输出。易错点：把精度 .3 当\"截断\"、把字段宽度当\"上限\"——宽度只是最小占位，超长不截断。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ printf(\"*%f,%4.3f*\\n\",3.14,3.1415);\n  return 0;  }",
+      "answer": "*3.140000,3.142*",
+      "id": "c-ch03-cr-002",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.30（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.30】以下程序的输出结果为【 】。",
+      "explanation": "结论：输出 c: dec=120, oct=170, hex=78, ASCII=x。关键：char 本质是小整数，'x' 的 ASCII 码 120；%d/%o/%x 把 120 分别按十进制、八进制（170）、十六进制（78）打印，%c 再还原成字符 x。易错点：以为 %o 会带前缀 0——只有加 # 标志才有；同一内存值在不同转换符下形态完全不同。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ char c='x';\n  printf(\"c: dec=%d, oct=%o, hex=%x, ASCII=%c\\n\",c,c,c,c);\n  return 0;\n }",
+      "answer": "c: dec=120, oct=170, hex=78, ASCII=x",
+      "id": "c-ch03-cr-003",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.31（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.31】已有定义 int d=-2；执行以下语句后的输出结果是【 】。",
+      "explanation": "结论：两行分别为 *d(1)=-2*d(2)= -2*d(3)=-2 * 与 *d(4)=37777777776*d(5)=37777777776*d(6)=37777777776*。关键：%3d 右对齐前补 1 空格，%-3d 左对齐后补 1 空格；-2 的 32 位补码按无符号八进制是 37777777776，共 11 位，超出宽度 7，%7o/%-7o 均按原样全输出。易错点：以为 %o 会给负数输出\"-2\"的八进制——负数一律按无符号补码打印，且字段宽度不截断内容。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 int d=-2，此处补入以便实机运行。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%o*d(5)=%7o*d(6)=%-7o*\\n\",d,d,d);\n    return 0;\n}",
+      "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=37777777776*d(5)=37777777776*d(6)=37777777776*",
+      "id": "c-ch03-cr-004",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.32（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.32】已有定义 int d=-2；执行以下语句后的输出结果是【 】。",
+      "explanation": "结论：第一行同十进制形式，第二行为 *d(4)=fffffffe*d(5)=fffffffe*d(6)=fffffffe*。关键：-2 的 32 位补码十六进制是 fffffffe，共 8 位，均超出宽度 6，%6x/%-6x 都按原样全输出，左右对齐差异消失。易错点：负数用 %x 输出的是无符号补码而非\"-2\"；宽度不足时不截断、对齐失效。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 int d=-2，此处补入以便实机运行。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%x*d(5)=%6x*d(6)=%-6x*\\n\",d,d,d);\n    return 0;\n}",
+      "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=fffffffe*d(5)=fffffffe*d(6)=fffffffe*",
+      "id": "c-ch03-cr-005",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.33（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.33】已有定义 float d1=3.5,d2=-3.5；执行以下语句后的输出结果是【 】。",
+      "explanation": "结论：两行分别为 *d(1)=3.500000e+00*d(2)=3.5000e+00*d(3)=3.5000e+00* 与 *d(4)=-3.500000e+00*d(5)=-3.500000e+00*d(6)=-3.50000e+00*。关键：%e 默认精度 6 位小数，精度指小数点后的位数；\"3.5000e+00\"恰好 10 字符、\"-3.50000e+00\"恰好 12 字符，%10.4e 与 %-12.5e 都无需补齐，对齐无差别。易错点：算总宽时漏掉指数部分 e+00 占 4 位、负号占 1 位，误以为要补空格。\n\n【实机验证·Godbolt cg132 -O0】原书题面已给定义 float d1=3.5,d2=-3.5，此处补入。%e 输出以实机为准。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main(void)\n{\n    float d1 = 3.5, d2 = -3.5;\nprintf(\"*d(1)=%e*d(2)=%.4e*d(3)=%10.4e*\\n\",d1,d1,d1);\nprintf(\"*d(4)=%e*d(5)=%.6e*d(6)=%-12.5e*\\n\",d2,d2,d2);\n    return 0;\n}",
+      "answer": "*d(1)=3.500000e+00*d(2)=3.5000e+00*d(3)=3.5000e+00*\n*d(4)=-3.500000e+00*d(5)=-3.500000e+00*d(6)=-3.50000e+00*",
+      "id": "c-ch03-cr-006",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.34（PDF p26 / 书页 p15）",
+      "difficulty": 3,
+      "stem": "【题 3.34】以下程序的输出结果是【 】。",
+      "explanation": "结论：输出两行：x=1 y=2 * sum * =3 与 10 Squared is : 100。关键：格式串里的普通字符（含 * 与空格）原样输出，%d 依次打印 x、y、x+y=3；表达式 10*10 先求值 100 再输出。易错点：误把 * 当成 printf 的动态宽度符——只有紧跟在 % 之后的 * 才有该含义，此处是普通文本。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int x=1,y=2;\n  printf(\"x=%d y=%d * sum * =%d\\n\",x,y,x+y);\n  printf(\"10 Squared is : %d\\n\",10 * 10);\n  return 0;\n }",
+      "answer": "x=1 y=2 * sum * =3\n10 Squared is : 100",
+      "id": "c-ch03-cr-007",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.35（PDF p26 / 书页 p15）",
+      "difficulty": 4,
+      "stem": "【题 3.35】以下程序的输出结果是【 】。",
+      "explanation": "结论：8 行依次为 10、右对齐的\"    10\"、56.100000、14 宽右对齐的 3.141600、5.681000e+02、14 宽右对齐的 3.141600e+00、3.1416、12 宽右对齐的 3.1416。关键：%f 默认 6 位小数；%e 默认 6 位小数带指数；%g 自动去掉尾零并选较短形式；数值不足字段宽度时右对齐、前补空格。易错点：%g 输出 3.1416 而非 3.141600——未加 # 标志时尾零不保留。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int x=10; float pi=3.1416;\n  printf(\"(1) %d\\n\",x);\n  printf(\"(2) %6d\\n\",x);\n  printf(\"(3) %f\\n\",56.1);\n  printf(\"(4) %14f\\n\",pi);\n  printf(\"(5) %e\\n\",568.1);\n  printf(\"(6) %14e\\n\",pi);\n  printf(\"(7) %g\\n\",pi);\n  printf(\"(8) %12g\\n\",pi);\n  return 0;\n }",
+      "answer": "(1) 10\n(2)     10\n(3) 56.100000\n(4)       3.141600\n(5) 5.681000e+02\n(6)   3.141600e+00\n(7) 3.1416\n(8)       3.1416",
+      "id": "c-ch03-cr-008",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.36（PDF p27 / 书页 p16）",
+      "difficulty": 3,
+      "stem": "【题 3.36】以下程序的输出结果是【 】。",
+      "explanation": "结论：依次为 123.456001、右对齐\"       123.456\"、123.4560、8765.456700、右对齐\"      8765.457\"、8765.4567、8765.4567。关键：float 只有约 7 位有效数字，123.456 的二进制近似值按 %f 展开成 123.456001；double 精度高，8765.4567 各形式都准确；宽度不足时按实际位数全输出。易错点：以为 float 会精确打印 123.456000——十进制小数常无法被二进制精确表示，%f 把存储值的误差暴露出来。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ float a=123.456; double b=8765.4567;\n  printf(\"(1) %f\\n\",a);\n  printf(\"(2) %14.3f\\n\",a);\n  printf(\"(3) %6.4f\\n\",a);\n  printf(\"(4) %lf\\n\",b);\n  printf(\"(5) %14.3lf\\n\",b);\n  printf(\"(6) %8.4lf\\n\",b);\n  printf(\"(7) %.4f\\n\",b);\n  return 0;\n }",
+      "answer": "(1) 123.456001\n(2)        123.456\n(3) 123.4560\n(4) 8765.456700\n(5)       8765.457\n(6) 8765.4567\n(7) 8765.4567",
+      "id": "c-ch03-cr-009",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.39（PDF p28 / 书页 p17）",
+      "difficulty": 3,
+      "stem": "【题 3.39】以下程序的输出结果是【 】。",
+      "explanation": "结论：输出 a=+00325 x=+3.141593e+00。关键：%+06d 中 + 强制显示符号、0 用零填充、总宽 6 位含符号，得 +00325；%+e 默认精度 6 位，3.1415926 四舍五入为 3.141593e+00。易错点：补零发生在符号之后，是\"+00325\"而不是\"0+0325\"；+ 标志对正负数都占一位宽度。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int a=325; double x=3.1415926;\n  printf(\"a=%+06d x=%+e\\n\",a,x);\n  return 0;\n }",
+      "answer": "a=+00325 x=+3.141593e+00",
+      "id": "c-ch03-cr-010",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.40（PDF p28 / 书页 p17）",
+      "difficulty": 3,
+      "stem": "【题 3.40】以下程序的输出结果是【 】。",
+      "explanation": "结论：两行为 a=374 a=0374 与 a=fc a=0xfc。关键：252=2×64+7×8+4，八进制 374、十六进制 fc；# 标志分别在八进制/十六进制前加前缀 0 与 0x。易错点：不加 # 时 %o/%x 绝不输出前缀；加了 # 前缀也计入字段宽度。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int a=252;\n  printf(\"a=%o a=%#o\\n\",a,a);\n  printf(\"a=%x a=%#x\\n\",a,a);\n  return 0;\n }",
+      "answer": "a=374 a=0374\na=fc a=0xfc",
+      "id": "c-ch03-cr-011",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.41（PDF p28 / 书页 p17）",
+      "difficulty": 3,
+      "stem": "【题 3.41】以下程序的运行结果是【 】。",
+      "explanation": "结论：输出 2 48 20.0 20.0。关键：连续赋值自右向左结合：c=48；n/=48 即 n=100/48=2，该子式值 2；f*=2 得 f=20.0；x=f 得 20.0。易错点：整数除法 100/48 截断为 2；f*=n 用的是 n 被改写后的新值 2，不是原值 100。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int n=100; char c;\n  float f=10.0; double x;\n  x=f*=n/=(c=48);\n  printf(\"%d %d %3.1f %3.1f\\n\",n,c,f,x);\n  return 0;\n }",
+      "answer": "2 48 20.0 20.0",
+      "id": "c-ch03-cr-012",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.42（PDF p28 / 书页 p17）",
+      "difficulty": 3,
+      "stem": "【题 3.42】有以下程序：\n\n若运行时从键盘输入：55 A B<回车>，则输出结果是【 】。",
+      "explanation": "结论：输出 55, ,A。关键：%d 读入 55；%c 不跳过空白，第一个 %c 读到 55 后面的空格存入 c1，第二个 %c 读到 'A' 存入 c2；其余输入 \"B回车\" 留在缓冲区未被读取。易错点：误以为 %c 会像 %d 一样自动跳过空格——空格恰被当作有效字符读入，输出中 c1 位置显示为空白。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int k=0; char c1='a',c2='b';\n  scanf(\"%d%c%c\",&k,&c1,&c2);\n  printf(\"%d,%c,%c\\n\",k,c1,c2);\n  return 0;\n }",
+      "stdin": "55 A B\n",
+      "answer": "55, ,A",
+      "id": "c-ch03-cr-013",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.43（PDF p28 / 书页 p17）",
+      "difficulty": 3,
+      "stem": "【题 3.43】以下程序的运行结果是【 】。",
+      "explanation": "结论：输出 261。关键：177=2×64+6×8+1，八进制为 261。易错点：%o 不带 # 标志不加前缀 0，输出是 261 而不是 0261。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int m=177;\n  printf(\"%o\\n\",m);\n  return 0;\n }",
+      "answer": "261",
+      "id": "c-ch03-cr-014",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.44（PDF p29 / 书页 p18）",
+      "difficulty": 3,
+      "stem": "【题 3.44】以下程序的运行结果是【 】。",
+      "explanation": "结论：输出 20（本题以 gcc -O0 实测为准）。关键：子表达式 (n=10) 先把 n 改成 10，随后 += 用新的 n 与自身相加得 20。这是 UB：两个序列点之间对同一对象 n 修改两次，输出依赖编译器与优化级别，不同环境可能是 10 或 20。易错点：按\"取旧值 n=0 再累加\"推成 10——UB 代码的结果不可依赖，实际工程中禁止这种写法。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int n=0;\n  n+=(n=10);\n  printf(\"%d\\n\",n);\n  return 0;\n }",
+      "answer": "20",
+      "id": "c-ch03-cr-015",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.46（PDF p29 / 书页 p18）",
+      "difficulty": 3,
+      "stem": "【题 3.46】已知字母 A 的 ASCII 码值为 65。以下程序的输出结果是【 】。",
+      "explanation": "结论：输出 a=66,b=E。关键：字符按 ASCII 码参与算术：'A'+'4'-'3'=65+52-51=66；'A'+'6'-'2'=65+54-50=69，对应字符 'E'。易错点：'4' 是字符，其 ASCII 码为 52 而不是数值 4；同一变量 %d 打印出数值 66、%c 打印出字符，形式由转换符决定。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ char a,b;\n  a='A'+'4'-'3';\n  b='A'+'6'-'2';\n  printf(\"a=%d,b=%c\\n\",a,b);\n  return 0;\n }",
+      "answer": "a=66,b=E",
+      "id": "c-ch03-cr-016",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.51（PDF p30 / 书页 p19）",
+      "difficulty": 3,
+      "stem": "【题 3.51】若有以下定义和语句，为使变量 c1 得到字符'A'，变量 c2 得到字符'B'，正确的输入形式是【 】。",
+      "explanation": "本题问\"为使 c1 得到 'A'、c2 得到 'B' 的正确输入形式\"，属描述性试题，不进自动判分（answerIsDescription=true）。范本输入：A 后跟 3 个空格、再 B 后跟 3 个空格，即\"A□□□B□□□\"（□表示空格）。理由：scanf 的 %4c 把连续 4 个字符当作一个字段读入，要让 c1 拿到 'A'、c2 拿到 'B'，需让每个字段占满 4 个字符位（字母 + 3 个空格），中间不能回车。易错点/争议：把 %4c 对应到单个 char 变量是教材理想化写法；真实 C 中 %4c 需要能容纳 4 字符的数组，否则会越界写。本题保留教材认知模型，只考查\"输入形式\"，故不做实机判分。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "char c1,c2;\nscanf(\"%4c%4c\",&c1,&c2);",
+      "answer": "",
+      "id": "c-ch03-cr-017",
+      "verified": false,
+      "answerIsDescription": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.52（PDF p30 / 书页 p19）",
+      "difficulty": 3,
+      "stem": "【题 3.52】执行以下程序时，若从第一列开始输入数据，为使变量 a=3、b=7、x=8.5、y=71.82、c1='A'、c2='a'，正确的数据输入形式是【 】。",
+      "explanation": "本题问\"正确的数据输入形式\"，属描述性试题，不进自动判分。scanf 格式串里含 a=、b=、x=、y=、c1=、c2= 等普通字符，输入必须逐字符原样匹配。范本输入（三行，分别对应三次 scanf）：第一行 a=3 b=7，第二行 x=8.5 y=71.82，第三行 c1=A c2=a（也可写在同一行、字段间用空格分隔，但 a=/b= 等前缀不能省）。易错点：漏写格式串中的普通字符前缀；%c 前的空格会吃掉分隔空白，若输入排版不当会把空格/回车读入字符变量，导致 c1、c2 取值错位。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "code_reading",
+      "bloom": "analyze",
+      "code": "#include <stdio.h>\nint main( )\n{ int a,b; float x,y; char c1,c2;\n  scanf(\"a=%d b=%d\",&a,&b);\n  scanf(\"x=%f y=%f\",&x,&y);\n  scanf(\"c1=%c c2=%c\",&c1,&c2);\n  printf(\"a=%d,b=%d,x=%f,y=%f,c1=%c,c2=%c\",a,b,x,y,c1,c2);\n  return 0;\n }",
+      "answer": "",
+      "id": "c-ch03-cr-018",
+      "verified": false,
+      "answerIsDescription": true
+    },
+    {
+      "id": "c-ch03-cr-019",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "25|   25|25   |\n31 19 19\n3.14|    3.14|\nA  65",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='A' 码值为 65。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
+      "tags": [
+        "printf",
+        "字段宽度",
+        "精度",
+        "进制输出"
+      ],
+      "knowledgeIds": [
+        "c-ch03-08"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-020",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "-7|   -7|-7   |\n37777777771 fffffff9 FFFFFFF9\n-2.50|   -2.50|\nz 122",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='z' 码值为 122。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
+      "tags": [
+        "printf",
+        "字段宽度",
+        "精度",
+        "进制输出"
+      ],
+      "knowledgeIds": [
+        "c-ch03-08"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-021",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "255|  255|255  |\n377 ff FF\n12.35|   12.35|\n0  48",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='0' 码值为 48。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
+      "tags": [
+        "printf",
+        "字段宽度",
+        "精度",
+        "进制输出"
+      ],
+      "knowledgeIds": [
+        "c-ch03-08"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-022",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "8|    8|8    |\n10 8 8\n0.50|    0.50|\nM  77",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='M' 码值为 77。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
+      "tags": [
+        "printf",
+        "字段宽度",
+        "精度",
+        "进制输出"
+      ],
+      "knowledgeIds": [
+        "c-ch03-08"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-023",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n12 34\nAB\n```",
+      "answer": "12 34 A B\n177",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "stdin": "12 34\nAB\n",
+      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「12 34」，两个 %d 读到 12 与 34，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「AB」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
+      "tags": [
+        "scanf",
+        "getchar",
+        "缓冲区",
+        "赋值抑制符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-14"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-024",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n5 7\nxy\n```",
+      "answer": "5 7 x y\n253",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "stdin": "5 7\nxy\n",
+      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「5 7」，两个 %d 读到 5 与 7，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「xy」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
+      "tags": [
+        "scanf",
+        "getchar",
+        "缓冲区",
+        "赋值抑制符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-14"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-025",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n-3 100\nM9\n```",
+      "answer": "-3 100 M 9\n231",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "stdin": "-3 100\nM9\n",
+      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「-3 100」，两个 %d 读到 -3 与 100，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「M9」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
+      "tags": [
+        "scanf",
+        "getchar",
+        "缓冲区",
+        "赋值抑制符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-14"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-026",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n0 0\nZz\n```",
+      "answer": "0 0 Z z\n212",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "stdin": "0 0\nZz\n",
+      "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「0 0」，两个 %d 读到 0 与 0，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「Zz」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
+      "tags": [
+        "scanf",
+        "getchar",
+        "缓冲区",
+        "赋值抑制符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-14"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-027",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "+42|42|  +42|\n00003.50|    3.50|\n42 42",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
+      "tags": [
+        "printf",
+        "标志字符",
+        "长度修饰符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-09"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-028",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "-42|-42|  -42|\n-0000.75|   -0.75|\n-42 4294967254",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 -42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
+      "tags": [
+        "printf",
+        "标志字符",
+        "长度修饰符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-09"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-029",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "+0|0|   +0|\n01234.57| 1234.57|\n0 0",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 0 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
+      "tags": [
+        "printf",
+        "标志字符",
+        "长度修饰符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-09"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-030",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "+300|300| +300|\n00000.12|    0.12|\n300 300",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 300 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。\n\n【实机验证·Godbolt cg132 -O0】程序本就完整。%08.2f 对 0.125 采用 round-half-even 得 00000.12；书末答案 0.13 为印刷/四舍五入误，以实机为准。",
+      "tags": [
+        "printf",
+        "标志字符",
+        "长度修饰符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-09"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-031",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "apply",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nHello, World!\n```",
+      "answer": "HELLO, WORLD!\n13",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "stdin": "Hello, World!\n",
+      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「Hello, World!」共 13 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
+      "tags": [
+        "getchar",
+        "putchar",
+        "字符处理"
+      ],
+      "knowledgeIds": [
+        "c-ch03-16"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-032",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "apply",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nC Language 2026\n```",
+      "answer": "C LANGUAGE 2026\n15",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "stdin": "C Language 2026\n",
+      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「C Language 2026」共 15 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
+      "tags": [
+        "getchar",
+        "putchar",
+        "字符处理"
+      ],
+      "knowledgeIds": [
+        "c-ch03-16"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-033",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 2,
+      "bloom": "apply",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\naBcDeF\n```",
+      "answer": "ABCDEF\n6",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "stdin": "aBcDeF\n",
+      "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「aBcDeF」共 6 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
+      "tags": [
+        "getchar",
+        "putchar",
+        "字符处理"
+      ],
+      "knowledgeIds": [
+        "c-ch03-16"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-034",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "100 144 64\n0144 0x64\n100 100\n100 100",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=100 时得到 100；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
+      "tags": [
+        "进制输出",
+        "无符号",
+        "类型截断"
+      ],
+      "knowledgeIds": [
+        "c-ch03-11"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-035",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "-1 37777777777 ffffffff\n037777777777 0xffffffff\n4294967295 -1\n-1 -1",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=-1 时得到 -1；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
+      "tags": [
+        "进制输出",
+        "无符号",
+        "类型截断"
+      ],
+      "knowledgeIds": [
+        "c-ch03-11"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-036",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "8 10 8\n010 0x8\n8 8\n8 8",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=8 时得到 8；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
+      "tags": [
+        "进制输出",
+        "无符号",
+        "类型截断"
+      ],
+      "knowledgeIds": [
+        "c-ch03-11"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-037",
+      "category": "c",
+      "type": "code_reading",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.5 变式练习（代码类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "answer": "200 310 c8\n0310 0xc8\n0 0\n-56 200",
+      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "stdin": "",
+      "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=200 时得到 -56；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
+      "tags": [
+        "进制输出",
+        "无符号",
+        "类型截断"
+      ],
+      "knowledgeIds": [
+        "c-ch03-11"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-038",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 格式化输入输出",
+      "difficulty": 1,
+      "bloom": "remember",
+      "tags": [
+        "printf",
+        "格式化输出",
+        "整型"
+      ],
+      "stem": "阅读下面程序的输出结果（无需输入）。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 12, b = 5;\n    printf(\"%d %5d\\n\", a, b);\n    printf(\"%.2f\\n\", 3.14159);\n    return 0;\n}",
+      "stdin": "",
+      "answer": "12     5\n3.14",
+      "answerIsDescription": false,
+      "explanation": "本题考察 printf 的格式说明符。`%d` 按原样输出整数 12；`%5d` 表示输出宽度至少 5，数据不足 5 位时左侧补空格，b=5 宽度为 5 所以输出 `    5`（4 个空格加 5）。第二行 `%.2f` 表示保留两位小数的浮点，3.14159 四舍五入为 3.14。完整输出为第一行 `12     5`、第二行 `3.14`（注意 `%5d` 产生的空格）。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-039",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 数据的输入输出",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "scanf",
+        "赋值",
+        "交换"
+      ],
+      "stem": "阅读下面程序的输出结果（输入为 `5 8`）。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    scanf(\"%d %d\", &a, &b);\n    t = a; a = b; b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "stdin": "5 8",
+      "answer": "8 5",
+      "answerIsDescription": false,
+      "explanation": "本题考察利用中间变量交换两个数的值。输入 `5 8` 后 a=5、b=8。`t = a` 使 t=5；`a = b` 使 a=8；`b = t` 使 b=5。这样 a、b 完成交换，因此 `printf(\"%d %d\", a, b)` 输出 `8 5`。这种借助第三者 t 的交换法是 C 语言最常见的交换写法之一。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-040",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.4 程序举例",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "字符型",
+        "getchar",
+        "putchar"
+      ],
+      "stem": "阅读下面程序的输出结果（输入为 `ab`）。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c = getchar();\n    putchar(c);\n    c = getchar();\n    putchar(c);\n    putchar('\\n');\n    return 0;\n}",
+      "stdin": "ab",
+      "answer": "ab",
+      "answerIsDescription": false,
+      "explanation": "本题考察字符输入输出 getchar/putchar。`getchar()` 每次从输入缓冲区读取一个字符，第一次读到字符 `a`，`putchar(c)` 输出 `a`；第二次 `getchar()` 读到 `b`，`putchar(c)` 输出 `b`；最后 `putchar('\\n')` 换行。因此输出字符 `ab` 后换行。注意 getchar 逐个读取字符，包括空格和回车，这是字符处理的基础。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-cr-041",
+      "type": "code_reading",
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 格式化输入输出",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "浮点",
+        "printf",
+        "表达式"
+      ],
+      "stem": "阅读下面程序的输出结果（输入为 `3 4`）。",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    double a, b;\n    scanf(\"%lf %lf\", &a, &b);\n    printf(\"%.3f\\n\", a * b);\n    printf(\"%.1f\\n\", (a + b) / 2);\n    return 0;\n}",
+      "stdin": "3 4",
+      "answer": "12.000\n3.5",
+      "answerIsDescription": false,
+      "explanation": "本题考察浮点输入与格式化输出。`scanf` 读 double 用 `%lf`，输入 `3 4` 后 a=3.0、b=4.0。`a * b` 为 12.0，用 `%.3f` 输出 `12.000`；`(a + b) / 2` 为 (3+4)/2 = 3.5，用 `%.1f` 输出 `3.5`。注意 double 的 scanf 说明符必须是 `%lf`（不能是 `%f`），而 printf 中 `%f` 与 `%lf` 皆可。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
+      "verified": true
+    },
+    {
       "id": "c-ch03-dbg-001",
       "category": "c",
       "type": "debug",
@@ -2454,6 +1794,363 @@
       "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
       "ai_generated": true,
       "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.47（PDF p29 / 书页 p18）",
+      "difficulty": 2,
+      "stem": "【题 3.47】假设变量 a 和 b 均为整型，以下语句可以不借助任何变量把 a、b 中的值进行交换。请填空。\na+=【1】; b=a-【2】; a-=【3】;",
+      "explanation": "**答案：三处都填 `b`**。即 `a+=b; b=a-b; a-=b;`，这是不借助第三个变量交换两个整数的经典写法。推导：设初值 a=A、b=B。①`a+=b` 后 a=A+B；②`b=a-b` 即 b=(A+B)-B=A，b 拿到了 a 的原值；③`a-=b` 即 a=(A+B)-A=B，a 拿到了 b 的原值。交换完成。易错点：①三步的顺序不能调换，第一步必须先把两数之和存进 a；②当 A+B 超出 `int` 范围时会溢出，结果错误——工程上更安全的写法是 `t=a; a=b; b=t;`，或者用 `a^=b; b^=a; a^=b;`（同样有 a、b 为同一对象时清零的坑）。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "fill_blank",
+      "bloom": "remember",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "b"
+        },
+        {
+          "index": 2,
+          "answer": "b"
+        },
+        {
+          "index": 3,
+          "answer": "b"
+        }
+      ],
+      "id": "c-ch03-fb-001",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.48（PDF p29 / 书页 p18）",
+      "difficulty": 2,
+      "stem": "【题 3.48】假设变量 a、b 和 c 均为整型，以下语句借助中间变量 t 把 a、b 和 c 中的值进行交换，即把 b 中的值给 a，把 c 中的值给 b，把 a 中的值给 c。例如：交换前，a=10、b=20、c=30；交换后，a=20、b=30、c=10。请填空。\n【1】; a=b; b=c; 【2】;",
+      "explanation": "**答案：`t=a`、`c=t`**。完整语句是 `t=a; a=b; b=c; c=t;`，实现「b 给 a、c 给 b、a 给 c」的轮转。推导（初值 a=10、b=20、c=30）：①`t=a` 把 a 的原值 10 暂存到 t；②`a=b` 使 a=20；③`b=c` 使 b=30；④`c=t` 使 c=10。结果 a=20、b=30、c=10，符合要求。易错点：必须**先**把 a 存起来再覆盖它——若把 `t=a` 放到 `a=b` 之后，a 的原值就永久丢失了；这是「轮转交换」与「两两交换」的关键差别，顺序错了就再也找不回来。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "fill_blank",
+      "bloom": "remember",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "t=a"
+        },
+        {
+          "index": 2,
+          "answer": "c=t"
+        }
+      ],
+      "id": "c-ch03-fb-002",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.49（PDF p29 / 书页 p18）",
+      "difficulty": 2,
+      "stem": "【题 3.49】设有一输入函数 scanf(\"%d\",k)；它不能使 float 类型变量 k 得到正确数值的原因是【1】未指明变量 k 的地址和【2】格式控制符与变量类型不匹配。",
+      "explanation": "**答案要点：一是缺少取地址运算符 `&`，二是格式符 `%d` 与 `float` 类型不匹配**（正确写法是 `scanf(\"%f\",&k);`）。两处错误各自独立且都致命：①`scanf(\"%d\",k)` 把 k 的**值**当参数传入，而 `scanf` 需要的是变量的**地址**才能把数据写回去，传值等于给了一个野指针，运行时通常直接崩溃；②即使补上 `&` 写成 `scanf(\"%d\",&k)`，`%d` 会按 `int` 的位模式往 4 字节里写整数，而 k 是 `float`，需要的是 IEEE 754 浮点位模式，读到的数值必然错乱。说明：本题 blanks 里两条答案的文字与题干两个空格的先后顺序相反（题干【1】位置对应「未指明地址」，【2】对应「格式符不匹配」），内容本身无误。易错点：`printf` 传值、`scanf` 传地址，这一「一进一出」的不对称是 C 输入输出最容易搞反的地方。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "fill_blank",
+      "bloom": "remember",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "格式控制符与变量类型不匹配。scanf 语句的正确形式应该是：scanf(\"%f\",&k);"
+        },
+        {
+          "index": 2,
+          "answer": "未指明变量 k 的地址。"
+        }
+      ],
+      "id": "c-ch03-fb-003",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.50（PDF p30 / 书页 p19）",
+      "difficulty": 2,
+      "stem": "【题 3.50】已有定义 int a；float b,x；char c1,c2；为使 a=3、b=6.5、x=12.6、c1='a'、c2='A'，正确的 scanf 函数调用语句是【1】，数据输入的形式应为【2】。",
+      "explanation": "【1】scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2);【2】3 6.5 12.6aA<回车>。五个转换符必须一一对应五个地址：%d→&a，两个 %f→&b 与 &x（b=6.5、x=12.6），两个 %c→&c1、&c2；少一个实参就会让后面的数据整体错位。%c 不跳过空白，所以 'a'、'A' 必须紧贴在 12.6 之后输入，中间不能有空格或换行。勘误：原书答案的实参表漏印了 &x（只给了 4 个实参），此处按题干变量名补全，其余照印。易错点：写成 scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2) 后输入 3 6.5 12.6 a A，c1 会读到空格。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "fill_blank",
+      "bloom": "remember",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "scanf(\"%d%f%f%c%c\",&a,&b,&x,&c1,&c2);"
+        },
+        {
+          "index": 2,
+          "answer": "3 6.5 12.6aA<回车>"
+        }
+      ],
+      "id": "c-ch03-fb-004",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.13（PDF p23 / 书页 p12）",
+      "difficulty": 2,
+      "stem": "【题 3.13】已有定义 int x; float y; 且执行 scanf(\"%3d%f\",&x,&y); 语句，若从第一列开始输入数据 12345□678<回车>（□表示空格），则 x 的值为【1】，y 的值为【2】。\n\n【1】的候选项：\nA) 12345\nB) 123\nC) 45\nD) 345\n\n【2】的候选项：\nA) 无定值\nB) 45.000000\nC) 678.000000\nD) 123.000000\n\n请分别填写两个空的选项字母。",
+      "explanation": "**答案：B、B**。`%3d` 中的宽度 3 表示最多读入 3 位十进制数字，输入流 `12345□678` 的前 3 位 `123` 被读给 x，剩下的 `45□678` 留给 `%f`；`%f` 读到空格即停止，故 y=45.000000。易错点：一是把 `%3d` 误解成「跳过 3 位再读」而选 C；二是忽略空白符是 `%f` 的终止符，以为 y 会读到 678 或读不到值。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "bloom": "apply",
+      "type": "fill_blank",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "B"
+        },
+        {
+          "index": 2,
+          "answer": "B"
+        }
+      ],
+      "id": "c-ch03-fb-005",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-fb-006",
+      "category": "c",
+      "type": "fill_blank",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.4 变式练习（概念类）",
+      "difficulty": 2,
+      "bloom": "understand",
+      "stem": "printf 的格式串中，\\n 表示____，\\t 表示____，要输出一个反斜杠字符本身应写成____。",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "换行",
+          "accepted": [
+            "换行符",
+            "回车换行"
+          ]
+        },
+        {
+          "index": 2,
+          "answer": "水平制表符",
+          "accepted": [
+            "制表符",
+            "Tab",
+            "tab"
+          ]
+        },
+        {
+          "index": 3,
+          "answer": "\\\\\\\\",
+          "accepted": [
+            "\\\\"
+          ]
+        }
+      ],
+      "explanation": "转义字符是以反斜杠开头的特殊字符序列，用来表示那些无法或不便直接书写的字符：\\n 是换行（光标移到下一行行首），\\t 是水平制表符（跳到下一个制表位），\\\\ 才表示一个反斜杠字符本身，因为单个反斜杠会被解释为转义的开始。类似的还有 \\0（空字符，码值 0）、\\'（单引号）、\\\"（双引号）。每个转义序列在内存中只占 1 个字节，strlen(\"\\n\") 的结果是 1 而不是 2。易错点：Windows 路径中的反斜杠必须写成两个，如 \"D:\\\\temp\"；把 \\0 与字符 '0'（码值 48）混淆是最常见的错误。",
+      "tags": [
+        "printf",
+        "转义字符"
+      ],
+      "knowledgeIds": [
+        "c-ch03-07"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-fb-007",
+      "category": "c",
+      "type": "fill_blank",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.4 变式练习（概念类）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "stem": "执行 scanf(\"%2d%*2d%2d\", &a, &b); 时输入 12345678，则 a 的值是____，b 的值是____，该 scanf 调用的返回值是____。",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "12"
+        },
+        {
+          "index": 2,
+          "answer": "56"
+        },
+        {
+          "index": 3,
+          "answer": "2"
+        }
+      ],
+      "explanation": "scanf 的域宽限定最多读取的字符数：%2d 读两位得 12；%*2d 中的 * 是赋值抑制符，它照样从输入流读走两位（34）但不赋值给任何变量；接着 %2d 再读两位得 56 存入 b，剩下的 78 留在缓冲区供后续输入使用。scanf 的返回值是成功赋值的项数，被 * 抑制的那项不计入，所以返回 2 而不是 3。这个技巧常用于跳过不关心的字段。易错点：域宽只限制字符个数，不包含负号与小数点；返回值 0 表示一项都没读成功，EOF(-1) 表示输入结束，二者含义不同。",
+      "tags": [
+        "scanf",
+        "域宽",
+        "返回值"
+      ],
+      "knowledgeIds": [
+        "c-ch03-15"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "id": "c-ch03-fb-008",
+      "category": "c",
+      "type": "fill_blank",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.4 变式练习（概念类）",
+      "difficulty": 2,
+      "bloom": "understand",
+      "stem": "putchar(65) 的输出是字符____；putchar('\\n') 的作用是____；putchar 与 printf(\"%c\", c) 的关系是____。",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "A"
+        },
+        {
+          "index": 2,
+          "answer": "输出一个换行",
+          "accepted": [
+            "换行",
+            "光标移到下一行行首"
+          ]
+        },
+        {
+          "index": 3,
+          "answer": "功能等价",
+          "accepted": [
+            "等价",
+            "作用相同"
+          ]
+        }
+      ],
+      "explanation": "putchar 的原型是 int putchar(int c)，参数是整型，会把低 8 位当作字符输出：65 是 'A' 的 ASCII 码，所以输出字母 A；传字符常量 '\\n' 则输出换行。它与 printf(\"%c\", c) 在效果上完全等价，但 putchar 更轻量（不需要解析格式串），适合逐字符输出的场景；反过来 printf 更灵活，可以一次输出多个不同类型的数据。标准库还有对应的 getchar/putchar 成对关系，以及 fputs/fgets 处理字符串。易错点：putchar 只能输出一个字符，不能输出字符串；输出字符串要用 puts 或 printf(\"%s\")。",
+      "tags": [
+        "putchar",
+        "字符输出"
+      ],
+      "knowledgeIds": [
+        "c-ch03-17"
+      ],
+      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
+      "ai_generated": true,
+      "generated_at": "2026-09-12",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 编程题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.53（PDF p30 / 书页 p19）",
+      "difficulty": 2,
+      "stem": "【题 3.53】编写程序，从终端键盘输入圆的半径 r，圆柱的高 h，分别计算出圆周长 cl、圆面积 cs 和圆柱的体积 cvz。输出计算结果时要求有文字说明，并取小数点后 2 位数字。 输出格式：三行，依次为 cl=<值>、cs=<值>、cvz=<值>，均保留 2 位小数。",
+      "explanation": "**思路与关键步骤**。①输入：`scanf(\"%f%f\", &r, &h)` 一次读入半径和高，`%f` 会自动跳过空白，所以 `1.5 3` 这种用空格分隔的输入可直接读入；②计算：周长 `cl = 2*PI*r`，面积 `cs = PI*r*r`，圆柱体积 `cvz = cs*h`（即 `PI*r*r*h`）；③输出：三次 `printf` 各占一行，格式串写成 `\"cl=%.2f\\n\"` 之类，`%.2f` 负责保留两位小数并对第三位四舍五入。`PI` 用 `const double PI = 3.14159265358979;` 或直接 `#define PI 3.14159265` 定义，精度要足够，否则 `r=100` 时 `cs=31415.93` 这类结果会因 PI 位数不足而对不上。易错点：①变量必须是 `float`/`double`，用 `int` 会把 1.5 截成 1；②`%.2f` 是**四舍五入**而非截断，与手工算的 `cvz=15707.963→15707.96` 一致；③输出中的 `cl=`、`cs=`、`cvz=` 是格式串里的普通文字，必须原样写出，且不能有多余空格。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "programming",
+      "bloom": "apply",
+      "reference": "#include <stdio.h>\n\n#define PI 3.1415926535897932\n\nint main(void)\n{\n    double r, h;\n    double cl, cs, cvz;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2)\n        return 1;\n\n    cl = 2 * PI * r;\n    cs = PI * r * r;\n    cvz = cs * h;\n\n    printf(\"cl=%.2f\\n\", cl);\n    printf(\"cs=%.2f\\n\", cs);\n    printf(\"cvz=%.2f\\n\", cvz);\n\n    return 0;\n}\n",
+      "testCases": [
+        {
+          "stdin": "1.5 3",
+          "expected": "cl=9.42\ncs=7.07\ncvz=21.21",
+          "note": "常规"
+        },
+        {
+          "stdin": "0 5",
+          "expected": "cl=0.00\ncs=0.00\ncvz=0.00",
+          "note": "边界 r=0"
+        },
+        {
+          "stdin": "100 0.5",
+          "expected": "cl=628.32\ncs=31415.93\ncvz=15707.96",
+          "note": "大数 小数高"
+        }
+      ],
+      "id": "c-ch03-pg-001",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 编程题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.54（PDF p30 / 书页 p19）",
+      "difficulty": 2,
+      "stem": "【题 3.54】编写程序，读入一个字母，输出与之对应的 ASCII 码，输入输出都要有相应的文字提示。 输出格式：第一行提示 Please input a letter:，第二行 The ASCII code of <字母> is <十进制码>。",
+      "explanation": "**思路与关键步骤**。①先输出提示：`printf(\"Please input a letter:\");`——注意提示串末尾**不能**带 `\\n`，否则第二行输出会另起一行，与要求的两行格式不符；②读入一个字符：`scanf(\"%c\", &ch)` 或 `ch = getchar()`；③输出结果：`printf(\"The ASCII code of %c is %d\\n\", ch, ch);`——同一个 `ch` 用两种格式符输出，`%c` 显示字符本身，`%d` 显示它的 ASCII 码值（`char` 会整型提升为 `int` 后传入）。易错点：①`char` 与 `int` 之间是天然互通的，求码值不需要任何转换函数；②格式串里的文字（含大小写、空格、冒号）必须与题目要求逐字符一致；③若前面有别的输入残留，`%c` 会把换行符读进来，必要时先用 `getchar()` 清缓冲。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "programming",
+      "bloom": "apply",
+      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char ch;\n\n    printf(\"Please input a letter:\\n\");\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    printf(\"The ASCII code of %c is %d\\n\", ch, ch);\n\n    return 0;\n}\n",
+      "testCases": [
+        {
+          "stdin": "A",
+          "expected": "Please input a letter:\nThe ASCII code of A is 65",
+          "note": "大写字母"
+        },
+        {
+          "stdin": "a",
+          "expected": "Please input a letter:\nThe ASCII code of a is 97",
+          "note": "小写字母"
+        },
+        {
+          "stdin": "Z",
+          "expected": "Please input a letter:\nThe ASCII code of Z is 90",
+          "note": "边界 Z"
+        }
+      ],
+      "id": "c-ch03-pg-002",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.3 编程题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.55（PDF p30 / 书页 p19）",
+      "difficulty": 2,
+      "stem": "【题 3.55】编写程序，从键盘输入两个整数，分别计算出它们的商和余数。输出时，商要求保留 2 位小数，并对第三位进行四舍五入。 输出格式：一行 quotient=<商> remainder=<余数>。",
+      "explanation": "**思路与关键步骤**。①读入两个整数：`scanf(\"%d%d\", &a, &b)`；②商要求保留两位小数并四舍五入，所以**不能**用整数除法 `a/b`（那会截断小数），必须让至少一个运算数是浮点：`(double)a / b`；③余数用整数求余 `a % b`，`%` 两侧必须都是整型；④输出：`printf(\"quotient=%.2f remainder=%d\\n\", (double)a/b, a%b);`——`%.2f` 本身就完成了「保留两位、第三位四舍五入」。验证：7/2=3.5→`3.50`，余 1；2/3=0.666…→`0.67`，余 2；10/4=2.5→`2.50`，余 2。易错点：①写成 `a/b` 会得 3.00、0.00、2.00，全错；②`(double)(a/b)` 是先整数除再转换，同样错，括号位置必须是 `(double)a/b`；③输出中 `quotient=`、`remainder=` 之间是一个空格，不是制表符。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "programming",
+      "bloom": "apply",
+      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"quotient=%.2f remainder=%d\\n\", (double)a / b, a % b);\n\n    return 0;\n}\n",
+      "testCases": [
+        {
+          "stdin": "7 2",
+          "expected": "quotient=3.50 remainder=1",
+          "note": "常规"
+        },
+        {
+          "stdin": "2 3",
+          "expected": "quotient=0.67 remainder=2",
+          "note": "商小于 1"
+        },
+        {
+          "stdin": "10 4",
+          "expected": "quotient=2.50 remainder=2",
+          "note": "余数为 2"
+        }
+      ],
+      "id": "c-ch03-pg-003",
       "verified": true
     },
     {
@@ -2752,6 +2449,622 @@
       "verified": true
     },
     {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.37（PDF p27 / 书页 p16）",
+      "difficulty": 3,
+      "stem": "【题 3.37】以下 printf 语句中 * 号的作用是【1】，输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int i=1;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  return 0;\n }\n```",
+      "explanation": "考点是 printf 宽度域的 `*` 修饰符。`%*d` 会**额外**从实参表取一个 int 作为字段宽度，所以 `printf(\"##%*d\\n\",i,i)` 必须传两个 i：前一个决定宽度，后一个才是要打印的数值。i 依次为 1、2、3，宽度跟着变为 1、2、3，默认右对齐、不足处用空格左填，于是三行分别是 `##1`、`##□2`、`##□□3`。易错点：把 `%*d` 当成「输出一个星号」；或只写一个实参 `printf(\"##%*d\",i)`，导致宽度取到不定值（未定义行为）。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "bloom": "analyze",
+      "type": "short_answer",
+      "reference_answer": "**【1】**`%*d` 中的 `*` 表示该输出项的**宽度不在格式串里写死，而是由实参列表中对应位置的参数给出**：本例第 1 个 i 充当宽度，第 2 个 i 才是要输出的值。因此同一条 printf 语句在 i 变化时输出宽度随之改变。\n\n**【2】**共三行输出（`□` 表示空格，`#` 是字面字符）：\n第 1 行：`##1`（i=1，宽度 1，无需补空格）\n第 2 行：`##□2`（i=2，宽度 2，数字右对齐左侧补 1 个空格）\n第 3 行：`##□□3`（i=3，宽度 3，左侧补 2 个空格）",
+      "grading_points": [
+        "* 号使输出宽度由实参给出，同一条语句宽度可变",
+        "%*d 需要两个实参：前一个是宽度，后一个是被输出的值",
+        "三行输出宽度依次为 1、2、3",
+        "默认右对齐，空格补在数字左侧"
+      ],
+      "id": "c-ch03-sa-001",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.2 填空题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.38（PDF p27 / 书页 p16）",
+      "difficulty": 3,
+      "stem": "【题 3.38】以下 printf 语句中的负号的作用是【1】，该程序的输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x=12; double a=3.1415926;\n  printf(\"%6d##\\n\",x);\n  printf(\"%-6d##\\n\",x);\n  printf(\"%14.10lf##\\n\",a);\n  printf(\"%-14.10lf##\\n\",a);\n  return 0;\n }\n```",
+      "explanation": "考点是对齐标志与「宽度 / 精度」的分工：`-` 决定左对齐，`6`、`14` 是最小字段宽度（不足补空格，超出则按实际长度输出，不截断），`.10` 是精度，对 f 转换表示保留 10 位小数。`3.1415926` 补零到 10 位小数得 `3.1415926000`，共 12 个字符，比宽度 14 少 2，所以第 3 行左侧补 2 个空格、第 4 行右侧补 2 个空格。易错点：把 `.10` 误当宽度；或以为左对齐时会补零而不是补空格。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "bloom": "analyze",
+      "type": "short_answer",
+      "reference_answer": "**【1】**宽度前的负号 `-` 是**左对齐标志**：数据先输出，字段宽度不足的部分用空格补在**右侧**；不加负号时默认右对齐，空格补在左侧。\n\n**【2】**四行输出（`□` 表示空格，`#` 是字面字符）：\n第 1 行：`□□□□12##`（%6d 右对齐，12 前补 4 个空格）\n第 2 行：`12□□□□##`（%-6d 左对齐，12 后补 4 个空格）\n第 3 行：`□□3.1415926000##`（%14.10lf，10 位小数共 12 个字符，右对齐前补 2 个空格）\n第 4 行：`3.1415926000□□##`（%-14.10lf，左对齐后补 2 个空格）",
+      "grading_points": [
+        "负号表示左对齐，空格补在数据右侧",
+        "%6d 与 %-6d 输出 12，分别为「4 空格+12」与「12+4 空格」",
+        "%.10lf 把 3.1415926 补足为 3.1415926000（共 12 字符）",
+        "宽度 14 比 12 多 2，故第 3 行左补 2 空格、第 4 行右补 2 空格"
+      ],
+      "id": "c-ch03-sa-002",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.1（PDF p20 / 书页 p9）",
+      "difficulty": 3,
+      "stem": "以下程序的运行结果是______。\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n\n```c\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n```",
+      "explanation": "**答案 A（输出 `5,9`）**。`m++` 是后缀自增，「先用后加」：作为 `printf` 的实参时传入的是**旧值 5**，m 自身在语句结束后才变 6；`--n` 是前缀自减，「先减后用」：n 先变成 9，传入的就是 9。所以输出 `5,9`。补充：C 中函数实参的求值顺序是**未指定**的，但这里两个自增作用于不同变量、互不影响，所以结果确定。易错点：若写成 `++m` 就会输出 `6,9`；同一个变量在一次调用里既自增又被使用才是未定义行为。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 5,9",
+        "B) 6,9",
+        "C) 5,10",
+        "D) 6,10"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-001",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.2（PDF p20 / 书页 p9）",
+      "difficulty": 3,
+      "stem": "设有以下程序：\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n```",
+      "explanation": "**答案 B（输出 `201,10`）**。`a=201` 是十进制常量，值 201；`b=012` 以 `0` 开头是**八进制**常量，值为 1×8+2 = 10。`%2d` 中的 2 是**最小字段宽度**：数据位数不足 2 位时用空格补齐（默认右对齐），超过 2 位则**原样输出、不截断**。所以 a 输出 3 位的 `201`，b 输出 2 位的 `10`，中间是格式串里的逗号，结果 `201,10`。易错点：宽度不会截断数据；`%d` 输出的永远是十进制，与常量书写时的进制无关。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 01,12",
+        "B) 201,10",
+        "C) 01,10",
+        "D) 20,01"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-002",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.3（PDF p20 / 书页 p9）",
+      "difficulty": 2,
+      "stem": "有定义语句int a,b;，若要通过语句scanf(\"%d,%d\",&a,&b);使变量a得到数值6，变量b得到数值5，下面输入形式中错误的是______。（注：□代表空格）",
+      "explanation": "**答案 C（`6 5<回车>` 是错误的输入形式）**。格式串 `\"%d,%d\"` 中的逗号是**普通字符**，`scanf` 会要求输入流在同一位置出现一个完全相同的逗号，匹配不上就终止读取。A 项 `6,5` 完全对应；B 项 `6,  5` 中 `%d` 在读取前会自动跳过前导空白（空格、制表、换行），逗号后的空格被吃掉，仍能读到 5；D 项 `6,` 换行后 `5` 同理，换行也是空白字符。只有 C 项用空格代替了逗号，`scanf` 找不到逗号，第二个 `%d` 无法匹配，b 得不到 5。易错点：`%d` 跳空白，但格式串里的普通字符必须逐字符精确匹配。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 6,5<回车>",
+        "B) 6,□□5<回车>",
+        "C) 6 5<回车>",
+        "D) 6,<回车>\n5<回车>"
+      ],
+      "answer": 2,
+      "id": "c-ch03-sc-003",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.4（PDF p20 / 书页 p9）",
+      "difficulty": 3,
+      "stem": "设有如下程序：\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n则以下叙述中正确的是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n```",
+      "explanation": "**答案 B（输出小写字母 `a`）**。`(ch1,ch2)` 是一个用括号括起的**逗号表达式**：先求 `ch1`（值被丢弃），再求 `ch2`，整个表达式的值取**最右**一项，即 `'a'`。因此 `printf` 只有一个实参 `'a'`，与格式串里唯一的 `%c` 正好对应，程序能正常编译运行，输出 `a`。易错点：不要以为「两个变量、一个格式符」会导致编译出错（D）——括号把它们合并成了一个表达式；逗号表达式的口诀是「先左后右，值取最右」。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 程序的输出结果为大写字母 A",
+        "B) 程序的输出结果为小写字母 a",
+        "C) 运行时产生错误信息",
+        "D) 格式说明符的个数少于输出项的个数，编译出错"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-004",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.5（PDF p21 / 书页 p10）",
+      "difficulty": 3,
+      "stem": "【题 3.5】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x1=0xabc,x2=0xdef;\n  x2-=x1;\n  printf(\"%X\\n\",x2);\n  return 0\n}\n```",
+      "explanation": "**答案 D（输出 `333`）**。`x1=0xabc`、`x2=0xdef` 都是十六进制常量，参与运算时就是普通整数：`x2 -= x1` 即 `0xdef - 0xabc`，逐位相减（e-a=4、d-b=2、f-c=3）得 `0x333`。`%X` 按**十六进制**输出且字母用**大写**，但 `0x` 前缀不会打印，所以结果是 `333`。易错点：`%X` 只改变显示方式，不改变数值；要显示前缀得加 `#` 标志写成 `%#X`（会输出 `0X333`）。另外原题代码 `return 0` 后漏了分号，实际编译会报错，但不影响对输出值的判断。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) ABC",
+        "B) 0Xabc",
+        "C) 0X333",
+        "D) 333"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-005",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.6（PDF p21 / 书页 p10）",
+      "difficulty": 3,
+      "stem": "【题 3.6】以下程序的输出结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ printf(\"\\n * s1=%15s *\",\"chinabeijing\");\n  printf(\"\\n * s2=%-5s *\",\"chi\");\n  return 0;\n}\n```",
+      "explanation": "**答案 D**。`%15s` 表示字符串右对齐、最小宽度 15：`\"chinabeijing\"` 长 12 个字符，前面补 3 个空格，输出 ` * s1=□□□chinabeijing *`。`%-5s` 中的 `-` 标志表示**左对齐**：`\"chi\"` 长 3，后面补 2 个空格，输出 ` * s2=chi□□ *`。易错点：`-` 是对齐标志而非负号，`%-5s` 与 `%5s` 宽度相同、方向相反；字符串长度超过宽度时同样不截断。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) * s1=chinabeijing□□□ *\n * s2= ** chi *",
+        "B) * s1=chinabeijing□□□ *\n * s2=chi□□ *",
+        "C) * s1= * □□chinabeijing *\n * s2=□□chi *",
+        "D) * s1=□□□chinabeijing *\n * s2=chi□□ *"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-006",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.7（PDF p21 / 书页 p10）",
+      "difficulty": 2,
+      "stem": "【题 3.7】已有定义int a=-2;和输出语句：printf(\"%8lx\",a);以下正确的叙述是______。",
+      "explanation": "**答案 D**。格式说明符的完整结构是 `%[标志][宽度][.精度][长度修饰]类型字符`。`%8lx` 中：`8` 是输出字段宽度，`l` 是长度修饰符（表示 `long`），`x` 是类型字符（无符号十六进制、小写字母），完全合法，所以 D 的叙述正确。A 错，整型还有 `%o`、`%x`、`%u`、`%ld` 等；B 错，`%x` 只能用于整型，对浮点数用 `%x` 是错的；C 错，`%8lx` 语法上成立。补充：本题 `a` 是 `int` 而格式用了 `l`，实参类型与 `unsigned long` 不匹配，严格讲是未定义行为，但题目考的是格式符本身的结构。易错点：宽度写在类型字符之前，精度才用 `.` 引出。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 整型变量的输出格式符只有%d一种",
+        "B) %x是格式符的一种，它可以适用于任何一种类型的数据",
+        "C) %x是格式符的一种，其变量的值按十六进制输出，但%8lx是错误的",
+        "D) %8lx不是错误的格式符，其中数字8规定了输出字段的宽度"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-007",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.8（PDF p21 / 书页 p10）",
+      "difficulty": 3,
+      "stem": "【题 3.8】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=-43456;\n  printf(\"y=%-8ld\\n\",y);\n  printf(\"y=%-08ld\\n\",y);\n  printf(\"y=%08ld\\n\",y);\n  printf(\"y=%+8ld\\n\",y);\n  return 0;\n}\n```",
+      "explanation": "**答案 C**。逐条分析（y = -43456，共 6 个字符）：①`%-8ld` 左对齐、宽度 8 → `-43456` 后补 2 个空格，行尾空格看不见，显示 `y=-43456`；②`%-08ld` 同时给了 `-` 和 `0` 两个标志，标准规定此时 `0` 被**忽略**，效果与 `%-8ld` 相同，仍是 `y=-43456`；③`%08ld` 右对齐、用 `0` 填充到 8 位 → 符号占一位、数字补两个 0，得 `-0043456`；④`%+8ld` 中 `+` 要求正数也带符号，但 y 本身是负数已有 `-`，故只按宽度 8 右对齐补空格，得 `□□-43456`。易错点：`-` 与 `0` 冲突时 `-` 胜出；`+` 不会把负号变成两个符号。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) y=□□-43456\ny=-□□43456\ny=-0043456\ny=-43456",
+        "B) y=-43456\ny=-43456\ny=-0043456\ny=+□-43456",
+        "C) y=-43456\ny=-43456\ny=-0043456\ny=□□-43456",
+        "D) y=□□-43456\ny=-0043456\ny=00043456\ny=+43456"
+      ],
+      "answer": 2,
+      "id": "c-ch03-sc-008",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.9（PDF p22 / 书页 p11）",
+      "difficulty": 3,
+      "stem": "【题 3.9】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ int y=2456;\n  printf(\"y=%3o\\n\",y);\n  printf(\"y=%8o\\n\",y);\n  printf(\"y=%#8o\\n\",y);\n  return 0;\n}\n```",
+      "explanation": "**答案 D**。先把 2456 换成八进制：2456 = 4×512 + 6×64 + 3×8 + 0 = `4630`（八进制）。①`%3o`：数据 4 位已超过宽度 3，**原样输出**，得 `y=4630`；②`%8o`：右对齐补空格到 8 位，得 `y=□□□□4630`；③`%#8o`：`#` 标志要求为八进制加上前导 `0`，变成 `04630` 共 5 个字符，**前缀计入宽度**，再补 3 个空格，得 `y=□□□04630`。易错点：`#` 对不同进制的效果不同——八进制加 `0`、十六进制加 `0x`、浮点数则强制带小数点；宽度不足时一律不截断。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) y=□□□2456\ny=□□□□□□□□2456\ny=########2456",
+        "B) y=□□□4630\ny=□□□□□□□□4630\ny=########4630",
+        "C) y=2456\ny=□□□□2456\ny=□□□02456",
+        "D) y=4630\ny=□□□□4630\ny=□□□04630"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-009",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.10（PDF p22 / 书页 p11）",
+      "difficulty": 3,
+      "stem": "【题 3.10】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=23456;\n  printf(\"y=%3x\\n\",y);\n  printf(\"y=%8x\\n\",y);\n  printf(\"y=%#8x\\n\",y);\n  return 0;\n}\n```",
+      "explanation": "**答案 A**。23456 的十六进制是 `5ba0`（5×4096 + 11×256 + 10×16 = 23456）。①`%3x`：4 位超过宽度 3，原样输出小写 `5ba0`；②`%8x`：右对齐补 4 个空格，得 `□□□□5ba0`；③`%#8x`：`#` 为十六进制加上 `0x` 前缀，前缀计入宽度，`0x5ba0` 共 6 字符，再补 2 个空格，得 `□□0x5ba0`。易错点：`%x` 输出小写字母 a~f，`%X` 输出大写；`#` 加的前缀会占用宽度名额，这与八进制的 `%#o` 同理。另外 `long` 型用 `%x` 严格讲应写 `%lx`，本题只考格式效果。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) y=5ba0\ny=□□□□5ba0\ny=□□0x5ba0",
+        "B) y=□□□5ba0\ny=□□□□□□□5ba0\ny=□□0x5ba0",
+        "C) y=5ba0\ny=5ba0\ny=0x5ba0",
+        "D) y=5ba0\ny=□□□□5ba0\ny=####5ba0"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-010",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.11（PDF p23 / 书页 p12）",
+      "difficulty": 2,
+      "stem": "【题 3.11】若x,y均定义为int型，z定义为double型，以下不合法的scanf函数调用语句是______。",
+      "explanation": "**答案 D**。`scanf` 的格式说明符**不允许指定精度**：`%6.2f` 中的 `.2` 是非法的（精度只对 `printf` 有意义，因为输入时小数位数由数据本身决定），所以 D 不合法。A 项 `%d%lx,%le` 结构合法（`,` 是普通字符，`%le` 对应 `double`）；B 项 `%2d*%d%lf` 中的 `*` 是格式串里的普通字符，要求输入中出现一个星号，宽度 `2` 也合法；C 项 `%x%*d%o` 中的 `%*d` 是**赋值抑制符**，读入但丢弃、不需要对应实参，所以只给 `&x,&y` 两个参数是正确的。补充：A 项用 `%lx` 读入 `int` 型变量属类型不匹配（UB），但题目考的是格式串本身是否合法。易错点：`scanf` 里的 `*` 有两种身份——写在 `%` 之后是抑制赋值，写在别处是普通字符。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) scanf(\"%d%lx,%le\",&x,&y,&z);",
+        "B) scanf(\"%2d*%d%lf\",&x,&y,&z);",
+        "C) scanf(\"%x%*d%o\",&x,&y);",
+        "D) scanf(\"%x%o%6.2f\",&x,&y,&z);"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-011",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.12（PDF p23 / 书页 p12）",
+      "difficulty": 3,
+      "stem": "【题 3.12】已有如下定义和输入语句，若要求a1,a2,c1,c2的值分别为10、20、A和B，当从第一列开始输入数据时，正确的数据输入方式是______。（注：□表示空格）\n\n```c\nint a1,a2; char c1,c2;\nscanf(\"%d%c%d%c\",&a1,&c1,&a2,&c2);\n```",
+      "explanation": "**答案 A（`10A□20B<回车>`）**。格式串 `%d%c%d%c` 中没有任何普通字符，所以输入必须严丝合缝：第一个 `%d` 读 `10`（遇非数字停止）；紧接的 `%c` **不跳过空白**，读走紧跟的 `A`；第二个 `%d` 会跳过前导空格再读 `20`；最后一个 `%c` 读紧跟的 `B`。于是 `10A□20B` 恰好满足。B 项 `10□A□20□B` 中第一个 `%c` 会读到空格，c1 变成 `' '`；D 项 `10A20□B` 中最后的 `%c` 读到空格，c2 变成 `' '`。补充：本题选项 A 与 C 文本相同（原题排版重复），按给定答案取 A。易错点：`%c` 是唯一不自动跳过空白的常用转换符，这是所有「混合输入」题目的关键陷阱。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 10A□20B<回车>",
+        "B) 10□A□20□B<回车>",
+        "C) 10A□20B<回车>",
+        "D) 10A20□B<回车>"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-012",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.14（PDF p23 / 书页 p12）",
+      "difficulty": 2,
+      "stem": "【题 3.14】根据以下定义语句和数据的输入方式，scanf语句的正确形式应为______。\n已有定义：float f1,f2;\n数据的输入方式：4.52<回车>\n　　　　　　　3.5<回车>",
+      "explanation": "**答案 B（`scanf(\"%f%f\",&f1,&f2);`）**。输入形式是两行 `4.52` 与 `3.5`，中间只有换行（空白字符）。`%f` 在读取前会自动跳过前导空白，包括换行，所以两个 `%f` 连着写就能依次读入两个浮点数，格式串里不需要也不应该加任何分隔字符。A 项 `%f,%f` 要求输入中出现逗号，而实际输入没有；C、D 项在 `scanf` 里写了精度 `%3.2f`、`%2.1f`，这是非法的——`scanf` 不支持精度修饰。易错点：`printf` 的 `%.2f` 控制输出小数位，`scanf` 里没有对应机制，输入的小数位数完全由用户敲的数据决定。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) scanf(\"%f,%f\",&f1,&f2);",
+        "B) scanf(\"%f%f\",&f1,&f2);",
+        "C) scanf(\"%3.2f %2.1f\",&f1,&f2);",
+        "D) scanf(\"%3.2f%2.1f\",&f1,&f2);"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-013",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.15（PDF p23 / 书页 p12）",
+      "difficulty": 3,
+      "stem": "【题 3.15】阅读以下程序，当输入数据的形式为25,13,10<回车>，程序的输出结果为______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x,y,z;\n  scanf(\"%d%d%d\",&x,&y,&z);\n  printf(\"x+y+z=%d\\n\",x+y+z);\n  return 0;\n}\n```",
+      "explanation": "**答案 D（不确定值）**。`scanf(\"%d%d%d\",&x,&y,&z)` 期望三个由空白分隔的整数，而实际输入是 `25,13,10`。执行过程：第一个 `%d` 读入 25，x=25；第二个 `%d` 跳过空白后遇到字符 `,`，它不是数字也不是合法前缀，**匹配失败**，`scanf` 立即停止并返回 1，y 和 z 根本没有被赋值。由于 y、z 是未初始化的局部变量，它们的值是栈上的垃圾数据，`x+y+z` 因此是不确定值。易错点：`scanf` 的返回值是「成功赋值的项数」，实际编程中必须检查它；不要以为格式串写三个 `%d` 就一定会读进三个数。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) x+y+z=48",
+        "B) x+y+z=35",
+        "C) x+z=35",
+        "D) 不确定值"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-014",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.16（PDF p24 / 书页 p13）",
+      "difficulty": 3,
+      "stem": "【题 3.16】设有以下程序：\n若运行时从键盘输入数据：\nabc<回车>\ndefg<回车>，则输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char c1,c2,c3,c4,c5,c6;\n  scanf(\"%c%c%c%c\",&c1,&c2,&c3,&c4);\n  c5=getchar();\n  c6=getchar();\n  putchar(c1);\n  putchar(c2);\n  printf(\"%c%c\\n\",c5,c6);\n  return 0;\n}\n```",
+      "explanation": "**答案 B（输出 `abde`）**。输入流是 `abc` 换行 `defg` 换行，即字符序列 `a b c \\n d e f g \\n`。`scanf(\"%c%c%c%c\",...)` 中 `%c` 不跳空白，依次读走 `a`、`b`、`c`、`\\n`，所以 c1='a'、c2='b'、c3='c'、c4='\\n'。接着 `c5=getchar()` 读到 `d`，`c6=getchar()` 读到 `e`。输出部分只用到 c1、c2、c5、c6：`putchar(c1)` 打 `a`，`putchar(c2)` 打 `b`，`printf(\"%c%c\\n\",c5,c6)` 打 `de`，合计 `abde`。易错点：回车符 `\\n` 也是一个实实在在的字符，会被 `%c` 和 `getchar` 读走——这正是「输入缓冲区残留」问题的根源。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) abcd",
+        "B) abde",
+        "C) abef",
+        "D) abfg"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-015",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.17（PDF p24 / 书页 p13）",
+      "difficulty": 2,
+      "stem": "【题 3.17】以下针对scanf函数的叙述中，正确的是______。",
+      "explanation": "**答案 D**。`scanf` 的作用是把输入流中的数据按格式**写入内存**，因此每个输入项都必须给出目标变量的**地址**（用 `&` 取地址，或直接传数组名、指针）。A 项把常量 `3.5` 当输入项，常量没有可写的存储单元，非法；B 项只有格式串没有输入项，数据无处存放，什么也读不进来；C 项在 `scanf` 里写 `%4.2f` 指定小数位数，`scanf` 不支持精度修饰，非法。易错点：漏写 `&`（如 `scanf(\"%d\", a)`）是初学者最常见的错误，编译可能只给警告，运行时却会崩溃或读到垃圾值。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 输入项可以为一实型常量，如scanf(\"%f\",3.5);",
+        "B) 只有格式控制，没有输入项，也能进行正确输入，如scanf(\"a=%d,b=%d\");",
+        "C) 当输入一个实型数据时，格式控制部分应规定小数点后的位数，如scanf(\"%4.2f\",&f);",
+        "D) 当输入数据时，必须指明变量的地址，如scanf(\"%f\",&f);"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-016",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.18（PDF p24 / 书页 p13）",
+      "difficulty": 3,
+      "stem": "【题 3.18】根据下面的程序及数据的输入方式和输出形式，程序中输入语句的正确形式应该为______。（注：□表示空格）\n输入形式：A□B□C<回车>\n输出形式：A□B\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1,ch2,ch3;\n  输入语句\n  printf(\"%c%c%c\",ch1,ch2,ch3);\n  return 0;\n}\n```",
+      "explanation": "**答案 A（`scanf(\"%c%c%c\",&ch1,&ch2,&ch3);`）**。输入流是 `A□B□C`（□为空格）。`%c` **不跳过空白**，所以三个 `%c` 依次读走 `A`、`□`、`B`，得到 ch1='A'、ch2=' '、ch3='B'；`printf(\"%c%c%c\",...)` 把它们连起来打印，正是题目要求的输出形式 `A□B`。B 项 `%c,%c,%c` 要求输入中有逗号，实际没有；C 项 `%c %c %c` 中格式串里的空格会吃掉输入中的所有空白，读到的就是 `A`、`B`、`C`，输出 `ABC`；D 项转换符与实参个数不匹配（3 个实参只配 2 个 `%c`），多余实参被忽略但属误用。易错点：这道题的「正确」是由输出反推的——想输出带空格，就得让 `%c` 把空格当数据读进来。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) scanf(\"%c%c%c\",&ch1,&ch2,&ch3);",
+        "B) scanf(\"%c,%c,%c\",&ch1,&ch2,&ch3);",
+        "C) scanf(\"%c %c %c \",&ch1,&ch2,&ch3);",
+        "D) scanf(\"%c%c\",&ch1,&ch2,&ch3);"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-017",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.19（PDF p24 / 书页 p13）",
+      "difficulty": 2,
+      "stem": "【题 3.19】有输入语句：scanf(\"a=%d,b=%d,c=%d\",&a,&b,&c); 为使变量a的值为1,b的值为3,c的值为2；从键盘输入数据的正确形式应当是______。（注：□表示空格）",
+      "explanation": "**答案 D（`a=1,b=3,c=2<回车>`）**。格式串 `\"a=%d,b=%d,c=%d\"` 里的 `a=`、`,`、`b=`、`c=` 全是**普通字符**，`scanf` 要求输入流在对应位置逐个精确匹配它们，只有 `%d` 的位置才去读数字。所以键盘上必须原样敲出 `a=1,b=3,c=2`：先匹配字符 `a` 和 `=`，再用 `%d` 读 1 存入 a；匹配 `,`、`b`、`=`，读 3 存入 b；匹配 `,`、`c`、`=`，读 2 存入 c。A、B 项没有 `a=`、`b=`、`c=` 这些前缀，第一个字符就匹配失败；C 项用空格代替逗号，也不匹配。易错点：格式串中的普通字符是「输入模板」的一部分，用户必须照抄，这也是给输入加提示的常用手法。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) 132<回车>",
+        "B) 1,3,2<回车>",
+        "C) a=1□b=3□c=2<回车>",
+        "D) a=1,b=3,c=2<回车>"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-018",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.20（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.20】以下不符合C语法的赋值语句是______。",
+      "explanation": "**答案 C（`m=1,n=2`）**。C 语言的**语句必须以分号结束**，`m=1,n=2` 没有分号，它只是一个逗号表达式，不构成语句，因此不符合 C 语法。A 项 `m=(2+1,m=1);` 合法：括号内是逗号表达式，先算 `2+1`（丢弃），再算 `m=1`，整个括号值为 1，赋给 m，最终 m=1。B 项 `m=n=0;` 合法：`=` 右结合，先把 0 赋给 n，表达式的值 0 再赋给 m。D 项 `n++;` 是合法的自增语句。易错点：分号是 C 语句的终止符而不是「可选的标点」；表达式加上分号才变成表达式语句。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) m=(2+1,m=1);",
+        "B) m=n=0;",
+        "C) m=1,n=2",
+        "D) n++;"
+      ],
+      "answer": 2,
+      "id": "c-ch03-sc-019",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.21（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.21】以下能正确地定义整型变量a,b和c并为其赋初值5的语句是______。",
+      "explanation": "依书末答案取 A，但本题四个选项均有瑕疵，属存疑题。C 中给多个变量赋同一初值的合法写法是 int a=5,b=5,c=5;：A) int a=b=c=5; 中的 b、c 此刻尚未声明，标准 C 编译不过，只有按「连等赋初值」的出题意图才讲得通；B) int a,b,c=5; 只初始化了 c，a、b 是不确定的值；C)、D) 没有 int，只是对未声明变量的赋值表达式。易错点：把 int a=b=c=5; 当合法语法背下来，实际编码必须逐个写初值。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) int a=b=c=5;",
+        "B) int a,b,c=5;",
+        "C) a=5,b=5,c=5;",
+        "D) a=b=c=5;"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-020",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.22（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.22】已知ch是字符型变量，下面不正确的赋值语句是______。",
+      "explanation": "**答案 A（`ch='a+b';` 不正确）**。字符常量的单引号里只能放**一个**字符或**一个**转义序列，`'a+b'` 放了三个字符，属于非法的多字符常量。B 项 `ch='\\0';` 是八进制转义字符，表示 ASCII 码 0 的空字符 NUL，合法。C 项 `ch='7'+'9';` 中两个字符常量按 ASCII 码参与运算（55+57=112），结果是 `int`，赋给 `char` 时截断为 112（即字符 `'p'`），语法完全合法。D 项 `ch=5+9;` 把整数 14 赋给 `char`，也合法（对应 ASCII 14 的控制字符）。易错点：C 允许把整数赋给 `char`，但单引号里绝不允许出现多个字符。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) ch='a+b';",
+        "B) ch='\\0';",
+        "C) ch='7'+'9';",
+        "D) ch=5+9;"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-021",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.23（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.23】已知ch是字符型变量，下面正确的赋值语句是______。",
+      "explanation": "**答案 B（`ch='\\xff';`）**。`\\x` 后跟十六进制数字构成**十六进制转义字符**，`\\xff` 表示码值 255 的字符，是一个字符常量，赋给 `char` 合法（是否溢出取决于 `char` 的符号性，但语法成立）。A 项 `'123'` 单引号里三个字符，是非法的多字符常量。C 项 `'\\08'` 中八进制转义只允许 0~7 的数字，`8` 不合法。D 项 `ch=\"\\\";` 有两处错误：双引号是字符串常量，不能赋给 `char`；而且 `\"\\\"` 里的反斜杠把后面的双引号转义掉了，字符串根本没有闭合。易错点：`\\x` 十六进制转义的位数不受「最多 3 位」限制，而八进制转义 `\\ddd` 最多 3 位。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) ch='123';",
+        "B) ch='\\xff';",
+        "C) ch='\\08';",
+        "D) ch=\"\\\";"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-022",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.24（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.24】若有以下定义，则正确的赋值语句是______。\nint a,b;    float x;",
+      "explanation": "**答案 B（`b++;`）**。`b` 是已定义的 `int` 变量，`b++` 加上分号构成一条合法的表达式语句。A 项 `a=1,b=2,` 结尾多了一个逗号，后面没有运算对象，语法错误。C 项 `a=b=5` 缺少分号，只是表达式不是语句。D 项 `b=int(x);` 的强制类型转换写法错误，C 中类型名必须用括号括起来放在表达式前面，正确写法是 `b=(int)x;`；`int(x)` 是 C++ 的函数式转换语法。易错点：判断「是不是语句」先看有没有分号，再看内部语法是否成立。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) a=1,b=2,",
+        "B) b++;",
+        "C) a=b=5",
+        "D) b=int(x);"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-023",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.25（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.25】设x、y均为float型变量，则以下不合法的赋值语句是______。",
+      "explanation": "**答案 B（`y=(x%2)/10;` 不合法）**。`%` 是求余运算符，C 标准规定它的两个运算数必须都是**整型**；x 是 `float`，`x%2` 无法通过编译。A 项 `++x;` 合法，`++`/`--` 可以用于浮点变量（要求是可修改的左值，与类型无关）。C 项 `x*=y+8;` 是合法的复合赋值，等价于 `x=x*(y+8)`。D 项 `x=y=0;` 合法，`=` 右结合，先把 0 赋给 y，再赋给 x（整数 0 会隐式转换为 0.0f）。易错点：想对浮点数取小数部分要用 `<math.h>` 的 `fmod(x,2.0)`，`%` 无论如何不行。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) ++x;",
+        "B) y=(x%2)/10;",
+        "C) x*=y+8;",
+        "D) x=y=0;"
+      ],
+      "answer": 1,
+      "id": "c-ch03-sc-024",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.26（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.26】设x、y和z均为int型变量，则执行语句x=(y=(z=10)+5)-5;后，x、y和z的值是______。",
+      "explanation": "**答案 A（x=10、y=15、z=10）**。`=` 是右结合的，`x=(y=(z=10)+5)-5` 从最内层开始：①`z=10`，该赋值表达式的值为 10，z 变成 10；②`(z=10)+5 = 15`，赋给 y，y 变成 15；③`y` 的值 15 减去 5 得 10，赋给 x，x 变成 10。注意第 ③ 步用的是 y 已经更新后的值 15，而不是括号里的 `(z=10)+5` 再算一遍。易错点：赋值表达式的值就是「被赋进去的那个值」，正因为如此才能连等；括号只改变结合顺序，不改变赋值本身产生的副作用。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) x=10\ny=15\nz=10",
+        "B) x=10\ny=10\nz=10",
+        "C) x=10\ny=10\nz=15",
+        "D) x=10\ny=5\nz=10"
+      ],
+      "answer": 0,
+      "id": "c-ch03-sc-025",
+      "verified": true
+    },
+    {
+      "category": "c",
+      "chapter": "第3章 最简单的C程序设计",
+      "section": "3.1 选择题",
+      "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.27（PDF p25 / 书页 p14）",
+      "difficulty": 2,
+      "stem": "【题 3.27】设有说明：double y=0.5,z=1.5; int x=10; 则能够正确使用C语言库函数的赋值语句是______。",
+      "explanation": "**答案 D**。`atan2` 的原型是 `double atan2(double y, double x)`，需要**两个**实参，D 项 `atan2((double)x,y)` 参数个数正确，且用 `(double)x` 做了显式转换；`exp(y-0.2)` 返回 `double`；两者相加仍是 `double`，外面用 `(int)` 截断后赋给 `int x`，形式规范。B 项 `pow(y)` 只给了一个实参，而 `pow` 需要两个，编译报错。C 项 `sqrt(y-z)` 中 `y-z = 0.5-1.5 = -1.0`，对负数开平方会得到 NaN 并触发定义域错误，属于误用。说明：A 项 `exp(y)+fabs(x)` 在多数编译器下也能通过（`int` 会隐式提升为 `double`），但原题答案取 D——它同时考察了 `atan2` 的双参数形式与显式类型转换。易错点：`fabs`（`<math.h>`，浮点）与 `abs`（`<stdlib.h>`，整数）不能互换。",
+      "ai_generated": false,
+      "generated_at": "2026-09-08",
+      "type": "single_choice",
+      "bloom": "understand",
+      "options": [
+        "A) z=exp(y)+fabs(x);",
+        "B) y=log10(y)+pow(y);",
+        "C) z=sqrt(y-z);",
+        "D) x=(int)(atan2((double)x,y)+exp(y-0.2));"
+      ],
+      "answer": 3,
+      "id": "c-ch03-sc-026",
+      "verified": true
+    },
+    {
       "id": "c-ch03-sc-027",
       "category": "c",
       "type": "single_choice",
@@ -2927,132 +3240,73 @@
       "verified": true
     },
     {
-      "id": "c-ch03-fb-006",
+      "id": "c-ch03-sc-037",
+      "type": "single_choice",
       "category": "c",
-      "type": "fill_blank",
       "chapter": "第3章 最简单的C程序设计",
-      "section": "3.4 变式练习（概念类）",
-      "difficulty": 2,
-      "bloom": "understand",
-      "stem": "printf 的格式串中，\\n 表示____，\\t 表示____，要输出一个反斜杠字符本身应写成____。",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "换行",
-          "accepted": [
-            "换行符",
-            "回车换行"
-          ]
-        },
-        {
-          "index": 2,
-          "answer": "水平制表符",
-          "accepted": [
-            "制表符",
-            "Tab",
-            "tab"
-          ]
-        },
-        {
-          "index": 3,
-          "answer": "\\\\\\\\",
-          "accepted": [
-            "\\\\"
-          ]
-        }
-      ],
-      "explanation": "转义字符是以反斜杠开头的特殊字符序列，用来表示那些无法或不便直接书写的字符：\\n 是换行（光标移到下一行行首），\\t 是水平制表符（跳到下一个制表位），\\\\ 才表示一个反斜杠字符本身，因为单个反斜杠会被解释为转义的开始。类似的还有 \\0（空字符，码值 0）、\\'（单引号）、\\\"（双引号）。每个转义序列在内存中只占 1 个字节，strlen(\"\\n\") 的结果是 1 而不是 2。易错点：Windows 路径中的反斜杠必须写成两个，如 \"D:\\\\temp\"；把 \\0 与字符 '0'（码值 48）混淆是最常见的错误。",
+      "section": "3.3 格式化输入输出",
+      "difficulty": 4,
+      "bloom": "analyze",
       "tags": [
         "printf",
-        "转义字符"
+        "格式控制"
       ],
-      "knowledgeIds": [
-        "c-ch03-07"
+      "stem": "执行 printf(\"%d %5.1f\\n\", 10, 3.14159); 后，输出的内容是（ ）",
+      "options": [
+        "10   3.1",
+        "10 3.1",
+        "10  3.1",
+        "10   3.14"
       ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
+      "answer": 0,
+      "explanation": "%d 输出 10；%5.1f 表示总宽至少 5 位、保留 1 位小数并右对齐，3.14159 保留 1 位四舍五入为 3.1，占 3 个字符，前面补 2 个空格，故字段为“  3.1”；再与格式串中 %d 后面紧跟的一个空格合起来，整体为“10   3.1”，A 正确。B 少补了空格；C 只补了 1 个空格；D 保留的是 2 位小数（那是 %5.2f 的效果）。易错点：%5.1f 的最小宽度是 5，不足才补空格并右对齐；若数值实际字符数超过 5，则不受宽度上限约束，宽度被忽略。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
       "verified": true
     },
     {
-      "id": "c-ch03-fb-007",
+      "id": "c-ch03-te-047",
+      "type": "term_explanation",
       "category": "c",
-      "type": "fill_blank",
       "chapter": "第3章 最简单的C程序设计",
-      "section": "3.4 变式练习（概念类）",
-      "difficulty": 3,
-      "bloom": "analyze",
-      "stem": "执行 scanf(\"%2d%*2d%2d\", &a, &b); 时输入 12345678，则 a 的值是____，b 的值是____，该 scanf 调用的返回值是____。",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "12"
-        },
-        {
-          "index": 2,
-          "answer": "56"
-        },
-        {
-          "index": 3,
-          "answer": "2"
-        }
-      ],
-      "explanation": "scanf 的域宽限定最多读取的字符数：%2d 读两位得 12；%*2d 中的 * 是赋值抑制符，它照样从输入流读走两位（34）但不赋值给任何变量；接着 %2d 再读两位得 56 存入 b，剩下的 78 留在缓冲区供后续输入使用。scanf 的返回值是成功赋值的项数，被 * 抑制的那项不计入，所以返回 2 而不是 3。这个技巧常用于跳过不关心的字段。易错点：域宽只限制字符个数，不包含负号与小数点；返回值 0 表示一项都没读成功，EOF(-1) 表示输入结束，二者含义不同。",
+      "section": "3.1 顺序程序结构",
+      "difficulty": 1,
+      "bloom": "remember",
       "tags": [
-        "scanf",
-        "域宽",
-        "返回值"
+        "控制结构",
+        "顺序结构"
       ],
-      "knowledgeIds": [
-        "c-ch03-15"
+      "stem": "请解释什么是顺序结构（顺序程序结构）？它有什么特点？",
+      "keyPoints": [
+        "顺序结构指程序按语句书写顺序自上而下依次执行",
+        "没有分支和跳转，一条条执行到底",
+        "是最基本最简单的控制结构，是分支和循环的基础"
       ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
+      "reference_answer": "顺序结构是程序最简单、最基本的控制结构。在这种结构中，程序按照语句书写的先后顺序，从上到下逐条执行，不会跳过、不会重复，也没有逻辑上的分支和循环。它体现「先做 A、再做 B、最后做 C」的线性流程。任何程序都是由顺序、分支、循环三种基本结构组合而成，顺序结构是另外两种结构的基础（分支、循环结构内部也是顺序执行的）。顺序结构对应的是无条件的、按序进行的方式，很适合用于依次完成若干任务的简单程序。",
+      "explanation": "顺序结构是「一条条按顺序执行」的线性结构，是 C 程序的默认组织方式。它的价值在于把程序分解为「按步骤完成任务」：先输入、再处理、后输出。理解顺序结构要与分支（if、switch 使流程分叉）和循环（for、while 使流程重复）对比——顺序结构无分叉、无重复。顺序结构中的语句可以包含赋值、表达式、输入输出等，任何语句都要以分号结束。它是三种基本控制结构中唯一「默认」的，也是理解复杂程序流程的起点。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
       "verified": true
     },
     {
-      "id": "c-ch03-fb-008",
+      "id": "c-ch03-te-048",
+      "type": "term_explanation",
       "category": "c",
-      "type": "fill_blank",
       "chapter": "第3章 最简单的C程序设计",
-      "section": "3.4 变式练习（概念类）",
+      "section": "3.3 格式化输入输出",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "putchar(65) 的输出是字符____；putchar('\\n') 的作用是____；putchar 与 printf(\"%c\", c) 的关系是____。",
-      "blanks": [
-        {
-          "index": 1,
-          "answer": "A"
-        },
-        {
-          "index": 2,
-          "answer": "输出一个换行",
-          "accepted": [
-            "换行",
-            "光标移到下一行行首"
-          ]
-        },
-        {
-          "index": 3,
-          "answer": "功能等价",
-          "accepted": [
-            "等价",
-            "作用相同"
-          ]
-        }
-      ],
-      "explanation": "putchar 的原型是 int putchar(int c)，参数是整型，会把低 8 位当作字符输出：65 是 'A' 的 ASCII 码，所以输出字母 A；传字符常量 '\\n' 则输出换行。它与 printf(\"%c\", c) 在效果上完全等价，但 putchar 更轻量（不需要解析格式串），适合逐字符输出的场景；反过来 printf 更灵活，可以一次输出多个不同类型的数据。标准库还有对应的 getchar/putchar 成对关系，以及 fputs/fgets 处理字符串。易错点：putchar 只能输出一个字符，不能输出字符串；输出字符串要用 puts 或 printf(\"%s\")。",
       "tags": [
-        "putchar",
-        "字符输出"
+        "输入输出",
+        "printf"
       ],
-      "knowledgeIds": [
-        "c-ch03-17"
+      "stem": "请解释 printf 函数的格式化输出功能，格式控制串和格式说明符分别起什么作用？",
+      "keyPoints": [
+        "printf 按格式控制串把数据输出到标准输出（屏幕）",
+        "格式说明符（如整型、浮点、字符、字符串）指定输出类型",
+        "格式控制串中普通字符原样输出，百分号引导的说明符对应后面的实参"
       ],
-      "source": "变式（源自 c-ch03 既有题目，按 06_变式出题方法论.md 改变数值/结构/情境，答案重新实机验证）",
-      "ai_generated": true,
-      "generated_at": "2026-09-12",
+      "reference_answer": "printf 是 C 的标准输出函数，用于按指定的格式把数据输出到标准输出（通常是屏幕）。它的第一个参数是格式控制串，包含普通字符和格式说明符；后面跟若干个与格式说明符对应的实参。格式说明符以百分号开头，如十进制整数、浮点、字符、字符串、十六进制等，指定对应实参按什么类型和格式输出。格式控制串中的普通字符会原样显示，百分号引导的说明符则从后面的实参列表中取一个值按格式输出。说明符还可带宽度、精度、对齐等修饰（如指定宽度、指定小数位数），用于控制输出格式。",
+      "explanation": "printf 是「按格式输出」，格式串控制输出布局。核心是格式说明符与实参的类型、个数必须对应，否则是未定义行为（常出现乱码或崩溃）。常见组合：整型、浮点（默认 6 位小数）、字符、字符串、十六进制、指针。宽度（如占 5 位右对齐）、精度（如两位小数）、长整型、输出百分号等修饰都要掌握。易错点：浮点与整型格式混用、输出百分号用双百分号、长整型用对应长度修饰符。printf 返回值是输出字符个数，但更常用的是它的输出效果。掌握格式说明符是 C 输出表达的基础。",
+      "source": "自撰（依据《C程序设计》第3章 最简单的C程序设计 知识点体系）",
       "verified": true
     },
     {

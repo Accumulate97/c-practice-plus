@@ -6,9 +6,9 @@
   "category": "memory",
   "chapter": "第7章 函数",
   "relatedProblems": [
-    "c-ch07-sa-009",
-    "c-ch07-cc-015",
-    "c-ch07-cc-016"
+    "c-ch07-alg-002",
+    "c-ch07-alg-004",
+    "c-ch07-alg-005"
   ],
   "code": "#include <stdio.h>\n\nlong fact(int n) {\n    if (n <= 1) return 1;       /* 递归出口 */\n    return n * fact(n - 1);     /* 先递归下去，回来再乘 */\n}\n\nint main(void) {\n    printf(\"%ld\\n\", fact(5));\n    return 0;\n}\n",
   "meta": {

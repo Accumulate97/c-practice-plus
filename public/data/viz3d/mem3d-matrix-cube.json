@@ -6,9 +6,9 @@
   "category": "memory",
   "chapter": "第6章 数组",
   "relatedProblems": [
-    "c-ch06-pg-004",
-    "c-ch06-pg-005",
-    "c-ch06-sc-006"
+    "c-ch06-cc-006",
+    "c-ch06-cc-013",
+    "c-ch06-cc-014"
   ],
   "code": "#include <stdio.h>\n\nint main(void) {\n    int a[3][3] = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };\n    /* 行优先：a[i][j] 的地址 = 基址 + (i * 3 + j) * sizeof(int) */\n    for (int i = 0; i < 3; i++)\n        for (int j = 0; j < 3; j++)\n            printf(\"a[%d][%d]=%d addr=%p\\n\", i, j, a[i][j], (void *)&a[i][j]);\n    return 0;\n}\n",
   "meta": {

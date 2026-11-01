@@ -10,8 +10,8 @@
       "renderer": "memory",
       "relatedProblems": [
         "c-ch09-sc-069",
-        "c-ch09-pg-009",
-        "c-ch09-fb-033"
+        "c-ch09-fb-033",
+        "c-ch09-pg-009"
       ],
       "steps": 7,
       "url": "data/viz3d/mem3d-wild-pointer.json"
@@ -23,9 +23,9 @@
       "category": "memory",
       "renderer": "memory",
       "relatedProblems": [
-        "c-ch09-pg-009",
         "c-ch09-fb-033",
-        "c-ch09-dbg-017"
+        "c-ch09-pg-009",
+        "c-ch09-alg-197"
       ],
       "steps": 14,
       "url": "data/viz3d/mem3d-leak.json"
@@ -37,9 +37,9 @@
       "category": "memory",
       "renderer": "memory",
       "relatedProblems": [
-        "c-ch07-sa-009",
-        "c-ch07-cc-015",
-        "c-ch07-cc-016"
+        "c-ch07-alg-002",
+        "c-ch07-alg-004",
+        "c-ch07-alg-005"
       ],
       "steps": 12,
       "url": "data/viz3d/mem3d-recursion.json"
@@ -51,9 +51,9 @@
       "category": "memory",
       "renderer": "memory",
       "relatedProblems": [
-        "c-ch06-pg-004",
-        "c-ch06-pg-005",
-        "c-ch06-sc-006"
+        "c-ch06-cc-006",
+        "c-ch06-cc-013",
+        "c-ch06-cc-014"
       ],
       "steps": 11,
       "url": "data/viz3d/mem3d-matrix-cube.json"

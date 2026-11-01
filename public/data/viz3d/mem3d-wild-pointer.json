@@ -7,8 +7,8 @@
   "chapter": "第9章 指针",
   "relatedProblems": [
     "c-ch09-sc-069",
-    "c-ch09-pg-009",
-    "c-ch09-fb-033"
+    "c-ch09-fb-033",
+    "c-ch09-pg-009"
   ],
   "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *p;              /* 1. 只定义未初始化：此刻已经是野指针 */\n    p = malloc(sizeof(int));\n    *p = 42;             /* 2. 合法写入 */\n    free(p);             /* 3. 归还内存，但 p 本身没被改 */\n    *p = 99;             /* 4. 对已释放内存写 —— 未定义行为 */\n    p = NULL;            /* 5. 唯一正确的补救 */\n    return 0;\n}\n",
   "meta": {
