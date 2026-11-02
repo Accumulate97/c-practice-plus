@@ -801,7 +801,7 @@
       "input_format": "一行字符串。",
       "output_format": "元音字母个数。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char s[256];\n    fgets(s, 256, stdin);\n    int c = 0; /* 在此用 char *p 遍历统计元音 */\n    printf(\"%d\", c);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main() {\n    char s[256];\n    fgets(s, 256, stdin);\n    int c = 0;\n    for (char *p = s; *p != '\\0'; p++) {\n        char x = *p;\n        if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U')\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[256];\n    fgets(s, 256, stdin);\n    int c = 0;\n    for (char *p = s; *p != '\\0'; p++) {\n        char x = *p;\n        if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x == 'A' || x == 'E' ||\n            x == 'I' || x == 'O' || x == 'U')\n            c++;\n    }\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello",
@@ -1525,7 +1525,7 @@
       "input_format": "一个不含空格的字符串（长度≤100）。",
       "output_format": "反转后的字符串。",
       "code_starter": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s, *q = s + strlen(s) - 1; /* TODO: 用 p、q 双指针交换字符 */\n    printf(\"%s\", s);\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\nint main(){\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s, *q = s + strlen(s) - 1;\n    while(p < q){\n        char t = *p; *p = *q; *q = t;\n        p++; q--;\n    }\n    printf(\"%s\", s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s, *q = s + strlen(s) - 1;\n    while (p < q) {\n        char t = *p;\n        *p = *q;\n        *q = t;\n        p++;\n        q--;\n    }\n    printf(\"%s\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello",
@@ -1585,7 +1585,7 @@
       "input_format": "一个仅含小写字母的字符串（长度≤1000）。",
       "output_format": "按字母顺序，每行输出一个出现过的字母和它的次数，格式为 字母:次数。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    int cnt[26] = {0};\n    char *p = s; /* TODO: 用指针遍历并统计 a 到 z 各字母出现次数后输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    char s[1001];\n    scanf(\"%s\", s);\n    int cnt[26] = {0};\n    char *p = s;\n    while(*p){\n        if(*p >= 'a' && *p <= 'z') cnt[*p - 'a']++;\n        p++;\n    }\n    for(int i=0;i<26;i++){\n        if(cnt[i]) printf(\"%c:%d\\n\", 'a'+i, cnt[i]);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    int cnt[26] = {0};\n    char *p = s;\n    while (*p) {\n        if (*p >= 'a' && *p <= 'z')\n            cnt[*p - 'a']++;\n        p++;\n    }\n    for (int i = 0; i < 26; i++) {\n        if (cnt[i])\n            printf(\"%c:%d\\n\", 'a' + i, cnt[i]);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "banana",
@@ -1645,7 +1645,7 @@
       "input_format": "两个不含空格的字符串，以空格分隔。",
       "output_format": "拼接后的字符串。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char a[201], b[101];\n    scanf(\"%s%s\", a, b);\n    char *p = a;\n    while (*p)\n        p++;\n    char *q = b; /* TODO: 把 *q 逐个拷到 *p */\n    printf(\"%s\", a);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    char a[201], b[101];\n    scanf(\"%s%s\", a, b);\n    char *p = a;\n    while(*p) p++;\n    char *q = b;\n    while(*q) *p++ = *q++;\n    *p = '\\0';\n    printf(\"%s\", a);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char a[201], b[101];\n    scanf(\"%s%s\", a, b);\n    char *p = a;\n    while (*p)\n        p++;\n    char *q = b;\n    while (*q)\n        *p++ = *q++;\n    *p = '\\0';\n    printf(\"%s\", a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "ab cd",
@@ -1765,7 +1765,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "升序排列后的 n 个整数，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]); /* TODO: 用 *(a+j) 冒泡排序 */\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", *(a + i));\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    for(int i=0;i<n-1;i++){\n        for(int j=0;j<n-1-i;j++){\n            if(*(a+j) > *(a+j+1)){\n                int t = *(a+j); *(a+j) = *(a+j+1); *(a+j+1) = t;\n            }\n        }\n    }\n    for(int i=0;i<n;i++) printf(\"%d \", *(a+i));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (*(a + j) > *(a + j + 1)) {\n                int t = *(a + j);\n                *(a + j) = *(a + j + 1);\n                *(a + j + 1) = t;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", *(a + i));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 1 4 1 5",
@@ -1825,7 +1825,7 @@
       "input_format": "第一行 r c，随后 r 行每行 c 个整数。",
       "output_format": "每行元素之和，独占一行，共 r 行。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10];\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    int(*p)[10] = a; /* TODO: 用 *(*(p+i)+j) 求每行和并输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10];\n    for(int i=0;i<r;i++)\n        for(int j=0;j<c;j++)\n            scanf(\"%d\", &a[i][j]);\n    int (*p)[10] = a;\n    for(int i=0;i<r;i++){\n        int sum = 0;\n        for(int j=0;j<c;j++) sum += *(*(p+i)+j);\n        printf(\"%d\\n\", sum);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10];\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    int(*p)[10] = a;\n    for (int i = 0; i < r; i++) {\n        int sum = 0;\n        for (int j = 0; j < c; j++)\n            sum += *(*(p + i) + j);\n        printf(\"%d\\n\", sum);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 3\n1 2 3\n4 5 6",
@@ -1886,7 +1886,7 @@
       "input_format": "第一行 r c，随后 r 行每行 c 个整数。",
       "output_format": "所有元素之和。",
       "code_starter": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int **a = (int **)malloc(r * sizeof(int *)); /* TODO: 逐行 malloc 并读入 */\n    int sum = 0;                                 /* TODO: 用二重指针累加 */\n    printf(\"%d\", sum);                           /* TODO: 释放内存 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\nint main(){\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int **a = (int**)malloc(r * sizeof(int*));\n    for(int i=0;i<r;i++) a[i] = malloc(c * sizeof(int));\n    for(int i=0;i<r;i++)\n        for(int j=0;j<c;j++)\n            scanf(\"%d\", &a[i][j]);\n    int sum = 0;\n    for(int i=0;i<r;i++)\n        for(int j=0;j<c;j++)\n            sum += *(*(a+i)+j);\n    printf(\"%d\", sum);\n    for(int i=0;i<r;i++) free(a[i]);\n    free(a);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int **a = (int **)malloc(r * sizeof(int *));\n    for (int i = 0; i < r; i++)\n        a[i] = malloc(c * sizeof(int));\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    int sum = 0;\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            sum += *(*(a + i) + j);\n    printf(\"%d\", sum);\n    for (int i = 0; i < r; i++)\n        free(a[i]);\n    free(a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 3\n1 2 3\n4 5 6",
@@ -2005,7 +2005,7 @@
       "input_format": "三个整数：a、b、flag。",
       "output_format": "a 与 b 的运算结果。",
       "code_starter": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint sub(int a, int b) {\n    return a - b;\n}\nint main() {\n    int a, b, flag;\n    scanf(\"%d%d%d\", &a, &b, &flag); /* TODO: 定义 fp 并 invoke */\n    printf(\"%d\", fp(a, b));\n}",
-      "reference": "#include <stdio.h>\nint add(int a, int b){ return a+b; }\nint sub(int a, int b){ return a-b; }\nint main(){\n    int a, b, flag;\n    scanf(\"%d%d%d\", &a, &b, &flag);\n    int (*fp)(int,int) = flag ? add : sub;\n    printf(\"%d\", fp(a,b));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint sub(int a, int b) {\n    return a - b;\n}\nint main() {\n    int a, b, flag;\n    scanf(\"%d%d%d\", &a, &b, &flag);\n    int (*fp)(int, int) = flag ? add : sub;\n    printf(\"%d\", fp(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10 3 1",
@@ -2065,7 +2065,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "两个和，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a; /* TODO: 分别用 p[i] 和 *(p+i) 求和 */\n    printf(\"%d %d\", s1, s2);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    int *p = a;\n    int s1 = 0, s2 = 0;\n    for(int i=0;i<n;i++) s1 += p[i];\n    for(int i=0;i<n;i++) s2 += *(p+i);\n    printf(\"%d %d\", s1, s2);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a;\n    int s1 = 0, s2 = 0;\n    for (int i = 0; i < n; i++)\n        s1 += p[i];\n    for (int i = 0; i < n; i++)\n        s2 += *(p + i);\n    printf(\"%d %d\", s1, s2);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
@@ -2125,7 +2125,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "奇数个数 偶数个数，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a, odd = 0, even = 0; /* TODO: 用 *(p+i)%2 统计 */\n    printf(\"%d %d\", odd, even);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    int *p = a;\n    int odd = 0, even = 0;\n    for(int i=0;i<n;i++){\n        if(*(p+i) % 2) odd++;\n        else even++;\n    }\n    printf(\"%d %d\", odd, even);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a;\n    int odd = 0, even = 0;\n    for (int i = 0; i < n; i++) {\n        if (*(p + i) % 2)\n            odd++;\n        else\n            even++;\n    }\n    printf(\"%d %d\", odd, even);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5",
@@ -2185,7 +2185,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "拷贝后数组 b 的元素之和。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000], b[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *pa = a, *pb = b; /* TODO: 用指针拷贝并求和 */\n    printf(\"%d\", sum);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000], b[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    int *pa = a, *pb = b;\n    for(int i=0;i<n;i++) *(pb+i) = *(pa+i);\n    int sum = 0;\n    for(int i=0;i<n;i++) sum += *(pb+i);\n    printf(\"%d\", sum);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000], b[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *pa = a, *pb = b;\n    for (int i = 0; i < n; i++)\n        *(pb + i) = *(pa + i);\n    int sum = 0;\n    for (int i = 0; i < n; i++)\n        sum += *(pb + i);\n    printf(\"%d\", sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
@@ -2366,7 +2366,7 @@
       "input_format": "一个不含空格的字符串。",
       "output_format": "1 或 0。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    char *lit = \"pointer\"; /* TODO: 用指针逐字符比较 */\n    printf(\"%d\", eq);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    char *lit = \"pointer\";\n    int i = 0;\n    while(p[i] && lit[i] && p[i] == lit[i]) i++;\n    int eq = (p[i] == '\\0' && lit[i] == '\\0');\n    printf(\"%d\", eq);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    char *lit = \"pointer\";\n    int i = 0;\n    while (p[i] && lit[i] && p[i] == lit[i])\n        i++;\n    int eq = (p[i] == '\\0' && lit[i] == '\\0');\n    printf(\"%d\", eq);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "pointer",
@@ -2426,7 +2426,7 @@
       "input_format": "一个不含空格的字符串。",
       "output_format": "元音字母个数。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    const char *p = s; /* TODO: 用只读指针遍历统计元音 */\n    printf(\"%d\", v);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    char s[101];\n    scanf(\"%s\", s);\n    const char *p = s;\n    int v = 0;\n    while(*p){\n        char c = *p;\n        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') v++;\n        p++;\n    }\n    printf(\"%d\", v);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    const char *p = s;\n    int v = 0;\n    while (*p) {\n        char c = *p;\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')\n            v++;\n        p++;\n    }\n    printf(\"%d\", v);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello",
@@ -2486,7 +2486,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "逆序排列的 n 个整数，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a + n - 1; /* TODO: 用 *(p-i) 逆序输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    for(int i=0;i<n;i++) printf(\"%d \", *(p-i));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a + n - 1;\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", *(p - i));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
@@ -2547,7 +2547,7 @@
       "input_format": "第一行 n，第二行 n 个实数。",
       "output_format": "平均值 方差，以空格分隔，各保留 2 位小数。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%lf\", &a[i]);\n    double *p = a; /* TODO: 求平均值与方差 */\n    printf(\"%.2f %.2f\", mean, var);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    double a[1000];\n    for(int i=0;i<n;i++) scanf(\"%lf\", &a[i]);\n    double *p = a;\n    double sum = 0;\n    for(int i=0;i<n;i++) sum += *(p+i);\n    double mean = sum / n;\n    double var = 0;\n    for(int i=0;i<n;i++){\n        double d = *(p+i) - mean;\n        var += d*d;\n    }\n    var /= n;\n    printf(\"%.2f %.2f\", mean, var);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    double a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%lf\", &a[i]);\n    double *p = a;\n    double sum = 0;\n    for (int i = 0; i < n; i++)\n        sum += *(p + i);\n    double mean = sum / n;\n    double var = 0;\n    for (int i = 0; i < n; i++) {\n        double d = *(p + i) - mean;\n        var += d * d;\n    }\n    var /= n;\n    printf(\"%.2f %.2f\", mean, var);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n1 2 3 4",
@@ -2607,7 +2607,7 @@
       "input_format": "第一行 n，第二行 n 个整数。",
       "output_format": "升序排列后的 n 个整数，以空格分隔。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]); /* TODO: 用 *(a+j) 插入排序 */\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", *(a + i));\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\", &a[i]);\n    for(int i=1;i<n;i++){\n        int key = *(a+i);\n        int j = i - 1;\n        while(j >= 0 && *(a+j) > key){\n            *(a+j+1) = *(a+j);\n            j--;\n        }\n        *(a+j+1) = key;\n    }\n    for(int i=0;i<n;i++) printf(\"%d \", *(a+i));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (int i = 1; i < n; i++) {\n        int key = *(a + i);\n        int j = i - 1;\n        while (j >= 0 && *(a + j) > key) {\n            *(a + j + 1) = *(a + j);\n            j--;\n        }\n        *(a + j + 1) = key;\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", *(a + i));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 1 4 1 5",
@@ -2847,7 +2847,7 @@
       "input_format": "一个不含空格的字符串。",
       "output_format": "字符串长度。",
       "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s; /* TODO: 用 while(*p++) 计数 */\n    printf(\"%d\", len);\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    int len = 0;\n    while(*p++) len++;\n    printf(\"%d\", len);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    int len = 0;\n    while (*p++)\n        len++;\n    printf(\"%d\", len);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello",
@@ -2971,7 +2971,7 @@
       "input_format": "第一行 r c，随后 r 行每行 c 个整数。",
       "output_format": "转置后的矩阵，每个整数后跟一个空格，每行末尾换行。",
       "code_starter": "#include <stdio.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10], b[10][10];\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    int(*pa)[10] = a, *pb = b; /* TODO: 用行指针把 a[i][j] 写到 b[j][i] 并输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10], b[10][10];\n    for(int i=0;i<r;i++)\n        for(int j=0;j<c;j++)\n            scanf(\"%d\", &a[i][j]);\n    int (*pa)[10] = a;\n    int (*pb)[10] = b;\n    for(int i=0;i<r;i++)\n        for(int j=0;j<c;j++)\n            *(*(pb+j)+i) = *(*(pa+i)+j);\n    for(int i=0;i<c;i++){\n        for(int j=0;j<r;j++)\n            printf(\"%d \", *(*(pb+i)+j));\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int r, c;\n    scanf(\"%d%d\", &r, &c);\n    int a[10][10], b[10][10];\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    int(*pa)[10] = a;\n    int(*pb)[10] = b;\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            *(*(pb + j) + i) = *(*(pa + i) + j);\n    for (int i = 0; i < c; i++) {\n        for (int j = 0; j < r; j++)\n            printf(\"%d \", *(*(pb + i) + j));\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 3\n1 2 3\n4 5 6",
@@ -3031,8 +3031,8 @@
       "stem": "输入一个整数 n，再输入 n 个整数（0≤n≤1000）和一个待删除值 x，用「写指针」把数组中所有等于 x 的元素删除：用读写两个指针（read 逐元素扫描，write 记录保留元素的位置），最后输出删除后的元素个数与剩余元素。",
       "input_format": "第一行一个整数 n（0≤n≤1000）；第二行 n 个整数；第三行待删除值 x。",
       "output_format": "先输出删除后的元素个数，再输出剩余的元素，均以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  int k=0; /* 在此用读写指针删除所有等于 x 的元素，k 记录剩余个数 */\n  printf(\"%d \",k);\n  for(int i=0;i<k;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  int k=0;\n  for(int *p=a;p<a+n;p++) if(*p!=x) a[k++]=*p;\n  printf(\"%d \",k);\n  for(int i=0;i<k;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    int k = 0; /* 在此用读写指针删除所有等于 x 的元素，k 记录剩余个数 */\n    printf(\"%d \", k);\n    for (int i = 0; i < k; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    int k = 0;\n    for (int *p = a; p < a + n; p++)\n        if (*p != x)\n            a[k++] = *p;\n    printf(\"%d \", k);\n    for (int i = 0; i < k; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5\n3",
@@ -3092,8 +3092,8 @@
       "stem": "输入一个整数 n、n 个整数、一个插入位置 pos（0≤pos≤n）与一个要插入的值 x，用指针把 x 插入到数组下标 pos 处：先把 pos 及之后的元素依次后移一位，再在 pos 处写入 x，最后输出插入后（共 n+1 个）的数组。",
       "input_format": "第一行一个整数 n（0≤n≤1000）；第二行 n 个整数；第三行两个整数 pos x。",
       "output_format": "插入后的 n+1 个元素，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1001]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int pos,x; scanf(\"%d%d\",&pos,&x);\n  /* 在此：把 [pos, n-1] 元素后移，再在 a[pos] 写入 x */\n  n++;\n  for(int i=0;i<n;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1001]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int pos,x; scanf(\"%d%d\",&pos,&x);\n  for(int i=n;i>pos;i--) a[i]=a[i-1];\n  a[pos]=x;\n  n++;\n  for(int i=0;i<n;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1001];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int pos, x;\n    scanf(\"%d%d\", &pos, &x);\n    /* 在此：把 [pos, n-1] 元素后移，再在 a[pos] 写入 x */\n    n++;\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1001];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int pos, x;\n    scanf(\"%d%d\", &pos, &x);\n    for (int i = n; i > pos; i--)\n        a[i] = a[i - 1];\n    a[pos] = x;\n    n++;\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3\n0 9",
@@ -3153,7 +3153,7 @@
       "stem": "输入 n 个整数，用「两个指针」两层循环判断数组中是否存在重复元素：对每一对 (i, j)（i<j）比较是否相等，只要找到一对相等就输出 1，否则输出 0。这一判重算法的关键是用两个指针嵌套遍历所有组合。",
       "input_format": "第一行一个整数 n（0≤n≤1000）；第二行 n 个整数。",
       "output_format": "存在重复元素输出 1，否则输出 0。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int dup=0;\n  /* 在此用指针 p、q 两层循环判断是否存在重复元素 */\n  printf(\"%d\",dup);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int dup = 0;\n    /* 在此用指针 p、q 两层循环判断是否存在重复元素 */\n    printf(\"%d\", dup);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int dup = 0;\n    for (int *p = a; p < a + n && !dup; p++)\n        for (int *q = p + 1; q < a + n; q++)\n            if (*p == *q) {\n                dup = 1;\n                break;\n            }\n    printf(\"%d\", dup);\n    return 0;\n}",
       "testCases": [
         {
@@ -3214,7 +3214,7 @@
       "stem": "输入 n 个整数（n≥1），用指针遍历数组找出最小值及其下标（0 起算），输出「最小值 下标」。若最小值出现多次，输出第一次出现的位置。",
       "input_format": "第一行一个正整数 n（1≤n≤1000）；第二行 n 个整数。",
       "output_format": "两个整数：最小值、下标，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int *p=a; int mn=*p; int idx=0;\n  /* 在此用 *(p+i) 更新 mn 与 idx（只在更小时更新，保持第一次出现） */\n  printf(\"%d %d\",mn,idx);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a;\n    int mn = *p;\n    int idx = 0;\n    /* 在此用 *(p+i) 更新 mn 与 idx（只在更小时更新，保持第一次出现） */\n    printf(\"%d %d\", mn, idx);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a;\n    int mn = *p;\n    int idx = 0;\n    for (int i = 1; i < n; i++)\n        if (*(p + i) < mn) {\n            mn = *(p + i);\n            idx = i;\n        }\n    printf(\"%d %d\", mn, idx);\n    return 0;\n}",
       "testCases": [
         {
@@ -3275,8 +3275,8 @@
       "stem": "输入 n 个整数和一个整数 x，用指针遍历数组统计 x 出现的次数并输出。若 x 不在数组中则输出 0。",
       "input_format": "第一行一个整数 n（0≤n≤1000）；第二行 n 个整数；第三行待统计的整数 x。",
       "output_format": "x 在数组中出现的次数。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  int c=0; /* 在此用指针遍历统计 *p==x 的次数 */\n  printf(\"%d\",c);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  int c=0;\n  for(int *p=a;p<a+n;p++) if(*p==x)c++;\n  printf(\"%d\",c);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    int c = 0; /* 在此用指针遍历统计 *p==x 的次数 */\n    printf(\"%d\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    int c = 0;\n    for (int *p = a; p < a + n; p++)\n        if (*p == x)\n            c++;\n    printf(\"%d\", c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 2 1\n2",
@@ -3336,7 +3336,7 @@
       "stem": "输入 n 个整数和一个划分值 pivot，用「写指针」做一次快排式的分区：把所有小于等于 pivot 的元素移到数组左边、大于 pivot 的移到右边（不要求内部有序），输出分区后的数组。体会快排 partition 用写指针把满足条件的元素搬到前面的手法。",
       "input_format": "第一行一个整数 n（1≤n≤1000）；第二行 n 个整数；第三行划分值 pivot。",
       "output_format": "分区后的数组，以空格分隔（左边为 ≤ pivot 的元素，右边为 > pivot 的元素）。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int pivot; scanf(\"%d\",&pivot);\n  int *w=a;\n  /* 在此用写指针 w 分区：*p<=pivot 则交换到 w 并 w++ */\n  for(int i=0;i<n;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int pivot;\n    scanf(\"%d\", &pivot);\n    int *w = a;\n    /* 在此用写指针 w 分区：*p<=pivot 则交换到 w 并 w++ */\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int pivot;\n    scanf(\"%d\", &pivot);\n    int *w = a;\n    for (int *p = a; p < a + n; p++)\n        if (*p <= pivot) {\n            int t = *w;\n            *w = *p;\n            *p = t;\n            w++;\n        }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
       "testCases": [
         {
@@ -3458,8 +3458,8 @@
       "stem": "输入一个 m 行 p 列的矩阵 A 与一个 p 行 n 列的矩阵 B，用「行指针 + 指针算术」计算 C = A × B（C[i][j] = Σ A[i][k]·B[k][j]），输出结果矩阵 C（m 行 n 列）。",
       "input_format": "第一行两个整数 m p；随后 m 行每行 p 个整数（矩阵 A）；接着一行一个整数 n；随后 p 行每行 n 个整数（矩阵 B）。",
       "output_format": "结果矩阵 C，共 m 行，每行 n 个整数（各整数后跟一个空格，行尾换行）。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int m,p,n;\n  scanf(\"%d%d\",&m,&p);\n  int A[100][100];\n  for(int i=0;i<m;i++)for(int j=0;j<p;j++)scanf(\"%d\",&A[i][j]);\n  scanf(\"%d\",&n);\n  int B[100][100];\n  for(int i=0;i<p;i++)for(int j=0;j<n;j++)scanf(\"%d\",&B[i][j]);\n  int C[100][100];\n  /* 在此用行指针 A[i] 与 *(B[k]+j) 计算 C[i][j] */\n  for(int i=0;i<m;i++){\n    for(int j=0;j<n;j++) printf(\"%d \",C[i][j]);\n    printf(\"\\n\");\n  }\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int m,p,n;\n  scanf(\"%d%d\",&m,&p);\n  int A[100][100];\n  for(int i=0;i<m;i++)for(int j=0;j<p;j++)scanf(\"%d\",&A[i][j]);\n  scanf(\"%d\",&n);\n  int B[100][100];\n  for(int i=0;i<p;i++)for(int j=0;j<n;j++)scanf(\"%d\",&B[i][j]);\n  int C[100][100];\n  for(int i=0;i<m;i++)\n    for(int j=0;j<n;j++){\n      int s=0;\n      int *pa=A[i];\n      for(int k=0;k<p;k++) s+=pa[k]*(*(B[k]+j));\n      C[i][j]=s;\n    }\n  for(int i=0;i<m;i++){\n    for(int j=0;j<n;j++) printf(\"%d \",C[i][j]);\n    printf(\"\\n\");\n  }\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int m, p, n;\n    scanf(\"%d%d\", &m, &p);\n    int A[100][100];\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < p; j++)\n            scanf(\"%d\", &A[i][j]);\n    scanf(\"%d\", &n);\n    int B[100][100];\n    for (int i = 0; i < p; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &B[i][j]);\n    int C[100][100];\n    /* 在此用行指针 A[i] 与 *(B[k]+j) 计算 C[i][j] */\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++)\n            printf(\"%d \", C[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int m, p, n;\n    scanf(\"%d%d\", &m, &p);\n    int A[100][100];\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < p; j++)\n            scanf(\"%d\", &A[i][j]);\n    scanf(\"%d\", &n);\n    int B[100][100];\n    for (int i = 0; i < p; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &B[i][j]);\n    int C[100][100];\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < n; j++) {\n            int s = 0;\n            int *pa = A[i];\n            for (int k = 0; k < p; k++)\n                s += pa[k] * (*(B[k] + j));\n            C[i][j] = s;\n        }\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++)\n            printf(\"%d \", C[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 2\n1 2\n3 4\n2\n5 6\n7 8",
@@ -3702,8 +3702,8 @@
       "stem": "输入 n 个整数与一个 k（1≤k≤n），建立指针数组 int *p[1000]，使 p[i] 指向 &a[i]，然后用「选择排序」的思路按指向的元素值从大到小对指针数组排序，最后输出第 k 大的元素（即排序后指针数组第 k-1 个指针所指向的值）。",
       "input_format": "第一行一个正整数 n（1≤n≤1000）；第二行 n 个整数；第三行一个正整数 k（1≤k≤n）。",
       "output_format": "第 k 大的元素值。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int k; scanf(\"%d\",&k);\n  int *p[1000]; for(int i=0;i<n;i++) p[i]=&a[i];\n  /* 在此：按 *p[j] 从大到小对指针数组 p 做选择排序，然后输出 *p[k-1] */\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int k; scanf(\"%d\",&k);\n  int *p[1000]; for(int i=0;i<n;i++) p[i]=&a[i];\n  for(int i=0;i<n;i++){\n    int mi=i;\n    for(int j=i+1;j<n;j++) if(*p[j]>*p[mi]) mi=j;\n    int *t=p[i]; p[i]=p[mi]; p[mi]=t;\n  }\n  printf(\"%d\",*p[k-1]);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int k;\n    scanf(\"%d\", &k);\n    int *p[1000];\n    for (int i = 0; i < n; i++)\n        p[i] = &a[i];\n    /* 在此：按 *p[j] 从大到小对指针数组 p 做选择排序，然后输出 *p[k-1] */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int k;\n    scanf(\"%d\", &k);\n    int *p[1000];\n    for (int i = 0; i < n; i++)\n        p[i] = &a[i];\n    for (int i = 0; i < n; i++) {\n        int mi = i;\n        for (int j = i + 1; j < n; j++)\n            if (*p[j] > *p[mi])\n                mi = j;\n        int *t = p[i];\n        p[i] = p[mi];\n        p[mi] = t;\n    }\n    printf(\"%d\", *p[k - 1]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 1 4 1 5\n1",
@@ -3763,8 +3763,8 @@
       "stem": "编写递归函数 int *bsearch(int *lo,int *hi,int key)，它在一个已升序排列的数组区间 [lo,hi] 中折半查找 key，返回指向该元素的指针（找不到返回 NULL）。主函数调用它并输出 key 的下标（0 起算），找不到输出 -1。体会用指针表示查找区间与递归缩减区间。",
       "input_format": "第一行一个正整数 n（1≤n≤1000）；第二行 n 个升序整数；第三行待查值 key。",
       "output_format": "找到输出 key 的下标（0 起算），找不到输出 -1。",
-      "code_starter": "#include <stdio.h>\nint *bsearch(int *lo,int *hi,int key){\n  /* 在此递归实现：区间空返回 NULL，否则取中点比较后递归 */\n}\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int key; scanf(\"%d\",&key);\n  int *p=bsearch(a,a+n-1,key);\n  if(p) printf(\"%d\",(int)(p-a));\n  else printf(\"-1\");\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint *bsearch(int *lo,int *hi,int key){\n  if(lo>hi) return NULL;\n  int *mid=lo+(hi-lo)/2;\n  if(*mid==key) return mid;\n  if(*mid<key) return bsearch(mid+1,hi,key);\n  return bsearch(lo,mid-1,key);\n}\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int key; scanf(\"%d\",&key);\n  int *p=bsearch(a,a+n-1,key);\n  if(p) printf(\"%d\",(int)(p-a));\n  else printf(\"-1\");\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint *bsearch(int *lo, int *hi, int key) {\n    /* 在此递归实现：区间空返回 NULL，否则取中点比较后递归 */\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int key;\n    scanf(\"%d\", &key);\n    int *p = bsearch(a, a + n - 1, key);\n    if (p)\n        printf(\"%d\", (int)(p - a));\n    else\n        printf(\"-1\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint *bsearch(int *lo, int *hi, int key) {\n    if (lo > hi)\n        return NULL;\n    int *mid = lo + (hi - lo) / 2;\n    if (*mid == key)\n        return mid;\n    if (*mid < key)\n        return bsearch(mid + 1, hi, key);\n    return bsearch(lo, mid - 1, key);\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int key;\n    scanf(\"%d\", &key);\n    int *p = bsearch(a, a + n - 1, key);\n    if (p)\n        printf(\"%d\", (int)(p - a));\n    else\n        printf(\"-1\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 3 5 7 9\n5",
@@ -3824,8 +3824,8 @@
       "stem": "输入一个已升序排列的数组与一个整数 x，用指针找到 x 应插入的位置（第一个大于 x 的元素之前，若无则插到末尾），插入后数组仍保持升序，输出插入后的数组。",
       "input_format": "第一行一个整数 n（0≤n≤1000）；第二行 n 个升序整数；第三行待插入值 x。",
       "output_format": "插入 x 后仍升序的数组，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1001]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  /* 在此：找到应插入位置 pos，把 [pos,n-1] 后移并把 x 写入 a[pos] */\n  n++;\n  for(int i=0;i<n;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1001]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int x; scanf(\"%d\",&x);\n  int pos=0;\n  while(pos<n && a[pos]<x) pos++;\n  for(int i=n;i>pos;i--) a[i]=a[i-1];\n  a[pos]=x;\n  n++;\n  for(int i=0;i<n;i++) printf(\"%d \",a[i]);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1001];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    /* 在此：找到应插入位置 pos，把 [pos,n-1] 后移并把 x 写入 a[pos] */\n    n++;\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1001];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int x;\n    scanf(\"%d\", &x);\n    int pos = 0;\n    while (pos < n && a[pos] < x)\n        pos++;\n    for (int i = n; i > pos; i--)\n        a[i] = a[i - 1];\n    a[pos] = x;\n    n++;\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 3 5\n4",
@@ -3885,7 +3885,7 @@
       "stem": "输入一个已升序排列的数组与一个目标值 target，用首尾双指针（i 指向首、j 指向尾）在数组中找两个不同位置的元素使它们的和等于 target，找到则输出这两个下标（0 起算，先输出较小下标），否则输出 -1。",
       "input_format": "第一行一个正整数 n（1≤n≤1000）；第二行 n 个升序整数；第三行目标值 target。",
       "output_format": "两个下标（以空格分隔）或 -1。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int t; scanf(\"%d\",&t);\n  int i=0,j=n-1;\n  /* 在此：i<j 时比较 a[i]+a[j] 与 t，调整 i 或 j */\n  printf(\"-1\");\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int t;\n    scanf(\"%d\", &t);\n    int i = 0, j = n - 1;\n    /* 在此：i<j 时比较 a[i]+a[j] 与 t，调整 i 或 j */\n    printf(\"-1\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int t;\n    scanf(\"%d\", &t);\n    int i = 0, j = n - 1;\n    while (i < j) {\n        int s = a[i] + a[j];\n        if (s == t) {\n            printf(\"%d %d\", i, j);\n            return 0;\n        } else if (s < t)\n            i++;\n        else\n            j--;\n    }\n    printf(\"-1\");\n    return 0;\n}",
       "testCases": [
         {
@@ -3946,7 +3946,7 @@
       "stem": "输入 n 个整数，用指针双层循环统计每个元素出现的次数，找出「众数」（出现次数最多的元素）并输出。若出现次数最多的元素有多个，输出值最小的那个。",
       "input_format": "第一行一个正整数 n（1≤n≤1000）；第二行 n 个整数。",
       "output_format": "众数（出现次数最多的值；并列时取最小值）。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int best=a[0],bc=0;\n  /* 在此：用两层指针循环统计每个 *p 出现次数，更新 best/bc */\n  printf(\"%d\",best);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int best = a[0], bc = 0;\n    /* 在此：用两层指针循环统计每个 *p 出现次数，更新 best/bc */\n    printf(\"%d\", best);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int best = a[0], bc = 0;\n    for (int *p = a; p < a + n; p++) {\n        int c = 0;\n        for (int *q = a; q < a + n; q++)\n            if (*q == *p)\n                c++;\n        if (c > bc || (c == bc && *p < best)) {\n            bc = c;\n            best = *p;\n        }\n    }\n    printf(\"%d\", best);\n    return 0;\n}",
       "testCases": [
         {
@@ -4007,7 +4007,7 @@
       "stem": "给定一个可能带正负号、由数字组成的字符串（如 \"-456\"、\"+789\"、\"123\"），请用指针逐个字符把它转换成对应的整数并输出。",
       "input_format": "一行字符串（长度≤100，由可选的 + / - 与数字组成）。",
       "output_format": "转换得到的整数。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  char s[101]; scanf(\"%s\",s);\n  char *p=s; int sign=1; int v=0;\n  /* 在此：处理正负号，再逐字符 v=v*10+(*p-'0') */\n  printf(\"%d\",sign*v);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    int sign = 1;\n    int v = 0;\n    /* 在此：处理正负号，再逐字符 v=v*10+(*p-'0') */\n    printf(\"%d\", sign * v);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    char *p = s;\n    int sign = 1;\n    int v = 0;\n    if (*p == '-') {\n        sign = -1;\n        p++;\n    } else if (*p == '+') {\n        p++;\n    }\n    while (*p) {\n        v = v * 10 + (*p - '0');\n        p++;\n    }\n    printf(\"%d\", sign * v);\n    return 0;\n}",
       "testCases": [
         {
@@ -4068,7 +4068,7 @@
       "stem": "输入两个字符串 s1、s2，用两个字符指针 pa、pb 逐字符比较，按字典序判断大小：s1 小于 s2 输出 -1，相等输出 0，大于输出 1。比较时先逐对比较字符，直到出现不同字符或某个字符串结束。",
       "input_format": "两个不含空格的字符串，以空格分隔。",
       "output_format": "-1、0 或 1。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  char a[101],b[101];\n  scanf(\"%s%s\",a,b);\n  char *pa=a,*pb=b; int r=0;\n  /* 在此：逐对比较 *pa 与 *pb，不同则判大小；都结束则相等 */\n  printf(\"%d\",r);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char a[101], b[101];\n    scanf(\"%s%s\", a, b);\n    char *pa = a, *pb = b;\n    int r = 0;\n    /* 在此：逐对比较 *pa 与 *pb，不同则判大小；都结束则相等 */\n    printf(\"%d\", r);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    char a[101], b[101];\n    scanf(\"%s%s\", a, b);\n    char *pa = a, *pb = b;\n    int r = 0;\n    while (*pa && *pa == *pb) {\n        pa++;\n        pb++;\n    }\n    if (*pa < *pb)\n        r = -1;\n    else if (*pa > *pb)\n        r = 1;\n    printf(\"%d\", r);\n    return 0;\n}",
       "testCases": [
         {
@@ -4129,8 +4129,8 @@
       "stem": "输入一个不含空格的字符串和一个字符 c，用「读写指针」去掉字符串中所有等于 c 的字符：读指针 p 扫描，写指针 r 指向结果位置，遇到不等于 c 的字符就复制到 r 并推进，最后给结果补上结束符。输出处理后的字符串。",
       "input_format": "一行：一个不含空格的字符串和一个字符 c，以空格分隔。",
       "output_format": "删除所有 c 后的字符串。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  char s[101]; char c;\n  scanf(\"%s %c\",s,&c);\n  char *r=s,*p=s;\n  /* 在此：用 r、p 双指针删除所有等于 c 的字符，最后补结束符 */\n  printf(\"%s\",s);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  char s[101]; char c;\n  scanf(\"%s %c\",s,&c);\n  char *r=s,*p=s;\n  while(*p){\n    if(*p!=c) *r++=*p;\n    p++;\n  }\n  *r='\\0';\n  printf(\"%s\",s);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    char c;\n    scanf(\"%s %c\", s, &c);\n    char *r = s, *p = s;\n    /* 在此：用 r、p 双指针删除所有等于 c 的字符，最后补结束符 */\n    printf(\"%s\", s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    char c;\n    scanf(\"%s %c\", s, &c);\n    char *r = s, *p = s;\n    while (*p) {\n        if (*p != c)\n            *r++ = *p;\n        p++;\n    }\n    *r = '\\0';\n    printf(\"%s\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello l",
@@ -4190,7 +4190,7 @@
       "stem": "输入一个由字母、数字等字符组成的字符串，用字符指针遍历，统计其中数字字符（0~9）的个数以及这些数字之和（把每个数字字符转成数值累加），输出「个数 和」。",
       "input_format": "一行不含空格的字符串（长度≤100）。",
       "output_format": "数字字符个数与数字之和，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  char s[101]; scanf(\"%s\",s);\n  int cnt=0,sum=0;\n  /* 在此：用指针遍历，*p>='0'&&*p<='9' 时 cnt++，sum+=*p-'0' */\n  printf(\"%d %d\",cnt,sum);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    int cnt = 0, sum = 0;\n    /* 在此：用指针遍历，*p>='0'&&*p<='9' 时 cnt++，sum+=*p-'0' */\n    printf(\"%d %d\", cnt, sum);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    char s[101];\n    scanf(\"%s\", s);\n    int cnt = 0, sum = 0;\n    for (char *p = s; *p; p++) {\n        if (*p >= '0' && *p <= '9') {\n            cnt++;\n            sum += *p - '0';\n        }\n    }\n    printf(\"%d %d\", cnt, sum);\n    return 0;\n}",
       "testCases": [
         {
@@ -4312,8 +4312,8 @@
       "stem": "输入行数 m 与列数 n，先用 int ** 通过 malloc 动态分配一个 m 行 n 列的二维数组（先分配 m 个行指针，再对每行分配 n 个 int），读入数据后用二重指针（*(*(a+i)+j)）求每一列的元素之和，输出这 n 个列和，最后释放内存。",
       "input_format": "第一行两个整数 m n（1≤m,n≤100）；随后 m 行每行 n 个整数。",
       "output_format": "n 个列和，以空格分隔。",
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\nint main(){\n  int m,n; scanf(\"%d%d\",&m,&n);\n  int **a=(int**)malloc(m*sizeof(int*));\n  /* 在此：逐行 malloc n 个 int 并读入数据 */\n  /* 在此：用 *(*(a+i)+j) 求每列之和并输出 */\n  for(int i=0;i<m;i++) free(a[i]);\n  free(a);\n  return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\nint main(){\n  int m,n; scanf(\"%d%d\",&m,&n);\n  int **a=(int**)malloc(m*sizeof(int*));\n  for(int i=0;i<m;i++) a[i]=malloc(n*sizeof(int));\n  for(int i=0;i<m;i++)for(int j=0;j<n;j++)scanf(\"%d\",&a[i][j]);\n  for(int j=0;j<n;j++){\n    int s=0;\n    for(int i=0;i<m;i++) s+=*(*(a+i)+j);\n    printf(\"%d \",s);\n  }\n  for(int i=0;i<m;i++) free(a[i]);\n  free(a);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int **a = (int **)malloc(m * sizeof(int *));\n    /* 在此：逐行 malloc n 个 int 并读入数据 */\n    /* 在此：用 *(*(a+i)+j) 求每列之和并输出 */\n    for (int i = 0; i < m; i++)\n        free(a[i]);\n    free(a);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int **a = (int **)malloc(m * sizeof(int *));\n    for (int i = 0; i < m; i++)\n        a[i] = malloc(n * sizeof(int));\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (int j = 0; j < n; j++) {\n        int s = 0;\n        for (int i = 0; i < m; i++)\n            s += *(*(a + i) + j);\n        printf(\"%d \", s);\n    }\n    for (int i = 0; i < m; i++)\n        free(a[i]);\n    free(a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 3\n1 2 3\n4 5 6",
@@ -4434,7 +4434,7 @@
       "stem": "输入两个不含空格的字符串 s1、s2，用三个指针 pa、pb、pr 把两者「交替合并」成一个新字符串：依次取 s1[0],s2[0],s1[1],s2[1],…，某一串先结束时把另一串剩余部分直接接上，最后输出合并结果。",
       "input_format": "两个不含空格的字符串，以空格分隔。",
       "output_format": "交替合并后的字符串。",
-      "code_starter": "#include <stdio.h>\nint main(){\n  char a[101],b[101];\n  scanf(\"%s%s\",a,b);\n  char r[202]; char *pa=a,*pb=b,*pr=r;\n  /* 在此：交替取 *pa、*pb 写入 *pr，剩余部分接上，最后补结束符 */\n  printf(\"%s\",r);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char a[101], b[101];\n    scanf(\"%s%s\", a, b);\n    char r[202];\n    char *pa = a, *pb = b, *pr = r;\n    /* 在此：交替取 *pa、*pb 写入 *pr，剩余部分接上，最后补结束符 */\n    printf(\"%s\", r);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    char a[101], b[101];\n    scanf(\"%s%s\", a, b);\n    char r[202];\n    char *pa = a, *pb = b, *pr = r;\n    while (*pa && *pb) {\n        *pr++ = *pa++;\n        *pr++ = *pb++;\n    }\n    while (*pa)\n        *pr++ = *pa++;\n    while (*pb)\n        *pr++ = *pb++;\n    *pr = '\\0';\n    printf(\"%s\", r);\n    return 0;\n}",
       "testCases": [
         {
@@ -4555,8 +4555,8 @@
       "stem": "输入一个整数 n，再输入 n 个整数（可正可负），使用指针遍历求其中和最大的连续子段（至少包含一个元素）的和并输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "最大连续子段的和（整数）。",
-      "code_starter": "#include <stdio.h>\nint maxSubarray(int *a, int n){\n    // TODO：返回最大连续子段和\n}\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    printf(\"%d\",maxSubarray(a,n)); return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int *cur=a, *p; int m=a[0], c=a[0];\n  for(p=a+1; p<a+n; p++){\n    if(c<0) c=*p; else c+=*p;\n    if(c>m) m=c;\n  }\n  printf(\"%d\", m);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint maxSubarray(int *a, int n) {\n    // TODO：返回最大连续子段和\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\", maxSubarray(a, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *cur = a, *p;\n    int m = a[0], c = a[0];\n    for (p = a + 1; p < a + n; p++) {\n        if (c < 0)\n            c = *p;\n        else\n            c += *p;\n        if (c > m)\n            m = c;\n    }\n    printf(\"%d\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n-2 1 -3 4 -1",
@@ -4615,7 +4615,7 @@
       "stem": "输入 n 与 n 个整数（每个数在 0 到 100 之间），用「计数排序」的思路用指针遍历把数组按升序排列并输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数（0≤x≤100），以空格分隔。",
       "output_format": "升序排列后的 n 个数，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：用计数数组统计后按序输出\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：用计数数组统计后按序输出\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int cnt[101] = {0};\n    int *p;\n    for (p = a; p < a + n; p++)\n        cnt[*p]++;\n    int first = 1;\n    for (int v = 0; v <= 100; v++) {\n        for (int c = 0; c < cnt[v]; c++) {\n            if (!first)\n                printf(\" \");\n            printf(\"%d\", v);\n            first = 0;\n        }\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -4676,8 +4676,8 @@
       "stem": "输入一个仅含英文字母的字符串（不含空格），用指针遍历统计其中元音字母（a/e/i/o/u，不区分大小写）与辅音字母的个数并输出。",
       "input_format": "一行不含空格的英文字符串（长度≤1000）。",
       "output_format": "依次输出「元音个数 辅音个数」，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    char s[1001]; scanf(\"%s\",s);\n    // TODO：用指针统计元音与辅音\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  char s[1001]; scanf(\"%s\",s);\n  int v=0, c=0; char *p;\n  for(p=s; *p; p++){\n    char ch=*p; if(ch>='A'&&ch<='Z') ch+=32;\n    if(ch>='a'&&ch<='z'){\n      if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') v++; else c++;\n    }\n  }\n  printf(\"%d %d\", v, c);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    // TODO：用指针统计元音与辅音\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    int v = 0, c = 0;\n    char *p;\n    for (p = s; *p; p++) {\n        char ch = *p;\n        if (ch >= 'A' && ch <= 'Z')\n            ch += 32;\n        if (ch >= 'a' && ch <= 'z') {\n            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')\n                v++;\n            else\n                c++;\n        }\n    }\n    printf(\"%d %d\", v, c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello",
@@ -4736,8 +4736,8 @@
       "stem": "输入一个 m 行 n 列的矩阵，用指针逐行累加，输出每一行的元素之和。",
       "input_format": "第一行两个整数 m n（1≤m,n≤100），随后 m 行每行 n 个整数，以空格分隔。",
       "output_format": "每行输出该行的和，共 m 行，每行一个整数。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int m,n; scanf(\"%d%d\",&m,&n); int a[100][100];\n    // 读入矩阵后，用行指针逐行求和\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int m,n; scanf(\"%d%d\",&m,&n);\n  int a[100][100];\n  for(int i=0;i<m;i++) for(int j=0;j<n;j++) scanf(\"%d\",&a[i][j]);\n  for(int i=0;i<m;i++){\n    int s=0; int *q;\n    for(q=a[i]; q<a[i]+n; q++) s+=*q;\n    printf(\"%d\\n\", s);\n  }\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int a[100][100];\n    // 读入矩阵后，用行指针逐行求和\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int a[100][100];\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (int i = 0; i < m; i++) {\n        int s = 0;\n        int *q;\n        for (q = a[i]; q < a[i] + n; q++)\n            s += *q;\n        printf(\"%d\\n\", s);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 3\n1 2 3\n4 5 6",
@@ -4796,7 +4796,7 @@
       "stem": "输入 n 个整数，定义「峰值」为严格大于其相邻元素的元素（位于两端只需大于唯一相邻元素）。用指针找出第一个峰值的下标（0 起），若无峰值则输出 -1。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "第一个峰值的下标（整数），若无输出 -1。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：找第一个峰值下标\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：找第一个峰值下标\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int idx = -1;\n    for (int i = 0; i < n; i++) {\n        int ok = 1;\n        if (i > 0 && a[i] <= a[i - 1])\n            ok = 0;\n        if (i < n - 1 && a[i] <= a[i + 1])\n            ok = 0;\n        if (ok) {\n            idx = i;\n            break;\n        }\n    }\n    printf(\"%d\", idx);\n    return 0;\n}",
       "testCases": [
         {
@@ -4856,7 +4856,7 @@
       "stem": "输入 n 个整数，用指针遍历统计其中正数、负数、零的个数并输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "依次输出「正数个数 负数个数 零的个数」，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：指针遍历统计正负零\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：指针遍历统计正负零\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int pos = 0, neg = 0, z = 0;\n    int *p;\n    for (p = a; p < a + n; p++) {\n        if (*p > 0)\n            pos++;\n        else if (*p < 0)\n            neg++;\n        else\n            z++;\n    }\n    printf(\"%d %d %d\", pos, neg, z);\n    return 0;\n}",
       "testCases": [
         {
@@ -4916,7 +4916,7 @@
       "stem": "输入两个已按升序排列的数组，用「双指针」把二者合并成一个新的升序数组并输出。",
       "input_format": "第一行 n，第二行 n 个升序整数；第三行 m，第四行 m 个升序整数（n+m≤2000）。",
       "output_format": "合并后的升序数组，以空格分隔。",
-      "code_starter": "int main(){\n    // 读入两数组后，用两个指针写第三个数组\n    return 0;\n}",
+      "code_starter": "int main() {\n    // 读入两数组后，用两个指针写第三个数组\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int m;\n    scanf(\"%d\", &m);\n    int b[1000];\n    for (int i = 0; i < m; i++)\n        scanf(\"%d\", &b[i]);\n    int c[2000];\n    int *pa = a, *pb = b, *pc = c;\n    while (pa < a + n && pb < b + m) {\n        if (*pa <= *pb)\n            *pc++ = *pa++;\n        else\n            *pc++ = *pb++;\n    }\n    while (pa < a + n)\n        *pc++ = *pa++;\n    while (pb < b + m)\n        *pc++ = *pb++;\n    int first = 1;\n    int *q;\n    for (q = c; q < pc; q++) {\n        if (!first)\n            printf(\" \");\n        printf(\"%d\", *q);\n        first = 0;\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -4976,7 +4976,7 @@
       "stem": "输入 n 个整数，用指针把它们分成两类：先输出所有偶数（保持原相对顺序），再输出所有奇数（保持原相对顺序），每个数之间一个空格。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "全部偶数后跟全部奇数，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：用指针分装偶数与奇数\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：用指针分装偶数与奇数\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int ev[1000], od[1000], e = 0, o = 0;\n    int *p;\n    for (p = a; p < a + n; p++) {\n        if (*p % 2 == 0)\n            ev[e++] = *p;\n        else\n            od[o++] = *p;\n    }\n    int first = 1;\n    for (int i = 0; i < e; i++) {\n        if (!first)\n            printf(\" \");\n        printf(\"%d\", ev[i]);\n        first = 0;\n    }\n    for (int i = 0; i < o; i++) {\n        if (!first)\n            printf(\" \");\n        printf(\"%d\", od[i]);\n        first = 0;\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5036,7 +5036,7 @@
       "stem": "输入一个不含空格的字符串，用指针去掉其中重复出现的字符（保留第一次出现的顺序）后输出。",
       "input_format": "一行不含空格的字符串（长度≤1000）。",
       "output_format": "去重后的字符串。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    char s[1001]; scanf(\"%s\",s);\n    // TODO：用指针去重并输出\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    // TODO：用指针去重并输出\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    char s[1001];\n    scanf(\"%s\", s);\n    char t[1001];\n    int k = 0;\n    char *p, *q;\n    for (p = s; *p; p++) {\n        int dup = 0;\n        for (q = t; q < t + k; q++)\n            if (*q == *p) {\n                dup = 1;\n                break;\n            }\n        if (!dup)\n            t[k++] = *p;\n    }\n    t[k] = '\\0';\n    printf(\"%s\", t);\n    return 0;\n}",
       "testCases": [
         {
@@ -5097,8 +5097,8 @@
       "stem": "输入 n 个学生（姓名、分数），用 qsort 配合「函数指针比较器」把结构体数组按分数从高到低排序（分数相同则按姓名升序），并输出排序后的名单。",
       "input_format": "第一行一个正整数 n（1≤n≤100），随后 n 行每行「姓名 分数」（姓名单词，分数为 0~100 整数）。",
       "output_format": "每行一个学生：「姓名 分数」，按分数降序、姓名升序。",
-      "code_starter": "typedef struct { char name[30]; int score; } Stu;\nint cmp(const void *a, const void *b){\n    // TODO：实现分数降序、姓名升序的比较器\n}\nint main(){\n    // 读入后调用 qsort 并输出\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\ntypedef struct { char name[30]; int score; } Stu;\nint cmp(const void *a, const void *b){\n  const Stu *x=a, *y=b;\n  if(x->score!=y->score) return y->score - x->score;\n  return strcmp(x->name, y->name);\n}\nint main(){\n  int n; scanf(\"%d\",&n);\n  Stu s[100];\n  for(int i=0;i<n;i++) scanf(\"%s %d\", s[i].name, &s[i].score);\n  qsort(s, n, sizeof(Stu), cmp);\n  for(int i=0;i<n;i++) printf(\"%s %d\\n\", s[i].name, s[i].score);\n  return 0;\n}",
+      "code_starter": "typedef struct {\n    char name[30];\n    int score;\n} Stu;\nint cmp(const void *a, const void *b) {\n    // TODO：实现分数降序、姓名升序的比较器\n}\nint main() {\n    // 读入后调用 qsort 并输出\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\ntypedef struct {\n    char name[30];\n    int score;\n} Stu;\nint cmp(const void *a, const void *b) {\n    const Stu *x = a, *y = b;\n    if (x->score != y->score)\n        return y->score - x->score;\n    return strcmp(x->name, y->name);\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    Stu s[100];\n    for (int i = 0; i < n; i++)\n        scanf(\"%s %d\", s[i].name, &s[i].score);\n    qsort(s, n, sizeof(Stu), cmp);\n    for (int i = 0; i < n; i++)\n        printf(\"%s %d\\n\", s[i].name, s[i].score);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\nAlice 90\nBob 85\nCathy 95",
@@ -5157,7 +5157,7 @@
       "stem": "输入一个数组与移动次数 k，把数组整体循环右移 k 位（用指针进行三次反转实现）后输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，第三行一个非负整数 k。",
       "output_format": "循环右移 k 位后的数组，以空格分隔。",
-      "code_starter": "void rev(int *p, int *q){\n    // TODO：反转 [p,q]\n}\nint main(){\n    // 读入数组后三次反转实现右移\n    return 0;\n}",
+      "code_starter": "void rev(int *p, int *q) {\n    // TODO：反转 [p,q]\n}\nint main() {\n    // 读入数组后三次反转实现右移\n    return 0;\n}",
       "reference": "#include <stdio.h>\nvoid rev(int *p, int *q) {\n    while (p < q) {\n        int t = *p;\n        *p = *q;\n        *q = t;\n        p++;\n        q--;\n    }\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int k;\n    scanf(\"%d\", &k);\n    k %= n;\n    rev(a, a + n - 1);\n    rev(a, a + k - 1);\n    rev(a + k, a + n - 1);\n    for (int i = 0; i < n; i++) {\n        if (i)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5217,7 +5217,7 @@
       "stem": "输入 n 个整数，用指针找出其中第二小的数（严格大于最小值的那个最小值）。若元素个数不足 2 或所有元素相等，则输出 -1。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "第二小的数，若不存在输出 -1。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：先找最小值再找次小\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：先找最小值再找次小\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int mn = a[0];\n    int *p;\n    for (p = a + 1; p < a + n; p++)\n        if (*p < mn)\n            mn = *p;\n    int sec = 0, found = 0;\n    for (p = a; p < a + n; p++) {\n        if (*p > mn) {\n            if (!found || *p < sec) {\n                sec = *p;\n                found = 1;\n            }\n        }\n    }\n    printf(\"%d\", found ? sec : -1);\n    return 0;\n}",
       "testCases": [
         {
@@ -5277,7 +5277,7 @@
       "stem": "输入一个数组以及闭区间 [l, r]（0 起下标），用双指针把该区间内的元素逆序后输出整个数组。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，第三行两个整数 l r（0≤l≤r<n），以空格分隔。",
       "output_format": "反转区间 [l,r] 后的整个数组，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    // 读入后对 [l,r] 用首尾指针交换\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    // 读入后对 [l,r] 用首尾指针交换\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int l, r;\n    scanf(\"%d%d\", &l, &r);\n    int *p = a + l, *q = a + r;\n    while (p < q) {\n        int t = *p;\n        *p = *q;\n        *q = t;\n        p++;\n        q--;\n    }\n    for (int i = 0; i < n; i++) {\n        if (i)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5337,7 +5337,7 @@
       "stem": "输入 n 个整数，用指针遍历逐个累加，输出每一项的前缀和（前 i 项之和）。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "n 个前缀和，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：指针累加输出前缀和\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：指针累加输出前缀和\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    long long s = 0;\n    int first = 1;\n    int *p;\n    for (p = a; p < a + n; p++) {\n        s += *p;\n        if (!first)\n            printf(\" \");\n        printf(\"%lld\", s);\n        first = 0;\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5397,8 +5397,8 @@
       "stem": "输入两个已按升序排列的数组，用双指针找出二者共有的元素（去重、升序）并输出；若无公共元素则不输出任何内容。",
       "input_format": "第一行 n，第二行 n 个升序整数；第三行 m，第四行 m 个升序整数（n,m≤1000）。",
       "output_format": "共有的元素（每个只输出一次、升序），以空格分隔。",
-      "code_starter": "int main(){\n    // 读入两有序数组后，用双指针找公共元素\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n); int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int m; scanf(\"%d\",&m); int b[1000]; for(int i=0;i<m;i++) scanf(\"%d\",&b[i]);\n  int pa=0, pb=0, first=1;\n  while(pa<n && pb<m){\n    if(a[pa]<b[pb]) pa++;\n    else if(a[pa]>b[pb]) pb++;\n    else {\n      int v=a[pa];\n      if(!first) printf(\" \"); printf(\"%d\", v); first=0;\n      while(pa<n && a[pa]==v) pa++;\n      while(pb<m && b[pb]==v) pb++;\n    }\n  }\n  return 0;\n}",
+      "code_starter": "int main() {\n    // 读入两有序数组后，用双指针找公共元素\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int m;\n    scanf(\"%d\", &m);\n    int b[1000];\n    for (int i = 0; i < m; i++)\n        scanf(\"%d\", &b[i]);\n    int pa = 0, pb = 0, first = 1;\n    while (pa < n && pb < m) {\n        if (a[pa] < b[pb])\n            pa++;\n        else if (a[pa] > b[pb])\n            pb++;\n        else {\n            int v = a[pa];\n            if (!first)\n                printf(\" \");\n            printf(\"%d\", v);\n            first = 0;\n            while (pa < n && a[pa] == v)\n                pa++;\n            while (pb < m && b[pb] == v)\n                pb++;\n        }\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n1 2 3 4\n3\n2 3 4",
@@ -5457,7 +5457,7 @@
       "stem": "输入 n 个整数，用首尾两个指针判断该数组是否回文（正向与反向相同），是则输出 1，否则输出 0。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "1 表示回文，0 表示不是。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：用首尾指针判断\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：用首尾指针判断\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = a, *q = a + n - 1, ok = 1;\n    while (p < q) {\n        if (*p != *q) {\n            ok = 0;\n            break;\n        }\n        p++;\n        q--;\n    }\n    printf(\"%d\", ok);\n    return 0;\n}",
       "testCases": [
         {
@@ -5517,7 +5517,7 @@
       "stem": "输入 n 个整数，用指针做冒泡排序（共 n-1 趟），每完成一趟就把当前数组打印一行，观察排序过程。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "共 n-1 行（若 n=1 则无输出），每行是该趟结束后的数组，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：冒泡排序，每一趟后打印一次数组\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：冒泡排序，每一趟后打印一次数组\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n            }\n        }\n        for (int k = 0; k < n; k++) {\n            if (k)\n                printf(\" \");\n            printf(\"%d\", a[k]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5577,7 +5577,7 @@
       "stem": "输入 n 个整数，用「指针 + 选择排序」把数组按升序排列：每一趟用指针找出剩余部分的最小值并交换到当前位置，最后输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "升序排列后的数组，以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：用指针找最小实现选择排序\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：用指针找最小实现选择排序\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (int i = 0; i < n - 1; i++) {\n        int *m = &a[i];\n        int *p;\n        for (p = a + i + 1; p < a + n; p++)\n            if (*p < *m)\n                m = p;\n        int t = a[i];\n        a[i] = *m;\n        *m = t;\n    }\n    for (int i = 0; i < n; i++) {\n        if (i)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -5637,8 +5637,8 @@
       "stem": "输入 n 名学生的成绩，用指针先求平均分（保留两位小数），再统计高于平均分的人数，输出平均分与人数。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个 0~100 的整数（成绩），以空格分隔。",
       "output_format": "平均分（2 位小数）空格 高于平均分的人数。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：求平均并统计高于平均的人数\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int sum=0; int *p;\n  for(p=a;p<a+n;p++) sum+=*p;\n  double avg=(double)sum/n;\n  int cnt=0;\n  for(p=a;p<a+n;p++) if(*p>avg) cnt++;\n  printf(\"%.2f %d\", avg, cnt);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：求平均并统计高于平均的人数\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int sum = 0;\n    int *p;\n    for (p = a; p < a + n; p++)\n        sum += *p;\n    double avg = (double)sum / n;\n    int cnt = 0;\n    for (p = a; p < a + n; p++)\n        if (*p > avg)\n            cnt++;\n    printf(\"%.2f %d\", avg, cnt);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n60 70 80 90",
@@ -5697,7 +5697,7 @@
       "stem": "输入一个 m 行 n 列矩阵，找出「鞍点」：该元素在其所在行最大、且在其所在列最小。若存在，输出其行列下标（0 起）与值；若不存在输出 -1。",
       "input_format": "第一行两个整数 m n（1≤m,n≤100），随后 m 行每行 n 个整数，以空格分隔。",
       "output_format": "「行 列 值」（以空格分隔），若不存在输出 -1。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int m,n; scanf(\"%d%d\",&m,&n); int a[100][100];\n    // 读入后逐格检查是否行最大、列最小\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int a[100][100];\n    // 读入后逐格检查是否行最大、列最小\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int m, n;\n    scanf(\"%d%d\", &m, &n);\n    int a[100][100];\n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    int found = 0;\n    for (int i = 0; i < m && !found; i++) {\n        for (int j = 0; j < n && !found; j++) {\n            int rowMax = 1, colMin = 1;\n            for (int k = 0; k < n; k++)\n                if (a[i][k] > a[i][j]) {\n                    rowMax = 0;\n                    break;\n                }\n            for (int k = 0; k < m; k++)\n                if (a[k][j] < a[i][j]) {\n                    colMin = 0;\n                    break;\n                }\n            if (rowMax && colMin) {\n                printf(\"%d %d %d\", i, j, a[i][j]);\n                found = 1;\n            }\n        }\n    }\n    if (!found)\n        printf(\"-1\");\n    return 0;\n}",
       "testCases": [
         {
@@ -5757,8 +5757,8 @@
       "stem": "编写一个「返回指针值」的函数 findMax，它接收数组首地址与长度，返回指向最大元素的指针；在主函数中调用它并输出最大值及其下标。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "「最大值 下标」（0 起），以空格分隔。",
-      "code_starter": "#include <stdio.h>\nint *findMax(int *a, int n){\n    // TODO：返回指向最大元素的指针\n}\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    int *p=findMax(a,n);\n    printf(\"%d %d\", *p, (int)(p-a));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint *findMax(int *a, int n){\n  int *m=a; int *p;\n  for(p=a+1; p<a+n; p++) if(*p>*m) m=p;\n  return m;\n}\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int *p=findMax(a,n);\n  printf(\"%d %d\", *p, (int)(p-a));\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint *findMax(int *a, int n) {\n    // TODO：返回指向最大元素的指针\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = findMax(a, n);\n    printf(\"%d %d\", *p, (int)(p - a));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint *findMax(int *a, int n) {\n    int *m = a;\n    int *p;\n    for (p = a + 1; p < a + n; p++)\n        if (*p > *m)\n            m = p;\n    return m;\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = findMax(a, n);\n    printf(\"%d %d\", *p, (int)(p - a));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 8 1 9 2",
@@ -5818,7 +5818,7 @@
       "stem": "用动态内存分配为数组申请空间（malloc/free），读入 n 个整数后，用指针把数组倒序输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "倒序后的数组，以空格分隔。",
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\nint main(){\n    int n; scanf(\"%d\",&n);\n    // TODO：用 malloc 申请空间、读入、倒序输出、free\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // TODO：用 malloc 申请空间、读入、倒序输出、free\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *a = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (int i = n - 1; i >= 0; i--) {\n        if (i != n - 1)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    free(a);\n    return 0;\n}",
       "testCases": [
         {
@@ -5879,8 +5879,8 @@
       "stem": "输入 n 个整数（可正可负可零），用「动态规划 + 指针遍历」求乘积最大的连续子段（至少包含一个元素）的乘积并输出。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个整数，以空格分隔。",
       "output_format": "最大连续子段的乘积（整数）。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：同时维护最大/最小乘积再更新全局\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(){\n  int n; scanf(\"%d\",&n);\n  int a[1000]; for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n  int mx=a[0], mn=a[0], best=a[0]; int *p;\n  for(p=a+1; p<a+n; p++){\n    int x=*p;\n    int t1=mx*x, t2=mn*x;\n    int nxtmax=x; if(t1>nxtmax) nxtmax=t1; if(t2>nxtmax) nxtmax=t2;\n    int nxtmin=x; if(t1<nxtmin) nxtmin=t1; if(t2<nxtmin) nxtmin=t2;\n    mx=nxtmax; mn=nxtmin;\n    if(mx>best) best=mx;\n  }\n  printf(\"%d\", best);\n  return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：同时维护最大/最小乘积再更新全局\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int mx = a[0], mn = a[0], best = a[0];\n    int *p;\n    for (p = a + 1; p < a + n; p++) {\n        int x = *p;\n        int t1 = mx * x, t2 = mn * x;\n        int nxtmax = x;\n        if (t1 > nxtmax)\n            nxtmax = t1;\n        if (t2 > nxtmax)\n            nxtmax = t2;\n        int nxtmin = x;\n        if (t1 < nxtmin)\n            nxtmin = t1;\n        if (t2 < nxtmin)\n            nxtmin = t2;\n        mx = nxtmax;\n        mn = nxtmin;\n        if (mx > best)\n            best = mx;\n    }\n    printf(\"%d\", best);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n2 3 -2 4",
@@ -5939,7 +5939,7 @@
       "stem": "输入一个已按升序排列的数组，用双指针原地删除重复元素（保留每个值的首次出现），输出新的长度与去重后的数组。",
       "input_format": "第一行一个正整数 n（1≤n≤1000），第二行 n 个升序整数，以空格分隔。",
       "output_format": "第一行新长度，第二行去重后的数组（以空格分隔）。",
-      "code_starter": "#include <stdio.h>\nint main(){\n    int n; scanf(\"%d\",&n); int a[1000];\n    for(int i=0;i<n;i++) scanf(\"%d\",&a[i]);\n    // TODO：用读写双指针原地去重\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    // TODO：用读写双指针原地去重\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int a[1000];\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int k = 0;\n    int *p;\n    for (p = a; p < a + n; p++) {\n        if (k == 0 || *p != a[k - 1])\n            a[k++] = *p;\n    }\n    printf(\"%d\\n\", k);\n    for (int i = 0; i < k; i++) {\n        if (i)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -6000,7 +6000,7 @@
       "stem": "输入 n 个字符串（不含空格），用「指针数组」（元素为 char*，指向各字符串首字符）配合 strcmp 做选择排序，按字典序升序输出。",
       "input_format": "第一行一个正整数 n（1≤n≤100），随后 n 行每行一个不含空格的字符串（长度≤19）。",
       "output_format": "每行输出一个排序后的字符串，按字典序升序。",
-      "code_starter": "#include <stdio.h>\n#include <string.h>\nint main(){\n    int n; scanf(\"%d\",&n);\n    char s[100][30]; char *p[100];\n    // TODO：读入后给指针数组赋值，按 strcmp 对指针排序\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[100][30];\n    char *p[100];\n    // TODO：读入后给指针数组赋值，按 strcmp 对指针排序\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <string.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    char s[100][30];\n    char *p[100];\n    for (int i = 0; i < n; i++) {\n        scanf(\"%s\", s[i]);\n        p[i] = s[i];\n    }\n    for (int i = 0; i < n - 1; i++) {\n        int mi = i;\n        for (int j = i + 1; j < n; j++)\n            if (strcmp(p[j], p[mi]) < 0)\n                mi = j;\n        char *t = p[i];\n        p[i] = p[mi];\n        p[mi] = t;\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%s\\n\", p[i]);\n    return 0;\n}",
       "testCases": [
         {
