@@ -18394,7 +18394,7 @@
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.192（PDF p225 / 书页 p214）",
       "difficulty": 4,
       "stem": "【题 9.192】有 4 名学生，每个学生考 4 门课程，要求在用户输入学生序号以后能输出该学生的全部成绩，用指针型函数来实现。请编写函数 float *search()。\n\n```c\n#include <stdio.h>\nfloat *search(float (*pointer)[4], int n);\nint main() {\n    static float score[][4] = {\n        {60, 70, 80, 90}, {50, 89, 67, 88}, {34, 78, 90, 66}, {80, 90, 100, 70}};\n    float *p;\n    int i, m;\n    printf(\"enter the number of student:\");\n    scanf(\"%d\", &m);\n    printf(\"The score of No.  %d are:\\n\", m);\n    p = search(score, m);\n    for (i = 0; i < 4; i++)\n        printf(\"%5.2f\\t\", *(p + i));\n    return (0);\n}\nfloat *search(float (*pointer)[4], int n) {}\n```",
-      "explanation": "*(pointer+n) 与 pointer+n 类型不同：前者是 float*（列地址），后者是行指针；返回类型必须是 float*，这正是\"指针型函数\"的考点。（留痕：题面/选项中的 OCR 排版残留已按标准 C 写法清理：`＊→*`；不改变题意与答案。）",
+      "explanation": "【思路】考点是指针型函数与行指针形参的配合：形参 pointer 指向含 4 个 float 的数组，pointer+n 按行定位第 n 行，解引用后即得该行首地址作为 float* 返回。\n\n【步骤】\n1. 写出函数原型：返回 float 指针，第一个形参是指向含 4 个 float 的数组的行指针 pointer，第二个形参是学生序号 n；行指针外层的括号不可省，省去即变成指针数组。\n2. pointer 加 n 按每行 4 个 float 的步长跳到第 n 行，即第 n 名学生的成绩行。\n3. *(pointer+n) 退化为该行首元素的地址，类型恰为 float*，作为返回值；等价写法是 pointer[n]。\n4. 主函数用 p 接收该地址，循环中以 *(p+i) 依次输出该生四门课成绩。\n\n【复杂度】自评题，无自动判分，不涉及复杂度。\n\n【易错点】\n1. 混淆 *(pointer+n) 与 pointer+n 的类型：前者是 float*，后者仍是行指针；函数要求返回 float*，直接返回 pointer+n 属类型错误。\n2. 形参漏写括号成 float *pointer[4]：语义变成指针数组传参，与行指针完全不同。\n3. 序号 n 未做范围防御：n 过大时返回无效地址，工程实现应检查 n 在 0 与学生数之间。\n【关联】本题属于「9.3 编程题」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
       "type": "short_answer",
