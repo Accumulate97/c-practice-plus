@@ -3507,7 +3507,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.14（PDF p33 / 书页 p22）",
       "difficulty": 3,
-      "stem": "【题 4.14】执行以下语句后 a 的值为【1】，b 的值为【2】。\n\n```c\nint a=5,b=6,w=1,x=2,y=3,z=4;\n(a=w>x)&&(b=y>z);\n```\n\n【1】的候选项：\nA) 5\nB) 0\nC) 2\nD) 1\n\n【2】的候选项：\nA) 6\nB) 0\nC) 1\nD) 4\n\n请分别填写两个空的选项字母。",
+      "stem": "【题 4.14】执行以下语句后 a 的值为【1】，b 的值为【2】。\n\n```c\nint a = 5, b = 6, w = 1, x = 2, y = 3, z = 4;\n(a = w > x) && (b = y > z);\n```\n\n【1】的候选项：\nA) 5\nB) 0\nC) 2\nD) 1\n\n【2】的候选项：\nA) 6\nB) 0\nC) 1\nD) 4\n\n请分别填写两个空的选项字母。",
       "explanation": "**答案：B、A**。`&&` 的左操作数带副作用：先算 `w>x` 即 `1>2`，结果为假（0）并赋给 a，故 a=0。C 的 `&&` 具有**短路**特性——左侧为 0 时右侧不再求值，`b=y>z` 完全不执行，b 保持初值 6。易错点：一是按「两个赋值都会发生」的直觉把 b 算成 0；二是没注意赋值表达式 `a=w>x` 的值就是关系运算的结果 0，正是它触发了短路。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3532,7 +3532,7 @@
       "section": "4.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.86（PDF p49 / 书页 p38）",
       "difficulty": 3,
-      "stem": "【题 4.86】若 x、y、z 均已正确定义且 x=1、y=2、z=3，则执行以下 if 语句后，x、y、z 中的值分别是【1】、【2】、【3】。\n\n```c\nif(x>z)\n    y=x; x=z; z=y;\n```",
+      "stem": "【题 4.86】若 x、y、z 均已正确定义且 x=1、y=2、z=3，则执行以下 if 语句后，x、y、z 中的值分别是【1】、【2】、【3】。\n\n```c\nif (x > z)\n    y = x;\nx = z;\nz = y;\n```",
       "explanation": "**答案：3、2、2**。不带花括号的 if 只管辖**紧随其后的一条语句**，这里 if 的语句体仅是 `y=x;`。条件 `x>z` 即 `1>3` 为假，`y=x` 不执行，y 仍为 2；而 `x=z;` 和 `z=y;` 用分号与 if 隔开，是 if 之外的**顺序语句**，一定会执行：x 先变成 3，z 再取 y 的值 2。易错点：被换行与缩进误导，以为三条语句都属于 if，从而答成 1、2、3。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3561,7 +3561,7 @@
       "section": "4.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.87（PDF p50 / 书页 p39）",
       "difficulty": 3,
-      "stem": "【题 4.87】若 x、y、z 均已正确定义且 x=1、y=2、z=3，则执行以下 if 语句后，x、y、z 中的值分别是【1】、【2】、【3】。\n\n```c\nif(x>z)\n    y=x, x=z; z=y;\n```",
+      "stem": "【题 4.87】若 x、y、z 均已正确定义且 x=1、y=2、z=3，则执行以下 if 语句后，x、y、z 中的值分别是【1】、【2】、【3】。\n\n```c\nif (x > z)\n    y = x, x = z;\nz = y;\n```",
       "explanation": "**答案：1、2、2**。if 的语句体是逗号表达式 `y=x, x=z;`——它整体只算**一条**语句，所以两个赋值都受 `x>z` 控制；条件 `1>3` 为假，两者都不执行，x 仍为 1、y 仍为 2。其后的 `z=y;` 在 if 之外，必然执行，z 取 2。易错点：一是把逗号表达式误读成「只有 `y=x` 属于 if」；二是与题 4.86 混淆——4.86 用分号分隔，只有第一条受 if 管辖，本题用逗号，两条都受管辖。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3727,7 +3727,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, s;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n\n    s = a * a + b * b;\n    if (s > 100)\n        printf(\"%d\\n\", s / 100);\n    else\n        printf(\"%d\\n\", s);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b, s;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n\n    s = a * a + b * b;\n    if (s > 100)\n        printf(\"%d\\n\", s / 100);\n    else\n        printf(\"%d\\n\", s);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "3 4",
@@ -3765,7 +3765,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n % 5 == 0 && n % 7 == 0)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n % 5 == 0 && n % 7 == 0)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "35",
@@ -3803,7 +3803,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n\n    if (x <= 0)\n        y = 0;\n    else if (x <= 10)\n        y = x;\n    else if (x <= 20)\n        y = 10;\n    else\n        y = -0.5 * x + 20;\n\n    printf(\"y=%g\\n\", y);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n\n    if (x <= 0)\n        y = 0;\n    else if (x <= 10)\n        y = x;\n    else if (x <= 20)\n        y = 10;\n    else\n        y = -0.5 * x + 20;\n\n    printf(\"y=%g\\n\", y);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "-3",
@@ -3841,7 +3841,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int n, d3, d5, d7, cnt;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n\n    d3 = (n % 3 == 0);\n    d5 = (n % 5 == 0);\n    d7 = (n % 7 == 0);\n    cnt = d3 + d5 + d7;\n\n    if (cnt == 3) {\n        printf(\"divisible by 3,5,7\\n\");\n    }\n    else if (cnt == 2) {\n        if (d3 && d5)\n            printf(\"divisible by 3,5\\n\");\n        else if (d3 && d7)\n            printf(\"divisible by 3,7\\n\");\n        else\n            printf(\"divisible by 5,7\\n\");\n    }\n    else if (cnt == 1) {\n        if (d3)\n            printf(\"divisible by 3\\n\");\n        else if (d5)\n            printf(\"divisible by 5\\n\");\n        else\n            printf(\"divisible by 7\\n\");\n    }\n    else {\n        printf(\"divisible by none\\n\");\n    }\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n, d3, d5, d7, cnt;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n\n    d3 = (n % 3 == 0);\n    d5 = (n % 5 == 0);\n    d7 = (n % 7 == 0);\n    cnt = d3 + d5 + d7;\n\n    if (cnt == 3) {\n        printf(\"divisible by 3,5,7\\n\");\n    } else if (cnt == 2) {\n        if (d3 && d5)\n            printf(\"divisible by 3,5\\n\");\n        else if (d3 && d7)\n            printf(\"divisible by 3,7\\n\");\n        else\n            printf(\"divisible by 5,7\\n\");\n    } else if (cnt == 1) {\n        if (d3)\n            printf(\"divisible by 3\\n\");\n        else if (d5)\n            printf(\"divisible by 5\\n\");\n        else\n            printf(\"divisible by 7\\n\");\n    } else {\n        printf(\"divisible by none\\n\");\n    }\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "105",
@@ -3879,7 +3879,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n\n    switch (x) {\n        case 0:\n            y = 0;\n            break;\n        default:\n            if (x > 0)\n                y = 1;\n            else\n                y = -1;\n            break;\n    }\n\n    printf(\"y=%d\\n\", y);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n\n    switch (x) {\n    case 0:\n        y = 0;\n        break;\n    default:\n        if (x > 0)\n            y = 1;\n        else\n            y = -1;\n        break;\n    }\n\n    printf(\"y=%d\\n\", y);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "-100",
@@ -3917,7 +3917,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    double data1, data2, result;\n    char op;\n\n    if (scanf(\"%lf %lf %c\", &data1, &data2, &op) != 3)\n        return 1;\n\n    switch (op) {\n        case '+': result = data1 + data2; break;\n        case '-': result = data1 - data2; break;\n        case '*': result = data1 * data2; break;\n        case '/': result = data1 / data2; break;\n        default:\n            printf(\"operator error\\n\");\n            return 1;\n    }\n\n    printf(\"result=%g\\n\", result);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    double data1, data2, result;\n    char op;\n\n    if (scanf(\"%lf %lf %c\", &data1, &data2, &op) != 3)\n        return 1;\n\n    switch (op) {\n    case '+':\n        result = data1 + data2;\n        break;\n    case '-':\n        result = data1 - data2;\n        break;\n    case '*':\n        result = data1 * data2;\n        break;\n    case '/':\n        result = data1 / data2;\n        break;\n    default:\n        printf(\"operator error\\n\");\n        return 1;\n    }\n\n    printf(\"result=%g\\n\", result);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "2 3 +",
@@ -3955,7 +3955,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int score;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n\n    switch (score / 10) {\n        case 10:\n        case 9:\n            printf(\"grade=A\\n\");\n            break;\n        case 8:\n            printf(\"grade=B\\n\");\n            break;\n        case 7:\n            printf(\"grade=C\\n\");\n            break;\n        case 6:\n            printf(\"grade=D\\n\");\n            break;\n        default:\n            printf(\"grade=E\\n\");\n            break;\n    }\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int score;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n\n    switch (score / 10) {\n    case 10:\n    case 9:\n        printf(\"grade=A\\n\");\n        break;\n    case 8:\n        printf(\"grade=B\\n\");\n        break;\n    case 7:\n        printf(\"grade=C\\n\");\n        break;\n    case 6:\n        printf(\"grade=D\\n\");\n        break;\n    default:\n        printf(\"grade=E\\n\");\n        break;\n    }\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "90",
@@ -3993,7 +3993,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char s[64];\n    int re, im;\n    char op, tail;\n\n    if (scanf(\"%63s\", s) != 1)\n        return 1;\n    if (sscanf(s, \"%d%c%d%c\", &re, &op, &im, &tail) != 4)\n        return 1;\n\n    /* 共轭复数：实部不变，虚部取相反符号 */\n    if (op == '+')\n        printf(\"%d-%di\\n\", re, im);\n    else\n        printf(\"%d+%di\\n\", re, im);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char s[64];\n    int re, im;\n    char op, tail;\n\n    if (scanf(\"%63s\", s) != 1)\n        return 1;\n    if (sscanf(s, \"%d%c%d%c\", &re, &op, &im, &tail) != 4)\n        return 1;\n\n    /* 共轭复数：实部不变，虚部取相反符号 */\n    if (op == '+')\n        printf(\"%d-%di\\n\", re, im);\n    else\n        printf(\"%d+%di\\n\", re, im);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "2+3i",
@@ -4042,10 +4042,10 @@
           "expected": "invalid month\n365"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d, leap;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;\n    if (m < 1 || m > 12)\n    {\n        printf(\"invalid month\\n\");\n    }\n    else\n    {\n        switch (m)\n        {\n        case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n            d = 31;\n            break;\n        case 4: case 6: case 9: case 11:\n            d = 30;\n            break;\n        default:\n            d = leap ? 29 : 28;\n        }\n        printf(\"%d %d %d\\n\", y, m, d);\n    }\n    printf(\"%d\\n\", leap ? 366 : 365);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int y, m, d, leap;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;\n    if (m < 1 || m > 12) {\n        printf(\"invalid month\\n\");\n    } else {\n        switch (m) {\n        case 1:\n        case 3:\n        case 5:\n        case 7:\n        case 8:\n        case 10:\n        case 12:\n            d = 31;\n            break;\n        case 4:\n        case 6:\n        case 9:\n        case 11:\n            d = 30;\n            break;\n        default:\n            d = leap ? 29 : 28;\n        }\n        printf(\"%d %d %d\\n\", y, m, d);\n    }\n    printf(\"%d\\n\", leap ? 366 : 365);\n    return 0;\n}",
       "input_format": "一行两个整数 y m，用空白分隔（1<=y<=9999）",
       "output_format": "第一行\"y m 天数\"或 invalid month；第二行该年总天数",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int y, m, d, leap;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;\n    if (m < 1 || m > 12)\n    {\n        printf(\"invalid month\\n\");\n    }\n    else\n    {\n        switch (m)\n        {\n        case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n            d = 31;\n            break;\n        case 4: case 6: case 9: case 11:\n            d = 30;\n            break;\n        default:\n            d = leap ? 29 : 28;\n        }\n        printf(\"%d %d %d\\n\", y, m, d);\n    }\n    printf(\"%d\\n\", leap ? 366 : 365);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int y, m, d, leap;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;\n    if (m < 1 || m > 12) {\n        printf(\"invalid month\\n\");\n    } else {\n        switch (m) {\n        case 1:\n        case 3:\n        case 5:\n        case 7:\n        case 8:\n        case 10:\n        case 12:\n            d = 31;\n            break;\n        case 4:\n        case 6:\n        case 9:\n        case 11:\n            d = 30;\n            break;\n        default:\n            d = leap ? 29 : 28;\n        }\n        printf(\"%d %d %d\\n\", y, m, d);\n    }\n    printf(\"%d\\n\", leap ? 366 : 365);\n    return 0;\n}",
       "explanation": "先用一个 leap 变量保存闰年判断结果，避免同一表达式写两遍。月份合法性必须最先检查，非法时只输出提示但总天数仍要输出，这是本题的输出约定。switch(m) 把 12 个月按 31 天、30 天分组，2 月落到 default 用条件运算符区分 29 与 28。关键推理：闰年规则是 (y%4==0 && y%100!=0) || y%400==0，1900 能被 4 与 100 整除但不能被 400 整除，是平年。易错点：月份检查写成 else if 会导致非法月份时漏掉第二行输出。",
       "tags": [
         "闰年",
@@ -4083,10 +4083,10 @@
           "expected": "7 7 7"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c, t;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a > b)\n    {\n        t = a;\n        a = b;\n        b = t;\n    }\n    if (a > c)\n    {\n        t = a;\n        a = c;\n        c = t;\n    }\n    if (b > c)\n    {\n        t = b;\n        b = c;\n        c = t;\n    }\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c, t;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a > b) {\n        t = a;\n        a = b;\n        b = t;\n    }\n    if (a > c) {\n        t = a;\n        a = c;\n        c = t;\n    }\n    if (b > c) {\n        t = b;\n        b = c;\n        c = t;\n    }\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
       "input_format": "一行三个整数 a b c，用空白分隔",
       "output_format": "一行三个整数，升序，用单个空格分隔",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b, c, t;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a > b)\n    {\n        t = a;\n        a = b;\n        b = t;\n    }\n    if (a > c)\n    {\n        t = a;\n        a = c;\n        c = t;\n    }\n    if (b > c)\n    {\n        t = b;\n        b = c;\n        c = t;\n    }\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b, c, t;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a > b) {\n        t = a;\n        a = b;\n        b = t;\n    }\n    if (a > c) {\n        t = a;\n        a = c;\n        c = t;\n    }\n    if (b > c) {\n        t = b;\n        b = c;\n        c = t;\n    }\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
       "explanation": "三次两两比较即可把最小值\"冒\"到 a：先比较 a 与 b 使 a<=b，再比较 a 与 c 使 a 成为三者最小，最后比较 b 与 c 使 b<=c，此时 a<=b<=c 必然成立。关键推理：第二、三步不能省，例如 3 1 2 中第一次交换得 1 3 2，第二次 a 与 c 比较 1<2 不交换，第三次 b 与 c 比较 3>2 交换得 1 2 3。交换必须借助临时变量 t。易错点：三个 if 不能写成 else if，因为它们可能同时成立；相等时不交换，结果仍正确。",
       "tags": [
         "三数排序",
@@ -4123,10 +4123,10 @@
           "expected": "11.00"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < -1)\n        y = 2 * x + 3;\n    else if (x <= 1)\n        y = x * x;\n    else\n        y = 3 * x - 1;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < -1)\n        y = 2 * x + 3;\n    else if (x <= 1)\n        y = x * x;\n    else\n        y = 3 * x - 1;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
       "input_format": "一行一个实数 x",
       "output_format": "一行 y 的值，保留两位小数",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < -1)\n        y = 2 * x + 3;\n    else if (x <= 1)\n        y = x * x;\n    else\n        y = 3 * x - 1;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < -1)\n        y = 2 * x + 3;\n    else if (x <= 1)\n        y = x * x;\n    else\n        y = 3 * x - 1;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
       "explanation": "三段区间必须按顺序判断，中间段写成 x <= 1 而不必再写 x >= -1，因为能进入该分支说明 x < -1 已不成立，这正是 else if 链\"隐含前置条件\"的好处。验证：x=-2.5 时 y=2*(-2.5)+3=-2，输出 -2.00；x=0.5 时 y=0.25；x=4 时 y=3*4-1=11，输出 11.00。关键推理：scanf 读 double 必须用 %lf，printf 用 %f 或 %lf 皆可。易错点：把中间段条件写成 x < 1 会让 x=1 落入第三段得 2.00 而不是 1.00。",
       "tags": [
         "分段函数",
@@ -4163,10 +4163,10 @@
           "expected": "1"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n    {\n        printf(\"input error\\n\");\n        return 1;\n    }\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    case '%':\n        if (b != 0)\n            printf(\"%d\\n\", a % b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3) {\n        printf(\"input error\\n\");\n        return 1;\n    }\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    case '%':\n        if (b != 0)\n            printf(\"%d\\n\", a % b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
       "input_format": "一行，格式为 整数 空白 运算符 空白 整数",
       "output_format": "一行运算结果，或 div0，或 bad op 加非法运算符",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n    {\n        printf(\"input error\\n\");\n        return 1;\n    }\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    case '%':\n        if (b != 0)\n            printf(\"%d\\n\", a % b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3) {\n        printf(\"input error\\n\");\n        return 1;\n    }\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    case '%':\n        if (b != 0)\n            printf(\"%d\\n\", a % b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
       "explanation": "scanf(\"%d %c %d\") 中格式串的空格表示跳过任意数量空白，因此能正确读入带空格的表达式；若写成 \"%d%c%d\"，%c 会把运算符前的空格读走。switch 对字符做分支完全合法，因为字符就是整型码值。除法与取余都必须先判 b != 0，整数除零是未定义行为，通常直接崩溃。验证：12+5=17；20/0 输出 div0；7%3=1。易错点：每个 case 末尾都要写 break，否则结果会被后续分支覆盖。",
       "tags": [
         "switch",
@@ -4204,10 +4204,10 @@
           "expected": "other\n64"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower\\n\");\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper\\n\");\n    else if (c >= '0' && c <= '9')\n        printf(\"digit\\n\");\n    else if (c == ' ')\n        printf(\"space\\n\");\n    else\n        printf(\"other\\n\");\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower\\n\");\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper\\n\");\n    else if (c >= '0' && c <= '9')\n        printf(\"digit\\n\");\n    else if (c == ' ')\n        printf(\"space\\n\");\n    else\n        printf(\"other\\n\");\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "input_format": "一行一个字符",
       "output_format": "第一行类别名；第二行该字符的十进制码值",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower\\n\");\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper\\n\");\n    else if (c >= '0' && c <= '9')\n        printf(\"digit\\n\");\n    else if (c == ' ')\n        printf(\"space\\n\");\n    else\n        printf(\"other\\n\");\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower\\n\");\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper\\n\");\n    else if (c >= '0' && c <= '9')\n        printf(\"digit\\n\");\n    else if (c == ' ')\n        printf(\"space\\n\");\n    else\n        printf(\"other\\n\");\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "explanation": "字符分类的本质是码值区间比较：小写 a~z 是 97~122，大写 A~Z 是 65~90，数字 0~9 是 48~57，空格是 32。用 else if 链依次判断，最后的 else 兜住标点等其他字符。printf(\"%d\", c) 会把 char 提升为 int 输出码值，这正是 C 中\"字符即整数\"的体现。验证：M 输出 upper 与 77；空格输出 space 与 32；@ 输出 other 与 64。易错点：%c 不会跳过前导空白，输入中的空格会被当作数据读入，所以 space 分支是必要的。",
       "tags": [
         "字符分类",
@@ -4244,10 +4244,10 @@
           "expected": "451.25"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    double w, fee;\n\n    if (scanf(\"%lf\", &w) != 1)\n        return 1;\n    if (w < 0)\n    {\n        printf(\"invalid\\n\");\n        return 1;\n    }\n    if (w <= 50)\n        fee = w * 0.5;\n    else if (w <= 200)\n        fee = 25 + (w - 50) * 0.4;\n    else\n        fee = 85 + (w - 200) * 0.3;\n    if (w > 1000)\n        fee = fee * 0.95;\n    printf(\"%.2f\\n\", fee);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    double w, fee;\n\n    if (scanf(\"%lf\", &w) != 1)\n        return 1;\n    if (w < 0) {\n        printf(\"invalid\\n\");\n        return 1;\n    }\n    if (w <= 50)\n        fee = w * 0.5;\n    else if (w <= 200)\n        fee = 25 + (w - 50) * 0.4;\n    else\n        fee = 85 + (w - 200) * 0.3;\n    if (w > 1000)\n        fee = fee * 0.95;\n    printf(\"%.2f\\n\", fee);\n    return 0;\n}",
       "input_format": "一行一个实数 w",
       "output_format": "一行费用（保留两位小数），或 invalid",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    double w, fee;\n\n    if (scanf(\"%lf\", &w) != 1)\n        return 1;\n    if (w < 0)\n    {\n        printf(\"invalid\\n\");\n        return 1;\n    }\n    if (w <= 50)\n        fee = w * 0.5;\n    else if (w <= 200)\n        fee = 25 + (w - 50) * 0.4;\n    else\n        fee = 85 + (w - 200) * 0.3;\n    if (w > 1000)\n        fee = fee * 0.95;\n    printf(\"%.2f\\n\", fee);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    double w, fee;\n\n    if (scanf(\"%lf\", &w) != 1)\n        return 1;\n    if (w < 0) {\n        printf(\"invalid\\n\");\n        return 1;\n    }\n    if (w <= 50)\n        fee = w * 0.5;\n    else if (w <= 200)\n        fee = 25 + (w - 50) * 0.4;\n    else\n        fee = 85 + (w - 200) * 0.3;\n    if (w > 1000)\n        fee = fee * 0.95;\n    printf(\"%.2f\\n\", fee);\n    return 0;\n}",
       "explanation": "阶梯计价的关键是把已封顶部分预先算成常数：前 50 千克共 25 元，前 200 千克共 25 + 150*0.4 = 85 元，于是各段只需加上超出部分的单价乘以超出重量。折扣判断必须放在分段计算之后、输出之前，且用独立的 if 而不是 else if，因为它与分段条件是正交的两件事。验证：w=30 得 15.00；w=120 得 25+70*0.4=53.00；w=1500 得 85+1300*0.3=475，打 95 折为 451.25。易错点：负重量要提前 return，否则会被最后一段当作超大重量计费。",
       "tags": [
         "分段计费",
@@ -4267,7 +4267,7 @@
       "section": "4.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.54（PDF p39 / 书页 p28）",
       "difficulty": 3,
-      "stem": "【题 4.54】将以下两条 if 语句合并成一条 if 语句为【 】。\n\n```c\n语句1: if (a>b) scanf(\"%d\",&a);\n        else scanf(\"%d\",&b);\n语句2: if (a<=b) m++;\n        else n++;\n```",
+      "stem": "【题 4.54】将以下两条 if 语句合并成一条 if 语句为【 】。\n\n```c\n语句1 : if (a > b) scanf(\"%d\", &a);\nelse scanf(\"%d\", &b);\n语句2 : if (a <= b) m++;\nelse n++;\n```",
       "explanation": "考点是 if 语句的等价合并与复合语句的必要性。语句 1 按 `a>b` 决定读入哪个变量，语句 2 按 `a<=b` 决定给哪个计数器加一，两组条件恰好互补，所以能合并为一条 if-else：真分支 `{ scanf(\"%d\",&a); n++; }`，假分支 `{ scanf(\"%d\",&b); m++; }`。易错点：一是漏写花括号，写成 `if(a>b) scanf(\"%d\",&a); n++;` 会让 `n++` 无条件执行；二是把计数写反——`a>b` 对应的是 `n++`（语句 2 的 else 分支），不是 `m++`。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4289,7 +4289,7 @@
       "section": "4.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.55（PDF p39 / 书页 p28）",
       "difficulty": 4,
-      "stem": "【题 4.55】以下程序 a 对应的数学表达式是【1】；程序 b 对应的数学表达式是【2】。\n\n```c\n程序 a:\n#include <stdio.h>\nint main( )\n{ int a,b;\n    scanf(\"%d\",&a);\n    if(a<0) b=-1;\n    else if(a==0)\n        b=0;\n    else b=1;\n    printf(\"a=%d,b=%d\\n\",a,b);\n    return 0;\n}\n\n程序 b:\n#include <stdio.h>\nint main( )\n{ int a,b;\n    scanf(\"%d\",&a);\n    b=0;\n    if(a!=0)\n    if(a>0) b=1;\n    else b=-1;\n    printf(\"a=%d,b=%d\\n\",a,b);\n    return 0;\n}\n```",
+      "stem": "【题 4.55】以下程序 a 对应的数学表达式是【1】；程序 b 对应的数学表达式是【2】。\n\n```c\n程序 a :\n#include <stdio.h>\n    int\n    main() {\n    int a, b;\n    scanf(\"%d\", &a);\n    if (a < 0)\n        b = -1;\n    else if (a == 0)\n        b = 0;\n    else\n        b = 1;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    return 0;\n}\n\n程序 b :\n#include <stdio.h>\n    int\n    main() {\n    int a, b;\n    scanf(\"%d\", &a);\n    b = 0;\n    if (a != 0)\n        if (a > 0)\n            b = 1;\n        else\n            b = -1;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    return 0;\n}\n```",
       "explanation": "考点是多分支结构的等价改写。程序 a 用 `if / else if / else` 显式三分支实现符号函数 sign(a)。程序 b 先 `b=0` 处理 a==0，再用 `if(a!=0)` 包住一层 `if(a>0) b=1; else b=-1;`，覆盖范围与 a 完全一致，故两空答案相同。易错点：忽略程序 b 中内层 if-else 是外层 `if(a!=0)` 的语句体——`else` 总是与**最近的未配对 if** 结合，缩进不影响配对，误读会以为 a<0 时 b 仍是 0。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4530,7 +4530,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.11（PDF p32 / 书页 p21）",
       "difficulty": 3,
-      "stem": "【题 4.11】执行以下程序段后的输出是______。\n\n```c\nint i=-1;\nif(i<=0) printf(\"****\\n\")\nelse printf(\"%%%%\\n\");\n```",
+      "stem": "【题 4.11】执行以下程序段后的输出是______。\n\n```c\nint i = -1;\nif (i <= 0)\n    printf(\"****\\n\") else printf(\"%%%%\\n\");\n```",
       "explanation": "答案 B。第一条 printf(\"****\\n\") 后面缺少分号，语句未结束就遇到 else，无法与 if 配对，编译报语法错误。易错点：if...else 两个分支各自的语句都必须以分号结束；另外 C 项的 \"%%%%c\" 是干扰，printf 中 %% 只输出一个 %。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4552,7 +4552,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.12（PDF p32 / 书页 p21）",
       "difficulty": 3,
-      "stem": "【题 4.12】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int a,b,d=241;\n  a=d/100%9;\n  b=(-1)&&(-1);\n  printf(\"%d,%d\",a,b);\n  return 0;\n}\n```",
+      "stem": "【题 4.12】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a, b, d = 241;\n    a = d / 100 % 9;\n    b = (-1) && (-1);\n    printf(\"%d,%d\", a, b);\n    return 0;\n}\n```",
       "explanation": "答案 B。d/100 是 241/100，整数相除取整得 2，再 2%9 仍为 2，故 a=2。(-1)&&(-1) 中两个运算对象都是非 0，均视为真，逻辑与结果为 1，故 b=1，输出 2,1。易错点：逻辑运算把非 0 一律折算成真，-1 也不例外，结果是 1 而不是 -1。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4640,7 +4640,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.17（PDF p33 / 书页 p22）",
       "difficulty": 3,
-      "stem": "【题 4.17】已知int x=10,y=20,z=30;执行以下语句后x、y、z的值是______。\n\n```c\nif(x>y)\nz=x;x=y;y=z;\n```",
+      "stem": "【题 4.17】已知int x=10,y=20,z=30;执行以下语句后x、y、z的值是______。\n\n```c\nif (x > y)\n    z = x;\nx = y;\ny = z;\n```",
       "explanation": "答案 B。if(x>y) 判断 10>20 为假，它所控制的语句 z=x; 不执行，z 保持 30。其后的 x=y; 与 y=z; 不在 if 的控制范围内，是无条件执行的普通语句：x 变 20，y 变 30。最终 x=20、y=30、z=30。易错点：不用花括号时 if 只管紧随其后的一条语句，分号之后的语句都会照常执行。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4684,7 +4684,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.19（PDF p33 / 书页 p22）",
       "difficulty": 3,
-      "stem": "【题 4.19】以下程序______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int a=5,b=0,c=0;\n  if(a=b+c) printf(\"***\\n\");\n  else      printf(\"$$$\\n\");\n  return 0;\n}\n```",
+      "stem": "【题 4.19】以下程序______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 5, b = 0, c = 0;\n    if (a = b + c)\n        printf(\"***\\n\");\n    else\n        printf(\"$$$\\n\");\n    return 0;\n}\n```",
       "explanation": "答案 D。条件里写的是赋值 if(a=b+c)，先把 b+c 即 0+0 的结果 0 赋给 a，整个条件表达式的值就是 0，判为假，于是走 else 输出 $$$。程序语法完全合法，能编译能连接。易错点：= 与 == 一字之差，赋值表达式既改变了 a 又充当了条件，编译器通常只给警告不报错。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4706,7 +4706,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.20（PDF p34 / 书页 p23）",
       "difficulty": 3,
-      "stem": "【题 4.20】若变量都已正确定义，则以下程序段的输出是______。\n\n```c\na=10;b=50;c=30;\nif(a>b) a=b,\nb=c; c=a;\nprintf(\"a=%db=%dc=%d\\n\",a,b,c);\n```",
+      "stem": "【题 4.20】若变量都已正确定义，则以下程序段的输出是______。\n\n```c\na = 10;\nb = 50;\nc = 30;\nif (a > b)\n    a = b, b = c;\nc = a;\nprintf(\"a=%db=%dc=%d\\n\", a, b, c);\n```",
       "explanation": "答案 B。if(a>b) 判断 10>50 为假，它控制的是一条由逗号运算符连成的语句 a=b,b=c;，因此这两个赋值都不执行，a 仍为 10、b 仍为 50。其后的 c=a; 是独立语句，无条件执行，c 变成 10。输出 a=10b=50c=10。易错点：逗号表达式把 a=b 和 b=c 捆成一条语句，都归 if 管；换行不改变这一点。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4728,7 +4728,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.21（PDF p34 / 书页 p23）",
       "difficulty": 3,
-      "stem": "【题 4.21】当a=1、b=3、c=5、d=4时，执行以下程序段后x的值是______。\n\n```c\nif(a<b)\n    if(c<d) x=1;\n    else\n        if(a<c)\n            if(b<d) x=2;\n            else x=3;\n        else x=6;\n    else x=7;\n```",
+      "stem": "【题 4.21】当a=1、b=3、c=5、d=4时，执行以下程序段后x的值是______。\n\n```c\nif (a < b)\n    if (c < d)\n        x = 1;\n    else if (a < c)\n        if (b < d)\n            x = 2;\n        else\n            x = 3;\n    else\n        x = 6;\nelse\n    x = 7;\n```",
       "explanation": "答案 B。a<b 即 1<3 为真，进入内层；c<d 即 5<4 为假，走 else 分支；else 内先判 a<c 即 1<5 为真，再判 b<d 即 3<4 为真，执行 x=2。其余 x=3、x=6、x=7 都不会执行。易错点：多层嵌套时缩排只是给人看的，else 一律与它之前最近的、尚未配对的 if 结合，按这条规则还原层次才不会走错分支。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4772,7 +4772,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.23（PDF p34 / 书页 p23）",
       "difficulty": 4,
-      "stem": "【题 4.23】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int a=100,x=10,y=20 ,ok1=5,ok2=0;\n  if (x<y)\n    if(y!=10)\n      if(!ok1)\n        a=1;\n      else\n        if (ok2) a=10;\n    a=-1;\n    printf(\"%d\\n\",a);\n    return 0;\n}\n```",
+      "stem": "【题 4.23】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 100, x = 10, y = 20, ok1 = 5, ok2 = 0;\n    if (x < y)\n        if (y != 10)\n            if (!ok1)\n                a = 1;\n            else if (ok2)\n                a = 10;\n    a = -1;\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```",
       "explanation": "答案 C。缩排有迷惑性：a=-1; 与 printf 并不在任何 if 的控制范围内，是无条件执行的语句。前面 x<y 真、y!=10 真、!ok1 即 !5 为假走 else，而 ok2 为 0 也假，所以 a=10 未执行，a 仍是 100。随后 a=-1 把它覆盖，输出 -1。易错点：判断语句归属只看花括号与配对规则，不能看缩进。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4794,7 +4794,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.24（PDF p35 / 书页 p24）",
       "difficulty": 3,
-      "stem": "【题 4.24】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x=2,y=-1,z=2;\n    if (x<y)\n        if (y<0) z=0;\n        else     z+=1;\n    printf(\"%d\\n\",z);\n    return 0;\n}\n```",
+      "stem": "【题 4.24】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x = 2, y = -1, z = 2;\n    if (x < y)\n        if (y < 0)\n            z = 0;\n        else\n            z += 1;\n    printf(\"%d\\n\", z);\n    return 0;\n}\n```",
       "explanation": "答案 B。外层 if(x<y) 判断 2<-1 为假，整个内层的 if(y<0) z=0; else z+=1; 都在它的控制之下，一条也不执行，z 保持初值 2。易错点：内层 if-else 的缩进让人误以为 else 属于外层，实际它已被外层 if 一起跳过；外层条件为假时内层完全不参与运算。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4838,7 +4838,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.26（PDF p35 / 书页 p24）",
       "difficulty": 3,
-      "stem": "【题 4.26】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x=1;\n    if(x=2)\n        printf(\"OK\");\n    else if(x<2)printf(\"%d\\n\",x);\n        else printf(\"Quit\");\n    return 0;\n}\n```",
+      "stem": "【题 4.26】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x = 1;\n    if (x = 2)\n        printf(\"OK\");\n    else if (x < 2)\n        printf(\"%d\\n\", x);\n    else\n        printf(\"Quit\");\n    return 0;\n}\n```",
       "explanation": "答案 A。条件 if(x=2) 是赋值不是比较，x 被改成 2，表达式的值为 2，非 0 即真，于是执行 printf(\"OK\")，后面的 else if 与 else 都不再看。输出 OK（无换行）。易错点：把 == 写成 = 后条件恒为真，且 x 的原值 1 也被破坏；只有赋值为 0 时才会走 else。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4860,7 +4860,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.27（PDF p35 / 书页 p24）",
       "difficulty": 4,
-      "stem": "【题 4.27】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int a=5,b=8,c=3,max;\n    max=a;\n    if(c>b)\n        if(c>a)\n            max=c;\n    else\n        if(b>a)\n            max=b;\n    printf(\"max=%d\\n\",max);\n    return 0;\n}\n```",
+      "stem": "【题 4.27】以下程序的输出是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 5, b = 8, c = 3, max;\n    max = a;\n    if (c > b)\n        if (c > a)\n            max = c;\n        else if (b > a)\n            max = b;\n    printf(\"max=%d\\n\", max);\n    return 0;\n}\n```",
       "explanation": "答案 B。else 与其之前最近的 if(c>a) 配对，所以结构是 if(c>b){ if(c>a) max=c; else if(b>a) max=b; }。c>b 即 3>8 为假，整个复合语句被跳过，内层的 max=c 与 else 中的 max=b 都不执行，max 保持初值 a 即 5，输出 max=5。易错点：别看缩进把 else 对齐到外层 if，配对规则只认最近的未配对 if。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4904,7 +4904,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.29（PDF p36 / 书页 p25）",
       "difficulty": 3,
-      "stem": "【题 4.29】若运行时为变量x输入12，则以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x,y;\n    scanf(\"%d\",&x);\n    y=x>12 ? x+10: x-12;\n    printf(\"%d\\n\",y);\n    return 0;\n}\n```",
+      "stem": "【题 4.29】若运行时为变量x输入12，则以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x, y;\n    scanf(\"%d\", &x);\n    y = x > 12 ? x + 10 : x - 12;\n    printf(\"%d\\n\", y);\n    return 0;\n}\n```",
       "explanation": "答案 A。输入 x=12，条件 x>12 即 12>12 为假，取冒号后的 x-12 = 0，y=0，输出 0。易错点：> 与 >= 之别，12 不大于 12，正好落在假分支；若条件写成 x>=12 结果就是 22。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -4926,7 +4926,7 @@
       "section": "4.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第4章 逻辑运算和分支结构 题4.30（PDF p36 / 书页 p25）",
       "difficulty": 3,
-      "stem": "【题 4.30】以下程序所表示的分段函数是______。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x,y;\n    printf(\"Enter x:\");\n    scanf(\"%d\",&x);\n    y=x>=0? 2 * x+1:0;\n    printf(\"x=%d:f(x)=%d\",x,y);\n    return 0;\n}\n```",
+      "stem": "【题 4.30】以下程序所表示的分段函数是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x, y;\n    printf(\"Enter x:\");\n    scanf(\"%d\", &x);\n    y = x >= 0 ? 2 * x + 1 : 0;\n    printf(\"x=%d:f(x)=%d\", x, y);\n    return 0;\n}\n```",
       "explanation": "答案 D。y=x>=0? 2*x+1 : 0 表示：当 x>=0 时 f(x)=2x+1，当 x<0 时 f(x)=0。A、B、C 的分段区间或表达式与代码不符，只有 D 完全对应。易错点：注意条件是 x>=0 而不是 x>0，x=0 属于 2x+1 那一段，f(0)=1。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -5244,7 +5244,7 @@
         "break",
         "穿透"
       ],
-      "stem": "执行以下程序段（x 的初值为 2）后，输出是（ ）\n```c\nswitch (x) { case 1: printf(\"A \"); case 2: printf(\"B \"); case 3: printf(\"C \"); break; case 4: printf(\"D \"); default: printf(\"E \"); }\n```",
+      "stem": "执行以下程序段（x 的初值为 2）后，输出是（ ）\n```c\nswitch (x) {\ncase 1:\n    printf(\"A \");\ncase 2:\n    printf(\"B \");\ncase 3:\n    printf(\"C \");\n    break;\ncase 4:\n    printf(\"D \");\ndefault:\n    printf(\"E \");\n}\n```",
       "options": [
         "B C",
         "B",
