@@ -523,7 +523,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SWAP(a, b) /*__BLANK_1__*/ { int t = (a); /*__BLANK_2__*/; /*__BLANK_3__*/; } while (0)\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SWAP(a, b) /*__BLANK_1__*/                                                                 \\\n    {                                                                                              \\\n        int t = (a); /*__BLANK_2__*/                                                               \\\n        ;            /*__BLANK_3__*/                                                               \\\n        ;                                                                                          \\\n    }                                                                                              \\\n    while (0)\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -538,8 +538,8 @@
           "answer": "(b) = t"
         }
       ],
-      "code": "#include <stdio.h>\n\n#define SWAP(a, b) /*__BLANK_1__*/ { int t = (a); /*__BLANK_2__*/; /*__BLANK_3__*/; } while (0)\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define SWAP(a, b) do { int t = (a); (a) = (b); (b) = t; } while (0)\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SWAP(a, b) /*__BLANK_1__*/                                                                 \\\n    {                                                                                              \\\n        int t = (a); /*__BLANK_2__*/                                                               \\\n        ;            /*__BLANK_3__*/                                                               \\\n        ;                                                                                          \\\n    }                                                                                              \\\n    while (0)\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define SWAP(a, b)                                                                                 \\\n    do {                                                                                           \\\n        int t = (a);                                                                               \\\n        (a) = (b);                                                                                 \\\n        (b) = t;                                                                                   \\\n    } while (0)\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 9\n",
@@ -1251,7 +1251,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define EXCH( a, b ) { int t; t=a; a=b; b=t; }\nint main()\n{ int x=5, y=9;\n  EXCH( x,y );\n  printf(\"x=%d, y=%d\\n\",x, y);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define EXCH(a, b)                                                                                 \\\n    {                                                                                              \\\n        int t;                                                                                     \\\n        t = a;                                                                                     \\\n        a = b;                                                                                     \\\n        b = t;                                                                                     \\\n    }\nint main() {\n    int x = 5, y = 9;\n    EXCH(x, y);\n    printf(\"x=%d, y=%d\\n\", x, y);\n    return 0;\n}",
       "answer": "x=9, y=5",
       "id": "c-ch08-cr-006",
       "verified": true
@@ -1387,7 +1387,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define sw(x,y) { x=y; y=x; x=y; }\nint main()\n{ int a=10,b=01;\n  sw(a,b);\n  printf(\"%d,%d\\n\",a,b);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define sw(x, y)                                                                                   \\\n    {                                                                                              \\\n        x = y;                                                                                     \\\n        y = x;                                                                                     \\\n        x = y;                                                                                     \\\n    }\nint main() {\n    int a = 10, b = 01;\n    sw(a, b);\n    printf(\"%d,%d\\n\", a, b);\n    return 0;\n}",
       "answer": "1,1",
       "id": "c-ch08-cr-014",
       "verified": true
@@ -1404,7 +1404,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define PR(a) printf(\"%d\\t\",(int)(a))\n#define PRINT(a) PR(a); printf(\"ok!\")\nint main()\n{ int i,a=1;\n  for( i=0; i<3; i++)\n    PRINT(a+i);\n  printf(\"\\n\");\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define PR(a) printf(\"%d\\t\", (int)(a))\n#define PRINT(a)                                                                                   \\\n    PR(a);                                                                                         \\\n    printf(\"ok!\")\nint main() {\n    int i, a = 1;\n    for (i = 0; i < 3; i++)\n        PRINT(a + i);\n    printf(\"\\n\");\n    return 0;\n}",
       "answer": "1\t2\t3\tok!",
       "id": "c-ch08-cr-015",
       "verified": true
@@ -1661,9 +1661,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SWAP(a, b) do { int t = (a); (a) = (b); (b) = t; } while (0)\n\nint main(void)\n{\n    int x = 1, y = 9;\n\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SWAP(a, b)                                                                                 \\\n    do {                                                                                           \\\n        int t = (a);                                                                               \\\n        (a) = (b);                                                                                 \\\n        (b) = t;                                                                                   \\\n    } while (0)\n\nint main(void) {\n    int x = 1, y = 9;\n\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "9 1",
-      "code": "#include <stdio.h>\n\n#define SWAP(a, b) do { int t = (a); (a) = (b); (b) = t; } while (0)\n\nint main(void)\n{\n    int x = 1, y = 9;\n\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SWAP(a, b)                                                                                 \\\n    do {                                                                                           \\\n        int t = (a);                                                                               \\\n        (a) = (b);                                                                                 \\\n        (b) = t;                                                                                   \\\n    } while (0)\n\nint main(void) {\n    int x = 1, y = 9;\n\n    if (x < y)\n        SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 9 1。推理：SWAP 展开为一个 do…while(0) 语句块，它作为单条语句紧跟 if 之后，因此三条赋值都在条件为真时执行，x、y 完成交换。易错点：若把宏写成 { int t = (a); (a) = (b); (b) = t; }（不带 do…while(0)），则 if (x < y) SWAP(x, y); 展开后会多出一个分号，形成空语句，在 if…else 结构中会造成语法错误；do…while(0) 是让多语句宏安全地充当单条语句的惯用法。",
       "tags": [
@@ -1962,9 +1962,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SWAP(t, a, b) do { t tmp_ = (a); (a) = (b); (b) = tmp_; } while (0)\n\nint main(void)\n{\n    int x = 1, y = 2;\n    double u = 1.5, v = 2.5;\n\n    SWAP(int, x, y);\n    SWAP(double, u, v);\n    printf(\"%d %d %.1f %.1f\\n\", x, y, u, v);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SWAP(t, a, b)                                                                              \\\n    do {                                                                                           \\\n        t tmp_ = (a);                                                                              \\\n        (a) = (b);                                                                                 \\\n        (b) = tmp_;                                                                                \\\n    } while (0)\n\nint main(void) {\n    int x = 1, y = 2;\n    double u = 1.5, v = 2.5;\n\n    SWAP(int, x, y);\n    SWAP(double, u, v);\n    printf(\"%d %d %.1f %.1f\\n\", x, y, u, v);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "2 1 2.5 1.5",
-      "code": "#include <stdio.h>\n\n#define SWAP(t, a, b) do { t tmp_ = (a); (a) = (b); (b) = tmp_; } while (0)\n\nint main(void)\n{\n    int x = 1, y = 2;\n    double u = 1.5, v = 2.5;\n\n    SWAP(int, x, y);\n    SWAP(double, u, v);\n    printf(\"%d %d %.1f %.1f\\n\", x, y, u, v);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SWAP(t, a, b)                                                                              \\\n    do {                                                                                           \\\n        t tmp_ = (a);                                                                              \\\n        (a) = (b);                                                                                 \\\n        (b) = tmp_;                                                                                \\\n    } while (0)\n\nint main(void) {\n    int x = 1, y = 2;\n    double u = 1.5, v = 2.5;\n\n    SWAP(int, x, y);\n    SWAP(double, u, v);\n    printf(\"%d %d %.1f %.1f\\n\", x, y, u, v);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 2 1 2.5 1.5。推理：宏没有类型限制，第一个类型参数 t 决定临时变量的类型，因此同一个 SWAP 既可用于 int 也可用于 double；交换通过三次赋值完成。易错点：临时变量名加下划线后缀（tmp_）是为了减少与外部同名变量冲突的风险，但宏体内的变量名仍可能被实参意外引用；%.1f 输出 double，若用 %d 打印浮点数会得到错误结果。",
       "tags": [
@@ -2074,8 +2074,8 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序用宏 REP(n) 表示循环、SQ(x) 表示平方，功能是求 1 到 n 各项加 1 后的平方和，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\n#define REP(n) for (i = 0; i < n; i++);\n#define SQ(x) x * x\n\nint main(void)\n{\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n        s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\n#define REP(n) for (i = 0; i < n; i++);\n#define SQ(x) x * x\n\nint main(void)\n{\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n        s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "stem": "下列程序用宏 REP(n) 表示循环、SQ(x) 表示平方，功能是求 1 到 n 各项加 1 后的平方和，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\n#define REP(n)                                                                                     \\\n    for (i = 0; i < n; i++)                                                                        \\\n        ;\n#define SQ(x) x *x\n\nint main(void) {\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n    s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\n#define REP(n)                                                                                     \\\n    for (i = 0; i < n; i++)                                                                        \\\n        ;\n#define SQ(x) x *x\n\nint main(void) {\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n    s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n",
@@ -2545,7 +2545,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n/* 交换宏必须用 do{}while(0) 包起来，临时变量才不会漏到外层作用域 */\n#define SWAP(x, y) do { int swap_tmp_ = (x); (x) = (y); (y) = swap_tmp_; } while (0)\n\nint main(void)\n{\n    int a[100], b[100];\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n < 1 || n > 100)\n        return 1;\n\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &b[i]) != 1)\n            return 1;\n\n    for (i = 0; i < n; i++)\n        SWAP(a[i], b[i]);\n\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", b[i]);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\n/* 交换宏必须用 do{}while(0) 包起来，临时变量才不会漏到外层作用域 */\n#define SWAP(x, y)                                                                                 \\\n    do {                                                                                           \\\n        int swap_tmp_ = (x);                                                                       \\\n        (x) = (y);                                                                                 \\\n        (y) = swap_tmp_;                                                                           \\\n    } while (0)\n\nint main(void) {\n    int a[100], b[100];\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (n < 1 || n > 100)\n        return 1;\n\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &b[i]) != 1)\n            return 1;\n\n    for (i = 0; i < n; i++)\n        SWAP(a[i], b[i]);\n\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", b[i]);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "3\n1 2 3\n4 5 6",
@@ -2749,10 +2749,10 @@
           "expected": "5 5"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define SWAP(a, b) do { int t_ = (a); (a) = (b); (b) = t_; } while (0)\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define SWAP(a, b)                                                                                 \\\n    do {                                                                                           \\\n        int t_ = (a);                                                                              \\\n        (a) = (b);                                                                                 \\\n        (b) = t_;                                                                                  \\\n    } while (0)\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "input_format": "一行两个整数 x、y，用空格分隔。",
       "output_format": "一行两个整数，表示交换后的 x 与 y，中间用一个空格分隔。",
-      "code_starter": "#include <stdio.h>\n#define SWAP(a, b) do { int t_ = (a); (a) = (b); (b) = t_; } while (0)\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define SWAP(a, b)                                                                                 \\\n    do {                                                                                           \\\n        int t_ = (a);                                                                              \\\n        (a) = (b);                                                                                 \\\n        (b) = t_;                                                                                  \\\n    } while (0)\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    SWAP(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "explanation": "结论：do { int t_ = (a); (a) = (b); (b) = t_; } while (0) 交换后输出，实机为 9 1 / 1 9 / 5 5。推理：do-while(0) 使整个宏在语法上是一条语句，调用处的分号正好结束它。易错点：不能写成 { ... } 后不带 do-while，否则 if (x<y) SWAP(x,y); else ... 会因多余分号报 else 无匹配；临时变量名加下划线可降低与实参同名的风险。",
       "tags": [
         "多语句宏",
@@ -3091,7 +3091,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.8（PDF p153 / 书页 p142）",
       "difficulty": 3,
-      "stem": "【题 8.8】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define FUDGE(y) 2.84+y\n#define PR(a) printf(\"%d\",(int)(a))\n#define PRINT1(a) PR(a); putchar('\\n')\nint main()\n{ int x=2;\n  PRINT1(FUDGE(5)*x);\n  return 0;\n}\n```",
+      "stem": "【题 8.8】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define FUDGE(y) 2.84 + y\n#define PR(a) printf(\"%d\", (int)(a))\n#define PRINT1(a)                                                                                  \\\n    PR(a);                                                                                         \\\n    putchar('\\n')\nint main() {\n    int x = 2;\n    PRINT1(FUDGE(5) * x);\n    return 0;\n}\n```",
       "explanation": "答案B。PRINT1(FUDGE(5)*x) 展开为 printf(\"%d\",(int)(2.84+5*x)); putchar('\\n')，即 (int)(2.84+10)=12。易错点：以为 FUDGE(5) 先算成 7.84 再乘 2 得 15；展开后是 2.84+5*2，乘法优先于加法。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
