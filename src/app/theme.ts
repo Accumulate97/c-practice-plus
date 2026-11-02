@@ -19,7 +19,8 @@ interface ThemeState {
 export const useTheme = create<ThemeState>()(
   persist(
     (set) => ({
-      mode: 'auto',
+      // 任务07 §四：深空紫夜色是站点身份，新用户默认深色；老用户 persist 里的偏好不受影响
+      mode: 'dark',
       setMode: (mode) => {
         applyTheme(mode)
         set({ mode })

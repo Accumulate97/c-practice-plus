@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { APP_NAME, sections } from '../../app/config'
 import { ThemeToggle } from './ThemeToggle'
@@ -163,10 +164,18 @@ export function AppShell() {
         </nav>
       </header>
       <main id="main" tabIndex={-1} className="flex-1">
-        <Outlet />
+        {/* 任务07 §四·4.3：路由切换 180ms 淡入。key 取 pathname —— 只有换页才重挂载重放动画，
+            同页 query 变化（列表筛选/翻页）不触发，滚动位置恢复逻辑不受影响 */}
+        <div
+          key={location.pathname}
+          className="animate__animated animate__fadeIn"
+          style={{ '--animate-duration': '180ms' } as CSSProperties}
+        >
+          <Outlet />
+        </div>
       </main>
       <footer className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-4 text-xs" style={{ borderColor: 'var(--border)', color: 'var(--fg-muted)' }}>
-        <span>进度保存在本机 localStorage · 代码经第三方公共编译服务在线执行 · 依据仓库内 00–08 规范文件构建</span>
+        <span>进度保存在本机 localStorage · 代码经 Godbolt 公共编译服务在线执行 · 题目与功能依据 docs/specs/ 规范文档构建 · c-practice-plus</span>
         {/* 阶段 10-3：勘误表入口放页脚 —— 它是查证性内容，不该占主导航的位置 */}
         <Link data-role="errata-link" to="/errata" className="underline decoration-dotted" style={{ color: 'var(--fg-muted)' }}>
           📕 原书勘误表

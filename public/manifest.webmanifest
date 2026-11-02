@@ -1,0 +1,19 @@
+{
+  "name": "c-practice-plus · C 语言与数据结构学习平台",
+  "short_name": "c-practice-plus",
+  "description": "C 语言与数据结构在线学习平台：知识点汇总、可视化演示、在线刷题三合一",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d0b1a",
+  "theme_color": "#0d0b1a",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

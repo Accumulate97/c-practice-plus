@@ -1,5 +1,5 @@
 /** 全站常量。编译后端的数值依据 docs/adr/0001-judge-backend.md 的实测结论，勿凭感觉改。 */
-export const APP_NAME = 'C practice'
+export const APP_NAME = 'c-practice-plus'
 export const STORAGE_PREFIX = 'cpractice'
 /** localStorage 版本化键名：任何结构变更都要升版本号并写迁移，禁止原地改结构 */
 export const SETTINGS_KEY = `${STORAGE_PREFIX}:settings:v1`

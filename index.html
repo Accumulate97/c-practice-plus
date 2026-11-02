@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="C 语言与数据结构在线学习平台：知识点汇总、可视化演示、在线刷题三合一" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="theme-color" content="#0d0b1a" />
     <link rel="canonical" href="https://accumulate97.github.io/c-practice-plus/" />
     <meta property="og:url" content="https://accumulate97.github.io/c-practice-plus/" />
-    <meta property="og:title" content="C practice · C 语言与数据结构学习平台" />
+    <meta property="og:title" content="c-practice-plus · C 语言与数据结构学习平台" />
     <meta property="og:description" content="C 语言与数据结构在线学习平台：知识点汇总、可视化演示、在线刷题三合一" />
-    <title>C practice · C 语言与数据结构学习平台</title>
+    <title>c-practice-plus · C 语言与数据结构学习平台</title>
     <script>
       // 主题防闪烁：在首帧之前把 data-theme 打到 <html> 上
       try {
         var s = localStorage.getItem('cpractice:settings:v1')
         var p = s ? JSON.parse(s) : null
         // zustand persist 存的是 { state: { mode }, version }；旧版本用过 { theme }
-        var t = (p && (p.state ? p.state.mode : p.theme)) || 'auto'
+        // 无存档时默认深色（任务07 §四：深色是站点身份，与 theme.ts 的默认值同口径）
+        var t = (p && (p.state ? p.state.mode : p.theme)) || 'dark'
         var dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches)
         document.documentElement.dataset.theme = dark ? 'dark' : 'light'
       } catch (e) {}
