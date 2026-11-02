@@ -115,7 +115,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "设 n 为正整数，则下列程序段的时间复杂度是（　）。\n```\ni = 1;  s = 0;\nwhile (i <= n) { s = s + i; i = i * 2; }\n```",
+      "stem": "设 n 为正整数，则下列程序段的时间复杂度是（　）。\n```\ni = 1;\ns = 0;\nwhile (i <= n) {\n    s = s + i;\n    i = i * 2;\n}\n```",
       "options": [
         "O(n)",
         "O(log2 n)",
@@ -439,7 +439,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "设 n 为正整数，下列程序段的时间复杂度为（1）。\n```\ni = 0;  sum = 0;\nwhile (sum < n) { i++; sum += i; }\n```",
+      "stem": "设 n 为正整数，下列程序段的时间复杂度为（1）。\n```\ni = 0;\nsum = 0;\nwhile (sum < n) {\n    i++;\n    sum += i;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -599,7 +599,7 @@
       "difficulty": 2,
       "bloom": "analyze",
       "stem": "写出下列程序的运行结果。",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int i, j, count = 0;\n\n    for (i = 1; i <= 4; i++)\n        for (j = 1; j <= i; j++)\n            count++;\n\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int i, j, count = 0;\n\n    for (i = 1; i <= 4; i++)\n        for (j = 1; j <= i; j++)\n            count++;\n\n    printf(\"%d\\n\", count);\n    return 0;\n}",
       "answer": "10",
       "explanation": "内层执行次数依次为 1、2、3、4，合计 1+2+3+4 = 10，正是 n(n+1)/2 在 n = 4 时的值。这段代码是\"三角形双重循环\"的最小实例，其规模为 n 的一般形式时间复杂度是 O(n^2)。易错点：把内层上界看成常量 4 而算出 16；j <= i 使内层长度随外层变化。",
       "tags": [
@@ -621,7 +621,7 @@
       "difficulty": 2,
       "bloom": "analyze",
       "stem": "写出下列程序的运行结果。",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int i = 1, k = 0;\n\n    while (i <= 100) {\n        k++;\n        i = i * 2;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int i = 1, k = 0;\n\n    while (i <= 100) {\n        k++;\n        i = i * 2;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
       "answer": "7",
       "explanation": "循环 k 次后 i = 2^k，退出时 2^k > 100，最小的 k 是 7（2^7 = 128）。一般地，k = ⌈log2(n+1)⌉，对应时间复杂度 O(log2 n)。易错点：数成 6——第 6 次循环结束时 i = 64 仍满足 64 ≤ 100，还要再进一次循环体才把 i 推到 128。",
       "tags": [
@@ -643,7 +643,7 @@
       "difficulty": 4,
       "bloom": "analyze",
       "stem": "写出下列程序的运行结果（两个数之间用一个空格分隔）。",
-      "code": "#include <stdio.h>\n\nstatic long calls = 0;\n\nlong fib(int n)\n{\n    calls++;\n    if (n == 0 || n == 1)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    long v = fib(6);\n\n    printf(\"%ld %ld\\n\", v, calls);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nstatic long calls = 0;\n\nlong fib(int n) {\n    calls++;\n    if (n == 0 || n == 1)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    long v = fib(6);\n\n    printf(\"%ld %ld\\n\", v, calls);\n    return 0;\n}",
       "answer": "13 25",
       "explanation": "递归树的结点数满足 C(n) = 1 + C(n-1) + C(n-2)，C(0) = C(1) = 1，可归纳证明 C(n) = 2·fib(n) − 1；n = 6 时 fib(6) = 13，故调用次数为 25。这正是朴素递归指数级代价的直接证据：算一个 fib(6) 要 25 次调用，算 fib(40) 就要约 3 亿次。易错点：以为调用次数等于 n，或把\"递归树结点总数 25\"与\"递归最大深度 7\"混为一谈。",
       "tags": [
@@ -665,7 +665,7 @@
       "difficulty": 3,
       "bloom": "analyze",
       "stem": "写出下列程序的运行结果。",
-      "code": "#include <stdio.h>\n\nvoid f(int n)\n{\n    if (n > 0) {\n        f(n / 2);\n        printf(\"%d\", n % 2);\n    }\n}\n\nint main(void)\n{\n    f(13);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid f(int n) {\n    if (n > 0) {\n        f(n / 2);\n        printf(\"%d\", n % 2);\n    }\n}\n\nint main(void) {\n    f(13);\n    printf(\"\\n\");\n    return 0;\n}",
       "answer": "1101",
       "explanation": "递归的\"先深入、回溯时才输出\"天然实现了逆序打印：每次递归处理 n/2，回溯时输出 n%2，最先输出的是最高位，结果正是 13 的二进制 1101。这是\"用递归工作栈代替显式栈\"的典型例子，第3章会用非递归写法再实现一遍。易错点：若把 printf 移到递归调用之前，输出会变成 1011（低位在前），因为那时是先输出当前位再深入。",
       "tags": [
@@ -687,7 +687,7 @@
       "difficulty": 2,
       "bloom": "analyze",
       "stem": "写出下列程序的运行结果。",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 16, i, j, count = 0;\n\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j += 2)\n            count++;\n\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 16, i, j, count = 0;\n\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j += 2)\n            count++;\n\n    printf(\"%d\\n\", count);\n    return 0;\n}",
       "answer": "128",
       "explanation": "外层执行 16 次，内层 j 取 0,2,4,…,14 共 8 次，合计 16×8 = 128 = n²/2。步长只改变常数因子而不改变阶：规模为 n 的一般形式仍是 O(n^2)。易错点：把内层算成 16 次；j += 2 时循环次数是 ⌈n/2⌉ 而不是 n。这也说明\"O 记号忽略常数\"——128 与 256 同属 O(n^2)。",
       "tags": [
@@ -709,7 +709,7 @@
       "difficulty": 3,
       "bloom": "apply",
       "stem": "写出下列程序的运行结果（两个数之间用一个空格分隔）。",
-      "code": "#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    int t;\n\n    while (b != 0) {\n        t = a % b;\n        a = b;\n        b = t;\n    }\n    return a;\n}\n\nint main(void)\n{\n    printf(\"%d %d\\n\", gcd(48, 18), gcd(17, 5));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    int t;\n\n    while (b != 0) {\n        t = a % b;\n        a = b;\n        b = t;\n    }\n    return a;\n}\n\nint main(void) {\n    printf(\"%d %d\\n\", gcd(48, 18), gcd(17, 5));\n    return 0;\n}",
       "answer": "6 1",
       "explanation": "欧几里得算法基于 gcd(a,b) = gcd(b, a mod b)，每轮把 (a,b) 换成 (b, a mod b)，直到 b = 0 时 a 即为答案。48,18 → 18,12 → 12,6 → 6,0，得 6；17,5 → 5,2 → 2,1 → 1,0，得 1（两数互质）。其时间复杂度为 O(log min(a,b))，是\"对数阶算法\"的经典例子。易错点：把循环条件写成 while (a != 0) 会返回错误的值。",
       "tags": [
@@ -730,8 +730,8 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序统计数组中严格大于平均值的元素个数（平均值按实数计算，不取整）。请在三处空白填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define MAXN 100\n\nint CountAboveAverage(const int a[], int n)\n{\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += /*__BLANK_1__*/;\n    avg = /*__BLANK_2__*/;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            /*__BLANK_3__*/;\n    return count;\n}\n```\n（主函数负责读入 n 与 n 个整数并输出返回值）",
-      "code": "#include <stdio.h>\n\n#define MAXN 100\n\n/* 返回数组 a 中严格大于平均值的元素个数，平均值按实数计算 */\nint CountAboveAverage(const int a[], int n)\n{\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += /*__BLANK_1__*/;\n    avg = /*__BLANK_2__*/;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            /*__BLANK_3__*/;\n    return count;\n}\n\nint main(void)\n{\n    int a[MAXN], n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", CountAboveAverage(a, n));\n    return 0;\n}",
+      "stem": "下列程序统计数组中严格大于平均值的元素个数（平均值按实数计算，不取整）。请在三处空白填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define MAXN 100\n\nint CountAboveAverage(const int a[], int n) {\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += /*__BLANK_1__*/;\n    avg = /*__BLANK_2__*/;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            /*__BLANK_3__*/;\n    return count;\n}\n```\n（主函数负责读入 n 与 n 个整数并输出返回值）",
+      "code": "#include <stdio.h>\n\n#define MAXN 100\n\n/* 返回数组 a 中严格大于平均值的元素个数，平均值按实数计算 */\nint CountAboveAverage(const int a[], int n) {\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += /*__BLANK_1__*/;\n    avg = /*__BLANK_2__*/;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            /*__BLANK_3__*/;\n    return count;\n}\n\nint main(void) {\n    int a[MAXN], n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", CountAboveAverage(a, n));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -757,7 +757,7 @@
           "hint": "计数器加一"
         }
       ],
-      "solution": "#include <stdio.h>\n\n#define MAXN 100\n\n/* 返回数组 a 中严格大于平均值的元素个数，平均值按实数计算 */\nint CountAboveAverage(const int a[], int n)\n{\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += a[i];\n    avg = sum / n;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            count++;\n    return count;\n}\n\nint main(void)\n{\n    int a[MAXN], n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", CountAboveAverage(a, n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define MAXN 100\n\n/* 返回数组 a 中严格大于平均值的元素个数，平均值按实数计算 */\nint CountAboveAverage(const int a[], int n) {\n    int i, count = 0;\n    double sum = 0.0, avg;\n\n    for (i = 0; i < n; i++)\n        sum += a[i];\n    avg = sum / n;\n    for (i = 0; i < n; i++)\n        if (a[i] > avg)\n            count++;\n    return count;\n}\n\nint main(void) {\n    int a[MAXN], n, i;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", CountAboveAverage(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5",
@@ -794,8 +794,8 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序用快速幂计算 a^b mod p（时间复杂度 O(log b)）。请在三处空白填入恰当内容。\n```\nlong long FastPower(long long a, long long b, long long p)\n{\n    long long result = /*__BLANK_1__*/;\n\n    a = a % p;\n    while (/*__BLANK_2*/) {\n        if (b % 2 == 1)\n            result = /*__BLANK_3__*/;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n```",
-      "code": "#include <stdio.h>\n\n/* 计算 (a^b) mod p，要求 b >= 0，时间复杂度 O(log b) */\nlong long FastPower(long long a, long long b, long long p)\n{\n    long long result = /*__BLANK_1__*/;\n\n    a = a % p;\n    while (/*__BLANK_2*/) {\n        if (b % 2 == 1)\n            result = /*__BLANK_3__*/;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n\nint main(void)\n{\n    long long a, b, p;\n\n    while (scanf(\"%lld %lld %lld\", &a, &b, &p) == 3)\n        printf(\"%lld\\n\", FastPower(a, b, p));\n    return 0;\n}",
+      "stem": "下列程序用快速幂计算 a^b mod p（时间复杂度 O(log b)）。请在三处空白填入恰当内容。\n```\nlong long FastPower(long long a, long long b, long long p) {\n    long long result = /*__BLANK_1__*/;\n\n    a = a % p;\n    while (/*__BLANK_2*/) {\n        if (b % 2 == 1)\n            result = /*__BLANK_3__*/;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n```",
+      "code": "#include <stdio.h>\n\n/* 计算 (a^b) mod p，要求 b >= 0，时间复杂度 O(log b) */\nlong long FastPower(long long a, long long b, long long p) {\n    long long result = /*__BLANK_1__*/;\n\n    a = a % p;\n    while (/*__BLANK_2*/) {\n        if (b % 2 == 1)\n            result = /*__BLANK_3__*/;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n\nint main(void) {\n    long long a, b, p;\n\n    while (scanf(\"%lld %lld %lld\", &a, &b, &p) == 3)\n        printf(\"%lld\\n\", FastPower(a, b, p));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -822,7 +822,7 @@
           "hint": "把当前底数乘进结果并取模"
         }
       ],
-      "solution": "#include <stdio.h>\n\n/* 计算 (a^b) mod p，要求 b >= 0，时间复杂度 O(log b) */\nlong long FastPower(long long a, long long b, long long p)\n{\n    long long result = 1;\n\n    a = a % p;\n    while (b > 0) {\n        if (b % 2 == 1)\n            result = result * a % p;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n\nint main(void)\n{\n    long long a, b, p;\n\n    while (scanf(\"%lld %lld %lld\", &a, &b, &p) == 3)\n        printf(\"%lld\\n\", FastPower(a, b, p));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n/* 计算 (a^b) mod p，要求 b >= 0，时间复杂度 O(log b) */\nlong long FastPower(long long a, long long b, long long p) {\n    long long result = 1;\n\n    a = a % p;\n    while (b > 0) {\n        if (b % 2 == 1)\n            result = result * a % p;\n        b = b / 2;\n        a = a * a % p;\n    }\n    return result;\n}\n\nint main(void) {\n    long long a, b, p;\n\n    while (scanf(\"%lld %lld %lld\", &a, &b, &p) == 3)\n        printf(\"%lld\\n\", FastPower(a, b, p));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 10 1000",
@@ -859,8 +859,8 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序统计不超过 n 的素数个数，判素数采用试除法（只需试到 √n）。请在两处空白填入恰当内容。\n```\nint IsPrime(int n)\n{\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; /*__BLANK_1__*/; i++)\n        if (/*__BLANK_2__*/)\n            return 0;\n    return 1;\n}\n```",
-      "code": "#include <stdio.h>\n\n/* 判断 n 是否为素数（试除法，只需试到 sqrt(n)） */\nint IsPrime(int n)\n{\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; /*__BLANK_1__*/; i++)\n        if (/*__BLANK_2*/)\n            return 0;\n    return 1;\n}\n\nint main(void)\n{\n    int n, i, count = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; i++)\n        if (IsPrime(i))\n            count++;\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+      "stem": "下列程序统计不超过 n 的素数个数，判素数采用试除法（只需试到 √n）。请在两处空白填入恰当内容。\n```\nint IsPrime(int n) {\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; /*__BLANK_1__*/; i++)\n        if (/*__BLANK_2__*/)\n            return 0;\n    return 1;\n}\n```",
+      "code": "#include <stdio.h>\n\n/* 判断 n 是否为素数（试除法，只需试到 sqrt(n)） */\nint IsPrime(int n) {\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; /*__BLANK_1__*/; i++)\n        if (/*__BLANK_2*/)\n            return 0;\n    return 1;\n}\n\nint main(void) {\n    int n, i, count = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; i++)\n        if (IsPrime(i))\n            count++;\n    printf(\"%d\\n\", count);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -882,7 +882,7 @@
           "hint": "能整除就不是素数"
         }
       ],
-      "solution": "#include <stdio.h>\n\n/* 判断 n 是否为素数（试除法，只需试到 sqrt(n)） */\nint IsPrime(int n)\n{\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; i * i <= n; i++)\n        if (n % i == 0)\n            return 0;\n    return 1;\n}\n\nint main(void)\n{\n    int n, i, count = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; i++)\n        if (IsPrime(i))\n            count++;\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n/* 判断 n 是否为素数（试除法，只需试到 sqrt(n)） */\nint IsPrime(int n) {\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; i * i <= n; i++)\n        if (n % i == 0)\n            return 0;\n    return 1;\n}\n\nint main(void) {\n    int n, i, count = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    for (i = 2; i <= n; i++)\n        if (IsPrime(i))\n            count++;\n    printf(\"%d\\n\", count);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10",
@@ -922,8 +922,8 @@
       "stem": "输入正整数 n（1 ≤ n ≤ 1000），用双重循环计算 S = Σ(i=1..n) Σ(j=1..i) j 并输出。要求写出一个时间复杂度为 O(n^2) 的实现（内层累加 1..i，不得使用求和公式直接算）。",
       "input_format": "一行一个正整数 n（1 ≤ n ≤ 1000）",
       "output_format": "一行一个整数，表示 S 的值",
-      "code_starter": "#include <stdio.h>\n\nint main(void)\n{\n    int n, i, j;\n    long long s = 0;\n\n    scanf(\"%d\", &n);\n    /* 在此用双重循环累加：外层 i 从 1 到 n，内层把 1..i 加进 s */\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int n, i, j;\n    long long s = 0;\n\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++)\n        for (j = 1; j <= i; j++)\n            s += j;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint main(void) {\n    int n, i, j;\n    long long s = 0;\n\n    scanf(\"%d\", &n);\n    /* 在此用双重循环累加：外层 i 从 1 到 n，内层把 1..i 加进 s */\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n, i, j;\n    long long s = 0;\n\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++)\n        for (j = 1; j <= i; j++)\n            s += j;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -963,8 +963,8 @@
       "stem": "输入正整数 n（1 ≤ n ≤ 10^9），输出最小的非负整数 k 使得 2^k ≥ n。要求用循环实现，时间复杂度 O(log n)，不得使用 math.h 中的 log 函数。",
       "input_format": "一行一个正整数 n（1 ≤ n ≤ 1000000000）",
       "output_format": "一行一个整数 k",
-      "code_starter": "#include <stdio.h>\n\nint main(void)\n{\n    long long n, p = 1;\n    int k = 0;\n\n    scanf(\"%lld\", &n);\n    /* 在此让 p 不断翻倍，直到 p >= n，k 记录翻倍次数 */\n    printf(\"%d\\n\", k);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    long long n, p = 1;\n    int k = 0;\n\n    scanf(\"%lld\", &n);\n    while (p < n) {\n        p = p * 2;\n        k++;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint main(void) {\n    long long n, p = 1;\n    int k = 0;\n\n    scanf(\"%lld\", &n);\n    /* 在此让 p 不断翻倍，直到 p >= n，k 记录翻倍次数 */\n    printf(\"%d\\n\", k);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    long long n, p = 1;\n    int k = 0;\n\n    scanf(\"%lld\", &n);\n    while (p < n) {\n        p = p * 2;\n        k++;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -1004,8 +1004,8 @@
       "stem": "输入两个正整数 a、b（1 ≤ a, b ≤ 10^9），用辗转相除法求最大公约数，并输出最大公约数与最小公倍数（两数之间用一个空格分隔）。要求辗转相除的时间复杂度为 O(log min(a,b))。",
       "input_format": "一行两个正整数 a 和 b，以空格分隔",
       "output_format": "一行两个整数：最大公约数 与 最小公倍数，中间一个空格",
-      "code_starter": "#include <stdio.h>\n\nint main(void)\n{\n    long long a, b, x, y, t;\n\n    scanf(\"%lld %lld\", &a, &b);\n    x = a;  y = b;\n    /* 在此用辗转相除法求出 x（此时 y 应为 0），再计算最小公倍数并输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    long long a, b, x, y, t;\n\n    scanf(\"%lld %lld\", &a, &b);\n    x = a;  y = b;\n    while (y != 0) {\n        t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%lld %lld\\n\", x, a / x * b);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint main(void) {\n    long long a, b, x, y, t;\n\n    scanf(\"%lld %lld\", &a, &b);\n    x = a;\n    y = b;\n    /* 在此用辗转相除法求出 x（此时 y 应为 0），再计算最小公倍数并输出 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    long long a, b, x, y, t;\n\n    scanf(\"%lld %lld\", &a, &b);\n    x = a;\n    y = b;\n    while (y != 0) {\n        t = x % y;\n        x = y;\n        y = t;\n    }\n    printf(\"%lld %lld\\n\", x, a / x * b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 18",
