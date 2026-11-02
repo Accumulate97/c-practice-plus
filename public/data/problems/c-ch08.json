@@ -21,8 +21,8 @@
       "stem": "定义一个求两数中较大值的带参宏 MAX(a,b)，用它求出输入的四个整数中的最大值，并输出。",
       "input_format": "一行四个整数 a b c d，以空格分隔。",
       "output_format": "一行：四个数中的最大值。",
-      "code_starter": "#include <stdio.h>\n#define MAX(a,b) /* TODO: 写出求 a,b 中较大值的带参宏 */\nint main(void) {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    printf(\"%d\\n\", MAX(MAX(a, b), MAX(c, d)));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#define MAX(a,b) ((a) > (b) ? (a) : (b))\nint main(void) {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    printf(\"%d\\n\", MAX(MAX(a, b), MAX(c, d)));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define MAX(a, b) /* TODO: 写出求 a,b 中较大值的带参宏 */\nint main(void) {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    printf(\"%d\\n\", MAX(MAX(a, b), MAX(c, d)));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\nint main(void) {\n    int a, b, c, d;\n    scanf(\"%d %d %d %d\", &a, &b, &c, &d);\n    printf(\"%d\\n\", MAX(MAX(a, b), MAX(c, d)));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 5 3 8",
@@ -228,8 +228,8 @@
       "stem": "先定义求两数中较大值的宏 MAX2(a,b)，再借助它定义求三数最大值的宏 MAX3(a,b,c)，读入三个整数并输出最大值。",
       "input_format": "一行三个整数 a b c，以空格分隔。",
       "output_format": "一行：三个数中的最大值。",
-      "code_starter": "#include <stdio.h>\n#define MAX2(a,b) ((a) > (b) ? (a) : (b))\n#define MAX3(a,b,c) /* TODO: 用 MAX2 定义求三数最大值的宏 */\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", MAX3(a, b, c));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#define MAX2(a,b) ((a) > (b) ? (a) : (b))\n#define MAX3(a,b,c) MAX2(MAX2(a, b), c)\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", MAX3(a, b, c));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define MAX2(a, b) ((a) > (b) ? (a) : (b))\n#define MAX3(a, b, c) /* TODO: 用 MAX2 定义求三数最大值的宏 */\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", MAX3(a, b, c));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#define MAX2(a, b) ((a) > (b) ? (a) : (b))\n#define MAX3(a, b, c) MAX2(MAX2(a, b), c)\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", MAX3(a, b, c));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 9 6",
@@ -356,7 +356,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define PI /*__BLANK_1__*/\n#define AREA(r) (/*__BLANK_2__*/)\n\nint main(void)\n{\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define PI /*__BLANK_1__*/\n#define AREA(r) (/*__BLANK_2__*/)\n\nint main(void) {\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -372,8 +372,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define PI /*__BLANK_1__*/\n#define AREA(r) (/*__BLANK_2__*/)\n\nint main(void)\n{\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\nint main(void)\n{\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define PI /*__BLANK_1__*/\n#define AREA(r) (/*__BLANK_2__*/)\n\nint main(void) {\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\nint main(void) {\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2\n",
@@ -409,7 +409,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n/*__BLANK_1__*/\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n/*__BLANK_2__*/\n    printf(\"debug\\n\");\n/*__BLANK_3__*/\n    printf(\"%d\\n\", x * x);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n/*__BLANK_1__*/\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    /*__BLANK_2__*/\n    printf(\"debug\\n\");\n    /*__BLANK_3__*/\n    printf(\"%d\\n\", x * x);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -428,8 +428,8 @@
           "answer": "#endif"
         }
       ],
-      "code": "#include <stdio.h>\n\n/*__BLANK_1__*/\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n/*__BLANK_2__*/\n    printf(\"debug\\n\");\n/*__BLANK_3__*/\n    printf(\"%d\\n\", x * x);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define DEBUG\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug\\n\");\n#endif\n    printf(\"%d\\n\", x * x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n/*__BLANK_1__*/\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    /*__BLANK_2__*/\n    printf(\"debug\\n\");\n    /*__BLANK_3__*/\n    printf(\"%d\\n\", x * x);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define DEBUG\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug\\n\");\n#endif\n    printf(\"%d\\n\", x * x);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "8\n",
@@ -465,7 +465,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof(/*__BLANK_1__*/)))\n\nint main(void)\n{\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < /*__BLANK_2__*/; i++)\n        s += a[i];\n    printf(\"%d %d\\n\", /*__BLANK_3__*/, s);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof(/*__BLANK_1__*/)))\n\nint main(void) {\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < /*__BLANK_2__*/; i++)\n        s += a[i];\n    printf(\"%d %d\\n\", /*__BLANK_3__*/, s);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -486,8 +486,8 @@
           "answer": "NELEM(a)"
         }
       ],
-      "code": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof(/*__BLANK_1__*/)))\n\nint main(void)\n{\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < /*__BLANK_2__*/; i++)\n        s += a[i];\n    printf(\"%d %d\\n\", /*__BLANK_3__*/, s);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void)\n{\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < NELEM(a); i++)\n        s += a[i];\n    printf(\"%d %d\\n\", NELEM(a), s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof(/*__BLANK_1__*/)))\n\nint main(void) {\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < /*__BLANK_2__*/; i++)\n        s += a[i];\n    printf(\"%d %d\\n\", /*__BLANK_3__*/, s);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void) {\n    int a[5];\n    int i, s = 0;\n\n    for (i = 0; i < 5; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < NELEM(a); i++)\n        s += a[i];\n    printf(\"%d %d\\n\", NELEM(a), s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 4 6 8 10\n",
@@ -575,7 +575,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SQ(x) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SQ(x) (/*__BLANK_1__*/)\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -586,8 +586,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define SQ(x) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define SQ(x) ((x) * (x))\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SQ(x) (/*__BLANK_1__*/)\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define SQ(x) ((x) * (x))\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", SQ(a + b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4\n",
@@ -623,7 +623,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define TOSTR(x) /*__BLANK_1__*/\n#define JOIN(a, b) /*__BLANK_2__*/\n\nint main(void)\n{\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define TOSTR(x)   /*__BLANK_1__*/\n#define JOIN(a, b) /*__BLANK_2__*/\n\nint main(void) {\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -637,8 +637,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define TOSTR(x) /*__BLANK_1__*/\n#define JOIN(a, b) /*__BLANK_2__*/\n\nint main(void)\n{\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define TOSTR(x) #x\n#define JOIN(a, b) a##b\n\nint main(void)\n{\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define TOSTR(x)   /*__BLANK_1__*/\n#define JOIN(a, b) /*__BLANK_2__*/\n\nint main(void) {\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define TOSTR(x) #x\n#define JOIN(a, b) a##b\n\nint main(void) {\n    int value = 7;\n    int ab = 12;\n    int k;\n\n    if (scanf(\"%d\", &k) != 1)\n        return 1;\n    printf(\"%s %d %d\\n\", TOSTR(value + 1), JOIN(a, b) + k, value);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0\n",
@@ -674,7 +674,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define LEVEL /*__BLANK_1__*/\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n/*__BLANK_2__*/ LEVEL == 1\n    printf(\"one %d\\n\", n);\n/*__BLANK_3__*/ LEVEL == 2\n    printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n/*__BLANK_4__*/\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define LEVEL /*__BLANK_1__*/\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    /*__BLANK_2__*/ LEVEL == 1 printf(\"one %d\\n\", n);\n    /*__BLANK_3__*/ LEVEL == 2 printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n    /*__BLANK_4__*/\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -696,8 +696,8 @@
           "answer": "#endif"
         }
       ],
-      "code": "#include <stdio.h>\n\n#define LEVEL /*__BLANK_1__*/\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n/*__BLANK_2__*/ LEVEL == 1\n    printf(\"one %d\\n\", n);\n/*__BLANK_3__*/ LEVEL == 2\n    printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n/*__BLANK_4__*/\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if LEVEL == 1\n    printf(\"one %d\\n\", n);\n#elif LEVEL == 2\n    printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n#endif\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define LEVEL /*__BLANK_1__*/\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    /*__BLANK_2__*/ LEVEL == 1 printf(\"one %d\\n\", n);\n    /*__BLANK_3__*/ LEVEL == 2 printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n    /*__BLANK_4__*/\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if LEVEL == 1\n    printf(\"one %d\\n\", n);\n#elif LEVEL == 2\n    printf(\"two %d\\n\", n);\n#else\n    printf(\"other %d\\n\", n);\n#endif\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1\n",
@@ -734,7 +734,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (/*__BLANK_1__*/)\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -746,8 +746,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (MIN(MIN(a, b), c))\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (/*__BLANK_1__*/)\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#define MIN3(a, b, c) (MIN(MIN(a, b), c))\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MIN3(a, b, c));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 7 5\n",
@@ -783,7 +783,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SIZE /*__BLANK_1__*/\n#define SHOW(msg, v) /*__BLANK_2__*/\n\nint main(void)\n{\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define SIZE         /*__BLANK_1__*/\n#define SHOW(msg, v) /*__BLANK_2__*/\n\nint main(void) {\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -798,8 +798,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define SIZE /*__BLANK_1__*/\n#define SHOW(msg, v) /*__BLANK_2__*/\n\nint main(void)\n{\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define SIZE 3\n#define SHOW(msg, v) printf(\"%s=%d\\n\", msg, v)\n\nint main(void)\n{\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SIZE         /*__BLANK_1__*/\n#define SHOW(msg, v) /*__BLANK_2__*/\n\nint main(void) {\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define SIZE 3\n#define SHOW(msg, v) printf(\"%s=%d\\n\", msg, v)\n\nint main(void) {\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < SIZE; i++)\n        s += a[i];\n    SHOW(\"sum\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3\n",
@@ -836,7 +836,7 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define ISLEAP(y) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\n#define ISLEAP(y) (/*__BLANK_1__*/)\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -848,8 +848,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\n#define ISLEAP(y) (/*__BLANK_1__*/)\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\n#define ISLEAP(y) ((y) % 4 == 0 && (y) % 100 != 0 || (y) % 400 == 0)\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define ISLEAP(y) (/*__BLANK_1__*/)\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\n#define ISLEAP(y) ((y) % 4 == 0 && (y) % 100 != 0 || (y) % 400 == 0)\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    printf(\"%d\\n\", ISLEAP(y) ? 1 : 0);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2000\n",
@@ -946,7 +946,7 @@
         "三目"
       ],
       "stem": "补全程序：定义一个求两数中较大值的带参宏 MAX(a,b)，输入两个整数并输出较大者。",
-      "code": "#include <stdio.h>\n#define MAX(a,b) /*__BLANK_1__*/\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", MAX(a, b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#define MAX(a, b) /*__BLANK_1__*/\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", MAX(a, b));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -957,7 +957,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#define MAX(a,b) ((a) > (b) ? (a) : (b))\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", MAX(a, b));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", MAX(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 9",
@@ -1166,7 +1166,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define WIDTH 80\n#define LENGTH WIDTH+40\nint main( )\n{   int v;\n    v=LENGTH * 20;\n    printf(\"%d\\n\",v);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#define WIDTH 80\n#define LENGTH WIDTH + 40\nint main() {\n    int v;\n    v = LENGTH * 20;\n    printf(\"%d\\n\", v);\n    return 0;\n}",
       "answer": "880",
       "id": "c-ch08-cr-001",
       "verified": true
@@ -1183,7 +1183,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define WIDTH 80\n#define LENGTH (WIDTH+40)\nint main( )\n{   int k;\n    k=LENGTH * 20;\n    printf(\"%d\\n\",k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#define WIDTH 80\n#define LENGTH (WIDTH + 40)\nint main() {\n    int k;\n    k = LENGTH * 20;\n    printf(\"%d\\n\", k);\n    return 0;\n}",
       "answer": "2400",
       "id": "c-ch08-cr-002",
       "verified": true
@@ -1200,7 +1200,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define DOUBLE(r) r*r\nint main()\n{ int x=1, y=2, t;\n  t=DOUBLE(x+y);\n  printf(\"%d\\n\",t);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define DOUBLE(r) r *r\nint main() {\n    int x = 1, y = 2, t;\n    t = DOUBLE(x + y);\n    printf(\"%d\\n\", t);\n    return 0;\n}",
       "answer": "5",
       "id": "c-ch08-cr-003",
       "verified": true
@@ -1217,7 +1217,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define MUL(z) (z)*(z)\nint main()\n{\n\tprintf(\"%d\\n\",MUL(1+2)+3);\n\treturn 0; }",
+      "code": "#include <stdio.h>\n#define MUL(z) (z) * (z)\nint main() {\n    printf(\"%d\\n\", MUL(1 + 2) + 3);\n    return 0;\n}",
       "answer": "12",
       "id": "c-ch08-cr-004",
       "verified": true
@@ -1234,7 +1234,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define POWER(x) ((x)*(x))\nint main()\n{ int i=1;\n  while (i<=4) printf(\"%d\\t\",POWER(i++));\n  printf(\"\\n\");\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define POWER(x) ((x) * (x))\nint main() {\n    int i = 1;\n    while (i <= 4)\n        printf(\"%d\\t\", POWER(i++));\n    printf(\"\\n\");\n    return 0;\n}",
       "answer": "2\t12\t",
       "id": "c-ch08-cr-005",
       "verified": true
@@ -1268,7 +1268,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define MAX(a,b,c) ((a)>(b)?((a)>(c)?(a):(c)):((b)>(c)?(b):(c)))\nint main()\n{ int x, y, z;\n  x=1; y=2; z=3;\n  printf(\"%d,\",MAX(x,y,z));\n  printf(\"%d,\",MAX(x+y,y,y+x));\n  printf(\"%d\\n\",MAX(x,y+z,z));\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define MAX(a, b, c) ((a) > (b) ? ((a) > (c) ? (a) : (c)) : ((b) > (c) ? (b) : (c)))\nint main() {\n    int x, y, z;\n    x = 1;\n    y = 2;\n    z = 3;\n    printf(\"%d,\", MAX(x, y, z));\n    printf(\"%d,\", MAX(x + y, y, y + x));\n    printf(\"%d\\n\", MAX(x, y + z, z));\n    return 0;\n}",
       "answer": "3,3,5",
       "id": "c-ch08-cr-007",
       "verified": true
@@ -1285,7 +1285,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define SELECT(a, b) a<b ? a : b\nint main()\n{ int m=2,n=4;\n  printf(\"%d\\n\",SELECT(m,n));\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define SELECT(a, b) a < b ? a : b\nint main() {\n    int m = 2, n = 4;\n    printf(\"%d\\n\", SELECT(m, n));\n    return 0;\n}",
       "answer": "2",
       "id": "c-ch08-cr-008",
       "verified": true
@@ -1302,7 +1302,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define MAX(a, b) (a>b ? a : b)+1\nint main()\n{ int i=6,j=8,k;\n  printf(\"%d\\n\",MAX(i,j));\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define MAX(a, b) (a > b ? a : b) + 1\nint main() {\n    int i = 6, j = 8, k;\n    printf(\"%d\\n\", MAX(i, j));\n    return 0;\n}",
       "answer": "9",
       "id": "c-ch08-cr-009",
       "verified": true
@@ -1319,7 +1319,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define PR(ar) printf(\"%d\",ar)\nint main()\n{ int j,a[]={1,3,5,7,9,11,13,15},i=5;\n  for(j=3;j;j--)\n  { switch(j)\n    { case 1:\n      case 2: PR(a[i++]); break;\n      case 3: PR(a[--i]);\n    }\n  }\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define PR(ar) printf(\"%d\", ar)\nint main() {\n    int j, a[] = {1, 3, 5, 7, 9, 11, 13, 15}, i = 5;\n    for (j = 3; j; j--) {\n        switch (j) {\n        case 1:\n        case 2:\n            PR(a[i++]);\n            break;\n        case 3:\n            PR(a[--i]);\n        }\n    }\n    return 0;\n}",
       "answer": "9911",
       "id": "c-ch08-cr-010",
       "verified": true
@@ -1336,7 +1336,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define M 5\n#define f(x) x*x\n#define ff(x) (x*x)\nint main()\n{ int n1,n2;\n  n1=100/f(M);\n  n2=100/ff(M);\n  printf(\"n1=%d,n2=%d\\n\",n1,n2);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define M 5\n#define f(x) x *x\n#define ff(x) (x * x)\nint main() {\n    int n1, n2;\n    n1 = 100 / f(M);\n    n2 = 100 / ff(M);\n    printf(\"n1=%d,n2=%d\\n\", n1, n2);\n    return 0;\n}",
       "answer": "n1=100,n2=4",
       "id": "c-ch08-cr-011",
       "verified": true
@@ -1353,7 +1353,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define MA(a) 2*a\n#define MB(a,b) 2*MA(b)+a\nint main()\n{ int x=3,y=4;\n  printf(\"%d\\n\",MB(y,MA(x)));\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define MA(a) 2 * a\n#define MB(a, b) 2 * MA(b) + a\nint main() {\n    int x = 3, y = 4;\n    printf(\"%d\\n\", MB(y, MA(x)));\n    return 0;\n}",
       "answer": "28",
       "id": "c-ch08-cr-012",
       "verified": true
@@ -1370,7 +1370,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define A 4\n#define B(x) A*x/2\nint main()\n{ float c,a=4.5;\n  c=B(a);\n  printf(\"%5.1f\\n\",c);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define A 4\n#define B(x) A *x / 2\nint main() {\n    float c, a = 4.5;\n    c = B(a);\n    printf(\"%5.1f\\n\", c);\n    return 0;\n}",
       "answer": "  9.0",
       "id": "c-ch08-cr-013",
       "verified": true
@@ -1421,7 +1421,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main()\n{\n\tint b=5;\n\t#define b 2\n\t#define f(x) b*(x)\n\tint y=3;\n\tprintf(\"%d\\n\",f(y+1));\n\t#undef b\n\tprintf(\"%d\\n\",f(y+1));\n\t#define b 3\n\tprintf(\"%d\\n\",f(y+1));\n\treturn 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int b = 5;\n#define b 2\n#define f(x) b *(x)\n    int y = 3;\n    printf(\"%d\\n\", f(y + 1));\n#undef b\n    printf(\"%d\\n\", f(y + 1));\n#define b 3\n    printf(\"%d\\n\", f(y + 1));\n    return 0;\n}",
       "answer": "8\n20\n12",
       "id": "c-ch08-cr-016",
       "verified": true
@@ -1438,7 +1438,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main()\n{ int a=10,b=20,c;\n  c=a/b;\n  #ifdef DEBUG\n    printf(\"a=%d,b=%d,\",a,b);\n  #endif\n  printf(\"c=%d\\n\",c);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 10, b = 20, c;\n    c = a / b;\n#ifdef DEBUG\n    printf(\"a=%d,b=%d,\", a, b);\n#endif\n    printf(\"c=%d\\n\", c);\n    return 0;\n}",
       "answer": "c=0",
       "id": "c-ch08-cr-017",
       "verified": true
@@ -1455,7 +1455,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define DEBUG\nint main()\n{ int a=14,b=15,c;\n  c=a/b;\n  #ifdef DEBUG\n    printf(\"a=%o,b=%o,\",a,b);\n  #endif\n  printf(\"c=%d\\n\",c);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define DEBUG\nint main() {\n    int a = 14, b = 15, c;\n    c = a / b;\n#ifdef DEBUG\n    printf(\"a=%o,b=%o,\", a, b);\n#endif\n    printf(\"c=%d\\n\", c);\n    return 0;\n}",
       "answer": "a=16,b=17,c=0",
       "id": "c-ch08-cr-018",
       "verified": true
@@ -1472,7 +1472,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#define DEBUG\nint main( )\n{ int a=20,b=10,c;\n  c=a/b;\n  #ifndef DEBUG\n    printf(\"a=%o,b=%o,\",a,b);\n  #endif\n  printf(\"c=%d\\n\",c);\n  return 0;\n}",
+      "code": "#include <stdio.h>\n#define DEBUG\nint main() {\n    int a = 20, b = 10, c;\n    c = a / b;\n#ifndef DEBUG\n    printf(\"a=%o,b=%o,\", a, b);\n#endif\n    printf(\"c=%d\\n\", c);\n    return 0;\n}",
       "answer": "c=2",
       "id": "c-ch08-cr-019",
       "verified": true
@@ -1485,9 +1485,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "remember",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 10\n#define MSG \"hello\"\n\nint main(void)\n{\n    int a[N];\n    int i;\n\n    for (i = 0; i < N; i++)\n        a[i] = i * i;\n    printf(\"%s %d %d\\n\", MSG, N, a[N - 1]);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 10\n#define MSG \"hello\"\n\nint main(void) {\n    int a[N];\n    int i;\n\n    for (i = 0; i < N; i++)\n        a[i] = i * i;\n    printf(\"%s %d %d\\n\", MSG, N, a[N - 1]);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "hello 10 81",
-      "code": "#include <stdio.h>\n\n#define N 10\n#define MSG \"hello\"\n\nint main(void)\n{\n    int a[N];\n    int i;\n\n    for (i = 0; i < N; i++)\n        a[i] = i * i;\n    printf(\"%s %d %d\\n\", MSG, N, a[N - 1]);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define N 10\n#define MSG \"hello\"\n\nint main(void) {\n    int a[N];\n    int i;\n\n    for (i = 0; i < N; i++)\n        a[i] = i * i;\n    printf(\"%s %d %d\\n\", MSG, N, a[N - 1]);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 hello 10 81。推理：预处理阶段把 N 替换为 10、MSG 替换为字符串字面量 \"hello\"，编译时数组长度即确定为 10，a[9]=9×9=81。易错点：宏名只是文本标记，没有类型，不能像变量那样取地址或赋值；数组长度必须是编译期常量，用宏定义正好满足这一要求。",
       "tags": [
@@ -1510,9 +1510,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define A 3 + 4\n#define B 2 * A\n\nint main(void)\n{\n    printf(\"%d %d\\n\", A, B);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define A 3 + 4\n#define B 2 * A\n\nint main(void) {\n    printf(\"%d %d\\n\", A, B);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "7 10",
-      "code": "#include <stdio.h>\n\n#define A 3 + 4\n#define B 2 * A\n\nint main(void)\n{\n    printf(\"%d %d\\n\", A, B);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define A 3 + 4\n#define B 2 * A\n\nint main(void) {\n    printf(\"%d %d\\n\", A, B);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 7 10。推理：宏替换是纯文本替换而不做算术，A 展开为 3 + 4，B 展开为 2 * 3 + 4；前者按加法计算得 7，后者因乘法优先级高于加法得 6+4=10。易错点：很多人误以为 B 是 2×7=14；要避免这类错误，定义带表达式的宏时应写成 #define A (3 + 4)，给整体加括号。",
       "tags": [
@@ -1535,9 +1535,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SQ(x) x * x\n#define SQS(x) ((x) * (x))\n\nint main(void)\n{\n    int a = 3, b = 2;\n\n    printf(\"%d %d\\n\", SQ(a + b), SQS(a + b));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SQ(x) x *x\n#define SQS(x) ((x) * (x))\n\nint main(void) {\n    int a = 3, b = 2;\n\n    printf(\"%d %d\\n\", SQ(a + b), SQS(a + b));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "11 25",
-      "code": "#include <stdio.h>\n\n#define SQ(x) x * x\n#define SQS(x) ((x) * (x))\n\nint main(void)\n{\n    int a = 3, b = 2;\n\n    printf(\"%d %d\\n\", SQ(a + b), SQS(a + b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SQ(x) x *x\n#define SQS(x) ((x) * (x))\n\nint main(void) {\n    int a = 3, b = 2;\n\n    printf(\"%d %d\\n\", SQ(a + b), SQS(a + b));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 11 25。推理：SQ(a + b) 按文本替换展开为 a + b * a + b，即 3 + 2×3 + 2 = 11；SQS 因参数与整体都加了括号，展开为 ((3 + 2) * (3 + 2)) = 25。易错点：带参宏必须同时给每个参数和整个表达式加括号，只给整体加括号仍会出错（如 (x * x) 传入 a+b 得到 (a + b * a + b)）。",
       "tags": [
@@ -1560,9 +1560,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint next(void)\n{\n    cnt++;\n    return cnt;\n}\n\n#define SQ(x) ((x) * (x))\n\nint main(void)\n{\n    int r = SQ(next());\n\n    printf(\"%d %d\\n\", r, cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint next(void) {\n    cnt++;\n    return cnt;\n}\n\n#define SQ(x) ((x) * (x))\n\nint main(void) {\n    int r = SQ(next());\n\n    printf(\"%d %d\\n\", r, cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "2 2",
-      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint next(void)\n{\n    cnt++;\n    return cnt;\n}\n\n#define SQ(x) ((x) * (x))\n\nint main(void)\n{\n    int r = SQ(next());\n\n    printf(\"%d %d\\n\", r, cnt);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint next(void) {\n    cnt++;\n    return cnt;\n}\n\n#define SQ(x) ((x) * (x))\n\nint main(void) {\n    int r = SQ(next());\n\n    printf(\"%d %d\\n\", r, cnt);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 2 2。推理：SQ(next()) 展开为 ((next()) * (next()))，next 被调用了两次，第一次返回 1、第二次返回 2，故 r = 1×2 = 2，cnt 最终为 2。易错点：若把 SQ 换成同签名的函数，next 只求值一次，结果是 1 与 1；宏的实参是“文本”而非“值”，带副作用的表达式（如 i++、函数调用）传入宏时必须格外小心。",
       "tags": [
@@ -1585,9 +1585,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define STR(x) #x\n#define CAT(a, b) a##b\n\nint main(void)\n{\n    int value = 42;\n\n    printf(\"%s\\n\", STR(value + 1));\n    printf(\"%d\\n\", CAT(val, ue));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define STR(x) #x\n#define CAT(a, b) a##b\n\nint main(void) {\n    int value = 42;\n\n    printf(\"%s\\n\", STR(value + 1));\n    printf(\"%d\\n\", CAT(val, ue));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "value + 1\n42",
-      "code": "#include <stdio.h>\n\n#define STR(x) #x\n#define CAT(a, b) a##b\n\nint main(void)\n{\n    int value = 42;\n\n    printf(\"%s\\n\", STR(value + 1));\n    printf(\"%d\\n\", CAT(val, ue));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define STR(x) #x\n#define CAT(a, b) a##b\n\nint main(void) {\n    int value = 42;\n\n    printf(\"%s\\n\", STR(value + 1));\n    printf(\"%d\\n\", CAT(val, ue));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：第一行输出 value + 1，第二行输出 42。推理：# 运算符把宏实参原样转换为字符串字面量，不做求值，所以 STR(value + 1) 得到 \"value + 1\"；## 把左右两个记号粘贴成一个新记号，CAT(val, ue) 展开为标识符 value，其值为 42。易错点：# 与 ## 只能出现在带参宏的定义中；STR 输出的是表达式文本而不是计算结果，这是调试打印中常用的技巧。",
       "tags": [
@@ -1610,9 +1610,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void)\n{\n    int x = 5;\n\n#ifdef DEBUG\n    printf(\"debug: x=%d\\n\", x);\n#else\n    printf(\"release\\n\");\n#endif\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void) {\n    int x = 5;\n\n#ifdef DEBUG\n    printf(\"debug: x=%d\\n\", x);\n#else\n    printf(\"release\\n\");\n#endif\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "debug: x=5",
-      "code": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void)\n{\n    int x = 5;\n\n#ifdef DEBUG\n    printf(\"debug: x=%d\\n\", x);\n#else\n    printf(\"release\\n\");\n#endif\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void) {\n    int x = 5;\n\n#ifdef DEBUG\n    printf(\"debug: x=%d\\n\", x);\n#else\n    printf(\"release\\n\");\n#endif\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 debug: x=5。推理：#ifdef 只判断 DEBUG 是否已被定义，本程序用 #define DEBUG 1 定义了它，因此编译 if 分支、丢弃 else 分支，最终可执行文件里只有调试输出。易错点：#ifdef 不看宏的值，即使写 #define DEBUG 0 也会编译调试分支；要按值判断应使用 #if DEBUG。发布版通常用 -UDEBUG 或在构建脚本中不定义该宏来关闭调试输出。",
       "tags": [
@@ -1635,9 +1635,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void)\n{\n#if LEVEL == 1\n    printf(\"one\\n\");\n#elif LEVEL == 2\n    printf(\"two\\n\");\n#else\n    printf(\"other\\n\");\n#endif\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void) {\n#if LEVEL == 1\n    printf(\"one\\n\");\n#elif LEVEL == 2\n    printf(\"two\\n\");\n#else\n    printf(\"other\\n\");\n#endif\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "two",
-      "code": "#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void)\n{\n#if LEVEL == 1\n    printf(\"one\\n\");\n#elif LEVEL == 2\n    printf(\"two\\n\");\n#else\n    printf(\"other\\n\");\n#endif\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define LEVEL 2\n\nint main(void) {\n#if LEVEL == 1\n    printf(\"one\\n\");\n#elif LEVEL == 2\n    printf(\"two\\n\");\n#else\n    printf(\"other\\n\");\n#endif\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 two。推理：#if 对常量表达式求值，LEVEL 被替换为 2，第一个条件 2==1 为假，#elif 的 2==2 为真，编译该分支，其余分支在预处理阶段就被删除。易错点：#if 中只能使用整型常量表达式与 defined 运算符，不能使用变量或函数调用；#elif 是 else if 的预处理版本，必须与 #if/#endif 配对。",
       "tags": [
@@ -1686,9 +1686,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 4\n#define SQ(x) ((x) * (x))\n#define AREA SQ(N)\n\nint main(void)\n{\n    printf(\"%d %d\\n\", AREA, SQ(N + 1));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 4\n#define SQ(x) ((x) * (x))\n#define AREA SQ(N)\n\nint main(void) {\n    printf(\"%d %d\\n\", AREA, SQ(N + 1));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "16 25",
-      "code": "#include <stdio.h>\n\n#define N 4\n#define SQ(x) ((x) * (x))\n#define AREA SQ(N)\n\nint main(void)\n{\n    printf(\"%d %d\\n\", AREA, SQ(N + 1));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define N 4\n#define SQ(x) ((x) * (x))\n#define AREA SQ(N)\n\nint main(void) {\n    printf(\"%d %d\\n\", AREA, SQ(N + 1));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 16 25。推理：AREA 先展开为 SQ(N)，再展开为 ((N) * (N))，最后 N 被替换为 4，得 ((4) * (4)) = 16；SQ(N + 1) 展开为 ((4 + 1) * (4 + 1)) = 25。易错点：宏可以嵌套定义，预处理会反复扫描直到没有宏名为止；因为 SQ 的参数加了括号，N+1 才能被当作整体参与乘法，否则结果会变成 4 + 1×4 + 1 = 9。",
       "tags": [
@@ -1711,9 +1711,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define M 100\n\nint main(void)\n{\n    printf(\"%d \", M);\n#undef M\n#define M 200\n    printf(\"%d\\n\", M);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define M 100\n\nint main(void) {\n    printf(\"%d \", M);\n#undef M\n#define M 200\n    printf(\"%d\\n\", M);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "100 200",
-      "code": "#include <stdio.h>\n\n#define M 100\n\nint main(void)\n{\n    printf(\"%d \", M);\n#undef M\n#define M 200\n    printf(\"%d\\n\", M);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define M 100\n\nint main(void) {\n    printf(\"%d \", M);\n#undef M\n#define M 200\n    printf(\"%d\\n\", M);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 100 200。推理：预处理器按行自上而下处理，第一条 printf 时 M 仍是 100；#undef M 取消其定义，随后的 #define M 200 重新定义，第二条 printf 展开为 200。易错点：预处理指令不受 C 语句作用域限制，写在函数体内的 #define/#undef 从该行起对整个文件后续部分生效；若不先 #undef 直接重定义同名宏，多数编译器会给出“宏重定义”警告。",
       "tags": [
@@ -1736,9 +1736,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void)\n{\n    int x = 3, y = 7;\n\n    printf(\"%d %d %d\\n\", MAX(x, y), MAX(x + y, x * y), MAX(-1, -2));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void) {\n    int x = 3, y = 7;\n\n    printf(\"%d %d %d\\n\", MAX(x, y), MAX(x + y, x * y), MAX(-1, -2));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "7 21 -1",
-      "code": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void)\n{\n    int x = 3, y = 7;\n\n    printf(\"%d %d %d\\n\", MAX(x, y), MAX(x + y, x * y), MAX(-1, -2));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void) {\n    int x = 3, y = 7;\n\n    printf(\"%d %d %d\\n\", MAX(x, y), MAX(x + y, x * y), MAX(-1, -2));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 7 21 -1。推理：MAX(x,y) 取 7；MAX(x+y, x*y) 展开为 ((3 + 7) > (3 * 7) ? (3 + 7) : (3 * 7))，10 > 21 为假取 21；MAX(-1,-2) 中 -1 > -2 为真取 -1。易错点：三目运算符的两个分支在宏里都要给参数加括号，否则 -1、-2 这类带符号实参与外层运算符结合时会出错；宏没有类型检查，MAX 也可用于 double 等类型，这是它相对函数的优势。",
       "tags": [
@@ -1761,9 +1761,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint cube(int x)\n{\n    return x * x * x;\n}\n\nint main(void)\n{\n    int a = 2;\n\n    printf(\"%d %d\\n\", CUBE(a + 1), cube(a + 1));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint cube(int x) {\n    return x * x * x;\n}\n\nint main(void) {\n    int a = 2;\n\n    printf(\"%d %d\\n\", CUBE(a + 1), cube(a + 1));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "27 27",
-      "code": "#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint cube(int x)\n{\n    return x * x * x;\n}\n\nint main(void)\n{\n    int a = 2;\n\n    printf(\"%d %d\\n\", CUBE(a + 1), cube(a + 1));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint cube(int x) {\n    return x * x * x;\n}\n\nint main(void) {\n    int a = 2;\n\n    printf(\"%d %d\\n\", CUBE(a + 1), cube(a + 1));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 27 27。推理：CUBE(a + 1) 展开为 ((2 + 1) * (2 + 1) * (2 + 1)) = 27；cube 是函数调用，实参先求值为 3 再传入，同样返回 27。易错点：结果相同不代表二者等价——宏在预处理阶段展开，无调用开销也无类型检查，但实参会被多次求值且代码体积增大；函数有类型检查与单一求值，但存在调用开销。括号齐全的宏才能与函数行为一致。",
       "tags": [
@@ -1786,9 +1786,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SIZE 5\n\nint main(void)\n{\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        a[i] = 2 * i + 1;\n    for (i = 0; i < SIZE; i++)\n        s = s + a[i];\n    printf(\"%d %d\\n\", a[SIZE - 1], s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define SIZE 5\n\nint main(void) {\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        a[i] = 2 * i + 1;\n    for (i = 0; i < SIZE; i++)\n        s = s + a[i];\n    printf(\"%d %d\\n\", a[SIZE - 1], s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "9 25",
-      "code": "#include <stdio.h>\n\n#define SIZE 5\n\nint main(void)\n{\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        a[i] = 2 * i + 1;\n    for (i = 0; i < SIZE; i++)\n        s = s + a[i];\n    printf(\"%d %d\\n\", a[SIZE - 1], s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define SIZE 5\n\nint main(void) {\n    int a[SIZE];\n    int i, s = 0;\n\n    for (i = 0; i < SIZE; i++)\n        a[i] = 2 * i + 1;\n    for (i = 0; i < SIZE; i++)\n        s = s + a[i];\n    printf(\"%d %d\\n\", a[SIZE - 1], s);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 9 25。推理：SIZE 被替换为 5，数组存放 1、3、5、7、9 五个奇数，最后一个元素是 9，累加和为 25。易错点：用符号常量定义数组长度后，改动一处 #define 即可改变整个程序的规模，这是宏的主要价值；a[SIZE - 1] 展开为 a[5 - 1]，因下标运算符优先级高于减法，括号并非必需，但在复杂表达式中仍建议加括号。",
       "tags": [
@@ -1811,9 +1811,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define DIV(a, b) a / b\n#define DIVS(a, b) ((a) / (b))\n\nint main(void)\n{\n    printf(\"%d %d\\n\", DIV(100, 5 * 2), DIVS(100, 5 * 2));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define DIV(a, b) a / b\n#define DIVS(a, b) ((a) / (b))\n\nint main(void) {\n    printf(\"%d %d\\n\", DIV(100, 5 * 2), DIVS(100, 5 * 2));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "40 10",
-      "code": "#include <stdio.h>\n\n#define DIV(a, b) a / b\n#define DIVS(a, b) ((a) / (b))\n\nint main(void)\n{\n    printf(\"%d %d\\n\", DIV(100, 5 * 2), DIVS(100, 5 * 2));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define DIV(a, b) a / b\n#define DIVS(a, b) ((a) / (b))\n\nint main(void) {\n    printf(\"%d %d\\n\", DIV(100, 5 * 2), DIVS(100, 5 * 2));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 40 10。推理：DIV(100, 5 * 2) 展开为 100 / 5 * 2，除法与乘法同优先级且左结合，先算 100/5=20 再乘 2 得 40；DIVS 因参数加括号展开为 ((100) / (5 * 2)) = 100/10 = 10。易错点：带参宏的第二个参数是表达式时最容易被左结合性破坏；除法宏还要注意整数除法会截断小数，如 DIVS(7, 2) 得 3 而不是 3.5。",
       "tags": [
@@ -1836,9 +1836,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define HEAD \"=== \"\n#define TAIL \" ===\"\n\nint main(void)\n{\n    printf(\"%s%s%s\\n\", HEAD, \"title\", TAIL);\n    printf(HEAD \"plain\" TAIL \"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define HEAD \"=== \"\n#define TAIL \" ===\"\n\nint main(void) {\n    printf(\"%s%s%s\\n\", HEAD, \"title\", TAIL);\n    printf(HEAD \"plain\" TAIL \"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "=== title ===\n=== plain ===",
-      "code": "#include <stdio.h>\n\n#define HEAD \"=== \"\n#define TAIL \" ===\"\n\nint main(void)\n{\n    printf(\"%s%s%s\\n\", HEAD, \"title\", TAIL);\n    printf(HEAD \"plain\" TAIL \"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define HEAD \"=== \"\n#define TAIL \" ===\"\n\nint main(void) {\n    printf(\"%s%s%s\\n\", HEAD, \"title\", TAIL);\n    printf(HEAD \"plain\" TAIL \"\\n\");\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：两行分别输出 === title === 与 === plain ===。推理：宏替换后第二种写法变成 printf(\"=== \" \"plain\" \" ===\" \"\n\")，C 语言规定相邻的字符串字面量在编译期自动拼接成一个字符串，因此只需一个参数。易错点：字面量拼接是编译期行为，与 ## 记号粘贴不同，后者用于生成标识符；用 %s 逐个输出与拼接输出结果相同，但拼接方式在编译期完成，运行期开销更小。",
       "tags": [
@@ -1861,9 +1861,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void)\n{\n    int a[] = {1, 2, 3, 4, 5};\n    double d[] = {1.5, 2.5};\n\n    printf(\"%d %d\\n\", NELEM(a), NELEM(d));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void) {\n    int a[] = {1, 2, 3, 4, 5};\n    double d[] = {1.5, 2.5};\n\n    printf(\"%d %d\\n\", NELEM(a), NELEM(d));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "5 2",
-      "code": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void)\n{\n    int a[] = {1, 2, 3, 4, 5};\n    double d[] = {1.5, 2.5};\n\n    printf(\"%d %d\\n\", NELEM(a), NELEM(d));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define NELEM(a) ((int)(sizeof(a) / sizeof((a)[0])))\n\nint main(void) {\n    int a[] = {1, 2, 3, 4, 5};\n    double d[] = {1.5, 2.5};\n\n    printf(\"%d %d\\n\", NELEM(a), NELEM(d));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 5 2。推理：sizeof(a)=5×4=20，sizeof(a[0])=4，商为 5；sizeof(d)=2×8=16，sizeof(d[0])=8，商为 2。宏对元素加括号的写法 (a)[0] 使实参为复杂表达式时也安全。易错点：该宏只在数组名仍是真数组的作用域内有效，一旦把数组作为实参传给函数，形参退化为指针，NELEM 得到的是指针大小与元素大小之比而不是元素个数，这正是函数必须额外接收长度参数的原因。",
       "tags": [
@@ -1887,9 +1887,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#ifndef PI\n#define PI 3\n#endif\n\n#ifndef PI\n#define PI 4\n#endif\n\nint main(void)\n{\n    printf(\"%d\\n\", PI);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#ifndef PI\n#define PI 3\n#endif\n\n#ifndef PI\n#define PI 4\n#endif\n\nint main(void) {\n    printf(\"%d\\n\", PI);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "3",
-      "code": "#include <stdio.h>\n\n#ifndef PI\n#define PI 3\n#endif\n\n#ifndef PI\n#define PI 4\n#endif\n\nint main(void)\n{\n    printf(\"%d\\n\", PI);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#ifndef PI\n#define PI 3\n#endif\n\n#ifndef PI\n#define PI 4\n#endif\n\nint main(void) {\n    printf(\"%d\\n\", PI);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 3。推理：第一处 #ifndef PI 成立（此时 PI 未定义），定义 PI 为 3；到第二处时 PI 已定义，#ifndef 条件为假，整段被跳过，因此不会发生宏重定义。易错点：这正是头文件保护（include guard）的原理，防止同一头文件被多次包含而造成重复定义；若把 #ifndef 换成 #ifdef，第二次会把 PI 重定义为 4，多数编译器还会报重定义警告。",
       "tags": [
@@ -1912,9 +1912,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define F(x) (x + 1)\n#define G(x) x + 1\n\nint main(void)\n{\n    printf(\"%d %d\\n\", 2 * F(3), 2 * G(3));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define F(x) (x + 1)\n#define G(x) x + 1\n\nint main(void) {\n    printf(\"%d %d\\n\", 2 * F(3), 2 * G(3));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "8 7",
-      "code": "#include <stdio.h>\n\n#define F(x) (x + 1)\n#define G(x) x + 1\n\nint main(void)\n{\n    printf(\"%d %d\\n\", 2 * F(3), 2 * G(3));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define F(x) (x + 1)\n#define G(x) x + 1\n\nint main(void) {\n    printf(\"%d %d\\n\", 2 * F(3), 2 * G(3));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 8 7。推理：F(3) 展开为 (3 + 1)，2 * (3 + 1) = 8；G(3) 展开为裸文本 3 + 1，2 * 3 + 1 = 7。易错点：括号只差一对，结果就不同；给宏整体加括号是最低要求，参数也要各自加括号。判断宏展开结果的方法永远是“先替换文本，再按 C 运算符优先级与结合性计算”。",
       "tags": [
@@ -1937,9 +1937,9 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 3\n#define REP for (i = 0; i < N; i++)\n\nint main(void)\n{\n    int i, s = 0;\n\n    REP\n        s = s + i * i;\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define N 3\n#define REP for (i = 0; i < N; i++)\n\nint main(void) {\n    int i, s = 0;\n\n    REP s = s + i * i;\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "5",
-      "code": "#include <stdio.h>\n\n#define N 3\n#define REP for (i = 0; i < N; i++)\n\nint main(void)\n{\n    int i, s = 0;\n\n    REP\n        s = s + i * i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define N 3\n#define REP for (i = 0; i < N; i++)\n\nint main(void) {\n    int i, s = 0;\n\n    REP s = s + i * i;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 5。推理：REP 展开为 for (i = 0; i < 3; i++)，其后紧跟的 s = s + i * i; 成为循环体，i 取 0、1、2，累加 0+1+4=5。易错点：把循环语句写进宏会隐藏控制流，可读性差，实际工程中不推荐；若宏定义的 for 末尾误加分号，循环体就变成空语句，s 只在循环结束后累加一次（此时 i=3），结果会变成 9。",
       "tags": [
@@ -1987,8 +1987,8 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序的功能是输出 (a+1) 的平方与 (a+1) 除以 2 的商，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\n#define SQ(x) x * x\n#define HALF(x) (x / 2)\n\nint main(void)\n{\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\n#define SQ(x) x * x\n#define HALF(x) (x / 2)\n\nint main(void)\n{\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}",
+      "stem": "下列程序的功能是输出 (a+1) 的平方与 (a+1) 除以 2 的商，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\n#define SQ(x) x *x\n#define HALF(x) (x / 2)\n\nint main(void) {\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\n#define SQ(x) x *x\n#define HALF(x) (x / 2)\n\nint main(void) {\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6\n",
@@ -2003,7 +2003,7 @@
           "expected": "1 0"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\n#define SQ(x) ((x) * (x))\n#define HALF(x) ((x) / 2)\n\nint main(void)\n{\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\n#define SQ(x) ((x) * (x))\n#define HALF(x) ((x) / 2)\n\nint main(void) {\n    int a;\n\n    if (scanf(\"%d\", &a) != 1)\n        return 1;\n    printf(\"%d %d\\n\", SQ(a + 1), HALF(a + 1));\n    return 0;\n}",
       "bugs": [
         "带参宏的参数没有加括号，SQ(a + 1) 展开为 a + 1 * a + 1，按先乘后加算出 13（a=6 时），不是 49，应写成 ((x) * (x))",
         "HALF(a + 1) 展开为 (a + 1 / 2)，除法优先级高于加法，得到 6 而不是 3，参数必须整体括起来写成 ((x) / 2)"
@@ -2030,8 +2030,8 @@
       "section": "8.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序在关闭调试（DEBUG 为 0）时应只输出 n 的平方，但实际总是先输出一行调试信息，且正常输出丢失。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#else\n    printf(\"%d\\n\", n * n);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#else\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
+      "stem": "下列程序在关闭调试（DEBUG 为 0）时应只输出 n 的平方，但实际总是先输出一行调试信息，且正常输出丢失。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#else\n    printf(\"%d\\n\", n * n);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#ifdef DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#else\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -2046,7 +2046,7 @@
           "expected": "144"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\n#define DEBUG 0\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\n#define DEBUG 0\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
       "bugs": [
         "发布版应关闭调试，把 DEBUG 定义为 0，配合 #if DEBUG 才能让调试分支不参与编译",
         "#ifdef 只判断宏有没有被定义，DEBUG 定义为 0 也算已定义，会错误保留调试输出；要按值判断必须用 #if",
@@ -2090,7 +2090,7 @@
           "expected": "0"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\n#define REP(n) for (i = 0; i < (n); i++)\n#define SQ(x) ((x) * (x))\n\nint main(void)\n{\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n        s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\n#define REP(n) for (i = 0; i < (n); i++)\n#define SQ(x) ((x) * (x))\n\nint main(void) {\n    int n, i, s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    REP(n)\n    s = s + SQ(i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "bugs": [
         "for 语句末尾多了一个分号，循环体变成空语句，累加只在循环结束后执行一次，而且此时 i 已等于 n；分号必须去掉",
         "SQ(i + 1) 展开为 i + 1 * i + 1，不是 (i+1) 的平方，带参宏的参数必须加括号"
@@ -2196,7 +2196,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.19（PDF p155 / 书页 p144）",
       "difficulty": 3,
-      "stem": "【题 8.19】以下程序中，第一个输出值是【1】______，第二个输出值是【2】______。\n\n```c\n#include <stdio.h>\n#define M 3\n#define N (M+1)\n#define NN N*N/2\nint main()\n{ printf(\"%d\\n\",NN);\n  printf(\"%d\",5*NN);\n  return 0;\n}\n```\n\n【1】的候选项：\nA) 3\nB) 4\nC) 6\nD) 8\n\n【2】的候选项：\nA) 17\nB) 18\nC) 30\nD) 40\n\n请分别填写两个空的选项字母。",
+      "stem": "【题 8.19】以下程序中，第一个输出值是【1】______，第二个输出值是【2】______。\n\n```c\n#include <stdio.h>\n#define M 3\n#define N (M + 1)\n#define NN N *N / 2\nint main() {\n    printf(\"%d\\n\", NN);\n    printf(\"%d\", 5 * NN);\n    return 0;\n}\n```\n\n【1】的候选项：\nA) 3\nB) 4\nC) 6\nD) 8\n\n【2】的候选项：\nA) 17\nB) 18\nC) 30\nD) 40\n\n请分别填写两个空的选项字母。",
       "explanation": "答案：D、D。NN 展开为 N*N/2 即 (M+1)*(M+1)/2 = 4*4/2 = 8，故第一个输出 8；第二个输出 5*NN = 5*(M+1)*(M+1)/2 = 5*4*4/2 = 40。易错点：把 N 当成已求值的 4，则 NN=4*4/2=8 恰好相同，但 5*NN 若按 5*8=40 也算对——真正的陷阱是若把 NN 读成 N*(N/2)=4*2=8 之外的组合，或漏掉 N 的括号得到 M+1*M+1/2=5，都会选错。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2229,7 +2229,7 @@
       "section": "8.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.37（PDF p160 / 书页 p149）",
       "difficulty": 3,
-      "stem": "【题 8.37】设有宏定义如下：\n则执行以下语句后，s1的值为【1】，s2的值为【2】。\n\n```c\n#define MIN(x,y) (x)>(y)?(x):(y)\n#define T(x,y,r) x*r*y/4\n\nint a=1,b=3,c=5,s1,s2;\ns1=MIN(a=b,b-a);\ns2=T(a++,a*++b,a+b+c);\n```\n",
+      "stem": "【题 8.37】设有宏定义如下：\n则执行以下语句后，s1的值为【1】，s2的值为【2】。\n\n```c\n#define MIN(x, y) (x) > (y) ? (x) : (y)\n#define T(x, y, r) x *r *y / 4\n\nint a = 1, b = 3, c = 5, s1, s2;\ns1 = MIN(a = b, b - a);\ns2 = T(a++, a * ++b, a + b + c);\n```\n",
       "explanation": "答案：【1】3、【2】28（书给值）。s1=MIN(a=b,b-a) 展开为 (a=b)>(b-a)?(a=b):(b-a)：a=b 使 a=3 且值为 3，b-a=0，3>0 成立，故 s1=3。s2=T(a++,a*++b,a+b+c) 展开为 a++*a+b+c*a*++b/4，按本书\"自增副作用只在各自子表达式内生效\"的口径：3*3+4+5*3*4/4 = 9+4+15 = 28。注意：该表达式在真实 C 中对 a、b 多次无序列修改，属未定义行为，gcc 13.2 实测为 35，与书给 28 不同，本库按书给 28 判分，故备选一并收录。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2507,7 +2507,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n/* 带参宏求余数：每个参数都要加括号，防止实参是表达式时优先级出错 */\n#define REM(a, b) ((a) % (b))\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"remainder=%d\\n\", REM(a, b));\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\n/* 带参宏求余数：每个参数都要加括号，防止实参是表达式时优先级出错 */\n#define REM(a, b) ((a) % (b))\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"remainder=%d\\n\", REM(a, b));\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "10 3",
@@ -2583,7 +2583,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n/* 判断字符是否为字母：不用 ctype.h 的 isalpha，直接比 ASCII 区间 */\n#define IS_ALPHA(c) (((c) >= 'a' && (c) <= 'z') || ((c) >= 'A' && (c) <= 'Z'))\n\nint main(void)\n{\n    char ch;\n\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    if (IS_ALPHA(ch))\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\n/* 判断字符是否为字母：不用 ctype.h 的 isalpha，直接比 ASCII 区间 */\n#define IS_ALPHA(c) (((c) >= 'a' && (c) <= 'z') || ((c) >= 'A' && (c) <= 'Z'))\n\nint main(void) {\n    char ch;\n\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    if (IS_ALPHA(ch))\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "a",
@@ -2621,7 +2621,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n/* 判断整数 n 是否能被 x 整除 */\n#define DIVISIBLE(n, x) ((n) % (x) == 0)\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (DIVISIBLE(n, 3) && DIVISIBLE(n, 7))\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\n/* 判断整数 n 是否能被 x 整除 */\n#define DIVISIBLE(n, x) ((n) % (x) == 0)\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    if (DIVISIBLE(n, 3) && DIVISIBLE(n, 7))\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "21",
@@ -2659,7 +2659,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n#include <math.h>\n\n/* 两个带参宏分别实现 s = (a+b+c)/2 与海伦公式 */\n#define S(a, b, c) (((a) + (b) + (c)) / 2.0)\n#define AREA(s, a, b, c) (sqrt((s) * ((s) - (a)) * ((s) - (b)) * ((s) - (c))))\n\nint main(void)\n{\n    double a, b, c, s, area;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n\n    s = S(a, b, c);\n    area = AREA(s, a, b, c);\n    printf(\"area=%.2f\\n\", area);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n#include <math.h>\n\n/* 两个带参宏分别实现 s = (a+b+c)/2 与海伦公式 */\n#define S(a, b, c) (((a) + (b) + (c)) / 2.0)\n#define AREA(s, a, b, c) (sqrt((s) * ((s) - (a)) * ((s) - (b)) * ((s) - (c))))\n\nint main(void) {\n    double a, b, c, s, area;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n\n    s = S(a, b, c);\n    area = AREA(s, a, b, c);\n    printf(\"area=%.2f\\n\", area);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "3 4 5",
@@ -2708,10 +2708,10 @@
           "expected": "4"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MAX(MAX(a, b), c));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MAX(MAX(a, b), c));\n    return 0;\n}",
       "input_format": "一行三个整数 a、b、c，用空格分隔。",
       "output_format": "一个整数，表示三者中的最大值。",
-      "code_starter": "#include <stdio.h>\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MAX(MAX(a, b), c));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", MAX(MAX(a, b), c));\n    return 0;\n}",
       "explanation": "结论：MAX 嵌套两层即可求三数最大，实机输出 9 / -1 / 4。推理：宏展开为三目表达式，MAX(MAX(a,b),c) 先取 a、b 的较大者再与 c 比较。易错点：每个参数与整体都要加括号，否则 MAX(a,b)+1 之类的用法会被三目运算符的低优先级拆散；宏不是函数，实参会被多次求值，传入 i++ 会产生副作用。",
       "tags": [
         "带参宏",
@@ -2790,10 +2790,10 @@
           "expected": "0"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define ISODD(x) ((x) % 2 != 0)\n\nint main(void)\n{\n    int n, i, v, c = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &v) != 1)\n            return 1;\n        if (ISODD(v))\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define ISODD(x) ((x) % 2 != 0)\n\nint main(void) {\n    int n, i, v, c = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &v) != 1)\n            return 1;\n        if (ISODD(v))\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "input_format": "第一行一个整数 n（0 ≤ n ≤ 100）；第二行 n 个整数，用空格分隔。",
       "output_format": "一个整数，表示奇数的个数。",
-      "code_starter": "#include <stdio.h>\n#define ISODD(x) ((x) % 2 != 0)\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int n, i, v, c = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &v) != 1)\n            return 1;\n        if (ISODD(v))\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define ISODD(x) ((x) % 2 != 0)\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int n, i, v, c = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &v) != 1)\n            return 1;\n        if (ISODD(v))\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "explanation": "结论：实机输出 3 / 0 / 0。推理：关系表达式 != 的结果是 1 或 0，可直接作为 if 的条件，故 ISODD(v) 为真时计数加一。易错点：宏体必须整体加括号，否则 if (ISODD(v) && flag) 会被 && 的高优先级拆错；n 为 0 时循环一次也不执行，计数应保持 0，这是边界情形。",
       "tags": [
         "带参宏",
@@ -2831,10 +2831,10 @@
           "expected": "75"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\nint main(void)\n{\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\nint main(void) {\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
       "input_format": "一行一个整数 r（0 ≤ r ≤ 100）。",
       "output_format": "一个整数，表示面积 PI*r*r。",
-      "code_starter": "#include <stdio.h>\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define PI 3\n#define AREA(r) (PI * (r) * (r))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int r;\n\n    if (scanf(\"%d\", &r) != 1 || r < 0 || r > 100)\n        return 1;\n    printf(\"%d\\n\", AREA(r));\n    return 0;\n}",
       "explanation": "结论：实机输出 12 / 0 / 75。推理：宏可以嵌套使用，AREA(r) 展开后其中的 PI 再被替换成 3，预处理器会反复扫描直到没有可替换的宏名。易错点：符号常量不是变量，不占内存也不能取地址；用整数 3 近似 π 会有误差，实际工程应使用 double 与 3.14159，这里为了输出稳定而取整数。",
       "tags": [
         "符号常量",
@@ -2872,10 +2872,10 @@
           "expected": "debug: n=7\n49"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define DEBUG 1\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
       "input_format": "一行一个整数 n。",
       "output_format": "两行：第一行是调试信息 debug: n=值（仅当 DEBUG 为 1），第二行是 n 的平方。",
-      "code_starter": "#include <stdio.h>\n#define DEBUG 1\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define DEBUG 1\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n#if DEBUG\n    printf(\"debug: n=%d\\n\", n);\n#endif\n    printf(\"%d\\n\", n * n);\n    return 0;\n}",
       "explanation": "结论：实机输出为 debug: n=5 与 25（n=0 时是 debug: n=0 与 0，n=7 时是 debug: n=7 与 49）。推理：#if DEBUG 按宏的值决定是否编译调试行，#endif 结束后 n*n 始终输出。易错点：把 DEBUG 改成 0 后调试行在预处理阶段就被删除，即使其中有语法错误也不会报错；#if 后必须是常量表达式，写变量名会被当成未定义宏按 0 处理。",
       "tags": [
         "条件编译",
@@ -2913,10 +2913,10 @@
           "expected": "3025"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint main(void)\n{\n    int n, i;\n    long long s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 10)\n        return 1;\n    for (i = 1; i <= n; i++)\n        s = s + CUBE(i);\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define CUBE(x) ((x) * (x) * (x))\n\nint main(void) {\n    int n, i;\n    long long s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 10)\n        return 1;\n    for (i = 1; i <= n; i++)\n        s = s + CUBE(i);\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "input_format": "一行一个整数 n（1 ≤ n ≤ 10）。",
       "output_format": "一个整数，表示 1³+2³+…+n³。",
-      "code_starter": "#include <stdio.h>\n#define CUBE(x) ((x) * (x) * (x))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int n, i;\n    long long s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 10)\n        return 1;\n    for (i = 1; i <= n; i++)\n        s = s + CUBE(i);\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define CUBE(x) ((x) * (x) * (x))\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int n, i;\n    long long s = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 10)\n        return 1;\n    for (i = 1; i <= n; i++)\n        s = s + CUBE(i);\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "explanation": "结论：实机输出 36 / 1 / 3025。推理：CUBE(i) 展开为 ((i) * (i) * (i))，循环累加即立方和，10 以内结果不超过 int 范围，但用 long long 与 %lld 更稳妥。易错点：宏没有类型，实参是 double 时结果就是 double；若把 s 声明为 int 却用 %lld 输出属于格式与实参不匹配，是未定义行为。",
       "tags": [
         "带参宏",
@@ -3003,7 +3003,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.4（PDF p152 / 书页 p141）",
       "difficulty": 3,
-      "stem": "【题 8.4】请读程序：\n上面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define ADD(x) x+x\nint main()\n{\n\tint m=1,n=2,k=3;\n\tint sum=ADD(m+n)*k;\n\tprintf(\"sum=%d\",sum);\n\treturn 0;\n}\n```",
+      "stem": "【题 8.4】请读程序：\n上面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define ADD(x) x + x\nint main() {\n    int m = 1, n = 2, k = 3;\n    int sum = ADD(m + n) * k;\n    printf(\"sum=%d\", sum);\n    return 0;\n}\n```",
       "explanation": "答案B。ADD(m+n) 文本替换为 m+n+m+n，于是 sum=m+n+m+n*k=1+2+1+2*3=10。易错点：以为宏会先把 m+n 算成 3 再乘 k 得 9 或 18；宏定义中替换体没有加括号，实参的 + 号会直接参与外层运算。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3025,7 +3025,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.5（PDF p152 / 书页 p141）",
       "difficulty": 3,
-      "stem": "【题 8.5】有以下程序：\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\n#define M(x,y,z) x*y+z\nint main()\n{ int a=1,b=2,c=3;\n  printf(\"%d\\n\",M(a+b,b+c,c+a));\n  return 0;\n}\n```",
+      "stem": "【题 8.5】有以下程序：\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\n#define M(x, y, z) x *y + z\nint main() {\n    int a = 1, b = 2, c = 3;\n    printf(\"%d\\n\", M(a + b, b + c, c + a));\n    return 0;\n}\n```",
       "explanation": "答案D。M(a+b,b+c,c+a) 逐字替换为 a+b*b+c+c+a，按优先级即 1+2*2+3+3+1=12。易错点：把宏当函数先求出 3、5、4 再算 3*5+4=19；宏替换不计算实参，实参里的运算符会和外层拼在一起。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3047,7 +3047,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.6（PDF p153 / 书页 p142）",
       "difficulty": 3,
-      "stem": "【题 8.6】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define MIN(x,y) (x)<(y)?(x):(y)\nint main()\n{ int i=10,j=15,k;\n  k=10*MIN(i,j);\n  printf(\"%d\\n\",k);\n  return 0;\n}\n```",
+      "stem": "【题 8.6】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#define MIN(x, y) (x) < (y) ? (x) : (y)\nint main() {\n    int i = 10, j = 15, k;\n    k = 10 * MIN(i, j);\n    printf(\"%d\\n\", k);\n    return 0;\n}\n```",
       "explanation": "答案B。MIN(i,j) 替换为 (i)<(j)?(i):(j)，与前面的 10* 结合成 10*(i)<(j)?(i):(j)，即 100<15 为假，取 (j)=15。易错点：以为整个宏调用被括号保护而得 10；该宏定义的条件表达式外层没有括号，正是本题陷阱。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3157,7 +3157,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.11（PDF p153 / 书页 p142）",
       "difficulty": 3,
-      "stem": "【题 8.11】若有宏定义如下：\n则执行以下printf语句后，输出结果是______。\n\n```c\n#define X 5\n#define Y X+1\n#define Z Y*X/2\n\nint a; a=Y;\nprintf(\"%d\\n\",Z);\nprintf(\"%d\\n\",--a);\n```",
+      "stem": "【题 8.11】若有宏定义如下：\n则执行以下printf语句后，输出结果是______。\n\n```c\n#define X 5\n#define Y X + 1\n#define Z Y *X / 2\n\nint a;\na = Y;\nprintf(\"%d\\n\", Z);\nprintf(\"%d\\n\", --a);\n```",
       "explanation": "答案D。Z 展开为 Y*X/2 即 X+1*X/2 = 5+1*5/2 = 5+2 = 7（整数除法截断）；a=Y 即 a=X+1=6，--a 得 5，故先后输出 7 和 5。易错点：把 Y 当成已求值的 6 去算 Z 得 12；宏是文本替换，Y*X 实为 X+1*X。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3201,7 +3201,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.13（PDF p154 / 书页 p143）",
       "difficulty": 3,
-      "stem": "【题 8.13】若有宏定义：# define MOD(x,y) x%y\n则执行以下语句后的输出为______。\n\n```c\nint z, a=15, b=100;\nz=MOD(b,a);\nprintf(\"%d\\n\",z++);\n```",
+      "stem": "【题 8.13】若有宏定义：# define MOD(x,y) x%y\n则执行以下语句后的输出为______。\n\n```c\nint z, a = 15, b = 100;\nz = MOD(b, a);\nprintf(\"%d\\n\", z++);\n```",
       "explanation": "答案B。MOD(b,a) 替换为 b%a = 100%15 = 10；printf(\"%d\\n\",z++) 中 z++ 是先用后自增，故输出 10。易错点：把实参顺序弄反算成 15%100=15；或以为 z++ 先加 1 而选 11。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3223,7 +3223,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.14（PDF p154 / 书页 p143）",
       "difficulty": 3,
-      "stem": "【题 8.14】以下程序的运行结果是______。\n\n```c\n#define MAX(A,B) (A)>(B)?(A):(B)\n#define PRINT(Y) printf(\"Y=%d\\t\",Y)\nint main()\n{ int a=1, b=2, c=3, d=4, t;\n  t=MAX(a+b,c+d);\n  PRINT(t);\n  return 0;\n}\n```",
+      "stem": "【题 8.14】以下程序的运行结果是______。\n\n```c\n#define MAX(A, B) (A) > (B) ? (A) : (B)\n#define PRINT(Y) printf(\"Y=%d\\t\", Y)\nint main() {\n    int a = 1, b = 2, c = 3, d = 4, t;\n    t = MAX(a + b, c + d);\n    PRINT(t);\n    return 0;\n}\n```",
       "explanation": "答案C。MAX(a+b,c+d) 展开为 (a+b)>(c+d)?(a+b):(c+d)，3>7 为假取 c+d=7，故 t=7；PRINT(t) 输出 Y=7。易错点：以为 PRINT(Y) 里的 \"Y\" 会被替换——字符串字面量内的字符不参与宏替换，输出的 Y= 是字面文本。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
