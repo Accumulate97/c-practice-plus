@@ -17,6 +17,7 @@
  */
 import type { CSSProperties, ReactNode } from 'react'
 import { MONO_FONT } from '../../../components/common/CodeEditor'
+import { highlightC } from '../../../components/common/CodeBlock'
 
 export const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 export const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -56,6 +57,10 @@ export function splitStem(stem: string): StemPart[] {
   return out.filter((p) => p.kind === 'code' || p.body.trim().length > 0)
 }
 
+/**
+ * 任务07 阶段2：只读代码块统一规格 —— C 语法高亮（复用 common/CodeBlock 的 highlightC）+
+ * 14px / 行高 1.7 / tab-size 4 / white-space:pre / 横向滚动。与可编辑区（CodeEditor/CodeMirror）样式分离。
+ */
 export function CodeBlock({ code, title }: { code: string; title?: string }) {
   return (
     <div>
@@ -63,30 +68,62 @@ export function CodeBlock({ code, title }: { code: string; title?: string }) {
         <div className="text-xs" style={muted}>{title}</div>
       )}
       <pre
-        className="mt-1 overflow-x-auto rounded-lg border p-3 text-xs"
-        style={{ borderColor: 'var(--border)', background: 'var(--bg)', fontFamily: MONO_FONT }}
+        className="mt-1 overflow-x-auto rounded-lg border p-3"
+        style={{
+          borderColor: 'var(--border)',
+          background: 'var(--bg)',
+          fontFamily: MONO_FONT,
+          fontSize: 14,
+          lineHeight: 1.7,
+          tabSize: 4,
+          whiteSpace: 'pre',
+        }}
         data-role="code-block"
       >
-        {code}
+        <code style={{ color: 'var(--fg)', fontFamily: 'inherit' }}>{highlightC(code.replace(/\n$/, ''))}</code>
       </pre>
     </div>
   )
 }
 
-/** 题干区：文本段保留换行，代码段等宽渲染 */
-export function StemBlock({ stem }: { stem: string }) {
+/** 空白归一（去重比对用）：剥掉所有空白后逐字符比 */
+const normWs = (s: string): string => s.replace(/\s+/g, '')
+
+/**
+ * 题干内容片段（任务07 阶段2）：文本段保留换行；``` 围栏段用高亮 CodeBlock 渲染。
+ * dedupeAgainst：本题「主代码字段」（code / code_starter / fixed_code / solution / reference）——
+ * 501 道代码型题的 stem 把同一段代码又用围栏抄了一遍（scan-full-quality 注释证实是数据惯例），
+ * 渲染层已有专门的高质量展示区（编辑器 / 只读代码块），围栏副本按「剥空白逐字符一致」去重跳过，
+ * 避免同一屏出现两份相同代码。空围栏（如「运行时输入：```​```」占位）同样跳过。
+ */
+export function StemParts({ stem, dedupeAgainst = [] }: { stem: string; dedupeAgainst?: string[] }) {
   const parts = splitStem(stem)
+  const dupes = dedupeAgainst
+    .filter((s): s is string => typeof s === 'string' && s.trim().length > 0)
+    .map(normWs)
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.kind === 'code') {
+          if (part.body.trim().length === 0) return null
+          if (dupes.includes(normWs(part.body))) return null
+          return (
+            <div key={i} className={i > 0 ? 'mt-3' : undefined}>
+              <CodeBlock code={part.body} />
+            </div>
+          )
+        }
+        return <p key={i} className={`text-sm whitespace-pre-wrap${i > 0 ? ' mt-3' : ''}`}>{part.body}</p>
+      })}
+    </>
+  )
+}
+
+/** 题干区：文本段保留换行，代码段等宽高亮渲染 */
+export function StemBlock({ stem, dedupeAgainst }: { stem: string; dedupeAgainst?: string[] }) {
   return (
     <section className="rounded-xl border p-4" style={panel} data-role="stem">
-      {parts.map((part, i) =>
-        part.kind === 'code' ? (
-          <div key={i} className={i > 0 ? 'mt-3' : undefined}>
-            <CodeBlock code={part.body} />
-          </div>
-        ) : (
-          <p key={i} className={`text-sm whitespace-pre-wrap${i > 0 ? ' mt-3' : ''}`}>{part.body}</p>
-        ),
-      )}
+      <StemParts stem={stem} dedupeAgainst={dedupeAgainst} />
     </section>
   )
 }

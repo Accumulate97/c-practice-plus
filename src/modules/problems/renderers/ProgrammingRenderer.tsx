@@ -13,6 +13,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { CodeEditor, MONO_FONT } from '../../../components/common/CodeEditor'
+import { StemParts } from './concept-shared'
 import { judge } from '../../../app/config'
 import { firstDiffLine, formatDiagnostics } from '../../../judge/backends/base'
 import type { JudgeClient } from '../../../judge/client'
@@ -140,7 +141,13 @@ export function ProgrammingRenderer({ problem }: Props) {
     <div className="space-y-4">
       <section className="rounded-xl border p-4" style={panel}>
         <h2 className="text-sm font-semibold" style={muted}>题目要求</h2>
-        <p className="mt-2 text-sm whitespace-pre-wrap">{problem.stem}</p>
+        {/* 任务07 阶段2：stem 围栏切分渲染；围栏副本与起点代码/参考实现一致时去重 */}
+        <div className="mt-2">
+          <StemParts
+            stem={String(problem.stem ?? '')}
+            dedupeAgainst={[String(problem.code_starter ?? ''), String(problem.reference ?? '')]}
+          />
+        </div>
         {typeof problem.source === 'string' && problem.source.length > 0 && (
           <p className="mt-2 text-xs" style={muted}>出处：{problem.source}</p>
         )}

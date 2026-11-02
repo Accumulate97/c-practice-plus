@@ -140,7 +140,8 @@ export function CodeBlock({ code, lang = 'c', title, showCopy = true, dataRole =
           </button>
         )}
       </div>
-      <pre className="overflow-x-auto px-3 py-2 text-xs leading-5">
+      {/* 任务07 渲染规范：只读代码 14px / 行高 1.7 / tab-size 4 / 横向滚动，不折叠空白 */}
+      <pre className="overflow-x-auto px-3 py-2" style={{ fontSize: 14, lineHeight: 1.7, tabSize: 4 }}>
         <code className="font-mono" style={{ color: 'var(--fg)' }}>
           {highlightC(code.replace(/\n$/, ''))}
         </code>

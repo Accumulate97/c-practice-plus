@@ -14,6 +14,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { CodeEditor, MONO_FONT } from '../../../components/common/CodeEditor'
+import { CodeBlock, StemParts } from './concept-shared'
 import { firstDiffLine, formatDiagnostics } from '../../../judge/backends/base'
 import type { JudgeClient } from '../../../judge/client'
 import { backendIdForCode } from '../../../judge/math-lib'
@@ -177,7 +178,10 @@ export function DebugRenderer({ problem }: Props) {
     <div className="space-y-4">
       <section className="rounded-xl border p-4" style={panel}>
         <h2 className="text-sm font-semibold" style={muted}>题目要求</h2>
-        <p className="mt-2 text-sm whitespace-pre-wrap">{problem.stem}</p>
+        {/* 任务07 阶段2：stem 围栏切分渲染；围栏副本与带错代码一致时去重（下方编辑器已展示） */}
+        <div className="mt-2">
+          <StemParts stem={String(problem.stem ?? '')} dedupeAgainst={[fields.code]} />
+        </div>
         <p className="mt-2 text-xs" style={muted}>
           下方编辑器里是带错误的代码，直接在其中修改；改完点「提交判分」，系统会把你的代码逐组运行并与期望输出比对。
         </p>
@@ -322,13 +326,7 @@ export function DebugRenderer({ problem }: Props) {
           <h2 className="text-sm font-semibold" style={{ color: TONE_COLOR.good }}>
             答对了！参考修正代码与完整解析
           </h2>
-          <div className="mt-2 text-xs" style={muted}>参考修正代码（fixed_code）</div>
-          <pre
-            className="mt-1 overflow-x-auto rounded-lg border p-3 text-xs"
-            style={{ borderColor: 'var(--border)', background: 'var(--bg)', fontFamily: MONO_FONT }}
-          >
-            {fields.fixedCode}
-          </pre>
+          <div className="mt-2"><CodeBlock code={fields.fixedCode} title="参考修正代码（fixed_code）" /></div>
           <div className="mt-3 text-xs" style={muted}>完整解析</div>
           <p className="mt-1 text-sm whitespace-pre-wrap">{problem.explanation ?? '（本题暂无解析）'}</p>
         </section>

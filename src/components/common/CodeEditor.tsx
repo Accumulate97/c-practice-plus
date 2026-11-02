@@ -12,7 +12,8 @@ interface Props {
 
 const INDENT = '    '
 const LINE_HEIGHT = 20
-export const MONO_FONT = "ui-monospace, SFMono-Regular, 'Cascadia Mono', Consolas, 'Courier New', monospace"
+export const MONO_FONT =
+  "ui-monospace, SFMono-Regular, Menlo, 'Cascadia Mono', Consolas, 'Liberation Mono', 'Courier New', monospace"
 
 /**
  * 共享代码编辑器（阶段 4 模块 1 的最简实现：受控 textarea + 行号槽 + Tab 缩进）。

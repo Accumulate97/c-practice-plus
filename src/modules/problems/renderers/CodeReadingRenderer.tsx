@@ -15,6 +15,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { MONO_FONT } from '../../../components/common/CodeEditor'
+import { CodeBlock, StemParts } from './concept-shared'
 import { judge } from '../../../app/config'
 import type { JudgeClient } from '../../../judge/client'
 import { backendIdForCode } from '../../../judge/math-lib'
@@ -142,8 +143,9 @@ export function CodeReadingRenderer({ problem }: Props) {
 
   return (
     <div className="space-y-4">
-      <section className="rounded-xl border p-4" style={panel}>
-        <p className="text-sm whitespace-pre-wrap">{problem.stem}</p>
+      <section className="rounded-xl border p-4" style={panel} data-role="stem">
+        {/* 任务07 阶段2：stem 围栏切分渲染；围栏副本与 code 字段一致时去重（下方有专门只读代码区） */}
+        <StemParts stem={String(problem.stem ?? '')} dedupeAgainst={[String(problem.code ?? '')]} />
       </section>
 
       {target.kind === 'no-code' && (
@@ -176,12 +178,9 @@ export function CodeReadingRenderer({ problem }: Props) {
               <h2 className="text-sm font-semibold" style={muted}>题目代码（只读）</h2>
               <span className="text-xs" style={muted}>自己心算输出，别指望编译器</span>
             </div>
-            <pre
-              className="mt-2 overflow-x-auto rounded-lg border p-3 text-xs"
-              style={{ borderColor: 'var(--border)', background: 'var(--bg)', fontFamily: MONO_FONT }}
-            >
-              {target.code}
-            </pre>
+            <div className="mt-2">
+              <CodeBlock code={target.code} />
+            </div>
           </section>
 
           <section className="rounded-xl border p-4" style={panel}>
@@ -384,12 +383,9 @@ function DefectPanel({ title, body, code }: { title: string; body: string; code?
       <p className="text-sm font-semibold" style={{ color: TONE_COLOR.unknown }}>{title}</p>
       <p className="mt-2 text-sm" style={muted}>{body}</p>
       {code && code.trim().length > 0 && (
-        <pre
-          className="mt-3 overflow-x-auto rounded-lg border p-3 text-xs"
-          style={{ borderColor: 'var(--border)', background: 'var(--bg)', fontFamily: MONO_FONT }}
-        >
-          {code}
-        </pre>
+        <div className="mt-3">
+          <CodeBlock code={code} />
+        </div>
       )}
     </section>
   )

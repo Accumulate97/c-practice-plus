@@ -27,6 +27,7 @@ import type { CSSProperties } from 'react'
 import { BlankCodeEditor } from '../../../components/common/BlankCodeEditor'
 import type { BlankEditorHandle, BlankSlotValues } from '../../../components/common/BlankCodeEditor'
 import { MONO_FONT } from '../../../components/common/CodeEditor'
+import { CodeBlock, StemParts } from './concept-shared'
 import { judge } from '../../../app/config'
 import { firstDiffLine, formatDiagnostics } from '../../../judge/backends/base'
 import type { JudgeClient } from '../../../judge/client'
@@ -194,7 +195,10 @@ export function CodeCompletionRenderer({ problem }: Props) {
     <div className="space-y-4">
       <section className="rounded-xl border p-4" style={panel}>
         <h2 className="text-sm font-semibold" style={muted}>题目要求</h2>
-        <p className="mt-2 text-sm whitespace-pre-wrap">{problem.stem}</p>
+        {/* 任务07 阶段2：stem 围栏切分渲染；围栏副本与 code 字段（含空位标记）一致时去重（下方编辑器已展示） */}
+        <div className="mt-2">
+          <StemParts stem={String(problem.stem ?? '')} dedupeAgainst={[String(problem.code ?? '')]} />
+        </div>
         {typeof problem.source === 'string' && problem.source.length > 0 && (
           <p className="mt-2 text-xs" style={muted}>出处：{problem.source}</p>
         )}
@@ -378,12 +382,9 @@ export function CodeCompletionRenderer({ problem }: Props) {
           {target.solution.trim().length > 0 && (
             <details className="rounded-xl border p-3 text-xs" style={panel}>
               <summary className="cursor-pointer" style={muted}>查看参考答案（补全后的完整程序）</summary>
-              <pre
-                className="mt-2 overflow-x-auto rounded-lg border p-2"
-                style={{ borderColor: 'var(--border)', background: 'var(--bg)', fontFamily: MONO_FONT }}
-              >
-                {target.solution}
-              </pre>
+              <div className="mt-2">
+                <CodeBlock code={target.solution} />
+              </div>
             </details>
           )}
         </>
