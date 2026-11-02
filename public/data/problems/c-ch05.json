@@ -16,7 +16,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   char c ;\n    while((c=getchar( ))!='?') putchar(++c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char c;\n    while ((c = getchar()) != '?')\n        putchar(++c);\n    return 0;\n}",
       "stdin": "right?\n",
       "answer": "sjhiu",
       "id": "c-ch05-cr-001",
@@ -34,7 +34,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int a=2,s=0,n=1,count=1;\n    while (count<=7)     {   n=n * a;    s=s+n;    ++count;   }\n    printf(\"s=%d\",s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 2, s = 0, n = 1, count = 1;\n    while (count <= 7) {\n        n = n * a;\n        s = s + n;\n        ++count;\n    }\n    printf(\"s=%d\", s);\n    return 0;\n}",
       "answer": "s=254",
       "id": "c-ch05-cr-002",
       "verified": true
@@ -51,7 +51,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int v1=0, v2=0; char ch;\n    while((ch=getchar( ))!='#')\n    switch(ch)\n    {   case 'a':\n        case 'h':\n            default: v1++;\n        case 'o':v2++;\n    }\n    printf(\"%d,%d\\n\",v1,v2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int v1 = 0, v2 = 0;\n    char ch;\n    while ((ch = getchar()) != '#')\n        switch (ch) {\n        case 'a':\n        case 'h':\n        default:\n            v1++;\n        case 'o':\n            v2++;\n        }\n    printf(\"%d,%d\\n\", v1, v2);\n    return 0;\n}",
       "stdin": "China#\n",
       "answer": "5,5",
       "id": "c-ch05-cr-003",
@@ -69,7 +69,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int k, n;\nk=1; n=263;\ndo { k*=n%10; n/=10; } while(n);\n    printf(\"%d\", k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int k, n;\n    k = 1;\n    n = 263;\n    do {\n        k *= n % 10;\n        n /= 10;\n    } while (n);\n    printf(\"%d\", k);\n    return 0;\n}",
       "answer": "36",
       "id": "c-ch05-cr-004",
       "verified": true
@@ -86,7 +86,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int a, b, count = 0;\na=10; b=0;\ndo { count++; b+=2; a-=2+b; }while (a>=0);\n    printf(\"%d\", count);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a, b, count = 0;\n    a = 10;\n    b = 0;\n    do {\n        count++;\n        b += 2;\n        a -= 2 + b;\n    } while (a >= 0);\n    printf(\"%d\", count);\n    return 0;\n}",
       "answer": "3",
       "id": "c-ch05-cr-005",
       "verified": true
@@ -103,7 +103,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int x;\nx=2;\ndo {  printf (\"*\"); x--;   } while (!x==0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int x;\n    x = 2;\n    do {\n        printf(\"*\");\n        x--;\n    } while (!x == 0);\n    return 0;\n}",
       "answer": "**",
       "id": "c-ch05-cr-006",
       "verified": true
@@ -120,7 +120,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int i, a, s;\ni=1; a=0;s=1;\ndo { a=a+s * i; s=-s; i++; } while( i<=10 );\nprintf(\"a=%d\",a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int i, a, s;\n    i = 1;\n    a = 0;\n    s = 1;\n    do {\n        a = a + s * i;\n        s = -s;\n        i++;\n    } while (i <= 10);\n    printf(\"a=%d\", a);\n    return 0;\n}",
       "answer": "a=-5",
       "id": "c-ch05-cr-007",
       "verified": true
@@ -137,7 +137,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main ( )\n{   int a=2,d=3,sum=0;\n    do\n    {   sum+=a;\n        a+=d;\n        if(/*__BLANK_1__*/) printf(\"%d\\n\",sum);\n    } while(sum<200);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 2, d = 3, sum = 0;\n    do {\n        sum += a;\n        a += d;\n        if (/*__BLANK_1__*/)\n            printf(\"%d\\n\", sum);\n    } while (sum < 200);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -148,7 +148,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main ( )\n{   int a=2,d=3,sum=0;\n    do\n    {   sum+=a;\n        a+=d;\n        if(sum%4==0) printf(\"%d\\n\",sum);\n    } while(sum<200);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int a = 2, d = 3, sum = 0;\n    do {\n        sum += a;\n        a += d;\n        if (sum % 4 == 0)\n            printf(\"%d\\n\", sum);\n    } while (sum < 200);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -171,7 +171,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int k=0, n;\n    do\n    {   scanf(\"%d\",&n ); k+=n;\n    }   while (n!=-1);\n    printf(\"k=%d n=%d\\n\",k,n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int k = 0, n;\n    do {\n        scanf(\"%d\", &n);\n        k += n;\n    } while (n != -1);\n    printf(\"k=%d n=%d\\n\", k, n);\n    return 0;\n}",
       "stdin": "1 2 3 4 5 -1\n",
       "answer": "k=14 n=-1",
       "id": "c-ch05-cr-008",
@@ -189,7 +189,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i=0,x=0,y=0;\n    do\n    {   ++i;\n        if (i%2!=0)  {x=x+i;i++;}\n        y=y+i++;\n    } while (i<=7);\n    printf(\"x=%d,y=%d\\n\",x,y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i = 0, x = 0, y = 0;\n    do {\n        ++i;\n        if (i % 2 != 0) {\n            x = x + i;\n            i++;\n        }\n        y = y + i++;\n    } while (i <= 7);\n    printf(\"x=%d,y=%d\\n\", x, y);\n    return 0;\n}",
       "answer": "x=1,y=20",
       "id": "c-ch05-cr-009",
       "verified": true
@@ -206,7 +206,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int a=1,b=3,i=1;\n    do\n    {   printf(\"%d,%d,\",a,b);\n        a=(b-a) * 2+b;\n        b=(a-b) * 2+a;\n        if (i++%2==0) printf(\"\\n\");\n    } while (b<100);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 1, b = 3, i = 1;\n    do {\n        printf(\"%d,%d,\", a, b);\n        a = (b - a) * 2 + b;\n        b = (a - b) * 2 + a;\n        if (i++ % 2 == 0)\n            printf(\"\\n\");\n    } while (b < 100);\n    return 0;\n}",
       "answer": "1,3,7,15,\n31,63,",
       "id": "c-ch05-cr-010",
       "verified": true
@@ -223,7 +223,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int a,b,m=1,n=1;\n    scanf(\"%d%d\",&a,&b);\n    do\n    {   if(a>0) { m=2 * n;   b++; }\n        else  { n=m+n;   a+=2;   b++; }\n    } while (a==b);\n    printf (\"m=%d n=%d\",m,n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a, b, m = 1, n = 1;\n    scanf(\"%d%d\", &a, &b);\n    do {\n        if (a > 0) {\n            m = 2 * n;\n            b++;\n        } else {\n            n = m + n;\n            a += 2;\n            b++;\n        }\n    } while (a == b);\n    printf(\"m=%d n=%d\", m, n);\n    return 0;\n}",
       "stdin": "-1 0\n",
       "answer": "m=4 n=2",
       "id": "c-ch05-cr-011",
@@ -241,7 +241,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int a, i;\nfor(a=1,i=-1; -1<=i<1; i++)\n{   a++; printf(\"%2d\",a); }\nprintf(\"%2d\",i);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a, i;\n    for (a = 1, i = -1; - 1 <= i < 1; i++) {\n        a++;\n        printf(\"%2d\", a);\n    }\n    printf(\"%2d\", i);\n    return 0;\n}",
       "answer": "-1",
       "id": "c-ch05-cr-012",
       "verified": true
@@ -258,7 +258,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,t,sum=0;\n    for(t=i=1;  i<=10;   )\n        {   sum+=t;    ++i;\n            if(i%3==0)   t=-i;\n            else   t=i;\n        }\n    printf(\"sum=%d\",sum);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, t, sum = 0;\n    for (t = i = 1; i <= 10;) {\n        sum += t;\n        ++i;\n        if (i % 3 == 0)\n            t = -i;\n        else\n            t = i;\n    }\n    printf(\"sum=%d\", sum);\n    return 0;\n}",
       "answer": "sum=19",
       "id": "c-ch05-cr-013",
       "verified": true
@@ -275,7 +275,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i;\n    for(i=1;i<=5;i++)\n        switch(i%2)\n        {   case 0: i++; printf(\"#\");break;\n            case 1: i+=2; printf(\"*\");\n            default: printf(\"\\n\");\n        }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i;\n    for (i = 1; i <= 5; i++)\n        switch (i % 2) {\n        case 0:\n            i++;\n            printf(\"#\");\n            break;\n        case 1:\n            i += 2;\n            printf(\"*\");\n        default:\n            printf(\"\\n\");\n        }\n    return 0;\n}",
       "answer": "*\n#",
       "id": "c-ch05-cr-014",
       "verified": true
@@ -292,7 +292,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,j=4;\n    for (i=j;i<=2 * j;i++)\n        switch (i/j)\n        {   case 0:\n            case 1: printf (\"*\");break;\n            case 2: printf (\"#\");\n        }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, j = 4;\n    for (i = j; i <= 2 * j; i++)\n        switch (i / j) {\n        case 0:\n        case 1:\n            printf(\"*\");\n            break;\n        case 2:\n            printf(\"#\");\n        }\n    return 0;\n}",
       "answer": "****#",
       "id": "c-ch05-cr-015",
       "verified": true
@@ -309,7 +309,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int m,n;\n    printf(\"Enter m,n:\");\n    scanf(\"%d%d\",&m,&n);\n    while(m!=n)\n    {   while(m>n) m-=n;\n        while(n>m) n-=m;\n    }\n    printf(\"m=%d\\n\",m);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int m, n;\n    printf(\"Enter m,n:\");\n    scanf(\"%d%d\", &m, &n);\n    while (m != n) {\n        while (m > n)\n            m -= n;\n        while (n > m)\n            n -= m;\n    }\n    printf(\"m=%d\\n\", m);\n    return 0;\n}",
       "stdin": "65 14\n",
       "answer": "Enter m,n:m=1",
       "id": "c-ch05-cr-016",
@@ -327,7 +327,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int y=2,a=1;\n    while(y--!=-1)\n    {   do { a*=y;   a++;   } while(y--);   }\n    printf(\"%d,%d\",a,y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int y = 2, a = 1;\n    while (y-- != -1) {\n        do {\n            a *= y;\n            a++;\n        } while (y--);\n    }\n    printf(\"%d,%d\", a, y);\n    return 0;\n}",
       "answer": "1,-2",
       "id": "c-ch05-cr-017",
       "verified": true
@@ -344,7 +344,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,j;\n    for(i=0;i<=3;i++)\n    {   for (j=0;j<=5;j++)\n            if(i==0||j==0||i==3||j==5)   printf(\"*\");\n        else   printf(\"  \");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, j;\n    for (i = 0; i <= 3; i++) {\n        for (j = 0; j <= 5; j++)\n            if (i == 0 || j == 0 || i == 3 || j == 5)\n                printf(\"*\");\n            else\n                printf(\"  \");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "answer": "******\n*        *\n*        *\n******",
       "id": "c-ch05-cr-018",
       "verified": true
@@ -361,7 +361,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,j;\n    for(i=4; i>=1; i--)\n    {   for(j=1; j<=i; j++) putchar('#');\n        for(j=1; j<=4-i; j++) putchar('*');\n        putchar('\\n');\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, j;\n    for (i = 4; i >= 1; i--) {\n        for (j = 1; j <= i; j++)\n            putchar('#');\n        for (j = 1; j <= 4 - i; j++)\n            putchar('*');\n        putchar('\\n');\n    }\n    return 0;\n}",
       "answer": "####\n###*\n##**\n#***",
       "id": "c-ch05-cr-019",
       "verified": true
@@ -378,7 +378,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int i, s;\ni=1; s=3;\ndo\n{   s+=i++;\n    if(s%7==0) continue;\n    else ++i;\n} while(s<15);\nprintf(\"%d\",i);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int i, s;\n    i = 1;\n    s = 3;\n    do {\n        s += i++;\n        if (s % 7 == 0)\n            continue;\n        else\n            ++i;\n    } while (s < 15);\n    printf(\"%d\", i);\n    return 0;\n}",
       "answer": "8",
       "id": "c-ch05-cr-020",
       "verified": true
@@ -395,7 +395,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i=1;\n    while(i<=15)\n        if(++i%3!=2) continue;\n        else printf(\"%d \",i);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i = 1;\n    while (i <= 15)\n        if (++i % 3 != 2)\n            continue;\n        else\n            printf(\"%d \", i);\n    return 0;\n}",
       "answer": "2 5 8 11 14 ",
       "id": "c-ch05-cr-021",
       "verified": true
@@ -412,7 +412,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,j,k=19;\n    while (i=k-1)\n    {   k-=3;\n        if (k%5==0) {i++; continue; }\n        else if(k<5) break;\n        i++;\n    }\n    printf(\"i=%d,k=%d\\n\",i,k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, j, k = 19;\n    while (i = k - 1) {\n        k -= 3;\n        if (k % 5 == 0) {\n            i++;\n            continue;\n        } else if (k < 5)\n            break;\n        i++;\n    }\n    printf(\"i=%d,k=%d\\n\", i, k);\n    return 0;\n}",
       "answer": "i=6,k=4",
       "id": "c-ch05-cr-022",
       "verified": true
@@ -429,7 +429,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int a,y;\n    a=10; y=0;\n    do\n    {   a+=2; y+=a;\n        if(y>50) break;\n    } while(a=14);\n    printf(\"a=%d y=%d\\n\",a,y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a, y;\n    a = 10;\n    y = 0;\n    do {\n        a += 2;\n        y += a;\n        if (y > 50)\n            break;\n    } while (a = 14);\n    printf(\"a=%d y=%d\\n\", a, y);\n    return 0;\n}",
       "answer": "a=16 y=60",
       "id": "c-ch05-cr-023",
       "verified": true
@@ -446,7 +446,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{   int i=5;\n    do\n    {   switch (i%2)\n        {   case 4: i--; break;\n            case 6: i--; continue;\n        }\n        i--; i--;\n        printf(\"%d \",i);\n    } while(i>0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i = 5;\n    do {\n        switch (i % 2) {\n        case 4:\n            i--;\n            break;\n        case 6:\n            i--;\n            continue;\n        }\n        i--;\n        i--;\n        printf(\"%d \", i);\n    } while (i > 0);\n    return 0;\n}",
       "answer": "3 1 -1 ",
       "id": "c-ch05-cr-024",
       "verified": true
@@ -463,7 +463,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int day, count = 0, days = 0;\n    double money;\n\n    /* 每天买前一天的 2 倍，直到不超过 100 的最大个数为止：2,4,8,16,32,64 */\n    for (day = 2; day <= 100; day = day * 2) {\n        count = count + day;\n        days = days + 1;\n    }\n\n    money = count * 0.8;\n    printf(\"%.2f\\n\", money / days);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int day, count = 0, days = 0;\n    double money;\n\n    /* 每天买前一天的 2 倍，直到不超过 100 的最大个数为止：2,4,8,16,32,64 */\n    for (day = 2; day <= 100; day = day * 2) {\n        count = count + day;\n        days = days + 1;\n    }\n\n    money = count * 0.8;\n    printf(\"%.2f\\n\", money / days);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "",
@@ -486,7 +486,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int i, m;\n\n    for (i = 1; i <= 99; i++) {\n        /* 一位数看平方后的末 1 位，两位数看末 2 位 */\n        if (i < 10)\n            m = 10;\n        else\n            m = 100;\n        if (i * i % m == i)\n            printf(\"%3d\", i);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int i, m;\n\n    for (i = 1; i <= 99; i++) {\n        /* 一位数看平方后的末 1 位，两位数看末 2 位 */\n        if (i < 10)\n            m = 10;\n        else\n            m = 100;\n        if (i * i % m == i)\n            printf(\"%3d\", i);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "",
@@ -509,7 +509,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y, i, r = 1;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n\n    /* 只保留最后 3 位：每乘一次就取模，避免溢出 */\n    x = ((x % 1000) + 1000) % 1000;\n    for (i = 0; i < y; i++)\n        r = r * x % 1000;\n\n    printf(\"%03d\\n\", r);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int x, y, i, r = 1;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n\n    /* 只保留最后 3 位：每乘一次就取模，避免溢出 */\n    x = ((x % 1000) + 1000) % 1000;\n    for (i = 0; i < y; i++)\n        r = r * x % 1000;\n\n    printf(\"%03d\\n\", r);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "2 10",
@@ -547,7 +547,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int i, j, score;\n    double sum;\n\n    for (i = 1; i <= 6; i++) {\n        sum = 0;\n        for (j = 0; j < 5; j++) {\n            if (scanf(\"%d\", &score) != 1)\n                return 1;\n            sum = sum + score;\n        }\n        printf(\"No.%d:%.2f\\n\", i, sum / 5);\n    }\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int i, j, score;\n    double sum;\n\n    for (i = 1; i <= 6; i++) {\n        sum = 0;\n        for (j = 0; j < 5; j++) {\n            if (scanf(\"%d\", &score) != 1)\n                return 1;\n            sum = sum + score;\n        }\n        printf(\"No.%d:%.2f\\n\", i, sum / 5);\n    }\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "80 85 90 78 92\n70 72 75 78 80\n60 60 60 60 60\n90 90 90 90 90\n75 80 85 90 95\n66 77 88 99 55",
@@ -711,7 +711,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.1（PDF p58 / 书页 p47）",
       "difficulty": 3,
-      "stem": "【题 5.1】设有程序段：\n\n则下面描述中正确的是______。\n\n```c\nint k=10;\nwhile (k=0) k=k-1;\n```",
+      "stem": "【题 5.1】设有程序段：\n\n则下面描述中正确的是______。\n\n```c\nint k = 10;\nwhile (k = 0)\n    k = k - 1;\n```",
       "explanation": "答案C。`while(k=0)` 是**赋值**而非比较，条件值恒为 0（假），循环体一次也不执行。易错点：把 `=` 看成 `==`，误以为循环 10 次。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -733,7 +733,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.2（PDF p58 / 书页 p47）",
       "difficulty": 3,
-      "stem": "【题 5.2】设有以下程序段：\n\n则______。\n\n```c\nint x=0,s=0;\nwhile (!x!=0) s+=++x;\nprintf(\"%d\", s);\n```",
+      "stem": "【题 5.2】设有以下程序段：\n\n则______。\n\n```c\nint x = 0, s = 0;\nwhile (!x != 0)\n    s += ++x;\nprintf(\"%d\", s);\n```",
       "explanation": "答案B。`!x!=0` 按 `(!x)!=0` 结合：x=0 时 `!x` 为 1，条件真，执行 `s+=++x` 得 s=1、x=1；再判断 `!x` 为 0，`0!=0` 假，退出并输出 1。易错：读成 `!(x!=0)`。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -777,7 +777,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.4（PDF p58 / 书页 p47）",
       "difficulty": 3,
-      "stem": "【题 5.4】下面程序段的运行结果是______。\n\n```c\na=1; b=2; c=2;\nwhile(a<b<c)   { t=a; a=b; b=t; c--; }\nprintf(\"%d,%d,%d\",a,b,c);\n```",
+      "stem": "【题 5.4】下面程序段的运行结果是______。\n\n```c\na = 1;\nb = 2;\nc = 2;\nwhile (a < b < c) {\n    t = a;\n    a = b;\n    b = t;\n    c--;\n}\nprintf(\"%d,%d,%d\", a, b, c);\n```",
       "explanation": "答案A。`a<b<c` 按 `(a<b)<c` 计算：第一轮 `1<2` 得 1、`1<2` 真，交换后 a=2,b=1,c=1；第二轮 `2<1` 得 0、`0<1` 仍真，再交换得 a=1,b=2,c=0；第三轮 `1<2` 得 1、`1<0` 假退出，输出 1,2,0。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -799,7 +799,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.5（PDF p58 / 书页 p47）",
       "difficulty": 3,
-      "stem": "【题 5.5】下面程序段的运行结果是______。\n\n```c\nx=y=0;\nwhile(x<15)     y++,  x+=++y;\nprintf(\"%d,%d\",y,x);\n```",
+      "stem": "【题 5.5】下面程序段的运行结果是______。\n\n```c\nx = y = 0;\nwhile (x < 15)\n    y++, x += ++y;\nprintf(\"%d,%d\", y, x);\n```",
       "explanation": "答案D。逗号表达式先 `y++` 再 `x+=++y`：依次得 y=1,x=2；y=3,x=6；y=5,x=12；y=7,x=20 后条件假退出，输出 y,x 即 8,20。易错：忽略 printf 中 y 在前、x 在后。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -821,7 +821,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.6（PDF p58 / 书页 p47）",
       "difficulty": 3,
-      "stem": "【题 5.6】下面程序段的运行结果是______。\n\n```c\nint n=0;\nwhile(n++<=2);   printf(\"%d\",n);\n```",
+      "stem": "【题 5.6】下面程序段的运行结果是______。\n\n```c\nint n = 0;\nwhile (n++ <= 2)\n    ;\nprintf(\"%d\", n);\n```",
       "explanation": "答案C。`while(n++<=2);` 循环体为空：n 取 0、1、2 时条件真并自增，n=3 时 `3<=2` 为假但 n 已自增为 4，故输出 4。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -843,7 +843,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.7（PDF p59 / 书页 p48）",
       "difficulty": 3,
-      "stem": "【题 5.7】设有程序段：\n\n下面描述正确的是______。\n\n```c\nt=0;\nwhile (printf(\" *\"))\n{   t++;\n    if(t<3) break;\n}\n```",
+      "stem": "【题 5.7】设有程序段：\n\n下面描述正确的是______。\n\n```c\nt = 0;\nwhile (printf(\" *\")) {\n    t++;\n    if (t < 3)\n        break;\n}\n```",
       "explanation": "答案B。`printf` 返回实际输出的字符数 2，是非零值；字符常量 `'0'` 的 ASCII 值 48 也非零，二者在「真值」上等价，条件恒真。A 说与 0 等价、C 说表达式非法，均错。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -959,7 +959,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.12（PDF p60 / 书页 p49）",
       "difficulty": 3,
-      "stem": "【题 5.12】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int num=0;\n    while(num<=2)\n    {   num++;\n        printf(\"%d\\n\",num);\n    }\n    return 0;\n}\n```",
+      "stem": "【题 5.12】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int num = 0;\n    while (num <= 2) {\n        num++;\n        printf(\"%d\\n\", num);\n    }\n    return 0;\n}\n```",
       "explanation": "答案C。num 从 0 起，条件 `num<=2` 成立三次；循环体内先自增再输出，依次打印 1、2、3 三行。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -981,7 +981,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.13（PDF p61 / 书页 p50）",
       "difficulty": 4,
-      "stem": "【题 5.13】若运行以下程序时，从键盘输入2473<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int c ;\n    while( (c=getchar( )) !='\\n')\n    switch(c-'2')\n    {   case 0:\n            case 1: putchar ( c+4 );\n            case 2: putchar ( c+4 ); break;\n            case 3: putchar ( c+3 );\n            default: putchar ( c+2 ); break;\n    }\n    return 0;\n}\n```",
+      "stem": "【题 5.13】若运行以下程序时，从键盘输入2473<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int c;\n    while ((c = getchar()) != '\\n')\n        switch (c - '2') {\n        case 0:\n        case 1:\n            putchar(c + 4);\n        case 2:\n            putchar(c + 4);\n            break;\n        case 3:\n            putchar(c + 3);\n        default:\n            putchar(c + 2);\n            break;\n        }\n    return 0;\n}\n```",
       "explanation": "答案A。`switch(c-'2')` 中 case 0 与 case 1 无 break，会贯穿执行 `putchar(c+4)` 等分支，数字字符按偏移映射；对输入 2、4、7、3 逐字符处理后拼接输出 668977。关键是 fall-through 与字符偏移。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1047,7 +1047,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.16（PDF p62 / 书页 p51）",
       "difficulty": 3,
-      "stem": "【题 5.16】以下程序段______。\n\n```c\nx=-1;\ndo\n{ x=x * x; } while (!x);\n```",
+      "stem": "【题 5.16】以下程序段______。\n\n```c\nx = -1;\ndo {\n    x = x * x;\n} while (!x);\n```",
       "explanation": "答案C。do-while 先执行一次循环体：x=(-1)*(-1)=1；再判 `while(!x)` 即 `!1`=0 为假，循环结束，共执行一次。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1091,7 +1091,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.18（PDF p62 / 书页 p51）",
       "difficulty": 3,
-      "stem": "【题 5.18】若有如下语句：\n\n上面程序段______。\n\n```c\nint x=3;\ndo { printf(\"%d\\n\",x-=2); } while (!(--x));\n```",
+      "stem": "【题 5.18】若有如下语句：\n\n上面程序段______。\n\n```c\nint x = 3;\ndo {\n    printf(\"%d\\n\", x -= 2);\n} while (!(--x));\n```",
       "explanation": "答案B。第一轮 `x-=2` 得 1 并输出，`--x` 得 0，`!0` 为真继续；第二轮 `x-=2` 得 -2 输出，`--x` 得 -3，`!(-3)` 为假退出，故输出 1 和 -2。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1210,7 +1210,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.23（PDF p63 / 书页 p52）",
       "difficulty": 3,
-      "stem": "【题 5.23】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int y=10;\n    do { y--; } while (--y);\n    printf(\"%d\\n\",y--);\n    return 0;\n}\n```",
+      "stem": "【题 5.23】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int y = 10;\n    do {\n        y--;\n    } while (--y);\n    printf(\"%d\\n\", y--);\n    return 0;\n}\n```",
       "explanation": "答案D。循环体 `y--` 与条件 `--y` 各减一次，y 从 10 每轮净减 2：8、6、4、2、0；`--y` 得 0 时条件假退出，此时 y=0，`printf(\"%d\",y--)` 输出 0。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1232,7 +1232,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.24（PDF p64 / 书页 p53）",
       "difficulty": 4,
-      "stem": "【题 5.24】若运行以下程序时，从键盘输入Total<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   char c; int v1=0,v2=0;\n    do\n    {   switch(c=getchar( ))\n        {   case 'a': v1+=1;\n            case 't': case 'T': v2+=1;\n            default: v1+=1; v2+=1;\n        }\n    } while(c!='\\n');\n    printf(\"v1=%d,v2=%d\\n\",v1,v2);\n    return 0;\n}\n```",
+      "stem": "【题 5.24】若运行以下程序时，从键盘输入Total<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    char c;\n    int v1 = 0, v2 = 0;\n    do {\n        switch (c = getchar()) {\n        case 'a':\n            v1 += 1;\n        case 't':\n        case 'T':\n            v2 += 1;\n        default:\n            v1 += 1;\n            v2 += 1;\n        }\n    } while (c != '\\n');\n    printf(\"v1=%d,v2=%d\\n\", v1, v2);\n    return 0;\n}\n```",
       "explanation": "答案D。switch 各 case 无 break 时贯穿累加；对输入 T、o、t、a、l 逐字符落入相应分支（大小写属不同 case），v1、v2 的累加结果分别为 7 与 9。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1254,7 +1254,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.25（PDF p64 / 书页 p53）",
       "difficulty": 3,
-      "stem": "【题 5.25】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int a=1,b=10;\n    do\n    { b-=a; a++; } while(b--<0);\n    printf(\"a=%d,b=%d\\n\",a,b);\n    return 0;\n}\n```",
+      "stem": "【题 5.25】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 1, b = 10;\n    do {\n        b -= a;\n        a++;\n    } while (b-- < 0);\n    printf(\"a=%d,b=%d\\n\", a, b);\n    return 0;\n}\n```",
       "explanation": "答案B。循环体先 `b-=a`、`a++`，再判 `b--<0`：第一轮 b=9、a=2，用 9 判断为假退出，b 因后缀自减再变 8，输出 a=2,b=8。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1320,7 +1320,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.28（PDF p65 / 书页 p54）",
       "difficulty": 3,
-      "stem": "【题 5.28】若i为整型变量，则以下循环执行次数是______。\n\n```c\nfor (i=2; i==0; ) printf(\"%d\",i--);\n```",
+      "stem": "【题 5.28】若i为整型变量，则以下循环执行次数是______。\n\n```c\nfor (i = 2; i == 0;)\n    printf(\"%d\", i--);\n```",
       "explanation": "答案B。初值 i=2，条件 `i==0` 一开始就为假，循环体一次也不执行，执行 0 次。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1342,7 +1342,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.29（PDF p65 / 书页 p54）",
       "difficulty": 3,
-      "stem": "【题 5.29】以下for循环的执行次数是______。\n\n```c\nfor (x=0,y=0; (y=123)&&(x<4); x++);\n```",
+      "stem": "【题 5.29】以下for循环的执行次数是______。\n\n```c\nfor (x = 0, y = 0; (y = 123) && (x < 4); x++)\n    ;\n```",
       "explanation": "答案C。`(y=123)` 赋值后恒为真，条件真假只由 `x<4` 决定；x 取 0、1、2、3 共执行 4 次循环体。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1386,7 +1386,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.31（PDF p65 / 书页 p54）",
       "difficulty": 3,
-      "stem": "【题 5.31】下面程序段的运行结果是______。\n\n```c\nfor(y=1; y<10 ;) y=((x=3 * y,x+1),x-1);\nprintf(\"x=%d,y=%d\",x,y);\n```",
+      "stem": "【题 5.31】下面程序段的运行结果是______。\n\n```c\nfor (y = 1; y < 10;)\n    y = ((x = 3 * y, x + 1), x - 1);\nprintf(\"x=%d,y=%d\", x, y);\n```",
       "explanation": "答案C。逗号表达式依次计算 `x=3*y`、`x+1`、`x-1`，并把最后一项赋给 y：y 依次为 2、5、14；y=14 不满足 `y<10` 退出，此时 x=15。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1408,7 +1408,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.32（PDF p65 / 书页 p54）",
       "difficulty": 3,
-      "stem": "【题 5.32】下面程序段的运行结果是______。\n\n```c\nfor(x=3; x<6; x++) printf((x%2)?(\"**%d\"):(\"##%d\\n\"),x);\n```",
+      "stem": "【题 5.32】下面程序段的运行结果是______。\n\n```c\nfor (x = 3; x < 6; x++)\n    printf((x % 2) ? (\"**%d\") : (\"##%d\\n\"), x);\n```",
       "explanation": "答案D。printf 的第一个实参是条件表达式选出的格式串：x 为奇数用 `\"**%d\"`（无换行），偶数用 `\"##%d\\n\"`，故输出 **3##4 换行 **5。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1543,7 +1543,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.38（PDF p66 / 书页 p55）",
       "difficulty": 3,
-      "stem": "【题 5.38】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int i;\n    for (i=1;i<=5;i++)\n        switch(i%5)\n        {   case 0: printf(\"*\"); break;\n            case 1: printf(\"#\"); break;\n            default: printf(\"\\n\");\n            case 2: printf(\"&\");\n        }\n    return 0;\n}\n```",
+      "stem": "【题 5.38】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int i;\n    for (i = 1; i <= 5; i++)\n        switch (i % 5) {\n        case 0:\n            printf(\"*\");\n            break;\n        case 1:\n            printf(\"#\");\n            break;\n        default:\n            printf(\"\\n\");\n        case 2:\n            printf(\"&\");\n        }\n    return 0;\n}\n```",
       "explanation": "答案D。`switch(i%5)` 中 case 0 有 break，case 1 起无 break 会贯穿后续 case 的输出；i=1..5 各轮输出按贯穿规则拼接为 `#& *`。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1565,7 +1565,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.39（PDF p67 / 书页 p56）",
       "difficulty": 3,
-      "stem": "【题 5.39】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int x,i;\n    for (i=1;i<=100;i++)\n    {   x=i;\n        if(++x%2==0)\n            if(++x%3==0)\n                if(++x%7==0)\n                    printf(\"%d \",x);\n    }\n    return 0;\n}\n```",
+      "stem": "【题 5.39】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x, i;\n    for (i = 1; i <= 100; i++) {\n        x = i;\n        if (++x % 2 == 0)\n            if (++x % 3 == 0)\n                if (++x % 7 == 0)\n                    printf(\"%d \", x);\n    }\n    return 0;\n}\n```",
       "explanation": "答案D。三个 if 中各含一次 `++x`：需 i+1 为偶数、i+2 被 3 整除、i+3 被 7 整除；1..100 内只有 i=25 与 i=67 满足，输出 28 与 70。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1659,7 +1659,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.43（PDF p68 / 书页 p57）",
       "difficulty": 3,
-      "stem": "【题 5.43】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int i,b,k=0;\n    for (i=1;i<=5;i++)\n    {   b=i%2;\n        while (b-->=0) k++;\n    }\n    printf(\"%d,%d\",k,b);\n    return 0;\n}\n```",
+      "stem": "【题 5.43】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int i, b, k = 0;\n    for (i = 1; i <= 5; i++) {\n        b = i % 2;\n        while (b-- >= 0)\n            k++;\n    }\n    printf(\"%d,%d\", k, b);\n    return 0;\n}\n```",
       "explanation": "答案B。`b=i%2` 为 1 时 `while(b-->=0)` 使 k 加 2，为 0 时加 1；i=1..5 共 2+1+2+1+2=8 次，循环结束时 b=-1，输出 8,-1。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1703,7 +1703,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.45（PDF p69 / 书页 p58）",
       "difficulty": 3,
-      "stem": "【题 5.45】在下面的程序段中，______。\n\n```c\nint t, x;\nfor (t=1; t<=100; t++)\n{   scanf (\"%d\",&x);\n    if (x<0) continue;\n    printf(\"%3d\",t);\n}\n```",
+      "stem": "【题 5.45】在下面的程序段中，______。\n\n```c\nint t, x;\nfor (t = 1; t <= 100; t++) {\n    scanf(\"%d\", &x);\n    if (x < 0)\n        continue;\n    printf(\"%3d\", t);\n}\n```",
       "explanation": "答案D。`x<0` 时 continue 只跳过本次的 printf，循环仍继续下一轮；t 从 1 到 100，故最多输出 100 个非负整数对应的 t 值。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1725,7 +1725,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.46（PDF p69 / 书页 p58）",
       "difficulty": 3,
-      "stem": "【题 5.46】下面的程序段______。\n\n```c\nx=3;\ndo\n{   y=x--;\n    if (!y) { printf(\"x\"); continue; }\n    printf (\"#\");\n} while (1<=x<=2);\n```",
+      "stem": "【题 5.46】下面的程序段______。\n\n```c\nx = 3;\ndo {\n    y = x--;\n    if (!y) {\n        printf(\"x\");\n        continue;\n    }\n    printf(\"#\");\n} while (1 <= x <= 2);\n```",
       "explanation": "答案C。条件 `1<=x<=2` 按 `(1<=x)<=2` 计算，结果只可能是 0 或 1，恒 ≤2 为真，循环无法结束，是死循环。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1747,7 +1747,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.47（PDF p69 / 书页 p58）",
       "difficulty": 3,
-      "stem": "【题 5.47】与下面程序段等价的是______。\n\n```c\nfor(n=100; n<=200; n++)\n{   if(n%3==0) continue;\n    printf(\"%4d\",n);\n}\n```",
+      "stem": "【题 5.47】与下面程序段等价的是______。\n\n```c\nfor (n = 100; n <= 200; n++) {\n    if (n % 3 == 0)\n        continue;\n    printf(\"%4d\", n);\n}\n```",
       "explanation": "答案C。continue 跳过 `n%3==0` 的数，等价于「`n%3!=0` 才输出」。A、B 把筛选条件写进 for 的表达式 2，会在第一个 3 的倍数处提前终止整个循环。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1791,7 +1791,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.49（PDF p70 / 书页 p59）",
       "difficulty": 4,
-      "stem": "【题 5.49】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int k=0; char c='A';\n    do\n    {   switch(c++)\n        {   case 'A': k++; break;\n            case 'B': k--;\n            case 'C': k+=2; break;\n            case 'D': k=k%2; continue;\n            case 'E': k=k * 10; break;\n            default: k=k/3;\n        }\n        k++;\n    } while(c<'G');\n    printf(\"k=%d\\n\",k);\n    return 0;\n}\n```",
+      "stem": "【题 5.49】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int k = 0;\n    char c = 'A';\n    do {\n        switch (c++) {\n        case 'A':\n            k++;\n            break;\n        case 'B':\n            k--;\n        case 'C':\n            k += 2;\n            break;\n        case 'D':\n            k = k % 2;\n            continue;\n        case 'E':\n            k = k * 10;\n            break;\n        default:\n            k = k / 3;\n        }\n        k++;\n    } while (c < 'G');\n    printf(\"k=%d\\n\", k);\n    return 0;\n}\n```",
       "explanation": "答案B。`switch(c++)` 用自增**前**的值选分支：case 'A' 有 break，case 'B' 无 break 会贯穿到 case 'C'；c 依次取 A..E 五轮累加后 k=4。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1813,7 +1813,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.50（PDF p70 / 书页 p59）",
       "difficulty": 3,
-      "stem": "【题 5.50】若运行以下程序时，从键盘输入3.6 2.4<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <math.h>\nint main( )\n{   float x,y,z;\n    scanf(\"%f%f\",&x,&y);\n    z=x/y;\n    while(1)\n        if(fabs(z)>1.0) { x=y; y=z; z=x/y; }\n        else break;\n    printf(\"%f\\n\",y);\n    return 0;\n}\n```",
+      "stem": "【题 5.50】若运行以下程序时，从键盘输入3.6 2.4<回车>，则下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <math.h>\nint main() {\n    float x, y, z;\n    scanf(\"%f%f\", &x, &y);\n    z = x / y;\n    while (1)\n        if (fabs(z) > 1.0) {\n            x = y;\n            y = z;\n            z = x / y;\n        } else\n            break;\n    printf(\"%f\\n\", y);\n    return 0;\n}\n```",
       "explanation": "答案D。z=x/y=1.5，`fabs(z)>1.0` 成立进入交换分支，反复迭代直到 |z|≤1，最终输出 2.400000。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1835,7 +1835,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.51（PDF p71 / 书页 p60）",
       "difficulty": 3,
-      "stem": "【题 5.51】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int a,b;\n    for (a=1, b=1 ; a<=100; a++)\n    {   if (b>=20) break;\n        if (b%3==1) { b+=3; continue; }\n        b-=5;\n    }\n    printf (\"%d \\n\", a);\n    return 0;\n}\n```",
+      "stem": "【题 5.51】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a, b;\n    for (a = 1, b = 1; a <= 100; a++) {\n        if (b >= 20)\n            break;\n        if (b % 3 == 1) {\n            b += 3;\n            continue;\n        }\n        b -= 5;\n    }\n    printf(\"%d \\n\", a);\n    return 0;\n}\n```",
       "explanation": "答案B。b 从 1 起每轮 +3：1,4,7,10,13,16,19 共 7 轮走 continue，第 8 轮 b=22≥20 触发 break；a 每轮自增一次，break 时 a=8。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1857,7 +1857,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.52（PDF p71 / 书页 p60）",
       "difficulty": 4,
-      "stem": "【题 5.52】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int i,j,x=0;\n    for (i=0; i<2; i++)\n    {   x++;\n        for(j=0; j<=3; j++)\n        {   if (j%2) continue;\n            x++;\n        }\n        x++;\n    }\n    printf (\"x=%d \\n\", x);\n    return 0;\n}\n```",
+      "stem": "【题 5.52】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int i, j, x = 0;\n    for (i = 0; i < 2; i++) {\n        x++;\n        for (j = 0; j <= 3; j++) {\n            if (j % 2)\n                continue;\n            x++;\n        }\n        x++;\n    }\n    printf(\"x=%d \\n\", x);\n    return 0;\n}\n```",
       "explanation": "答案B。外层两轮各执行一次 `x++`；内层 j=0..3 中 `j%2` 为真时 continue，只有 j=0、2 执行 `x++`，再计入内层结束后的累加，逐轮合计 x=8。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1879,7 +1879,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.53（PDF p72 / 书页 p61）",
       "difficulty": 3,
-      "stem": "【题 5.53】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int i;\n    for (i=1; i<=5; i++)\n    {   if(i%2) printf(\"*\");\n        else continue;\n        printf(\"#\");\n    }\n    printf(\"$ \\n\");\n    return 0;\n}\n```",
+      "stem": "【题 5.53】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int i;\n    for (i = 1; i <= 5; i++) {\n        if (i % 2)\n            printf(\"*\");\n        else\n            continue;\n        printf(\"#\");\n    }\n    printf(\"$ \\n\");\n    return 0;\n}\n```",
       "explanation": "答案A。i 为奇数时输出 `*` 后继续输出 `#`；i 为偶数时 continue 跳过 `#`。i=1..5 得 `*#*#*#`，末尾再输出 `$`。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1901,7 +1901,7 @@
       "section": "5.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第5章 循环结构 题5.54（PDF p72 / 书页 p61）",
       "difficulty": 4,
-      "stem": "【题 5.54】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int i,j,a=0;\n    for(i=0; i<2; i++)\n    {   for(j=0; j<4; j++)\n        {   if( j%2 ) break;\n            a++;\n        }\n        a++;\n    }\n    printf(\"%d\\n\",a);\n    return 0;\n}\n```",
+      "stem": "【题 5.54】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int i, j, a = 0;\n    for (i = 0; i < 2; i++) {\n        for (j = 0; j < 4; j++) {\n            if (j % 2)\n                break;\n            a++;\n        }\n        a++;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}\n```",
       "explanation": "答案C。内层 `j%2` 为真即 break，故每轮内层只在 j=0 时执行一次 `a++`；加上内层结束后外层的一次 `a++`，两轮外层共使 a 增加 6。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -1929,7 +1929,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int n=0,c;\n    c=getchar();\n    while(/*__BLANK_1__*/)\n    {   if(/*__BLANK_2__*/) n++;\n        c=getchar();\n    }\n    printf(\"%d\\n\",n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n = 0, c;\n    c = getchar();\n    while (/*__BLANK_1__*/) {\n        if (/*__BLANK_2__*/)\n            n++;\n        c = getchar();\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1947,7 +1947,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int n=0,c;\n    c=getchar();\n    while( c!='\\n' )\n    {   if( c>='0' && c<='9' ) n++;\n        c=getchar();\n    }\n    printf(\"%d\\n\",n);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n = 0, c;\n    c = getchar();\n    while (c != '\\n') {\n        if (c >= '0' && c <= '9')\n            n++;\n        c = getchar();\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "a1b22\n",
@@ -1980,7 +1980,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nint main( )\n{   long   i=1;\n    /*__BLANK_1__*/ pi=0;\n    while( i * i<=10e+6 )   { pi=/*__BLANK_2__*/;   i++; }\n    pi=sqrt( 6.0 * pi);\n    printf(\"pi=%10.6lf\\n\",pi);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nint main() {\n    long i = 1;\n    /*__BLANK_1__*/ pi = 0;\n    while (i * i <= 10e+6) {\n        pi = /*__BLANK_2__*/;\n        i++;\n    }\n    pi = sqrt(6.0 * pi);\n    printf(\"pi=%10.6lf\\n\", pi);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1997,7 +1997,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nint main( )\n{   long   i=1;\n     double  pi=0;\n    while( i * i<=10e+6 )   { pi= pi+1.0/(i*i) ;   i++; }\n    pi=sqrt( 6.0 * pi);\n    printf(\"pi=%10.6lf\\n\",pi);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nint main() {\n    long i = 1;\n    double pi = 0;\n    while (i * i <= 10e+6) {\n        pi = pi + 1.0 / (i * i);\n        i++;\n    }\n    pi = sqrt(6.0 * pi);\n    printf(\"pi=%10.6lf\\n\", pi);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2020,7 +2020,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int day=0,x1=1020,x2;\n    while(/*__BLANK_1__*/) { x2=/*__BLANK_2__*/; x1=x2; day++; }\n    printf(\"day=%d\\n\",day);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int day = 0, x1 = 1020, x2;\n    while (/*__BLANK_1__*/) {\n        x2 = /*__BLANK_2__*/;\n        x1 = x2;\n        day++;\n    }\n    printf(\"day=%d\\n\", day);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2038,7 +2038,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int day=0,x1=1020,x2;\n    while( x1 ) { x2= x1/2-2 ; x1=x2; day++; }\n    printf(\"day=%d\\n\",day);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int day = 0, x1 = 1020, x2;\n    while (x1) {\n        x2 = x1 / 2 - 2;\n        x1 = x2;\n        day++;\n    }\n    printf(\"day=%d\\n\", day);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2061,7 +2061,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int r,m,n ;\n    scanf(\"%d%d\",&m,&n);\n    if( m<n ) /*__BLANK_1__*/;\n    r=m%n;\n    while(r)    { m=n;   n=r;   r=/*__BLANK_2__*/; }\n    printf(\"%d\\n\",n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int r, m, n;\n    scanf(\"%d%d\", &m, &n);\n    if (m < n) /*__BLANK_1__*/\n        ;\n    r = m % n;\n    while (r) {\n        m = n;\n        n = r;\n        r = /*__BLANK_2__*/;\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2079,7 +2079,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int r,m,n ;\n    scanf(\"%d%d\",&m,&n);\n    if( m<n )  r=m,m=n,n=r ;\n    r=m%n;\n    while(r)    { m=n;   n=r;   r= m%n ; }\n    printf(\"%d\\n\",n);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int r, m, n;\n    scanf(\"%d%d\", &m, &n);\n    if (m < n)\n        r = m, m = n, n = r;\n    r = m % n;\n    while (r) {\n        m = n;\n        n = r;\n        r = m % n;\n    }\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 18\n",
@@ -2112,7 +2112,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main ( )\n{   int i=1,j=0;\n    do\n    {   if( /*__BLANK_1__*/ )\n        {   printf(\"%4d\",i);\n            j=j+1;\n            if( /*__BLANK_2__*/ )   printf(\"\\n\");\n        }\n        i=i+1;\n    } while(i<1000);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i = 1, j = 0;\n    do {\n        if (/*__BLANK_1__*/) {\n            printf(\"%4d\", i);\n            j = j + 1;\n            if (/*__BLANK_2__*/)\n                printf(\"\\n\");\n        }\n        i = i + 1;\n    } while (i < 1000);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2130,7 +2130,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main ( )\n{   int i=1,j=0;\n    do\n    {   if(  i%3==2&&i%5==3&&i%7==2  )\n        {   printf(\"%4d\",i);\n            j=j+1;\n            if(  j%5==0  )   printf(\"\\n\");\n        }\n        i=i+1;\n    } while(i<1000);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int i = 1, j = 0;\n    do {\n        if (i % 3 == 2 && i % 5 == 3 && i % 7 == 2) {\n            printf(\"%4d\", i);\n            j = j + 1;\n            if (j % 5 == 0)\n                printf(\"\\n\");\n        }\n        i = i + 1;\n    } while (i < 1000);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2153,7 +2153,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main ( )\n{   int n,count=0, max=0, t;\n    scanf(\"%d\",&n);\n    do\n    {   t=/*__BLANK_1__*/;\n        if(t==0) ++count;\n        else if(max<t) /*__BLANK_2__*/;\n        n/=10;\n    } while(n);\n    printf(\"count=%d,max=%d\",count,max);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n, count = 0, max = 0, t;\n    scanf(\"%d\", &n);\n    do {\n        t = /*__BLANK_1__*/;\n        if (t == 0)\n            ++count;\n        else if (max < t) /*__BLANK_2__*/\n            ;\n        n /= 10;\n    } while (n);\n    printf(\"count=%d,max=%d\", count, max);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2170,7 +2170,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main ( )\n{   int n,count=0, max=0, t;\n    scanf(\"%d\",&n);\n    do\n    {   t= n%10 ;\n        if(t==0) ++count;\n        else if(max<t)  max=t ;\n        n/=10;\n    } while(n);\n    printf(\"count=%d,max=%d\",count,max);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n, count = 0, max = 0, t;\n    scanf(\"%d\", &n);\n    do {\n        t = n % 10;\n        if (t == 0)\n            ++count;\n        else if (max < t)\n            max = t;\n        n /= 10;\n    } while (n);\n    printf(\"count=%d,max=%d\", count, max);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1020\n",
@@ -2203,7 +2203,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,s=1,m=0;\n    for(i=1;i<=11;i++) s=s * 11%1000;\n    do { m+=/*__BLANK_1__*/; s=/*__BLANK_2__*/; } while(s);\n    printf(\"m=%d\\n\",m);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, s = 1, m = 0;\n    for (i = 1; i <= 11; i++)\n        s = s * 11 % 1000;\n    do {\n        m += /*__BLANK_1__*/;\n        s = /*__BLANK_2__*/;\n    } while (s);\n    printf(\"m=%d\\n\", m);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2220,7 +2220,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int i,s=1,m=0;\n    for(i=1;i<=11;i++) s=s * 11%1000;\n    do { m+= s%10 ; s= s/10 ; } while(s);\n    printf(\"m=%d\\n\",m);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int i, s = 1, m = 0;\n    for (i = 1; i <= 11; i++)\n        s = s * 11 % 1000;\n    do {\n        m += s % 10;\n        s = s / 10;\n    } while (s);\n    printf(\"m=%d\\n\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2243,7 +2243,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int x,i;\n    scanf(\"%d\",&x);\n    i=1;\n    for(  ;  /*__BLANK_1__*/  ;   )\n    {   if(x%i==0) printf(\"%3d\",i);\n        i++;\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, i;\n    scanf(\"%d\", &x);\n    i = 1;\n    for (; /*__BLANK_1__*/;) {\n        if (x % i == 0)\n            printf(\"%3d\", i);\n        i++;\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2254,7 +2254,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int x,i;\n    scanf(\"%d\",&x);\n    i=1;\n    for(  ;   i<=x   ;   )\n    {   if(x%i==0) printf(\"%3d\",i);\n        i++;\n    }\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, i;\n    scanf(\"%d\", &x);\n    i = 1;\n    for (; i <= x;) {\n        if (x % i == 0)\n            printf(\"%3d\", i);\n        i++;\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12\n",
@@ -2287,7 +2287,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int x,y;\n    for(x=0; x<=30; x++)\n    {   y=30-x;\n        if(/*__BLANK_1__*/)    printf(\"%d,%d\\n\",x,y);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y;\n    for (x = 0; x <= 30; x++) {\n        y = 30 - x;\n        if (/*__BLANK_1__*/)\n            printf(\"%d,%d\\n\", x, y);\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2298,7 +2298,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int x,y;\n    for(x=0; x<=30; x++)\n    {   y=30-x;\n        if( 2*x+4*y==90 )    printf(\"%d,%d\\n\",x,y);\n    }\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, y;\n    for (x = 0; x <= 30; x++) {\n        y = 30 - x;\n        if (2 * x + 4 * y == 90)\n            printf(\"%d,%d\\n\", x, y);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2321,7 +2321,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int i,t=1,s=0;\n    for(i=1; i<=101; i+=2)\n        {   /*__BLANK_1__*/;    s=s+t;   /*__BLANK_2__*/; }\n    printf(\"%d\\n\",s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i, t = 1, s = 0;\n    for (i = 1; i <= 101; i += 2) { /*__BLANK_1__*/\n        ;\n        s = s + t; /*__BLANK_2__*/\n        ;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2340,7 +2340,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int i,t=1,s=0;\n    for(i=1; i<=101; i+=2)\n        {    t=t*i ;    s=s+t;    t=-t/i ; }\n    printf(\"%d\\n\",s);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int i, t = 1, s = 0;\n    for (i = 1; i <= 101; i += 2) {\n        t = t * i;\n        s = s + t;\n        t = -t / i;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2363,7 +2363,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nint main( )\n{   int i,n;  double h,s,a=0,b=1.2;\n    n=100;    h=/*__BLANK_1__*/;\n    s=0.5 * (sin(a) * cos(a)+sin(b) * cos(b));\n    for(i=1;i<=n-1;i++)   s+=/*__BLANK_2__*/;\n    s*=h;\n    printf(\"s=%10.4lf\\n\",s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nint main() {\n    int i, n;\n    double h, s, a = 0, b = 1.2;\n    n = 100;\n    h = /*__BLANK_1__*/;\n    s = 0.5 * (sin(a) * cos(a) + sin(b) * cos(b));\n    for (i = 1; i <= n - 1; i++)\n        s += /*__BLANK_2__*/;\n    s *= h;\n    printf(\"s=%10.4lf\\n\", s);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2380,7 +2380,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nint main( )\n{   int i,n;  double h,s,a=0,b=1.2;\n    n=100;    h= (b-a)/n ;\n    s=0.5 * (sin(a) * cos(a)+sin(b) * cos(b));\n    for(i=1;i<=n-1;i++)   s+= sin(a+i*h)*cos(a+i*h) ;\n    s*=h;\n    printf(\"s=%10.4lf\\n\",s);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nint main() {\n    int i, n;\n    double h, s, a = 0, b = 1.2;\n    n = 100;\n    h = (b - a) / n;\n    s = 0.5 * (sin(a) * cos(a) + sin(b) * cos(b));\n    for (i = 1; i <= n - 1; i++)\n        s += sin(a + i * h) * cos(a + i * h);\n    s *= h;\n    printf(\"s=%10.4lf\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2403,7 +2403,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int i;  double e,new;\n    /*__BLANK_1__*/;  new=1.0;\n    for(i=1;/*__BLANK_2__*/;i++)\n        {   new/=(double)i;  e+=new; }\n    printf(\"e=%f\\n\",e);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int i;\n    double e, new;\n    /*__BLANK_1__*/;\n    new = 1.0;\n    for (i = 1; /*__BLANK_2__*/; i++) {\n        new /= (double)i;\n        e += new;\n    }\n    printf(\"e=%f\\n\", e);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2422,7 +2422,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int i;  double e,new;\n     e=1.0 ;  new=1.0;\n    for(i=1; new>=1e-6 ;i++)\n        {   new/=(double)i;  e+=new; }\n    printf(\"e=%f\\n\",e);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int i;\n    double e, new;\n    e = 1.0;\n    new = 1.0;\n    for (i = 1; new >= 1e-6; i++) {\n        new /= (double)i;\n        e += new;\n    }\n    printf(\"e=%f\\n\", e);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2445,7 +2445,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int n=0,i,j,k;\n    for(i=1; i<=9; i++)\n        for(k=0; k<=8; /*__BLANK_1__*/)\n            if( k !=i )\n                for(j=0 ; j<=9; j++)\n                    if(/*__BLANK_2__*/)\n                        n++;\n    printf(\"n=%d\\n\",n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n = 0, i, j, k;\n    for (i = 1; i <= 9; i++)\n        for (k = 0; k <= 8; /*__BLANK_1__*/)\n            if (k != i)\n                for (j = 0; j <= 9; j++)\n                    if (/*__BLANK_2__*/)\n                        n++;\n    printf(\"n=%d\\n\", n);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2464,7 +2464,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int n=0,i,j,k;\n    for(i=1; i<=9; i++)\n        for(k=0; k<=8;  k+=2 )\n            if( k !=i )\n                for(j=0 ; j<=9; j++)\n                    if( j!=i && j!=k )\n                        n++;\n    printf(\"n=%d\\n\",n);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n = 0, i, j, k;\n    for (i = 1; i <= 9; i++)\n        for (k = 0; k <= 8; k += 2)\n            if (k != i)\n                for (j = 0; j <= 9; j++)\n                    if (j != i && j != k)\n                        n++;\n    printf(\"n=%d\\n\", n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -2487,7 +2487,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int n,k=1,s=0,m;\n    for(n=1;n<=100;n++)\n    {   k=1; s=0;\n        /*__BLANK_1__*/;\n        while(/*__BLANK_2__*/)\n        {   k*=m%10;\n            s+=m%10;\n            /*__BLANK_3__*/;\n        }\n        if(k>s)    printf(\"%d \",n);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int n, k = 1, s = 0, m;\n    for (n = 1; n <= 100; n++) {\n        k = 1;\n        s = 0;\n        /*__BLANK_1__*/;\n        while (/*__BLANK_2__*/) {\n            k *= m % 10;\n            s += m % 10;\n            /*__BLANK_3__*/;\n        }\n        if (k > s)\n            printf(\"%d \", n);\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2512,7 +2512,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int n,k=1,s=0,m;\n    for(n=1;n<=100;n++)\n    {   k=1; s=0;\n         m=n ;\n        while( m )\n        {   k*=m%10;\n            s+=m%10;\n             m/=10 ;\n        }\n        if(k>s)    printf(\"%d \",n);\n    }\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int n, k = 1, s = 0, m;\n    for (n = 1; n <= 100; n++) {\n        k = 1;\n        s = 0;\n        m = n;\n        while (m) {\n            k *= m % 10;\n            s += m % 10;\n            m /= 10;\n        }\n        if (k > s)\n            printf(\"%d \", n);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
