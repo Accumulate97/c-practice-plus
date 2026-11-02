@@ -3333,7 +3333,7 @@
       "section": "8.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第8章 编译预处理 题8.20（PDF p156 / 书页 p145）",
       "difficulty": 3,
-      "stem": "【题 8.20】以下程序的输出结果为______。\n\n```c\n#include <stdio.h>\n#define F(y) 3.84+y\n#define PR(a) printf(\"%d\",(int)(a))\n#define PRINT(a) PR(a); putchar('\\n')\nint main()\n{ int x=2;\n  PRINT(F(3)*x);\n  return 0;\n}\n```",
+      "stem": "【题 8.20】以下程序的输出结果为______。\n\n```c\n#include <stdio.h>\n#define F(y) 3.84 + y\n#define PR(a) printf(\"%d\", (int)(a))\n#define PRINT(a)                                                                                   \\\n    PR(a);                                                                                         \\\n    putchar('\\n')\nint main() {\n    int x = 2;\n    PRINT(F(3) * x);\n    return 0;\n}\n```",
       "explanation": "答案B。PRINT(F(3)*x) 展开为 printf(\"%d\",(int)(3.84+3*x)); putchar('\\n')，(int)(3.84+6)=9。易错点：以为 F(3) 先算成 6.84 再乘 2 得 13；宏展开后是 3.84+3*2，乘法优先。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
