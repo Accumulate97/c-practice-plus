@@ -83,7 +83,7 @@
       "input_format": "一个整数 score（0 ≤ score ≤ 100）。",
       "output_format": "一行：对应的大写等级字母。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    scanf(\"%d\", &score);\n    /* TODO: 根据 score 输出等级 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    scanf(\"%d\", &score);\n    if (score >= 90) printf(\"A\\n\");\n    else if (score >= 80) printf(\"B\\n\");\n    else if (score >= 70) printf(\"C\\n\");\n    else if (score >= 60) printf(\"D\\n\");\n    else printf(\"E\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    scanf(\"%d\", &score);\n    if (score >= 90)\n        printf(\"A\\n\");\n    else if (score >= 80)\n        printf(\"B\\n\");\n    else if (score >= 70)\n        printf(\"C\\n\");\n    else if (score >= 60)\n        printf(\"D\\n\");\n    else\n        printf(\"E\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "95",
@@ -143,7 +143,7 @@
       "input_format": "一个字符。",
       "output_format": "一行：digit / letter / other 之一。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    char ch = getchar();\n    /* TODO: 用 switch 判断并输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void) {\n    char ch = getchar();\n    switch (ch) {\n        case '0': case '1': case '2': case '3': case '4':\n        case '5': case '6': case '7': case '8': case '9':\n            printf(\"digit\\n\"); break;\n        case 'A': case 'B': case 'C': case 'D': case 'E':\n        case 'F': case 'G': case 'H': case 'I': case 'J':\n        case 'K': case 'L': case 'M': case 'N': case 'O':\n        case 'P': case 'Q': case 'R': case 'S': case 'T':\n        case 'U': case 'V': case 'W': case 'X': case 'Y':\n        case 'Z':\n        case 'a': case 'b': case 'c': case 'd': case 'e':\n        case 'f': case 'g': case 'h': case 'i': case 'j':\n        case 'k': case 'l': case 'm': case 'n': case 'o':\n        case 'p': case 'q': case 'r': case 's': case 't':\n        case 'u': case 'v': case 'w': case 'x': case 'y':\n        case 'z':\n            printf(\"letter\\n\"); break;\n        default:\n            printf(\"other\\n\"); break;\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char ch = getchar();\n    switch (ch) {\n    case '0':\n    case '1':\n    case '2':\n    case '3':\n    case '4':\n    case '5':\n    case '6':\n    case '7':\n    case '8':\n    case '9':\n        printf(\"digit\\n\");\n        break;\n    case 'A':\n    case 'B':\n    case 'C':\n    case 'D':\n    case 'E':\n    case 'F':\n    case 'G':\n    case 'H':\n    case 'I':\n    case 'J':\n    case 'K':\n    case 'L':\n    case 'M':\n    case 'N':\n    case 'O':\n    case 'P':\n    case 'Q':\n    case 'R':\n    case 'S':\n    case 'T':\n    case 'U':\n    case 'V':\n    case 'W':\n    case 'X':\n    case 'Y':\n    case 'Z':\n    case 'a':\n    case 'b':\n    case 'c':\n    case 'd':\n    case 'e':\n    case 'f':\n    case 'g':\n    case 'h':\n    case 'i':\n    case 'j':\n    case 'k':\n    case 'l':\n    case 'm':\n    case 'n':\n    case 'o':\n    case 'p':\n    case 'q':\n    case 'r':\n    case 's':\n    case 't':\n    case 'u':\n    case 'v':\n    case 'w':\n    case 'x':\n    case 'y':\n    case 'z':\n        printf(\"letter\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n        break;\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5",
@@ -204,7 +204,7 @@
       "input_format": "一行三个整数 a b c（-1000 ≤ 各值 ≤ 1000）。",
       "output_format": "一个整数，为三者中的最大值。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    /* TODO: 求最大值并输出 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c, m;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    m = a;\n    if (b > m) m = b;\n    if (c > m) m = c;\n    printf(\"%d\\n\", m);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c, m;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    m = a;\n    if (b > m)\n        m = b;\n    if (c > m)\n        m = c;\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 9 5",
@@ -259,7 +259,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y,z,c;\n    scanf(\"%d %d %d\",&x,&y,&z);\n    if(/*__BLANK_1__*/)\n        { c=y;y=z;z=c;}\n    if(/*__BLANK_2__*/)\n        { c=x;x=z;z=c;}\n    if(/*__BLANK_3__*/)\n        { c=x;x=y;y=c;}\n    printf(\"%d,%d,%d\",x,y,z);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y, z, c;\n    scanf(\"%d %d %d\", &x, &y, &z);\n    if (/*__BLANK_1__*/) {\n        c = y;\n        y = z;\n        z = c;\n    }\n    if (/*__BLANK_2__*/) {\n        c = x;\n        x = z;\n        z = c;\n    }\n    if (/*__BLANK_3__*/) {\n        c = x;\n        x = y;\n        y = c;\n    }\n    printf(\"%d,%d,%d\", x, y, z);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -283,7 +283,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int x,y,z,c;\n    scanf(\"%d %d %d\",&x,&y,&z);\n    if(y<z)\n        { c=y;y=z;z=c;}\n    if(x<z)\n        { c=x;x=z;z=c;}\n    if(x<y)\n        { c=x;x=y;y=c;}\n    printf(\"%d,%d,%d\",x,y,z);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, y, z, c;\n    scanf(\"%d %d %d\", &x, &y, &z);\n    if (y < z) {\n        c = y;\n        y = z;\n        z = c;\n    }\n    if (x < z) {\n        c = x;\n        x = z;\n        z = c;\n    }\n    if (x < y) {\n        c = x;\n        x = y;\n        y = c;\n    }\n    printf(\"%d,%d,%d\", x, y, z);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3\n",
@@ -316,7 +316,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ char c;\n    c=getchar( );\n    if(c>='a' && c<='u')/*__BLANK_1__*/;\n    else if(c>='v' && c<='z')/*__BLANK_2__*/;\n    putchar(c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char c;\n    c = getchar();\n    if (c >= 'a' && c <= 'u') /*__BLANK_1__*/\n        ;\n    else if (c >= 'v' && c <= 'z') /*__BLANK_2__*/\n        ;\n    putchar(c);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -333,7 +333,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ char c;\n    c=getchar( );\n    if(c>='a' && c<='u')c=c+5;\n    else if(c>='v' && c<='z')c=c-21;\n    putchar(c);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    char c;\n    c = getchar();\n    if (c >= 'a' && c <= 'u')\n        c = c + 5;\n    else if (c >= 'v' && c <= 'z')\n        c = c - 21;\n    putchar(c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "a\n",
@@ -366,7 +366,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ char ch;\n    scanf(\"%c\",&ch);\n    if(/*__BLANK_1__*/) ch=ch+32;\n    else if(ch>='a' && ch<='z')/*__BLANK_2__*/;\n    printf(\"%c\",ch);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char ch;\n    scanf(\"%c\", &ch);\n    if (/*__BLANK_1__*/)\n        ch = ch + 32;\n    else if (ch >= 'a' && ch <= 'z') /*__BLANK_2__*/\n        ;\n    printf(\"%c\", ch);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -380,7 +380,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ char ch;\n    scanf(\"%c\",&ch);\n    if(ch>='A'&&ch<='Z') ch=ch+32;\n    else if(ch>='a' && ch<='z')ch=ch-32;\n    printf(\"%c\",ch);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    char ch;\n    scanf(\"%c\", &ch);\n    if (ch >= 'A' && ch <= 'Z')\n        ch = ch + 32;\n    else if (ch >= 'a' && ch <= 'z')\n        ch = ch - 32;\n    printf(\"%c\", ch);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "A\n",
@@ -413,7 +413,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y;\n    scanf(\"%d\",&x);\n    if(/*__BLANK_1__*/) y=x*(x+2);\n    else if(/*__BLANK_2__*/) y=2*x;\n        else if(x<=-1) y=x-1;\n    else /*__BLANK_3__*/;\n    if(y!=-1) printf(\"%d\",y);\n    else printf(\"error\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y;\n    scanf(\"%d\", &x);\n    if (/*__BLANK_1__*/)\n        y = x * (x + 2);\n    else if (/*__BLANK_2__*/)\n        y = 2 * x;\n    else if (x <= -1)\n        y = x - 1;\n    else /*__BLANK_3__*/\n        ;\n    if (y != -1)\n        printf(\"%d\", y);\n    else\n        printf(\"error\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -431,7 +431,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int x,y;\n    scanf(\"%d\",&x);\n    if(x>2&&x<=10) y=x*(x+2);\n    else if(x>-1&&x<=2) y=2*x;\n        else if(x<=-1) y=x-1;\n    else y=-1;\n    if(y!=-1) printf(\"%d\",y);\n    else printf(\"error\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, y;\n    scanf(\"%d\", &x);\n    if (x > 2 && x <= 10)\n        y = x * (x + 2);\n    else if (x > -1 && x <= 2)\n        y = 2 * x;\n    else if (x <= -1)\n        y = x - 1;\n    else\n        y = -1;\n    if (y != -1)\n        printf(\"%d\", y);\n    else\n        printf(\"error\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -464,7 +464,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int y,f;\n    scanf(\"%d\",&y);\n    if(y%400==0) f=1;\n    else if(/*__BLANK_1__*/) f=1;\n    else /*__BLANK_2__*/;\n    if(f) printf(\"%d is\",y);\n    else printf(\"%d is not\",y);\n    printf(\" a leap year\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int y, f;\n    scanf(\"%d\", &y);\n    if (y % 400 == 0)\n        f = 1;\n    else if (/*__BLANK_1__*/)\n        f = 1;\n    else /*__BLANK_2__*/\n        ;\n    if (f)\n        printf(\"%d is\", y);\n    else\n        printf(\"%d is not\", y);\n    printf(\" a leap year\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -478,7 +478,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int y,f;\n    scanf(\"%d\",&y);\n    if(y%400==0) f=1;\n    else if(y%4==0&&y%100!=0) f=1;\n    else f=0;\n    if(f) printf(\"%d is\",y);\n    else printf(\"%d is not\",y);\n    printf(\" a leap year\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int y, f;\n    scanf(\"%d\", &y);\n    if (y % 400 == 0)\n        f = 1;\n    else if (y % 4 == 0 && y % 100 != 0)\n        f = 1;\n    else\n        f = 0;\n    if (f)\n        printf(\"%d is\", y);\n    else\n        printf(\"%d is not\", y);\n    printf(\" a leap year\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2024\n",
@@ -511,7 +511,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int yy,mm,len;\n    printf(\"year,month=\");\n    scanf(\"%d %d\",&yy,&mm);\n    switch(mm)\n      { case 1: case 3: case 5: case 7:\n        case 8: case 10: case 12:/*__BLANK_1__*/; break;\n        case 4: case 6: case 9: case 11: len=30;break;\n        case 2:\n        if(yy%4==0 && yy%100!=0||yy%400==0)/*__BLANK_2__*/;\n        else /*__BLANK_3__*/;\n        break;\n        default:printf(\"input error\");\n        break;\n      }\n    printf(\"the length of %d %d is%d\\n\",yy,mm,len);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int yy, mm, len;\n    printf(\"year,month=\");\n    scanf(\"%d %d\", &yy, &mm);\n    switch (mm) {\n    case 1:\n    case 3:\n    case 5:\n    case 7:\n    case 8:\n    case 10:\n    case 12: /*__BLANK_1__*/;\n        break;\n    case 4:\n    case 6:\n    case 9:\n    case 11:\n        len = 30;\n        break;\n    case 2:\n        if (yy % 4 == 0 && yy % 100 != 0 || yy % 400 == 0) /*__BLANK_2__*/\n            ;\n        else /*__BLANK_3__*/\n            ;\n        break;\n    default:\n        printf(\"input error\");\n        break;\n    }\n    printf(\"the length of %d %d is%d\\n\", yy, mm, len);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -529,7 +529,7 @@
           "accepted": []
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int yy,mm,len;\n    printf(\"year,month=\");\n    scanf(\"%d %d\",&yy,&mm);\n    switch(mm)\n      { case 1: case 3: case 5: case 7:\n        case 8: case 10: case 12:len=31; break;\n        case 4: case 6: case 9: case 11: len=30;break;\n        case 2:\n        if(yy%4==0 && yy%100!=0||yy%400==0)len=29;\n        else len=28;\n        break;\n        default:printf(\"input error\");\n        break;\n      }\n    printf(\"the length of %d %d is%d\\n\",yy,mm,len);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int yy, mm, len;\n    printf(\"year,month=\");\n    scanf(\"%d %d\", &yy, &mm);\n    switch (mm) {\n    case 1:\n    case 3:\n    case 5:\n    case 7:\n    case 8:\n    case 10:\n    case 12:\n        len = 31;\n        break;\n    case 4:\n    case 6:\n    case 9:\n    case 11:\n        len = 30;\n        break;\n    case 2:\n        if (yy % 4 == 0 && yy % 100 != 0 || yy % 400 == 0)\n            len = 29;\n        else\n            len = 28;\n        break;\n    default:\n        printf(\"input error\");\n        break;\n    }\n    printf(\"the length of %d %d is%d\\n\", yy, mm, len);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2024 1\n",
@@ -562,7 +562,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#define pi 3.14159\nint main( )\n{ char m;\n    float r,c,a;\n    printf(\"input mark a c or b && r\\n\");\n    scanf(\"%c %f\",&m,&r);\n    if(/*__BLANK_1__*/)\n        { a=pi * r * r;printf(\"area is %f\",a);}\n    if(/*__BLANK_2__*/)\n        { c=2 * pi * r; printf(\"circle is %f\",c);}\n    if(/*__BLANK_3__*/)\n        { a=pi * r * r;c=2 * pi * r;printf(\"area && circle are%f %f\",a,c);}\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#define pi 3.14159\nint main() {\n    char m;\n    float r, c, a;\n    printf(\"input mark a c or b && r\\n\");\n    scanf(\"%c %f\", &m, &r);\n    if (/*__BLANK_1__*/) {\n        a = pi * r * r;\n        printf(\"area is %f\", a);\n    }\n    if (/*__BLANK_2__*/) {\n        c = 2 * pi * r;\n        printf(\"circle is %f\", c);\n    }\n    if (/*__BLANK_3__*/) {\n        a = pi * r * r;\n        c = 2 * pi * r;\n        printf(\"area && circle are%f %f\", a, c);\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -577,7 +577,7 @@
           "answer": "m=='b'"
         }
       ],
-      "solution": "#include <stdio.h>\n#define pi 3.14159\nint main( )\n{ char m;\n    float r,c,a;\n    printf(\"input mark a c or b && r\\n\");\n    scanf(\"%c %f\",&m,&r);\n    if( m=='a' )\n        { a=pi * r * r;printf(\"area is %f\",a);}\n    if( m=='c' )\n        { c=2 * pi * r; printf(\"circle is %f\",c);}\n    if( m=='b' )\n        { a=pi * r * r;c=2 * pi * r;printf(\"area && circle are%f %f\",a,c);}\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#define pi 3.14159\nint main() {\n    char m;\n    float r, c, a;\n    printf(\"input mark a c or b && r\\n\");\n    scanf(\"%c %f\", &m, &r);\n    if (m == 'a') {\n        a = pi * r * r;\n        printf(\"area is %f\", a);\n    }\n    if (m == 'c') {\n        c = 2 * pi * r;\n        printf(\"circle is %f\", c);\n    }\n    if (m == 'b') {\n        a = pi * r * r;\n        c = 2 * pi * r;\n        printf(\"area && circle are%f %f\", a, c);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "a 2.0\n",
@@ -610,7 +610,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{   int x=4,y=6,z=7;\n    int /*__BLANK_1__*/;\n    if(/*__BLANK_2__*/) u=x;\n    else u=y;\n    if(/*__BLANK_3__*/) v=u;\n    else v=z;\n    printf(\"v=%d\",v);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x = 4, y = 6, z = 7;\n    int /*__BLANK_1__*/;\n    if (/*__BLANK_2__*/)\n        u = x;\n    else\n        u = y;\n    if (/*__BLANK_3__*/)\n        v = u;\n    else\n        v = z;\n    printf(\"v=%d\", v);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -634,7 +634,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{   int x=4,y=6,z=7;\n    int  u,v ;\n    if( x>y ) u=x;\n    else u=y;\n    if( u>z ) v=u;\n    else v=z;\n    printf(\"v=%d\",v);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x = 4, y = 6, z = 7;\n    int u, v;\n    if (x > y)\n        u = x;\n    else\n        u = y;\n    if (u > z)\n        v = u;\n    else\n        v = z;\n    printf(\"v=%d\", v);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -657,7 +657,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nint main( )\n{ int x,a;\n    float y;\n    scanf(\"%d %d\",&x,&a);\n    if(/*__BLANK_1__*/) y=0;\n    else if(/*__BLANK_2__*/) y=sqrt(a * a-x * x);\n    else y=x;\n    printf(\"%f\",y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nint main() {\n    int x, a;\n    float y;\n    scanf(\"%d %d\", &x, &a);\n    if (/*__BLANK_1__*/)\n        y = 0;\n    else if (/*__BLANK_2__*/)\n        y = sqrt(a * a - x * x);\n    else\n        y = x;\n    printf(\"%f\", y);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -675,7 +675,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nint main( )\n{ int x,a;\n    float y;\n    scanf(\"%d %d\",&x,&a);\n    if( x==a||x==-a ) y=0;\n    else if( x>-a&&x<a ) y=sqrt(a * a-x * x);\n    else y=x;\n    printf(\"%f\",y);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nint main() {\n    int x, a;\n    float y;\n    scanf(\"%d %d\", &x, &a);\n    if (x == a || x == -a)\n        y = 0;\n    else if (x > -a && x < a)\n        y = sqrt(a * a - x * x);\n    else\n        y = x;\n    printf(\"%f\", y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 3\n",
@@ -708,7 +708,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nint main( )\n{ float a,b,c;\n    float s,area;\n    scanf(\"%f %f %f\",&a,&b,&c);\n    if(/*__BLANK_1__*/)\n    { s=(a+b+c)/2;\n        area=sqrt(s * (s-a) * (s-b) * (s-c));\n        printf(\"%f\",area);\n        if(/*__BLANK_2__*/)\n            printf(\"等边三角形\");\n        else if(/*__BLANK_3__*/)\n            printf(\"等腰三角形\");\n        else if((a * a+b * b==c * c)||(a * a+c * c==b * b)||(b * b+c * c==a * a))\n            printf(\"直角三角形\");\n        else printf(\"一般三角形\");\n    }\n    else printf(\"不能组成三角形\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nint main() {\n    float a, b, c;\n    float s, area;\n    scanf(\"%f %f %f\", &a, &b, &c);\n    if (/*__BLANK_1__*/) {\n        s = (a + b + c) / 2;\n        area = sqrt(s * (s - a) * (s - b) * (s - c));\n        printf(\"%f\", area);\n        if (/*__BLANK_2__*/)\n            printf(\"等边三角形\");\n        else if (/*__BLANK_3__*/)\n            printf(\"等腰三角形\");\n        else if ((a * a + b * b == c * c) || (a * a + c * c == b * b) || (b * b + c * c == a * a))\n            printf(\"直角三角形\");\n        else\n            printf(\"一般三角形\");\n    } else\n        printf(\"不能组成三角形\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -732,7 +732,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nint main( )\n{ float a,b,c;\n    float s,area;\n    scanf(\"%f %f %f\",&a,&b,&c);\n    if( a+b>c&&b+c>a&&a+c>b )\n    { s=(a+b+c)/2;\n        area=sqrt(s * (s-a) * (s-b) * (s-c));\n        printf(\"%f\",area);\n        if( a==b&&b==c )\n            printf(\"等边三角形\");\n        else if( a==b||a==c||b==c )\n            printf(\"等腰三角形\");\n        else if((a * a+b * b==c * c)||(a * a+c * c==b * b)||(b * b+c * c==a * a))\n            printf(\"直角三角形\");\n        else printf(\"一般三角形\");\n    }\n    else printf(\"不能组成三角形\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nint main() {\n    float a, b, c;\n    float s, area;\n    scanf(\"%f %f %f\", &a, &b, &c);\n    if (a + b > c && b + c > a && a + c > b) {\n        s = (a + b + c) / 2;\n        area = sqrt(s * (s - a) * (s - b) * (s - c));\n        printf(\"%f\", area);\n        if (a == b && b == c)\n            printf(\"等边三角形\");\n        else if (a == b || a == c || b == c)\n            printf(\"等腰三角形\");\n        else if ((a * a + b * b == c * c) || (a * a + c * c == b * b) || (b * b + c * c == a * a))\n            printf(\"直角三角形\");\n        else\n            printf(\"一般三角形\");\n    } else\n        printf(\"不能组成三角形\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4 5\n",
@@ -765,7 +765,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ float len,weigh,hei,wid,mon,r;\n    scanf(\"%f %f %f %f\",&len,&wid,&hei,&weigh);\n    if(len>1||wid>1||hei>1||weigh>30) /*__BLANK_1__*/;\n    else if(weigh<10) r=0.8;\n    else if(weigh<=20) r=0.75;\n    else if(weigh<=30)/*__BLANK_2__*/;\n    if(r==-1) printf(\"error\\n\");\n    else\n       {/*__BLANK_3__*/; printf(\"%f\",mon);}\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    float len, weigh, hei, wid, mon, r;\n    scanf(\"%f %f %f %f\", &len, &wid, &hei, &weigh);\n    if (len > 1 || wid > 1 || hei > 1 || weigh > 30) /*__BLANK_1__*/\n        ;\n    else if (weigh < 10)\n        r = 0.8;\n    else if (weigh <= 20)\n        r = 0.75;\n    else if (weigh <= 30) /*__BLANK_2__*/\n        ;\n    if (r == -1)\n        printf(\"error\\n\");\n    else { /*__BLANK_3__*/\n        ;\n        printf(\"%f\", mon);\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -789,7 +789,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ float len,weigh,hei,wid,mon,r;\n    scanf(\"%f %f %f %f\",&len,&wid,&hei,&weigh);\n    if(len>1||wid>1||hei>1||weigh>30)  r=-1 ;\n    else if(weigh<10) r=0.8;\n    else if(weigh<=20) r=0.75;\n    else if(weigh<=30) r=0.7 ;\n    if(r==-1) printf(\"error\\n\");\n    else\n       { mon=weigh*r+0.2 ; printf(\"%f\",mon);}\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    float len, weigh, hei, wid, mon, r;\n    scanf(\"%f %f %f %f\", &len, &wid, &hei, &weigh);\n    if (len > 1 || wid > 1 || hei > 1 || weigh > 30)\n        r = -1;\n    else if (weigh < 10)\n        r = 0.8;\n    else if (weigh <= 20)\n        r = 0.75;\n    else if (weigh <= 30)\n        r = 0.7;\n    if (r == -1)\n        printf(\"error\\n\");\n    else {\n        mon = weigh * r + 0.2;\n        printf(\"%f\", mon);\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 2 2 40\n",
@@ -822,7 +822,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int c,t,m;\n    printf(\"input the number of coat and trousers you want to buy:\\n\");\n    scanf(\"%d %d\",&c,&t);\n    if(/*__BLANK_1__*/)\n        if(c>=50) m=c * 80;\n        else m=c * 90;\n    else\n        if(/*__BLANK_2__*/)\n            if(t>=50) m=t * 80+(c-t) * 60;\n            else m=t * 90+(c-t) * 60;\n    else\n        if(/*__BLANK_3__*/) m=c * 80+(t-c) * 45;\n        else m=c * 90+(t-c) * 45;\n    printf(\"%d\",m);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int c, t, m;\n    printf(\"input the number of coat and trousers you want to buy:\\n\");\n    scanf(\"%d %d\", &c, &t);\n    if (/*__BLANK_1__*/)\n        if (c >= 50)\n            m = c * 80;\n        else\n            m = c * 90;\n    else if (/*__BLANK_2__*/)\n        if (t >= 50)\n            m = t * 80 + (c - t) * 60;\n        else\n            m = t * 90 + (c - t) * 60;\n    else if (/*__BLANK_3__*/)\n        m = c * 80 + (t - c) * 45;\n    else\n        m = c * 90 + (t - c) * 45;\n    printf(\"%d\", m);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -846,7 +846,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int c,t,m;\n    printf(\"input the number of coat and trousers you want to buy:\\n\");\n    scanf(\"%d %d\",&c,&t);\n    if( c==t )\n        if(c>=50) m=c * 80;\n        else m=c * 90;\n    else\n        if( c>t )\n            if(t>=50) m=t * 80+(c-t) * 60;\n            else m=t * 90+(c-t) * 60;\n    else\n        if( c>=50 ) m=c * 80+(t-c) * 45;\n        else m=c * 90+(t-c) * 45;\n    printf(\"%d\",m);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int c, t, m;\n    printf(\"input the number of coat and trousers you want to buy:\\n\");\n    scanf(\"%d %d\", &c, &t);\n    if (c == t)\n        if (c >= 50)\n            m = c * 80;\n        else\n            m = c * 90;\n    else if (c > t)\n        if (t >= 50)\n            m = t * 80 + (c - t) * 60;\n        else\n            m = t * 90 + (c - t) * 60;\n    else if (c >= 50)\n        m = c * 80 + (t - c) * 45;\n    else\n        m = c * 90 + (t - c) * 45;\n    printf(\"%d\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "50 50\n",
@@ -879,7 +879,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int yend,mend,dend,yman,mman,dman,age;\n    scanf(\"%d %d %d %d %d %d\",&yend,&mend,&dend,&yman,&mman,&dman);\n    age=yend-yman;\n    if(mend /*__BLANK_1__*/ mman) age--;\n    else if(mend /*__BLANK_2__*/ mman && dend /*__BLANK_3__*/ dman) age--;\n    printf(\"%d\\n\",age);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int yend, mend, dend, yman, mman, dman, age;\n    scanf(\"%d %d %d %d %d %d\", &yend, &mend, &dend, &yman, &mman, &dman);\n    age = yend - yman;\n    if (mend /*__BLANK_1__*/ mman)\n        age--;\n    else if (mend /*__BLANK_2__*/ mman && dend /*__BLANK_3__*/ dman)\n        age--;\n    printf(\"%d\\n\", age);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -894,7 +894,7 @@
           "answer": "<"
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int yend,mend,dend,yman,mman,dman,age;\n    scanf(\"%d %d %d %d %d %d\",&yend,&mend,&dend,&yman,&mman,&dman);\n    age=yend-yman;\n    if(mend  <  mman) age--;\n    else if(mend  ==  mman && dend  <  dman) age--;\n    printf(\"%d\\n\",age);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int yend, mend, dend, yman, mman, dman, age;\n    scanf(\"%d %d %d %d %d %d\", &yend, &mend, &dend, &yman, &mman, &dman);\n    age = yend - yman;\n    if (mend < mman)\n        age--;\n    else if (mend == mman && dend < dman)\n        age--;\n    printf(\"%d\\n\", age);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2026 9 11 2000 9 11\n",
@@ -927,7 +927,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int flag,state;\n    printf(\"Enter a value of switch:\");\n    scanf(\"%d\",&flag);\n    printf(\"Enter a value for new state:\");\n    scanf(\"%d\",&state);\n    if(flag==1)\n        state=/*__BLANK_1__*/;\n    printf(\"Now value of state is:%d\\n\",state);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int flag, state;\n    printf(\"Enter a value of switch:\");\n    scanf(\"%d\", &flag);\n    printf(\"Enter a value for new state:\");\n    scanf(\"%d\", &state);\n    if (flag == 1)\n        state = /*__BLANK_1__*/;\n    printf(\"Now value of state is:%d\\n\", state);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -939,7 +939,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int flag,state;\n    printf(\"Enter a value of switch:\");\n    scanf(\"%d\",&flag);\n    printf(\"Enter a value for new state:\");\n    scanf(\"%d\",&state);\n    if(flag==1)\n        state= !state ;\n    printf(\"Now value of state is:%d\\n\",state);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int flag, state;\n    printf(\"Enter a value of switch:\");\n    scanf(\"%d\", &flag);\n    printf(\"Enter a value for new state:\");\n    scanf(\"%d\", &state);\n    if (flag == 1)\n        state = !state;\n    printf(\"Now value of state is:%d\\n\", state);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 0\n",
@@ -972,7 +972,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,m;\n    scanf(\"%d\",&x);\n    if(/*__BLANK_1__*/) m=5;\n    if(x<100&&x>=90) m=4;\n    if(x<90&&x>=80) m=3;\n    if(x<80&&x>=70) m=2;\n    if(x<70&&x>=60) m=1;\n    if(/*__BLANK_2__*/) /*__BLANK_3__*/;\n    printf(\"%d\\n\",m);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, m;\n    scanf(\"%d\", &x);\n    if (/*__BLANK_1__*/)\n        m = 5;\n    if (x < 100 && x >= 90)\n        m = 4;\n    if (x < 90 && x >= 80)\n        m = 3;\n    if (x < 80 && x >= 70)\n        m = 2;\n    if (x < 70 && x >= 60)\n        m = 1;\n    if (/*__BLANK_2__*/) /*__BLANK_3__*/\n        ;\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -994,7 +994,7 @@
           "answer": "m=0"
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int x,m;\n    scanf(\"%d\",&x);\n    if( x<110&&x>=100 ) m=5;\n    if(x<100&&x>=90) m=4;\n    if(x<90&&x>=80) m=3;\n    if(x<80&&x>=70) m=2;\n    if(x<70&&x>=60) m=1;\n    if( (x<60)||(x>109) )  m=0 ;\n    printf(\"%d\\n\",m);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, m;\n    scanf(\"%d\", &x);\n    if (x < 110 && x >= 100)\n        m = 5;\n    if (x < 100 && x >= 90)\n        m = 4;\n    if (x < 90 && x >= 80)\n        m = 3;\n    if (x < 80 && x >= 70)\n        m = 2;\n    if (x < 70 && x >= 60)\n        m = 1;\n    if ((x < 60) || (x > 109))\n        m = 0;\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "105\n",
@@ -1027,7 +1027,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int mark,k;\n    scanf(\"%d\",&mark);\n    switch(/*__BLANK_1__*/)\n    {   /*__BLANK_2__*/      k=1; break;\n        case  6   : k=2; break;\n        case  7   : k=3; break;\n        case  8   : k=4; break;\n        /*__BLANK_3__*/      k=5;\n    }\n    printf(\"%d\\n\",k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int mark, k;\n    scanf(\"%d\", &mark);\n    switch (/*__BLANK_1__*/) { /*__BLANK_2__*/\n        k = 1;\n        break;\n    case 6:\n        k = 2;\n        break;\n    case 7:\n        k = 3;\n        break;\n    case 8:\n        k = 4;\n        break;\n        /*__BLANK_3__*/ k = 5;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1051,7 +1051,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int mark,k;\n    scanf(\"%d\",&mark);\n    switch( mark/10 )\n    {    case 0: case 1: case 2: case 3: case 4: case 5:       k=1; break;\n        case  6   : k=2; break;\n        case  7   : k=3; break;\n        case  8   : k=4; break;\n         case 9: case 10:       k=5;\n    }\n    printf(\"%d\\n\",k);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int mark, k;\n    scanf(\"%d\", &mark);\n    switch (mark / 10) {\n    case 0:\n    case 1:\n    case 2:\n    case 3:\n    case 4:\n    case 5:\n        k = 1;\n        break;\n    case 6:\n        k = 2;\n        break;\n    case 7:\n        k = 3;\n        break;\n    case 8:\n        k = 4;\n        break;\n    case 9:\n    case 10:\n        k = 5;\n    }\n    printf(\"%d\\n\", k);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "55\n",
@@ -1084,7 +1084,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,c,m;\n    float y;\n    scanf(\"%d\",&x);\n    if(/*__BLANK_1__*/) c=-1;\n    else c=/*__BLANK_2__*/;\n    switch(c)\n    { case -1 : y=0; break;\n      case 0 : y=x; break;\n      case 1 : y=10; break;\n      case 2:\n      case 3 : y=-0.5*x+20; break;\n      default :y=-2;\n    }\n    if(/*__BLANK_3__*/) printf(\"y=%f\",y);\n    else printf(\"error\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, c, m;\n    float y;\n    scanf(\"%d\", &x);\n    if (/*__BLANK_1__*/)\n        c = -1;\n    else\n        c = /*__BLANK_2__*/;\n    switch (c) {\n    case -1:\n        y = 0;\n        break;\n    case 0:\n        y = x;\n        break;\n    case 1:\n        y = 10;\n        break;\n    case 2:\n    case 3:\n        y = -0.5 * x + 20;\n        break;\n    default:\n        y = -2;\n    }\n    if (/*__BLANK_3__*/)\n        printf(\"y=%f\", y);\n    else\n        printf(\"error\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1109,7 +1109,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int x,c,m;\n    float y;\n    scanf(\"%d\",&x);\n    if( x<0 ) c=-1;\n    else c= x/10 ;\n    switch(c)\n    { case -1 : y=0; break;\n      case 0 : y=x; break;\n      case 1 : y=10; break;\n      case 2:\n      case 3 : y=-0.5*x+20; break;\n      default :y=-2;\n    }\n    if( y!=-2 ) printf(\"y=%f\",y);\n    else printf(\"error\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int x, c, m;\n    float y;\n    scanf(\"%d\", &x);\n    if (x < 0)\n        c = -1;\n    else\n        c = x / 10;\n    switch (c) {\n    case -1:\n        y = 0;\n        break;\n    case 0:\n        y = x;\n        break;\n    case 1:\n        y = 10;\n        break;\n    case 2:\n    case 3:\n        y = -0.5 * x + 20;\n        break;\n    default:\n        y = -2;\n    }\n    if (y != -2)\n        printf(\"y=%f\", y);\n    else\n        printf(\"error\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "-5\n",
@@ -1142,7 +1142,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ float a,r,t,b;\n    int c;\n    scanf(\"%f\",&a);\n    if(a>=3000) c=6;\n    else c=/*__BLANK_1__*/;\n    switch(c)\n    { case 0: r=0;break;\n      case 1: r=0.05;break;\n      case 2:\n      case 3:/*__BLANK_2__*/;break;\n      case 4:\n      case 5: r=0.1;break;\n      case 6: r=0.15;break;\n    }\n    t=a*r;\n    b=a-t;\n    printf(\"r=%f,t=%f,b=%f\",r,t,b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    float a, r, t, b;\n    int c;\n    scanf(\"%f\", &a);\n    if (a >= 3000)\n        c = 6;\n    else\n        c = /*__BLANK_1__*/;\n    switch (c) {\n    case 0:\n        r = 0;\n        break;\n    case 1:\n        r = 0.05;\n        break;\n    case 2:\n    case 3: /*__BLANK_2__*/;\n        break;\n    case 4:\n    case 5:\n        r = 0.1;\n        break;\n    case 6:\n        r = 0.15;\n        break;\n    }\n    t = a * r;\n    b = a - t;\n    printf(\"r=%f,t=%f,b=%f\", r, t, b);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1160,7 +1160,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ float a,r,t,b;\n    int c;\n    scanf(\"%f\",&a);\n    if(a>=3000) c=6;\n    else c= a/500 ;\n    switch(c)\n    { case 0: r=0;break;\n      case 1: r=0.05;break;\n      case 2:\n      case 3: r=0.08 ;break;\n      case 4:\n      case 5: r=0.1;break;\n      case 6: r=0.15;break;\n    }\n    t=a*r;\n    b=a-t;\n    printf(\"r=%f,t=%f,b=%f\",r,t,b);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    float a, r, t, b;\n    int c;\n    scanf(\"%f\", &a);\n    if (a >= 3000)\n        c = 6;\n    else\n        c = a / 500;\n    switch (c) {\n    case 0:\n        r = 0;\n        break;\n    case 1:\n        r = 0.05;\n        break;\n    case 2:\n    case 3:\n        r = 0.08;\n        break;\n    case 4:\n    case 5:\n        r = 0.1;\n        break;\n    case 6:\n        r = 0.15;\n        break;\n    }\n    t = a * r;\n    b = a - t;\n    printf(\"r=%f,t=%f,b=%f\", r, t, b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "400\n",
@@ -1193,7 +1193,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ float a,r1,r2,m;\n    char b,c;\n    scanf(\"%f %c %c\",&a,&b,&c);\n    switch(b)\n      { case 'a': r1=1.5;break;\n        case 'b':/*__BLANK_1__*/;break;\n        case 'c': r1=1.18;break;\n      }\n    switch(c)\n      { case 'f': r2=0;break;\n        case 'm': r2=0.05;break;\n        case/*__BLANK_2__*/: r2=0.1;break;\n      }\n    m=/*__BLANK_3__*/;\n    printf(\"%f\",m);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    float a, r1, r2, m;\n    char b, c;\n    scanf(\"%f %c %c\", &a, &b, &c);\n    switch (b) {\n    case 'a':\n        r1 = 1.5;\n        break;\n    case 'b': /*__BLANK_1__*/;\n        break;\n    case 'c':\n        r1 = 1.18;\n        break;\n    }\n    switch (c) {\n    case 'f':\n        r2 = 0;\n        break;\n    case 'm':\n        r2 = 0.05;\n        break;\n    case /*__BLANK_2__*/:\n        r2 = 0.1;\n        break;\n    }\n    m = /*__BLANK_3__*/;\n    printf(\"%f\", m);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1215,7 +1215,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ float a,r1,r2,m;\n    char b,c;\n    scanf(\"%f %c %c\",&a,&b,&c);\n    switch(b)\n      { case 'a': r1=1.5;break;\n        case 'b': r1=1.35 ;break;\n        case 'c': r1=1.18;break;\n      }\n    switch(c)\n      { case 'f': r2=0;break;\n        case 'm': r2=0.05;break;\n        case 'e' : r2=0.1;break;\n      }\n    m= a*r1*(1-r2) ;\n    printf(\"%f\",m);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    float a, r1, r2, m;\n    char b, c;\n    scanf(\"%f %c %c\", &a, &b, &c);\n    switch (b) {\n    case 'a':\n        r1 = 1.5;\n        break;\n    case 'b':\n        r1 = 1.35;\n        break;\n    case 'c':\n        r1 = 1.18;\n        break;\n    }\n    switch (c) {\n    case 'f':\n        r2 = 0;\n        break;\n    case 'm':\n        r2 = 0.05;\n        break;\n    case 'e':\n        r2 = 0.1;\n        break;\n    }\n    m = a * r1 * (1 - r2);\n    printf(\"%f\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "10 a f\n",
@@ -1248,7 +1248,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int y,m1,d1,m2,d2;\n    int i,d;\n    scanf(\"%d,%d,%d,%d,%d\",&y,&m1,&d1,&m2,&d2);\n    y=(y%4==0/*__BLANK_1__*/y%100!=0/*__BLANK_2__*/y%400==0)? 1:0;\n    d=0-d1;\n    for(i=m1;i<m2;i++)\n      switch(i)\n      { case 1:case 3:case 5:case 7:\n        case 8:case 10:case 12:\n        d+=31;\n        break;\n        case 2: d=d+28+y;\n        break;\n        case 4:case 6:case 9:case 11:\n        /*__BLANK_3__*/;\n      }\n    printf(\"%d\",d+d2+1);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int y, m1, d1, m2, d2;\n    int i, d;\n    scanf(\"%d,%d,%d,%d,%d\", &y, &m1, &d1, &m2, &d2);\n    y = (y % 4 == 0 /*__BLANK_1__*/ y % 100 != 0 /*__BLANK_2__*/ y % 400 == 0) ? 1 : 0;\n    d = 0 - d1;\n    for (i = m1; i < m2; i++)\n        switch (i) {\n        case 1:\n        case 3:\n        case 5:\n        case 7:\n        case 8:\n        case 10:\n        case 12:\n            d += 31;\n            break;\n        case 2:\n            d = d + 28 + y;\n            break;\n        case 4:\n        case 6:\n        case 9:\n        case 11:\n            /*__BLANK_3__*/;\n        }\n    printf(\"%d\", d + d2 + 1);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1272,7 +1272,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int y,m1,d1,m2,d2;\n    int i,d;\n    scanf(\"%d,%d,%d,%d,%d\",&y,&m1,&d1,&m2,&d2);\n    y=(y%4==0 && y%100!=0 || y%400==0)? 1:0;\n    d=0-d1;\n    for(i=m1;i<m2;i++)\n      switch(i)\n      { case 1:case 3:case 5:case 7:\n        case 8:case 10:case 12:\n        d+=31;\n        break;\n        case 2: d=d+28+y;\n        break;\n        case 4:case 6:case 9:case 11:\n         d+=30 ;\n      }\n    printf(\"%d\",d+d2+1);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int y, m1, d1, m2, d2;\n    int i, d;\n    scanf(\"%d,%d,%d,%d,%d\", &y, &m1, &d1, &m2, &d2);\n    y = (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) ? 1 : 0;\n    d = 0 - d1;\n    for (i = m1; i < m2; i++)\n        switch (i) {\n        case 1:\n        case 3:\n        case 5:\n        case 7:\n        case 8:\n        case 10:\n        case 12:\n            d += 31;\n            break;\n        case 2:\n            d = d + 28 + y;\n            break;\n        case 4:\n        case 6:\n        case 9:\n        case 11:\n            d += 30;\n        }\n    printf(\"%d\", d + d2 + 1);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1997,2,27,3,10\n",
@@ -1301,7 +1301,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (/*__BLANK_1__*/)\n        max = b;\n    if (/*__BLANK_2__*/)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (/*__BLANK_1__*/)\n        max = b;\n    if (/*__BLANK_2__*/)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1312,8 +1312,8 @@
           "answer": "c > max"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (/*__BLANK_1__*/)\n        max = b;\n    if (/*__BLANK_2__*/)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (b > max)\n        max = b;\n    if (c > max)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (/*__BLANK_1__*/)\n        max = b;\n    if (/*__BLANK_2__*/)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c, max;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    max = a;\n    if (b > max)\n        max = b;\n    if (c > max)\n        max = c;\n    printf(\"%d\\n\", max);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 7 5\n",
@@ -1349,7 +1349,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && /*__BLANK_1__*/) || /*__BLANK_2__*/)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && /*__BLANK_1__*/) || /*__BLANK_2__*/)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1366,8 +1366,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && /*__BLANK_1__*/) || /*__BLANK_2__*/)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && /*__BLANK_1__*/) || /*__BLANK_2__*/)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int y;\n\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2024\n",
@@ -1403,7 +1403,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = /*__BLANK_1__*/;\n    else if (/*__BLANK_2__*/)\n        y = 0;\n    else\n        y = /*__BLANK_3__*/;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = /*__BLANK_1__*/;\n    else if (/*__BLANK_2__*/)\n        y = 0;\n    else\n        y = /*__BLANK_3__*/;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1427,8 +1427,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = /*__BLANK_1__*/;\n    else if (/*__BLANK_2__*/)\n        y = 0;\n    else\n        y = /*__BLANK_3__*/;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = x + 1;\n    else if (x == 0)\n        y = 0;\n    else\n        y = x * x;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = /*__BLANK_1__*/;\n    else if (/*__BLANK_2__*/)\n        y = 0;\n    else\n        y = /*__BLANK_3__*/;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    double x, y;\n\n    if (scanf(\"%lf\", &x) != 1)\n        return 1;\n    if (x < 0)\n        y = x + 1;\n    else if (x == 0)\n        y = 0;\n    else\n        y = x * x;\n    printf(\"%.2f\\n\", y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "-2.5\n",
@@ -1464,7 +1464,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && /*__BLANK_1__*/)\n        c = /*__BLANK_2__*/;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", /*__BLANK_3__*/, c);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && /*__BLANK_1__*/)\n        c = /*__BLANK_2__*/;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", /*__BLANK_3__*/, c);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1485,8 +1485,8 @@
           "answer": "c"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && /*__BLANK_1__*/)\n        c = /*__BLANK_2__*/;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", /*__BLANK_3__*/, c);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        c = c - 32;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", c, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && /*__BLANK_1__*/)\n        c = /*__BLANK_2__*/;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", /*__BLANK_3__*/, c);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        c = c - 32;\n    else if (c >= 'A' && c <= 'Z')\n        c = c + 32;\n    printf(\"%c %d\\n\", c, c);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "M\n",
@@ -1522,7 +1522,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (/*__BLANK_1__*/ && /*__BLANK_2__*/)\n    {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (/*__BLANK_3__*/)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    }\n    else\n        printf(\"invalid\\n\");\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (/*__BLANK_1__*/ &&/*__BLANK_2__*/) {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (/*__BLANK_3__*/)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    } else\n        printf(\"invalid\\n\");\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1537,8 +1537,8 @@
           "answer": "a == b || b == c || a == c"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (/*__BLANK_1__*/ && /*__BLANK_2__*/)\n    {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (/*__BLANK_3__*/)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    }\n    else\n        printf(\"invalid\\n\");\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a + b > c && a + c > b && b + c > a)\n    {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (a == b || b == c || a == c)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    }\n    else\n        printf(\"invalid\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (/*__BLANK_1__*/ &&/*__BLANK_2__*/) {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (/*__BLANK_3__*/)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    } else\n        printf(\"invalid\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    if (a + b > c && a + c > b && b + c > a) {\n        if (a == b && b == c)\n            printf(\"equilateral\\n\");\n        else if (a == b || b == c || a == c)\n            printf(\"isosceles\\n\");\n        else\n            printf(\"scalene\\n\");\n    } else\n        printf(\"invalid\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4 5\n",
@@ -1574,7 +1574,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (/*__BLANK_1__*/)\n    {\n    case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n        d = 31;\n        /*__BLANK_2__*/;\n    case 4: case 6: case 9: case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? /*__BLANK_3__*/ : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (/*__BLANK_1__*/) {\n    case 1:\n    case 3:\n    case 5:\n    case 7:\n    case 8:\n    case 10:\n    case 12:\n        d = 31;\n        /*__BLANK_2__*/;\n    case 4:\n    case 6:\n    case 9:\n    case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? /*__BLANK_3__*/ : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1589,8 +1589,8 @@
           "answer": "29"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (/*__BLANK_1__*/)\n    {\n    case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n        d = 31;\n        /*__BLANK_2__*/;\n    case 4: case 6: case 9: case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? /*__BLANK_3__*/ : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (m)\n    {\n    case 1: case 3: case 5: case 7: case 8: case 10: case 12:\n        d = 31;\n        break;\n    case 4: case 6: case 9: case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? 29 : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (/*__BLANK_1__*/) {\n    case 1:\n    case 3:\n    case 5:\n    case 7:\n    case 8:\n    case 10:\n    case 12:\n        d = 31;\n        /*__BLANK_2__*/;\n    case 4:\n    case 6:\n    case 9:\n    case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? /*__BLANK_3__*/ : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    if (scanf(\"%d%d\", &y, &m) != 2)\n        return 1;\n    switch (m) {\n    case 1:\n    case 3:\n    case 5:\n    case 7:\n    case 8:\n    case 10:\n    case 12:\n        d = 31;\n        break;\n    case 4:\n    case 6:\n    case 9:\n    case 11:\n        d = 30;\n        break;\n    case 2:\n        d = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? 29 : 28;\n        break;\n    default:\n        d = 0;\n    }\n    printf(\"%d-%d %d\\n\", y, m, d);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2024 2\n",
@@ -1626,7 +1626,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4)\n    {\n    case 0:\n        s = s + /*__BLANK_1__*/;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + /*__BLANK_2__*/;\n        break;\n    default:\n        s = /*__BLANK_3__*/;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4) {\n    case 0:\n        s = s + /*__BLANK_1__*/;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + /*__BLANK_2__*/;\n        break;\n    default:\n        s = /*__BLANK_3__*/;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1641,8 +1641,8 @@
           "answer": "-1"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4)\n    {\n    case 0:\n        s = s + /*__BLANK_1__*/;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + /*__BLANK_2__*/;\n        break;\n    default:\n        s = /*__BLANK_3__*/;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4)\n    {\n    case 0:\n        s = s + 10;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + 40;\n        break;\n    default:\n        s = -1;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4) {\n    case 0:\n        s = s + /*__BLANK_1__*/;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + /*__BLANK_2__*/;\n        break;\n    default:\n        s = /*__BLANK_3__*/;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n, s = 0;\n\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    switch (n % 4) {\n    case 0:\n        s = s + 10;\n    case 1:\n        s = s + 20;\n        break;\n    case 2:\n        s = s + 40;\n        break;\n    default:\n        s = -1;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1\n",
@@ -1678,7 +1678,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (/*__BLANK_1__*/)\n    {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (/*__BLANK_2__*/)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    /*__BLANK_3__*/:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (/*__BLANK_1__*/) {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (/*__BLANK_2__*/) {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n        /*__BLANK_3__*/ : level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1699,8 +1699,8 @@
           "answer": "default"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (/*__BLANK_1__*/)\n    {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (/*__BLANK_2__*/)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    /*__BLANK_3__*/:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (score < 0 || score > 100)\n    {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (score / 10)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (/*__BLANK_1__*/) {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (/*__BLANK_2__*/) {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n        /*__BLANK_3__*/ : level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    if (score < 0 || score > 100) {\n        printf(\"out of range\\n\");\n        return 0;\n    }\n    switch (score / 10) {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "95\n",
@@ -1737,7 +1737,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", /*__BLANK_1__*/);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", /*__BLANK_1__*/);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1748,8 +1748,8 @@
           "answer": "x >= 1 && x <= 10 && y % 2 == 0"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", /*__BLANK_1__*/);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", x <= 0 || y <= 0);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", x >= 1 && x <= 10 && y % 2 == 0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", /*__BLANK_1__*/);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    /* 用德摩根律改写 !(x > 0 && y > 0) */\n    printf(\"%d\\n\", x <= 0 || y <= 0);\n    /* 判断 x 落在 [1,10] 且 y 为偶数 */\n    printf(\"%d\\n\", x >= 1 && x <= 10 && y % 2 == 0);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4\n",
@@ -1785,7 +1785,7 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (/*__BLANK_1__*/)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (/*__BLANK_2__*/)\n    {\n        int t = /*__BLANK_3__*/;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (/*__BLANK_1__*/)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (/*__BLANK_2__*/) {\n        int t = /*__BLANK_3__*/;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1800,8 +1800,8 @@
           "answer": "a"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (/*__BLANK_1__*/)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (/*__BLANK_2__*/)\n    {\n        int t = /*__BLANK_3__*/;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (b >= a && b <= c)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (a > b)\n    {\n        int t = a;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (/*__BLANK_1__*/)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (/*__BLANK_2__*/) {\n        int t = /*__BLANK_3__*/;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    /* 判断 b 是否落在 [a, c] 内（含端点） */\n    if (b >= a && b <= c)\n        printf(\"in\\n\");\n    else\n        printf(\"out\\n\");\n    /* 必要时交换 a、b，使 a <= b */\n    if (a > b) {\n        int t = a;\n        a = b;\n        b = t;\n    }\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 5 10\n",
@@ -1841,7 +1841,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x=1 , y , z ;\n    x*=3+2 ;\n    printf ( \"%d\\t\" , x ) ;\n    x*=y=z=5 ;\n    printf ( \"%d\\t\" , x ) ;\n    x=y==z ;\n    printf ( \"%d\\n\" , x ) ;\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x = 1, y, z;\n    x *= 3 + 2;\n    printf(\"%d\\t\", x);\n    x *= y = z = 5;\n    printf(\"%d\\t\", x);\n    x = y == z;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
       "answer": "5\t25\t1",
       "id": "c-ch04-cr-001",
       "verified": true
@@ -1858,7 +1858,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y,z;\n    x=3;y=3;\n    z=x==y;\n    printf(\"z=%d\\n\",z);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y, z;\n    x = 3;\n    y = 3;\n    z = x == y;\n    printf(\"z=%d\\n\", z);\n    return 0;\n}",
       "answer": "z=1",
       "id": "c-ch04-cr-002",
       "verified": true
@@ -1875,7 +1875,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a1,a2,b1,b2;\n    int i=5,j=7,k=0;\n    a1=!k;\n    a2=i!=j;\n    printf(\"a1=%d\\ta2=%d\\n\",a1,a2);\n    b1=k&&j;\n    b2=k||j;\n    printf(\"b1=%d\\tb2=%d\\n\",b1,b2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a1, a2, b1, b2;\n    int i = 5, j = 7, k = 0;\n    a1 = !k;\n    a2 = i != j;\n    printf(\"a1=%d\\ta2=%d\\n\", a1, a2);\n    b1 = k && j;\n    b2 = k || j;\n    printf(\"b1=%d\\tb2=%d\\n\", b1, b2);\n    return 0;\n}",
       "answer": "a1=1\ta2=1\nb1=0\tb2=1",
       "id": "c-ch04-cr-003",
       "verified": true
@@ -1892,7 +1892,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y,sum,product;\n    printf(\"Enter x and y:\");\n    scanf(\"%d,%d\",&x,&y);\n    sum=x+y;\n    product=x* y;\n    if(sum>product)\n      printf(\"(x+y)>(x* y)\");\n    else\n      printf(\"(x* y)>=(x+y)\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y, sum, product;\n    printf(\"Enter x and y:\");\n    scanf(\"%d,%d\", &x, &y);\n    sum = x + y;\n    product = x * y;\n    if (sum > product)\n        printf(\"(x+y)>(x* y)\");\n    else\n        printf(\"(x* y)>=(x+y)\");\n    return 0;\n}",
       "answer": "",
       "answerIsDescription": true,
       "id": "c-ch04-cr-004",
@@ -1910,7 +1910,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main ( )\n{   char class ;\n    printf ( \"Enter 1 for 1st class post or 2 for 2nd post\" ) ;\n    scanf ( \"%c\" , &class ) ;\n    if ( class=='1' )\n        printf ( \"1st class postage is 19p\" ) ;\n    else\n        printf ( \"2nd class postage is 14p\" ) ;\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char class;\n    printf(\"Enter 1 for 1st class post or 2 for 2nd post\");\n    scanf(\"%c\", &class);\n    if (class == '1')\n        printf(\"1st class postage is 19p\");\n    else\n        printf(\"2nd class postage is 14p\");\n    return 0;\n}",
       "stdin": "2\n",
       "answer": "Enter 1 for 1st class post or 2 for 2nd post2nd class postage is 14p",
       "id": "c-ch04-cr-005",
@@ -1928,7 +1928,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main ( )\n{   float costPrice, sellingPrice;\n    printf ( \"Enter costPrice $ : \" ) ;\n    scanf ( \"%f\", &costPrice);\n    if ( costPrice>=5 )\n        {  sellingPrice=costPrice+costPrice * 0.25;\n            printf ( \"Selling Price (0.25) $  %6.2f\" , sellingPrice) ;\n        }\n    else\n        {  sellingPrice=costPrice+costPrice * 0.30;\n            printf ( \"Selling Price (0.30) $  %6.2f\" , sellingPrice) ;\n        }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    float costPrice, sellingPrice;\n    printf(\"Enter costPrice $ : \");\n    scanf(\"%f\", &costPrice);\n    if (costPrice >= 5) {\n        sellingPrice = costPrice + costPrice * 0.25;\n        printf(\"Selling Price (0.25) $  %6.2f\", sellingPrice);\n    } else {\n        sellingPrice = costPrice + costPrice * 0.30;\n        printf(\"Selling Price (0.30) $  %6.2f\", sellingPrice);\n    }\n    return 0;\n}",
       "stdin": "4.4\n",
       "answer": "Enter costPrice $ : Selling Price (0.30) $    5.72",
       "id": "c-ch04-cr-006",
@@ -1946,7 +1946,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int t,h,m;\n    scanf(\"%d\",&t);\n    h=(t/100)%12;\n    if(h==0) h=12;\n    printf(\"%d:\",h);\n    m=t%100;\n    if(m<10) printf(\"0\");\n    printf(\"%d\",m);\n    if(t<1200||t==2400)\n        printf(\" AM\");\n    else printf(\" PM\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int t, h, m;\n    scanf(\"%d\", &t);\n    h = (t / 100) % 12;\n    if (h == 0)\n        h = 12;\n    printf(\"%d:\", h);\n    m = t % 100;\n    if (m < 10)\n        printf(\"0\");\n    printf(\"%d\", m);\n    if (t < 1200 || t == 2400)\n        printf(\" AM\");\n    else\n        printf(\" PM\");\n    return 0;\n}",
       "stdin": "1605\n",
       "answer": "4:05 PM",
       "id": "c-ch04-cr-007",
@@ -1964,7 +1964,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x;\n    float y;\n    scanf(\"%d\",&x);\n    if(x>=0 && x<=2999) y=18+0.12 * x;\n    if(x>=3000 && x<=5999) y=36+0.6 * x;\n    if(x>=6000 && x<=10000) y=54+0.3 * x;\n    printf(\"%6.1f \",y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x;\n    float y;\n    scanf(\"%d\", &x);\n    if (x >= 0 && x <= 2999)\n        y = 18 + 0.12 * x;\n    if (x >= 3000 && x <= 5999)\n        y = 36 + 0.6 * x;\n    if (x >= 6000 && x <= 10000)\n        y = 54 + 0.3 * x;\n    printf(\"%6.1f \", y);\n    return 0;\n}",
       "stdin": "5999\n",
       "answer": "3635.4 ",
       "id": "c-ch04-cr-008",
@@ -1982,7 +1982,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a,b,c,d,x;\n    a=c=0;\n    b=1;\n    d=20;\n    if (a) d=d-10;\n    else if(!b)\n        if(!c) x=15;\n        else x=25;\n    printf(\"%d\\n\",d);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a, b, c, d, x;\n    a = c = 0;\n    b = 1;\n    d = 20;\n    if (a)\n        d = d - 10;\n    else if (!b)\n        if (!c)\n            x = 15;\n        else\n            x = 25;\n    printf(\"%d\\n\", d);\n    return 0;\n}",
       "answer": "20",
       "id": "c-ch04-cr-009",
       "verified": true
@@ -1999,7 +1999,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main ( )\n{ int x , y=-2, z=0;\n    if ( (z=y)<0 ) x=4;\n    else if (y==0 ) x=5;\n    else x=6;\n    printf ( \"\\t%d\\t%d\\n\", x, z);\n    if ( z=(y==0)) x=5;\n    x=4;\n    printf ( \"\\t%d\\t%d\\n\", x, z);\n    if ( x=z=y) x=4;\n    printf ( \"\\t%d\\t%d\\n\", x, z);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y = -2, z = 0;\n    if ((z = y) < 0)\n        x = 4;\n    else if (y == 0)\n        x = 5;\n    else\n        x = 6;\n    printf(\"\\t%d\\t%d\\n\", x, z);\n    if (z = (y == 0))\n        x = 5;\n    x = 4;\n    printf(\"\\t%d\\t%d\\n\", x, z);\n    if (x = z = y)\n        x = 4;\n    printf(\"\\t%d\\t%d\\n\", x, z);\n    return 0;\n}",
       "answer": "\t4\t-2\n\t4\t0\n\t4\t-2",
       "id": "c-ch04-cr-010",
       "verified": true
@@ -2016,7 +2016,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int s,t,a,b;\n    scanf(\"%d,%d\",&a,&b);\n    s=1;\n    t=1;\n    if (a>0) s=s+1;\n    if (a>b) t=s+t;\n    else if (a==b) t=5;\n    else t=2 * s;\n    printf(\"s=%d,t=%d\",s,t);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int s, t, a, b;\n    scanf(\"%d,%d\", &a, &b);\n    s = 1;\n    t = 1;\n    if (a > 0)\n        s = s + 1;\n    if (a > b)\n        t = s + t;\n    else if (a == b)\n        t = 5;\n    else\n        t = 2 * s;\n    printf(\"s=%d,t=%d\", s, t);\n    return 0;\n}",
       "answer": "",
       "answerIsDescription": true,
       "id": "c-ch04-cr-011",
@@ -2034,7 +2034,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int s,t,a,b;\n    scanf(\"%d,%d\",&a,&b);\n    s=1;\n    t=1;\n    if (a>0) s=s+1;\n    if (a>b) t=s+t;\n    else if (a==b) t=5;\n    else t=2 * s;\n    printf(\"s=%d,t=%d\",s,t);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int s, t, a, b;\n    scanf(\"%d,%d\", &a, &b);\n    s = 1;\n    t = 1;\n    if (a > 0)\n        s = s + 1;\n    if (a > b)\n        t = s + t;\n    else if (a == b)\n        t = 5;\n    else\n        t = 2 * s;\n    printf(\"s=%d,t=%d\", s, t);\n    return 0;\n}",
       "answer": "",
       "answerIsDescription": true,
       "id": "c-ch04-cr-012",
@@ -2052,7 +2052,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=-10, b=-3;\n    printf(\"%d,\", -a%b);\n    printf(\"%d,\", (a-b, a+b));\n    printf(\"%d\\n\", a-b? a-b:a+b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = -10, b = -3;\n    printf(\"%d,\", -a % b);\n    printf(\"%d,\", (a - b, a + b));\n    printf(\"%d\\n\", a - b ? a - b : a + b);\n    return 0;\n}",
       "answer": "1,-13,-7",
       "id": "c-ch04-cr-013",
       "verified": true
@@ -2069,7 +2069,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y,z;\n    x=3;\n    y=z=4;\n    printf(\"%d,\", ( x>=y>=x )? 1:0 );\n    printf(\"%d\\n\", z>=y && y>=x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y, z;\n    x = 3;\n    y = z = 4;\n    printf(\"%d,\", (x >= y >= x) ? 1 : 0);\n    printf(\"%d\\n\", z >= y && y >= x);\n    return 0;\n}",
       "answer": "0,1",
       "id": "c-ch04-cr-014",
       "verified": true
@@ -2086,7 +2086,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a,b;\n    scanf(\"%d\",&a);\n    b=(a>=0)? a:-a;\n    printf(\"b=%d\",b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d\", &a);\n    b = (a >= 0) ? a : -a;\n    printf(\"b=%d\", b);\n    return 0;\n}",
       "stdin": "-2\n",
       "answer": "b=2",
       "id": "c-ch04-cr-015",
@@ -2104,7 +2104,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a;\n    scanf(\"%d\",&a);\n    printf(\"%s\",(a%2!=0)?\"no\":\"yes\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%s\", (a % 2 != 0) ? \"no\" : \"yes\");\n    return 0;\n}",
       "stdin": "100\n",
       "answer": "yes",
       "id": "c-ch04-cr-016",
@@ -2122,7 +2122,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char ch;\n    scanf(\"%c\",&ch);\n    ch=(ch>='A' && ch<='Z')? (ch+32):ch;\n    ch=(ch>='a' && ch<='z')? (ch-32):ch;\n    printf(\"%c\",ch);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char ch;\n    scanf(\"%c\", &ch);\n    ch = (ch >= 'A' && ch <= 'Z') ? (ch + 32) : ch;\n    ch = (ch >= 'a' && ch <= 'z') ? (ch - 32) : ch;\n    printf(\"%c\", ch);\n    return 0;\n}",
       "stdin": "Q",
       "answer": "Q",
       "id": "c-ch04-cr-017",
@@ -2140,7 +2140,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int y,t;\n    scanf(\"%d\",&y);\n    t=((y%4==0 && y%100!=0)||y%400==0)? 1:0;\n    if(t) printf(\"%d is\",y);\n    else printf(\"%d is not\",y);\n    printf(\" a leap year\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int y, t;\n    scanf(\"%d\", &y);\n    t = ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? 1 : 0;\n    if (t)\n        printf(\"%d is\", y);\n    else\n        printf(\"%d is not\", y);\n    printf(\" a leap year\");\n    return 0;\n}",
       "stdin": "1992\n",
       "answer": "1992 is a leap year",
       "id": "c-ch04-cr-018",
@@ -2158,7 +2158,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int a = 0, b = 2, c = 3;\nswitch (a)\n    { case 0:switch(b==2)\n        { case 1:printf(\"&\");break;\n          case 2:printf(\"%\");break;\n        }\n      case 1: switch(c)\n        { case 1:printf(\"$\");\n          case 2:printf(\"*\");break;\n          default:printf(\"#\");\n        }\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a = 0, b = 2, c = 3;\n    switch (a) {\n    case 0:\n        switch (b == 2) {\n        case 1:\n            printf(\"&\");\n            break;\n        case 2:\n            printf(\"%\");\n            break;\n        }\n    case 1:\n        switch (c) {\n        case 1:\n            printf(\"$\");\n        case 2:\n            printf(\"*\");\n            break;\n        default:\n            printf(\"#\");\n        }\n    }\n    return 0;\n}",
       "answer": "&#",
       "id": "c-ch04-cr-019",
       "verified": true
@@ -2175,7 +2175,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ float x,y;\n    char o;\n    double r;\n    scanf(\"%f %f %c\",&x,&y,&o);\n    switch(o)\n        { case '+': r=x+y;break;\n          case '-': r=x-y;break;\n          case '*': r=x* y;break;\n          case '/': r=x/y;break;\n        }\n    printf(\"%f\",r);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    float x, y;\n    char o;\n    double r;\n    scanf(\"%f %f %c\", &x, &y, &o);\n    switch (o) {\n    case '+':\n        r = x + y;\n        break;\n    case '-':\n        r = x - y;\n        break;\n    case '*':\n        r = x * y;\n        break;\n    case '/':\n        r = x / y;\n        break;\n    }\n    printf(\"%f\", r);\n    return 0;\n}",
       "answer": "0.600000",
       "id": "c-ch04-cr-020",
       "verified": true,
@@ -2193,7 +2193,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    char grade = 'C';\nswitch ( grade )\n    { case 'A' : printf(\"85~100\\n\");\n      case 'B' : printf(\"70~84n\");\n      case 'C' : printf(\"60~69\\n\");\n      case 'D' : printf(\"<60\\n\");\n      default : printf(\"error!\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    char grade = 'C';\n    switch (grade) {\n    case 'A':\n        printf(\"85~100\\n\");\n    case 'B':\n        printf(\"70~84n\");\n    case 'C':\n        printf(\"60~69\\n\");\n    case 'D':\n        printf(\"<60\\n\");\n    default:\n        printf(\"error!\\n\");\n    }\n    return 0;\n}",
       "answer": "60~69\n<60\nerror!",
       "id": "c-ch04-cr-021",
       "verified": true
@@ -2210,7 +2210,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nint x=1,y=0;\nswitch (x)\n    { case 1 :\n        switch (y)\n          { case 0 : printf(\"** 1 **\\n\"); break;\n            case 1 : printf(\"** 2 **\\n\"); break;\n          }\n      case 2 : printf(\"** 3 **\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int x = 1, y = 0;\n    switch (x) {\n    case 1:\n        switch (y) {\n        case 0:\n            printf(\"** 1 **\\n\");\n            break;\n        case 1:\n            printf(\"** 2 **\\n\");\n            break;\n        }\n    case 2:\n        printf(\"** 3 **\\n\");\n    }\n    return 0;\n}",
       "answer": "** 1 **\n** 3 **",
       "id": "c-ch04-cr-022",
       "verified": true
@@ -2227,7 +2227,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=2,b=7,c=5;\n    switch (a>0)\n    { case 1: switch (b<0)\n        { case 1: printf(\"@\"); break;\n          case 2: printf(\"!\"); break;\n        }\n      case 0: switch (c==5)\n        { case 0: printf(\"*\"); break;\n          case 1: printf(\"#\"); break;\n          default: printf(\"#\"); break;\n        }\n      default: printf(\"&\");\n    } printf(\"\\n\");\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 2, b = 7, c = 5;\n    switch (a > 0) {\n    case 1:\n        switch (b < 0) {\n        case 1:\n            printf(\"@\");\n            break;\n        case 2:\n            printf(\"!\");\n            break;\n        }\n    case 0:\n        switch (c == 5) {\n        case 0:\n            printf(\"*\");\n            break;\n        case 1:\n            printf(\"#\");\n            break;\n        default:\n            printf(\"#\");\n            break;\n        }\n    default:\n        printf(\"&\");\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "answer": "#&",
       "id": "c-ch04-cr-023",
       "verified": true
@@ -2244,7 +2244,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x,y;\n    x=5;\n    switch(x)\n    { case 1:\n      case 2:\n      case 3:\n      case 4:printf(\"x<5\\n\");\n      case 5:printf(\"x=5\\n\",x);\n      default:printf(\"The value of x is unknown.\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int x, y;\n    x = 5;\n    switch (x) {\n    case 1:\n    case 2:\n    case 3:\n    case 4:\n        printf(\"x<5\\n\");\n    case 5:\n        printf(\"x=5\\n\", x);\n    default:\n        printf(\"The value of x is unknown.\\n\");\n    }\n    return 0;\n}",
       "answer": "x=5\nThe value of x is unknown.",
       "id": "c-ch04-cr-024",
       "verified": true
@@ -2257,9 +2257,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 3, c = 0;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 10;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = 5, b = 3, c = 0;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 10;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "1 1\na=5 b=4 c=0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 3, c = 0;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 10;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 5, b = 3, c = 0;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 10;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 1 1 与 a=5 b=4 c=0。r1 中 a>0 成立，才继续算 b++>2，即 3>2 成立且 b 自增为 4；r2 中 c<1 即 0<1 已成立，|| 短路使 ++a 根本不执行，a 保持 5。关键推理：&& 只有在左操作数为假时才跳过右侧，|| 只有在左操作数为真时才跳过右侧，被跳过一侧的副作用（自增、赋值、函数调用）不会发生。易错点：把 b++ 的自增当成\"总会执行\"，或认为短路只影响结果不影响变量值。",
       "tags": [
@@ -2283,9 +2283,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = -2, b = 3, c = 5;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 3;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = -2, b = 3, c = 5;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 3;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "0 0\na=-1 b=3 c=5",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = -2, b = 3, c = 5;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 3;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = -2, b = 3, c = 5;\n    int r1, r2;\n\n    r1 = a > 0 && b++ > 2;\n    r2 = c < 1 || ++a > 3;\n    printf(\"%d %d\\n\", r1, r2);\n    printf(\"a=%d b=%d c=%d\\n\", a, b, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 0 0 与 a=-1 b=3 c=5。r1 中 a>0 即 -2>0 为假，&& 短路，b++ 不执行，b 仍是 3，r1=0；r2 中 c<1 即 5<1 为假，必须算右侧 ++a>3，a 先自增为 -1，-1>3 为假，r2=0。关键推理：短路方向相反——&& 遇假即停，|| 遇真即停，所以同一程序里两个表达式的副作用情况完全不同。易错点：误以为 -1>3 成立（负数比较），或漏掉 ++a 已把 a 改成 -1 这一事实。",
       "tags": [
@@ -2309,9 +2309,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x = 0, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 3)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x = 0, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 3)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "10",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x = 0, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 3)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 0, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 3)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 10。x=0 时第一个 if 的 x != 0 为假，&& 短路使 y / x 不被求值，从而避免了除零错误；n 保持 0。第二个 if 的 x == 0 为真，|| 短路使 y % x 也不求值，n 加 10 得 10。关键推理：短路求值不只是性能优化，更是 C 语言里保护除零、空指针解引用的标准手段，x != 0 && y / x > k 是教科书写法。易错点：把两个条件写成 y / x > k && x != 0，顺序颠倒后除零照旧发生。",
       "tags": [
@@ -2335,9 +2335,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x = 4, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x = 4, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "11",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x = 4, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 4, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 11。x=4 非零，y/x=12/4=3，3>2 成立，n=1；第二个 if 中 x==0 为假，继续算 y%x=12%4=0，条件成立，n=1+10=11。关键推理：两个 if 是独立语句，第二个不会因第一个成立而跳过，n 的两次累加互不影响。整数除法与取余都是向零截断，12 能被 4 整除故余数为 0。易错点：误把两个 if 当成 if-else 结构，以为 n 只能是 1 或 10。",
       "tags": [
@@ -2361,9 +2361,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x = 5, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x = 5, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x = 5, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 5, y = 12;\n    int n = 0;\n\n    if (x != 0 && y / x > 2)\n        n = 1;\n    if (x == 0 || y % x == 0)\n        n = n + 10;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 0。x=5 非零，y/x=12/5=2（整数除法舍去小数），2>2 为假，n 仍为 0；第二个 if 中 x==0 为假，y%x=12%5=2 不等于 0，条件为假，n 不加 10。关键推理：整数除法 12/5 得 2 而不是 2.4，这是分支判断里最常见的失分点。易错点：以为 12/5>2 成立；另外 y%x 的结果符号跟随被除数，本题两者皆正无影响。",
       "tags": [
@@ -2387,9 +2387,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n3 5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n3 5\n```",
       "answer": "Q1\n2",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
       "stdin": "3 5\n",
       "explanation": "结论：输出 Q1 与 2。x=3>0 进入外层，y=5>0 打印 Q1；随后 x>y 为假、x==y 为假，走最后的 else 打印 y-x=2。关键推理：那个缩进在第 4 列的 else 按 C 语法与最近的、尚未配对 if 的 if(y>0) 配对，这就是\"悬挂 else\"——配对关系由语法决定，与缩进无关。本题恰好 y>0 成立，陷阱没有暴露。易错点：把 else 当成属于 if(x>0)，从而认为 x<=0 时会打印 Q4。",
       "tags": [
@@ -2413,9 +2413,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n-2 4\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n-2 4\n```",
       "answer": "6",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
       "stdin": "-2 4\n",
       "explanation": "结论：只输出 6，第一行什么都不打印。x=-2 使 if(x>0) 为假，整个内层 if(y>0)...else 都被跳过，所以既没有 Q1 也没有 Q4；接着 x>y 为假、x==y 为假，else 打印 y-x=4-(-2)=6。关键推理：悬挂 else 与外层 if(x>0) 无关，外层条件为假时它控制的只有一条内层 if 语句。易错点：按缩进误读为\"x<=0 就打印 Q4\"，这正是本题要暴露的错误理解。",
       "tags": [
@@ -2439,9 +2439,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n5 -3\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}\n```\n运行时输入：\n```\n5 -3\n```",
       "answer": "Q4\n8",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n    else\n        printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x > 0)\n        if (y > 0)\n            printf(\"Q1\\n\");\n        else\n            printf(\"Q4\\n\");\n    if (x > y)\n        printf(\"%d\\n\", x - y);\n    else if (x == y)\n        printf(\"same\\n\");\n    else\n        printf(\"%d\\n\", y - x);\n    return 0;\n}",
       "stdin": "5 -3\n",
       "explanation": "结论：输出 Q4 与 8。x=5>0 进入外层，y=-3 不满足 y>0，于是与之配对的 else 打印 Q4；后半段 x>y 即 5>-3 成立，打印 x-y=5-(-3)=8。关键推理：else 归属最近的内层 if，因此 Q4 的含义是\"x>0 且 y<=0\"（第四象限），而不是\"x<=0\"。减负数等于加正数，5-(-3)=8。易错点：把 Q4 误解为 x 非正的情形；忽略减号后紧跟负号要先算括号内的值。",
       "tags": [
@@ -2465,9 +2465,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n-8\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n-8\n```",
       "answer": "-8 -6",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "stdin": "-8\n",
       "explanation": "结论：输出 -8 -6。x=-8 满足第一个条件 x<-5，y=2*(-8)+10=-16+10=-6，后面的 else if 全部不再判断。关键推理：else if 链是自上而下逐个测试、一旦命中立即执行并跳出整条链的，所以分支区间的书写顺序必须从最窄或最极端的一端开始排列。易错点：先写 x<0 再写 x<-5，那么 -8 会落进 x*x=64 这个错误分支。",
       "tags": [
@@ -2491,9 +2491,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n12\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n12\n```",
       "answer": "12 -1",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x < -5)\n        y = 2 * x + 10;\n    else if (x < 0)\n        y = x * x;\n    else if (x == 0)\n        y = 100;\n    else if (x < 10)\n        y = x / 2;\n    else\n        y = -1;\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "stdin": "12\n",
       "explanation": "结论：输出 12 -1。x=12 依次不满足 x<-5、x<0、x==0、x<10，最终落到 else，y=-1。关键推理：else 分支是整条 else if 链的兜底，只有在前面所有条件都为假时才执行；本链把实数轴切成 (-∞,-5)、[-5,0)、{0}、(0,10)、[10,+∞) 五段，12 属于最后一段。易错点：以为 else if(x<10) 之后的 else 只对应\"x 略大于 10\"，其实它覆盖所有 x>=10。",
       "tags": [
@@ -2517,9 +2517,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n95\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n95\n```",
       "answer": "95 A\ntwo",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
       "stdin": "95\n",
       "explanation": "结论：输出 95 A 与 two。s/10=9 命中 case 9，g=A；注意 case 10 与 case 9 共用同一段语句，这是 switch 处理\"100 分\"的标准写法。第二个 switch 中 95%3=2，命中 case 2 打印 two。关键推理：switch 用整数除法把连续分数映射成有限个离散值，比一长串 else if 更清晰。易错点：漏写 case 10 会让满分 100 落到 default 得 E。",
       "tags": [
@@ -2543,9 +2543,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n88\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n88\n```",
       "answer": "88 B\none\ntwo",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
       "stdin": "88\n",
       "explanation": "结论：输出 88 B、one、two 三行。s/10=8 命中 case 8，g=B；第二个 switch 中 88%3=1，case 1 后面没有 break，语句执行完直接贯穿到 case 2，于是 one 和 two 都被打印。关键推理：switch 的 case 只是入口标签，匹配后从该标签顺序往下执行，直到遇到 break 或 switch 结束，这就是\"贯穿\"。易错点：认为一次 switch 只会输出一行；本题正是用故意的贯穿来考察这一点。",
       "tags": [
@@ -2569,9 +2569,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n60\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n60\n```",
       "answer": "60 D\nzero",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10)\n    {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3)\n    {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int s;\n    char g;\n\n    if (scanf(\"%d\", &s) != 1)\n        return 1;\n    switch (s / 10) {\n    case 10:\n    case 9:\n        g = 'A';\n        break;\n    case 8:\n        g = 'B';\n        break;\n    case 7:\n        g = 'C';\n        break;\n    case 6:\n        g = 'D';\n        break;\n    default:\n        g = 'E';\n    }\n    printf(\"%d %c\\n\", s, g);\n    switch (s % 3) {\n    case 0:\n        printf(\"zero\\n\");\n        break;\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n    }\n    return 0;\n}",
       "stdin": "60\n",
       "explanation": "结论：输出 60 D 与 zero。s/10=6 命中 case 6，g=D；60%3=0 命中 case 0，打印 zero 后 break。关键推理：default 分支只在所有 case 都不匹配时执行，本题 60 分恰好命中 case 6，default 未被触发。易错点：把 60 分误判为不及格 E——按本题的映射规则 60 分对应 D，等级划分完全由 case 常量决定，而不是由常识决定。",
       "tags": [
@@ -2595,9 +2595,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n12 + 5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n12 + 5\n```",
       "answer": "17",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
       "stdin": "12 + 5\n",
       "explanation": "结论：输出 17。scanf(\"%d %c %d\") 依次读入 12、加号、5，格式串中的空格表示跳过任意多个空白字符；switch(op) 命中 case '+'，打印 a+b=17。关键推理：字符常量在 switch 中作为 case 标签完全合法，因为字符本质是整型码值，加号码值为 43。易错点：把格式串写成 \"%d%c%d\" 时，输入中的空格会被 %c 读走导致 op 是空格；这里靠空格分隔符规避了该问题。",
       "tags": [
@@ -2621,9 +2621,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n20 / 0\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n20 / 0\n```",
       "answer": "div0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op)\n    {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char op;\n\n    if (scanf(\"%d %c %d\", &a, &op, &b) != 3)\n        return 1;\n    switch (op) {\n    case '+':\n        printf(\"%d\\n\", a + b);\n        break;\n    case '-':\n        printf(\"%d\\n\", a - b);\n        break;\n    case '*':\n        printf(\"%d\\n\", a * b);\n        break;\n    case '/':\n        if (b != 0)\n            printf(\"%d\\n\", a / b);\n        else\n            printf(\"div0\\n\");\n        break;\n    default:\n        printf(\"bad op %c\\n\", op);\n    }\n    return 0;\n}",
       "stdin": "20 / 0\n",
       "explanation": "结论：输出 div0。op 为除号，命中 case '/'，内部再用 if 判断 b != 0，b 为 0 故走 else 打印 div0。关键推理：switch 的每个 case 内部可以再嵌套 if 语句，用来处理该分支下的特殊情况；整数除零在 C 中是未定义行为，通常直接崩溃，所以必须提前拦截。易错点：以为 switch 能自动处理除零，或把判零写在 switch 外面导致其他运算符也被误拦。",
       "tags": [
@@ -2647,9 +2647,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n3 7 5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n3 7 5\n```",
       "answer": "7\n7\no\n4",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
       "stdin": "3 7 5\n",
       "explanation": "结论：依次输出 7、7、o、4。第一行取 a、b 中较大者 7；第二行 a>b 为假，取冒号后的 (b>c?b:c)，7>5 得 7；第三行 3%2=1 为真，输出 o 表示奇数；第四行 a>b 为假，取 b-a=4。关键推理：?: 是唯一的三目运算符，形式为 条件?表达式1:表达式2，只有被选中的那一支才会求值。易错点：把 a%2 写成 a%2==1，对负数 a 二者结果不同（-3%2 得 -1）。",
       "tags": [
@@ -2672,9 +2672,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n-4 -9 0\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n-4 -9 0\n```",
       "answer": "-4\n0\ne\n5",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
       "stdin": "-4 -9 0\n",
       "explanation": "结论：依次输出 -4、0、e、5。a>b 即 -4>-9 为真，第一行取 a=-4；第二行走真支 (a>c?a:c)，-4>0 为假取 c=0；第三行 -4%2=0 为假，输出 e；第四行取 a-b=-4-(-9)=5。关键推理：求三个数的最大值必须嵌套两层 ?:，且条件运算符是右结合的，a?b:c?d:e 等价于 a?b:(c?d:e)，本题用括号显式分组避免歧义。易错点：负数取余的符号、以及减去负数变加法。",
       "tags": [
@@ -2697,9 +2697,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n6 6 6\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}\n```\n运行时输入：\n```\n6 6 6\n```",
       "answer": "6\n6\ne\n0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    if (scanf(\"%d%d%d\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d\\n\", a > b ? a : b);\n    printf(\"%d\\n\", a > b ? (a > c ? a : c) : (b > c ? b : c));\n    printf(\"%c\\n\", a % 2 ? 'o' : 'e');\n    printf(\"%d\\n\", a > b ? a - b : b - a);\n    return 0;\n}",
       "stdin": "6 6 6\n",
       "explanation": "结论：依次输出 6、6、e、0。三个数相等时 a>b 为假，第一行取 b=6；第二行同样走假支，b>c 为假取 c=6；第三行 6%2=0 为假输出 e；第四行 b-a=0。关键推理：> 是严格大于，相等时条件为假，所以\"取较大值\"的写法在三数相等时依然给出正确的 6，不会漏掉边界。易错点：把边界情况当成需要特判的例外；实际上 ?: 的两个分支覆盖全部取值，无需额外判断相等。",
       "tags": [
@@ -2722,9 +2722,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```\n运行时输入：\n```\nm\n2024\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```\n运行时输入：\n```\nm\n2024\n```",
       "answer": "lower M\n2024 leap",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
       "stdin": "m\n2024\n",
       "explanation": "结论：输出 lower M 与 2024 leap。字符 m 落在 a~z 区间，减 32 得大写 M（ASCII 中小写比对应大写大 32）；随后 scanf(\"%d\") 会自动跳过 m 后面的换行读入 2024，2024 能被 4 整除且不能被 100 整除，判为闰年。关键推理：字符分类靠码值区间比较，闰年条件是\"四年一闰、百年不闰、四百年再闰\"的直译。易错点：%c 不跳空白而 %d 跳空白，两者混用时缓冲区残留的换行常被误读。",
       "tags": [
@@ -2748,9 +2748,9 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```\n运行时输入：\n```\n7\n1900\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}\n```\n运行时输入：\n```\n7\n1900\n```",
       "answer": "digit 7\n1900 common",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int y;\n\n    if (scanf(\"%c\", &c) != 1)\n        return 1;\n    if (c >= 'a' && c <= 'z')\n        printf(\"lower %c\\n\", c - 32);\n    else if (c >= 'A' && c <= 'Z')\n        printf(\"upper %c\\n\", c + 32);\n    else if (c >= '0' && c <= '9')\n        printf(\"digit %d\\n\", c - '0');\n    else\n        printf(\"other %d\\n\", c);\n    if (scanf(\"%d\", &y) != 1)\n        return 1;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"%d leap\\n\", y);\n    else\n        printf(\"%d common\\n\", y);\n    return 0;\n}",
       "stdin": "7\n1900\n",
       "explanation": "结论：输出 digit 7 与 1900 common。字符 7 落在 0~9 区间，c-'0' 把字符码值转成数值 7（'7' 是 55，'0' 是 48）；1900 能被 4 整除但也能被 100 整除，且不能被 400 整除，因此不是闰年。关键推理：闰年表达式的括号不能省，&& 优先级高于 ||，(A && B) || C 与 A && (B || C) 含义完全不同。易错点：只写 y%4==0 会把 1900、2100 误判为闰年。",
       "tags": [
@@ -2805,7 +2805,7 @@
         "嵌套"
       ],
       "stem": "阅读下面程序的输出结果（输入为 `6`）。",
-      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    if (x > 0)\n        if (x > 5)\n            printf(\"A\\n\");\n    else\n        printf(\"B\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    if (x > 0)\n        if (x > 5)\n            printf(\"A\\n\");\n        else\n            printf(\"B\\n\");\n    return 0;\n}",
       "stdin": "6",
       "answer": "A",
       "answerIsDescription": false,
@@ -2830,7 +2830,7 @@
         "变量"
       ],
       "stem": "阅读下面程序的输出结果（输入为 `2`）。",
-      "code": "#include <stdio.h>\n\nint main(void) {\n    int n, r = 1;\n    scanf(\"%d\", &n);\n    switch (n) {\n        case 1: r = r * 1;\n        case 2: r = r * 2;\n        case 3: r = r * 3;\n        case 4: r = r * 4;\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n, r = 1;\n    scanf(\"%d\", &n);\n    switch (n) {\n    case 1:\n        r = r * 1;\n    case 2:\n        r = r * 2;\n    case 3:\n        r = r * 3;\n    case 4:\n        r = r * 4;\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}",
       "stdin": "2",
       "answer": "24",
       "answerIsDescription": false,
@@ -2982,8 +2982,8 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x = 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y);\n    {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x = 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y);\n    {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x = 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y)\n        ;\n    {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x = 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y)\n        ;\n    {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0 5\n",
@@ -2998,7 +2998,7 @@
           "expected": "x is positive\n2 9"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x == 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y)\n    {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n\n    if (scanf(\"%d%d\", &x, &y) != 2)\n        return 1;\n    if (x == 0)\n        printf(\"x is zero\\n\");\n    else if (x > 0)\n        printf(\"x is positive\\n\");\n    else\n        printf(\"x is negative\\n\");\n    if (x > y) {\n        int t = x;\n        x = y;\n        y = t;\n    }\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "bugs": [
         "把关系运算符 == 误写成赋值运算符 =，if(x = 0) 会先把 0 赋给 x，再以 0 作为条件（假），于是\"x is zero\"永远不打印，且 x 被悄悄改成 0，后面的比较与交换全部基于错误的值。判断相等必须用 ==。",
         "if 后面多了一个分号，这个分号本身就是一条空语句，成了 if 所控制的全部内容；后面的复合语句 { int t = x; ... } 变成无条件执行，不管 x 与 y 的大小关系都会交换。删除分号后花括号才是 if 的从属语句。"
@@ -3024,8 +3024,8 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        level = level;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", score);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        level = level;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", score);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score) {\n    case 10:\n    case 9:\n        level = 'A';\n        level = level;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", score);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score) {\n    case 10:\n    case 9:\n        level = 'A';\n        level = level;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", score);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "95\n",
@@ -3040,7 +3040,7 @@
           "expected": "E"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score / 10)\n    {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int score;\n    char level;\n\n    if (scanf(\"%d\", &score) != 1)\n        return 1;\n    switch (score / 10) {\n    case 10:\n    case 9:\n        level = 'A';\n        break;\n    case 8:\n        level = 'B';\n        break;\n    case 7:\n        level = 'C';\n        break;\n    case 6:\n        level = 'D';\n        break;\n    default:\n        level = 'E';\n    }\n    printf(\"%c\\n\", level);\n    return 0;\n}",
       "bugs": [
         "switch 的表达式写成了原始分数，而 case 标签是 6~10 这些\"十分位\"值，95 分匹配不到任何 case 只会走 default 得 E。必须先用整数除法 score / 10 把百分制映射成 0~10 的离散值。",
         "case 9/10 分支末尾缺少 break，导致命中 A 之后继续贯穿执行 case 8 的 level = B，所有 90 分以上的成绩都会被错判成 B。补上 break 才能在赋值后立即跳出 switch。",
@@ -3068,8 +3068,8 @@
       "section": "4.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (1 <= x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x / 2);\n    if (x % 2 == 1)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (1 <= x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x / 2);\n    if (x % 2 == 1)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (1 <= x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x / 2);\n    if (x % 2 == 1)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (1 <= x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x / 2);\n    if (x % 2 == 1)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -3084,7 +3084,7 @@
           "expected": "out\n0\neven"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x >= 1 && x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x % 2);\n    if (x % 2 == 0)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    if (x >= 1 && x <= 10)\n        printf(\"in [1,10]\\n\");\n    else\n        printf(\"out\\n\");\n    printf(\"%d\\n\", x % 2);\n    if (x % 2 == 0)\n        printf(\"even\\n\");\n    else\n        printf(\"odd\\n\");\n    return 0;\n}",
       "bugs": [
         "C 语言不支持数学上的连写不等式：1 <= x <= 10 会先算 1 <= x 得到 0 或 1，再拿这个结果与 10 比较，而 0 和 1 都小于 10，条件恒为真。必须拆成 x >= 1 && x <= 10。",
         "题目要输出 x 除以 2 的余数，写成了商 x / 2。/ 是整除取商，% 才是取余，输入 5 时前者输出 2、后者输出 1。",
