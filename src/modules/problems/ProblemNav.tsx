@@ -70,7 +70,7 @@ export function ProblemNav({ id, position = 'bottom' }: { id: string; position?:
           ctx && ctx.order.includes(id)
             ? ctx.order
             : ctx && ctx.order.length > 0
-              ? contextOrderByFilter(index, { chapter: ctx.chapter, type: ctx.type, difficulty: ctx.difficulty, status: ctx.status, q: ctx.q, sort: ctx.sort })
+              ? contextOrderByFilter(index, ctx)
               : chapterOrderById(index, id)
         const loc = locateInOrder(order, id)
         setState({ ...loc, order })
@@ -108,8 +108,11 @@ export function ProblemNav({ id, position = 'bottom' }: { id: string; position?:
 
   if (!state) return null
   const { prev, next, index, order } = state
-  const isFirst = prev === null
-  const isLast = next === null
+  // 任务07-阶段3修复：locateInOrder 在首/尾返回 ''（空串）而非 null，
+  // 旧代码 `prev === null` 永假 → 首尾按钮从不置灰、边界点击静默无反应。
+  // 统一按 falsy 判断（null 与 '' 都视为「没有目标」）。
+  const isFirst = !prev
+  const isLast = !next
   const total = order.length
   const labelBase = '本章'
 
@@ -142,8 +145,13 @@ export function ProblemNav({ id, position = 'bottom' }: { id: string; position?:
       <span className="ml-1" style={muted} data-role="problem-nav-progress">
         第 {index + 1} / {total} 题（{labelBase}）
       </span>
-      {isLast && (
-        <Link to="/problems" className="ml-1 hover:underline" style={{ color: 'var(--fg-link)' }}>
+      {isFirst && index === 0 && (
+        <Link to="/problems" className="ml-1 hover:underline" style={{ color: 'var(--fg-link)' }} data-role="problem-nav-edge-hint">
+          已是本章第一题，去看看上一章
+        </Link>
+      )}
+      {isLast && index >= 0 && index === order.length - 1 && (
+        <Link to="/problems" className="ml-1 hover:underline" style={{ color: 'var(--fg-link)' }} data-role="problem-nav-edge-hint">
           已是本章最后一题，去看看下一章
         </Link>
       )}

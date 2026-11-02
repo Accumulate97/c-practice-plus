@@ -31,7 +31,7 @@ import { join } from 'node:path'
 }
 
 const SUITES = [
-  'acceptance:site-ui', 'acceptance:refnav-ui', 'acceptance:list-ui', 'acceptance:progress-ui', 'acceptance:viz-ui',
+  'acceptance:site-ui', 'acceptance:refnav-ui', 'acceptance:navctx-ui', 'acceptance:list-ui', 'acceptance:progress-ui', 'acceptance:viz-ui',
   'acceptance:dbg-ui', 'acceptance:subpath', 'acceptance:stage10', 'acceptance:cc', 'acceptance:dbg',
   'acceptance:viz3d', 'acceptance:playground', 'acceptance:learn', 'acceptance:bugs', 'acceptance:review',
   'acceptance:search', 'acceptance:failover', 'acceptance:onboard',

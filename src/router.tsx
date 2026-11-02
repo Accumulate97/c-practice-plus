@@ -1,9 +1,19 @@
-import { createHashRouter } from 'react-router-dom'
+import { createHashRouter, Navigate, useParams } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { HomePage } from './pages/HomePage'
 import { ProgressPage } from './pages/ProgressPage'
 import { JudgeLabPage } from './pages/JudgeLabPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+
+/**
+ * 任务07-阶段3：题目深链别名 /#/p/:id → /#/problems/p/:id。
+ * 对外分享/文档里用短链，落地时 replace 跳转到正式路由（不留回退栈残留）。
+ * Navigate/useParams 与 router 同包，主 chunk 零增量。
+ */
+function ProblemDeepLinkAlias() {
+  const { id } = useParams()
+  return <Navigate to={`/problems/p/${id ?? ''}`} replace />
+}
 
 /**
  * HashRouter：GitHub Pages 项目页跑在 /<repo>/ 子路径下，
@@ -46,6 +56,9 @@ export const router = createHashRouter([
           <p className="text-sm" style={{ color: 'var(--fg-muted)' }}>正在加载题目页…</p>
         ),
       },
+      // 任务07-阶段3：短深链别名 /#/p/:id（对外分享口径），replace 跳转到 /#/problems/p/:id。
+      // 必须声明在通配 * 之前；element 直挂（Navigate 来自 react-router 主包，零增量）。
+      { path: 'p/:id', element: <ProblemDeepLinkAlias /> },
       // 阶段 10-1：知识板块从 SectionPage 占位换成真页面（列表 + 详情），与题目 / 演示同一口径走路由级 lazy。
       // 同时删掉 problems/:section —— 列表页早改用 ?chapter= 查询参数，这条只会让打错的深链
       // 落到一张「阶段 4 待办」的过期占位卡，不如直接交给下面的 404。

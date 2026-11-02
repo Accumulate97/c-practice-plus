@@ -26,6 +26,11 @@ export interface NavContext {
   status: string
   q: string
   sort: string
+  /** 任务07-阶段3：标签筛选（列表 URL ?tag=，同口径进上下文） */
+  tag: string
+  /** 任务07-阶段3：页码/每页条数也进上下文 —— 返回列表时连翻页状态一起恢复（缺省为空串=第1页/默认条数） */
+  page: string
+  size: string
   /** 当时的筛选结果（已按 sort 排序）的题目 id 序列，用于上一题/下一题定位 */
   order: string[]
   /** 触发 snapshot 的当前题 id */
@@ -66,6 +71,9 @@ export function readNavContext(): NavContext | null {
       status: typeof o.status === 'string' ? o.status : '',
       q: typeof o.q === 'string' ? o.q : '',
       sort: typeof o.sort === 'string' ? o.sort : 'default',
+      tag: typeof o.tag === 'string' ? o.tag : '',
+      page: typeof o.page === 'string' ? o.page : '',
+      size: typeof o.size === 'string' ? o.size : '',
       order: o.order,
       from: typeof o.from === 'string' ? o.from : '',
     }
@@ -89,11 +97,15 @@ export interface NavFilter {
   status: string
   q: string
   sort: string
+  tag: string
+  page: string
+  size: string
 }
 
 /**
  * 把一组筛选参数还原成列表页的 URL query（§3.3：从详情页返回列表时恢复筛选条件）。
  * 空串一律剔除，避免 URL 里挂着 ?chapter=&type= 这类噪音。
+ * page='1'/size='50' 是列表页默认值，同样剔除（与 ProblemListPage 的 DEFAULT_PAGE_SIZE/PAGE_SIZES 同口径）。
  */
 export function filterToQuery(f: NavFilter): string {
   const p = new URLSearchParams()
@@ -102,7 +114,10 @@ export function filterToQuery(f: NavFilter): string {
   if (f.difficulty) p.set('difficulty', f.difficulty)
   if (f.status) p.set('status', f.status)
   if (f.q) p.set('q', f.q)
+  if (f.tag) p.set('tag', f.tag)
   if (f.sort && f.sort !== 'default') p.set('sort', f.sort)
+  if (f.page && f.page !== '1') p.set('page', f.page)
+  if (f.size && f.size !== '50') p.set('size', f.size)
   const qs = p.toString()
   return qs ? `?${qs}` : ''
 }
@@ -115,6 +130,9 @@ export function contextToFilter(ctx: NavContext): NavFilter {
     status: ctx.status,
     q: ctx.q,
     sort: ctx.sort,
+    tag: ctx.tag,
+    page: ctx.page,
+    size: ctx.size,
   }
 }
 
@@ -124,7 +142,8 @@ function narrow(index: ProblemIndex, f: NavFilter): ProblemIndexEntry[] {
     (p) =>
       (f.chapter.length === 0 || shardKey(p.file) === f.chapter) &&
       (f.type.length === 0 || p.type === f.type) &&
-      (f.difficulty.length === 0 || String(p.difficulty) === f.difficulty),
+      (f.difficulty.length === 0 || String(p.difficulty) === f.difficulty) &&
+      (f.tag.length === 0 || (p.tags ?? []).includes(f.tag)),
   )
   const terms = f.q.toLowerCase().split(/\s+/).filter((t) => t.length > 0)
   if (terms.length > 0) {

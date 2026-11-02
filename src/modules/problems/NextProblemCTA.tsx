@@ -38,7 +38,7 @@ export function NextProblemCTA({ id }: { id: string }) {
       const ord = ctx && ctx.order.includes(id)
         ? ctx.order
         : ctx && ctx.order.length > 0
-          ? contextOrderByFilter(index, { chapter: ctx.chapter, type: ctx.type, difficulty: ctx.difficulty, status: ctx.status, q: ctx.q, sort: ctx.sort })
+          ? contextOrderByFilter(index, ctx)
           : chapterOrderById(index, id)
       if (alive) setOrder(ord)
     }).catch(() => { if (alive) setOrder([]) })

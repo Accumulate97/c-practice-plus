@@ -14,7 +14,7 @@
  *
  * 筛选条件全部写进 URL query（replace，不堆历史栈），因此可分享、可刷新、可被验收脚本直接驱动。
  */
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { pickDaily, pickRandom } from '../modules/problems/random'
@@ -38,6 +38,8 @@ const control: CSSProperties = {
 const PAGE_SIZES = [20, 50, 100]
 const DEFAULT_PAGE_SIZE = 50
 const DIFFICULTIES = [1, 2, 3, 4, 5]
+/** 任务07-阶段3：列表滚动位置存储键（sessionStorage，值 {sig: URL签名, y: scrollY}） */
+const SCROLL_KEY = 'cpractice:problems:list-scroll'
 
 type SortKey = 'default' | 'index' | 'diff-asc' | 'diff-desc'
 
@@ -177,6 +179,7 @@ function Ready({ index }: { index: ProblemIndex }) {
   const difficulty = params.get('difficulty') ?? ''
   const status = params.get('status') ?? ''
   const query = (params.get('q') ?? '').trim()
+  const tag = params.get('tag') ?? ''
   const sortParam = params.get('sort') ?? 'default'
   const sortKey: SortKey = SORTS.some((s) => s.key === sortParam) ? (sortParam as SortKey) : 'default'
   const sizeParam = Number(params.get('size') ?? DEFAULT_PAGE_SIZE)
@@ -224,7 +227,7 @@ function Ready({ index }: { index: ProblemIndex }) {
     [query],
   )
 
-  /** 章节 + 题型 + 难度 + 关键词四维先过一遍；状态维单独过，好让状态 chips 显示「当前范围内的」计数 */
+  /** 章节 + 题型 + 难度 + 标签 + 关键词五维先过一遍；状态维单独过，好让状态 chips 显示「当前范围内的」计数 */
   const narrowed = useMemo(
     () =>
       index.problems.filter(
@@ -232,9 +235,10 @@ function Ready({ index }: { index: ProblemIndex }) {
           (chapter.length === 0 || shardKey(p.file) === chapter) &&
           (type.length === 0 || p.type === type) &&
           (difficulty.length === 0 || String(p.difficulty) === difficulty) &&
+          (tag.length === 0 || (p.tags ?? []).includes(tag)) &&
           matchesTerms(p, queryTerms),
       ),
-    [index, chapter, type, difficulty, queryTerms],
+    [index, chapter, type, difficulty, tag, queryTerms],
   )
 
   const statusCounts = useMemo(() => {
@@ -271,10 +275,46 @@ function Ready({ index }: { index: ProblemIndex }) {
   const from = sorted.length === 0 ? 0 : (page - 1) * pageSize + 1
   const to = (page - 1) * pageSize + rows.length
 
-  const activeFilterCount = [chapter, type, difficulty, status, query].filter((v) => v.length > 0).length
+  const activeFilterCount = [chapter, type, difficulty, status, query, tag].filter((v) => v.length > 0).length
   const chapterName = chapters.find((c) => c.key === chapter)?.name ?? ''
 
-  /** 点进题目时 snapshot 导航上下文：筛选题集 + 当时排序，供详情页上一题/下一题还原同一序 */
+  /**
+   * 任务07-阶段3：列表滚动位置恢复。
+   * 点行进入详情页时把「规范化 URL 签名 + scrollY」存 sessionStorage；
+   * 回到列表（后退 / 面包屑）时签名一致才恢复 —— 筛选变了就不恢复（回到顶部是新上下文的正确行为）。
+   * 签名做规范化（固定键序、剔除 page=1/size=50/sort=default 默认值）：
+   * 面包屑回跳的 query 与点行时的 query 键序/默认值写法可能不同，裸 toString 比较会误判。
+   * 用 sessionStorage 而非 localStorage：跨会话不残留，刷新当次会话内仍有效。
+   */
+  const canonicalSig = useCallback(() => {
+    const p = new URLSearchParams()
+    for (const k of ['chapter', 'type', 'difficulty', 'status', 'q', 'tag', 'sort', 'page', 'size']) {
+      const v = (params.get(k) ?? '').trim()
+      if (!v) continue
+      if ((k === 'sort' && v === 'default') || (k === 'page' && v === '1') || (k === 'size' && v === String(DEFAULT_PAGE_SIZE))) continue
+      p.set(k, v)
+    }
+    return p.toString()
+  }, [params])
+
+  const scrollRestored = useRef(false)
+  useEffect(() => {
+    if (scrollRestored.current) return
+    if (sorted.length === 0) return
+    scrollRestored.current = true
+    try {
+      const raw = sessionStorage.getItem(SCROLL_KEY)
+      if (!raw) return
+      const saved = JSON.parse(raw) as { sig?: string; y?: number }
+      if (saved.sig === canonicalSig() && typeof saved.y === 'number' && saved.y > 0) {
+        requestAnimationFrame(() => window.scrollTo({ top: saved.y ?? 0 }))
+      }
+    } catch {
+      /* 恢复失败不挡主流程 */
+    }
+  }, [sorted.length, canonicalSig])
+
+  /** 点进题目时 snapshot 导航上下文：筛选题集 + 当时排序 + 翻页状态，供详情页上一题/下一题与返回列表还原 */
   const snapshotNav = useCallback(
     (from: string) => {
       writeNavContext({
@@ -284,11 +324,19 @@ function Ready({ index }: { index: ProblemIndex }) {
         status,
         q: query,
         sort: sortKey,
+        tag,
+        page: String(page),
+        size: String(pageSize),
         order: sorted.map((p) => p.id),
         from,
       })
+      try {
+        sessionStorage.setItem(SCROLL_KEY, JSON.stringify({ sig: canonicalSig(), y: window.scrollY }))
+      } catch {
+        /* 存不下就不恢复，无碍 */
+      }
     },
-    [chapter, type, difficulty, status, query, sortKey, sorted],
+    [chapter, type, difficulty, status, query, sortKey, tag, page, pageSize, sorted, canonicalSig],
   )
 
   return (
@@ -428,6 +476,20 @@ function Ready({ index }: { index: ProblemIndex }) {
             />
           ))}
         </FilterRow>
+
+        {/* 任务07-阶段3：tag 也是 URL 参数（?tag=），行内标签点击即筛；激活时给一行可移除的 chip */}
+        {tag.length > 0 && (
+          <FilterRow label="标签">
+            <FilterChip
+              active
+              onClick={() => patch({ tag: '' })}
+              label={`#${tag} ✕`}
+              count={sorted.length}
+              dataTag={tag}
+              title="点击移除标签筛选"
+            />
+          </FilterRow>
+        )}
       </section>
 
       <p
@@ -456,6 +518,7 @@ function Ready({ index }: { index: ProblemIndex }) {
               chapterName.length > 0 ? chapterName : null,
               type.length > 0 ? typeLabel(type) : null,
               difficulty.length > 0 ? `难度 ${difficulty}` : null,
+              tag.length > 0 ? `标签「${tag}」` : null,
               STATUS_ORDER.includes(status as ListStatus) ? `只看${STATUS_META[status as ListStatus].label}` : null,
             ]
               .filter((s): s is string => s !== null)
@@ -486,7 +549,13 @@ function Ready({ index }: { index: ProblemIndex }) {
               </thead>
               <tbody>
                 {rows.map((p) => (
-                  <ProblemRow key={p.id} problem={p} status={statusOf(records[p.id])} onOpen={snapshotNav} />
+                  <ProblemRow
+                    key={p.id}
+                    problem={p}
+                    status={statusOf(records[p.id])}
+                    onOpen={snapshotNav}
+                    onTag={(t) => patch({ tag: tag === t ? '' : t })}
+                  />
                 ))}
               </tbody>
             </table>
@@ -519,10 +588,11 @@ function Ready({ index }: { index: ProblemIndex }) {
   )
 }
 
-function ProblemRow({ problem, status, onOpen }: { problem: ProblemIndexEntry; status: ListStatus; onOpen: (id: string) => void }) {
+function ProblemRow({ problem, status, onOpen, onTag }: { problem: ProblemIndexEntry; status: ListStatus; onOpen: (id: string) => void; onTag: (tag: string) => void }) {
   const meta = STATUS_META[status]
   const renderable = RENDERABLE_TYPES.has(problem.type)
   const to = `/problems/p/${problem.id}`
+  const tags = (problem.tags ?? []).slice(0, 3)
   return (
     <tr
       data-role="row"
@@ -560,6 +630,24 @@ function ProblemRow({ problem, status, onOpen }: { problem: ProblemIndexEntry; s
         <Link to={to} onClick={() => onOpen(problem.id)} className="block max-w-[32rem] truncate hover:underline" style={{ color: 'var(--fg)' }} title={problem.title || problem.id}>
           {problem.title.length > 0 ? problem.title : '（索引里没有题干摘要）'}
         </Link>
+        {tags.length > 0 && (
+          <span className="mt-0.5 flex flex-wrap gap-1">
+            {tags.map((t) => (
+              <button
+                key={t}
+                type="button"
+                data-role="row-tag"
+                data-tag={t}
+                onClick={() => onTag(t)}
+                title={`按标签「${t}」筛选`}
+                className="rounded-full border px-1.5 text-[10px] leading-4"
+                style={{ borderColor: 'var(--border)', color: 'var(--fg-muted)', cursor: 'pointer', background: 'transparent' }}
+              >
+                #{t}
+              </button>
+            ))}
+          </span>
+        )}
       </td>
       <td className="px-3 py-2 whitespace-nowrap text-xs">
         <span data-role="status" style={{ color: meta.color }}>
@@ -591,9 +679,10 @@ interface ChipProps {
   dataType?: string
   dataDifficulty?: string
   dataStatus?: string
+  dataTag?: string
 }
 
-function FilterChip({ active, onClick, label, count, disabled = false, title, dataType, dataDifficulty, dataStatus }: ChipProps) {
+function FilterChip({ active, onClick, label, count, disabled = false, title, dataType, dataDifficulty, dataStatus, dataTag }: ChipProps) {
   return (
     <button
       type="button"
@@ -603,6 +692,7 @@ function FilterChip({ active, onClick, label, count, disabled = false, title, da
       data-type={dataType}
       data-difficulty={dataDifficulty}
       data-status-filter={dataStatus}
+      data-tag={dataTag}
       aria-pressed={active}
       className="rounded-full border px-2.5 py-1 text-xs transition"
       style={{
