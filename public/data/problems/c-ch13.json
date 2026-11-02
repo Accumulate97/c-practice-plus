@@ -22,8 +22,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ia > ib) - (ia < ib);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* TODO: 调用 qsort 对 a 的前 n 个元素排序 */\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ia > ib) - (ia < ib);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    qsort(a, n, sizeof(int), cmp);\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ia > ib) - (ia < ib);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* TODO: 调用 qsort 对 a 的前 n 个元素排序 */\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ia > ib) - (ia < ib);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    qsort(a, n, sizeof(int), cmp);\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 1 4 1 5\n",
@@ -63,8 +63,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp_desc(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    /* TODO: 返回负/正使结果按降序排列 */\n    return (ib > ia) - (ib < ia);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* TODO: 调用 qsort 对 a 的前 n 个元素降序排序 */\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp_desc(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ib > ia) - (ib < ia);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    qsort(a, n, sizeof(int), cmp_desc);\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp_desc(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    /* TODO: 返回负/正使结果按降序排列 */\n    return (ib > ia) - (ib < ia);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* TODO: 调用 qsort 对 a 的前 n 个元素降序排序 */\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp_desc(const void *a, const void *b) {\n    int ia = *(const int *)a;\n    int ib = *(const int *)b;\n    return (ib > ia) - (ib < ia);\n}\n\nint main(void) {\n    int n, i;\n    int a[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    qsort(a, n, sizeof(int), cmp_desc);\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 1 4 1 5\n",
@@ -104,8 +104,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    char name[20];\n    int score;\n} Stu;\n\nint cmp(const void *a, const void *b) {\n    const Stu *x = (const Stu *)a;\n    const Stu *y = (const Stu *)b;\n    /* TODO: 按 score 升序比较两个结构体 */\n    return (x->score > y->score) - (x->score < y->score);\n}\n\nint main(void) {\n    int n, i;\n    Stu s[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%s %d\", s[i].name, &s[i].score);\n    /* TODO: 调用 qsort 对 s 前 n 个元素排序 */\n    for (i = 0; i < n; i++) printf(\"%s %d\\n\", s[i].name, s[i].score);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    char name[20];\n    int score;\n} Stu;\n\nint cmp(const void *a, const void *b) {\n    const Stu *x = (const Stu *)a;\n    const Stu *y = (const Stu *)b;\n    return (x->score > y->score) - (x->score < y->score);\n}\n\nint main(void) {\n    int n, i;\n    Stu s[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%s %d\", s[i].name, &s[i].score);\n    qsort(s, n, sizeof(Stu), cmp);\n    for (i = 0; i < n; i++) printf(\"%s %d\\n\", s[i].name, s[i].score);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    char name[20];\n    int score;\n} Stu;\n\nint cmp(const void *a, const void *b) {\n    const Stu *x = (const Stu *)a;\n    const Stu *y = (const Stu *)b;\n    /* TODO: 按 score 升序比较两个结构体 */\n    return (x->score > y->score) - (x->score < y->score);\n}\n\nint main(void) {\n    int n, i;\n    Stu s[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%s %d\", s[i].name, &s[i].score);\n    /* TODO: 调用 qsort 对 s 前 n 个元素排序 */\n    for (i = 0; i < n; i++)\n        printf(\"%s %d\\n\", s[i].name, s[i].score);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    char name[20];\n    int score;\n} Stu;\n\nint cmp(const void *a, const void *b) {\n    const Stu *x = (const Stu *)a;\n    const Stu *y = (const Stu *)b;\n    return (x->score > y->score) - (x->score < y->score);\n}\n\nint main(void) {\n    int n, i;\n    Stu s[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%s %d\", s[i].name, &s[i].score);\n    qsort(s, n, sizeof(Stu), cmp);\n    for (i = 0; i < n; i++)\n        printf(\"%s %d\\n\", s[i].name, s[i].score);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\nAlice 90\nBob 75\nCarol 85\n",
@@ -144,8 +144,8 @@
       "requiredApi": [
         "bsearch"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    return (*(const int *)a > *(const int *)b) - (*(const int *)a < *(const int *)b);\n}\n\nint main(void) {\n    int n, target, i;\n    int a[128];\n    int *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    /* TODO: 调用 bsearch 在 a 中查找 target，结果赋给 p */\n    if (p) printf(\"%d\\n\", (int)(p - a));\n    else printf(\"not found\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    return (*(const int *)a > *(const int *)b) - (*(const int *)a < *(const int *)b);\n}\n\nint main(void) {\n    int n, target, i;\n    int a[128];\n    int *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    p = bsearch(&target, a, n, sizeof(int), cmp);\n    if (p) printf(\"%d\\n\", (int)(p - a));\n    else printf(\"not found\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    return (*(const int *)a > *(const int *)b) - (*(const int *)a < *(const int *)b);\n}\n\nint main(void) {\n    int n, target, i;\n    int a[128];\n    int *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    /* TODO: 调用 bsearch 在 a 中查找 target，结果赋给 p */\n    if (p)\n        printf(\"%d\\n\", (int)(p - a));\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    return (*(const int *)a > *(const int *)b) - (*(const int *)a < *(const int *)b);\n}\n\nint main(void) {\n    int n, target, i;\n    int a[128];\n    int *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    p = bsearch(&target, a, n, sizeof(int), cmp);\n    if (p)\n        printf(\"%d\\n\", (int)(p - a));\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 3 5 7 9\n7\n",
@@ -184,8 +184,8 @@
       "requiredApi": [
         "strstr"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], sub[64];\n    char *p;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%s\", sub);\n    /* TODO: 调用 strstr 查找 sub 在 s 中的首次出现位置 */\n    if (p) printf(\"%d\\n\", (int)(p - s));\n    else printf(\"-1\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], sub[64];\n    char *p;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%s\", sub);\n    p = strstr(s, sub);\n    if (p) printf(\"%d\\n\", (int)(p - s));\n    else printf(\"-1\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], sub[64];\n    char *p;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%s\", sub);\n    /* TODO: 调用 strstr 查找 sub 在 s 中的首次出现位置 */\n    if (p)\n        printf(\"%d\\n\", (int)(p - s));\n    else\n        printf(\"-1\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], sub[64];\n    char *p;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\"%s\", sub);\n    p = strstr(s, sub);\n    if (p)\n        printf(\"%d\\n\", (int)(p - s));\n    else\n        printf(\"-1\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello world\nworld\n",
@@ -344,8 +344,8 @@
       "requiredApi": [
         "strchr"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    /* TODO: 调用 strchr 找 ch 在 s 中第一次出现的位置 */\n    if (p) printf(\"%s\\n\", p);\n    else printf(\"none\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    p = strchr(s, ch);\n    if (p) printf(\"%s\\n\", p);\n    else printf(\"none\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    /* TODO: 调用 strchr 找 ch 在 s 中第一次出现的位置 */\n    if (p)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"none\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    p = strchr(s, ch);\n    if (p)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"none\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello world\nw\n",
@@ -384,8 +384,8 @@
       "requiredApi": [
         "strrchr"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    /* TODO: 调用 strrchr 找 ch 在 s 中最后一次出现的位置 */\n    if (p) printf(\"%s\\n\", p);\n    else printf(\"none\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    p = strrchr(s, ch);\n    if (p) printf(\"%s\\n\", p);\n    else printf(\"none\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    /* TODO: 调用 strrchr 找 ch 在 s 中最后一次出现的位置 */\n    if (p)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"none\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[256], *p;\n    char ch;\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    scanf(\" %c\", &ch);\n    p = strrchr(s, ch);\n    if (p)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"none\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nl\n",
@@ -424,8 +424,8 @@
       "requiredApi": [
         "memcpy"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    int n, i;\n    int a[128], b[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* TODO: 用 memcpy 把 a 的前 n 个 int 复制到 b */\n    for (i = 0; i < n; i++) printf(\"%d%c\", b[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    int n, i;\n    int a[128], b[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    memcpy(b, a, n * sizeof(int));\n    for (i = 0; i < n; i++) printf(\"%d%c\", b[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    int n, i;\n    int a[128], b[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* TODO: 用 memcpy 把 a 的前 n 个 int 复制到 b */\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", b[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    int n, i;\n    int a[128], b[128];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    memcpy(b, a, n * sizeof(int));\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", b[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5\n",
@@ -798,8 +798,8 @@
       "requiredApi": [
         "strcmp"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char a[128], b[128];\n    int r;\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    /* TODO: 用 strcmp 比较 a 与 b，再按返回值输出 */\n    if (r < 0) printf(\"less\\n\");\n    else if (r > 0) printf(\"greater\\n\");\n    else printf(\"equal\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char a[128], b[128];\n    int r;\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    r = strcmp(a, b);\n    if (r < 0) printf(\"less\\n\");\n    else if (r > 0) printf(\"greater\\n\");\n    else printf(\"equal\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char a[128], b[128];\n    int r;\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    /* TODO: 用 strcmp 比较 a 与 b，再按返回值输出 */\n    if (r < 0)\n        printf(\"less\\n\");\n    else if (r > 0)\n        printf(\"greater\\n\");\n    else\n        printf(\"equal\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char a[128], b[128];\n    int r;\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    r = strcmp(a, b);\n    if (r < 0)\n        printf(\"less\\n\");\n    else if (r > 0)\n        printf(\"greater\\n\");\n    else\n        printf(\"equal\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "abc\nabd\n",
@@ -839,8 +839,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%31s\", arr[i]);\n    /* TODO: 用 qsort 对 arr 前 n 个元素排序 */\n    for (i = 0; i < n; i++) printf(\"%s%c\", arr[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%31s\", arr[i]);\n    qsort(arr, n, sizeof(arr[0]), cmp);\n    for (i = 0; i < n; i++) printf(\"%s%c\", arr[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%31s\", arr[i]);\n    /* TODO: 用 qsort 对 arr 前 n 个元素排序 */\n    for (i = 0; i < n; i++)\n        printf(\"%s%c\", arr[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%31s\", arr[i]);\n    qsort(arr, n, sizeof(arr[0]), cmp);\n    for (i = 0; i < n; i++)\n        printf(\"%s%c\", arr[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\nbanana apple cherry banana apple\n",
@@ -880,8 +880,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    double da = *(const double *)a;\n    double db = *(const double *)b;\n    return (da > db) - (da < db);\n}\n\nint main(void) {\n    int n, i;\n    double a[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%lf\", &a[i]);\n    /* TODO: 用 qsort 对 a 前 n 个元素排序 */\n    for (i = 0; i < n; i++) printf(\"%.2f%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    double da = *(const double *)a;\n    double db = *(const double *)b;\n    return (da > db) - (da < db);\n}\n\nint main(void) {\n    int n, i;\n    double a[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%lf\", &a[i]);\n    qsort(a, n, sizeof(double), cmp);\n    for (i = 0; i < n; i++) printf(\"%.2f%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    double da = *(const double *)a;\n    double db = *(const double *)b;\n    return (da > db) - (da < db);\n}\n\nint main(void) {\n    int n, i;\n    double a[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%lf\", &a[i]);\n    /* TODO: 用 qsort 对 a 前 n 个元素排序 */\n    for (i = 0; i < n; i++)\n        printf(\"%.2f%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    double da = *(const double *)a;\n    double db = *(const double *)b;\n    return (da > db) - (da < db);\n}\n\nint main(void) {\n    int n, i;\n    double a[64];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%lf\", &a[i]);\n    qsort(a, n, sizeof(double), cmp);\n    for (i = 0; i < n; i++)\n        printf(\"%.2f%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n3.14 1.5 2.71 0.5\n",
@@ -921,8 +921,8 @@
       "requiredApi": [
         "bsearch"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    char key[32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%31s\", arr[i]);\n    scanf(\"%31s\", key);\n    /* TODO: 用 bsearch 在 arr 中查找 key */\n    if (0) printf(\"found\\n\"); else printf(\"not found\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    char key[32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%31s\", arr[i]);\n    scanf(\"%31s\", key);\n    if (bsearch(key, arr, n, sizeof(arr[0]), cmp) != NULL)\n        printf(\"found\\n\");\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    char key[32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%31s\", arr[i]);\n    scanf(\"%31s\", key);\n    /* TODO: 用 bsearch 在 arr 中查找 key */\n    if (0)\n        printf(\"found\\n\");\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint cmp(const void *a, const void *b) {\n    return strcmp((const char *)a, (const char *)b);\n}\n\nint main(void) {\n    int n, i;\n    char arr[64][32];\n    char key[32];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%31s\", arr[i]);\n    scanf(\"%31s\", key);\n    if (bsearch(key, arr, n, sizeof(arr[0]), cmp) != NULL)\n        printf(\"found\\n\");\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\napple banana cherry mango peach\ncherry\n",
@@ -1133,8 +1133,8 @@
       "requiredApi": [
         "strpbrk"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], set[128];\n    char *p;\n    scanf(\"%127s\", s);\n    scanf(\"%127s\", set);\n    /* TODO: 用 strpbrk 找 s 中第一个属于 set 的字符 */\n    if (0) printf(\"-1\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], set[128];\n    char *p;\n    scanf(\"%127s\", s);\n    scanf(\"%127s\", set);\n    p = strpbrk(s, set);\n    if (p) printf(\"%d\\n\", (int)(p - s));\n    else printf(\"-1\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], set[128];\n    char *p;\n    scanf(\"%127s\", s);\n    scanf(\"%127s\", set);\n    /* TODO: 用 strpbrk 找 s 中第一个属于 set 的字符 */\n    if (0)\n        printf(\"-1\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], set[128];\n    char *p;\n    scanf(\"%127s\", s);\n    scanf(\"%127s\", set);\n    p = strpbrk(s, set);\n    if (p)\n        printf(\"%d\\n\", (int)(p - s));\n    else\n        printf(\"-1\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nlo\n",
@@ -1177,7 +1177,7 @@
       "requiredApi": [
         "strcasecmp"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n#include <strings.h>\n\nint main(void) {\n    char a[64], b[64];\n    int r;\n    scanf(\"%63s\", a);\n    scanf(\"%63s\", b);\n    /* TODO: 用 strcasecmp 比较 a 与 b（忽略大小写） */\n    if (0) printf(\"0\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n#include <strings.h>\n\nint main(void) {\n    char a[64], b[64];\n    int r;\n    scanf(\"%63s\", a);\n    scanf(\"%63s\", b);\n    /* TODO: 用 strcasecmp 比较 a 与 b（忽略大小写） */\n    if (0)\n        printf(\"0\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <string.h>\n#include <strings.h>\n\nint main(void) {\n    char a[64], b[64];\n    int r;\n    scanf(\"%63s\", a);\n    scanf(\"%63s\", b);\n    r = strcasecmp(a, b);\n    printf(\"%d\\n\", (r > 0) - (r < 0));\n    return 0;\n}",
       "testCases": [
         {
@@ -1221,8 +1221,8 @@
       "requiredApi": [
         "memchr"
       ],
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], c;\n    void *p;\n    scanf(\"%127s\", s);\n    scanf(\" %c\", &c);\n    /* TODO: 用 memchr 在 s 的前 strlen(s) 个字节内找 c */\n    if (0) printf(\"-1\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], c;\n    void *p;\n    scanf(\"%127s\", s);\n    scanf(\" %c\", &c);\n    p = memchr(s, c, strlen(s));\n    if (p) printf(\"%d\\n\", (int)((char *)p - s));\n    else printf(\"-1\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], c;\n    void *p;\n    scanf(\"%127s\", s);\n    scanf(\" %c\", &c);\n    /* TODO: 用 memchr 在 s 的前 strlen(s) 个字节内找 c */\n    if (0)\n        printf(\"-1\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char s[128], c;\n    void *p;\n    scanf(\"%127s\", s);\n    scanf(\" %c\", &c);\n    p = memchr(s, c, strlen(s));\n    if (p)\n        printf(\"%d\\n\", (int)((char *)p - s));\n    else\n        printf(\"-1\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nl\n",
@@ -1265,7 +1265,7 @@
       "requiredApi": [
         "realloc"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int n, m, i, *a;\n    scanf(\"%d %d\", &n, &m);\n    a = malloc(n * sizeof(int));\n    if (!a) return 1;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* TODO: 用 realloc 把 a 扩容到 n+m 个 int，再读入 m 个新值 */\n    for (i = 0; i < n + m; i++) printf(\"%d%c\", a[i], i == n + m - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int n, m, i, *a;\n    scanf(\"%d %d\", &n, &m);\n    a = malloc(n * sizeof(int));\n    if (!a)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* TODO: 用 realloc 把 a 扩容到 n+m 个 int，再读入 m 个新值 */\n    for (i = 0; i < n + m; i++)\n        printf(\"%d%c\", a[i], i == n + m - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int n, m, i, *a;\n    scanf(\"%d %d\", &n, &m);\n    a = malloc(n * sizeof(int));\n    if (!a)\n        return 1;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    {\n        int *b = realloc(a, (n + m) * sizeof(int));\n        if (!b) {\n            free(a);\n            return 1;\n        }\n        a = b;\n    }\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[n + i]);\n    for (i = 0; i < n + m; i++)\n        printf(\"%d%c\", a[i], i == n + m - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
       "testCases": [
         {
@@ -1306,8 +1306,8 @@
       "requiredApi": [
         "calloc"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int m, n, i, *a;\n    scanf(\"%d %d\", &m, &n);\n    /* TODO: 用 calloc 分配 n 个 int（自动清零），并读入 m 个整数 */\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int m, n, i, *a;\n    scanf(\"%d %d\", &m, &n);\n    a = calloc(n, sizeof(int));\n    if (!a) return 1;\n    for (i = 0; i < m; i++) scanf(\"%d\", &a[i]);\n    for (i = 0; i < n; i++) printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int m, n, i, *a;\n    scanf(\"%d %d\", &m, &n);\n    /* TODO: 用 calloc 分配 n 个 int（自动清零），并读入 m 个整数 */\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int m, n, i, *a;\n    scanf(\"%d %d\", &m, &n);\n    a = calloc(n, sizeof(int));\n    if (!a)\n        return 1;\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n; i++)\n        printf(\"%d%c\", a[i], i == n - 1 ? '\\n' : ' ');\n    free(a);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 5\n3 4\n",
@@ -1346,7 +1346,7 @@
       "requiredApi": [
         "time"
       ],
-      "code_starter": "#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    long t0;\n    time_t now;\n    scanf(\"%ld\", &t0);\n    /* TODO: 用 time(NULL) 获取当前时间戳 */\n    if (0) printf(\"0\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    long t0;\n    time_t now;\n    scanf(\"%ld\", &t0);\n    /* TODO: 用 time(NULL) 获取当前时间戳 */\n    if (0)\n        printf(\"0\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    long t0;\n    time_t now;\n    scanf(\"%ld\", &t0);\n    now = time(NULL);\n    printf(\"%d\\n\", now > t0 ? 1 : 0);\n    return 0;\n}",
       "testCases": [
         {
@@ -1428,8 +1428,8 @@
         "fprintf",
         "fscanf"
       ],
-      "code_starter": "#include <stdio.h>\n\nint main(void) {\n    int n, m;\n    char word[32], w[32];\n    FILE *fp;\n    scanf(\"%d %31s\", &n, word);\n    fp = fopen(\"tmp_drill.txt\", \"w+\");\n    if (!fp) return 1;\n    /* TODO: 用 fprintf 写入，再 rewind 后用 fscanf 读回 */\n    fclose(fp);\n    printf(\"%d-%s\\n\", m, w);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n, m;\n    char word[32], w[32];\n    FILE *fp;\n    scanf(\"%d %31s\", &n, word);\n    fp = fopen(\"tmp_drill.txt\", \"w+\");\n    if (!fp) return 1;\n    fprintf(fp, \"%d %s\", n, word);\n    rewind(fp);\n    fscanf(fp, \"%d %31s\", &m, w);\n    fclose(fp);\n    remove(\"tmp_drill.txt\");\n    printf(\"%d-%s\\n\", m, w);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint main(void) {\n    int n, m;\n    char word[32], w[32];\n    FILE *fp;\n    scanf(\"%d %31s\", &n, word);\n    fp = fopen(\"tmp_drill.txt\", \"w+\");\n    if (!fp)\n        return 1;\n    /* TODO: 用 fprintf 写入，再 rewind 后用 fscanf 读回 */\n    fclose(fp);\n    printf(\"%d-%s\\n\", m, w);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n, m;\n    char word[32], w[32];\n    FILE *fp;\n    scanf(\"%d %31s\", &n, word);\n    fp = fopen(\"tmp_drill.txt\", \"w+\");\n    if (!fp)\n        return 1;\n    fprintf(fp, \"%d %s\", n, word);\n    rewind(fp);\n    fscanf(fp, \"%d %31s\", &m, w);\n    fclose(fp);\n    remove(\"tmp_drill.txt\");\n    printf(\"%d-%s\\n\", m, w);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "42 hi\n",
@@ -1468,7 +1468,7 @@
       "requiredApi": [
         "abs"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    /* TODO: 用 abs 求 x 的绝对值 */\n    if (0) printf(\"0\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nint main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    /* TODO: 用 abs 求 x 的绝对值 */\n    if (0)\n        printf(\"0\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int x;\n    scanf(\"%d\", &x);\n    printf(\"%d\\n\", abs(x));\n    return 0;\n}",
       "testCases": [
         {
@@ -1512,7 +1512,7 @@
       "requiredApi": [
         "atol"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    char s[32];\n    scanf(\"%31s\", s);\n    /* TODO: 用 atol 把 s 转换为 long */\n    if (0) printf(\"0\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    char s[32];\n    scanf(\"%31s\", s);\n    /* TODO: 用 atol 把 s 转换为 long */\n    if (0)\n        printf(\"0\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    char s[32];\n    scanf(\"%31s\", s);\n    printf(\"%ld\\n\", atol(s));\n    return 0;\n}",
       "testCases": [
         {
@@ -1557,8 +1557,8 @@
       "requiredApi": [
         "qsort"
       ],
-      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    const int *pa = (const int *)a;\n    const int *pb = (const int *)b;\n    return (pa[0] > pb[0]) - (pa[0] < pb[0]);\n}\n\nint main(void) {\n    int r, i, a[64][2];\n    scanf(\"%d\", &r);\n    for (i = 0; i < r; i++) scanf(\"%d %d\", &a[i][0], &a[i][1]);\n    /* TODO: 用 qsort 对 a 的前 r 行按首元素排序 */\n    for (i = 0; i < r; i++) printf(\"%d %d%c\", a[i][0], a[i][1], i == r - 1 ? '\\n' : ' ');\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    const int *pa = (const int *)a;\n    const int *pb = (const int *)b;\n    return (pa[0] > pb[0]) - (pa[0] < pb[0]);\n}\n\nint main(void) {\n    int r, i, a[64][2];\n    scanf(\"%d\", &r);\n    for (i = 0; i < r; i++) scanf(\"%d %d\", &a[i][0], &a[i][1]);\n    qsort(a, r, sizeof(a[0]), cmp);\n    for (i = 0; i < r; i++) printf(\"%d %d%c\", a[i][0], a[i][1], i == r - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    const int *pa = (const int *)a;\n    const int *pb = (const int *)b;\n    return (pa[0] > pb[0]) - (pa[0] < pb[0]);\n}\n\nint main(void) {\n    int r, i, a[64][2];\n    scanf(\"%d\", &r);\n    for (i = 0; i < r; i++)\n        scanf(\"%d %d\", &a[i][0], &a[i][1]);\n    /* TODO: 用 qsort 对 a 的前 r 行按首元素排序 */\n    for (i = 0; i < r; i++)\n        printf(\"%d %d%c\", a[i][0], a[i][1], i == r - 1 ? '\\n' : ' ');\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <stdlib.h>\n\nint cmp(const void *a, const void *b) {\n    const int *pa = (const int *)a;\n    const int *pb = (const int *)b;\n    return (pa[0] > pb[0]) - (pa[0] < pb[0]);\n}\n\nint main(void) {\n    int r, i, a[64][2];\n    scanf(\"%d\", &r);\n    for (i = 0; i < r; i++)\n        scanf(\"%d %d\", &a[i][0], &a[i][1]);\n    qsort(a, r, sizeof(a[0]), cmp);\n    for (i = 0; i < r; i++)\n        printf(\"%d %d%c\", a[i][0], a[i][1], i == r - 1 ? '\\n' : ' ');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n3 9\n1 5\n2 8\n",
@@ -1679,7 +1679,7 @@
         "循环"
       ],
       "stem": "输入一个非负整数 n（也许达到 10^6），下面的程序能算对 1 到 n 的和，但它的循环次数与 n 成正比（O(n)）。请在保证输出一致的前提下，把复杂度优化到 O(1)，用等差数列求和公式直接算。",
-      "code": "#include <stdio.h>\nint main(void) {\n    long long n, s = 0, i;\n    scanf(\"%lld\", &n);\n    for (i = 1; i <= n; i++) s += i;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    long long n, s = 0, i;\n    scanf(\"%lld\", &n);\n    for (i = 1; i <= n; i++)\n        s += i;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main(void) {\n    long long n, s;\n    scanf(\"%lld\", &n);\n    s = n * (n + 1) / 2;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "baselineComplexity": "O(n)",
       "targetComplexity": "O(1)",
@@ -1730,7 +1730,7 @@
         "O(1)"
       ],
       "stem": "输入一个非负整数 n，下面的程序用循环累加 i*i 求 1 到 n 的平方和，复杂度 O(n)。请在保证输出一致的前提下，把复杂度优化到 O(1)，用平方和公式直接算。",
-      "code": "#include <stdio.h>\nint main(void) {\n    long long n, s = 0, i;\n    scanf(\"%lld\", &n);\n    for (i = 1; i <= n; i++) s += i * i;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    long long n, s = 0, i;\n    scanf(\"%lld\", &n);\n    for (i = 1; i <= n; i++)\n        s += i * i;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main(void) {\n    long long n, s;\n    scanf(\"%lld\", &n);\n    s = n * (n + 1) * (2 * n + 1) / 6;\n    printf(\"%lld\\n\", s);\n    return 0;\n}",
       "baselineComplexity": "O(n)",
       "targetComplexity": "O(1)",
@@ -1885,8 +1885,8 @@
         "O(n)"
       ],
       "stem": "输入一个不含空格的字符串，下面的程序反转字符串时，把尾字符不断搬到前面并搬移中间字符，复杂度 O(n²)。请在保证输出一致的前提下，用首尾双指针原地交换，把复杂度优化到 O(n)。",
-      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[100], t;\n    int n, i, j;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        t = s[n - 1];\n        for (j = n - 1; j > i; j--) s[j] = s[j - 1];\n        s[i] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[100], t;\n    int i, j;\n    scanf(\"%s\", s);\n    for (i = 0, j = (int)strlen(s) - 1; i < j; i++, j--) {\n        t = s[i]; s[i] = s[j]; s[j] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[100], t;\n    int n, i, j;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        t = s[n - 1];\n        for (j = n - 1; j > i; j--)\n            s[j] = s[j - 1];\n        s[i] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[100], t;\n    int i, j;\n    scanf(\"%s\", s);\n    for (i = 0, j = (int)strlen(s) - 1; i < j; i++, j--) {\n        t = s[i];\n        s[i] = s[j];\n        s[j] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
       "testCases": [
@@ -1937,7 +1937,7 @@
       ],
       "stem": "输入一个数组（第一行 n，第二行 n 个整数），下面的程序把 0 移到末尾时，对每个 0 都去后面找第一个非 0 并交换，复杂度 O(n²)。请在保证输出一致的前提下，用双指针把复杂度优化到 O(n)（非 0 相对顺序不变，0 全部在末尾）。",
       "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n; i++) {\n        if (a[i] == 0) {\n            for (j = i + 1; j < n; j++) {\n                if (a[j] != 0) {\n                    t = a[i];\n                    a[i] = a[j];\n                    a[j] = t;\n                    break;\n                }\n            }\n        }\n    }\n    for (i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = 0, j = 0; i < n; i++)\n        if (a[i] != 0) a[j++] = a[i];\n    for (; j < n; j++) a[j] = 0;\n    for (i = 0; i < n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0, j = 0; i < n; i++)\n        if (a[i] != 0)\n            a[j++] = a[i];\n    for (; j < n; j++)\n        a[j] = 0;\n    for (i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
       "testCases": [
@@ -2090,8 +2090,8 @@
         "O(n)"
       ],
       "stem": "输入一个由小写字母组成的字符串（长度不超过 100），下面的程序求最长无重复字符子串的长度，对每个起点都要向后扫描扩展，复杂度 O(n²)。请在保证输出一致的前提下，用滑动窗口把复杂度优化到 O(n)。",
-      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, j, k, used[256], best = 0;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        for (k = 0; k < 256; k++) used[k] = 0;\n        for (j = i; j < n; j++) {\n            if (used[(unsigned char)s[j]]) break;\n            used[(unsigned char)s[j]] = 1;\n        }\n        if (j - i > best) best = j - i;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, left = 0, best = 0, last[256];\n    for (i = 0; i < 256; i++) last[i] = -1;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        if (last[(unsigned char)s[i]] >= left) left = last[(unsigned char)s[i]] + 1;\n        last[(unsigned char)s[i]] = i;\n        if (i - left + 1 > best) best = i - left + 1;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, j, k, used[256], best = 0;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        for (k = 0; k < 256; k++)\n            used[k] = 0;\n        for (j = i; j < n; j++) {\n            if (used[(unsigned char)s[j]])\n                break;\n            used[(unsigned char)s[j]] = 1;\n        }\n        if (j - i > best)\n            best = j - i;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, left = 0, best = 0, last[256];\n    for (i = 0; i < 256; i++)\n        last[i] = -1;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        if (last[(unsigned char)s[i]] >= left)\n            left = last[(unsigned char)s[i]] + 1;\n        last[(unsigned char)s[i]] = i;\n        if (i - left + 1 > best)\n            best = i - left + 1;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
       "testCases": [
@@ -2141,8 +2141,8 @@
         "O(1)"
       ],
       "stem": "输入一个数组（第一行 n，第二行 n 个整数），然后有 q 次查询（第三行 q，之后每行两个下标 l r，0 基），每次输出 a[l..r] 的和。下面的程序每次查询都重新累加区间里的元素，单次查询复杂度 O(n)。请在保证输出一致的前提下，先用前缀和预处理，把每次查询的复杂度优化到 O(1)。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int n, q, a[100], i, l, r, s;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &q);\n    while (q-- > 0) {\n        scanf(\"%d %d\", &l, &r);\n        s = 0;\n        for (i = l; i <= r; i++) s += a[i];\n        printf(\"%d\\n\", s);\n    }\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, q, a[100], pre[101], i, l, r;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pre[0] = 0;\n    for (i = 1; i <= n; i++) pre[i] = pre[i - 1] + a[i - 1];\n    scanf(\"%d\", &q);\n    while (q-- > 0) {\n        scanf(\"%d %d\", &l, &r);\n        printf(\"%d\\n\", pre[r + 1] - pre[l]);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, q, a[100], i, l, r, s;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &q);\n    while (q-- > 0) {\n        scanf(\"%d %d\", &l, &r);\n        s = 0;\n        for (i = l; i <= r; i++)\n            s += a[i];\n        printf(\"%d\\n\", s);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, q, a[100], pre[101], i, l, r;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    pre[0] = 0;\n    for (i = 1; i <= n; i++)\n        pre[i] = pre[i - 1] + a[i - 1];\n    scanf(\"%d\", &q);\n    while (q-- > 0) {\n        scanf(\"%d %d\", &l, &r);\n        printf(\"%d\\n\", pre[r + 1] - pre[l]);\n    }\n    return 0;\n}",
       "baselineComplexity": "O(n)",
       "targetComplexity": "O(1)",
       "testCases": [
@@ -2185,8 +2185,8 @@
         "O(n)"
       ],
       "stem": "输入两个升序数组（第一行 m，第二行 m 个整数，第三行 n，第四行 n 个整数），下面的程序合并成升序数组时，把第二个数组的每个元素插入第一个数组并搬移，复杂度 O(m*n)。请在保证输出一致的前提下，用双指针归并把复杂度优化到 O(m+n)。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int m, n, i, k, b[100], a[200];\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &b[i]);\n    for (i = 0; i < n; i++) {\n        for (k = m + i; k > 0 && a[k - 1] > b[i]; k--) a[k] = a[k - 1];\n        a[k] = b[i];\n    }\n    for (i = 0; i < m + n; i++) printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, k, a[100], b[100], c[200];\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &b[i]);\n    i = j = k = 0;\n    while (i < m && j < n) {\n        if (a[i] <= b[j]) c[k++] = a[i++];\n        else c[k++] = b[j++];\n    }\n    while (i < m) c[k++] = a[i++];\n    while (j < n) c[k++] = b[j++];\n    for (i = 0; i < k; i++) printf(\"%d \", c[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int m, n, i, k, b[100], a[200];\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &b[i]);\n    for (i = 0; i < n; i++) {\n        for (k = m + i; k > 0 && a[k - 1] > b[i]; k--)\n            a[k] = a[k - 1];\n        a[k] = b[i];\n    }\n    for (i = 0; i < m + n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, k, a[100], b[100], c[200];\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &b[i]);\n    i = j = k = 0;\n    while (i < m && j < n) {\n        if (a[i] <= b[j])\n            c[k++] = a[i++];\n        else\n            c[k++] = b[j++];\n    }\n    while (i < m)\n        c[k++] = a[i++];\n    while (j < n)\n        c[k++] = b[j++];\n    for (i = 0; i < k; i++)\n        printf(\"%d \", c[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
       "testCases": [
@@ -2236,8 +2236,8 @@
         "O(1)"
       ],
       "stem": "输入一个非负整数 n，下面的程序判断它是否为 2 的幂，靠反复把数除以 2 并硬循环 n 次，复杂度 O(n)。请在保证输出一致的前提下，用位运算 n&(n-1) 把复杂度优化到 O(1)（是输出 yes，否输出 no）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, tmp;\n    scanf(\"%d\", &n);\n    tmp = n;\n    for (i = 1; i <= n; i++) {\n        if (tmp % 2 == 0) tmp /= 2;\n    }\n    if (n > 0 && tmp == 1) printf(\"yes\\n\");\n    else printf(\"no\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (n > 0 && (n & (n - 1)) == 0) printf(\"yes\\n\");\n    else printf(\"no\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, tmp;\n    scanf(\"%d\", &n);\n    tmp = n;\n    for (i = 1; i <= n; i++) {\n        if (tmp % 2 == 0)\n            tmp /= 2;\n    }\n    if (n > 0 && tmp == 1)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    if (n > 0 && (n & (n - 1)) == 0)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n    return 0;\n}",
       "baselineComplexity": "O(n)",
       "targetComplexity": "O(1)",
       "testCases": [
@@ -2303,7 +2303,7 @@
         "O(n)"
       ],
       "stem": "输入一个不含空格的字符串（长度不超过 100），下面的程序做行程压缩（如 aabb 输出 a2b2）：对每个字符都重新向后数一遍连续个数，复杂度 O(n²)。请在保证输出一致的前提下，用一次扫描把复杂度优化到 O(n)。",
-      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, j, cnt;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        if (i > 0 && s[i] == s[i - 1]) continue;\n        cnt = 0;\n        for (j = i; j < n; j++) {\n            if (s[j] == s[i]) cnt++;\n            else break;\n        }\n        printf(\"%c%d\", s[i], cnt);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, j, cnt;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    for (i = 0; i < n; i++) {\n        if (i > 0 && s[i] == s[i - 1])\n            continue;\n        cnt = 0;\n        for (j = i; j < n; j++) {\n            if (s[j] == s[i])\n                cnt++;\n            else\n                break;\n        }\n        printf(\"%c%d\", s[i], cnt);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char s[101];\n    int n, i, cnt;\n    scanf(\"%s\", s);\n    n = (int)strlen(s);\n    i = 0;\n    while (i < n) {\n        cnt = 0;\n        char c = s[i];\n        while (i < n && s[i] == c) {\n            cnt++;\n            i++;\n        }\n        printf(\"%c%d\", c, cnt);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
@@ -2579,7 +2579,7 @@
       ],
       "stem": "输入两个升序数组（第一行 m，第二行 m 个整数，第三行 n，第四行 n 个整数），下面的程序求交集（两数组都出现的值，升序输出），用两层循环逐元素判断，复杂度 O(m*n)。请在保证输出一致的前提下，用排序双指针把复杂度优化到 O(m+n)（交集里每个值只输出一次）。",
       "code": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, p, a[100], b[100], c[100], k = 0, fl, dup;\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &b[i]);\n    for (i = 0; i < m; i++) {\n        fl = 0;\n        for (j = 0; j < n; j++)\n            if (b[j] == a[i]) {\n                fl = 1;\n                break;\n            }\n        if (fl) {\n            dup = 0;\n            for (p = 0; p < k; p++)\n                if (c[p] == a[i]) {\n                    dup = 1;\n                    break;\n                }\n            if (!dup)\n                c[k++] = a[i];\n        }\n    }\n    for (i = 0; i < k; i++)\n        printf(\"%d \", c[i]);\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, a[100], b[100], c[100], k = 0;\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &b[i]);\n    i = j = 0;\n    while (i < m && j < n) {\n        if (a[i] == b[j]) {\n            if (k == 0 || c[k - 1] != a[i]) c[k++] = a[i];\n            i++; j++;\n        } else if (a[i] < b[j]) i++;\n        else j++;\n    }\n    for (i = 0; i < k; i++) printf(\"%d \", c[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int m, n, i, j, a[100], b[100], c[100], k = 0;\n    scanf(\"%d\", &m);\n    for (i = 0; i < m; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &b[i]);\n    i = j = 0;\n    while (i < m && j < n) {\n        if (a[i] == b[j]) {\n            if (k == 0 || c[k - 1] != a[i])\n                c[k++] = a[i];\n            i++;\n            j++;\n        } else if (a[i] < b[j])\n            i++;\n        else\n            j++;\n    }\n    for (i = 0; i < k; i++)\n        printf(\"%d \", c[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "baselineComplexity": "O(n²)",
       "targetComplexity": "O(n)",
       "testCases": [
@@ -3428,8 +3428,8 @@
       ],
       "stem": "不用 <string.h> 的 strlen，自实现 `unsigned int my_strlen(const char *s)`，返回字符串 s 的长度（不含结尾 \\0）。main 已给出，请不要改动；判分以 stdin 输入调用 my_strlen 的输出为准。",
       "apiName": "strlen",
-      "code_starter": "#include <stdio.h>\n\nunsigned int my_strlen(const char *s) {\n    /* TODO: 逐个字符计数，直到遇到结尾的 \\0 */\n    return 0;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    printf(\"%u\\n\", my_strlen(buf));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nunsigned int my_strlen(const char *s) {\n    unsigned int n = 0;\n    while (s[n] != '\\0') n++;\n    return n;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    printf(\"%u\\n\", my_strlen(buf));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nunsigned int my_strlen(const char *s) {\n    /* TODO: 逐个字符计数，直到遇到结尾的 \\0 */\n    return 0;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    printf(\"%u\\n\", my_strlen(buf));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nunsigned int my_strlen(const char *s) {\n    unsigned int n = 0;\n    while (s[n] != '\\0')\n        n++;\n    return n;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    printf(\"%u\\n\", my_strlen(buf));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\n",
@@ -3474,7 +3474,7 @@
       ],
       "stem": "不用 <string.h> 的 strcpy，自实现 `char *my_strcpy(char *dest, const char *src)`，把 src 复制到 dest（含结尾 \\0）并返回 dest。main 已给出，请不要改动；判分以 stdin 输入调用 my_strcpy 后打印 dest 的输出为准。",
       "apiName": "strcpy",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strcpy(char *dest, const char *src) {\n    /* TODO: 把 src 逐字符复制到 dest，并补上结尾 \\0 */\n    return dest;\n}\n\nint main(void) {\n    char src[256], dest[256];\n    int i;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n') i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strcpy(dest, src);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strcpy(char *dest, const char *src) {\n    /* TODO: 把 src 逐字符复制到 dest，并补上结尾 \\0 */\n    return dest;\n}\n\nint main(void) {\n    char src[256], dest[256];\n    int i;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strcpy(dest, src);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nchar *my_strcpy(char *dest, const char *src) {\n    char *d = dest;\n    while (*src != '\\0') {\n        *d = *src;\n        d++;\n        src++;\n    }\n    *d = '\\0';\n    return dest;\n}\n\nint main(void) {\n    char src[256], dest[256];\n    int i;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strcpy(dest, src);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "testCases": [
         {
@@ -3516,7 +3516,7 @@
       ],
       "stem": "不用 <string.h> 的 strncpy，自实现 `char *my_strncpy(char *dest, const char *src, int n)`。约定：最多复制 src 的前 n 个字符到 dest，并总是在 dest 末尾补一个 \\0（若 src 不足 n，就复制到 src 结束为止），返回 dest。main 已给出，请不要改动。",
       "apiName": "strncpy",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strncpy(char *dest, const char *src, int n) {\n    /* TODO: 复制 src 的前 n 个字符（实际可少于 n），并补上结尾 \\0 */\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char src[256], dest[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n') i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strncpy(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strncpy(char *dest, const char *src, int n) {\n    /* TODO: 复制 src 的前 n 个字符（实际可少于 n），并补上结尾 \\0 */\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char src[256], dest[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strncpy(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nchar *my_strncpy(char *dest, const char *src, int n) {\n    int i = 0;\n    while (i < n && src[i] != '\\0') {\n        dest[i] = src[i];\n        i++;\n    }\n    dest[i] = '\\0';\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char src[256], dest[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(src, sizeof(src), stdin);\n    i = 0;\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    dest[0] = '\\0';\n    my_strncpy(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "testCases": [
         {
@@ -3562,7 +3562,7 @@
       ],
       "stem": "不用 <string.h> 的 strcat，自实现 `char *my_strcat(char *dest, const char *src)`，把 src 拼接到 dest 的末尾，并返回 dest。main 已给出，请不要改动；判分以 stdin 两行输入调用 my_strcat 后打印 dest 的输出为准。",
       "apiName": "strcat",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strcat(char *dest, const char *src) {\n    /* TODO: 先走到 dest 末尾，再把 src 逐个接上，最后补 \\0 */\n    return dest;\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    my_strcat(a, b);\n    printf(\"%s\\n\", a);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strcat(char *dest, const char *src) {\n    /* TODO: 先走到 dest 末尾，再把 src 逐个接上，最后补 \\0 */\n    return dest;\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    my_strcat(a, b);\n    printf(\"%s\\n\", a);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nchar *my_strcat(char *dest, const char *src) {\n    char *p = dest;\n    while (*p != '\\0')\n        p++;\n    while (*src != '\\0') {\n        *p = *src;\n        p++;\n        src++;\n    }\n    *p = '\\0';\n    return dest;\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    my_strcat(a, b);\n    printf(\"%s\\n\", a);\n    return 0;\n}",
       "testCases": [
         {
@@ -3604,7 +3604,7 @@
       ],
       "stem": "不用 <string.h> 的 strncat，自实现 `char *my_strncat(char *dest, const char *src, int n)`，把 src 的前 n 个字符拼接到 dest 末尾，若 src 不足 n 则拼到 src 结束为止，最后补 \\0，返回 dest。main 已给出，请不要改动。",
       "apiName": "strncat",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strncat(char *dest, const char *src, int n) {\n    /* TODO: 走到 dest 末尾，最多追加 src 的前 n 个字符，再补 \\0 */\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char dest[256], src[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(dest, sizeof(dest), stdin);\n    i = 0;\n    while (dest[i] != '\\0' && dest[i] != '\\n') i++;\n    dest[i] = '\\0';\n    i = 0;\n    fgets(src, sizeof(src), stdin);\n    while (src[i] != '\\0' && src[i] != '\\n') i++;\n    src[i] = '\\0';\n    my_strncat(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strncat(char *dest, const char *src, int n) {\n    /* TODO: 走到 dest 末尾，最多追加 src 的前 n 个字符，再补 \\0 */\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char dest[256], src[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(dest, sizeof(dest), stdin);\n    i = 0;\n    while (dest[i] != '\\0' && dest[i] != '\\n')\n        i++;\n    dest[i] = '\\0';\n    i = 0;\n    fgets(src, sizeof(src), stdin);\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    my_strncat(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nchar *my_strncat(char *dest, const char *src, int n) {\n    char *p = dest;\n    int i = 0;\n    while (*p != '\\0')\n        p++;\n    while (i < n && src[i] != '\\0') {\n        p[i] = src[i];\n        i++;\n    }\n    p[i] = '\\0';\n    return dest;\n}\n\nint main(void) {\n    int n, i;\n    char dest[256], src[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(dest, sizeof(dest), stdin);\n    i = 0;\n    while (dest[i] != '\\0' && dest[i] != '\\n')\n        i++;\n    dest[i] = '\\0';\n    i = 0;\n    fgets(src, sizeof(src), stdin);\n    while (src[i] != '\\0' && src[i] != '\\n')\n        i++;\n    src[i] = '\\0';\n    my_strncat(dest, src, n);\n    printf(\"%s\\n\", dest);\n    return 0;\n}",
       "testCases": [
         {
@@ -3650,8 +3650,8 @@
       ],
       "stem": "不用 <string.h> 的 strcmp，自实现 `int my_strcmp(const char *a, const char *b)`，按字典序比较两串：相等返回 0，a 小于 b 返回负，a 大于 b 返回正。main 已给出，请不要改动；判分以 stdin 两行输入调用 my_strcmp 并 printf(\"%d\") 的输出为准。",
       "apiName": "strcmp",
-      "code_starter": "#include <stdio.h>\n\nint my_strcmp(const char *a, const char *b) {\n    /* TODO: 逐字符比较，返回 a 与 b 的差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strcmp(a, b));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint my_strcmp(const char *a, const char *b) {\n    int i = 0;\n    while (a[i] != '\\0' && a[i] == b[i]) i++;\n    return (unsigned char)a[i] - (unsigned char)b[i];\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strcmp(a, b));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint my_strcmp(const char *a, const char *b) {\n    /* TODO: 逐字符比较，返回 a 与 b 的差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strcmp(a, b));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint my_strcmp(const char *a, const char *b) {\n    int i = 0;\n    while (a[i] != '\\0' && a[i] == b[i])\n        i++;\n    return (unsigned char)a[i] - (unsigned char)b[i];\n}\n\nint main(void) {\n    char a[256], b[256];\n    int i;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    fgets(b, sizeof(b), stdin);\n    i = 0;\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strcmp(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "abc\nabc\n",
@@ -3696,8 +3696,8 @@
       ],
       "stem": "不用 <string.h> 的 strncmp，自实现 `int my_strncmp(const char *a, const char *b, int n)`，只比较两串的前 n 个字符，相等返回 0，a 小返回负，a 大返回正。main 已给出，请不要改动。",
       "apiName": "strncmp",
-      "code_starter": "#include <stdio.h>\n\nint my_strncmp(const char *a, const char *b, int n) {\n    /* TODO: 只比较前 n 个字符，返回差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strncmp(a, b, n));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint my_strncmp(const char *a, const char *b, int n) {\n    int i = 0;\n    while (i < n) {\n        if (a[i] != b[i]) return (unsigned char)a[i] - (unsigned char)b[i];\n        if (a[i] == '\\0') break;\n        i++;\n    }\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strncmp(a, b, n));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint my_strncmp(const char *a, const char *b, int n) {\n    /* TODO: 只比较前 n 个字符，返回差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strncmp(a, b, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint my_strncmp(const char *a, const char *b, int n) {\n    int i = 0;\n    while (i < n) {\n        if (a[i] != b[i])\n            return (unsigned char)a[i] - (unsigned char)b[i];\n        if (a[i] == '\\0')\n            break;\n        i++;\n    }\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_strncmp(a, b, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\nabc\nabc\n",
@@ -3742,8 +3742,8 @@
       ],
       "stem": "不用 <string.h> 的 strchr，自实现 `char *my_strchr(const char *s, int ch)`，返回 s 中第一次出现字符 ch 的地址；若不存在返回 NULL（即空指针）。main 已给出，请不要改动；判分以 stdin 输入字符串和待查字符（字符串一行、字符一行）后打印子串或 not found 为准。",
       "apiName": "strchr",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strchr(const char *s, int ch) {\n    /* TODO: 找到第一个等于 ch 的字符并返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strchr(buf, c);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nchar *my_strchr(const char *s, int ch) {\n    while (*s != '\\0') {\n        if (*s == (char)ch) return (char *)s;\n        s++;\n    }\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strchr(buf, c);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strchr(const char *s, int ch) {\n    /* TODO: 找到第一个等于 ch 的字符并返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strchr(buf, c);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nchar *my_strchr(const char *s, int ch) {\n    while (*s != '\\0') {\n        if (*s == (char)ch)\n            return (char *)s;\n        s++;\n    }\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strchr(buf, c);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "abcabc\na\n",
@@ -3788,8 +3788,8 @@
       ],
       "stem": "不用 <string.h> 的 strrchr，自实现 `char *my_strrchr(const char *s, int ch)`，返回 s 中最后一次出现字符 ch 的地址；若不存在返回 NULL。main 已给出，请不要改动；判分以 stdin 输入字符串和待查字符后打印子串或 not found 为准。",
       "apiName": "strrchr",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strrchr(const char *s, int ch) {\n    /* TODO: 找到最后一个等于 ch 的字符并返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strrchr(buf, c);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nchar *my_strrchr(const char *s, int ch) {\n    const char *last = NULL;\n    int i = 0;\n    while (s[i] != '\\0') {\n        if (s[i] == (char)ch) last = s + i;\n        i++;\n    }\n    return (char *)last;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strrchr(buf, c);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strrchr(const char *s, int ch) {\n    /* TODO: 找到最后一个等于 ch 的字符并返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strrchr(buf, c);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nchar *my_strrchr(const char *s, int ch) {\n    const char *last = NULL;\n    int i = 0;\n    while (s[i] != '\\0') {\n        if (s[i] == (char)ch)\n            last = s + i;\n        i++;\n    }\n    return (char *)last;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    int c = fgetc(stdin);\n    char *p = my_strrchr(buf, c);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nl\n",
@@ -3834,8 +3834,8 @@
       ],
       "stem": "不用 <string.h> 的 strstr，自实现 `char *my_strstr(const char *s, const char *sub)`，返回 sub 在 s 中第一次出现的起始地址；若不存在返回 NULL。main 已给出，请不要改动；判分以 stdin 两行输入（主串、子串）后打印子串或 not found 为准。",
       "apiName": "strstr",
-      "code_starter": "#include <stdio.h>\n\nchar *my_strstr(const char *s, const char *sub) {\n    /* TODO: 在 s 中找 sub 第一次出现，返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char s[256], sub[256];\n    int i;\n    fgets(s, sizeof(s), stdin);\n    i = 0;\n    while (s[i] != '\\0' && s[i] != '\\n') i++;\n    s[i] = '\\0';\n    fgets(sub, sizeof(sub), stdin);\n    i = 0;\n    while (sub[i] != '\\0' && sub[i] != '\\n') i++;\n    sub[i] = '\\0';\n    char *p = my_strstr(s, sub);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nchar *my_strstr(const char *s, const char *sub) {\n    int i = 0, j;\n    if (sub[0] == '\\0') return (char *)s;\n    while (s[i] != '\\0') {\n        j = 0;\n        while (sub[j] != '\\0' && s[i + j] != '\\0' && s[i + j] == sub[j]) j++;\n        if (sub[j] == '\\0') return (char *)(s + i);\n        i++;\n    }\n    return NULL;\n}\n\nint main(void) {\n    char s[256], sub[256];\n    int i;\n    fgets(s, sizeof(s), stdin);\n    i = 0;\n    while (s[i] != '\\0' && s[i] != '\\n') i++;\n    s[i] = '\\0';\n    fgets(sub, sizeof(sub), stdin);\n    i = 0;\n    while (sub[i] != '\\0' && sub[i] != '\\n') i++;\n    sub[i] = '\\0';\n    char *p = my_strstr(s, sub);\n    if (p != NULL) printf(\"%s\\n\", p);\n    else printf(\"not found\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nchar *my_strstr(const char *s, const char *sub) {\n    /* TODO: 在 s 中找 sub 第一次出现，返回其地址，找不到返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char s[256], sub[256];\n    int i;\n    fgets(s, sizeof(s), stdin);\n    i = 0;\n    while (s[i] != '\\0' && s[i] != '\\n')\n        i++;\n    s[i] = '\\0';\n    fgets(sub, sizeof(sub), stdin);\n    i = 0;\n    while (sub[i] != '\\0' && sub[i] != '\\n')\n        i++;\n    sub[i] = '\\0';\n    char *p = my_strstr(s, sub);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nchar *my_strstr(const char *s, const char *sub) {\n    int i = 0, j;\n    if (sub[0] == '\\0')\n        return (char *)s;\n    while (s[i] != '\\0') {\n        j = 0;\n        while (sub[j] != '\\0' && s[i + j] != '\\0' && s[i + j] == sub[j])\n            j++;\n        if (sub[j] == '\\0')\n            return (char *)(s + i);\n        i++;\n    }\n    return NULL;\n}\n\nint main(void) {\n    char s[256], sub[256];\n    int i;\n    fgets(s, sizeof(s), stdin);\n    i = 0;\n    while (s[i] != '\\0' && s[i] != '\\n')\n        i++;\n    s[i] = '\\0';\n    fgets(sub, sizeof(sub), stdin);\n    i = 0;\n    while (sub[i] != '\\0' && sub[i] != '\\n')\n        i++;\n    sub[i] = '\\0';\n    char *p = my_strstr(s, sub);\n    if (p != NULL)\n        printf(\"%s\\n\", p);\n    else\n        printf(\"not found\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nlo\n",
@@ -3880,7 +3880,7 @@
       ],
       "stem": "不用 <string.h> 的 strtok，自实现简化版 `char *my_strtok(char *s, char delim)`：按单个分隔符 delim 把字符串切割成多个 token，第一次调用传 s，后续传 NULL 继续取下一个 token；没有更多时返回 NULL。main 已给出，请不要改动；判分以 stdin 输入分割串和分隔符后逐个打印 token（每个占一行）为准。",
       "apiName": "strtok",
-      "code_starter": "#include <stdio.h>\n\nstatic char *save = NULL;\n\nchar *my_strtok(char *s, char delim) {\n    /* TODO: 返回下一个用 delim 分隔的 token；没有则返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    char delim = fgetc(stdin);\n    char *tok;\n    tok = my_strtok(buf, delim);\n    while (tok != NULL) {\n        printf(\"%s\\n\", tok);\n        tok = my_strtok(NULL, delim);\n    }\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nstatic char *save = NULL;\n\nchar *my_strtok(char *s, char delim) {\n    /* TODO: 返回下一个用 delim 分隔的 token；没有则返回 NULL */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    char delim = fgetc(stdin);\n    char *tok;\n    tok = my_strtok(buf, delim);\n    while (tok != NULL) {\n        printf(\"%s\\n\", tok);\n        tok = my_strtok(NULL, delim);\n    }\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nstatic char *save = NULL;\n\nchar *my_strtok(char *s, char delim) {\n    char *p;\n    if (s != NULL)\n        save = s;\n    if (save == NULL)\n        return NULL;\n    p = save;\n    while (*p == delim)\n        p++;\n    if (*p == '\\0') {\n        save = NULL;\n        return NULL;\n    }\n    save = p;\n    while (*save != '\\0' && *save != delim)\n        save++;\n    if (*save != '\\0') {\n        *save = '\\0';\n        save++;\n    } else\n        save = NULL;\n    return p;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    char delim = fgetc(stdin);\n    char *tok;\n    tok = my_strtok(buf, delim);\n    while (tok != NULL) {\n        printf(\"%s\\n\", tok);\n        tok = my_strtok(NULL, delim);\n    }\n    return 0;\n}",
       "testCases": [
         {
@@ -4011,8 +4011,8 @@
       ],
       "stem": "不用 <string.h> 的 memset，自实现 `void *my_memset(void *s, int c, size_t n)`，把 s 起始的 n 个字节都置为字符 c，并返回 s。main 已给出，请不要改动；判分以 stdin 输入长度 n 和填充字符后打印填充结果的字符串为准。",
       "apiName": "memset",
-      "code_starter": "#include <stdio.h>\n\nvoid *my_memset(void *s, int c, size_t n) {\n    /* TODO: 把 s 的前 n 字节都设为 c */\n    return s;\n}\n\nint main(void) {\n    char buf[256];\n    int n;\n    char c;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    scanf(\" %c\", &c);\n    my_memset(buf, c, (size_t)n);\n    buf[n] = '\\0';\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nvoid *my_memset(void *s, int c, size_t n) {\n    unsigned char *p = s;\n    size_t i;\n    for (i = 0; i < n; i++) p[i] = (unsigned char)c;\n    return s;\n}\n\nint main(void) {\n    char buf[256];\n    int n;\n    char c;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    scanf(\" %c\", &c);\n    my_memset(buf, c, (size_t)n);\n    buf[n] = '\\0';\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nvoid *my_memset(void *s, int c, size_t n) {\n    /* TODO: 把 s 的前 n 字节都设为 c */\n    return s;\n}\n\nint main(void) {\n    char buf[256];\n    int n;\n    char c;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    scanf(\" %c\", &c);\n    my_memset(buf, c, (size_t)n);\n    buf[n] = '\\0';\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nvoid *my_memset(void *s, int c, size_t n) {\n    unsigned char *p = s;\n    size_t i;\n    for (i = 0; i < n; i++)\n        p[i] = (unsigned char)c;\n    return s;\n}\n\nint main(void) {\n    char buf[256];\n    int n;\n    char c;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    scanf(\" %c\", &c);\n    my_memset(buf, c, (size_t)n);\n    buf[n] = '\\0';\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n*\n",
@@ -4057,8 +4057,8 @@
       ],
       "stem": "不用 <string.h> 的 memcmp，自实现 `int my_memcmp(const void *a, const void *b, size_t n)`，按字节比较 a 与 b 的前 n 个字节：相等返回 0，a 小于 b 返回负，a 大于 b 返回正。main 已给出，请不要改动；判分以 stdin 输入比较长度 n 和两行字符串后打印结果为准。",
       "apiName": "memcmp",
-      "code_starter": "#include <stdio.h>\n\nint my_memcmp(const void *a, const void *b, size_t n) {\n    /* TODO: 逐字节比较前 n 字节，返回差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_memcmp(a, b, (size_t)n));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint my_memcmp(const void *a, const void *b, size_t n) {\n    const unsigned char *pa = a;\n    const unsigned char *pb = b;\n    size_t i;\n    for (i = 0; i < n; i++) {\n        if (pa[i] != pb[i]) return (int)pa[i] - (int)pb[i];\n    }\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n') ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n') i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n') i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_memcmp(a, b, (size_t)n));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint my_memcmp(const void *a, const void *b, size_t n) {\n    /* TODO: 逐字节比较前 n 字节，返回差（或 0） */\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_memcmp(a, b, (size_t)n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint my_memcmp(const void *a, const void *b, size_t n) {\n    const unsigned char *pa = a;\n    const unsigned char *pb = b;\n    size_t i;\n    for (i = 0; i < n; i++) {\n        if (pa[i] != pb[i])\n            return (int)pa[i] - (int)pb[i];\n    }\n    return 0;\n}\n\nint main(void) {\n    int n, i;\n    char a[256], b[256];\n    scanf(\"%d\", &n);\n    while (getchar() != '\\n')\n        ;\n    fgets(a, sizeof(a), stdin);\n    i = 0;\n    while (a[i] != '\\0' && a[i] != '\\n')\n        i++;\n    a[i] = '\\0';\n    i = 0;\n    fgets(b, sizeof(b), stdin);\n    while (b[i] != '\\0' && b[i] != '\\n')\n        i++;\n    b[i] = '\\0';\n    printf(\"%d\\n\", my_memcmp(a, b, (size_t)n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\nabc\nabc\n",
@@ -4103,7 +4103,7 @@
       ],
       "stem": "不用 <stdlib.h> 的 atoi，自实现 `int my_atoi(const char *s)`，把字符串转换成整数：跳过前导空白，可选正负号，再解析连续数字；遇到非数字停止。main 已给出，请不要改动；判分以 stdin 输入一行字符串后打印转换结果的整数为准。",
       "apiName": "atoi",
-      "code_starter": "#include <stdio.h>\n\nint my_atoi(const char *s) {\n    /* TODO: 处理前导空白、正负号与数字，返回整数 */\n    return 0;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n') i++;\n    buf[i] = '\\0';\n    printf(\"%d\\n\", my_atoi(buf));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint my_atoi(const char *s) {\n    /* TODO: 处理前导空白、正负号与数字，返回整数 */\n    return 0;\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    printf(\"%d\\n\", my_atoi(buf));\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nint my_atoi(const char *s) {\n    int i = 0, sign = 1;\n    long val = 0;\n    while (s[i] == ' ' || s[i] == '\\t')\n        i++;\n    if (s[i] == '+')\n        i++;\n    else if (s[i] == '-') {\n        sign = -1;\n        i++;\n    }\n    while (s[i] >= '0' && s[i] <= '9') {\n        val = val * 10 + (s[i] - '0');\n        i++;\n    }\n    return (int)(sign * val);\n}\n\nint main(void) {\n    char buf[256];\n    int i;\n    fgets(buf, sizeof(buf), stdin);\n    i = 0;\n    while (buf[i] != '\\0' && buf[i] != '\\n')\n        i++;\n    buf[i] = '\\0';\n    printf(\"%d\\n\", my_atoi(buf));\n    return 0;\n}",
       "testCases": [
         {
@@ -4153,7 +4153,7 @@
       ],
       "stem": "不用 <stdlib.h> 的 itoa，自实现 `void my_itoa(int val, char *buf)`，把整数 val 转成十进制字符串存入 buf（含 \\0，负号放最前）。main 已给出，请不要改动；判分以 stdin 输入一个整数后打印转换结果的字符串为准。",
       "apiName": "itoa",
-      "code_starter": "#include <stdio.h>\n\nvoid my_itoa(int val, char *buf) {\n    /* TODO: 把整数转成十进制字符串写入 buf */\n}\n\nint main(void) {\n    char buf[32];\n    int val;\n    if (scanf(\"%d\", &val) != 1) return 0;\n    my_itoa(val, buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nvoid my_itoa(int val, char *buf) {\n    /* TODO: 把整数转成十进制字符串写入 buf */\n}\n\nint main(void) {\n    char buf[32];\n    int val;\n    if (scanf(\"%d\", &val) != 1)\n        return 0;\n    my_itoa(val, buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nvoid my_itoa(int val, char *buf) {\n    int i = 0, j, k = 0, n = val;\n    char tmp[32];\n    if (n == 0) {\n        buf[0] = '0';\n        buf[1] = '\\0';\n        return;\n    }\n    if (n < 0) {\n        buf[k++] = '-';\n        n = -n;\n    }\n    while (n > 0) {\n        tmp[i++] = '0' + (n % 10);\n        n /= 10;\n    }\n    for (j = i - 1; j >= 0; j--)\n        buf[k++] = tmp[j];\n    buf[k] = '\\0';\n}\n\nint main(void) {\n    char buf[32];\n    int val;\n    if (scanf(\"%d\", &val) != 1)\n        return 0;\n    my_itoa(val, buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "testCases": [
         {
@@ -4203,7 +4203,7 @@
       ],
       "stem": "不使用任何库函数，自实现 `int my_gcd(int a, int b)`，用欧几里得（辗转相除）算法求两个整数的最大公约数（结果恒为非负）。main 已给出，请不要改动；判分以 stdin 输入两个整数（空格分隔）后打印 gcd 为准。",
       "apiName": "gcd",
-      "code_starter": "#include <stdio.h>\n\nint my_gcd(int a, int b) {\n    /* TODO: 用辗转相除法求最大公约数 */\n    return a;\n}\n\nint main(void) {\n    int a, b;\n    if (scanf(\"%d %d\", &a, &b) != 2) return 0;\n    printf(\"%d\\n\", my_gcd(a, b));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint my_gcd(int a, int b) {\n    /* TODO: 用辗转相除法求最大公约数 */\n    return a;\n}\n\nint main(void) {\n    int a, b;\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 0;\n    printf(\"%d\\n\", my_gcd(a, b));\n    return 0;\n}",
       "reference": "#include <stdio.h>\n\nint my_gcd(int a, int b) {\n    int t;\n    if (a < 0)\n        a = -a;\n    if (b < 0)\n        b = -b;\n    while (b != 0) {\n        t = b;\n        b = a % b;\n        a = t;\n    }\n    return a;\n}\n\nint main(void) {\n    int a, b;\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 0;\n    printf(\"%d\\n\", my_gcd(a, b));\n    return 0;\n}",
       "testCases": [
         {
@@ -4437,8 +4437,8 @@
       ],
       "stem": "不用 <stdlib.h> 的 bsearch，自实现 `int binary_search(int a[], int n, int key)`，在升序数组 a 中二分查找 key，返回其下标，找不到返回 -1。main 已给出，请不要改动；判分以 stdin 输入 n、key 与升序数组后调用 binary_search 的输出为准。",
       "apiName": "binary_search",
-      "code_starter": "#include <stdio.h>\n\n/* TODO: 在升序数组 a[0..n-1] 中二分查找 key，返回下标，找不到返回 -1 */\nint binary_search(int a[], int n, int key) {\n    /* 在此实现 */\n    return -1;\n}\n\nint main(void) {\n    int n, key, a[1000], i, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binary_search(a, n, key);\n    printf(\"%d\\n\", pos);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint binary_search(int a[], int n, int key) {\n    int lo = 0, hi = n - 1;\n    while (lo <= hi) {\n        int mid = (lo + hi) / 2;\n        if (a[mid] == key) return mid;\n        else if (a[mid] < key) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int n, key, a[1000], i, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binary_search(a, n, key);\n    printf(\"%d\\n\", pos);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* TODO: 在升序数组 a[0..n-1] 中二分查找 key，返回下标，找不到返回 -1 */\nint binary_search(int a[], int n, int key) {\n    /* 在此实现 */\n    return -1;\n}\n\nint main(void) {\n    int n, key, a[1000], i, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    pos = binary_search(a, n, key);\n    printf(\"%d\\n\", pos);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint binary_search(int a[], int n, int key) {\n    int lo = 0, hi = n - 1;\n    while (lo <= hi) {\n        int mid = (lo + hi) / 2;\n        if (a[mid] == key)\n            return mid;\n        else if (a[mid] < key)\n            lo = mid + 1;\n        else\n            hi = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int n, key, a[1000], i, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    pos = binary_search(a, n, key);\n    printf(\"%d\\n\", pos);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5 3\n1 2 3 4 5\n",
@@ -4484,7 +4484,7 @@
       "stem": "自实现 `long long fast_pow(int x, int n)`，用分治快速幂计算 x 的 n 次方（n≥0）。main 已给出，请不要改动；判分以 stdin 输入 x、n 后调用 fast_pow 的输出为准。",
       "apiName": "fast_pow",
       "code_starter": "#include <stdio.h>\n\n/* TODO: 用分治快速幂计算 x 的 n 次方（n>=0） */\nlong long fast_pow(int x, int n) {\n    /* 在此实现 */\n    return 0;\n}\n\nint main(void) {\n    int x, n;\n    scanf(\"%d %d\", &x, &n);\n    printf(\"%lld\\n\", fast_pow(x, n));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nlong long fast_pow(int x, int n) {\n    if (n == 0) return 1;\n    if (n % 2 == 1) return (long long)x * fast_pow(x, n - 1);\n    long long half = fast_pow(x, n / 2);\n    return half * half;\n}\n\nint main(void) {\n    int x, n;\n    scanf(\"%d %d\", &x, &n);\n    printf(\"%lld\\n\", fast_pow(x, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nlong long fast_pow(int x, int n) {\n    if (n == 0)\n        return 1;\n    if (n % 2 == 1)\n        return (long long)x * fast_pow(x, n - 1);\n    long long half = fast_pow(x, n / 2);\n    return half * half;\n}\n\nint main(void) {\n    int x, n;\n    scanf(\"%d %d\", &x, &n);\n    printf(\"%lld\\n\", fast_pow(x, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 10\n",
@@ -4530,7 +4530,7 @@
       "stem": "不用 <string.h>/<stdlib.h> 的 strdup，自实现 `char *my_strdup(const char *s)`，把字符串 s 复制到新分配的内存并返回新串指针。main 已给出，请不要改动；判分以 stdin 输入字符串后调用 my_strdup 的输出为准。",
       "apiName": "strdup",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\n/* TODO: 复制字符串 s 到新分配的内存，返回新串指针 */\nchar *my_strdup(const char *s) {\n    /* 在此实现 */\n    return NULL;\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    char *d = my_strdup(buf);\n    printf(\"%s\\n\", d);\n    free(d);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nchar *my_strdup(const char *s) {\n    size_t len = 0;\n    while (s[len] != '\\0') len++;\n    char *p = malloc((len + 1) * sizeof(char));\n    if (p == NULL) return NULL;\n    for (size_t i = 0; i <= len; i++) p[i] = s[i];\n    return p;\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    char *d = my_strdup(buf);\n    printf(\"%s\\n\", d);\n    free(d);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nchar *my_strdup(const char *s) {\n    size_t len = 0;\n    while (s[len] != '\\0')\n        len++;\n    char *p = malloc((len + 1) * sizeof(char));\n    if (p == NULL)\n        return NULL;\n    for (size_t i = 0; i <= len; i++)\n        p[i] = s[i];\n    return p;\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    char *d = my_strdup(buf);\n    printf(\"%s\\n\", d);\n    free(d);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\n",
