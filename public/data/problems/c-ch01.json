@@ -43,7 +43,7 @@
         }
       ],
       "code": "/*__BLANK_1__*/\n\n/*__BLANK_2__*/\n{\n    int n;\n    scanf(\"%d\", &n);\n    /* Welcome to C! */\n    printf(\"%s%d\\n\", \"Welcome to C!\", n);\n    /*__BLANK_3__*/\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    scanf(\"%d\", &n);\n    /* Welcome to C! */\n    printf(\"%s%d\\n\", \"Welcome to C!\", n);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    /* Welcome to C! */\n    printf(\"%s%d\\n\", \"Welcome to C!\", n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -111,7 +111,7 @@
         }
       ],
       "code": "/*__BLANK_1__*/\n\n/*__BLANK_2__*/\n{\n    int n;\n    scanf(\"%d\", &n);\n    /* I am a student. */\n    printf(\"%s%d\\n\", \"I am a student.\", n);\n    /*__BLANK_3__*/\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    scanf(\"%d\", &n);\n    /* I am a student. */\n    printf(\"%s%d\\n\", \"I am a student.\", n);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    /* I am a student. */\n    printf(\"%s%d\\n\", \"I am a student.\", n);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -148,7 +148,7 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序读入两个整数，要求依次输出：第一行\"a+b=和\"，第二行和值占 6 列右对齐，第三行输出字符 A 与一个反斜杠。请填入恰当内容。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}\n```",
+      "stem": "下列程序读入两个整数，要求依次输出：第一行\"a+b=和\"，第二行和值占 6 列右对齐，第三行输出字符 A 与一个反斜杠。请填入恰当内容。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -166,8 +166,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    printf(\"%6d\\n\", a + b);\n    printf(\"%c\\\\\\n\", 'A');\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    printf(\"%6d\\n\", a + b);\n    printf(\"%c\\\\\\n\", 'A');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "8 5\n",
@@ -203,7 +203,7 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序读入两个整数，要求依次输出：第一行\"a-b=差\"，第二行差值占 5 列左对齐，第三行输出字符 B 与一个百分号。请填入恰当内容。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}\n```",
+      "stem": "下列程序读入两个整数，要求依次输出：第一行\"a-b=差\"，第二行差值占 5 列左对齐，第三行输出字符 B 与一个百分号。请填入恰当内容。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -221,8 +221,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a-b=%d\\n\", a - b);\n    printf(\"%-5d\\n\", a - b);\n    printf(\"%c%%\\n\", 'B');\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    /*__BLANK_1__*/;\n    /*__BLANK_2__*/;\n    /*__BLANK_3__*/;\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a-b=%d\\n\", a - b);\n    printf(\"%-5d\\n\", a - b);\n    printf(\"%c%%\\n\", 'B');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "8 5\n",
@@ -363,9 +363,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出两个整数之和 */\nint main(void)\n{\n    int a = 12;        // 第一个加数\n    int b = 5;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出两个整数之和 */\nint main(void) {\n    int a = 12;                            // 第一个加数\n    int b = 5;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "12 + 5 = 17",
-      "code": "#include <stdio.h>\n\n/* 本程序计算并输出两个整数之和 */\nint main(void)\n{\n    int a = 12;        // 第一个加数\n    int b = 5;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n/* 本程序计算并输出两个整数之和 */\nint main(void) {\n    int a = 12;                            // 第一个加数\n    int b = 5;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}",
       "stdin": "",
       "explanation": "本题考察 C 程序的基本组成：预处理命令 #include <stdio.h> 引入标准输入输出头文件，main 是程序执行的唯一入口，函数体由若干条以分号结束的语句组成。程序中出现了 /* */ 与 // 两种注释，它们只在编译前被预处理阶段剔除，不产生任何机器指令，也不影响运行结果，因此计算 a+b（12+5=17）的输出与注释内容无关。易错点：注释不能嵌套书写 /* /* */ */，且 // 注释必须独占到行尾。",
       "tags": [
@@ -389,9 +389,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出两个相等整数之和 */\nint main(void)\n{\n    int a = 7;        // 第一个加数\n    int b = 7;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出两个相等整数之和 */\nint main(void) {\n    int a = 7;                             // 第一个加数\n    int b = 7;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "7 + 7 = 14",
-      "code": "#include <stdio.h>\n\n/* 本程序计算并输出两个相等整数之和 */\nint main(void)\n{\n    int a = 7;        // 第一个加数\n    int b = 7;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n/* 本程序计算并输出两个相等整数之和 */\nint main(void) {\n    int a = 7;                             // 第一个加数\n    int b = 7;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}",
       "stdin": "",
       "explanation": "本题考察 C 程序的基本组成：预处理命令 #include <stdio.h> 引入标准输入输出头文件，main 是程序执行的唯一入口，函数体由若干条以分号结束的语句组成。程序中出现了 /* */ 与 // 两种注释，它们只在编译前被预处理阶段剔除，不产生任何机器指令，也不影响运行结果，因此计算 a+b（7+7=14）的输出与注释内容无关。易错点：注释不能嵌套书写 /* /* */ */，且 // 注释必须独占到行尾。",
       "tags": [
@@ -415,9 +415,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出三位数与一位数之和 */\nint main(void)\n{\n    int a = 100;        // 第一个加数\n    int b = 1;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出三位数与一位数之和 */\nint main(void) {\n    int a = 100;                           // 第一个加数\n    int b = 1;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "100 + 1 = 101",
-      "code": "#include <stdio.h>\n\n/* 本程序计算并输出三位数与一位数之和 */\nint main(void)\n{\n    int a = 100;        // 第一个加数\n    int b = 1;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n/* 本程序计算并输出三位数与一位数之和 */\nint main(void) {\n    int a = 100;                           // 第一个加数\n    int b = 1;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}",
       "stdin": "",
       "explanation": "本题考察 C 程序的基本组成：预处理命令 #include <stdio.h> 引入标准输入输出头文件，main 是程序执行的唯一入口，函数体由若干条以分号结束的语句组成。程序中出现了 /* */ 与 // 两种注释，它们只在编译前被预处理阶段剔除，不产生任何机器指令，也不影响运行结果，因此计算 a+b（100+1=101）的输出与注释内容无关。易错点：注释不能嵌套书写 /* /* */ */，且 // 注释必须独占到行尾。",
       "tags": [
@@ -441,9 +441,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出含负数的两数之和 */\nint main(void)\n{\n    int a = -8;        // 第一个加数\n    int b = 3;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n/* 本程序计算并输出含负数的两数之和 */\nint main(void) {\n    int a = -8;                            // 第一个加数\n    int b = 3;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "-8 + 3 = -5",
-      "code": "#include <stdio.h>\n\n/* 本程序计算并输出含负数的两数之和 */\nint main(void)\n{\n    int a = -8;        // 第一个加数\n    int b = 3;        /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b);   /* 一条语句可以写在同一行 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n/* 本程序计算并输出含负数的两数之和 */\nint main(void) {\n    int a = -8;                            // 第一个加数\n    int b = 3;                             /* 第二个加数 */\n    printf(\"%d + %d = %d\\n\", a, b, a + b); /* 一条语句可以写在同一行 */\n    return 0;\n}",
       "stdin": "",
       "explanation": "本题考察 C 程序的基本组成：预处理命令 #include <stdio.h> 引入标准输入输出头文件，main 是程序执行的唯一入口，函数体由若干条以分号结束的语句组成。程序中出现了 /* */ 与 // 两种注释，它们只在编译前被预处理阶段剔除，不产生任何机器指令，也不影响运行结果，因此计算 a+b（-8+3=-5）的输出与注释内容无关。易错点：注释不能嵌套书写 /* /* */ */，且 // 注释必须独占到行尾。",
       "tags": [
@@ -467,9 +467,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = 8, b = 123;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = 8, b = 123;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "a=8,b=123\n|   8|123 |\n8\t123",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 8, b = 123;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 8, b = 123;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的格式控制串由普通字符与格式说明符组成：%d 按十进制整数输出，%4d 表示占 4 列右对齐（不足左侧补空格），%-4d 表示占 4 列左对齐（不足右侧补空格），\\t 是水平制表符转义。本题 a=8、b=123，因此第 2 行的竖线之间会因宽度设置而出现空格填充，宽度超过 4 位时按实际位数输出、不会截断。易错点：%4d 的空格是输出的一部分，判题比对时不能漏掉；转义字符 \\t 与 \\n 都是一个字符。",
       "tags": [
@@ -493,9 +493,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = -5, b = 42;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = -5, b = 42;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "a=-5,b=42\n|  -5|42  |\n-5\t42",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = -5, b = 42;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = -5, b = 42;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的格式控制串由普通字符与格式说明符组成：%d 按十进制整数输出，%4d 表示占 4 列右对齐（不足左侧补空格），%-4d 表示占 4 列左对齐（不足右侧补空格），\\t 是水平制表符转义。本题 a=-5、b=42，因此第 2 行的竖线之间会因宽度设置而出现空格填充，宽度超过 4 位时按实际位数输出、不会截断。易错点：%4d 的空格是输出的一部分，判题比对时不能漏掉；转义字符 \\t 与 \\n 都是一个字符。",
       "tags": [
@@ -519,9 +519,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = 9, b = 1000;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = 9, b = 1000;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "a=9,b=1000\n|   9|1000|\n9\t1000",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 9, b = 1000;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 9, b = 1000;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的格式控制串由普通字符与格式说明符组成：%d 按十进制整数输出，%4d 表示占 4 列右对齐（不足左侧补空格），%-4d 表示占 4 列左对齐（不足右侧补空格），\\t 是水平制表符转义。本题 a=9、b=1000，因此第 2 行的竖线之间会因宽度设置而出现空格填充，宽度超过 4 位时按实际位数输出、不会截断。易错点：%4d 的空格是输出的一部分，判题比对时不能漏掉；转义字符 \\t 与 \\n 都是一个字符。",
       "tags": [
@@ -545,9 +545,9 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a = 0, b = 7;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a = 0, b = 7;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "a=0,b=7\n|   0|7   |\n0\t7",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 0, b = 7;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 0, b = 7;\n    printf(\"a=%d,b=%d\\n\", a, b);\n    printf(\"|%4d|%-4d|\\n\", a, b);\n    printf(\"%d\\t%d\\n\", a, b);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的格式控制串由普通字符与格式说明符组成：%d 按十进制整数输出，%4d 表示占 4 列右对齐（不足左侧补空格），%-4d 表示占 4 列左对齐（不足右侧补空格），\\t 是水平制表符转义。本题 a=0、b=7，因此第 2 行的竖线之间会因宽度设置而出现空格填充，宽度超过 4 位时按实际位数输出、不会截断。易错点：%4d 的空格是输出的一部分，判题比对时不能漏掉；转义字符 \\t 与 \\n 都是一个字符。",
       "tags": [
@@ -646,15 +646,15 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在 2 处错误，无法通过编译。请找出错误并改正。\n```\n#include <stdio.h>\n\nvoid main()\n{\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b)\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nvoid main()\n{\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b)\n    return 0;\n}",
+      "stem": "下列程序存在 2 处错误，无法通过编译。请找出错误并改正。\n```\n#include <stdio.h>\n\nvoid main() {\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b) return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nvoid main() {\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b) return 0;\n}",
       "testCases": [
         {
           "stdin": "",
           "expected": "a+b=17"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a = 12, b = 5;\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
       "bugs": [
         "C 标准规定 main 函数的返回类型是 int，写法为 int main(void)；void main 是某些教材沿用的非标准写法，在严格遵循标准的编译器下会报错或警告",
         "表达式语句末尾必须以分号结束，漏写分号是最典型的语法错误，编译器通常在下一行报\"expected ; before ...\""
@@ -681,15 +681,15 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在 2 处错误，无法通过编译。请找出错误并改正。\n```\n#includ <stdio.h>\n\nint main(void)\n{\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", C);\n    return 0;\n}\n```",
-      "code": "#includ <stdio.h>\n\nint main(void)\n{\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", C);\n    return 0;\n}",
+      "stem": "下列程序存在 2 处错误，无法通过编译。请找出错误并改正。\n```\n#includ < stdio.h>\n\nint main(void) {\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", C);\n    return 0;\n}\n```",
+      "code": "#includ < stdio.h>\n\nint main(void) {\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", C);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
           "expected": "c=25"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", c);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a = 3, b = 4;\n    int c = a * a + b * b;\n    printf(\"c=%d\\n\", c);\n    return 0;\n}",
       "bugs": [
         "预处理命令拼写错误：include 少写了字母 c，预处理器会报\"stdio.h: No such file or directory\"",
         "C 语言区分大小写，定义的变量是 c，写成 C 就成了未声明的标识符，编译器报\"'C' undeclared\""
@@ -716,8 +716,8 @@
       "section": "1.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序要求读入两个整数并输出它们的和。程序中存在 2 处错误，请找出并改正。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n    scanf(\"%d%d\", x, y);\n    printf(\"x+y=%d\\n\", x * y);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n    scanf(\"%d%d\", x, y);\n    printf(\"x+y=%d\\n\", x * y);\n    return 0;\n}",
+      "stem": "下列程序要求读入两个整数并输出它们的和。程序中存在 2 处错误，请找出并改正。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, y;\n    scanf(\"%d%d\", x, y);\n    printf(\"x+y=%d\\n\", x * y);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n    scanf(\"%d%d\", x, y);\n    printf(\"x+y=%d\\n\", x * y);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4\n",
@@ -732,7 +732,7 @@
           "expected": "x+y=3"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"x+y=%d\\n\", x + y);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"x+y=%d\\n\", x + y);\n    return 0;\n}",
       "bugs": [
         "scanf 是输入型函数，必须把变量的地址传给它，正确写法是 &x、&y；漏写 & 会把尚未赋值的 x、y 的内容当作地址使用，造成运行期非法访问",
         "逻辑错误：题目要求输出和，程序却计算了乘积，语法上完全合法、能编译能运行，只有核对输出才能发现"
@@ -1294,10 +1294,10 @@
           "expected": "a+b=-5"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
       "input_format": "一行两个整数 a 和 b，用空格分隔。",
       "output_format": "一行，格式为 a+b=和。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b;\n    scanf(\"%d%d\", &a, &b);\n    printf(\"a+b=%d\\n\", a + b);\n    return 0;\n}",
       "explanation": "本题训练 C 程序最基本的输入—处理—输出流程：用 scanf(\"%d%d\", &a, &b) 读入两个整数（注意必须写 & 取地址），计算 a+b，再用 printf(\"a+b=%d\\n\", a + b) 按指定格式输出。格式串中的普通字符 a+b= 原样打印，%d 被和值替换。易错点：scanf 的格式串中不要写 \\n 或多余提示语，否则会影响读入；输出格式必须与题目要求逐字符一致。",
       "tags": [
         "scanf",
@@ -1335,10 +1335,10 @@
           "expected": "*\n**\n***\n****\n*****"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++)\n            printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "input_format": "一行一个整数 n（1 ≤ n ≤ 20）。",
       "output_format": "n 行星号图案，第 i 行有 i 个星号。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++)\n            printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "explanation": "本题是\"顺序 + 循环\"两种基本结构的组合：外层循环 i 从 1 到 n 控制行数，内层循环 j 从 1 到 i 控制每行星号个数，每行结束后输出一个换行符。也可用 while 实现，结构等价。易错点：内层循环的终止条件是 j <= i 而不是 j <= n，否则会输出一个 n×n 的方块；每行星号后不能再输出多余空格。",
       "tags": [
         "循环",
