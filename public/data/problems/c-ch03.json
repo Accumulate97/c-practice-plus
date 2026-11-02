@@ -16,7 +16,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint main( )\n{ int k=2,m=5;\n  float s,x=1.2, y=/*__BLANK_1__*/;\n  s=2/3+k*y/x+m/2;\n  printf(\"%4.2f\\n\",s);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int k = 2, m = 5;\n    float s, x = 1.2, y = /*__BLANK_1__*/;\n    s = 2 / 3 + k * y / x + m / 2;\n    printf(\"%4.2f\\n\", s);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -26,7 +26,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main( )\n{ int k=2,m=5;\n  float s,x=1.2, y= 3.6 ;\n  s=2/3+k*y/x+m/2;\n  printf(\"%4.2f\\n\",s);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main() {\n    int k = 2, m = 5;\n    float s, x = 1.2, y = 3.6;\n    s = 2 / 3 + k * y / x + m / 2;\n    printf(\"%4.2f\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -45,7 +45,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 6 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 3 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 6 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 3 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -73,8 +73,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 6 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 3 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%06d\\n\", n);    /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"%-6d\\n\", n);    /* 占 6 列左对齐，右侧补空格 */\n    printf(\"%.3f\\n\", d);    /* 保留 3 位小数 */\n    printf(\"%#x\\n\", n);    /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 6 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 3 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%06d\\n\", n); /* 占 6 列右对齐，左侧用 0 填充 */\n    printf(\"%-6d\\n\", n); /* 占 6 列左对齐，右侧补空格 */\n    printf(\"%.3f\\n\", d); /* 保留 3 位小数 */\n    printf(\"%#x\\n\", n);  /* 以十六进制输出并带 0x 前缀 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "25 3.14159",
@@ -111,7 +111,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 8 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 2 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以八进制输出（不带前缀） */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 8 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 2 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以八进制输出（不带前缀） */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -139,8 +139,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 8 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 2 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以八进制输出（不带前缀） */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%08d\\n\", n);    /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"%-8d\\n\", n);    /* 占 8 列左对齐，右侧补空格 */\n    printf(\"%.2f\\n\", d);    /* 保留 2 位小数 */\n    printf(\"%o\\n\", n);    /* 以八进制输出（不带前缀） */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 8 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 2 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以八进制输出（不带前缀） */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%08d\\n\", n); /* 占 8 列右对齐，左侧用 0 填充 */\n    printf(\"%-8d\\n\", n); /* 占 8 列左对齐，右侧补空格 */\n    printf(\"%.2f\\n\", d); /* 保留 2 位小数 */\n    printf(\"%o\\n\", n);   /* 以八进制输出（不带前缀） */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "25 3.14159",
@@ -177,7 +177,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 4 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 1 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以无符号十进制输出 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 4 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 1 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以无符号十进制输出 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -205,8 +205,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 4 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 1 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以无符号十进制输出 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%04d\\n\", n);    /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"%-4d\\n\", n);    /* 占 4 列左对齐，右侧补空格 */\n    printf(\"%.1f\\n\", d);    /* 保留 1 位小数 */\n    printf(\"%u\\n\", n);    /* 以无符号十进制输出 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 4 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 1 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以无符号十进制输出 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%04d\\n\", n); /* 占 4 列右对齐，左侧用 0 填充 */\n    printf(\"%-4d\\n\", n); /* 占 4 列左对齐，右侧补空格 */\n    printf(\"%.1f\\n\", d); /* 保留 1 位小数 */\n    printf(\"%u\\n\", n);   /* 以无符号十进制输出 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "25 3.14159",
@@ -243,7 +243,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 10 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 4 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以大写十六进制输出 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 10 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 4 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以大写十六进制输出 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -271,8 +271,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n);    /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n);    /* 占 10 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d);    /* 保留 4 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n);    /* 以大写十六进制输出 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%010d\\n\", n);    /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"%-10d\\n\", n);    /* 占 10 列左对齐，右侧补空格 */\n    printf(\"%.4f\\n\", d);    /* 保留 4 位小数 */\n    printf(\"%X\\n\", n);    /* 以大写十六进制输出 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"/*__BLANK_1__*/\\n\", n); /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"/*__BLANK_2__*/\\n\", n); /* 占 10 列左对齐，右侧补空格 */\n    printf(\"/*__BLANK_3__*/\\n\", d); /* 保留 4 位小数 */\n    printf(\"/*__BLANK_4__*/\\n\", n); /* 以大写十六进制输出 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n\n    scanf(\"%d %lf\", &n, &d);\n    printf(\"%010d\\n\", n); /* 占 10 列右对齐，左侧用 0 填充 */\n    printf(\"%-10d\\n\", n); /* 占 10 列左对齐，右侧补空格 */\n    printf(\"%.4f\\n\", d);  /* 保留 4 位小数 */\n    printf(\"%X\\n\", n);    /* 以大写十六进制输出 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "25 3.14159",
@@ -309,7 +309,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    float x;\n    char c;\n\n    /*__BLANK_1__*/;                       /* 输入形如 3,5 一行读入两个整数 */\n    /*__BLANK_2__*/;                       /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    float x;\n    char c;\n\n    /*__BLANK_1__*/; /* 输入形如 3,5 一行读入两个整数 */\n    /*__BLANK_2__*/; /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -328,8 +328,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    float x;\n    char c;\n\n    /*__BLANK_1__*/;                       /* 输入形如 3,5 一行读入两个整数 */\n    /*__BLANK_2__*/;                       /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    float x;\n    char c;\n\n    scanf(\"%d,%d\", &a, &b);                       /* 输入形如 3,5 一行读入两个整数 */\n    scanf(\"%f %c\", &x, &c);                       /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    float x;\n    char c;\n\n    /*__BLANK_1__*/; /* 输入形如 3,5 一行读入两个整数 */\n    /*__BLANK_2__*/; /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    float x;\n    char c;\n\n    scanf(\"%d,%d\", &a, &b); /* 输入形如 3,5 一行读入两个整数 */\n    scanf(\"%f %c\", &x, &c); /* 输入形如 2.5 A 读入实数与字符 */\n    printf(\"%d %d %.2f %c\\n\", a, b, x, c);\n    printf(\"%d\\n\", a * b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3,5\n2.5 A\n",
@@ -366,7 +366,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(/*__BLANK_1__*/, &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\", /*__BLANK_2__*/);      /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(/*__BLANK_1__*/, &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\",\n           /*__BLANK_2__*/); /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -385,8 +385,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(/*__BLANK_1__*/, &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\", /*__BLANK_2__*/);      /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(\"%4d%2d%2d\", &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\", y % 4 == 0 && y % 100 != 0 || y % 400 == 0);      /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(/*__BLANK_1__*/, &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\",\n           /*__BLANK_2__*/); /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int y, m, d;\n\n    /* 输入形如 20260912 的八位日期，按域宽拆成年、月、日 */\n    scanf(\"%4d%2d%2d\", &y, &m, &d);\n    printf(\"%d-%02d-%02d\\n\", y, m, d);\n    printf(\"%d\\n\",\n           y % 4 == 0 && y % 100 != 0 ||\n               y % 400 == 0); /* 输出年份是否为闰年：能被 4 整除且不被 100 整除，或能被 400 整除 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "20260912",
@@ -423,7 +423,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, k;\n\n    k = /*__BLANK_1__*/;                   /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (/*__BLANK_2__*/)                   /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", /*__BLANK_3__*/);   /* 输出两数中较大的一个 */\n    }\n    else\n        printf(\"input error\\n\");\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, k;\n\n    k = /*__BLANK_1__*/; /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (/*__BLANK_2__*/) /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", /*__BLANK_3__*/); /* 输出两数中较大的一个 */\n    } else\n        printf(\"input error\\n\");\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -449,8 +449,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, k;\n\n    k = /*__BLANK_1__*/;                   /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (/*__BLANK_2__*/)                   /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", /*__BLANK_3__*/);   /* 输出两数中较大的一个 */\n    }\n    else\n        printf(\"input error\\n\");\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, k;\n\n    k = scanf(\"%d %d\", &a, &b);                   /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (k == 2)                   /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", a > b ? a : b);   /* 输出两数中较大的一个 */\n    }\n    else\n        printf(\"input error\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, k;\n\n    k = /*__BLANK_1__*/; /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (/*__BLANK_2__*/) /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", /*__BLANK_3__*/); /* 输出两数中较大的一个 */\n    } else\n        printf(\"input error\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b, k;\n\n    k = scanf(\"%d %d\", &a, &b); /* 一次读入两个整数，并把成功赋值的个数存入 k */\n    if (k == 2)                 /* 只有两个都读成功才继续 */\n    {\n        printf(\"%d %d\\n\", a, b);\n        printf(\"%d\\n\", a > b ? a : b); /* 输出两数中较大的一个 */\n    } else\n        printf(\"input error\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "9 4",
@@ -488,7 +488,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    /*__BLANK_1__*/                        /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = /*__BLANK_2__*/;                 /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", /*__BLANK_3__*/);       /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    /*__BLANK_1__*/ /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = /*__BLANK_2__*/; /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", /*__BLANK_3__*/); /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -514,8 +514,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    /*__BLANK_1__*/                        /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = /*__BLANK_2__*/;                 /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", /*__BLANK_3__*/);       /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    t = a; a = b; b = t;                        /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = (a + b) / 2.0;                 /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", b / a * 100 + b % a);       /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    /*__BLANK_1__*/ /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = /*__BLANK_2__*/; /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", /*__BLANK_3__*/); /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    double avg;\n\n    scanf(\"%d %d\", &a, &b);\n    t = a;\n    a = b;\n    b = t; /* 借助第三个变量交换 a 与 b */\n    printf(\"%d %d\\n\", a, b);\n    avg = (a + b) / 2.0; /* 交换后两数的平均值，必须保留小数 */\n    printf(\"%.2f\\n\", avg);\n    printf(\"%d\\n\", b / a * 100 + b % a); /* 交换后用大数除以小数：商*100 + 余数 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "7 3",
@@ -553,7 +553,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = /*__BLANK_1__*/;                   /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = /*__BLANK_2__*/;                   /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    /*__BLANK_3__*/                        /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = /*__BLANK_1__*/; /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = /*__BLANK_2__*/; /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    /*__BLANK_3__*/ /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -578,8 +578,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = /*__BLANK_1__*/;                   /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = /*__BLANK_2__*/;                   /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    /*__BLANK_3__*/                        /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = 2 * 3.14159 * r * h;                   /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = 3.14159 * r * r * h;                   /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    printf(\"v=%.3f\\n\", v);                        /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = /*__BLANK_1__*/; /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = /*__BLANK_2__*/; /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    /*__BLANK_3__*/ /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    double r, h, s, v;\n\n    scanf(\"%lf %lf\", &r, &h);\n    s = 2 * 3.14159 * r * h; /* 圆柱侧面积：2 * 3.14159 * r * h */\n    v = 3.14159 * r * r * h; /* 圆柱体积：3.14159 * r * r * h */\n    printf(\"%.2f\\n\", s);\n    printf(\"v=%.3f\\n\", v); /* 按\"v=数值\"的形式输出体积，保留 3 位小数 */\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2",
@@ -617,7 +617,7 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    c = /*__BLANK_1__*/;                   /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", /*__BLANK_2__*/);       /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(/*__BLANK_3__*/);              /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    c = /*__BLANK_1__*/; /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", /*__BLANK_2__*/); /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(/*__BLANK_3__*/);        /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -642,8 +642,8 @@
           ]
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    c = /*__BLANK_1__*/;                   /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", /*__BLANK_2__*/);       /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(/*__BLANK_3__*/);              /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    c = getchar();                   /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", c >= 'a' ? c - 32 : c + 32);       /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(c - 1);              /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    c = /*__BLANK_1__*/; /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", /*__BLANK_2__*/); /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(/*__BLANK_3__*/);        /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    c = getchar(); /* 从标准输入读入一个字符 */\n    printf(\"%c %d\\n\", c, c);\n    printf(\"%c\\n\", c >= 'a' ? c - 32 : c + 32); /* 输出它的大小写互换结果（输入保证是字母） */\n    putchar(c - 1);                             /* 输出它在字母表中的前驱字符 */\n    putchar('\\n');\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "A\n",
@@ -763,7 +763,7 @@
           "answer": "t = a; a = b; b = t;"
         }
       ],
-      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a = 3, b = 9, t;\n    t = a; a = b; b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a = 3, b = 9, t;\n    t = a;\n    a = b;\n    b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -789,7 +789,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ short i;\n  i=-4;\n  printf(\"\\ni: dec=%d, oct=%o, hex=%x, unsigned=%u\\n\",i,i,i,i);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    short i;\n    i = -4;\n    printf(\"\\ni: dec=%d, oct=%o, hex=%x, unsigned=%u\\n\", i, i, i, i);\n    return 0;\n}",
       "answer": "\ni: dec=-4, oct=37777777774, hex=fffffffc, unsigned=4294967292",
       "id": "c-ch03-cr-001",
       "verified": true
@@ -806,7 +806,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ printf(\"*%f,%4.3f*\\n\",3.14,3.1415);\n  return 0;  }",
+      "code": "#include <stdio.h>\nint main() {\n    printf(\"*%f,%4.3f*\\n\", 3.14, 3.1415);\n    return 0;\n}",
       "answer": "*3.140000,3.142*",
       "id": "c-ch03-cr-002",
       "verified": true
@@ -823,7 +823,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char c='x';\n  printf(\"c: dec=%d, oct=%o, hex=%x, ASCII=%c\\n\",c,c,c,c);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    char c = 'x';\n    printf(\"c: dec=%d, oct=%o, hex=%x, ASCII=%c\\n\", c, c, c, c);\n    return 0;\n}",
       "answer": "c: dec=120, oct=170, hex=78, ASCII=x",
       "id": "c-ch03-cr-003",
       "verified": true
@@ -840,7 +840,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%o*d(5)=%7o*d(6)=%-7o*\\n\",d,d,d);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int d = -2;\n    printf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\", d, d, d);\n    printf(\"*d(4)=%o*d(5)=%7o*d(6)=%-7o*\\n\", d, d, d);\n    return 0;\n}",
       "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=37777777776*d(5)=37777777776*d(6)=37777777776*",
       "id": "c-ch03-cr-004",
       "verified": true
@@ -857,7 +857,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    int d = -2;\nprintf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\",d,d,d);\nprintf(\"*d(4)=%x*d(5)=%6x*d(6)=%-6x*\\n\",d,d,d);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int d = -2;\n    printf(\"*d(1)=%d*d(2)=%3d*d(3)=%-3d*\\n\", d, d, d);\n    printf(\"*d(4)=%x*d(5)=%6x*d(6)=%-6x*\\n\", d, d, d);\n    return 0;\n}",
       "answer": "*d(1)=-2*d(2)= -2*d(3)=-2 *\n*d(4)=fffffffe*d(5)=fffffffe*d(6)=fffffffe*",
       "id": "c-ch03-cr-005",
       "verified": true
@@ -874,7 +874,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\n    float d1 = 3.5, d2 = -3.5;\nprintf(\"*d(1)=%e*d(2)=%.4e*d(3)=%10.4e*\\n\",d1,d1,d1);\nprintf(\"*d(4)=%e*d(5)=%.6e*d(6)=%-12.5e*\\n\",d2,d2,d2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    float d1 = 3.5, d2 = -3.5;\n    printf(\"*d(1)=%e*d(2)=%.4e*d(3)=%10.4e*\\n\", d1, d1, d1);\n    printf(\"*d(4)=%e*d(5)=%.6e*d(6)=%-12.5e*\\n\", d2, d2, d2);\n    return 0;\n}",
       "answer": "*d(1)=3.500000e+00*d(2)=3.5000e+00*d(3)=3.5000e+00*\n*d(4)=-3.500000e+00*d(5)=-3.500000e+00*d(6)=-3.50000e+00*",
       "id": "c-ch03-cr-006",
       "verified": true
@@ -891,7 +891,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x=1,y=2;\n  printf(\"x=%d y=%d * sum * =%d\\n\",x,y,x+y);\n  printf(\"10 Squared is : %d\\n\",10 * 10);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int x = 1, y = 2;\n    printf(\"x=%d y=%d * sum * =%d\\n\", x, y, x + y);\n    printf(\"10 Squared is : %d\\n\", 10 * 10);\n    return 0;\n}",
       "answer": "x=1 y=2 * sum * =3\n10 Squared is : 100",
       "id": "c-ch03-cr-007",
       "verified": true
@@ -908,7 +908,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int x=10; float pi=3.1416;\n  printf(\"(1) %d\\n\",x);\n  printf(\"(2) %6d\\n\",x);\n  printf(\"(3) %f\\n\",56.1);\n  printf(\"(4) %14f\\n\",pi);\n  printf(\"(5) %e\\n\",568.1);\n  printf(\"(6) %14e\\n\",pi);\n  printf(\"(7) %g\\n\",pi);\n  printf(\"(8) %12g\\n\",pi);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int x = 10;\n    float pi = 3.1416;\n    printf(\"(1) %d\\n\", x);\n    printf(\"(2) %6d\\n\", x);\n    printf(\"(3) %f\\n\", 56.1);\n    printf(\"(4) %14f\\n\", pi);\n    printf(\"(5) %e\\n\", 568.1);\n    printf(\"(6) %14e\\n\", pi);\n    printf(\"(7) %g\\n\", pi);\n    printf(\"(8) %12g\\n\", pi);\n    return 0;\n}",
       "answer": "(1) 10\n(2)     10\n(3) 56.100000\n(4)       3.141600\n(5) 5.681000e+02\n(6)   3.141600e+00\n(7) 3.1416\n(8)       3.1416",
       "id": "c-ch03-cr-008",
       "verified": true
@@ -925,7 +925,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ float a=123.456; double b=8765.4567;\n  printf(\"(1) %f\\n\",a);\n  printf(\"(2) %14.3f\\n\",a);\n  printf(\"(3) %6.4f\\n\",a);\n  printf(\"(4) %lf\\n\",b);\n  printf(\"(5) %14.3lf\\n\",b);\n  printf(\"(6) %8.4lf\\n\",b);\n  printf(\"(7) %.4f\\n\",b);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    float a = 123.456;\n    double b = 8765.4567;\n    printf(\"(1) %f\\n\", a);\n    printf(\"(2) %14.3f\\n\", a);\n    printf(\"(3) %6.4f\\n\", a);\n    printf(\"(4) %lf\\n\", b);\n    printf(\"(5) %14.3lf\\n\", b);\n    printf(\"(6) %8.4lf\\n\", b);\n    printf(\"(7) %.4f\\n\", b);\n    return 0;\n}",
       "answer": "(1) 123.456001\n(2)        123.456\n(3) 123.4560\n(4) 8765.456700\n(5)       8765.457\n(6) 8765.4567\n(7) 8765.4567",
       "id": "c-ch03-cr-009",
       "verified": true
@@ -942,7 +942,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=325; double x=3.1415926;\n  printf(\"a=%+06d x=%+e\\n\",a,x);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 325;\n    double x = 3.1415926;\n    printf(\"a=%+06d x=%+e\\n\", a, x);\n    return 0;\n}",
       "answer": "a=+00325 x=+3.141593e+00",
       "id": "c-ch03-cr-010",
       "verified": true
@@ -959,7 +959,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=252;\n  printf(\"a=%o a=%#o\\n\",a,a);\n  printf(\"a=%x a=%#x\\n\",a,a);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 252;\n    printf(\"a=%o a=%#o\\n\", a, a);\n    printf(\"a=%x a=%#x\\n\", a, a);\n    return 0;\n}",
       "answer": "a=374 a=0374\na=fc a=0xfc",
       "id": "c-ch03-cr-011",
       "verified": true
@@ -976,7 +976,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int n=100; char c;\n  float f=10.0; double x;\n  x=f*=n/=(c=48);\n  printf(\"%d %d %3.1f %3.1f\\n\",n,c,f,x);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int n = 100;\n    char c;\n    float f = 10.0;\n    double x;\n    x = f *= n /= (c = 48);\n    printf(\"%d %d %3.1f %3.1f\\n\", n, c, f, x);\n    return 0;\n}",
       "answer": "2 48 20.0 20.0",
       "id": "c-ch03-cr-012",
       "verified": true
@@ -993,7 +993,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int k=0; char c1='a',c2='b';\n  scanf(\"%d%c%c\",&k,&c1,&c2);\n  printf(\"%d,%c,%c\\n\",k,c1,c2);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int k = 0;\n    char c1 = 'a', c2 = 'b';\n    scanf(\"%d%c%c\", &k, &c1, &c2);\n    printf(\"%d,%c,%c\\n\", k, c1, c2);\n    return 0;\n}",
       "stdin": "55 A B\n",
       "answer": "55, ,A",
       "id": "c-ch03-cr-013",
@@ -1011,7 +1011,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int m=177;\n  printf(\"%o\\n\",m);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int m = 177;\n    printf(\"%o\\n\", m);\n    return 0;\n}",
       "answer": "261",
       "id": "c-ch03-cr-014",
       "verified": true
@@ -1028,7 +1028,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int n=0;\n  n+=(n=10);\n  printf(\"%d\\n\",n);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int n = 0;\n    n += (n = 10);\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "answer": "20",
       "id": "c-ch03-cr-015",
       "verified": true
@@ -1045,7 +1045,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char a,b;\n  a='A'+'4'-'3';\n  b='A'+'6'-'2';\n  printf(\"a=%d,b=%c\\n\",a,b);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    char a, b;\n    a = 'A' + '4' - '3';\n    b = 'A' + '6' - '2';\n    printf(\"a=%d,b=%c\\n\", a, b);\n    return 0;\n}",
       "answer": "a=66,b=E",
       "id": "c-ch03-cr-016",
       "verified": true
@@ -1062,7 +1062,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "char c1,c2;\nscanf(\"%4c%4c\",&c1,&c2);",
+      "code": "char c1, c2;\nscanf(\"%4c%4c\", &c1, &c2);",
       "answer": "",
       "id": "c-ch03-cr-017",
       "verified": false,
@@ -1080,7 +1080,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a,b; float x,y; char c1,c2;\n  scanf(\"a=%d b=%d\",&a,&b);\n  scanf(\"x=%f y=%f\",&x,&y);\n  scanf(\"c1=%c c2=%c\",&c1,&c2);\n  printf(\"a=%d,b=%d,x=%f,y=%f,c1=%c,c2=%c\",a,b,x,y,c1,c2);\n  return 0;\n }",
+      "code": "#include <stdio.h>\nint main() {\n    int a, b;\n    float x, y;\n    char c1, c2;\n    scanf(\"a=%d b=%d\", &a, &b);\n    scanf(\"x=%f y=%f\", &x, &y);\n    scanf(\"c1=%c c2=%c\", &c1, &c2);\n    printf(\"a=%d,b=%d,x=%f,y=%f,c1=%c,c2=%c\", a, b, x, y, c1, c2);\n    return 0;\n}",
       "answer": "",
       "id": "c-ch03-cr-018",
       "verified": false,
@@ -1094,9 +1094,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "25|   25|25   |\n31 19 19\n3.14|    3.14|\nA  65",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 25;\n    double d = 3.14159;\n    char c = 'A';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='A' 码值为 65。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
       "tags": [
@@ -1121,9 +1121,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "-7|   -7|-7   |\n37777777771 fffffff9 FFFFFFF9\n-2.50|   -2.50|\nz 122",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = -7;\n    double d = -2.5;\n    char c = 'z';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='z' 码值为 122。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
       "tags": [
@@ -1148,9 +1148,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "255|  255|255  |\n377 ff FF\n12.35|   12.35|\n0  48",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 255;\n    double d = 12.3456;\n    char c = '0';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='0' 码值为 48。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
       "tags": [
@@ -1175,9 +1175,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "8|    8|8    |\n10 8 8\n0.50|    0.50|\nM  77",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 8;\n    double d = 0.5;\n    char c = 'M';\n\n    printf(\"%d|%5d|%-5d|\\n\", n, n, n);\n    printf(\"%o %x %X\\n\", n, n, n);\n    printf(\"%.2f|%8.2f|\\n\", d, d);\n    printf(\"%c %3d\\n\", c, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 格式串中 m.n 分别控制宽度与精度：%5d 占 5 列右对齐、不足左补空格，%-5d 左对齐、不足右补空格，宽度不够时按实际位数输出而不截断；%.2f 保留两位小数，%8.2f 再要求总宽 8 列。%o、%x、%X 把 int 的位模式按八进制、小写与大写十六进制输出，负数则以补码形式呈现（如 -7 的十六进制是 fffffff9）。字符用 %c 输出字形、用 %d 输出其 ASCII 码值，本题 c='M' 码值为 77。易错点：竖线 | 之间的空格是输出的一部分，判题时不能漏；宽度只影响排版，不改变数值。",
       "tags": [
@@ -1202,9 +1202,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n12 34\nAB\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n12 34\nAB\n```",
       "answer": "12 34 A B\n177",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
       "stdin": "12 34\nAB\n",
       "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「12 34」，两个 %d 读到 12 与 34，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「AB」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
       "tags": [
@@ -1229,9 +1229,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n5 7\nxy\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n5 7\nxy\n```",
       "answer": "5 7 x y\n253",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
       "stdin": "5 7\nxy\n",
       "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「5 7」，两个 %d 读到 5 与 7，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「xy」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
       "tags": [
@@ -1256,9 +1256,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n-3 100\nM9\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n-3 100\nM9\n```",
       "answer": "-3 100 M 9\n231",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
       "stdin": "-3 100\nM9\n",
       "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「-3 100」，两个 %d 读到 -3 与 100，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「M9」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
       "tags": [
@@ -1283,9 +1283,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n0 0\nZz\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}\n```\n运行时输入：\n```\n0 0\nZz\n```",
       "answer": "0 0 Z z\n212",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\");                 /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    char c1, c2;\n\n    scanf(\"%d%d\", &a, &b);\n    scanf(\"%*c\"); /* 赋值抑制符：吃掉一个字符但不赋值 */\n    scanf(\"%c%c\", &c1, &c2);\n    printf(\"%d %d %c %c\\n\", a, b, c1, c2);\n    printf(\"%d\\n\", a + b + c1 + c2);\n    return 0;\n}",
       "stdin": "0 0\nZz\n",
       "explanation": "scanf 把键盘输入先放进缓冲区，再按格式串逐字符匹配：%d 会自动跳过前导空白，而 %c 不跳过，会把空白字符（包括回车）当成有效输入读走，这是\"读数字后再读字符\"最容易出错的地方。本题第 1 组输入是「0 0」，两个 %d 读到 0 与 0，剩下的换行符留在缓冲区；scanf(\"%*c\") 中的 * 是赋值抑制符，它消费一个字符但不赋值给任何变量，正好把换行吃掉，于是随后的 %c%c 才能读到第二行的前两个字符「Zz」。最后一行把字符当整数参与加法，用的是它们的 ASCII 码值。易错点：不加 %*c（或 getchar()）就会得到 c1 为换行符、c2 为 'A' 的错误结果。",
       "tags": [
@@ -1310,9 +1310,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "+42|42|  +42|\n00003.50|    3.50|\n42 42",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 42;\n    double d = 3.5;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
       "tags": [
@@ -1336,9 +1336,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "-42|-42|  -42|\n-0000.75|   -0.75|\n-42 4294967254",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = -42;\n    double d = -0.75;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 -42 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
       "tags": [
@@ -1362,9 +1362,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "+0|0|   +0|\n01234.57| 1234.57|\n0 0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 0;\n    double d = 1234.5678;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 0 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。",
       "tags": [
@@ -1388,9 +1388,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "+300|300| +300|\n00000.12|    0.12|\n300 300",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 300;\n    double d = 0.125;\n\n    printf(\"%+d|%d|%+5d|\\n\", n, n, n);\n    printf(\"%08.2f|%8.2f|\\n\", d, d);\n    printf(\"%hd %u\\n\", (short)n, (unsigned)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "printf 的标志字符紧跟 % 之后：+ 表示正数也要输出符号，空格表示正数前留一个空格，- 表示左对齐，0 表示用 0 填充宽度，# 表示给八进制/十六进制加前缀。本题 %+d 对 300 会带符号输出，%+5d 则在带符号的前提下补足 5 列宽。%08.2f 中 0 是填充标志、8 是总宽（含小数点）、.2 是小数位，所以整数部分不足会用 0 补齐。长度修饰符 h 表示 short、l 表示 long、hh 表示 signed char，%hd 输出 (short)n 时会先把 n 截断到 16 位再按有符号解释，因此 n=300 时 %hd 仍是 300，而超过 32767 就会出现回绕。易错点：%u 输出负数时按无符号解释补码，会得到一个很大的正整数，不是错误也不是 0。\n\n【实机验证·Godbolt cg132 -O0】程序本就完整。%08.2f 对 0.125 采用 round-half-even 得 00000.12；书末答案 0.13 为印刷/四舍五入误，以实机为准。",
       "tags": [
@@ -1414,9 +1414,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nHello, World!\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nHello, World!\n```",
       "answer": "HELLO, WORLD!\n13",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
       "stdin": "Hello, World!\n",
       "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「Hello, World!」共 13 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
       "tags": [
@@ -1440,9 +1440,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nC Language 2026\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\nC Language 2026\n```",
       "answer": "C LANGUAGE 2026\n15",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
       "stdin": "C Language 2026\n",
       "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「C Language 2026」共 15 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
       "tags": [
@@ -1466,9 +1466,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\naBcDeF\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\naBcDeF\n```",
       "answer": "ABCDEF\n6",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n')\n    {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int n = 0;\n\n    while ((c = getchar()) != '\\n') {\n        if (c >= 'a' && c <= 'z')\n            putchar(c - 32);\n        else\n            putchar(c);\n        n++;\n    }\n    printf(\"\\n%d\\n\", n);\n    return 0;\n}",
       "stdin": "aBcDeF\n",
       "explanation": "getchar() 从标准输入读一个字符并返回其码值，读到换行或文件结束时循环终止；putchar(c) 向标准输出写一个字符。循环体里用 c >= 'a' && c <= 'z' 判断是否小写字母，是则减 32 转成大写（大小写字母在 ASCII 表中相差固定 32），否则原样输出，n 统计读入的字符个数（不含换行）。本题输入「aBcDeF」共 6 个字符，其中小写字母被逐个转成大写，其余字符（大写字母、空格、标点、数字）保持不变，最后一行输出计数。易错点：while 条件中的 (c = getchar()) != '\\n' 必须给赋值表达式加括号，因为 != 的优先级高于 =；把 c 定义成 char 时无法可靠表示 EOF，工程上应用 int。",
       "tags": [
@@ -1492,9 +1492,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "100 144 64\n0144 0x64\n100 100\n100 100",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 100;\n    unsigned int u = 100;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=100 时得到 100；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
       "tags": [
@@ -1518,9 +1518,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "-1 37777777777 ffffffff\n037777777777 0xffffffff\n4294967295 -1\n-1 -1",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = -1;\n    unsigned int u = 4294967295;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=-1 时得到 -1；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
       "tags": [
@@ -1544,9 +1544,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "8 10 8\n010 0x8\n8 8\n8 8",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 8;\n    unsigned int u = 8;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=8 时得到 8；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
       "tags": [
@@ -1570,9 +1570,9 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "200 310 c8\n0310 0xc8\n0 0\n-56 200",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 200;\n    unsigned int u = 0;\n\n    printf(\"%d %o %x\\n\", n, n, n);\n    printf(\"%#o %#x\\n\", n, n);\n    printf(\"%u %d\\n\", u, u);\n    printf(\"%hhd %hd\\n\", (signed char)n, (short)n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "同一个 int 值可以用不同格式字符从不同角度观察：%d 按十进制有符号、%o 按八进制、%x 按十六进制，输出的都是内存里那 32 位的位模式，因此负数会以补码形式出现很长的数字串（-1 的十六进制是 ffffffff）。加 # 标志会给八进制补前导 0、给十六进制补 0x，但值为 0 时不加前缀。%u 把位模式按无符号解释，-1 就变成 4294967295。最后两行演示截断：(signed char)n 只保留低 8 位并按有符号解释，n=200 时得到 -56；(short)n 保留低 16 位。易错点：格式字符与实参类型不匹配不会报错，只会输出无意义的值，这是 C 语言类型不安全最典型的表现。",
       "tags": [
@@ -1627,7 +1627,7 @@
         "交换"
       ],
       "stem": "阅读下面程序的输出结果（输入为 `5 8`）。",
-      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    scanf(\"%d %d\", &a, &b);\n    t = a; a = b; b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    scanf(\"%d %d\", &a, &b);\n    t = a;\n    a = b;\n    b = t;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
       "stdin": "5 8",
       "answer": "8 5",
       "answerIsDescription": false,
@@ -1696,8 +1696,8 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", a, b);\n    r = (double)(a / b);;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", a, b);\n    r = (double)(a / b);;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", a, b);\n    r = (double)(a / b);\n    ;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", a, b);\n    r = (double)(a / b);\n    ;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "7 2",
@@ -1712,7 +1712,7 @@
           "expected": "3.143"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", &a, &b);\n    r = (double)a / b;;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n    double r;\n\n    scanf(\"%d %d\", &a, &b);\n    r = (double)a / b;\n    ;\n    printf(\"%.3f\\n\", r);\n    return 0;\n}",
       "bugs": [
         "scanf 需要通过地址把读到的值写回变量，地址表列必须写 &a、&b；漏掉取地址符会把变量的值当成地址使用，导致写入随机内存、程序崩溃或结果不可预测。",
         "括号位置错了：(double)(a/b) 先做整数除法把小数截掉，再转换成 double 只是补上 .0；应该先转换一侧 (double)a，让 b 自动提升为 double，才能做真正的实数除法。"
@@ -1739,8 +1739,8 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%f %d %d\\n\", n, d, c);\n    printf(\"%d\\n\", n + d);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%f %d %d\\n\", n, d, c);\n    printf(\"%d\\n\", n + d);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%f %d %d\\n\", n, d, c);\n    printf(\"%d\\n\", n + d);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%f %d %d\\n\", n, d, c);\n    printf(\"%d\\n\", n + d);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5 2.5X",
@@ -1755,7 +1755,7 @@
           "expected": "-3 1.500000 Z\n-1.50"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%d %f %c\\n\", n, d, c);\n    printf(\"%.2f\\n\", n + d);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    double d;\n    char c;\n\n    scanf(\"%d %lf %c\", &n, &d, &c);\n    printf(\"%d %f %c\\n\", n, d, c);\n    printf(\"%.2f\\n\", n + d);\n    return 0;\n}",
       "bugs": [
         "printf 的格式字符必须与实参的类型和顺序一一对应：n 是 int 用 %d，d 是 double 用 %f，c 是 char 用 %c。原式把 %f 用在 int 上、%d 用在 double 上，printf 会按错误的字节宽度去解释可变参数，输出全是垃圾值。",
         "n + d 的结果类型是 double（int 被自动提升），必须用 %f 系列格式输出；用 %d 输出 double 在 64 位平台上参数传递方式都不同，结果完全错误。"
@@ -1782,8 +1782,8 @@
       "section": "3.5 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    printf(\"%c\\n\", c + 1);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    printf(\"%c\\n\", c + 1);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    printf(\"%c\\n\", c + 1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    printf(\"%c\\n\", c + 1);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "65\nA\n",
@@ -1798,7 +1798,7 @@
           "expected": "0 M 77\nN"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    getchar(); scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    putchar(c + 1); putchar('\\n');\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    char c;\n\n    scanf(\"%d\", &n);\n    getchar();\n    scanf(\"%c\", &c);\n    printf(\"%d %c %d\\n\", n, c, c);\n    putchar(c + 1);\n    putchar('\\n');\n    return 0;\n}",
       "bugs": [
         "scanf(\"%d\") 读走数字后，输入缓冲区里还留着用户按下的回车符 \\n；紧接着的 %c 不跳过空白，会把这个换行符当成有效字符读入，导致 c 变成换行、输出看不见字符。必须先用 getchar()（或 scanf(\"%*c\")）把换行吃掉，再读真正的字符。",
         "原写法本身能编译，但与题目要求的\"用字符输出函数输出后继字符\"不符；putchar 是专门输出单个字符的标准函数，参数是整型，c + 1 会自动提升，输出的正是字母表中的下一个字符。"
@@ -2087,7 +2087,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\n#define PI 3.1415926535897932\n\nint main(void)\n{\n    double r, h;\n    double cl, cs, cvz;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2)\n        return 1;\n\n    cl = 2 * PI * r;\n    cs = PI * r * r;\n    cvz = cs * h;\n\n    printf(\"cl=%.2f\\n\", cl);\n    printf(\"cs=%.2f\\n\", cs);\n    printf(\"cvz=%.2f\\n\", cvz);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\n#define PI 3.1415926535897932\n\nint main(void) {\n    double r, h;\n    double cl, cs, cvz;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2)\n        return 1;\n\n    cl = 2 * PI * r;\n    cs = PI * r * r;\n    cvz = cs * h;\n\n    printf(\"cl=%.2f\\n\", cl);\n    printf(\"cs=%.2f\\n\", cs);\n    printf(\"cvz=%.2f\\n\", cvz);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "1.5 3",
@@ -2120,7 +2120,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char ch;\n\n    printf(\"Please input a letter:\\n\");\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    printf(\"The ASCII code of %c is %d\\n\", ch, ch);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char ch;\n\n    printf(\"Please input a letter:\\n\");\n    if (scanf(\"%c\", &ch) != 1)\n        return 1;\n    printf(\"The ASCII code of %c is %d\\n\", ch, ch);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "A",
@@ -2153,7 +2153,7 @@
       "generated_at": "2026-09-08",
       "type": "programming",
       "bloom": "apply",
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"quotient=%.2f remainder=%d\\n\", (double)a / b, a % b);\n\n    return 0;\n}\n",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"quotient=%.2f remainder=%d\\n\", (double)a / b, a % b);\n\n    return 0;\n}\n",
       "testCases": [
         {
           "stdin": "7 2",
@@ -2198,10 +2198,10 @@
           "note": "边界：半径为 0"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define PI 3.14159\n\nint main(void)\n{\n    double r, c, s;\n\n    if (scanf(\"%lf\", &r) != 1 || r < 0)\n        return 1;\n    c = 2 * PI * r;\n    s = PI * r * r;\n    printf(\"%.2f %.2f\\n\", c, s);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define PI 3.14159\n\nint main(void) {\n    double r, c, s;\n\n    if (scanf(\"%lf\", &r) != 1 || r < 0)\n        return 1;\n    c = 2 * PI * r;\n    s = PI * r * r;\n    printf(\"%.2f %.2f\\n\", c, s);\n    return 0;\n}",
       "input_format": "一行一个非负实数 r。",
       "output_format": "一行两个实数，依次为周长与面积，各保留 2 位小数，用空格分隔。",
-      "code_starter": "#include <stdio.h>\n#define PI 3.14159\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    double r, c, s;\n\n    if (scanf(\"%lf\", &r) != 1 || r < 0)\n        return 1;\n    c = 2 * PI * r;\n    s = PI * r * r;\n    printf(\"%.2f %.2f\\n\", c, s);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define PI 3.14159\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    double r, c, s;\n\n    if (scanf(\"%lf\", &r) != 1 || r < 0)\n        return 1;\n    c = 2 * PI * r;\n    s = PI * r * r;\n    printf(\"%.2f %.2f\\n\", c, s);\n    return 0;\n}",
       "explanation": "顺序结构程序的骨架就是\"读入—计算—输出\"三句。周长 C=2πr、面积 S=πr²，用 #define PI 3.14159 定义符号常量便于统一修改，比在表达式里硬写数字更好维护。r 声明为 double，scanf 必须用 %lf（读 double 用 %lf，这是 scanf 与 printf 的不对称之处），printf 用 %.2f 输出即可自动四舍五入。r=0 时周长与面积都是 0.00，属于必须通过的边界；对负半径应视为非法输入直接返回非 0。易错点：把面积写成 PI*r*2 是\"两倍半径\"而不是平方；用 float 存半径再打印会出现精度尾差。",
       "tags": [
         "顺序结构",
@@ -2240,10 +2240,10 @@
           "note": "边界：负数"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || b == 0)\n        return 1;\n    printf(\"%d %d\\n\", a / b, a % b);\n    printf(\"%d.%d\\n\", a / b, a % b * 10 / b);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || b == 0)\n        return 1;\n    printf(\"%d %d\\n\", a / b, a % b);\n    printf(\"%d.%d\\n\", a / b, a % b * 10 / b);\n    return 0;\n}",
       "input_format": "一行两个整数 a、b，用空格分隔，b 不为 0。",
       "output_format": "第一行两个整数（商与余数）；第二行形如 商.x 的两个整数用小数点连接。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || b == 0)\n        return 1;\n    printf(\"%d %d\\n\", a / b, a % b);\n    printf(\"%d.%d\\n\", a / b, a % b * 10 / b);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || b == 0)\n        return 1;\n    printf(\"%d %d\\n\", a / b, a % b);\n    printf(\"%d.%d\\n\", a / b, a % b * 10 / b);\n    return 0;\n}",
       "explanation": "本题把整数除法与取余组合成一个\"手工模拟小数\"的练习：a/b 得商，a%b 得余数，余数乘 10 再除以 b 就是商的第一位小数。7/2 → 商 3 余 1，第二行输出 3.5；20/3 → 商 6 余 2，2*10/3=6，输出 6.6。负数时 C99 规定向零取整，-7/2 = -3、-7%2 = -1，所以第二行会是 -3.-5 这种形式，虽然难看但正是要求的行为，用它来强化\"余数符号跟随被除数\"的规则。易错点：%d.%d 只是把两个整数用小数点拼起来，不是真正的浮点输出，不能改成 %.1f；b 为 0 时必须拒绝，否则除零是未定义行为。",
       "tags": [
         "商与余数",
@@ -2281,10 +2281,10 @@
           "expected": "m 109\nM\n77"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n\n    c = getchar();\n    if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')))\n        return 1;\n    printf(\"%c %d\\n\", c, c);\n    if (c >= 'a' && c <= 'z')\n        putchar(c - 32);\n    else\n        putchar(c + 32);\n    printf(\"\\n%d\\n\", (c >= 'a' ? c - 32 : c + 32));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char c;\n\n    c = getchar();\n    if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')))\n        return 1;\n    printf(\"%c %d\\n\", c, c);\n    if (c >= 'a' && c <= 'z')\n        putchar(c - 32);\n    else\n        putchar(c + 32);\n    printf(\"\\n%d\\n\", (c >= 'a' ? c - 32 : c + 32));\n    return 0;\n}",
       "input_format": "一个英文字母（大小写均可）。",
       "output_format": "三行：原字母与码值、互换后的字母、互换后的码值。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    char c;\n\n    c = getchar();\n    if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')))\n        return 1;\n    printf(\"%c %d\\n\", c, c);\n    if (c >= 'a' && c <= 'z')\n        putchar(c - 32);\n    else\n        putchar(c + 32);\n    printf(\"\\n%d\\n\", (c >= 'a' ? c - 32 : c + 32));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    char c;\n\n    c = getchar();\n    if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')))\n        return 1;\n    printf(\"%c %d\\n\", c, c);\n    if (c >= 'a' && c <= 'z')\n        putchar(c - 32);\n    else\n        putchar(c + 32);\n    printf(\"\\n%d\\n\", (c >= 'a' ? c - 32 : c + 32));\n    return 0;\n}",
       "explanation": "大小写字母在 ASCII 表中按字母顺序连续排列，同一字母的大写与小写码值恰好相差 32（如 a=97、A=65），所以小写转大写减 32、大写转小写加 32。判断是否小写用 c >= 'a' && c <= 'z'，比写 c >= 97 && c <= 122 更具可移植性（虽然 C 只保证数字字符连续，字母连续是 ASCII 的事实约定）。第一行 %c 输出字形、%d 输出码值，同一个变量因格式字符不同而呈现两种面貌，这是理解\"字符本质是整数\"的关键。易错点：非字母输入要先过滤掉，否则 c-32 可能得到标点符号；getchar 的返回值应赋给 int 才能判 EOF。",
       "tags": [
         "字符运算",
@@ -2323,10 +2323,10 @@
           "note": "边界：全为 0"
         }
       ],
-      "reference": "#include <stdio.h>\n\n#define PI 3.14159265\n\nint main(void)\n{\n    double r, h, s, v;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2 || r < 0 || h < 0)\n        return 1;\n    s = 2 * PI * r * r + 2 * PI * r * h;\n    v = PI * r * r * h;\n    printf(\"%12.3f\\n\", s);\n    printf(\"%12.3f\\n\", v);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\n#define PI 3.14159265\n\nint main(void) {\n    double r, h, s, v;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2 || r < 0 || h < 0)\n        return 1;\n    s = 2 * PI * r * r + 2 * PI * r * h;\n    v = PI * r * r * h;\n    printf(\"%12.3f\\n\", s);\n    printf(\"%12.3f\\n\", v);\n    return 0;\n}",
       "input_format": "一行两个非负实数 r、h，用空格分隔。",
       "output_format": "两行，每行一个实数，占 12 列右对齐、保留 3 位小数。",
-      "code_starter": "#include <stdio.h>\n#define PI 3.14159265\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    double r, h, s, v;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2 || r < 0 || h < 0)\n        return 1;\n    s = 2 * PI * r * r + 2 * PI * r * h;\n    v = PI * r * r * h;\n    printf(\"%12.3f\\n\", s);\n    printf(\"%12.3f\\n\", v);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#define PI 3.14159265\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    double r, h, s, v;\n\n    if (scanf(\"%lf %lf\", &r, &h) != 2 || r < 0 || h < 0)\n        return 1;\n    s = 2 * PI * r * r + 2 * PI * r * h;\n    v = PI * r * r * h;\n    printf(\"%12.3f\\n\", s);\n    printf(\"%12.3f\\n\", v);\n    return 0;\n}",
       "explanation": "圆柱表面积由两个底面圆（2πr²）与一个侧面（2πrh）组成，体积是底面积乘高（πr²h）。本题的输出格式要求\"占 12 列右对齐保留 3 位小数\"，对应格式串 %12.3f：12 是总宽度（含小数点与小数位），不足左侧补空格，.3 是精度。宽度用于对齐多行数据形成整齐的报表，是 printf 最实用的功能之一。r 与 h 都为 0 时结果都是 0.000 且右侧对齐（左边 7 个空格），这个边界最容易被漏掉空格。易错点：%12.3f 与 %12.3lf 在 printf 中等价，但 scanf 必须写 %lf；表面积公式漏掉底面积是最常见的错误。",
       "tags": [
         "顺序结构",
@@ -2365,10 +2365,10 @@
           "note": "边界：需要舍入"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    double a, b, c, sum, avg;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n    sum = a + b + c;\n    avg = sum / 3;\n    printf(\"sum=%.2f\\n\", sum);\n    printf(\"avg=%.2f\\n\", avg);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    double a, b, c, sum, avg;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n    sum = a + b + c;\n    avg = sum / 3;\n    printf(\"sum=%.2f\\n\", sum);\n    printf(\"avg=%.2f\\n\", avg);\n    return 0;\n}",
       "input_format": "一行三个实数，用空格分隔。",
       "output_format": "两行，分别为 sum=总分 与 avg=平均分，各保留 2 位小数。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    double a, b, c, sum, avg;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n    sum = a + b + c;\n    avg = sum / 3;\n    printf(\"sum=%.2f\\n\", sum);\n    printf(\"avg=%.2f\\n\", avg);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    double a, b, c, sum, avg;\n\n    if (scanf(\"%lf %lf %lf\", &a, &b, &c) != 3)\n        return 1;\n    sum = a + b + c;\n    avg = sum / 3;\n    printf(\"sum=%.2f\\n\", sum);\n    printf(\"avg=%.2f\\n\", avg);\n    return 0;\n}",
       "explanation": "题目要求输出带文字提示，格式串直接写 \"sum=%.2f\\n\"，提示文字原样输出、% 处替换为数值，这是让用户看懂结果的基本礼仪。计算本身很简单：三个 double 相加得 sum，再除以 3 得 avg；因为 sum 已是 double，除以整数 3 会自动提升为实数除法，不需要写成 3.0。第三组数据 99.5+88.25+76.125=263.875，%.2f 会舍入成 263.88，平均分 87.958333… 舍入成 87.96，正好检验精度控制。易错点：avg 若用 int 存会丢掉全部小数；提示文字与数值之间不要多打空格，否则与判题期望不一致。",
       "tags": [
         "顺序结构",
@@ -2408,10 +2408,10 @@
           "note": "边界：整数部分为 0"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b, t;\n    double d;\n\n    if (scanf(\"%d %d %lf\", &a, &b, &d) != 3)\n        return 1;\n    t = a, a = b, b = t;         /* 逗号表达式完成交换 */\n    d = (int)d;                  /* 强制转换截去小数 */\n    printf(\"%d %d %.0f\\n\", a, b, d);\n    printf(\"%d\\n\", a + b + (int)d);\n    ;                            /* 空语句：合法的、什么都不做的语句 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int a, b, t;\n    double d;\n\n    if (scanf(\"%d %d %lf\", &a, &b, &d) != 3)\n        return 1;\n    t = a, a = b, b = t; /* 逗号表达式完成交换 */\n    d = (int)d;          /* 强制转换截去小数 */\n    printf(\"%d %d %.0f\\n\", a, b, d);\n    printf(\"%d\\n\", a + b + (int)d);\n    ; /* 空语句：合法的、什么都不做的语句 */\n    return 0;\n}",
       "input_format": "一行三个数：整数 a、整数 b、实数 d，用空格分隔。",
       "output_format": "第一行 b、a、d 的整数部分，用空格分隔；第二行三者之和。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int a, b, t;\n    double d;\n\n    if (scanf(\"%d %d %lf\", &a, &b, &d) != 3)\n        return 1;\n    t = a, a = b, b = t;         /* 逗号表达式完成交换 */\n    d = (int)d;                  /* 强制转换截去小数 */\n    printf(\"%d %d %.0f\\n\", a, b, d);\n    printf(\"%d\\n\", a + b + (int)d);\n    ;                            /* 空语句：合法的、什么都不做的语句 */\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int a, b, t;\n    double d;\n\n    if (scanf(\"%d %d %lf\", &a, &b, &d) != 3)\n        return 1;\n    t = a, a = b, b = t; /* 逗号表达式完成交换 */\n    d = (int)d;          /* 强制转换截去小数 */\n    printf(\"%d %d %.0f\\n\", a, b, d);\n    printf(\"%d\\n\", a + b + (int)d);\n    ; /* 空语句：合法的、什么都不做的语句 */\n    return 0;\n}",
       "explanation": "交换两个整数用逗号表达式 t = a, a = b, b = t 一条语句即可完成，逗号是顺序点，保证从左到右依次执行，整个表达式的值是最后一个赋值的值。(int)d 是强制类型转换，只截去小数部分不四舍五入，-2.3 转换后是 -2（向零取整）；输出时用 %.0f 表示保留 0 位小数，因此 5.7 会按四舍五入显示成 6，这与 (int)5.7=5 不同，是本题最容易被忽略的细节——参考程序里求和用的是 (int)d 而不是四舍五入后的值。程序末尾那个单独的分号是空语句，合法且什么都不做，常用于循环体占位。易错点：%.0f 的舍入与强制转换的截断结果可能不一致，务必看清题目要求的是哪一个。",
       "tags": [
         "表达式语句",
@@ -2451,10 +2451,10 @@
           "note": "边界：接近零分"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    char name[20];\n    int chinese, math, english, total;\n\n    if (scanf(\"%19s %d %d %d\", name, &chinese, &math, &english) != 4)\n        return 1;\n    total = chinese + math + english;\n    printf(\"%-10s%6d%6d%6d%8d%9.2f\\n\", name, chinese, math, english, total, total / 3.0);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    char name[20];\n    int chinese, math, english, total;\n\n    if (scanf(\"%19s %d %d %d\", name, &chinese, &math, &english) != 4)\n        return 1;\n    total = chinese + math + english;\n    printf(\"%-10s%6d%6d%6d%8d%9.2f\\n\", name, chinese, math, english, total, total / 3.0);\n    return 0;\n}",
       "input_format": "一行：姓名（无空格字符串）与三个整数成绩，用空格分隔。",
       "output_format": "一行报表：姓名左对齐占 10 列，语文、数学、英语各占 6 列，总分占 8 列，平均分占 9 列保留 2 位小数。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    char name[20];\n    int chinese, math, english, total;\n\n    if (scanf(\"%19s %d %d %d\", name, &chinese, &math, &english) != 4)\n        return 1;\n    total = chinese + math + english;\n    printf(\"%-10s%6d%6d%6d%8d%9.2f\\n\", name, chinese, math, english, total, total / 3.0);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    char name[20];\n    int chinese, math, english, total;\n\n    if (scanf(\"%19s %d %d %d\", name, &chinese, &math, &english) != 4)\n        return 1;\n    total = chinese + math + english;\n    printf(\"%-10s%6d%6d%6d%8d%9.2f\\n\", name, chinese, math, english, total, total / 3.0);\n    return 0;\n}",
       "explanation": "这道题把 printf 的宽度与对齐用到了实处：%-10s 让姓名左对齐占 10 列（右侧补空格），%6d 让整数右对齐占 6 列（左侧补空格），%9.2f 让平均分在 9 列内保留两位小数，多个字段连写就形成一张对齐的报表。scanf 用 %19s 限制字符串长度，防止超过 name[20] 造成缓冲区溢出——这是必须养成的安全习惯，s 转换会自动在末尾补 '\\0'，所以要留出 1 个字节。平均分写成 total/3.0 才能做实数除法。易错点：姓名参数是数组名，本身就是地址，不能写成 &name；宽度只保证最小占位，数据更长时会撑开列宽导致错位。",
       "tags": [
         "输入提示",
@@ -2475,7 +2475,7 @@
       "section": "3.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.37（PDF p27 / 书页 p16）",
       "difficulty": 3,
-      "stem": "【题 3.37】以下 printf 语句中 * 号的作用是【1】，输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int i=1;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  i++;\n  printf(\"##%*d\\n\",i,i);\n  return 0;\n }\n```",
+      "stem": "【题 3.37】以下 printf 语句中 * 号的作用是【1】，输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main() {\n    int i = 1;\n    printf(\"##%*d\\n\", i, i);\n    i++;\n    printf(\"##%*d\\n\", i, i);\n    i++;\n    printf(\"##%*d\\n\", i, i);\n    return 0;\n}\n```",
       "explanation": "考点是 printf 宽度域的 `*` 修饰符。`%*d` 会**额外**从实参表取一个 int 作为字段宽度，所以 `printf(\"##%*d\\n\",i,i)` 必须传两个 i：前一个决定宽度，后一个才是要打印的数值。i 依次为 1、2、3，宽度跟着变为 1、2、3，默认右对齐、不足处用空格左填，于是三行分别是 `##1`、`##□2`、`##□□3`。易错点：把 `%*d` 当成「输出一个星号」；或只写一个实参 `printf(\"##%*d\",i)`，导致宽度取到不定值（未定义行为）。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2497,7 +2497,7 @@
       "section": "3.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.38（PDF p27 / 书页 p16）",
       "difficulty": 3,
-      "stem": "【题 3.38】以下 printf 语句中的负号的作用是【1】，该程序的输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main( )\n{ int x=12; double a=3.1415926;\n  printf(\"%6d##\\n\",x);\n  printf(\"%-6d##\\n\",x);\n  printf(\"%14.10lf##\\n\",a);\n  printf(\"%-14.10lf##\\n\",a);\n  return 0;\n }\n```",
+      "stem": "【题 3.38】以下 printf 语句中的负号的作用是【1】，该程序的输出结果是【2】。\n\n```c\n#include <stdio.h>\nint main() {\n    int x = 12;\n    double a = 3.1415926;\n    printf(\"%6d##\\n\", x);\n    printf(\"%-6d##\\n\", x);\n    printf(\"%14.10lf##\\n\", a);\n    printf(\"%-14.10lf##\\n\", a);\n    return 0;\n}\n```",
       "explanation": "考点是对齐标志与「宽度 / 精度」的分工：`-` 决定左对齐，`6`、`14` 是最小字段宽度（不足补空格，超出则按实际长度输出，不截断），`.10` 是精度，对 f 转换表示保留 10 位小数。`3.1415926` 补零到 10 位小数得 `3.1415926000`，共 12 个字符，比宽度 14 少 2，所以第 3 行左侧补 2 个空格、第 4 行右侧补 2 个空格。易错点：把 `.10` 误当宽度；或以为左对齐时会补零而不是补空格。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2519,7 +2519,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.1（PDF p20 / 书页 p9）",
       "difficulty": 3,
-      "stem": "以下程序的运行结果是______。\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n\n```c\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n```",
+      "stem": "以下程序的运行结果是______。\n#include <stdio.h>\nint main()\n{ int m=5,n=10;\n  printf(\"%d,%d\\n\",m++,--n);\n  return 0;\n}\n\n```c\n#include <stdio.h>\nint main() {\n    int m = 5, n = 10;\n    printf(\"%d,%d\\n\", m++, --n);\n    return 0;\n}\n```",
       "explanation": "**答案 A（输出 `5,9`）**。`m++` 是后缀自增，「先用后加」：作为 `printf` 的实参时传入的是**旧值 5**，m 自身在语句结束后才变 6；`--n` 是前缀自减，「先减后用」：n 先变成 9，传入的就是 9。所以输出 `5,9`。补充：C 中函数实参的求值顺序是**未指定**的，但这里两个自增作用于不同变量、互不影响，所以结果确定。易错点：若写成 `++m` 就会输出 `6,9`；同一个变量在一次调用里既自增又被使用才是未定义行为。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2541,7 +2541,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.2（PDF p20 / 书页 p9）",
       "difficulty": 3,
-      "stem": "设有以下程序：\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n```",
+      "stem": "设有以下程序：\n#include <stdio.h>\nint main()\n{ int a=201,b=012;\n  printf(\"%2d,%2d\\n\",a,b);\n  return 0;\n}\n程序执行后的输出结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 201, b = 012;\n    printf(\"%2d,%2d\\n\", a, b);\n    return 0;\n}\n```",
       "explanation": "**答案 B（输出 `201,10`）**。`a=201` 是十进制常量，值 201；`b=012` 以 `0` 开头是**八进制**常量，值为 1×8+2 = 10。`%2d` 中的 2 是**最小字段宽度**：数据位数不足 2 位时用空格补齐（默认右对齐），超过 2 位则**原样输出、不截断**。所以 a 输出 3 位的 `201`，b 输出 2 位的 `10`，中间是格式串里的逗号，结果 `201,10`。易错点：宽度不会截断数据；`%d` 输出的永远是十进制，与常量书写时的进制无关。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2585,7 +2585,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.4（PDF p20 / 书页 p9）",
       "difficulty": 3,
-      "stem": "设有如下程序：\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n则以下叙述中正确的是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n```",
+      "stem": "设有如下程序：\n#include <stdio.h>\nint main()\n{ char ch1='A',ch2='a';\n  printf(\"%c\\n\",(ch1,ch2));\n  return 0;\n}\n则以下叙述中正确的是______。\n\n```c\n#include <stdio.h>\nint main() {\n    char ch1 = 'A', ch2 = 'a';\n    printf(\"%c\\n\", (ch1, ch2));\n    return 0;\n}\n```",
       "explanation": "**答案 B（输出小写字母 `a`）**。`(ch1,ch2)` 是一个用括号括起的**逗号表达式**：先求 `ch1`（值被丢弃），再求 `ch2`，整个表达式的值取**最右**一项，即 `'a'`。因此 `printf` 只有一个实参 `'a'`，与格式串里唯一的 `%c` 正好对应，程序能正常编译运行，输出 `a`。易错点：不要以为「两个变量、一个格式符」会导致编译出错（D）——括号把它们合并成了一个表达式；逗号表达式的口诀是「先左后右，值取最右」。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2607,7 +2607,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.5（PDF p21 / 书页 p10）",
       "difficulty": 3,
-      "stem": "【题 3.5】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x1=0xabc,x2=0xdef;\n  x2-=x1;\n  printf(\"%X\\n\",x2);\n  return 0\n}\n```",
+      "stem": "【题 3.5】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x1 = 0xabc, x2 = 0xdef;\n    x2 -= x1;\n    printf(\"%X\\n\", x2);\n    return 0\n}\n```",
       "explanation": "**答案 D（输出 `333`）**。`x1=0xabc`、`x2=0xdef` 都是十六进制常量，参与运算时就是普通整数：`x2 -= x1` 即 `0xdef - 0xabc`，逐位相减（e-a=4、d-b=2、f-c=3）得 `0x333`。`%X` 按**十六进制**输出且字母用**大写**，但 `0x` 前缀不会打印，所以结果是 `333`。易错点：`%X` 只改变显示方式，不改变数值；要显示前缀得加 `#` 标志写成 `%#X`（会输出 `0X333`）。另外原题代码 `return 0` 后漏了分号，实际编译会报错，但不影响对输出值的判断。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2629,7 +2629,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.6（PDF p21 / 书页 p10）",
       "difficulty": 3,
-      "stem": "【题 3.6】以下程序的输出结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ printf(\"\\n * s1=%15s *\",\"chinabeijing\");\n  printf(\"\\n * s2=%-5s *\",\"chi\");\n  return 0;\n}\n```",
+      "stem": "【题 3.6】以下程序的输出结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main() {\n    printf(\"\\n * s1=%15s *\", \"chinabeijing\");\n    printf(\"\\n * s2=%-5s *\", \"chi\");\n    return 0;\n}\n```",
       "explanation": "**答案 D**。`%15s` 表示字符串右对齐、最小宽度 15：`\"chinabeijing\"` 长 12 个字符，前面补 3 个空格，输出 ` * s1=□□□chinabeijing *`。`%-5s` 中的 `-` 标志表示**左对齐**：`\"chi\"` 长 3，后面补 2 个空格，输出 ` * s2=chi□□ *`。易错点：`-` 是对齐标志而非负号，`%-5s` 与 `%5s` 宽度相同、方向相反；字符串长度超过宽度时同样不截断。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2673,7 +2673,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.8（PDF p21 / 书页 p10）",
       "difficulty": 3,
-      "stem": "【题 3.8】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=-43456;\n  printf(\"y=%-8ld\\n\",y);\n  printf(\"y=%-08ld\\n\",y);\n  printf(\"y=%08ld\\n\",y);\n  printf(\"y=%+8ld\\n\",y);\n  return 0;\n}\n```",
+      "stem": "【题 3.8】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main() {\n    long y = -43456;\n    printf(\"y=%-8ld\\n\", y);\n    printf(\"y=%-08ld\\n\", y);\n    printf(\"y=%08ld\\n\", y);\n    printf(\"y=%+8ld\\n\", y);\n    return 0;\n}\n```",
       "explanation": "**答案 C**。逐条分析（y = -43456，共 6 个字符）：①`%-8ld` 左对齐、宽度 8 → `-43456` 后补 2 个空格，行尾空格看不见，显示 `y=-43456`；②`%-08ld` 同时给了 `-` 和 `0` 两个标志，标准规定此时 `0` 被**忽略**，效果与 `%-8ld` 相同，仍是 `y=-43456`；③`%08ld` 右对齐、用 `0` 填充到 8 位 → 符号占一位、数字补两个 0，得 `-0043456`；④`%+8ld` 中 `+` 要求正数也带符号，但 y 本身是负数已有 `-`，故只按宽度 8 右对齐补空格，得 `□□-43456`。易错点：`-` 与 `0` 冲突时 `-` 胜出；`+` 不会把负号变成两个符号。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2695,7 +2695,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.9（PDF p22 / 书页 p11）",
       "difficulty": 3,
-      "stem": "【题 3.9】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ int y=2456;\n  printf(\"y=%3o\\n\",y);\n  printf(\"y=%8o\\n\",y);\n  printf(\"y=%#8o\\n\",y);\n  return 0;\n}\n```",
+      "stem": "【题 3.9】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main() {\n    int y = 2456;\n    printf(\"y=%3o\\n\", y);\n    printf(\"y=%8o\\n\", y);\n    printf(\"y=%#8o\\n\", y);\n    return 0;\n}\n```",
       "explanation": "**答案 D**。先把 2456 换成八进制：2456 = 4×512 + 6×64 + 3×8 + 0 = `4630`（八进制）。①`%3o`：数据 4 位已超过宽度 3，**原样输出**，得 `y=4630`；②`%8o`：右对齐补空格到 8 位，得 `y=□□□□4630`；③`%#8o`：`#` 标志要求为八进制加上前导 `0`，变成 `04630` 共 5 个字符，**前缀计入宽度**，再补 3 个空格，得 `y=□□□04630`。易错点：`#` 对不同进制的效果不同——八进制加 `0`、十六进制加 `0x`、浮点数则强制带小数点；宽度不足时一律不截断。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2717,7 +2717,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.10（PDF p22 / 书页 p11）",
       "difficulty": 3,
-      "stem": "【题 3.10】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main()\n{ long y=23456;\n  printf(\"y=%3x\\n\",y);\n  printf(\"y=%8x\\n\",y);\n  printf(\"y=%#8x\\n\",y);\n  return 0;\n}\n```",
+      "stem": "【题 3.10】以下C程序的运行结果是______。（注：□表示空格）\n\n```c\n#include <stdio.h>\nint main() {\n    long y = 23456;\n    printf(\"y=%3x\\n\", y);\n    printf(\"y=%8x\\n\", y);\n    printf(\"y=%#8x\\n\", y);\n    return 0;\n}\n```",
       "explanation": "**答案 A**。23456 的十六进制是 `5ba0`（5×4096 + 11×256 + 10×16 = 23456）。①`%3x`：4 位超过宽度 3，原样输出小写 `5ba0`；②`%8x`：右对齐补 4 个空格，得 `□□□□5ba0`；③`%#8x`：`#` 为十六进制加上 `0x` 前缀，前缀计入宽度，`0x5ba0` 共 6 字符，再补 2 个空格，得 `□□0x5ba0`。易错点：`%x` 输出小写字母 a~f，`%X` 输出大写；`#` 加的前缀会占用宽度名额，这与八进制的 `%#o` 同理。另外 `long` 型用 `%x` 严格讲应写 `%lx`，本题只考格式效果。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2761,7 +2761,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.12（PDF p23 / 书页 p12）",
       "difficulty": 3,
-      "stem": "【题 3.12】已有如下定义和输入语句，若要求a1,a2,c1,c2的值分别为10、20、A和B，当从第一列开始输入数据时，正确的数据输入方式是______。（注：□表示空格）\n\n```c\nint a1,a2; char c1,c2;\nscanf(\"%d%c%d%c\",&a1,&c1,&a2,&c2);\n```",
+      "stem": "【题 3.12】已有如下定义和输入语句，若要求a1,a2,c1,c2的值分别为10、20、A和B，当从第一列开始输入数据时，正确的数据输入方式是______。（注：□表示空格）\n\n```c\nint a1, a2;\nchar c1, c2;\nscanf(\"%d%c%d%c\", &a1, &c1, &a2, &c2);\n```",
       "explanation": "**答案 A（`10A□20B<回车>`）**。格式串 `%d%c%d%c` 中没有任何普通字符，所以输入必须严丝合缝：第一个 `%d` 读 `10`（遇非数字停止）；紧接的 `%c` **不跳过空白**，读走紧跟的 `A`；第二个 `%d` 会跳过前导空格再读 `20`；最后一个 `%c` 读紧跟的 `B`。于是 `10A□20B` 恰好满足。B 项 `10□A□20□B` 中第一个 `%c` 会读到空格，c1 变成 `' '`；D 项 `10A20□B` 中最后的 `%c` 读到空格，c2 变成 `' '`。补充：本题选项 A 与 C 文本相同（原题排版重复），按给定答案取 A。易错点：`%c` 是唯一不自动跳过空白的常用转换符，这是所有「混合输入」题目的关键陷阱。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2805,7 +2805,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.15（PDF p23 / 书页 p12）",
       "difficulty": 3,
-      "stem": "【题 3.15】阅读以下程序，当输入数据的形式为25,13,10<回车>，程序的输出结果为______。\n\n```c\n#include <stdio.h>\nint main()\n{ int x,y,z;\n  scanf(\"%d%d%d\",&x,&y,&z);\n  printf(\"x+y+z=%d\\n\",x+y+z);\n  return 0;\n}\n```",
+      "stem": "【题 3.15】阅读以下程序，当输入数据的形式为25,13,10<回车>，程序的输出结果为______。\n\n```c\n#include <stdio.h>\nint main() {\n    int x, y, z;\n    scanf(\"%d%d%d\", &x, &y, &z);\n    printf(\"x+y+z=%d\\n\", x + y + z);\n    return 0;\n}\n```",
       "explanation": "**答案 D（不确定值）**。`scanf(\"%d%d%d\",&x,&y,&z)` 期望三个由空白分隔的整数，而实际输入是 `25,13,10`。执行过程：第一个 `%d` 读入 25，x=25；第二个 `%d` 跳过空白后遇到字符 `,`，它不是数字也不是合法前缀，**匹配失败**，`scanf` 立即停止并返回 1，y 和 z 根本没有被赋值。由于 y、z 是未初始化的局部变量，它们的值是栈上的垃圾数据，`x+y+z` 因此是不确定值。易错点：`scanf` 的返回值是「成功赋值的项数」，实际编程中必须检查它；不要以为格式串写三个 `%d` 就一定会读进三个数。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2827,7 +2827,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.16（PDF p24 / 书页 p13）",
       "difficulty": 3,
-      "stem": "【题 3.16】设有以下程序：\n若运行时从键盘输入数据：\nabc<回车>\ndefg<回车>，则输出结果是______。\n\n```c\n#include <stdio.h>\nint main()\n{ char c1,c2,c3,c4,c5,c6;\n  scanf(\"%c%c%c%c\",&c1,&c2,&c3,&c4);\n  c5=getchar();\n  c6=getchar();\n  putchar(c1);\n  putchar(c2);\n  printf(\"%c%c\\n\",c5,c6);\n  return 0;\n}\n```",
+      "stem": "【题 3.16】设有以下程序：\n若运行时从键盘输入数据：\nabc<回车>\ndefg<回车>，则输出结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    char c1, c2, c3, c4, c5, c6;\n    scanf(\"%c%c%c%c\", &c1, &c2, &c3, &c4);\n    c5 = getchar();\n    c6 = getchar();\n    putchar(c1);\n    putchar(c2);\n    printf(\"%c%c\\n\", c5, c6);\n    return 0;\n}\n```",
       "explanation": "**答案 B（输出 `abde`）**。输入流是 `abc` 换行 `defg` 换行，即字符序列 `a b c \\n d e f g \\n`。`scanf(\"%c%c%c%c\",...)` 中 `%c` 不跳空白，依次读走 `a`、`b`、`c`、`\\n`，所以 c1='a'、c2='b'、c3='c'、c4='\\n'。接着 `c5=getchar()` 读到 `d`，`c6=getchar()` 读到 `e`。输出部分只用到 c1、c2、c5、c6：`putchar(c1)` 打 `a`，`putchar(c2)` 打 `b`，`printf(\"%c%c\\n\",c5,c6)` 打 `de`，合计 `abde`。易错点：回车符 `\\n` 也是一个实实在在的字符，会被 `%c` 和 `getchar` 读走——这正是「输入缓冲区残留」问题的根源。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2871,7 +2871,7 @@
       "section": "3.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第3章 最简单的C程序设计 题3.18（PDF p24 / 书页 p13）",
       "difficulty": 3,
-      "stem": "【题 3.18】根据下面的程序及数据的输入方式和输出形式，程序中输入语句的正确形式应该为______。（注：□表示空格）\n输入形式：A□B□C<回车>\n输出形式：A□B\n\n```c\n#include <stdio.h>\nint main()\n{ char ch1,ch2,ch3;\n  输入语句\n  printf(\"%c%c%c\",ch1,ch2,ch3);\n  return 0;\n}\n```",
+      "stem": "【题 3.18】根据下面的程序及数据的输入方式和输出形式，程序中输入语句的正确形式应该为______。（注：□表示空格）\n输入形式：A□B□C<回车>\n输出形式：A□B\n\n```c\n#include <stdio.h>\nint main() {\n    char ch1, ch2, ch3;\n    输入语句\n    printf(\"%c%c%c\", ch1, ch2, ch3);\n    return 0;\n}\n```",
       "explanation": "**答案 A（`scanf(\"%c%c%c\",&ch1,&ch2,&ch3);`）**。输入流是 `A□B□C`（□为空格）。`%c` **不跳过空白**，所以三个 `%c` 依次读走 `A`、`□`、`B`，得到 ch1='A'、ch2=' '、ch3='B'；`printf(\"%c%c%c\",...)` 把它们连起来打印，正是题目要求的输出形式 `A□B`。B 项 `%c,%c,%c` 要求输入中有逗号，实际没有；C 项 `%c %c %c` 中格式串里的空格会吃掉输入中的所有空白，读到的就是 `A`、`B`、`C`，输出 `ABC`；D 项转换符与实参个数不匹配（3 个实参只配 2 个 `%c`），多余实参被忽略但属误用。易错点：这道题的「正确」是由输出反推的——想输出带空格，就得让 `%c` 把空格当数据读进来。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
