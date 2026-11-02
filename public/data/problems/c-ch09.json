@@ -16427,7 +16427,7 @@
         "指针"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n    int *p = malloc(5 * sizeof(int));\n    int i;\n    for (i = 0; i < 5; i++) p[i] = i * 2;\n    printf(\"%d %d %d\\n\", p[0], p[4], *(p + 3));\n    free(p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p = malloc(5 * sizeof(int));\n    int i;\n    for (i = 0; i < 5; i++)\n        p[i] = i * 2;\n    printf(\"%d %d %d\\n\", p[0], p[4], *(p + 3));\n    free(p);\n    return 0;\n}",
       "stdin": "",
       "answer": "0 8 6",
       "explanation": "结论：输出 \"0 8 6\"。malloc 在堆上申请 5 个 int 的空间，强转成 int* 赋给 p；循环 p[i]=i*2 填入 0、2、4、6、8。p[0]=0、p[4]=8；*(p+3) 等价 p[3]=6。最后 free(p) 释放。易错点：malloc 返回 void*，需转成具体指针类型；它分配的不是数组而是一块连续内存，可像数组一样用下标或指针访问；用完后必须 free，否则内存泄漏。",
@@ -16451,7 +16451,7 @@
         "字符指针"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint main()\n{\n    char *s[3] = {\"cat\", \"dog\", \"fish\"};\n    int i;\n    for (i = 0; i < 3; i++)\n        printf(\"%c \", s[i][0]);\n    printf(\"%d\\n\", s[2][2] == 's' ? 1 : 0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char *s[3] = {\"cat\", \"dog\", \"fish\"};\n    int i;\n    for (i = 0; i < 3; i++)\n        printf(\"%c \", s[i][0]);\n    printf(\"%d\\n\", s[2][2] == 's' ? 1 : 0);\n    return 0;\n}",
       "stdin": "",
       "answer": "c d f 1",
       "explanation": "结论：输出 \"c d f 1\"。s 是指针数组，每个元素指向一个字符串字面量。s[i][0] 是第 i 个字符串首字符，依次是 c、d、f；s[2][2] 是 \"fish\" 的第 2 个字符（下标从 0 计）即 's'，与 's' 相等为真得 1。易错点：s[i] 是 char* 指向字符串首字符，s[i][j] 等价 *(s[i]+j) 取第 i 串第 j 个字符；字符串字面量只读，只能读不能改写。",
@@ -16475,7 +16475,7 @@
         "指针"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a = 5;\n    int *p = &a;\n    int **pp = &p;\n    int ***ppp = &pp;\n    printf(\"%d \", ***ppp);\n    ***ppp = 10;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 5;\n    int *p = &a;\n    int **pp = &p;\n    int ***ppp = &pp;\n    printf(\"%d \", ***ppp);\n    ***ppp = 10;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
       "stdin": "",
       "answer": "5 10",
       "explanation": "结论：输出 \"5 10\"。p 指向 a，pp 指向 p，ppp 指向 pp，三层间接。***ppp 依 ppp 取 pp 取 p 取 a，得 a 的值 5；***ppp=10 通过三级指针最终修改 a，a 变为 10。易错点：多重指针每多一层 & 就多一级间接，解引用用几个 * 要对应嵌套层数；***ppp 与 *a 最终指向同一个 int 变量。",
@@ -16499,7 +16499,7 @@
         "指针算术"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[8] = {0, 1, 2, 3, 4, 5, 6, 7};\n    int *p = &a[2], *q = &a[7];\n    printf(\"%d \", (int)(q - p));\n    printf(\"%d \", (int)(p - q));\n    printf(\"%d\\n\", *(p + (q - p)));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[8] = {0, 1, 2, 3, 4, 5, 6, 7};\n    int *p = &a[2], *q = &a[7];\n    printf(\"%d \", (int)(q - p));\n    printf(\"%d \", (int)(p - q));\n    printf(\"%d\\n\", *(p + (q - p)));\n    return 0;\n}",
       "stdin": "",
       "answer": "5 -5 7",
       "explanation": "结论：输出 \"5 -5 7\"。p 指向 a[2]、q 指向 a[7]。q-p 是两个同数组内指针相减，得下标差 7-2=5；p-q 得 -5；*(p+(q-p)) 即 *(p+5)=a[7]=7。易错点：两个指针相减的结果是它们之间相隔的元素个数（ptrdiff_t 类型），不是字节数；p+(q-p) 就是 q 的位置，所以结果与 *q 相同。",
@@ -16523,7 +16523,7 @@
         "解引用"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a = 12;\n    int *p = &a;\n    printf(\"%d \", *(&a));\n    printf(\"%d \", *&p == p ? 1 : 0);\n    printf(\"%d\\n\", &*p == p ? 1 : 0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 12;\n    int *p = &a;\n    printf(\"%d \", *(&a));\n    printf(\"%d \", *&p == p ? 1 : 0);\n    printf(\"%d\\n\", &*p == p ? 1 : 0);\n    return 0;\n}",
       "stdin": "",
       "answer": "12 1 1",
       "explanation": "结论：输出 \"12 1 1\"。* 与 & 互为逆运算：*(&a) 是对 a 取地址再解引用，还回 a 的值 12；*&p 先取 p 的地址再解引用得到 p，与 p 相等得 1；&*p 先解引用 p 得到 a 再取地址得到 p，与 p 相等也得 1。易错点：无论先 & 后 * 还是先 * 后 &，只要作用在同一对象上结果都不变；*&p 与 &*p 这类组合最常见于陷阱题，注意结合顺序从内向外。",
@@ -16547,7 +16547,7 @@
         "字符串"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nchar *greet(int n)\n{\n    static char *msgs[3] = {\"zero\", \"one\", \"many\"};\n    return msgs[n > 2 ? 2 : n];\n}\nint main()\n{\n    char *s = greet(5);\n    printf(\"%s\\n\", s);\n    printf(\"%s \", greet(1));\n    printf(\"%s\\n\", greet(0));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nchar *greet(int n) {\n    static char *msgs[3] = {\"zero\", \"one\", \"many\"};\n    return msgs[n > 2 ? 2 : n];\n}\nint main() {\n    char *s = greet(5);\n    printf(\"%s\\n\", s);\n    printf(\"%s \", greet(1));\n    printf(\"%s\\n\", greet(0));\n    return 0;\n}",
       "stdin": "",
       "answer": "many\none zero",
       "explanation": "结论：输出两行：\"many\" 与 \"one zero\"。greet 是返回 char* 的函数，msgs 是 static 局部数组（静态存储期），返回 msgs[n>2?2:n] 即某个字符串的地址，函数返回后内存仍有效。greet(5) 中 n>2 取下标 2 返回 \"many\"；greet(1) 返回 \"one\"，greet(0) 返回 \"zero\"。易错点：函数不能返回其内部普通局部变量的地址（函数结束即失效），但返回 static 数组或字符串字面量的地址是安全的。",
@@ -16619,7 +16619,7 @@
         "字符数组"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint main()\n{\n    char s[10] = \"abc\";\n    char *p = s;\n    *(p + 1) = 'X';\n    printf(\"%s \", s);\n    p = p + 2;\n    *p = 'Z';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char s[10] = \"abc\";\n    char *p = s;\n    *(p + 1) = 'X';\n    printf(\"%s \", s);\n    p = p + 2;\n    *p = 'Z';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
       "stdin": "",
       "answer": "aXc aXZ",
       "explanation": "结论：输出 \"aXc aXZ\"。s 是字符数组 \"abc\"（可写），p 指向 s[0]。*(p+1)='X' 把第 1 个字符改成 'X'，s 变为 \"aXc\"；随后 p=p+2 指向第 2 个字符位置，*p='Z' 把它改成 'Z'，s 变为 \"aXZ\"。易错点：字符数组可写，能通过指针修改内容；但字符串字面量（如 char* s=\"abc\"）对应的内容只读，绝不能通过指针去改，本题用数组所以才允许改写。",
@@ -16643,7 +16643,7 @@
         "分发"
       ],
       "stem": "阅读下列程序，写出程序运行后的输出结果。",
-      "code": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint mul(int a, int b) { return a * b; }\nint main()\n{\n    int (*ops[2])(int, int) = {add, mul};\n    int i;\n    for (i = 0; i < 2; i++) {\n        if (i) printf(\" \");\n        printf(\"%d\", ops[i](3, 4));\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint mul(int a, int b) {\n    return a * b;\n}\nint main() {\n    int (*ops[2])(int, int) = {add, mul};\n    int i;\n    for (i = 0; i < 2; i++) {\n        if (i)\n            printf(\" \");\n        printf(\"%d\", ops[i](3, 4));\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "answer": "7 12",
       "explanation": "结论：输出 \"7 12\"。int (*ops[2])(int,int) 是\"函数指针数组\"，ops[0] 指向 add、ops[1] 指向 mul。循环调用 ops[i](3,4)，第一次调 add 得 3+4=7，第二次调 mul 得 3*4=12。易错点：函数指针数组可以统一保存并调用多个同型函数，ops[i](3,4) 等价 (*ops[i])(3,4)；它给\"函数表/分发\"提供了基础，是第 9.5 节知识与数组的结合。",
@@ -16763,7 +16763,7 @@
         "间接调用"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint sub(int a, int b) { return a - b; }\nint main(void) {\n    int (*fp)(int, int) = add;\n    printf(\"%d \", fp(5, 3));\n    fp = sub;\n    printf(\"%d\\n\", fp(5, 3));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint sub(int a, int b) {\n    return a - b;\n}\nint main(void) {\n    int (*fp)(int, int) = add;\n    printf(\"%d \", fp(5, 3));\n    fp = sub;\n    printf(\"%d\\n\", fp(5, 3));\n    return 0;\n}",
       "stdin": "",
       "answer": "8 2",
       "explanation": "结论：输出 8 2。逐行看：int (*fp)(int, int) 声明一个函数指针 fp，它指向「返回 int、含两个 int 形参」的函数；= add 把 add 的函数入口赋给它。fp(5, 3) 经函数指针调用 add，得 5+3=8，先打印 8 和一个空格。随后 fp = sub 把 fp 改为指向 sub，再 fp(5, 3) 经指针调用 sub，得 5-3=2，打印 2 和换行。易错点：函数指针类型必须与目标函数签名一致（参数个数、类型、返回类型都相同），否则经 fp 调用会出错；赋函数名时括号写法 int (*fp)(int,int) 不能写成 int *fp(int,int)（那会变成返回 int* 的普通函数声明）。",
@@ -16833,7 +16833,7 @@
         "函数"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nvoid twice(int *a, int n) {\n    for (int i = 0; i < n; i++) a[i] *= 2;\n}\nint main(void) {\n    int a[] = {1, 2, 3};\n    twice(a, 3);\n    printf(\"%d %d\\n\", a[0], a[2]);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid twice(int *a, int n) {\n    for (int i = 0; i < n; i++)\n        a[i] *= 2;\n}\nint main(void) {\n    int a[] = {1, 2, 3};\n    twice(a, 3);\n    printf(\"%d %d\\n\", a[0], a[2]);\n    return 0;\n}",
       "stdin": "",
       "answer": "2 6",
       "explanation": "结论：输出 2 6。逐行看：调用 twice(a, 3) 时，数组名 a 退化为指向首元素的 int*，被形参 int *a 接收；a[i] *= 2 通过指针按下标遍历，把数组每个元素翻倍：a[0] 1→2，a[1] 2→4，a[2] 3→6。因为实参传的是数组首地址（而不是数组拷贝），函数内对 a[i] 的修改真实写回原数组。函数返回后 main 里 a[0]=2、a[2]=6，打印 2 6。易错点：数组传给函数退化为指针，形参 int *a 与 int a[] 等价，都只是「指针」，函数内无法得知数组长度，所以通常用形参 n 单独传长度；这也意味着函数能修改实参数组元素。",
@@ -16881,7 +16881,7 @@
         "箭头运算"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nstruct P { int x, y; };\nint main(void) {\n    struct P p = {3, 4};\n    struct P *q = &p;\n    q->x = q->x + q->y;\n    printf(\"%d %d\\n\", q->x, q->y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nstruct P {\n    int x, y;\n};\nint main(void) {\n    struct P p = {3, 4};\n    struct P *q = &p;\n    q->x = q->x + q->y;\n    printf(\"%d %d\\n\", q->x, q->y);\n    return 0;\n}",
       "stdin": "",
       "answer": "7 4",
       "explanation": "结论：输出 7 4。逐行看：struct P p = {3,4} 初始化 x=3、y=4；struct P *q = &p 让 q 指向结构体 p。q->x = q->x + q->y 中，q->x 等价于 (*q).x（即 p.x=3），q->y 即 p.y=4，于是 p.x=3+4=7。printf 用 q->x、q->y 打印，q->x=7、q->y=4，输出 7 4。易错点：q->x 是 (*q).x 的简写，箭头运算符 -> 专用于「指向结构体的指针访问成员」，单点 . 只能用于结构体变量本身（(*q).x 也可，但 q->x 更简洁）；q-> 优先级很高，等价于先解引用 q 再取成员。",
@@ -16905,7 +16905,7 @@
         "偏移"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{1,2,3},{4,5,6}};\n    int *p = &a[0][0];\n    printf(\"%d %d\\n\", *(p + 4), *(*(a+1)+2));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int *p = &a[0][0];\n    printf(\"%d %d\\n\", *(p + 4), *(*(a + 1) + 2));\n    return 0;\n}",
       "stdin": "",
       "answer": "5 6",
       "explanation": "结论：输出 5 6。逐行看：a[2][3] 在内存中连续存放 1,2,3,4,5,6。int *p = &a[0][0] 让 p 指向第一个元素 1（&a[0][0] 是 int* 一级指针，指向单个元素）。*(p+4)：p+4 偏移 4 个 int，指向第 5 个元素（下标 4，即 a[1][1]）值 5，打印 5。*(*(a+1)+2)：a 是 int(*)[3] 指向第一行；a+1 指向第二行；*(a+1) 得第二行的首地址（int*）；再 +2 得第二行第 3 个元素地址；外层 * 解引用得 6。易错点：&a[0][0] 是「指向单个 int 的一级指针」，而数组名 a 是「指向一行的指针 int(*)[3]」，两者步长不同——p+1 只跳一个 int，a+1 跳一整行；混用会得到完全不同的地址。",
@@ -16929,7 +16929,7 @@
         "距离"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（一个整数和一个 0/1，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1,2,3,4,5};\n    int *p = &a[1];\n    int *q = &a[4];\n    printf(\"%d %d\\n\", q - p, q > p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1, 2, 3, 4, 5};\n    int *p = &a[1];\n    int *q = &a[4];\n    printf(\"%d %d\\n\", q - p, q > p);\n    return 0;\n}",
       "stdin": "",
       "answer": "3 1",
       "explanation": "结论：输出 3 1。逐行看：p 指向 a[1]，q 指向 a[4]。q - p 是指针减法：两个指向同一数组的指针相减，返回「相隔的元素个数」，q 比 p 高 3 个元素（a[4] 与 a[1] 下标差 4-1=3），故正数项打印 3。q > p 是关系比较：同一数组内指向靠后元素的指针更大，q 在 p 之后，比较结果为真，打印 1。易错点：指针减法 q-p 的结果是 ptrdiff_t（带符号整数），单位是元素个数而非字节数（它除以了元素大小）；只有指向同一数组（或同一数组末尾之后一格）的两个指针才能相减或比较，否则是未定义行为。",
@@ -16953,7 +16953,7 @@
         "free"
       ],
       "stem": "读下面的程序，写出运行后打印的那个数字。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main(void) {\n    int *p = malloc(3 * sizeof(int));\n    p[0] = 1; p[1] = 2; p[2] = 3;\n    printf(\"%d\\n\", p[0] + p[2]);\n    free(p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main(void) {\n    int *p = malloc(3 * sizeof(int));\n    p[0] = 1;\n    p[1] = 2;\n    p[2] = 3;\n    printf(\"%d\\n\", p[0] + p[2]);\n    free(p);\n    return 0;\n}",
       "stdin": "",
       "answer": "4",
       "explanation": "结论：输出 4。逐行看：malloc(3 * sizeof(int)) 在堆上分配 3 个 int 的空间，返回 void*，强转为 int* 赋给 p；malloc 分配的内存内容未初始化。接着 p[0]=1、p[1]=2、p[2]=3 用下标写值。printf 取 p[0]+p[2]=1+3=4，打印 4。最后 free(p) 释放这块堆内存，与 malloc 配对。易错点：malloc 返回的是 void*，需要转为目标指针类型（C 中可不强转，但强转是合法且常见的）；必须检查 p==NULL 判断是否失败；每次 malloc 都要配对一次 free，否则造成内存泄漏；p[0] 等价 *(p+0)，说明堆内存同样可用下标或指针访问。",
@@ -17000,7 +17000,7 @@
         "下标运算"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {5,4,3,2,1};\n    int *p = a;\n    printf(\"%d %d\\n\", p[1], 1[p]);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {5, 4, 3, 2, 1};\n    int *p = a;\n    printf(\"%d %d\\n\", p[1], 1 [p]);\n    return 0;\n}",
       "stdin": "",
       "answer": "4 4",
       "explanation": "结论：输出 4 4。逐行看：int *p = a 让 p 指向数组首元素。p[1] 按下标语法等价于 *(p+1)，即从 p 偏移 1 个 int 处取元素，是 a[1]=4。1[p] 是 C 中一个著名的等价技巧：下标运算符 a[b] 编译后等于 *(a+b)，而加法可交换，因此 1[p] 等价于 *(1+p) 也等价于 *(p+1)，同样是 a[1]=4。所以两个数都打印 4 4。易错点：a[i] 的本质就是 *(a+i)，下标只是语法糖；既然加法满足交换律，i[a] 也一样有效，只是写法怪异。注意 *(1+p) 用 1 作为基址 + p 作为偏移，结果相同；若想不通可记住「[] 就是 *( )」这一等价关系。",
@@ -17072,7 +17072,7 @@
         "类型"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔，均为字节差）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1,2,3};\n    int *p = a;\n    char *c = (char*)a;\n    printf(\"%d %d\\n\", (int)((char*)(p+1) - (char*)p), (int)((char*)(c+1) - (char*)c));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1, 2, 3};\n    int *p = a;\n    char *c = (char *)a;\n    printf(\"%d %d\\n\", (int)((char *)(p + 1) - (char *)p), (int)((char *)(c + 1) - (char *)c));\n    return 0;\n}",
       "stdin": "",
       "answer": "4 1",
       "explanation": "结论：输出 4 1。逐行看：int *p = a 让 p 指向数组首元素。p+1 对 int* 加 1，实际跳过一个 int，即 sizeof(int)=4 字节；(char*)(p+1) 与 (char*)p 都强转为 char* 后相减，得到字节差 4，打印 4。char *c = (char*)a 让 c 指向同一块内存的起始字节；c+1 对 char* 加 1 只跳 1 字节，相减得 1，打印 1。易错点：指针加 1 会按「所指向类型的大小」缩放——int* 跳 4 字节、char* 跳 1 字节；只有在两个指针都强转成同类型（如都转 char*）后相减，才得到纯净的字节差。本题借此说明「指针的类型决定步长」，指针运算离不开类型。",
@@ -17096,7 +17096,7 @@
         "数组名退化"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1,2,3,4,5};\n    int *p = a;\n    printf(\"%d %d\\n\", (int)(sizeof(a)/sizeof(a[0])), (int)sizeof(*p));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[] = {1, 2, 3, 4, 5};\n    int *p = a;\n    printf(\"%d %d\\n\", (int)(sizeof(a) / sizeof(a[0])), (int)sizeof(*p));\n    return 0;\n}",
       "stdin": "",
       "answer": "5 4",
       "explanation": "结论：输出 5 4。逐行看：sizeof(a) 是数组 a 的总字节数，这里 a 有 5 个 int，占 5*4=20 字节；sizeof(a[0]) 是单个 int 的大小 4 字节；两者相除得到元素个数 5，打印 5。而在 sizeof 运算符内，数组名不退化，会反映整个数组的大小——这正是它与表达式里「数组名退化为指针」的区别。int *p = a 让 p 指向首元素；sizeof(*p) 中 *p 是一个 int，大小为 4 字节，打印 4。易错点：把数组名传给函数或赋值给指针时它退化为指针，但 sizeof(数组名) 仍返回整个数组大小，sizeof(指针) 则返回指针本身大小（8 字节 64 位 / 4 字节 32 位），两者不能混用；求元素个数用 sizeof(a)/sizeof(a[0])。",
@@ -17120,7 +17120,7 @@
         "查找"
       ],
       "stem": "读下面的程序，写出运行后打印的那个数字。",
-      "code": "#include <stdio.h>\nint *find(int *a, int n, int t) {\n    for (int i = 0; i < n; i++)\n        if (a[i] == t) return &a[i];\n    return NULL;\n}\nint main(void) {\n    int a[] = {3, 7, 9, 2};\n    int *p = find(a, 4, 9);\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint *find(int *a, int n, int t) {\n    for (int i = 0; i < n; i++)\n        if (a[i] == t)\n            return &a[i];\n    return NULL;\n}\nint main(void) {\n    int a[] = {3, 7, 9, 2};\n    int *p = find(a, 4, 9);\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "stdin": "",
       "answer": "9",
       "explanation": "结论：输出 9。逐行看：find 用 for( i=0..n-1 ) 遍历数组，命中 a[i]==t 时返回该元素地址 &a[i]（int*），找不到返回 NULL。main 里调用 find(a,4,9)：目标 9 在 a[2] 位置，函数返回 &a[2]，赋给 p。printf(\"%d\", *p) 解引用 p 得到 a[2]=9，打印 9。易错点：函数返回指针时，返回的必须是仍然有效的地址——这里返回的是 main 里数组元素 a[2] 的地址，数组在 main 作用域内有效，所以解引用安全；若返回局部变量的地址则成悬垂指针。找到就返回并停止（这里只有一个 9），未找到时返回 NULL 供调用方判空，*p 前应先判 p!=NULL。",
@@ -17144,7 +17144,7 @@
         "二维数组"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{1,2,3},{4,5,6}};\n    int (*p)[3] = a;\n    printf(\"%d %d\\n\", *(*(p+1)+1), **(p+1));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int(*p)[3] = a;\n    printf(\"%d %d\\n\", *(*(p + 1) + 1), **(p + 1));\n    return 0;\n}",
       "stdin": "",
       "answer": "5 4",
       "explanation": "结论：输出 5 4。逐行看：int (*p)[3] 声明 p 为「指向含 3 个 int 的数组（一行）」的指针；= a 中数组名 a 类型是 int[2][3]，在赋给 int(*)[3] 时退化为「指向第一行」的指针。p+1 跳一整行（3 个 int），指向第二行。*(p+1) 得到第二行首地址（int*），再 +1 得第二行第 2 个元素地址，外层 * 解引用得 a[1][1]=5，打印 5。**(p+1)：p+1 指向第二行，*(p+1) 是第二行首地址，再 * 解引用得第二行第 1 个元素 a[1][0]=4，打印 4。易错点：int(*p)[3] 的括号不能省（否则成为 int* p[3] 指针数组）；p 与 p+1 相隔一个「整行」的字节数，跟 int* 指针对 a[0][0] 加 1 只跳一个元素完全不同。",
@@ -17168,7 +17168,7 @@
         "数组名"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint main(void) {\n    int a[4] = {1,2,3,4};\n    int *p = a;\n    int *q = (int*)(&a + 1) - 1;\n    printf(\"%d %d\\n\", *p, *q);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[4] = {1, 2, 3, 4};\n    int *p = a;\n    int *q = (int *)(&a + 1) - 1;\n    printf(\"%d %d\\n\", *p, *q);\n    return 0;\n}",
       "stdin": "",
       "answer": "1 4",
       "explanation": "结论：输出 1 4。逐行看：int *p = a 让 p 指向首元素 a[0]，*p=1。&a 的类型是「指向整个数组的指针」int(*)[4]，&a+1 加 1 会跳过一个完整的 int[4] 数组（16 字节），即指向 a 之后「越过整个数组」的位置；把它强转为 int* 后减 1，回到最后一个元素 a[3] 的地址，赋给 q，*q=4。printf 打印 1 和 4。易错点：&a 与 a 数值上可能相等（都指向同一块起始地址），但类型与步长不同——a 退化为 int*（+1 跳一个 int），&a 是 int(*)[4]（+1 跳一整个数组）；正是这个差异让 (&a+1)-1 能取到数组末尾元素，体现「取整个数组地址」与「取首元素地址」的本质区别。",
@@ -17240,7 +17240,7 @@
         "间接调用"
       ],
       "stem": "读下面的程序，写出运行后打印的一行内容（两个数字，空格分隔）。",
-      "code": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint mul(int a, int b) { return a * b; }\nint main(void) {\n    int (*ops[2])(int, int) = {add, mul};\n    printf(\"%d %d\\n\", ops[0](3, 4), ops[1](3, 4));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint mul(int a, int b) {\n    return a * b;\n}\nint main(void) {\n    int (*ops[2])(int, int) = {add, mul};\n    printf(\"%d %d\\n\", ops[0](3, 4), ops[1](3, 4));\n    return 0;\n}",
       "stdin": "",
       "answer": "7 12",
       "explanation": "结论：输出 7 12。逐行看：int (*ops[2])(int,int) 声明一个数组 ops，它有 2 个元素，每个元素都是「指向返回 int、含两个 int 形参的函数」的指针；初始化列表把 add 赋给 ops[0]、mul 赋给 ops[1]。ops[0](3,4) 经数组下标取出函数指针再调用 add，得 3+4=7，打印 7。ops[1](3,4) 调用 mul，得 3*4=12，打印 12。易错点：声明 int(*ops[2])(int,int) 中括号的位置很关键——它表示「数组的元素是函数指针」，而不是一个返回指针数组的函数；用下标 ops[i] 得到函数指针后直接加参数调用即可。函数指针数组常用于「按索引选择操作」（如计算器按运算符选择 add/mul/...）。",
@@ -17264,7 +17264,7 @@
         "求极值"
       ],
       "stem": "读下面的程序，写出运行后打印的那个数字。",
-      "code": "#include <stdio.h>\nint max(int *a, int n) {\n    int m = *a;\n    for (int i = 1; i < n; i++)\n        if (a[i] > m) m = a[i];\n    return m;\n}\nint main(void) {\n    int a[] = {3, 9, 2, 7};\n    printf(\"%d\\n\", max(a, 4));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint max(int *a, int n) {\n    int m = *a;\n    for (int i = 1; i < n; i++)\n        if (a[i] > m)\n            m = a[i];\n    return m;\n}\nint main(void) {\n    int a[] = {3, 9, 2, 7};\n    printf(\"%d\\n\", max(a, 4));\n    return 0;\n}",
       "stdin": "",
       "answer": "9",
       "explanation": "结论：输出 9。逐行看：max 形参 int *a 接收数组首地址，n 接收长度 4。int m = *a 先把第一个元素 a[0]=3 作为当前最大。for(i=1..3) 遍历其余元素，用 a[i] > m 判断是否更大，更大就更新 m。i=1 时 a[1]=9>3，m 更新为 9；i=2 时 a[2]=2 不大；i=3 时 a[3]=7 不大。函数返回 m=9。main 里调用 max(a,4) 并打印 9。易错点：数组传给函数退化为指针，形参 int *a 可以用下标 a[i] 访问；从 1 开始（而非 0）因为第 0 个已经作为初值；求最值要处理「所有值为负」的情形——把 a[0] 当初值能正确得到最大（若初值设为 0 会出错）。",
@@ -17288,7 +17288,7 @@
         "字符串长度"
       ],
       "stem": "读下面的程序，写出运行后打印的那个数字。",
-      "code": "#include <stdio.h>\nint main(void) {\n    char s[] = \"abcd\";\n    char *p = s;\n    int n = 0;\n    while (*p++) n++;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    char s[] = \"abcd\";\n    char *p = s;\n    int n = 0;\n    while (*p++)\n        n++;\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "stdin": "",
       "answer": "4",
       "explanation": "结论：输出 4。逐行看：s 内容为 a、b、c、d、\\0；char *p = s 让 p 指向首字符。while(*p++) 是「先取 *p 判断真假，再把 p 后移一位」：条件取当前字符，非 0 进入循环体 n++ 并（因 p++ 已执行）把 p 移到下一字符。p 依次停在 a、b、c、d 时条件为真，各让 n 加 1（n=4）；当 p 移到存放 \\0 的位置时 *p 为 0，循环停止（此时 p 又后移了一格，但循环不再执行）。打印 n=4。易错点：*p++ 的优先级等价于 *(p++)，是先取值得加后指针后移；p++ 在条件里每次都执行，哪怕最后一次条件为假也会把 p 越过 \\0 一格；计数的正是字符串长度（不含结尾 \\0）。",
@@ -17312,7 +17312,7 @@
         "指针算术"
       ],
       "stem": "读下面的程序，写出运行后打印的那个数字。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main(void) {\n    int *p = malloc(4 * sizeof(int));\n    int *q = p;\n    for (int i = 0; i < 4; i++) *q++ = i + 1;\n    q = p;\n    int s = 0;\n    while (q < p + 4) s += *q++;\n    printf(\"%d\\n\", s);\n    free(p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main(void) {\n    int *p = malloc(4 * sizeof(int));\n    int *q = p;\n    for (int i = 0; i < 4; i++)\n        *q++ = i + 1;\n    q = p;\n    int s = 0;\n    while (q < p + 4)\n        s += *q++;\n    printf(\"%d\\n\", s);\n    free(p);\n    return 0;\n}",
       "stdin": "",
       "answer": "10",
       "explanation": "结论：输出 10。逐行看：malloc(4*sizeof(int)) 在堆上分配 4 个 int，赋给 p；int *q = p 让 q 也指向堆区开头。for(i=0..3) 里 *q++ = i+1：后缀 ++ 先于赋值取 *q 指向的位置，把 i+1 写入后再把 q 后移，依次写入 1、2、3、4。随后 q = p 把 q 复位到开头。while(q < p+4) 用指针比较控制范围，s += *q++ 每轮把当前值累加并把 q 后移一行：1+2+3+4=10。打印 10，最后 free(p) 释放堆内存。易错点：malloc 后需判 NULL；写完后 q 已被推到最后，复用前必须 q=p 复位；*q++ 是「取值再移动指针」的惯用法，而 while(q<p+4) 用指针比较作结束条件，其含义是「到最后一个元素的下一个位置为止」。",
@@ -17384,7 +17384,7 @@
         "未初始化指针"
       ],
       "stem": "下面是某同学写的一段 C 代码，它能否通过编译？存在哪些问题？请逐条列出你发现的问题（每行一条，识别 2 个及以上要点视为通过）。",
-      "code": "#include <stdio.h>\n      int main(void) {\n          int a[10];\n          for (int i = 0; i <= 10; i++) a[i] = i;\n          int *p;\n          *p = 5;\n          return 0;\n      }",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[10];\n    for (int i = 0; i <= 10; i++)\n        a[i] = i;\n    int *p;\n    *p = 5;\n    return 0;\n}",
       "reviewPoints": [
         "数组下标越界：循环到 i<=10，访问 a[10] 越出数组边界",
         "指针 p 未初始化就解引用（*p = 5），属未定义行为",
@@ -17409,7 +17409,7 @@
         "指针"
       ],
       "stem": "下面是某同学尝试把数组名当指针赋值，存在什么问题？请逐条列出你发现的问题。",
-      "code": "#include <stdio.h>\n      int main(void) {\n          int a[5] = {1, 2, 3, 4, 5};\n          int *p = a;\n          p = p + 1;\n          a = p;\n          printf(\"%d\\n\", a[0]);\n          return 0;\n      }",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a[5] = {1, 2, 3, 4, 5};\n    int *p = a;\n    p = p + 1;\n    a = p;\n    printf(\"%d\\n\", a[0]);\n    return 0;\n}",
       "reviewPoints": [
         "数组名 a 是常量地址，不能作为左值被赋值（a = p 是非法的）",
         "数组名 a 在多数表达式中退化为指向首元素的指针，但本身不是可修改的指针变量",
@@ -17434,7 +17434,7 @@
         "悬垂指针"
       ],
       "stem": "下面是某同学写的返回局部变量地址的函数，存在什么问题？请逐条列出你发现的问题。",
-      "code": "#include <stdio.h>\n      int *get(void) {\n          int x = 42;\n          return &x;\n      }\n      int main(void) {\n          int *p = get();\n          printf(\"%d\\n\", *p);\n          return 0;\n      }",
+      "code": "#include <stdio.h>\nint *get(void) {\n    int x = 42;\n    return &x;\n}\nint main(void) {\n    int *p = get();\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "reviewPoints": [
         "返回局部变量 x 的地址（&x），函数返回后 x 的生命周期结束，p 成为悬垂指针",
         "解引用悬垂指针 *p 访问已释放的栈内存，属未定义行为",
@@ -17460,7 +17460,7 @@
         "解引用"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int *p = NULL;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int *p = NULL;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "reviewPoints": [
         "指针 p 被初始化为 NULL 后，未经判空就直接解引用 *p，空指针解引用是未定义行为。",
         "在绝大多数平台上会触发段错误（Segmentation Fault）导致程序崩溃。",
@@ -17490,7 +17490,7 @@
         "解引用"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int *p;\n    *p = 10;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int *p;\n    *p = 10;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "reviewPoints": [
         "指针 p 声明后没有初始化就被解引用写入，p 是野指针/悬空指针。",
         "未初始化指针的值是随机的，*p=10 可能改写任意内存，属未定义行为，后果不可预测。",
@@ -17520,7 +17520,7 @@
         "const"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    char *s = \"hello\";\n    s[0] = 'H';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char *s = \"hello\";\n    s[0] = 'H';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
       "reviewPoints": [
         "s 指向字符串字面量 \"hello\"，字面量通常存放在只读数据区。",
         "s[0]=.H. 试图改写只读内容，会引发未定义行为，多数平台直接崩溃。",
@@ -17550,7 +17550,7 @@
         "交换"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nvoid swap(int *a, int *b)\n{\n    int *t;\n    t = a;\n    a = b;\n    b = t;\n}\nint main()\n{\n    int x = 3, y = 7;\n    int *p = &x, *q = &y;\n    swap(p, q);\n    printf(\"%d %d\\n\", *p, *q);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid swap(int *a, int *b) {\n    int *t;\n    t = a;\n    a = b;\n    b = t;\n}\nint main() {\n    int x = 3, y = 7;\n    int *p = &x, *q = &y;\n    swap(p, q);\n    printf(\"%d %d\\n\", *p, *q);\n    return 0;\n}",
       "reviewPoints": [
         "swap 的形参是 int*，交换的是形参指针 a、b 的指向，只是局部副本。",
         "函数返回后实参 p、q 的指向并未改变，输出仍是 3 7 而非 7 3。",
@@ -17580,7 +17580,7 @@
         "接口设计"
       ],
       "stem": "评审下列函数，指出其中的设计问题并说明改进方法。",
-      "code": "#include <stdio.h>\nint count_letters(char *s)\n{\n    int n = 0;\n    while (*s ++) { n++; }\n    return n;\n}\nint main()\n{\n    char *str = \"abc\";\n    printf(\"%d\\n\", count_letters(str));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint count_letters(char *s) {\n    int n = 0;\n    while (*s++) {\n        n++;\n    }\n    return n;\n}\nint main() {\n    char *str = \"abc\";\n    printf(\"%d\\n\", count_letters(str));\n    return 0;\n}",
       "reviewPoints": [
         "count_letters 只读取字符串，却把形参声明为 char*，未用 const 限定，接口不严谨。",
         "应改为 int count_letters(const char *s)，向调用者表明不会修改字符串，也允许传入 const 数据。",
@@ -17610,7 +17610,7 @@
         "解引用"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[3] = {1, 2, 3};\n    int *p = a;\n    (*p)++;\n    *p++;\n    printf(\"%d %d\\n\", a[0], *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[3] = {1, 2, 3};\n    int *p = a;\n    (*p)++;\n    *p++;\n    printf(\"%d %d\\n\", a[0], *p);\n    return 0;\n}",
       "reviewPoints": [
         "*p++ 被解析为 *(p++)，即先取 *p 再让 p 自增移动指针，与 (*p)++（对元素自增）含义完全不同。",
         "设计意图可能是想对同一元素自增两次，但 *p++ 移动了指针，导致第二个元素被修改的不是 a[0]。",
@@ -17640,7 +17640,7 @@
         "健壮性"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nvoid half(int n, int *out)\n{\n    *out = n / 2;\n}\nint main()\n{\n    half(9, NULL);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid half(int n, int *out) {\n    *out = n / 2;\n}\nint main() {\n    half(9, NULL);\n    return 0;\n}",
       "reviewPoints": [
         "half 的形参 out 是输出参数，但未判空就解引用 *out，调用者传 NULL 会崩溃。",
         "应加入 if (out == NULL) return; 之类的守卫，或在契约上明确约束调用者。",
@@ -17670,7 +17670,7 @@
         "边界"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[5] = {1, 2, 3, 4, 5};\n    int *p = a, i;\n    for (i = 0; i <= 5; i++)\n        printf(\"%d \", p[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[5] = {1, 2, 3, 4, 5};\n    int *p = a, i;\n    for (i = 0; i <= 5; i++)\n        printf(\"%d \", p[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "reviewPoints": [
         "循环条件 i<=5 越界，p[5] 访问了数组最后一个元素之后的内存。",
         "数组 a 只有下标 0..4 有效，p[5] 是对越界地址的读，属未定义行为，可能读到垃圾值或崩溃。",
@@ -17700,7 +17700,7 @@
         "逻辑"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[5] = {10, 20, 30, 40, 50};\n    int *p = a, *q = &a[4];\n    int s = 0, n = 0;\n    while (p <= q)\n    {\n        s += *p;\n        p = p + 1;\n        n++;\n    }\n    printf(\"avg=%d\\n\", s / n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[5] = {10, 20, 30, 40, 50};\n    int *p = a, *q = &a[4];\n    int s = 0, n = 0;\n    while (p <= q) {\n        s += *p;\n        p = p + 1;\n        n++;\n    }\n    printf(\"avg=%d\\n\", s / n);\n    return 0;\n}",
       "reviewPoints": [
         "用 p<=q 遍历并改变 p 后，循环结束时 p 已越过 q，无法再用 p 定位原范围。",
         "avg 用 s/n 计算，但 s、n、结果均为 int，s/n 是整除，平均值被截断为整数。",
@@ -17730,7 +17730,7 @@
         "行指针"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nvoid print(int **m, int r, int c)\n{\n    int i, j;\n    for (i = 0; i < r; i++)\n        for (j = 0; j < c; j++)\n            printf(\"%d \", m[i][j]);\n    printf(\"\\n\");\n}\nint main()\n{\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    print(a, 2, 3);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid print(int **m, int r, int c) {\n    int i, j;\n    for (i = 0; i < r; i++)\n        for (j = 0; j < c; j++)\n            printf(\"%d \", m[i][j]);\n    printf(\"\\n\");\n}\nint main() {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    print(a, 2, 3);\n    return 0;\n}",
       "reviewPoints": [
         "二维数组 a 类型是 int[2][3]，数组名退化后是 int (*)[3]（行指针），不是 int**。",
         "把 int (*)[3] 实参传给 int** 形参类型不匹配，m[i][j] 按错误方式寻址，结果是未定义行为。",
@@ -17760,7 +17760,7 @@
         "类型"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[3] = {1, 2, 3};\n    int b[4] = {10, 20, 30, 40};\n    int *p = &a[2];\n    int *q = &b[1];\n    int d = (int)(p - q);\n    printf(\"%d\\n\", d);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[3] = {1, 2, 3};\n    int b[4] = {10, 20, 30, 40};\n    int *p = &a[2];\n    int *q = &b[1];\n    int d = (int)(p - q);\n    printf(\"%d\\n\", d);\n    return 0;\n}",
       "reviewPoints": [
         "p 与 q 来自两个不相干数组 a、b，对不指向同一数组的指针做减法属于未定义行为。",
         "is the difference 没有意义：C 只允许对同一数组内的指针做减法，结果才是元素间隔。",
@@ -17790,7 +17790,7 @@
         "数组"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[4] = {5, 6, 7, 8};\n    int *p = a + 4;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[4] = {5, 6, 7, 8};\n    int *p = a + 4;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "reviewPoints": [
         "p = a + 4 指向数组尾后一个位置（one-past-the-end），合法用于比较，但不可解引用。",
         "*p 解引用越过末尾的元素，是越界读，属未定义行为。",
@@ -17850,7 +17850,7 @@
         "只读"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <string.h>\nint main()\n{\n    char *s = \"hello\";\n    s[1] = 'a';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char *s = \"hello\";\n    s[1] = 'a';\n    printf(\"%s\\n\", s);\n    return 0;\n}",
       "reviewPoints": [
         "s 指向字符串字面量，字面量内容位于只读区，s[1]=.a. 是非法改写。",
         "对只读内存写入会触发未定义行为，常表现为运行时崩溃。",
@@ -17880,7 +17880,7 @@
         "越界"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <string.h>\nint main()\n{\n    char buf[8];\n    int i;\n    for (i = 0; i < 5; i++) buf[i] = 'a' + i;\n    printf(\"%zu\\n\", strlen(buf));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char buf[8];\n    int i;\n    for (i = 0; i < 5; i++)\n        buf[i] = 'a' + i;\n    printf(\"%zu\\n\", strlen(buf));\n    return 0;\n}",
       "reviewPoints": [
         "buf 初始化只填了前 5 个字符，没有写入结束符 \\0。",
         "strlen 会从 buf 持续扫描直到遇 \\0，可能越过 buf[8] 边界，读到任意垃圾。",
@@ -17940,7 +17940,7 @@
         "回调"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint main()\n{\n    int (*f)(int) = add;\n    printf(\"%d\\n\", f(2));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint main() {\n    int (*f)(int) = add;\n    printf(\"%d\\n\", f(2));\n    return 0;\n}",
       "reviewPoints": [
         "函数指针 f 的类型是 int(*)(int)，与 add 的 int(int,int) 签名不匹配。",
         "f(2) 只传了 1 个实参，但 add 需要 2 个参数，第二个形参 b 拿到的是垃圾值，结果未定义/错误。",
@@ -17970,7 +17970,7 @@
         "签名"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\ndouble sq(double x) { return x * x; }\nint main()\n{\n    int (*f)(int) = sq;\n    printf(\"%d\\n\", f(3));\n    return 0;\n}",
+      "code": "#include <stdio.h>\ndouble sq(double x) {\n    return x * x;\n}\nint main() {\n    int (*f)(int) = sq;\n    printf(\"%d\\n\", f(3));\n    return 0;\n}",
       "reviewPoints": [
         "sq 是 double(double)，f 声明为 int(*)(int)，返回类型与参数类型均不匹配。",
         "double 与 int 在调用/返回时约定不同，错误调用会得到错误结果或未定义行为。",
@@ -18000,7 +18000,7 @@
         "优先级"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint main()\n{\n    int *ops[2] = {add, add};\n    printf(\"%d\\n\", ((int (*)(int, int))ops[0])(3, 4));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint main() {\n    int *ops[2] = {add, add};\n    printf(\"%d\\n\", ((int (*)(int, int))ops[0])(3, 4));\n    return 0;\n}",
       "reviewPoints": [
         "int *ops[2] 是\"指针数组\"（元素是 int*），不是\"函数指针数组\"，声明本身错误。",
         "把 add（函数）赋给 int* 元素类型不匹配；又用 (int(*)(int,int))ops[0] 强转后调用，是\"对象指针/函数指针\"混用，属未定义行为。",
@@ -18030,7 +18030,7 @@
         "健壮性"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nvoid greet(void) { printf(\"hi\\n\"); }\nint main()\n{\n    void (*f)(void);\n    if (0) f = greet;\n    f();\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid greet(void) {\n    printf(\"hi\\n\");\n}\nint main() {\n    void (*f)(void);\n    if (0)\n        f = greet;\n    f();\n    return 0;\n}",
       "reviewPoints": [
         "函数指针 f 未初始化，仅在 if(0) 分支里赋值，实际运行时 f 是野指针。",
         "调用未初始化函数指针 f() 会跳转到随机地址，导致崩溃或未定义行为。",
@@ -18060,7 +18060,7 @@
         "存储期"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint *get(void)\n{\n    int x = 100;\n    return &x;\n}\nint main()\n{\n    int *p = get();\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint *get(void) {\n    int x = 100;\n    return &x;\n}\nint main() {\n    int *p = get();\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
       "reviewPoints": [
         "get 返回的是局部变量 x 的地址，x 是自动存储期，函数返回后即失效。",
         "返回指向已失效局部变量的指针是悬垂指针，*p 的访问属未定义行为。",
@@ -18090,7 +18090,7 @@
         "覆盖"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nchar *fmt(int n)\n{\n    static char buf[16];\n    sprintf(buf, \"num=%d\", n);\n    return buf;\n}\nint main()\n{\n    char *a = fmt(5);\n    char *b = fmt(9);\n    printf(\"%s %s\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nchar *fmt(int n) {\n    static char buf[16];\n    sprintf(buf, \"num=%d\", n);\n    return buf;\n}\nint main() {\n    char *a = fmt(5);\n    char *b = fmt(9);\n    printf(\"%s %s\\n\", a, b);\n    return 0;\n}",
       "reviewPoints": [
         "fmt 用 static 局部缓冲，但两次调用共用同一块 buf，第二次调用覆盖了第一次结果。",
         "a 与 b 指向同一 static 缓冲，printf 时二者都是 \"num=9\"，结果错误。",
@@ -18120,7 +18120,7 @@
         "内存泄漏"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nchar *dup(const char *s)\n{\n    char *p = malloc(100);\n    strcpy(p, s);\n    return p;\n}\nint main()\n{\n    char *x = dup(\"hello\");\n    printf(\"%s\\n\", x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nchar *dup(const char *s) {\n    char *p = malloc(100);\n    strcpy(p, s);\n    return p;\n}\nint main() {\n    char *x = dup(\"hello\");\n    printf(\"%s\\n\", x);\n    return 0;\n}",
       "reviewPoints": [
         "dup 用 malloc 分配内存并返回指针，但主函数没有 free(x)，造成内存泄漏。",
         "函数注释/契约未说明返回的内存需调用者 free，所有权不清楚。",
@@ -18150,7 +18150,7 @@
         "二维"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint *row(int (*m)[3], int r)\n{\n    int t[3];\n    int i;\n    for (i = 0; i < 3; i++) t[i] = m[r][i] * 2;\n    return t;\n}\nint main()\n{\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int *q = row(a, 1);\n    printf(\"%d %d\\n\", q[0], q[1]);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint *row(int (*m)[3], int r) {\n    int t[3];\n    int i;\n    for (i = 0; i < 3; i++)\n        t[i] = m[r][i] * 2;\n    return t;\n}\nint main() {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int *q = row(a, 1);\n    printf(\"%d %d\\n\", q[0], q[1]);\n    return 0;\n}",
       "reviewPoints": [
         "row 返回函数内部局部数组 t 的地址，t 是自动存储期，函数返回后失效。",
         "主函数通过 q 读取 q[0]、q[1] 访问的是已失效栈内存，属未定义行为。",
@@ -18180,7 +18180,7 @@
         "类型"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nint main()\n{\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int *p[2] = {a[0], a[1]};\n    printf(\"%d %d\\n\", p[0][2], *(p[1] + 1));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int *p[2] = {a[0], a[1]};\n    printf(\"%d %d\\n\", p[0][2], *(p[1] + 1));\n    return 0;\n}",
       "reviewPoints": [
         "int *p[2] 是\"指针数组\"，每个元素是指向 int 的指针，这里用 a[0]、a[1]（行首地址）初始化是正确的。",
         "p[0][2] 即 a[0][2]，*(p[1]+1) 即 a[1][1]，访问正常——本例无明显缺陷。",
@@ -18210,7 +18210,7 @@
         "指针"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\nvoid set(int **pp)\n{\n    *pp = NULL;\n}\nint main()\n{\n    int a = 5, *p = &a;\n    set(&p);\n    printf(\"%d\\n\", p != NULL);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid set(int **pp) {\n    *pp = NULL;\n}\nint main() {\n    int a = 5, *p = &a;\n    set(&p);\n    printf(\"%d\\n\", p != NULL);\n    return 0;\n}",
       "reviewPoints": [
         "set(int**) 通过 *pp=NULL 修改主函数中的 p，使 p 变空，这是二级指针的正确用法。",
         "但 set 名字语义是\"设置指针为空\"，与\"给某变量赋值\"不符，接口语义含混可改进。",
@@ -18240,7 +18240,7 @@
         "未定义行为"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n    int *p[3];\n    int i;\n    for (i = 0; i < 3; i++) p[i] = NULL;\n    for (i = 0; i < 3; i++) free(p[i]);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p[3];\n    int i;\n    for (i = 0; i < 3; i++)\n        p[i] = NULL;\n    for (i = 0; i < 3; i++)\n        free(p[i]);\n    return 0;\n}",
       "reviewPoints": [
         "p 是指针数组，元素初始化为 NULL 且从未 malloc，free(NULL) 是无操作，安全。",
         "但若元素曾 malloc，正确释放方式就是逐元素 free；本例初始化全 NULL，释放无意义但合法。",
@@ -18270,7 +18270,7 @@
         "内存泄漏"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n    int *a = malloc(10 * sizeof(int));\n    int *b = malloc(10 * sizeof(int));\n    a[0] = 1;\n    b[0] = 2;\n    printf(\"%d %d\\n\", a[0], b[0]);\n    free(a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *a = malloc(10 * sizeof(int));\n    int *b = malloc(10 * sizeof(int));\n    a[0] = 1;\n    b[0] = 2;\n    printf(\"%d %d\\n\", a[0], b[0]);\n    free(a);\n    return 0;\n}",
       "reviewPoints": [
         "malloc 分配了两块动态内存，但只 free(a)，b 没有被释放，造成内存泄漏。",
         "每次 malloc 的指针都应在不再使用时调用 free。",
@@ -18300,7 +18300,7 @@
         "健壮性"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n    int *a = malloc(5 * sizeof(int));\n    int i;\n    for (i = 0; i < 5; i++) a[i] = i;\n    printf(\"%d\\n\", a[4]);\n    free(a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *a = malloc(5 * sizeof(int));\n    int i;\n    for (i = 0; i < 5; i++)\n        a[i] = i;\n    printf(\"%d\\n\", a[4]);\n    free(a);\n    return 0;\n}",
       "reviewPoints": [
         "malloc 可能失败返回 NULL，未检查就解引用 a[i]，若分配失败会空指针崩溃。",
         "应在使用前判断 if (a == NULL) { 处理错误并退出 }。",
@@ -18330,7 +18330,7 @@
         "重复释放"
       ],
       "stem": "评审下列程序，指出其中的缺陷并说明改进方法。",
-      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main()\n{\n    int *p = malloc(4 * sizeof(int));\n    p[0] = 10;\n    free(p);\n    printf(\"%d\\n\", p[0]);\n    free(p);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p = malloc(4 * sizeof(int));\n    p[0] = 10;\n    free(p);\n    printf(\"%d\\n\", p[0]);\n    free(p);\n    return 0;\n}",
       "reviewPoints": [
         "free(p) 后仍使用 p[0] 读取，是\"释放后使用\"（use-after-free），指向已失效内存。",
         "且再次 free(p) 是对同一指针二次释放（double free），属未定义行为，常导致崩溃。",
@@ -18351,7 +18351,7 @@
       "section": "9.2 填空题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.114（PDF p199 / 书页 p188）",
       "difficulty": 4,
-      "stem": "【题 9.114】运行以下程序时，从键盘输入 6，则下面程序的运行结果是【 】。\n\n```c\n#include <stdio.h>\nvoid fun(char  * a,char b);\nint main( )\n{   char s[ ]=\"97531\",c;\n    c=getchar();\n    fun(s,c);\n    puts(s);\n    return(0);\n}\nvoid fun(char  * a,char b)\n{   while( * (a++)!='\\0');\n    while( * (a-1)<b)   * (a--)= * (a-1);\n    * (a--)=b;\n}\n```",
+      "stem": "【题 9.114】运行以下程序时，从键盘输入 6，则下面程序的运行结果是【 】。\n\n```c\n#include <stdio.h>\nvoid fun(char *a, char b);\nint main() {\n    char s[] = \"97531\", c;\n    c = getchar();\n    fun(s, c);\n    puts(s);\n    return (0);\n}\nvoid fun(char *a, char b) {\n    while (*(a++) != '\\0')\n        ;\n    while (*(a - 1) < b)\n        *(a--) = *(a - 1);\n    *(a--) = b;\n}\n```",
       "explanation": "本质是在降序数字串中按插入排序放置 '6'。注意该实现会把 '\\0' 右移到 s[6]，越界一字节，属教材代码不严谨处，结论仍按题意取 976531。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18393,7 +18393,7 @@
       "section": "9.3 编程题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.192（PDF p225 / 书页 p214）",
       "difficulty": 4,
-      "stem": "【题 9.192】有 4 名学生，每个学生考 4 门课程，要求在用户输入学生序号以后能输出该学生的全部成绩，用指针型函数来实现。请编写函数 float *search()。\n\n```c\n#include <stdio.h>\nfloat * search(float ( * pointer)[4],int n);\nint main( )\n{   static float score[ ][4]={{60,70,80,90},{50,89,67,88},\n                              {34,78,90,66},{80,90,100,70}};\n    float * p;\n    int i,m;\n    printf(\"enter the number of student:\");\n    scanf(\"%d\",&m);\n    printf(\"The score of No.  %d are:\\n\",m);\n    p=search(score,m);\n    for(i=0;i<4;i++)   printf(\"%5.2f\\t\", * (p+i));\n    return(0);\n}\nfloat * search( float ( * pointer)[4],int n )\n{   }\n```",
+      "stem": "【题 9.192】有 4 名学生，每个学生考 4 门课程，要求在用户输入学生序号以后能输出该学生的全部成绩，用指针型函数来实现。请编写函数 float *search()。\n\n```c\n#include <stdio.h>\nfloat *search(float (*pointer)[4], int n);\nint main() {\n    static float score[][4] = {\n        {60, 70, 80, 90}, {50, 89, 67, 88}, {34, 78, 90, 66}, {80, 90, 100, 70}};\n    float *p;\n    int i, m;\n    printf(\"enter the number of student:\");\n    scanf(\"%d\", &m);\n    printf(\"The score of No.  %d are:\\n\", m);\n    p = search(score, m);\n    for (i = 0; i < 4; i++)\n        printf(\"%5.2f\\t\", *(p + i));\n    return (0);\n}\nfloat *search(float (*pointer)[4], int n) {}\n```",
       "explanation": "*(pointer+n) 与 pointer+n 类型不同：前者是 float*（列地址），后者是行指针；返回类型必须是 float*，这正是\"指针型函数\"的考点。（留痕：题面/选项中的 OCR 排版残留已按标准 C 写法清理：`＊→*`；不改变题意与答案。）",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18414,7 +18414,7 @@
       "section": "9.3 编程题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.193（PDF p226 / 书页 p215）",
       "difficulty": 3,
-      "stem": "【题 9.193】下面 findmax 函数将计算数组中的最大元素及其下标值和地址值，请编写 *findmax() 函数。\n\n```c\n#include <stdio.h>\nint * findmax(int  * s,int t,int  * k)\n{   }\nint main( )\n{   int a[10]={ 12,23,34,45,56,67,78,89,11,22 },k, * add;\n    add=findmax(a,10,&k);\n    printf(\"%d,%d,%o\\n\",a[k],k,add);\n    return(0);\n}\n```",
+      "stem": "【题 9.193】下面 findmax 函数将计算数组中的最大元素及其下标值和地址值，请编写 *findmax() 函数。\n\n```c\n#include <stdio.h>\nint *findmax(int *s, int t, int *k) {}\nint main() {\n    int a[10] = {12, 23, 34, 45, 56, 67, 78, 89, 11, 22}, k, *add;\n    add = findmax(a, 10, &k);\n    printf(\"%d,%d,%o\\n\", a[k], k, add);\n    return (0);\n}\n```",
       "explanation": "结论：findmax 遍历 s[0]~s[t-1]，用 *k 记录最大值的下标，返回 s+*k 即最大元素的地址；对题给数据输出前缀是 \"89,7,\"，第三项为该元素的地址。关键：比较时用 s[i]（或 *(s+i)）与当前最大值比，命中就更新 *k；返回类型必须是 int*，要写 s+*k 而不是下标 *k 或值 s[*k]。易错点：main 用 %o 打印地址，结果随运行环境与 ASLR 变化，本题无法自动判分，可确定的只有最大值 89 与下标 7。（留痕：题面/选项中的 OCR 排版残留已按标准 C 写法清理：`＊→*`；不改变题意与答案。）",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18431,7 +18431,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.1（PDF p165 / 书页 p154）",
       "difficulty": 3,
-      "stem": "【题 9.1】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nvoid sub( int x,int y,int * z)\n{   * z=y-x; }\n\nint main( )\n{   int a,b,c;\n    sub(10,5,&a);\n    sub(7,a,&b);\n    sub(a,b,&c);\n    printf(\"%4d,%4d,%4d\\n\",a,b,c);\n    return(0);\n}\n```",
+      "stem": "【题 9.1】以下程序的运行结果是______。\n\n```c\n#include <stdio.h>\nvoid sub(int x, int y, int *z) {\n    *z = y - x;\n}\n\nint main() {\n    int a, b, c;\n    sub(10, 5, &a);\n    sub(7, a, &b);\n    sub(a, b, &c);\n    printf(\"%4d,%4d,%4d\\n\", a, b, c);\n    return (0);\n}\n```",
       "explanation": "sub 中 *z=y-x 是\"第二实参减第一实参\"：sub(10,5,&a) 得 a=5-10=-5；sub(7,a,&b) 得 b=-5-7=-12；sub(a,b,&c) 得 c=-12-(-5)=-7。故选 B。易错：把 *z=y-x 读成 x-y 会选成 C。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18453,7 +18453,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.3（PDF p165 / 书页 p154）",
       "difficulty": 3,
-      "stem": "【题 9.3】以下程序中调用 scanf 函数给变量 a 输入数值的方法是错误的，其错误原因是______。\n\n```c\nint main( )\n{   int * p, * q,a,b;\n    p=&a;\n    printf(\"input a:\");\n    scanf(\"%d\",*p);\n    ...\n}\n```",
+      "stem": "【题 9.3】以下程序中调用 scanf 函数给变量 a 输入数值的方法是错误的，其错误原因是______。\n\n```c\nint main() {\n    int *p, *q, a, b;\n    p = &a;\n    printf(\"input a:\");\n    scanf(\"%d\", *p);\n    ...\n}\n```",
       "explanation": "scanf 的 %d 要求传入 int 变量的地址；*p 是 p 所指对象（即 a）的值，不是地址，把它当地址传入会使 scanf 向非法内存写入。故选 B。A、C 混淆了\"p 的值\"\"p 的地址\"与\"a 的地址\"。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18519,7 +18519,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.6（PDF p166 / 书页 p155）",
       "difficulty": 3,
-      "stem": "【题 9.6】已有变量定义和函数调用语句：int a=25; print_value(&a); 下面函数的正确输出结果是______。\n\n```c\nvoid print_value(int * x)\n{   printf(\"%d\\n\",++ *x); }\n```",
+      "stem": "【题 9.6】已有变量定义和函数调用语句：int a=25; print_value(&a); 下面函数的正确输出结果是______。\n\n```c\nvoid print_value(int *x) {\n    printf(\"%d\\n\", ++*x);\n}\n```",
       "explanation": "++*x 等价于 ++(*x)，先把 x 所指的 a 自增为 26 再输出，故选 D。易错：看成 (*x)++ 会先输出 25，或误以为改的是指针 x 本身。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18563,7 +18563,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.8（PDF p166 / 书页 p155）",
       "difficulty": 3,
-      "stem": "【题 9.8】下面程序段中，for 循环的执行次数是______。\n\n```c\nchar *s=\"\\ta\\018bc\";\nfor ( ; *s!='\\0'; s++) printf(\"*\");\n```",
+      "stem": "【题 9.8】下面程序段中，for 循环的执行次数是______。\n\n```c\nchar *s = \"\\ta\\018bc\";\nfor (; *s != '\\0'; s++)\n    printf(\"*\");\n```",
       "explanation": "\"\\ta\\018bc\" 中 \\01 是八进制转义，其后的 8 是普通字符，故串为 \\t、a、\\01、8、b、c 共 6 个字符，循环打印 6 个 *，选 C。与 9.7 的 \\017 对比正是本题考查点。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18607,7 +18607,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.10（PDF p167 / 书页 p156）",
       "difficulty": 3,
-      "stem": "【题 9.10】下面程序段的运行结果是______。\n\n```c\nchar *s=\"abcde\";\ns+=2; printf(\"%d\",s);\n```",
+      "stem": "【题 9.10】下面程序段的运行结果是______。\n\n```c\nchar *s = \"abcde\";\ns += 2;\nprintf(\"%d\", s);\n```",
       "explanation": "printf(\"%d\",s) 用 %d 输出的是指针 s 的值（地址）而非字符串内容；s+=2 后 s 指向字符 'c' 的地址，故选 C。若用 %s 才会输出 cde。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18629,7 +18629,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.11（PDF p167 / 书页 p156）",
       "difficulty": 3,
-      "stem": "【题 9.11】下面程序段的运行结果是______。\n\n```c\nchar *format=\"%s,a=%d,b=%d\\n\";\nint a=1,b=10;\na+=b;\nprintf(format,\"a+=b\",a,b);\n```",
+      "stem": "【题 9.11】下面程序段的运行结果是______。\n\n```c\nchar *format = \"%s,a=%d,b=%d\\n\";\nint a = 1, b = 10;\na += b;\nprintf(format, \"a+=b\", a, b);\n```",
       "explanation": "format 本身作为格式串：其中的 %s 取实参 \"a+=b\"，两个 %d 依次取 a=11、b=10，故输出 a+=b,a=11,b=10，选 C。注意 a+=b 执行后 a 为 11 而 b 不变。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18651,7 +18651,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.12（PDF p167 / 书页 p156）",
       "difficulty": 3,
-      "stem": "【题 9.12】下面程序段的运行结果是______。\n\n```c\nchar str[ ]=\"ABC\", * p=str;\nprintf( \"%d\\n\", * (p+3) );\n```",
+      "stem": "【题 9.12】下面程序段的运行结果是______。\n\n```c\nchar str[] = \"ABC\", *p = str;\nprintf(\"%d\\n\", *(p + 3));\n```",
       "explanation": "str[ ]=\"ABC\" 占 4 字节，*(p+3) 即 str[3]='\\0'，其整数值为 0，%d 输出 0，选 B。易错：误以为 p+3 越界或输出字符 C。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18673,7 +18673,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.13（PDF p167 / 书页 p156）",
       "difficulty": 3,
-      "stem": "【题 9.13】下面程序段的运行结果是______。\n\n```c\nchar p1[ ]=\"abcdefgh\", * p=p1;\np+=3;\nprintf(\"%d\\n\",strlen(strcpy(p,\"ABCD\")));\n```",
+      "stem": "【题 9.13】下面程序段的运行结果是______。\n\n```c\nchar p1[] = \"abcdefgh\", *p = p1;\np += 3;\nprintf(\"%d\\n\", strlen(strcpy(p, \"ABCD\")));\n```",
       "explanation": "p+=3 后 p 指向 \"defgh\" 段；strcpy(p,\"ABCD\") 把该段覆盖为 \"ABCD\\0\"，strlen(p)=4，选 C。原数组变为 \"abcABCD\"，但 strlen 从 p 起算。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18695,7 +18695,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.14（PDF p167 / 书页 p156）",
       "difficulty": 3,
-      "stem": "【题 9.14】下面程序段的运行结果是______。\n\n```c\nchar a[ ]=\"language\", * p;\np=a;\nwhile ( * p!='u') { printf(\"%c\", * p-32); p++; }\n```",
+      "stem": "【题 9.14】下面程序段的运行结果是______。\n\n```c\nchar a[] = \"language\", *p;\np = a;\nwhile (*p != 'u') {\n    printf(\"%c\", *p - 32);\n    p++;\n}\n```",
       "explanation": "循环在 *p=='u' 时停止，此前依次输出 l、a、n、g 减 32 后的大写 L、A、N、G，即 LANG，选 C。'u' 及其后字符不会被输出。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18783,7 +18783,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.18（PDF p168 / 书页 p157）",
       "difficulty": 3,
-      "stem": "【题 9.18】若有说明语句，则以下不正确的叙述是______。\n\n```c\nchar a[ ]=\"It is mine\";\nchar * p=\"It is mine\";\n```",
+      "stem": "【题 9.18】若有说明语句，则以下不正确的叙述是______。\n\n```c\nchar a[] = \"It is mine\";\nchar *p = \"It is mine\";\n```",
       "explanation": "D 叙述不正确：char a[ ]=\"It is mine\" 含空格与 '\\0' 共 11 字节，并非\"只能存放 10 个字符\"，且数组内容可修改。A、B、C 关于 a+1、p 可改指向的描述均正确，故选 D。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18805,7 +18805,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.19（PDF p168 / 书页 p157）",
       "difficulty": 3,
-      "stem": "【题 9.19】下面程序段的运行结果是______。\n\n```c\nchar s[6]; s=\"abcd\", printf(\"\\\"%s\\\"\\n\",s);\n```",
+      "stem": "【题 9.19】下面程序段的运行结果是______。\n\n```c\nchar s[6];\ns = \"abcd\", printf(\"\\\"%s\\\"\\n\", s);\n```",
       "explanation": "数组名 s 是地址常量，不能被赋值，s=\"abcd\" 直接编译出错，选 D。字符串整体赋值只能在初始化时进行，或用 strcpy。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18827,7 +18827,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.32（PDF p174 / 书页 p163）",
       "difficulty": 4,
-      "stem": "【题 9.32】当运行以下程序时，从键盘输入“Happy!＜回车＞”，则程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <string.h>\nint stre(char str[ ]);\nint main( )\n{   char str[10], * p=str;\n    gets(p);\n    printf(\"%d\\n\",stre(p));\n    return(0);\n}\nint stre(char str[ ])\n{   int num=0;\n    while( * (str+num)!='\\0')   num++;\n    return(num);\n}\n```",
+      "stem": "【题 9.32】当运行以下程序时，从键盘输入“Happy!＜回车＞”，则程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <string.h>\nint stre(char str[]);\nint main() {\n    char str[10], *p = str;\n    gets(p);\n    printf(\"%d\\n\", stre(p));\n    return (0);\n}\nint stre(char str[]) {\n    int num = 0;\n    while (*(str + num) != '\\0')\n        num++;\n    return (num);\n}\n```",
       "explanation": "stre 用 *(str+num)!='\\0' 逐位计数，即求串长；输入 \"Happy!\" 共 6 个字符，输出 6，选 B。该函数就是 strlen 的手写版。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18849,7 +18849,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.33（PDF p175 / 书页 p164）",
       "difficulty": 3,
-      "stem": "【题 9.33】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   static char a[ ]=\"Language\", b[ ]=\"programe\";\n    char * p1, * p2; int k;\n    p1=a; p2=b;\n    for(k=0; k<=7; k++)\n        if( * (p1+k)== * (p2+k)) printf(\"%c\", * (p1+k));\n    return(0);\n}\n```",
+      "stem": "【题 9.33】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    static char a[] = \"Language\", b[] = \"programe\";\n    char *p1, *p2;\n    int k;\n    p1 = a;\n    p2 = b;\n    for (k = 0; k <= 7; k++)\n        if (*(p1 + k) == *(p2 + k))\n            printf(\"%c\", *(p1 + k));\n    return (0);\n}\n```",
       "explanation": "逐位置比较 a=\"Language\" 与 b=\"programe\"：下标 3 的 g、下标 5 的 a、下标 7 的 e 相同，依次输出得 gae，选 A。k<=7 保证比满 8 位。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18871,7 +18871,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.34（PDF p175 / 书页 p164）",
       "difficulty": 4,
-      "stem": "【题 9.34】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main( )\n{   int a=28,b;\n    char s[10], * p;\n    p=s;\n    do {  b=a%16;\n        if(b<10)    * p=b+48;\n        else        * p=b+55;\n        p++;\n        a=a/5;\n    }while(a>0);\n    * p='\\0';\n    puts(s);\n    return(0);\n}\n```",
+      "stem": "【题 9.34】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nint main() {\n    int a = 28, b;\n    char s[10], *p;\n    p = s;\n    do {\n        b = a % 16;\n        if (b < 10)\n            *p = b + 48;\n        else\n            *p = b + 55;\n        p++;\n        a = a / 5;\n    } while (a > 0);\n    *p = '\\0';\n    puts(s);\n    return (0);\n}\n```",
       "explanation": "循环取 b=a%16 转十六进制字符（<10 加 48，否则加 55），但递推写的是 a=a/5：28→'C'、a=5→'5'、a=1→'1'、a=0 停，得 \"C51\"，选 C。注意此处 a/5 与原意的 a/16 不同，是本书刻意的陷阱。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18893,7 +18893,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.35（PDF p175 / 书页 p164）",
       "difficulty": 4,
-      "stem": "【题 9.35】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nvoid delch(char * s)\n{   int i,j;\n    char * a;\n    a=s;\n    for(i=0,j=0; a[i]!='\\0'; i++)\n        if(a[i]>='0'&&a[i]<='9')  { s[j]=a[i]; j++; }\n    s[j]='\\0';\n}\nint main( )\n{   char item[ ]=\"a34bc\";\n    delch(item);\n    printf(\"\\n%s\",item);\n    return(0);\n}\n```",
+      "stem": "【题 9.35】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\nvoid delch(char *s) {\n    int i, j;\n    char *a;\n    a = s;\n    for (i = 0, j = 0; a[i] != '\\0'; i++)\n        if (a[i] >= '0' && a[i] <= '9') {\n            s[j] = a[i];\n            j++;\n        }\n    s[j] = '\\0';\n}\nint main() {\n    char item[] = \"a34bc\";\n    delch(item);\n    printf(\"\\n%s\", item);\n    return (0);\n}\n```",
       "explanation": "delch 只把数字字符（'0'~'9'）前移保留，\"a34bc\" 中仅剩 3、4，输出 34，选 B。s 与 a 指向同一数组，边读边写不会漏字符。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -18915,7 +18915,7 @@
       "section": "9.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第9章 指针 题9.36（PDF p176 / 书页 p165）",
       "difficulty": 3,
-      "stem": "【题 9.36】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <string.h>\nint main( )\n{   char * s1=\"AbDeG\";\n    char * s2=\"AbdEg\";\n    s1+=2;s2+=2;\n    printf(\"%d\\n\",strcmp(s1,s2));\n    return(0);\n}\n```",
+      "stem": "【题 9.36】下面程序的运行结果是______。\n\n```c\n#include <stdio.h>\n#include <string.h>\nint main() {\n    char *s1 = \"AbDeG\";\n    char *s2 = \"AbdEg\";\n    s1 += 2;\n    s2 += 2;\n    printf(\"%d\\n\", strcmp(s1, s2));\n    return (0);\n}\n```",
       "explanation": "s1、s2 各加 2 后为 \"DeG\" 与 \"dEg\"；首字符 'D'(68) 小于 'd'(100)，strcmp 返回负数，选 B。大写字母的 ASCII 码小于小写。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
