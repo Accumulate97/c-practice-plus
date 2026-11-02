@@ -14764,7 +14764,7 @@
       "code": "#include <stdio.h>\nint main(void)\n{\n    int a, b, r;\n    scanf(\"%d %d\", &a, &b);\n    while (b != 0) {\n        r = a / b;\n        a = b;\n        b = r;\n    }\n    printf(\"%d\\n\", b);\n    return 0;\n}",
       "bugs": [
         "第 7 行 r = a / b; 辗转相除法用的是“用较小数去除较大数取余数”，这里却写成求商。应改为 r = a % b;（求 a 除以 b 的余数）。",
-        "第 10 行 printf(\"%d\\n\", b); 循环结束时 b 已经被更新为 0，真正保存最大公约数的是 a。应改为 printf(\"%d\\n\", a);"
+        "第11行 printf(\"%d\\n\", b); 循环结束时 b 已经被更新为 0，真正保存最大公约数的是 a。应改为 printf(\"%d\\n\", a);"
       ],
       "fixed_code": "#include <stdio.h>\nint main(void)\n{\n    int a, b, r;\n    scanf(\"%d %d\", &a, &b);\n    while (b != 0) {\n        r = a % b;\n        a = b;\n        b = r;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}",
       "testCases": [
@@ -14931,7 +14931,7 @@
       "code": "#include <stdio.h>\nint main(void)\n{\n    int n, i, count = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i < n; i++) {\n        if (i % 2 != 0)\n            printf(\"%d \", i);\n        count++;\n    }\n    printf(\"\\ncount=%d\\n\", count);\n    return 0;\n}",
       "bugs": [
         "第 8 行 if (i % 2 != 0) 后面直接跟 printf 而没有用花括号，导致 count++; 被留在 if 之外。这样无论 i 是奇是偶，count 每一轮都会自增，计数结果错误。应给 if 分支加花括号：if (i % 2 != 0) { printf(\"%d \", i); count++; }",
-        "第 7 行 for (i = 1; i < n; i++) 终止条件写成 i < n。要求输出包含 n 本身的奇数，i 应能取到 n，应改为 i <= n；否则最后一个奇数（当 n 为奇数时）被漏掉。"
+        "第6行 for (i = 1; i < n; i++) 终止条件写成 i < n。要求输出包含 n 本身的奇数，i 应能取到 n，应改为 i <= n；否则最后一个奇数（当 n 为奇数时）被漏掉。"
       ],
       "fixed_code": "#include <stdio.h>\nint main(void)\n{\n    int n, i, count = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        if (i % 2 != 0) {\n            printf(\"%d \", i);\n            count++;\n        }\n    }\n    printf(\"\\ncount=%d\\n\", count);\n    return 0;\n}",
       "testCases": [
@@ -15357,7 +15357,7 @@
       "stem": "先输入整数 n，再输入 n 个整数成绩，输出它们的平均分（保留两位小数）。下面程序有两处错误，请找出并改正。",
       "code": "#include <stdio.h>\n\nint main(void) {\n    int n, i, score;\n    double sum, avg;\n    scanf(\"%d\", &n);\n    i = 0;\n    while (i <= n) {\n        scanf(\"%d\", &score);\n        sum = sum + score;\n        i++;\n    }\n    avg = sum / n;\n    printf(\"%.2f\\n\", avg);\n    return 0;\n}",
       "bugs": [
-        "第4行 double sum, avg; 累加器 sum 未赋初值，应写成 double sum = 0, avg;，否则是随机数。",
+        "第5行 double sum, avg; 累加器 sum 未赋初值，应写成 double sum = 0, avg;，否则是随机数。",
         "第8行 while(i<=n) 会多读一个数，应为 while(i<n)，正好读 n 个成绩。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n, i, score;\n    double sum = 0, avg;\n    scanf(\"%d\", &n);\n    i = 0;\n    while (i < n) {\n        scanf(\"%d\", &score);\n        sum = sum + score;\n        i++;\n    }\n    avg = sum / n;\n    printf(\"%.2f\\n\", avg);\n    return 0;\n}",
@@ -15406,7 +15406,7 @@
       "stem": "输入若干整数（以 0 结束，0 不计入统计），统计其中正数、负数的个数，输出“正数个数 负数个数”。下面程序有两处错误，请找出并改正。",
       "code": "#include <stdio.h>\n\nint main(void) {\n    int x, pos = 0, neg = 0;\n    do {\n        scanf(\"%d\", &x);\n        if (x > 0) pos++;\n        else if (x < 0) pos++;\n    } while (x == 0);\n    printf(\"%d %d\\n\", pos, neg);\n    return 0;\n}",
       "bugs": [
-        "第7行 else if (x < 0) pos++; 负数应累加到 neg 而不是 pos。",
+        "第8行 else if (x < 0) pos++; 负数应累加到 neg 而不是 pos。",
         "第8行 while(x==0) 循环条件写反了，应为 while(x!=0)，否则读到 0 还要继续读。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int x, pos = 0, neg = 0;\n    do {\n        scanf(\"%d\", &x);\n        if (x > 0) pos++;\n        else if (x < 0) neg++;\n    } while (x != 0);\n    printf(\"%d %d\\n\", pos, neg);\n    return 0;\n}",
@@ -15456,8 +15456,8 @@
       "code": "#include <stdio.h>\n\nint main(void) {\n    int n, i;\n    int fact = 1;\n    scanf(\"%d\", &n);\n    for (i = 1; i < n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%d\\n\", fact);\n    return 0;\n}",
       "bugs": [
         "第4行 int fact = 1; 阶乘会很快超出 int 范围，应使用 long long fact = 1;。",
-        "第6行 for(i=1;i<n;i++) 终止条件应为 i<=n，否则少乘最后一项 n。",
-        "第9行 printf(\"%d\\n\", fact) 与 long long 对应应使用 %lld。"
+        "第7行 for(i=1;i<n;i++) 终止条件应为 i<=n，否则少乘最后一项 n。",
+        "第10行 printf(\"%d\\n\", fact) 与 long long 对应应使用 %lld。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n, i;\n    long long fact = 1;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%lld\\n\", fact);\n    return 0;\n}",
       "testCases": [
@@ -15505,9 +15505,9 @@
       "stem": "输入整数 a 和 n（n 为非负整数），计算并输出 a 的 n 次幂。下面程序有三处错误，请找出并改正。",
       "code": "#include <stdio.h>\n\nint main(void) {\n    int a, n, i;\n    int result = 1;\n    scanf(\"%d %d\", &a, &n);\n    for (i = 0; i <= n; i++) {\n        result = result * a;\n    }\n    printf(\"%d\\n\", result);\n    return 0;\n}",
       "bugs": [
-        "第4行 int result = 1; 幂运算也可能溢出，应使用 long long result = 1;。",
-        "第6行 for(i=0;i<=n;i++) 多循环一次，应为 i<n，正好乘 n 次。",
-        "第8行 printf(\"%d\\n\", result) 与 long long 对应应使用 %lld。"
+        "第5行 int result = 1; 幂运算也可能溢出，应使用 long long result = 1;。",
+        "第7行 for(i=0;i<=n;i++) 多循环一次，应为 i<n，正好乘 n 次。",
+        "第10行 printf(\"%d\\n\", result) 与 long long 对应应使用 %lld。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a, n, i;\n    long long result = 1;\n    scanf(\"%d %d\", &a, &n);\n    for (i = 0; i < n; i++) {\n        result = result * a;\n    }\n    printf(\"%lld\\n\", result);\n    return 0;\n}",
       "testCases": [
@@ -15556,7 +15556,7 @@
       "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, r;\n    scanf(\"%d %d\", &a, &b);\n    while (a != 0) {\n        r = a % b;\n        a = b;\n        b = r;\n    }\n    printf(\"%d\\n\", b);\n    return 0;\n}",
       "bugs": [
         "第6行 while(a!=0) 应以除数 b 为判断，应为 while(b!=0)，否则当 b 变为 0 后 a%b 会除零出错。",
-        "第10行 printf(\"%d\\n\", b) 公约数最终保存在 a，应输出 a。"
+        "第11行 printf(\"%d\\n\", b) 公约数最终保存在 a，应输出 a。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, r;\n    scanf(\"%d %d\", &a, &b);\n    while (b != 0) {\n        r = a % b;\n        a = b;\n        b = r;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}",
       "testCases": [
@@ -15604,7 +15604,7 @@
       "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, m;\n    scanf(\"%d %d\", &a, &b);\n    m = b;\n    while (m % b == 0) {\n        m = m + a;\n    }\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "bugs": [
         "第5行 m = b; 应从 a 的倍数开始试探，应为 m = a;。",
-        "第6行 while(m % b == 0) 条件反了，应为 while(m % b != 0)，当 m 能被 b 整除即找到最小公倍数时停止。"
+        "第7行 while(m % b == 0) 条件反了，应为 while(m % b != 0)，当 m 能被 b 整除即找到最小公倍数时停止。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int a, b, m;\n    scanf(\"%d %d\", &a, &b);\n    m = a;\n    while (m % b != 0) {\n        m = m + a;\n    }\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "testCases": [
@@ -15652,8 +15652,8 @@
       "stem": "输入一个正整数 n，判断它正读和反读是否相同（如 121、1221 是回文数）。下面程序有两处错误，请找出并改正。",
       "code": "#include <stdio.h>\n\nint main(void) {\n    int n, rev = 0, temp;\n    scanf(\"%d\", &n);\n    temp = n;\n    while (temp > 0) {\n        rev = temp % 10;\n        temp = temp / 10;\n    }\n    if (rev == temp) {\n        printf(\"yes\\n\");\n    } else {\n        printf(\"no\\n\");\n    }\n    return 0;\n}",
       "bugs": [
-        "第7行 rev = temp % 10; 翻转应累加，应为 rev = rev * 10 + temp % 10;，否则 rev 只会保留最后一位。",
-        "第9行 if(rev == temp) 应和原数 n 比较，应为 if(rev == n)，temp 在此处已被除成 0。"
+        "第8行 rev = temp % 10; 翻转应累加，应为 rev = rev * 10 + temp % 10;，否则 rev 只会保留最后一位。",
+        "第11行 if(rev == temp) 应和原数 n 比较，应为 if(rev == n)，temp 在此处已被除成 0。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n, rev = 0, temp;\n    scanf(\"%d\", &n);\n    temp = n;\n    while (temp > 0) {\n        rev = rev * 10 + temp % 10;\n        temp = temp / 10;\n    }\n    if (rev == n) {\n        printf(\"yes\\n\");\n    } else {\n        printf(\"no\\n\");\n    }\n    return 0;\n}",
       "testCases": [
@@ -15945,8 +15945,8 @@
       "stem": "输入整数 n，计算并输出 1+1/2+1/3+…+1/n 的和（保留 6 位小数）。下面程序有两处错误，请找出并改正。",
       "code": "#include <stdio.h>\n\nint main(void) {\n    int n, i;\n    double sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i < n; i++) {\n        sum = sum + 1 / i;\n    }\n    printf(\"%.6f\\n\", sum);\n    return 0;\n}",
       "bugs": [
-        "第6行 for(i=1;i<n;i++) 应累加到第 n 项，应为 i<=n，否则漏掉最后一项 1/n。",
-        "第7行 sum = sum + 1 / i; 1 和 i 都是整数，整数除法当 i>1 时恒为 0，应写成 1.0 / i。"
+        "第7行 for(i=1;i<n;i++) 应累加到第 n 项，应为 i<=n，否则漏掉最后一项 1/n。",
+        "第8行 sum = sum + 1 / i; 1 和 i 都是整数，整数除法当 i>1 时恒为 0，应写成 1.0 / i。"
       ],
       "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int n, i;\n    double sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        sum = sum + 1.0 / i;\n    }\n    printf(\"%.6f\\n\", sum);\n    return 0;\n}",
       "testCases": [
