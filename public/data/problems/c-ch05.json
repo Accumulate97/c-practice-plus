@@ -16040,7 +16040,7 @@
         "累加求和"
       ],
       "stem": "读入非负整数 n，用 for 循环计算 1+2+…+n 的和并输出。请补全下面程序的两处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i, sum = 0;\n  scanf(\"%d\", &n);\n  for (i = 1; i /*__BLANK_1__*/ n; i++) {\n    sum /*__BLANK_2__*/ i;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i /*__BLANK_1__*/ n; i++) {\n        sum /*__BLANK_2__*/ i;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16060,7 +16060,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i, sum = 0;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    sum += i;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        sum += i;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -16107,7 +16107,7 @@
         "累加求和"
       ],
       "stem": "读入非负整数 n，用 while 循环计算 1+2+…+n 的和并输出。请补全下面程序的三处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i = 1, sum = 0;\n  scanf(\"%d\", &n);\n  while (i /*__BLANK_1__*/ n) {\n    sum /*__BLANK_2__*/ i;\n    i /*__BLANK_3__*/;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i = 1, sum = 0;\n    scanf(\"%d\", &n);\n    while (i /*__BLANK_1__*/ n) {\n        sum /*__BLANK_2__*/ i;\n        i /*__BLANK_3__*/;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16135,7 +16135,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i = 1, sum = 0;\n  scanf(\"%d\", &n);\n  while (i <= n) {\n    sum += i;\n    i++;\n  }\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i = 1, sum = 0;\n    scanf(\"%d\", &n);\n    while (i <= n) {\n        sum += i;\n        i++;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -16182,7 +16182,7 @@
         "累加求和"
       ],
       "stem": "读入整数 n（n≥0），用 do-while 循环计算 0+1+2+…+n 的和并输出。请补全下面程序的三处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i = 0, sum = 0;\n  scanf(\"%d\", &n);\n  do {\n    sum /*__BLANK_1__*/ i;\n    i /*__BLANK_2__*/;\n  } while (i /*__BLANK_3__*/ n);\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i = 0, sum = 0;\n    scanf(\"%d\", &n);\n    do {\n        sum /*__BLANK_1__*/ i;\n        i /*__BLANK_2__*/;\n    } while (i /*__BLANK_3__*/ n);\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16210,7 +16210,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i = 0, sum = 0;\n  scanf(\"%d\", &n);\n  do {\n    sum += i;\n    i++;\n  } while (i <= n);\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i = 0, sum = 0;\n    scanf(\"%d\", &n);\n    do {\n        sum += i;\n        i++;\n    } while (i <= n);\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -16258,7 +16258,7 @@
         "自增"
       ],
       "stem": "读入整数 n（n≥0），计算并输出 n!（0! 定义为 1）。请在下面程序的两处空白处补全。",
-      "code": "#include <stdio.h>\nint main(void) {\n  long long f = 1;\n  int n, i;\n  scanf(\"%d\", &n);\n  for (i = 1; i /*__BLANK_1__*/ n; i++) {\n    f /*__BLANK_2__*/ i;\n  }\n  printf(\"%lld\\n\", f);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    long long f = 1;\n    int n, i;\n    scanf(\"%d\", &n);\n    for (i = 1; i /*__BLANK_1__*/ n; i++) {\n        f /*__BLANK_2__*/ i;\n    }\n    printf(\"%lld\\n\", f);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16278,7 +16278,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  long long f = 1;\n  int n, i;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    f *= i;\n  }\n  printf(\"%lld\\n\", f);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    long long f = 1;\n    int n, i;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        f *= i;\n    }\n    printf(\"%lld\\n\", f);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -16326,7 +16326,7 @@
         "计数"
       ],
       "stem": "读入整数 n，统计 1 到 n 之间能被 2 整除的数的个数与它们的和，按\"个数 和\"输出。请补全下面程序的三处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i, cnt = 0, sum = 0;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    if (i /*__BLANK_1__*/ 2 == 0) {\n      cnt /*__BLANK_2__*/;\n      sum /*__BLANK_3__*/ i;\n    }\n  }\n  printf(\"%d %d\\n\", cnt, sum);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, cnt = 0, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        if (i /*__BLANK_1__*/ 2 == 0) {\n            cnt /*__BLANK_2__*/;\n            sum /*__BLANK_3__*/ i;\n        }\n    }\n    printf(\"%d %d\\n\", cnt, sum);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16352,7 +16352,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i, cnt = 0, sum = 0;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    if (i % 2 == 0) {\n      cnt++;\n      sum += i;\n    }\n  }\n  printf(\"%d %d\\n\", cnt, sum);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i, cnt = 0, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        if (i % 2 == 0) {\n            cnt++;\n            sum += i;\n        }\n    }\n    printf(\"%d %d\\n\", cnt, sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -16399,7 +16399,7 @@
         "数字拆分"
       ],
       "stem": "读入一个整数 n，用 do-while 循环求出它的各位数字之和并输出。请补全下面程序的两处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, sum = 0;\n  scanf(\"%d\", &n);\n  do {\n    sum += n /*__BLANK_1__*/ 10;\n    n = n / 10;\n  } while (n /*__BLANK_2__*/ 0);\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    do {\n        sum += n /*__BLANK_1__*/ 10;\n        n = n / 10;\n    } while (n /*__BLANK_2__*/ 0);\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16417,7 +16417,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, sum = 0;\n  scanf(\"%d\", &n);\n  do {\n    sum += n % 10;\n    n = n / 10;\n  } while (n != 0);\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    do {\n        sum += n % 10;\n        n = n / 10;\n    } while (n != 0);\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -16465,7 +16465,7 @@
         "素数"
       ],
       "stem": "读入正整数 n（n≥2），判断它是否为素数并输出 prime 或 not prime。请补全下面程序的三处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i, flag = 1;\n  scanf(\"%d\", &n);\n  for (i = 2; i /*__BLANK_1__*/ n; i++) {\n    if (n /*__BLANK_2__*/ i == 0) {\n      flag = 0;\n      /*__BLANK_3__*/;\n    }\n  }\n  if (flag) printf(\"prime\\n\");\n  else printf(\"not prime\\n\");\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, flag = 1;\n    scanf(\"%d\", &n);\n    for (i = 2; i /*__BLANK_1__*/ n; i++) {\n        if (n /*__BLANK_2__*/ i == 0) {\n            flag = 0;\n            /*__BLANK_3__*/;\n        }\n    }\n    if (flag)\n        printf(\"prime\\n\");\n    else\n        printf(\"not prime\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16491,7 +16491,7 @@
           "accepted": []
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i, flag = 1;\n  scanf(\"%d\", &n);\n  for (i = 2; i < n; i++) {\n    if (n % i == 0) {\n      flag = 0;\n      break;\n    }\n  }\n  if (flag) printf(\"prime\\n\");\n  else printf(\"not prime\\n\");\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i, flag = 1;\n    scanf(\"%d\", &n);\n    for (i = 2; i < n; i++) {\n        if (n % i == 0) {\n            flag = 0;\n            break;\n        }\n    }\n    if (flag)\n        printf(\"prime\\n\");\n    else\n        printf(\"not prime\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2",
@@ -16538,7 +16538,7 @@
         "辗转相除"
       ],
       "stem": "读入两个整数 m、n，用辗转相除法求它们的最大公约数并输出。请补全下面程序的两处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int m, n, r;\n  scanf(\"%d %d\", &m, &n);\n  while (n /*__BLANK_1__*/ 0) {\n    r = m /*__BLANK_2__*/ n;\n    m = n;\n    n = r;\n  }\n  printf(\"%d\\n\", m);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int m, n, r;\n    scanf(\"%d %d\", &m, &n);\n    while (n /*__BLANK_1__*/ 0) {\n        r = m /*__BLANK_2__*/ n;\n        m = n;\n        n = r;\n    }\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16555,7 +16555,7 @@
           "accepted": []
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int m, n, r;\n  scanf(\"%d %d\", &m, &n);\n  while (n != 0) {\n    r = m % n;\n    m = n;\n    n = r;\n  }\n  printf(\"%d\\n\", m);\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int m, n, r;\n    scanf(\"%d %d\", &m, &n);\n    while (n != 0) {\n        r = m % n;\n        m = n;\n        n = r;\n    }\n    printf(\"%d\\n\", m);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 18",
@@ -16603,7 +16603,7 @@
         "递推"
       ],
       "stem": "读入正整数 n，用 for 循环输出斐波那契数列的前 n 项（从 0 开始，各数以空格分隔）。请补全下面程序的两处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i;\n  long long a = 0, b = 1, c;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    printf(\"%lld \", a);\n    c = a /*__BLANK_1__*/ b;\n    a = b;\n    b = /*__BLANK_2__*/;\n  }\n  printf(\"\\n\");\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i;\n    long long a = 0, b = 1, c;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        printf(\"%lld \", a);\n        c = a /*__BLANK_1__*/ b;\n        a = b;\n        b = /*__BLANK_2__*/;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16618,7 +16618,7 @@
           "accepted": []
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i;\n  long long a = 0, b = 1, c;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    printf(\"%lld \", a);\n    c = a + b;\n    a = b;\n    b = c;\n  }\n  printf(\"\\n\");\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i;\n    long long a = 0, b = 1, c;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        printf(\"%lld \", a);\n        c = a + b;\n        a = b;\n        b = c;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
@@ -16665,7 +16665,7 @@
         "乘法表"
       ],
       "stem": "读入正整数 n，输出一个下三角乘法表：第 i 行打印从 1 乘到 i 的算式。请补全下面程序的三处空白。",
-      "code": "#include <stdio.h>\nint main(void) {\n  int n, i, j;\n  scanf(\"%d\", &n);\n  for (i = 1; i /*__BLANK_1__*/ n; i++) {\n    for (j = 1; j /*__BLANK_2__*/ i; j++) {\n      printf(\"%d*%d=%2d  \", i, j, i /*__BLANK_3__*/ j);\n    }\n    printf(\"\\n\");\n  }\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i /*__BLANK_1__*/ n; i++) {\n        for (j = 1; j /*__BLANK_2__*/ i; j++) {\n            printf(\"%d*%d=%2d  \", i, j, i /*__BLANK_3__*/ j);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -16690,7 +16690,7 @@
           "accepted": []
         }
       ],
-      "solution": "#include <stdio.h>\nint main(void) {\n  int n, i, j;\n  scanf(\"%d\", &n);\n  for (i = 1; i <= n; i++) {\n    for (j = 1; j <= i; j++) {\n      printf(\"%d*%d=%2d  \", i, j, i * j);\n    }\n    printf(\"\\n\");\n  }\n  return 0;\n}",
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            printf(\"%d*%d=%2d  \", i, j, i * j);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1",
