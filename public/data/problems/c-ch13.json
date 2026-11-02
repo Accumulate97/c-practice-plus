@@ -4664,7 +4664,7 @@
       "stem": "不用 <string.h> 的 strpbrk，自实现 `int my_strpbrk(const char *s, const char *accept)`，返回 s 中第一个落在 accept 集合的字符下标，找不到返回 -1。main 已给出，请不要改动；判分以 stdin 输入两个字符串后调用 my_strpbrk 的输出为准。",
       "apiName": "strpbrk",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 返回 s 中第一个落在 accept 集合的字符下标，找不到返回 -1 */\nint my_strpbrk(const char *s, const char *accept) {\n    /* 在此实现 */\n    return -1;\n}\n\nint main(void) {\n    char s[256], accept[256];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    fgets(accept, sizeof(accept), stdin);\n    accept[strcspn(accept, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strpbrk(s, accept));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint my_strpbrk(const char *s, const char *accept) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        for (int j = 0; accept[j] != '\\0'; j++) {\n            if (s[i] == accept[j]) return i;\n        }\n    }\n    return -1;\n}\n\nint main(void) {\n    char s[256], accept[256];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    fgets(accept, sizeof(accept), stdin);\n    accept[strcspn(accept, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strpbrk(s, accept));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint my_strpbrk(const char *s, const char *accept) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        for (int j = 0; accept[j] != '\\0'; j++) {\n            if (s[i] == accept[j])\n                return i;\n        }\n    }\n    return -1;\n}\n\nint main(void) {\n    char s[256], accept[256];\n    fgets(s, sizeof(s), stdin);\n    s[strcspn(s, \"\\n\")] = 0;\n    fgets(accept, sizeof(accept), stdin);\n    accept[strcspn(accept, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strpbrk(s, accept));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello world\no\n",
@@ -4709,8 +4709,8 @@
       ],
       "stem": "不用 <string.h> 的 strcasecmp，自实现 `int my_strcasecmp(const char *a, const char *b)`，忽略大小写比较两个字符串，返回负/0/正。to_lower 已给出。main 已给出，请不要改动；判分以 stdin 输入两个字符串后调用 my_strcasecmp 的输出为准。",
       "apiName": "strcasecmp",
-      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint to_lower(int c) {\n    if (c >= 'A' && c <= 'Z') return c - 'A' + 'a';\n    return c;\n}\n\n/* TODO: 忽略大小写比较 a 与 b（负/0/正） */\nint my_strcasecmp(const char *a, const char *b) {\n    /* 在此实现 */\n    return 0;\n}\n\nint main(void) {\n    char a[256], b[256];\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strcasecmp(a, b));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint to_lower(int c) {\n    if (c >= 'A' && c <= 'Z') return c - 'A' + 'a';\n    return c;\n}\n\nint my_strcasecmp(const char *a, const char *b) {\n    while (*a != '\\0' && to_lower(*a) == to_lower(*b)) {\n        a++; b++;\n    }\n    return to_lower((unsigned char)*a) - to_lower((unsigned char)*b);\n}\n\nint main(void) {\n    char a[256], b[256];\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strcasecmp(a, b));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n#include <string.h>\n\nint to_lower(int c) {\n    if (c >= 'A' && c <= 'Z')\n        return c - 'A' + 'a';\n    return c;\n}\n\n/* TODO: 忽略大小写比较 a 与 b（负/0/正） */\nint my_strcasecmp(const char *a, const char *b) {\n    /* 在此实现 */\n    return 0;\n}\n\nint main(void) {\n    char a[256], b[256];\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strcasecmp(a, b));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint to_lower(int c) {\n    if (c >= 'A' && c <= 'Z')\n        return c - 'A' + 'a';\n    return c;\n}\n\nint my_strcasecmp(const char *a, const char *b) {\n    while (*a != '\\0' && to_lower(*a) == to_lower(*b)) {\n        a++;\n        b++;\n    }\n    return to_lower((unsigned char)*a) - to_lower((unsigned char)*b);\n}\n\nint main(void) {\n    char a[256], b[256];\n    fgets(a, sizeof(a), stdin);\n    a[strcspn(a, \"\\n\")] = 0;\n    fgets(b, sizeof(b), stdin);\n    b[strcspn(b, \"\\n\")] = 0;\n    printf(\"%d\\n\", my_strcasecmp(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\nHELLO\n",
@@ -4756,7 +4756,7 @@
       "stem": "不用 <string.h> 的 memchr，自实现 `int my_memchr(const char *buf, int c, int n)`，在 buf 的前 n 个字节中找第一个等于 c 的字节，返回其下标，找不到返回 -1。main 已给出，请不要改动；判分以 stdin 输入字符串与整数 c、n 后调用 my_memchr 的输出为准。",
       "apiName": "memchr",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 在 buf 的前 n 字节中找第一个等于 c 的字节，返回下标，找不到返回 -1 */\nint my_memchr(const char *buf, int c, int n) {\n    /* 在此实现 */\n    return -1;\n}\n\nint main(void) {\n    char buf[256];\n    int c, n;\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    scanf(\"%d %d\", &c, &n);\n    printf(\"%d\\n\", my_memchr(buf, c, n));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nint my_memchr(const char *buf, int c, int n) {\n    int i;\n    for (i = 0; i < n; i++) {\n        if ((unsigned char)buf[i] == (unsigned char)c) return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    char buf[256];\n    int c, n;\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    scanf(\"%d %d\", &c, &n);\n    printf(\"%d\\n\", my_memchr(buf, c, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nint my_memchr(const char *buf, int c, int n) {\n    int i;\n    for (i = 0; i < n; i++) {\n        if ((unsigned char)buf[i] == (unsigned char)c)\n            return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    char buf[256];\n    int c, n;\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    scanf(\"%d %d\", &c, &n);\n    printf(\"%d\\n\", my_memchr(buf, c, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\n108 5\n",
@@ -4802,7 +4802,7 @@
       "stem": "自实现 `void my_strrev(char *s)`，把字符串 s 就地反转（不需要新空间）。main 已给出，请不要改动；判分以 stdin 输入字符串后调用 my_strrev 的输出为准。",
       "apiName": "strrev",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 就地反转字符串 s */\nvoid my_strrev(char *s) {\n    /* 在此实现 */\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strrev(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strrev(char *s) {\n    int len = 0, left, right;\n    while (s[len] != '\\0') len++;\n    left = 0;\n    right = len - 1;\n    while (left < right) {\n        char t = s[left];\n        s[left] = s[right];\n        s[right] = t;\n        left++; right--;\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strrev(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strrev(char *s) {\n    int len = 0, left, right;\n    while (s[len] != '\\0')\n        len++;\n    left = 0;\n    right = len - 1;\n    while (left < right) {\n        char t = s[left];\n        s[left] = s[right];\n        s[right] = t;\n        left++;\n        right--;\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strrev(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "hello\n",
@@ -4848,7 +4848,7 @@
       "stem": "自实现 `void my_strlwr(char *s)`，把字符串 s 中的大写字母转成小写（就地，其他字符不动）。main 已给出，请不要改动；判分以 stdin 输入字符串后调用 my_strlwr 的输出为准。",
       "apiName": "strlwr",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 把字符串 s 转成小写（就地） */\nvoid my_strlwr(char *s) {\n    /* 在此实现 */\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strlwr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strlwr(char *s) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (s[i] >= 'A' && s[i] <= 'Z') s[i] = s[i] - 'A' + 'a';\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strlwr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strlwr(char *s) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (s[i] >= 'A' && s[i] <= 'Z')\n            s[i] = s[i] - 'A' + 'a';\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strlwr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "Hello World\n",
@@ -4894,7 +4894,7 @@
       "stem": "自实现 `void my_strupr(char *s)`，把字符串 s 中的小写字母转成大写（就地，其他字符不动）。main 已给出，请不要改动；判分以 stdin 输入字符串后调用 my_strupr 的输出为准。",
       "apiName": "strupr",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 把字符串 s 转成大写（就地） */\nvoid my_strupr(char *s) {\n    /* 在此实现 */\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strupr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strupr(char *s) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (s[i] >= 'a' && s[i] <= 'z') s[i] = s[i] - 'a' + 'A';\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strupr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nvoid my_strupr(char *s) {\n    int i;\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (s[i] >= 'a' && s[i] <= 'z')\n            s[i] = s[i] - 'a' + 'A';\n    }\n}\n\nint main(void) {\n    char buf[256];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    my_strupr(buf);\n    printf(\"%s\\n\", buf);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "Hello World\n",
@@ -4940,7 +4940,7 @@
       "stem": "不用 <stdlib.h> 的 strtol，自实现 `long my_strtol(const char *s)`，把字符串转成长整数，处理正负号与 0x/0 前缀（自动判进制：0x 十六进制、0 开头八进制、否则十进制）。main 已给出，请不要改动；判分以 stdin 输入字符串后调用 my_strtol 的输出为准。",
       "apiName": "strtol",
       "code_starter": "#include <stdio.h>\n#include <string.h>\n\n/* TODO: 把字符串 s 转成 long，处理正负号与 0x/0 前缀（自动判进制） */\nlong my_strtol(const char *s) {\n    /* 在此实现 */\n    return 0;\n}\n\nint main(void) {\n    char buf[64];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    printf(\"%ld\\n\", my_strtol(buf));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n#include <string.h>\n\nlong my_strtol(const char *s) {\n    int i = 0, sign = 1;\n    long val = 0;\n    while (s[i] == ' ' || s[i] == '\\t') i++;\n    if (s[i] == '-' || s[i] == '+') {\n        if (s[i] == '-') sign = -1;\n        i++;\n    }\n    if (s[i] == '0' && (s[i + 1] == 'x' || s[i + 1] == 'X')) {\n        i += 2;\n        while (s[i] != '\\0') {\n            int d;\n            if (s[i] >= '0' && s[i] <= '9') d = s[i] - '0';\n            else if (s[i] >= 'a' && s[i] <= 'f') d = s[i] - 'a' + 10;\n            else if (s[i] >= 'A' && s[i] <= 'F') d = s[i] - 'A' + 10;\n            else break;\n            val = val * 16 + d;\n            i++;\n        }\n    } else if (s[i] == '0') {\n        i++;\n        while (s[i] >= '0' && s[i] <= '7') {\n            val = val * 8 + (s[i] - '0');\n            i++;\n        }\n    } else {\n        while (s[i] >= '0' && s[i] <= '9') {\n            val = val * 10 + (s[i] - '0');\n            i++;\n        }\n    }\n    return sign * val;\n}\n\nint main(void) {\n    char buf[64];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    printf(\"%ld\\n\", my_strtol(buf));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n#include <string.h>\n\nlong my_strtol(const char *s) {\n    int i = 0, sign = 1;\n    long val = 0;\n    while (s[i] == ' ' || s[i] == '\\t')\n        i++;\n    if (s[i] == '-' || s[i] == '+') {\n        if (s[i] == '-')\n            sign = -1;\n        i++;\n    }\n    if (s[i] == '0' && (s[i + 1] == 'x' || s[i + 1] == 'X')) {\n        i += 2;\n        while (s[i] != '\\0') {\n            int d;\n            if (s[i] >= '0' && s[i] <= '9')\n                d = s[i] - '0';\n            else if (s[i] >= 'a' && s[i] <= 'f')\n                d = s[i] - 'a' + 10;\n            else if (s[i] >= 'A' && s[i] <= 'F')\n                d = s[i] - 'A' + 10;\n            else\n                break;\n            val = val * 16 + d;\n            i++;\n        }\n    } else if (s[i] == '0') {\n        i++;\n        while (s[i] >= '0' && s[i] <= '7') {\n            val = val * 8 + (s[i] - '0');\n            i++;\n        }\n    } else {\n        while (s[i] >= '0' && s[i] <= '9') {\n            val = val * 10 + (s[i] - '0');\n            i++;\n        }\n    }\n    return sign * val;\n}\n\nint main(void) {\n    char buf[64];\n    fgets(buf, sizeof(buf), stdin);\n    buf[strcspn(buf, \"\\n\")] = 0;\n    printf(\"%ld\\n\", my_strtol(buf));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "42\n",
@@ -4985,8 +4985,8 @@
       ],
       "stem": "不用 <stdlib.h> 的 bsearch，自实现 `int *my_bsearch(int *base, int n, int key, int (*cmp)(const void *, const void *))`，用二分查找在升序数组 base 中找 key，返回指向元素的指针，找不到返回 NULL。main 已给出，请不要改动；判分以 stdin 输入 n、key 与升序数组后调用 my_bsearch 的输出为准。",
       "apiName": "bsearch",
-      "code_starter": "#include <stdio.h>\n\nint cmp(const void *a, const void *b) {\n    return *(const int *)a - *(const int *)b;\n}\n\n/* TODO: 二分查找 key，返回元素指针，找不到返回 NULL */\nint *my_bsearch(int *base, int n, int key, int (*cmp)(const void *, const void *)) {\n    /* 在此实现 */\n    return NULL;\n}\n\nint main(void) {\n    int n, key, a[1000], i;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = my_bsearch(a, n, key, cmp);\n    if (p == NULL) printf(\"-1\\n\");\n    else printf(\"%d\\n\", (int)(p - a));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\n\nint cmp(const void *a, const void *b) {\n    return *(const int *)a - *(const int *)b;\n}\n\nint *my_bsearch(int *base, int n, int key, int (*cmp)(const void *, const void *)) {\n    int lo = 0, hi = n - 1;\n    while (lo <= hi) {\n        int mid = (lo + hi) / 2;\n        int r = cmp(&key, &base[mid]);\n        if (r == 0) return &base[mid];\n        else if (r < 0) hi = mid - 1;\n        else lo = mid + 1;\n    }\n    return NULL;\n}\n\nint main(void) {\n    int n, key, a[1000], i;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    int *p = my_bsearch(a, n, key, cmp);\n    if (p == NULL) printf(\"-1\\n\");\n    else printf(\"%d\\n\", (int)(p - a));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\nint cmp(const void *a, const void *b) {\n    return *(const int *)a - *(const int *)b;\n}\n\n/* TODO: 二分查找 key，返回元素指针，找不到返回 NULL */\nint *my_bsearch(int *base, int n, int key, int (*cmp)(const void *, const void *)) {\n    /* 在此实现 */\n    return NULL;\n}\n\nint main(void) {\n    int n, key, a[1000], i;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = my_bsearch(a, n, key, cmp);\n    if (p == NULL)\n        printf(\"-1\\n\");\n    else\n        printf(\"%d\\n\", (int)(p - a));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint cmp(const void *a, const void *b) {\n    return *(const int *)a - *(const int *)b;\n}\n\nint *my_bsearch(int *base, int n, int key, int (*cmp)(const void *, const void *)) {\n    int lo = 0, hi = n - 1;\n    while (lo <= hi) {\n        int mid = (lo + hi) / 2;\n        int r = cmp(&key, &base[mid]);\n        if (r == 0)\n            return &base[mid];\n        else if (r < 0)\n            hi = mid - 1;\n        else\n            lo = mid + 1;\n    }\n    return NULL;\n}\n\nint main(void) {\n    int n, key, a[1000], i;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    int *p = my_bsearch(a, n, key, cmp);\n    if (p == NULL)\n        printf(\"-1\\n\");\n    else\n        printf(\"%d\\n\", (int)(p - a));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5 3\n1 2 3 4 5\n",
@@ -5072,7 +5072,7 @@
       ],
       "stem": "输入 n 和 n 个整数，输出这 n 个数中的最大值。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, max, x;\n    scanf(\"%d\", &n);\n    /* 在这里补全：读入 n 个数并求出最大值写入 max */\n    printf(\"%d\\n\", max);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, max, x;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &max);\n    for (i = 1; i < n; i++) {\n        scanf(\"%d\", &x);\n        if (x > max) max = x;\n    }\n    printf(\"%d\\n\", max);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, max, x;\n    scanf(\"%d\", &n);\n    scanf(\"%d\", &max);\n    for (i = 1; i < n; i++) {\n        scanf(\"%d\", &x);\n        if (x > max)\n            max = x;\n    }\n    printf(\"%d\\n\", max);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5115,7 +5115,7 @@
       ],
       "stem": "输入整数 n，统计 1 到 n 之间能被 3 整除的数的个数。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, c = 0;\n    scanf(\"%d\", &n);\n    /* 在这里补全：统计 1..n 中能被 3 整除的个数 */\n    printf(\"%d\\n\", c);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, c = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        if (i % 3 == 0) c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, c = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        if (i % 3 == 0)\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5349,8 +5349,8 @@
         "遍历"
       ],
       "stem": "输入 n 和 n 个整数，逆序输出这 n 个数（第 n 个在前、第 1 个在后），各数之间用空格分隔。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：逆序输出 a[0..n-1] */\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = n - 1; i >= 0; i--) {\n        if (i < n - 1) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：逆序输出 a[0..n-1] */\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = n - 1; i >= 0; i--) {\n        if (i < n - 1)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5439,8 +5439,8 @@
         "升序"
       ],
       "stem": "输入 n 和 n 个整数，用冒泡排序把它们按升序排列后输出，各数之间用空格分隔。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：冒泡排序使 a 升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        for (j = 0; j < n - 1 - i; j++) {\n            if (a[j] > a[j + 1]) {\n                t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n            }\n        }\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：冒泡排序使 a 升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        for (j = 0; j < n - 1 - i; j++) {\n            if (a[j] > a[j + 1]) {\n                t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n            }\n        }\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5482,7 +5482,7 @@
         "有序"
       ],
       "stem": "输入 n、n 个已升序排列的整数，再输入一个目标值 target，用二分查找在数组中找 target，输出它所在的下标（从 0 开始）；若不存在输出 -1。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, a[100], target, lo = 0, hi, mid, found = -1;\n    int i;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    hi = n - 1;\n    /* 在这里补全：二分查找，把结果写入 found */\n    printf(\"%d\\n\", found);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, a[100], target, lo = 0, hi, mid, found = -1;\n    int i;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    hi = n - 1;\n    /* 在这里补全：二分查找，把结果写入 found */\n    printf(\"%d\\n\", found);\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main(void) {\n    int n, a[100], target, lo = 0, hi, mid, found = -1;\n    int i;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &target);\n    hi = n - 1;\n    while (lo <= hi) {\n        mid = lo + (hi - lo) / 2;\n        if (a[mid] == target) {\n            found = mid;\n            break;\n        } else if (a[mid] < target)\n            lo = mid + 1;\n        else\n            hi = mid - 1;\n    }\n    printf(\"%d\\n\", found);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
@@ -5530,7 +5530,7 @@
       ],
       "stem": "输入一行字符串（含空格），统计其中元音字母（a、e、i、o、u，不区分大小写）的个数。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    char s[256];\n    int i, c = 0;\n    if (fgets(s, sizeof(s), stdin) == NULL) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    /* 在这里补全：统计元音字母个数写入 c */\n    printf(\"%d\\n\", c);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    char s[256];\n    int i, c = 0;\n    if (fgets(s, sizeof(s), stdin) == NULL) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    for (i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        char ch = s[i];\n        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||\n            ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    char s[256];\n    int i, c = 0;\n    if (fgets(s, sizeof(s), stdin) == NULL) {\n        printf(\"0\\n\");\n        return 0;\n    }\n    for (i = 0; s[i] != '\\0' && s[i] != '\\n'; i++) {\n        char ch = s[i];\n        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' ||\n            ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')\n            c++;\n    }\n    printf(\"%d\\n\", c);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5577,7 +5577,7 @@
       ],
       "stem": "输入一个 3×3 矩阵（3 行，每行 3 个整数），输出它的转置矩阵（行列互换）。转置是指 a[i][j] 和 a[j][i] 交换位置。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int a[3][3], i, j;\n    for (i = 0; i < 3; i++)\n        for (j = 0; j < 3; j++)\n            scanf(\"%d\", &a[i][j]);\n    /* 在这里补全：输出转置矩阵，每行元素用空格分隔 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int a[3][3], i, j;\n    for (i = 0; i < 3; i++)\n        for (j = 0; j < 3; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < 3; i++) {\n        for (j = 0; j < 3; j++) {\n            if (j > 0) printf(\" \");\n            printf(\"%d\", a[j][i]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int a[3][3], i, j;\n    for (i = 0; i < 3; i++)\n        for (j = 0; j < 3; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < 3; i++) {\n        for (j = 0; j < 3; j++) {\n            if (j > 0)\n                printf(\" \");\n            printf(\"%d\", a[j][i]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5616,7 +5616,7 @@
       ],
       "stem": "输入一个整数 n，输出它各位数字之和（如 123 的各位和为 6）。若 n 为负数，先取绝对值再计算。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    /* 在这里补全：求 n 的各位数字之和写入 sum */\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    if (n < 0) n = -n;\n    while (n > 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    if (n < 0)\n        n = -n;\n    while (n > 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5757,7 +5757,7 @@
       ],
       "stem": "输入整数 n，打印 n 行杨辉三角。杨辉三角每行首尾都是 1，中间一项等于它上方两项之和（a[i][j]=a[i-1][j-1]+a[i-1][j]）。每行元素用空格分隔。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, a[30][30];\n    scanf(\"%d\", &n);\n    /* 在这里补全：计算并打印 n 行杨辉三角 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, a[30][30];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        a[i][0] = 1;\n        a[i][i] = 1;\n        for (j = 1; j < i; j++) {\n            a[i][j] = a[i - 1][j - 1] + a[i - 1][j];\n        }\n    }\n    for (i = 0; i < n; i++) {\n        for (j = 0; j <= i; j++) {\n            if (j > 0) printf(\" \");\n            printf(\"%d\", a[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, a[30][30];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        a[i][0] = 1;\n        a[i][i] = 1;\n        for (j = 1; j < i; j++) {\n            a[i][j] = a[i - 1][j - 1] + a[i - 1][j];\n        }\n    }\n    for (i = 0; i < n; i++) {\n        for (j = 0; j <= i; j++) {\n            if (j > 0)\n                printf(\" \");\n            printf(\"%d\", a[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -5991,8 +5991,8 @@
         "整数除法"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数，输出它们的平均值。用整数除法 sum / n 计算，结果截断小数部分；若 n 为 0，输出 0。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, x, sum = 0;\n    scanf(\"%d\", &n);\n    /* 在这里补全：读入 n 个数，逐个累加到 sum */\n    if (n > 0) printf(\"%d\\n\", sum / n);\n    else printf(\"0\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, x, sum = 0;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        sum += x;\n    }\n    if (n > 0) printf(\"%d\\n\", sum / n);\n    else printf(\"0\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, x, sum = 0;\n    scanf(\"%d\", &n);\n    /* 在这里补全：读入 n 个数，逐个累加到 sum */\n    if (n > 0)\n        printf(\"%d\\n\", sum / n);\n    else\n        printf(\"0\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, x, sum = 0;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        sum += x;\n    }\n    if (n > 0)\n        printf(\"%d\\n\", sum / n);\n    else\n        printf(\"0\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6043,7 +6043,7 @@
       ],
       "stem": "输入两个字符串（无空格，各占一行），把第二个接到第一个后面并输出拼接结果。要求不使用 <string.h> 的 strcat，自己用字符数组逐字符拼接。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    char a[200], b[100];\n    int i = 0, j = 0;\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    /* 在这里补全：先让 i 走到字符串 a 的结尾，再把 b 逐个字符复制过去，\n       最后在末尾补上字符串结束符 '\\0' */\n    printf(\"%s\\n\", a);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    char a[200], b[100];\n    int i = 0, j = 0;\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    while (a[i] != '\\0') i++;      /* 找到 a 的结尾 */\n    while (b[j] != '\\0') {          /* 把 b 追加到 a 尾部 */\n        a[i] = b[j];\n        i++;\n        j++;\n    }\n    a[i] = '\\0';\n    printf(\"%s\\n\", a);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    char a[200], b[100];\n    int i = 0, j = 0;\n    scanf(\"%s\", a);\n    scanf(\"%s\", b);\n    while (a[i] != '\\0')\n        i++;               /* 找到 a 的结尾 */\n    while (b[j] != '\\0') { /* 把 b 追加到 a 尾部 */\n        a[i] = b[j];\n        i++;\n        j++;\n    }\n    a[i] = '\\0';\n    printf(\"%s\\n\", a);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6084,8 +6084,8 @@
         "排序"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数，用插入排序把数组排成升序并输出（相邻元素用一个空格分隔）。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, key, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：用插入排序把数组 a 排成升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, key, a[100];\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = 1; i < n; i++) {\n        key = a[i];\n        j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, key, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：用插入排序把数组 a 排成升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, key, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 1; i < n; i++) {\n        key = a[i];\n        j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6130,8 +6130,8 @@
         "排序"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数，用选择排序把数组排成升序并输出（相邻元素用一个空格分隔）。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：用选择排序把数组 a 排成升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        min = i;\n        for (j = i + 1; j < n; j++) {\n            if (a[j] < a[min]) min = j;\n        }\n        t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：用选择排序把数组 a 排成升序 */\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        min = i;\n        for (j = i + 1; j < n; j++) {\n            if (a[j] < a[min])\n                min = j;\n        }\n        t = a[i];\n        a[i] = a[min];\n        a[min] = t;\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6228,7 +6228,7 @@
       ],
       "stem": "输入一个年份 y，判断它是否为闰年：是则输出 1，否则输出 0。闰年规则为“能被 4 整除但不能被 100 整除，或者能被 400 整除”。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int y, leap = 0;\n    scanf(\"%d\", &y);\n    /* 在这里补全：按闰年规则判断，是闰年就把 leap 置为 1 */\n    printf(\"%d\\n\", leap);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int y, leap = 0;\n    if (scanf(\"%d\", &y) != 1) return 0;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        leap = 1;\n    printf(\"%d\\n\", leap);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int y, leap = 0;\n    if (scanf(\"%d\", &y) != 1)\n        return 0;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        leap = 1;\n    printf(\"%d\\n\", leap);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6274,8 +6274,8 @@
         "数组"
       ],
       "stem": "输入某年、某月、某日（年 月 日，均为整数），求这一天是该年的第几天（结果从 1 开始计数）。需考虑闰年时二月有 29 天。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int y, m, d, i, day = 0;\n    int md[12] = {31,28,31,30,31,30,31,31,30,31,30,31};\n    scanf(\"%d%d%d\", &y, &m, &d);\n    /* 在这里补全：先按闰年把二月天数 md[1] 改为 29，\n       再把 1..(m-1) 月的天数累加到 day，最后加上当月日号 d */\n    printf(\"%d\\n\", day);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int y, m, d, i, day = 0;\n    int md[12] = {31,28,31,30,31,30,31,31,30,31,30,31};\n    if (scanf(\"%d%d%d\", &y, &m, &d) != 3) return 0;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) md[1] = 29;\n    for (i = 0; i < m - 1; i++) day += md[i];\n    day += d;\n    printf(\"%d\\n\", day);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int y, m, d, i, day = 0;\n    int md[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n    scanf(\"%d%d%d\", &y, &m, &d);\n    /* 在这里补全：先按闰年把二月天数 md[1] 改为 29，\n       再把 1..(m-1) 月的天数累加到 day，最后加上当月日号 d */\n    printf(\"%d\\n\", day);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int y, m, d, i, day = 0;\n    int md[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n    if (scanf(\"%d%d%d\", &y, &m, &d) != 3)\n        return 0;\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        md[1] = 29;\n    for (i = 0; i < m - 1; i++)\n        day += md[i];\n    day += d;\n    printf(\"%d\\n\", day);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6326,7 +6326,7 @@
       ],
       "stem": "输出所有三位数的“水仙花数”，即各位数字的立方和等于它本身的数（如 153 = 1³+5³+3³）。每个数占一行。本题没有输入。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, a, b, c;\n    /* 在这里补全：遍历 100..999 的所有三位数，若满足\n       n == a*a*a + b*b*b + c*c*c 则输出 n（每个一行） */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, a, b, c;\n    for (n = 100; n <= 999; n++) {\n        a = n / 100;        /* 百位 */\n        b = n / 10 % 10;    /* 十位 */\n        c = n % 10;         /* 个位 */\n        if (n == a*a*a + b*b*b + c*c*c)\n            printf(\"%d\\n\", n);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, a, b, c;\n    for (n = 100; n <= 999; n++) {\n        a = n / 100;     /* 百位 */\n        b = n / 10 % 10; /* 十位 */\n        c = n % 10;      /* 个位 */\n        if (n == a * a * a + b * b * b + c * c * c)\n            printf(\"%d\\n\", n);\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6357,7 +6357,7 @@
       ],
       "stem": "输入一个整数 n（n ≥ 2），输出 2 到 n 之间所有的“完数”，每个占一行。完数是指所有真因子（除自身外的因子）之和等于它本身的数，如 6 = 1+2+3。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, sum;\n    scanf(\"%d\", &n);\n    /* 在这里补全：对每个 i (2..n)，累加它的真因子，\n       若真因子之和等于 i 则输出 i（每个一行） */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, sum;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 2; i <= n; i++) {\n        sum = 0;\n        for (j = 1; j <= i / 2; j++) {\n            if (i % j == 0) sum += j;\n        }\n        if (sum == i) printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, sum;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 2; i <= n; i++) {\n        sum = 0;\n        for (j = 1; j <= i / 2; j++) {\n            if (i % j == 0)\n                sum += j;\n        }\n        if (sum == i)\n            printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6400,7 +6400,7 @@
       ],
       "stem": "输入一个整数 n（1 ≤ n ≤ 9），打印左下三角的乘法口诀表：第 i 行输出 1*i 到 i*i，格式为 j*i=积，同行的各项之间用一个空格分隔，每行末尾换行。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j;\n    scanf(\"%d\", &n);\n    /* 在这里补全：第 i 行打印 1*i 到 i*i，格式 j*i=积，用空格分隔 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            if (j > 1) printf(\" \");\n            printf(\"%d*%d=%d\", j, i, j * i);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            if (j > 1)\n                printf(\" \");\n            printf(\"%d*%d=%d\", j, i, j * i);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6442,8 +6442,8 @@
         "动态规划"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数（可含负数），求连续子数组（子段）的最大和。例如序列 -2 1 -3 4 -1 2 1 -5 的最大子段和是 6（来自 4,-1,2,1）。所有元素均可能为负。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    int cur, best;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：用 Kadane 算法求最大连续子段和，结果存入 best */\n    printf(\"%d\\n\", best);\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    int cur, best;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    cur = best = a[0];\n    for (i = 1; i < n; i++) {\n        if (cur + a[i] > a[i]) cur = cur + a[i];\n        else cur = a[i];\n        if (cur > best) best = cur;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    int cur, best;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：用 Kadane 算法求最大连续子段和，结果存入 best */\n    printf(\"%d\\n\", best);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, a[100];\n    int cur, best;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    cur = best = a[0];\n    for (i = 1; i < n; i++) {\n        if (cur + a[i] > a[i])\n            cur = cur + a[i];\n        else\n            cur = a[i];\n        if (cur > best)\n            best = cur;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6489,8 +6489,8 @@
         "数组"
       ],
       "stem": "n 个人围成一圈，从第 1 个人开始报数，每报到 k 的人出列，然后从下一个人继续报数。输入 n 和 k（同一行两个整数），输出这些人出列的顺序，用空格分隔。例如 n=7、k=3 的出列顺序为 3 6 2 7 5 1 4。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, k, i, pos = 0, a[100], out[100];\n    scanf(\"%d%d\", &n, &k);\n    for (i = 0; i < n; i++) a[i] = i + 1;\n    /* 在这里补全：模拟报数出列，把出列顺序依次存入 out */\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", out[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, k, i, pos = 0, a[100], out[100];\n    if (scanf(\"%d%d\", &n, &k) != 2) return 0;\n    for (i = 0; i < n; i++) a[i] = i + 1;\n    for (i = 0; i < n; i++) {\n        int step = k - 1;\n        while (step > 0) {\n            pos = (pos + 1) % n;\n            if (a[pos] != 0) step--;\n        }\n        out[i] = a[pos];\n        a[pos] = 0;\n        if (i < n - 1) {\n            do { pos = (pos + 1) % n; } while (a[pos] == 0);\n        }\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0) printf(\" \");\n        printf(\"%d\", out[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, k, i, pos = 0, a[100], out[100];\n    scanf(\"%d%d\", &n, &k);\n    for (i = 0; i < n; i++)\n        a[i] = i + 1;\n    /* 在这里补全：模拟报数出列，把出列顺序依次存入 out */\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", out[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, k, i, pos = 0, a[100], out[100];\n    if (scanf(\"%d%d\", &n, &k) != 2)\n        return 0;\n    for (i = 0; i < n; i++)\n        a[i] = i + 1;\n    for (i = 0; i < n; i++) {\n        int step = k - 1;\n        while (step > 0) {\n            pos = (pos + 1) % n;\n            if (a[pos] != 0)\n                step--;\n        }\n        out[i] = a[pos];\n        a[pos] = 0;\n        if (i < n - 1) {\n            do {\n                pos = (pos + 1) % n;\n            } while (a[pos] == 0);\n        }\n    }\n    for (i = 0; i < n; i++) {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", out[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6578,7 +6578,7 @@
         "查找"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数，输出去重后的所有元素，要求按每个元素首次出现的顺序输出，相邻元素用一个空格分隔。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, first = 1, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：按首次出现顺序输出去重后的元素，用空格分隔 */\n    printf(\"\\n\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, first = 1, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：按首次出现顺序输出去重后的元素，用空格分隔 */\n    printf(\"\\n\");\n    return 0;\n}",
       "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, first = 1, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n; i++) {\n        int seen = 0;\n        for (j = 0; j < i; j++) {\n            if (a[j] == a[i]) {\n                seen = 1;\n                break;\n            }\n        }\n        if (!seen) {\n            if (!first)\n                printf(\" \");\n            first = 0;\n            printf(\"%d\", a[i]);\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
@@ -6620,8 +6620,8 @@
         "排序"
       ],
       "stem": "先输入一个整数 n，再输入 n 个整数，先对它们升序排序，再输出中位数。若 n 为奇数，中位数是正中间那个数；若 n 为偶数，中位数取中间两个数的平均数（整数除法，向零截断）。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    /* 在这里补全：先排序，再按 n 的奇偶输出中位数 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        min = i;\n        for (j = i + 1; j < n; j++) {\n            if (a[j] < a[min]) min = j;\n        }\n        t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n    if (n % 2 == 1) printf(\"%d\\n\", a[n / 2]);\n    else printf(\"%d\\n\", (a[n / 2 - 1] + a[n / 2]) / 2);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    /* 在这里补全：先排序，再按 n 的奇偶输出中位数 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n, i, j, min, t, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++) {\n        min = i;\n        for (j = i + 1; j < n; j++) {\n            if (a[j] < a[min])\n                min = j;\n        }\n        t = a[i];\n        a[i] = a[min];\n        a[min] = t;\n    }\n    if (n % 2 == 1)\n        printf(\"%d\\n\", a[n / 2]);\n    else\n        printf(\"%d\\n\", (a[n / 2 - 1] + a[n / 2]) / 2);\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6666,8 +6666,8 @@
         "递归"
       ],
       "stem": "汉诺塔问题：有三根柱子，A 上叠着 n 个大小不一的盘子（下面大上面小），每次只能移动一个盘子且大盘不能压在小盘上，目标是把 n 个盘子从 A 移到 C。输入 n，输出最少需要的移动步数。可用递归思想或公式 2^n - 1。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
-      "code_starter": "#include <stdio.h>\nlong long hanoi(int n) {\n    /* 在这里补全：递归返回 n 个盘子的最少移动步数 */\n    return 0;\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    printf(\"%lld\\n\", hanoi(n));\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nlong long hanoi(int n) {\n    if (n <= 1) return n;       /* hanoi(0)=0, hanoi(1)=1 */\n    return 2 * hanoi(n - 1) + 1;\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    printf(\"%lld\\n\", hanoi(n));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nlong long hanoi(int n) {\n    /* 在这里补全：递归返回 n 个盘子的最少移动步数 */\n    return 0;\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    printf(\"%lld\\n\", hanoi(n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nlong long hanoi(int n) {\n    if (n <= 1)\n        return n; /* hanoi(0)=0, hanoi(1)=1 */\n    return 2 * hanoi(n - 1) + 1;\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    printf(\"%lld\\n\", hanoi(n));\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
@@ -6807,7 +6807,7 @@
       ],
       "stem": "输入一个整数 n（可正可负），统计它各位数字中每个数字 0 到 9 各自出现的次数，按数字从小到大输出所有出现过的数字，格式为“数字:次数”，每个占一行。例如 1221 输出 1:2 与 2:2。限时完成（默认 5 秒），超出视为熟练度不足（不影响正确性判分）。",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    long long n, t;\n    int d, cnt[10] = {0};\n    scanf(\"%lld\", &n);\n    /* 在这里补全：统计 n 的各位数字中 0..9 各自出现的次数 */\n    for (d = 0; d < 10; d++) {\n        if (cnt[d] > 0)\n            printf(\"%d:%d\\n\", d, cnt[d]);\n    }\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void) {\n    long long n, t;\n    int d, cnt[10] = {0};\n    if (scanf(\"%lld\", &n) != 1) return 0;\n    if (n < 0) n = -n;\n    if (n == 0) cnt[0] = 1;\n    t = n;\n    while (t > 0) {\n        cnt[t % 10]++;\n        t /= 10;\n    }\n    for (d = 0; d < 10; d++) {\n        if (cnt[d] > 0)\n            printf(\"%d:%d\\n\", d, cnt[d]);\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    long long n, t;\n    int d, cnt[10] = {0};\n    if (scanf(\"%lld\", &n) != 1)\n        return 0;\n    if (n < 0)\n        n = -n;\n    if (n == 0)\n        cnt[0] = 1;\n    t = n;\n    while (t > 0) {\n        cnt[t % 10]++;\n        t /= 10;\n    }\n    for (d = 0; d < 10; d++) {\n        if (cnt[d] > 0)\n            printf(\"%d:%d\\n\", d, cnt[d]);\n    }\n    return 0;\n}",
       "timeLimitSec": 5,
       "testCases": [
         {
