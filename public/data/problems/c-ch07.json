@@ -21,7 +21,7 @@
       "input_format": "一行三个整数 a b c，以空格分隔。",
       "output_format": "输出一个整数：三个数中的最大值，末尾换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m) m = b;\n    if (c > m) m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3) return 0;\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m)\n        m = b;\n    if (c > m)\n        m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    if (scanf(\"%d %d %d\", &a, &b, &c) != 3)\n        return 0;\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3",
@@ -81,7 +81,7 @@
       "input_format": "一行一个整数 n（0 <= n <= 12）。",
       "output_format": "输出一个整数：n 的阶乘，末尾换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -141,7 +141,7 @@
       "input_format": "第一行一个整数 n（0 <= n <= 100）；第二行 n 个整数。",
       "output_format": "输出一个整数：数组最大值；若 n 为 0 输出 0，末尾换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint array_max(int a[], int n) {\n    int i, m;\n    if (n <= 0) return 0;\n    m = a[0];\n    for (i = 1; i < n; i++) if (a[i] > m) m = a[i];\n    return m;\n}\nint main(void) {\n    int n, i, a[100];\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", array_max(a, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint array_max(int a[], int n) {\n    int i, m;\n    if (n <= 0)\n        return 0;\n    m = a[0];\n    for (i = 1; i < n; i++)\n        if (a[i] > m)\n            m = a[i];\n    return m;\n}\nint main(void) {\n    int n, i, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", array_max(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -201,7 +201,7 @@
       "input_format": "一行一个整数 n（0 <= n <= 20）。",
       "output_format": "输出一个整数：斐波那契数列第 n 项，末尾换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint fib(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    return fib(n - 1) + fib(n - 2);\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint fib(int n) {\n    if (n == 0)\n        return 0;\n    if (n == 1)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -261,7 +261,7 @@
       "input_format": "第一行一个整数 n（0 <= n <= 100）；第二行 n 个整数。",
       "output_format": "输出一个整数：前 n 个元素之和；若 n 为 0 输出 0，末尾换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint sum(int a[], int n) {\n    if (n <= 0) return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\nint main(void) {\n    int n, i, a[100];\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint sum(int a[], int n) {\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\nint main(void) {\n    int n, i, a[100];\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -322,7 +322,7 @@
       "input_format": "第一行一个整数 n（0 <= n <= 100）；第二行 n 个整数。",
       "output_format": "按输入顺序输出压入的 n 个整数，每个数后跟一个空格（末尾无额外空行由判分归一化处理）。若 n 为 0，仅输出一个换行。",
       "code_starter": "#include <stdio.h>\n\nint main(void) {\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint data[100];\nint sp = 0;\nvoid push(int x) {\n    data[sp++] = x;\n}\nint main(void) {\n    int n, i, x;\n    if (scanf(\"%d\", &n) != 1) return 0;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) return 0;\n        push(x);\n    }\n    for (i = 0; i < sp; i++) printf(\"%d \", data[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint data[100];\nint sp = 0;\nvoid push(int x) {\n    data[sp++] = x;\n}\nint main(void) {\n    int n, i, x;\n    if (scanf(\"%d\", &n) != 1)\n        return 0;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 0;\n        push(x);\n    }\n    for (i = 0; i < sp; i++)\n        printf(\"%d \", data[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n1 2 3",
@@ -377,7 +377,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint max(int x,int y,int z)\n{  if(x>y && x>z) return(x);\n   else if(/*__BLANK_1__*/) return(y);\n   else return(z);\n}\nint main( )\n{  int x1,x2,x3,i=1,j,x0;\n   printf(\"Input 3 number:\");\n   scanf(\"%d%d%d\",&x1,&x2,&x3);\n   x0=max(x1,x2,x3);\n   while(1)\n   {  j=x0 * i;\n      if(/*__BLANK_2__*/) break;\n      i=i+1;\n   }\n   printf(\"The is %d %d %d zuixiaogongbei is %d\\n\",x1,x2,x3,j );\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint max(int x, int y, int z) {\n    if (x > y && x > z)\n        return (x);\n    else if (/*__BLANK_1__*/)\n        return (y);\n    else\n        return (z);\n}\nint main() {\n    int x1, x2, x3, i = 1, j, x0;\n    printf(\"Input 3 number:\");\n    scanf(\"%d%d%d\", &x1, &x2, &x3);\n    x0 = max(x1, x2, x3);\n    while (1) {\n        j = x0 * i;\n        if (/*__BLANK_2__*/)\n            break;\n        i = i + 1;\n    }\n    printf(\"The is %d %d %d zuixiaogongbei is %d\\n\", x1, x2, x3, j);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -394,7 +394,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint max(int x,int y,int z)\n{  if(x>y && x>z) return(x);\n   else if(y>x && y>z) return(y);\n   else return(z);\n}\nint main( )\n{  int x1,x2,x3,i=1,j,x0;\n   printf(\"Input 3 number:\");\n   scanf(\"%d%d%d\",&x1,&x2,&x3);\n   x0=max(x1,x2,x3);\n   while(1)\n   {  j=x0 * i;\n      if(j%x1==0 && j%x2==0 && j%x3==0) break;\n      i=i+1;\n   }\n   printf(\"The is %d %d %d zuixiaogongbei is %d\\n\",x1,x2,x3,j );\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint max(int x, int y, int z) {\n    if (x > y && x > z)\n        return (x);\n    else if (y > x && y > z)\n        return (y);\n    else\n        return (z);\n}\nint main() {\n    int x1, x2, x3, i = 1, j, x0;\n    printf(\"Input 3 number:\");\n    scanf(\"%d%d%d\", &x1, &x2, &x3);\n    x0 = max(x1, x2, x3);\n    while (1) {\n        j = x0 * i;\n        if (j % x1 == 0 && j % x2 == 0 && j % x3 == 0)\n            break;\n        i = i + 1;\n    }\n    printf(\"The is %d %d %d zuixiaogongbei is %d\\n\", x1, x2, x3, j);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "2 3 4\n",
@@ -427,7 +427,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nfloat average(float array[10])\n{  int i; float aver,sum=array[0];\n   for(i=1;/*__BLANK_1__*/;i++) sum+=/*__BLANK_2__*/;\n   aver=sum/10;\n   return(aver);\n}\nint main( )\n{  float score[10],aver; int i;\n   printf(\"\\ninput 10 scores:\");\n   for(i=0; i<10; i++) scanf(\"%f\",&score[i]);\n   aver=/*__BLANK_3__*/;\n   printf(\"\\naverage score is %5.2f\\n\",aver);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nfloat average(float array[10]) {\n    int i;\n    float aver, sum = array[0];\n    for (i = 1; /*__BLANK_1__*/; i++)\n        sum += /*__BLANK_2__*/;\n    aver = sum / 10;\n    return (aver);\n}\nint main() {\n    float score[10], aver;\n    int i;\n    printf(\"\\ninput 10 scores:\");\n    for (i = 0; i < 10; i++)\n        scanf(\"%f\", &score[i]);\n    aver = /*__BLANK_3__*/;\n    printf(\"\\naverage score is %5.2f\\n\", aver);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -445,7 +445,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nfloat average(float array[10])\n{  int i; float aver,sum=array[0];\n   for(i=1;i<10;i++) sum+=array[i];\n   aver=sum/10;\n   return(aver);\n}\nint main( )\n{  float score[10],aver; int i;\n   printf(\"\\ninput 10 scores:\");\n   for(i=0; i<10; i++) scanf(\"%f\",&score[i]);\n   aver=average(score);\n   printf(\"\\naverage score is %5.2f\\n\",aver);\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nfloat average(float array[10]) {\n    int i;\n    float aver, sum = array[0];\n    for (i = 1; i < 10; i++)\n        sum += array[i];\n    aver = sum / 10;\n    return (aver);\n}\nint main() {\n    float score[10], aver;\n    int i;\n    printf(\"\\ninput 10 scores:\");\n    for (i = 0; i < 10; i++)\n        scanf(\"%f\", &score[i]);\n    aver = average(score);\n    printf(\"\\naverage score is %5.2f\\n\", aver);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "90 80 70 60 50 40 30 20 10 5\n",
@@ -481,7 +481,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n/*__BLANK_1__*/\nint main( )\n{   double x,y;\n    scanf(\"%lf%lf\", &x, &y);\n    printf(\"%lf\\n\",max(y,x));\n    return(0);\n}\ndouble max(double a,double b)\n{   return(a>b ? b-a:a-b); }",
+      "code": "#include <stdio.h>\n/*__BLANK_1__*/\nint main() {\n    double x, y;\n    scanf(\"%lf%lf\", &x, &y);\n    printf(\"%lf\\n\", max(y, x));\n    return (0);\n}\ndouble max(double a, double b) {\n    return (a > b ? b - a : a - b);\n}",
       "blanks": [
         {
           "index": 1,
@@ -493,7 +493,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n double max(double a,double b); \nint main( )\n{   double x,y;\n    scanf(\"%lf%lf\", &x, &y);\n    printf(\"%lf\\n\",max(y,x));\n    return(0);\n}\ndouble max(double a,double b)\n{   return(a>b ? b-a:a-b); }",
+      "solution": "#include <stdio.h>\ndouble max(double a, double b);\nint main() {\n    double x, y;\n    scanf(\"%lf%lf\", &x, &y);\n    printf(\"%lf\\n\", max(y, x));\n    return (0);\n}\ndouble max(double a, double b) {\n    return (a > b ? b - a : a - b);\n}",
       "testCases": [
         {
           "stdin": "5 7\n",
@@ -521,7 +521,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nchar fun(char c)\n{   c=/*__BLANK_1__*/;\n    if(c>='a'&&c<='w') c=c+3;\n    else if(c>='x'&&c<='z') /*__BLANK_2__*/;\n    return c;\n}\nint main( )\n{   char c;\n    c=getchar( );\n    c=fun(c);\n    putchar(c);\n    return(0);\n}",
+      "code": "#include <stdio.h>\nchar fun(char c) {\n    c = /*__BLANK_1__*/;\n    if (c >= 'a' && c <= 'w')\n        c = c + 3;\n    else if (c >= 'x' && c <= 'z') /*__BLANK_2__*/\n        ;\n    return c;\n}\nint main() {\n    char c;\n    c = getchar();\n    c = fun(c);\n    putchar(c);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -542,7 +542,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nchar fun(char c)\n{   c= c+32 ;\n    if(c>='a'&&c<='w') c=c+3;\n    else if(c>='x'&&c<='z')  c=c-23 ;\n    return c;\n}\nint main( )\n{   char c;\n    c=getchar( );\n    c=fun(c);\n    putchar(c);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nchar fun(char c) {\n    c = c + 32;\n    if (c >= 'a' && c <= 'w')\n        c = c + 3;\n    else if (c >= 'x' && c <= 'z')\n        c = c - 23;\n    return c;\n}\nint main() {\n    char c;\n    c = getchar();\n    c = fun(c);\n    putchar(c);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "E\n",
@@ -575,7 +575,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nvoid fun(long n)\n{   int coun0=0,coun1=0,m;\n    do\n    {   m=/*__BLANK_1__*/;\n        if(m==0) coun0++;\n        if(m==1) coun1++;\n        n=/*__BLANK_2__*/;\n    }while(n);\n    printf(\"coun0=%d,coun1=%d\\n\",coun0,coun1);\n}\nint main( )\n{   long n;\n    printf(\"\\ninput n:\\n \"); scanf(\"%ld\",&n); printf(\"n=%ld\\n\",n);\n    fun(n);\n    return(0);\n}",
+      "code": "#include <stdio.h>\nvoid fun(long n) {\n    int coun0 = 0, coun1 = 0, m;\n    do {\n        m = /*__BLANK_1__*/;\n        if (m == 0)\n            coun0++;\n        if (m == 1)\n            coun1++;\n        n = /*__BLANK_2__*/;\n    } while (n);\n    printf(\"coun0=%d,coun1=%d\\n\", coun0, coun1);\n}\nint main() {\n    long n;\n    printf(\"\\ninput n:\\n \");\n    scanf(\"%ld\", &n);\n    printf(\"n=%ld\\n\", n);\n    fun(n);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -592,7 +592,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nvoid fun(long n)\n{   int coun0=0,coun1=0,m;\n    do\n    {   m= n%10 ;\n        if(m==0) coun0++;\n        if(m==1) coun1++;\n        n= n/10 ;\n    }while(n);\n    printf(\"coun0=%d,coun1=%d\\n\",coun0,coun1);\n}\nint main( )\n{   long n;\n    printf(\"\\ninput n:\\n \"); scanf(\"%ld\",&n); printf(\"n=%ld\\n\",n);\n    fun(n);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nvoid fun(long n) {\n    int coun0 = 0, coun1 = 0, m;\n    do {\n        m = n % 10;\n        if (m == 0)\n            coun0++;\n        if (m == 1)\n            coun1++;\n        n = n / 10;\n    } while (n);\n    printf(\"coun0=%d,coun1=%d\\n\", coun0, coun1);\n}\nint main() {\n    long n;\n    printf(\"\\ninput n:\\n \");\n    scanf(\"%ld\", &n);\n    printf(\"n=%ld\\n\", n);\n    fun(n);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "111001\n",
@@ -625,7 +625,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nvoid fun(int a)\n{   int b,c,d;\n    for(b=3; b<=a/2; b=/*__BLANK_1__*/)\n    {   for(c=2; c<=sqrt(b); c++) if(b%c==0) break;\n        if(c>sqrt(b)) d=/*__BLANK_2__*/;\n        else break;\n        for(c=2; c<=sqrt(d); c++) if(d%c==0) break;\n        if(c>sqrt(d)) printf(\"%d=%d+%d\\n\",a,b,d);\n    }\n}\nint main( )\n{   int a;\n    printf(\"\\ninput a:\\n \"); scanf(\"%d\",&a);\n    fun(a);\n    return(0);\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nvoid fun(int a) {\n    int b, c, d;\n    for (b = 3; b <= a / 2; b = /*__BLANK_1__*/) {\n        for (c = 2; c <= sqrt(b); c++)\n            if (b % c == 0)\n                break;\n        if (c > sqrt(b))\n            d = /*__BLANK_2__*/;\n        else\n            break;\n        for (c = 2; c <= sqrt(d); c++)\n            if (d % c == 0)\n                break;\n        if (c > sqrt(d))\n            printf(\"%d=%d+%d\\n\", a, b, d);\n    }\n}\nint main() {\n    int a;\n    printf(\"\\ninput a:\\n \");\n    scanf(\"%d\", &a);\n    fun(a);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -643,7 +643,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nvoid fun(int a)\n{   int b,c,d;\n    for(b=3; b<=a/2; b= b+2 )\n    {   for(c=2; c<=sqrt(b); c++) if(b%c==0) break;\n        if(c>sqrt(b)) d= a-b ;\n        else break;\n        for(c=2; c<=sqrt(d); c++) if(d%c==0) break;\n        if(c>sqrt(d)) printf(\"%d=%d+%d\\n\",a,b,d);\n    }\n}\nint main( )\n{   int a;\n    printf(\"\\ninput a:\\n \"); scanf(\"%d\",&a);\n    fun(a);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nvoid fun(int a) {\n    int b, c, d;\n    for (b = 3; b <= a / 2; b = b + 2) {\n        for (c = 2; c <= sqrt(b); c++)\n            if (b % c == 0)\n                break;\n        if (c > sqrt(b))\n            d = a - b;\n        else\n            break;\n        for (c = 2; c <= sqrt(d); c++)\n            if (d % c == 0)\n                break;\n        if (c > sqrt(d))\n            printf(\"%d=%d+%d\\n\", a, b, d);\n    }\n}\nint main() {\n    int a;\n    printf(\"\\ninput a:\\n \");\n    scanf(\"%d\", &a);\n    fun(a);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "8\n",
@@ -676,7 +676,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nvoid YesNo(char ch)\n{   switch(ch)\n    {   case 'y':\n        case 'Y': printf(\"\\nThis is YES.\\n\"); /*__BLANK_1__*/;\n        case 'n':\n        case 'N': printf(\"\\nThis is NO.\\n\");\n    }\n}\nint main( )\n{   char ch;\n    printf(\"\\nEnter a char 'y','Y' or 'n','N':\");\n    ch=/*__BLANK_2__*/;\n    printf(\"ch: %c\",ch);\n    YesNo(ch);\n    return(0);\n}",
+      "code": "#include <stdio.h>\nvoid YesNo(char ch) {\n    switch (ch) {\n    case 'y':\n    case 'Y':\n        printf(\"\\nThis is YES.\\n\"); /*__BLANK_1__*/\n        ;\n    case 'n':\n    case 'N':\n        printf(\"\\nThis is NO.\\n\");\n    }\n}\nint main() {\n    char ch;\n    printf(\"\\nEnter a char 'y','Y' or 'n','N':\");\n    ch = /*__BLANK_2__*/;\n    printf(\"ch: %c\", ch);\n    YesNo(ch);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -694,7 +694,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nvoid YesNo(char ch)\n{   switch(ch)\n    {   case 'y':\n        case 'Y': printf(\"\\nThis is YES.\\n\");  break ;\n        case 'n':\n        case 'N': printf(\"\\nThis is NO.\\n\");\n    }\n}\nint main( )\n{   char ch;\n    printf(\"\\nEnter a char 'y','Y' or 'n','N':\");\n    ch= getchar() ;\n    printf(\"ch: %c\",ch);\n    YesNo(ch);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nvoid YesNo(char ch) {\n    switch (ch) {\n    case 'y':\n    case 'Y':\n        printf(\"\\nThis is YES.\\n\");\n        break;\n    case 'n':\n    case 'N':\n        printf(\"\\nThis is NO.\\n\");\n    }\n}\nint main() {\n    char ch;\n    printf(\"\\nEnter a char 'y','Y' or 'n','N':\");\n    ch = getchar();\n    printf(\"ch: %c\", ch);\n    YesNo(ch);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "y\n",
@@ -727,7 +727,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nvoid Check(int ponse,float value)\n{   int val;\n    val=/*__BLANK_1__*/;\n    printf(\"计算后的值：%d\",val);\n    if(/*__BLANK_2__*/)  printf(\"\\nWELL DONE!!\\n\");\n    else  printf(\"\\nSorry the correct answer is %d\\n\",val);\n}\nint main( )\n{   int ponse; float value;\n    scanf(\"%d%f\",&ponse,&value);\n    Check(ponse,value);\n    return(0);\n}",
+      "code": "#include <stdio.h>\nvoid Check(int ponse, float value) {\n    int val;\n    val = /*__BLANK_1__*/;\n    printf(\"计算后的值：%d\", val);\n    if (/*__BLANK_2__*/)\n        printf(\"\\nWELL DONE!!\\n\");\n    else\n        printf(\"\\nSorry the correct answer is %d\\n\", val);\n}\nint main() {\n    int ponse;\n    float value;\n    scanf(\"%d%f\", &ponse, &value);\n    Check(ponse, value);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -749,7 +749,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nvoid Check(int ponse,float value)\n{   int val;\n    val= (int)(value+0.5) ;\n    printf(\"计算后的值：%d\",val);\n    if( val==ponse )  printf(\"\\nWELL DONE!!\\n\");\n    else  printf(\"\\nSorry the correct answer is %d\\n\",val);\n}\nint main( )\n{   int ponse; float value;\n    scanf(\"%d%f\",&ponse,&value);\n    Check(ponse,value);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nvoid Check(int ponse, float value) {\n    int val;\n    val = (int)(value + 0.5);\n    printf(\"计算后的值：%d\", val);\n    if (val == ponse)\n        printf(\"\\nWELL DONE!!\\n\");\n    else\n        printf(\"\\nSorry the correct answer is %d\\n\", val);\n}\nint main() {\n    int ponse;\n    float value;\n    scanf(\"%d%f\", &ponse, &value);\n    Check(ponse, value);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "4 3.6\n",
@@ -777,7 +777,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nfloat f(float x)\n{   return(2 * x * x * x-4 * x * x+3 * x-6); }\n\nint main( )\n{   float m=-100,n=90,r;\n    r=(m+n)/2;\n    while(f(r) * f(n)!=0)\n    {   if(/*__BLANK_1__*/) m=r;\n        else n=r;\n        if(/*__BLANK_2__*/) break;\n        r=(m+n)/2;\n    }\n    printf(\"The fang cheng jie is %6.3f\\n\",r);\n    return(0);\n}",
+      "code": "#include <stdio.h>\nfloat f(float x) {\n    return (2 * x * x * x - 4 * x * x + 3 * x - 6);\n}\n\nint main() {\n    float m = -100, n = 90, r;\n    r = (m + n) / 2;\n    while (f(r) * f(n) != 0) {\n        if (/*__BLANK_1__*/)\n            m = r;\n        else\n            n = r;\n        if (/*__BLANK_2__*/)\n            break;\n        r = (m + n) / 2;\n    }\n    printf(\"The fang cheng jie is %6.3f\\n\", r);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -799,7 +799,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nfloat f(float x)\n{   return(2 * x * x * x-4 * x * x+3 * x-6); }\n\nint main( )\n{   float m=-100,n=90,r;\n    r=(m+n)/2;\n    while(f(r) * f(n)!=0)\n    {   if( f(r)*f(m)>0 ) m=r;\n        else n=r;\n        if( n-m<0.001 ) break;\n        r=(m+n)/2;\n    }\n    printf(\"The fang cheng jie is %6.3f\\n\",r);\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nfloat f(float x) {\n    return (2 * x * x * x - 4 * x * x + 3 * x - 6);\n}\n\nint main() {\n    float m = -100, n = 90, r;\n    r = (m + n) / 2;\n    while (f(r) * f(n) != 0) {\n        if (f(r) * f(m) > 0)\n            m = r;\n        else\n            n = r;\n        if (n - m < 0.001)\n            break;\n        r = (m + n) / 2;\n    }\n    printf(\"The fang cheng jie is %6.3f\\n\", r);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -822,7 +822,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\nfloat f(float, float, float);\nint main( )\n{   float x,y,z,sum;\n    printf(\"\\ninput x,y,z:\\n\");\n    scanf(\"%f%f%f\",&x,&y,&z);\n    sum=/*__BLANK_1__*/;\n    printf(\"sum=%f\\n\",sum);\n    return(0);\n}\nfloat f(float a,float b,float c)\n{   float value;\n    value=/*__BLANK_2__*/;\n    return(value);\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nfloat f(float, float, float);\nint main() {\n    float x, y, z, sum;\n    printf(\"\\ninput x,y,z:\\n\");\n    scanf(\"%f%f%f\", &x, &y, &z);\n    sum = /*__BLANK_1__*/;\n    printf(\"sum=%f\\n\", sum);\n    return (0);\n}\nfloat f(float a, float b, float c) {\n    float value;\n    value = /*__BLANK_2__*/;\n    return (value);\n}",
       "blanks": [
         {
           "index": 1,
@@ -840,7 +840,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\nfloat f(float, float, float);\nint main( )\n{   float x,y,z,sum;\n    printf(\"\\ninput x,y,z:\\n\");\n    scanf(\"%f%f%f\",&x,&y,&z);\n    sum= f(x,y,z)+f(y,z,x)+f(z,x,y) ;\n    printf(\"sum=%f\\n\",sum);\n    return(0);\n}\nfloat f(float a,float b,float c)\n{   float value;\n    value= sin(a)/(sin(a-b)*sin(a-c))+sin(b)/(sin(b-c)*sin(b-a))+sin(c)/(sin(c-a)*sin(c-b)) ;\n    return(value);\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\nfloat f(float, float, float);\nint main() {\n    float x, y, z, sum;\n    printf(\"\\ninput x,y,z:\\n\");\n    scanf(\"%f%f%f\", &x, &y, &z);\n    sum = f(x, y, z) + f(y, z, x) + f(z, x, y);\n    printf(\"sum=%f\\n\", sum);\n    return (0);\n}\nfloat f(float a, float b, float c) {\n    float value;\n    value = sin(a) / (sin(a - b) * sin(a - c)) + sin(b) / (sin(b - c) * sin(b - a)) +\n            sin(c) / (sin(c - a) * sin(c - b));\n    return (value);\n}",
       "testCases": [
         {
           "stdin": "1 2 3\n",
@@ -868,7 +868,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint pow(int x,int y)\n{   int j;\n    for(/*__BLANK_1__*/;/*__BLANK_2__*/;/*__BLANK_3__*/) j=j * x;\n    return(j);\n}\nint main( )\n{   int x,y;\n    scanf(\"%d%d\",&x,&y);\n    printf(\"%d\\n\",pow(x,y));\n    return(0);\n}",
+      "code": "#include <stdio.h>\nint pow(int x, int y) {\n    int j;\n    for (/*__BLANK_1__*/; /*__BLANK_2__*/; /*__BLANK_3__*/)\n        j = j * x;\n    return (j);\n}\nint main() {\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"%d\\n\", pow(x, y));\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -894,7 +894,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint pow(int x,int y)\n{   int j;\n    for( j=1 ; y>0 ; y-- ) j=j * x;\n    return(j);\n}\nint main( )\n{   int x,y;\n    scanf(\"%d%d\",&x,&y);\n    printf(\"%d\\n\",pow(x,y));\n    return(0);\n}",
+      "solution": "#include <stdio.h>\nint pow(int x, int y) {\n    int j;\n    for (j = 1; y > 0; y--)\n        j = j * x;\n    return (j);\n}\nint main() {\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"%d\\n\", pow(x, y));\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "2 10\n",
@@ -976,7 +976,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint gongyue(int num1,int num2)\n{  int temp,a,b;\n   if(num1 /*__BLANK_1__*/ num2)\n   {  temp=num1; num1=num2; num2=temp; }\n   a=num1; b=num2;\n   while(/*__BLANK_2__*/)\n   {  temp=a%b; a=b; b=temp; }\n   return(a);\n}\nint main( )\n{  int x,y;\n   scanf(\"%d%d\",&x,&y);\n   printf(\"%d\\n\",gongyue(x,y));\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint gongyue(int num1, int num2) {\n    int temp, a, b;\n    if (num1 /*__BLANK_1__*/ num2) {\n        temp = num1;\n        num1 = num2;\n        num2 = temp;\n    }\n    a = num1;\n    b = num2;\n    while (/*__BLANK_2__*/) {\n        temp = a % b;\n        a = b;\n        b = temp;\n    }\n    return (a);\n}\nint main() {\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"%d\\n\", gongyue(x, y));\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -995,7 +995,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint gongyue(int num1,int num2)\n{  int temp,a,b;\n   if(num1  >  num2)\n   {  temp=num1; num1=num2; num2=temp; }\n   a=num1; b=num2;\n   while( b!=0 )\n   {  temp=a%b; a=b; b=temp; }\n   return(a);\n}\nint main( )\n{  int x,y;\n   scanf(\"%d%d\",&x,&y);\n   printf(\"%d\\n\",gongyue(x,y));\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint gongyue(int num1, int num2) {\n    int temp, a, b;\n    if (num1 > num2) {\n        temp = num1;\n        num1 = num2;\n        num2 = temp;\n    }\n    a = num1;\n    b = num2;\n    while (b != 0) {\n        temp = a % b;\n        a = b;\n        b = temp;\n    }\n    return (a);\n}\nint main() {\n    int x, y;\n    scanf(\"%d%d\", &x, &y);\n    printf(\"%d\\n\", gongyue(x, y));\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "12 18\n",
@@ -1028,7 +1028,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\ndouble pi(double eps)\n{  double s=0.0,t=1.0; int n;\n   for(/*__BLANK_1__*/; t>eps; n++)\n   {  s+=t;\n      t=n * t/(2 * n+1);\n   }\n   return(/*__BLANK_2__*/);\n}\nint main( )\n{  double x=0.0005;\n   printf(\"\\neps=%lf, pi=%lf\",x,pi(x));\n   return(0);\n}",
+      "code": "#include <stdio.h>\ndouble pi(double eps) {\n    double s = 0.0, t = 1.0;\n    int n;\n    for (/*__BLANK_1__*/; t > eps; n++) {\n        s += t;\n        t = n * t / (2 * n + 1);\n    }\n    return (/*__BLANK_2__*/);\n}\nint main() {\n    double x = 0.0005;\n    printf(\"\\neps=%lf, pi=%lf\", x, pi(x));\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1047,7 +1047,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\ndouble pi(double eps)\n{  double s=0.0,t=1.0; int n;\n   for( n=1 ; t>eps; n++)\n   {  s+=t;\n      t=n * t/(2 * n+1);\n   }\n   return( 2*s );\n}\nint main( )\n{  double x=0.0005;\n   printf(\"\\neps=%lf, pi=%lf\",x,pi(x));\n   return(0);\n}",
+      "solution": "#include <stdio.h>\ndouble pi(double eps) {\n    double s = 0.0, t = 1.0;\n    int n;\n    for (n = 1; t > eps; n++) {\n        s += t;\n        t = n * t / (2 * n + 1);\n    }\n    return (2 * s);\n}\nint main() {\n    double x = 0.0005;\n    printf(\"\\neps=%lf, pi=%lf\", x, pi(x));\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -1070,7 +1070,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint age(int n)\n{  int c;\n   if(n==1) c=10;\n   else c=/*__BLANK_1__*/;\n   return(c);\n}\nint main( )\n{  int n=5;\n   printf(\"age: %d\\n\",/*__BLANK_2__*/);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint age(int n) {\n    int c;\n    if (n == 1)\n        c = 10;\n    else\n        c = /*__BLANK_1__*/;\n    return (c);\n}\nint main() {\n    int n = 5;\n    printf(\"age: %d\\n\", /*__BLANK_2__*/);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1089,7 +1089,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint age(int n)\n{  int c;\n   if(n==1) c=10;\n   else c= age(n-1)+2 ;\n   return(c);\n}\nint main( )\n{  int n=5;\n   printf(\"age: %d\\n\", age(n) );\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint age(int n) {\n    int c;\n    if (n == 1)\n        c = 10;\n    else\n        c = age(n - 1) + 2;\n    return (c);\n}\nint main() {\n    int n = 5;\n    printf(\"age: %d\\n\", age(n));\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -1112,7 +1112,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#include <math.h>\ndouble mysqrt(double a,double x0)\n{  double x1,y;\n   x1=/*__BLANK_1__*/;\n   if(fabs(x1-x0)>0.00001) y=mysqrt(/*__BLANK_2__*/);\n   else y=x1;\n   return y;\n}\nint main( )\n{  double x;\n   printf(\"Enter x: \"); scanf(\"%lf\",&x);\n   printf(\"The sqrt of %f=%f\\n\",x,mysqrt(x,1.0));\n   return(0);\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\ndouble mysqrt(double a, double x0) {\n    double x1, y;\n    x1 = /*__BLANK_1__*/;\n    if (fabs(x1 - x0) > 0.00001)\n        y = mysqrt(/*__BLANK_2__*/);\n    else\n        y = x1;\n    return y;\n}\nint main() {\n    double x;\n    printf(\"Enter x: \");\n    scanf(\"%lf\", &x);\n    printf(\"The sqrt of %f=%f\\n\", x, mysqrt(x, 1.0));\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1132,7 +1132,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#include <math.h>\ndouble mysqrt(double a,double x0)\n{  double x1,y;\n   x1= (x0+a/x0)/2 ;\n   if(fabs(x1-x0)>0.00001) y=mysqrt( a,x1 );\n   else y=x1;\n   return y;\n}\nint main( )\n{  double x;\n   printf(\"Enter x: \"); scanf(\"%lf\",&x);\n   printf(\"The sqrt of %f=%f\\n\",x,mysqrt(x,1.0));\n   return(0);\n}",
+      "solution": "#include <stdio.h>\n#include <math.h>\ndouble mysqrt(double a, double x0) {\n    double x1, y;\n    x1 = (x0 + a / x0) / 2;\n    if (fabs(x1 - x0) > 0.00001)\n        y = mysqrt(a, x1);\n    else\n        y = x1;\n    return y;\n}\nint main() {\n    double x;\n    printf(\"Enter x: \");\n    scanf(\"%lf\", &x);\n    printf(\"The sqrt of %f=%f\\n\", x, mysqrt(x, 1.0));\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "2\n",
@@ -1165,7 +1165,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint search(int a[10],int m)\n{  int i;\n   for(i=0; i<=9; i++) if(/*__BLANK_1__*/) return(i);\n   return(-1);\n}\nint main( )\n{  int a[10],m,i,no;\n   for(i=0;i<10;i++) scanf(\"%d\",&a[i]);\n   scanf(\"%d\",&m);\n   no=search(/*__BLANK_2__*/);\n   if(/*__BLANK_3__*/)  printf(\"\\nOK FOUND! %d \",no+1);\n   else      printf(\"\\nSorry Not Found!\");\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint search(int a[10], int m) {\n    int i;\n    for (i = 0; i <= 9; i++)\n        if (/*__BLANK_1__*/)\n            return (i);\n    return (-1);\n}\nint main() {\n    int a[10], m, i, no;\n    for (i = 0; i < 10; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &m);\n    no = search(/*__BLANK_2__*/);\n    if (/*__BLANK_3__*/)\n        printf(\"\\nOK FOUND! %d \", no + 1);\n    else\n        printf(\"\\nSorry Not Found!\");\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1193,7 +1193,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint search(int a[10],int m)\n{  int i;\n   for(i=0; i<=9; i++) if( a[i]==m ) return(i);\n   return(-1);\n}\nint main( )\n{  int a[10],m,i,no;\n   for(i=0;i<10;i++) scanf(\"%d\",&a[i]);\n   scanf(\"%d\",&m);\n   no=search( a,m );\n   if( no!=-1 )  printf(\"\\nOK FOUND! %d \",no+1);\n   else      printf(\"\\nSorry Not Found!\");\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint search(int a[10], int m) {\n    int i;\n    for (i = 0; i <= 9; i++)\n        if (a[i] == m)\n            return (i);\n    return (-1);\n}\nint main() {\n    int a[10], m, i, no;\n    for (i = 0; i < 10; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &m);\n    no = search(a, m);\n    if (no != -1)\n        printf(\"\\nOK FOUND! %d \", no + 1);\n    else\n        printf(\"\\nSorry Not Found!\");\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "1 2 3 4 5 6 7 8 9 10\n5\n",
@@ -1226,7 +1226,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\n#define SIZE 30\nvoid fav1(float s[ ])\n{  int i;\n   float k=2.0;\n   for(i=0;i<SIZE;i++)\n   {  /*__BLANK_1__*/;\n      k+=2;\n   }\n}\nvoid fav2(float s[ ],float w[ ])\n{  float sum; int k,i;\n   sum=0.0;\n   for(k=0,i=0; i<SIZE; i++)\n   {  sum+=s[i];\n      if((i+1)%5==0)\n      {  w[k]=sum/5;\n         /*__BLANK_2__*/;\n         k++;\n      }\n   }\n}\nint main( )\n{  float s[SIZE],w[SIZE/5]; int i;\n   fav1(s);for(i=0;i<SIZE;i++)  printf(\"%.f\",s[i]);printf(\"\\n\");\n   fav2(s,w);for(i=0;i<SIZE/5;i++)  printf(\"%.f\",w[i]);\n   return 0;\n}",
+      "code": "#include <stdio.h>\n#define SIZE 30\nvoid fav1(float s[]) {\n    int i;\n    float k = 2.0;\n    for (i = 0; i < SIZE; i++) { /*__BLANK_1__*/\n        ;\n        k += 2;\n    }\n}\nvoid fav2(float s[], float w[]) {\n    float sum;\n    int k, i;\n    sum = 0.0;\n    for (k = 0, i = 0; i < SIZE; i++) {\n        sum += s[i];\n        if ((i + 1) % 5 == 0) {\n            w[k] = sum / 5;\n            /*__BLANK_2__*/;\n            k++;\n        }\n    }\n}\nint main() {\n    float s[SIZE], w[SIZE / 5];\n    int i;\n    fav1(s);\n    for (i = 0; i < SIZE; i++)\n        printf(\"%.f\", s[i]);\n    printf(\"\\n\");\n    fav2(s, w);\n    for (i = 0; i < SIZE / 5; i++)\n        printf(\"%.f\", w[i]);\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -1245,7 +1245,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\n#define SIZE 30\nvoid fav1(float s[ ])\n{  int i;\n   float k=2.0;\n   for(i=0;i<SIZE;i++)\n   {   s[i]=k ;\n      k+=2;\n   }\n}\nvoid fav2(float s[ ],float w[ ])\n{  float sum; int k,i;\n   sum=0.0;\n   for(k=0,i=0; i<SIZE; i++)\n   {  sum+=s[i];\n      if((i+1)%5==0)\n      {  w[k]=sum/5;\n          sum=0.0 ;\n         k++;\n      }\n   }\n}\nint main( )\n{  float s[SIZE],w[SIZE/5]; int i;\n   fav1(s);for(i=0;i<SIZE;i++)  printf(\"%.f\",s[i]);printf(\"\\n\");\n   fav2(s,w);for(i=0;i<SIZE/5;i++)  printf(\"%.f\",w[i]);\n   return 0;\n}",
+      "solution": "#include <stdio.h>\n#define SIZE 30\nvoid fav1(float s[]) {\n    int i;\n    float k = 2.0;\n    for (i = 0; i < SIZE; i++) {\n        s[i] = k;\n        k += 2;\n    }\n}\nvoid fav2(float s[], float w[]) {\n    float sum;\n    int k, i;\n    sum = 0.0;\n    for (k = 0, i = 0; i < SIZE; i++) {\n        sum += s[i];\n        if ((i + 1) % 5 == 0) {\n            w[k] = sum / 5;\n            sum = 0.0;\n            k++;\n        }\n    }\n}\nint main() {\n    float s[SIZE], w[SIZE / 5];\n    int i;\n    fav1(s);\n    for (i = 0; i < SIZE; i++)\n        printf(\"%.f\", s[i]);\n    printf(\"\\n\");\n    fav2(s, w);\n    for (i = 0; i < SIZE / 5; i++)\n        printf(\"%.f\", w[i]);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "",
@@ -1268,7 +1268,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint del(int a[ ],int n,int x)\n{  int p,i;\n   p=0;\n   while(x>=a[p] && p<n)  /*__BLANK_1__*/;\n   for(i=p-1; i<n; i++)  /*__BLANK_2__*/;\n   n=n-1;\n   return n;\n}\nint main( )\n{  int a[20]={0},n,x,i;\n   scanf(\"%d\",&n);\n   for(i=0;i<n;i++) scanf(\"%d\",&a[i]);\n   scanf(\"%d\",&x);\n   n=del(a,n,x);\n   printf(\"n=%d\\n\",n);\n   for(i=0;i<n;i++) printf(\"%d \",a[i]);\n   printf(\"\\n\");\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint del(int a[], int n, int x) {\n    int p, i;\n    p = 0;\n    while (x >= a[p] && p < n) /*__BLANK_1__*/\n        ;\n    for (i = p - 1; i < n; i++) /*__BLANK_2__*/\n        ;\n    n = n - 1;\n    return n;\n}\nint main() {\n    int a[20] = {0}, n, x, i;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &x);\n    n = del(a, n, x);\n    printf(\"n=%d\\n\", n);\n    for (i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1286,7 +1286,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint del(int a[ ],int n,int x)\n{  int p,i;\n   p=0;\n   while(x>=a[p] && p<n)   p++ ;\n   for(i=p-1; i<n; i++)   a[i]=a[i+1] ;\n   n=n-1;\n   return n;\n}\nint main( )\n{  int a[20]={0},n,x,i;\n   scanf(\"%d\",&n);\n   for(i=0;i<n;i++) scanf(\"%d\",&a[i]);\n   scanf(\"%d\",&x);\n   n=del(a,n,x);\n   printf(\"n=%d\\n\",n);\n   for(i=0;i<n;i++) printf(\"%d \",a[i]);\n   printf(\"\\n\");\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint del(int a[], int n, int x) {\n    int p, i;\n    p = 0;\n    while (x >= a[p] && p < n)\n        p++;\n    for (i = p - 1; i < n; i++)\n        a[i] = a[i + 1];\n    n = n - 1;\n    return n;\n}\nint main() {\n    int a[20] = {0}, n, x, i;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    scanf(\"%d\", &x);\n    n = del(a, n, x);\n    printf(\"n=%d\\n\", n);\n    for (i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "5\n1 3 5 7 9\n5\n",
@@ -1418,7 +1418,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nvoid fun(int a,int d)\n{  int i,sum=0;\n   for(i=0;i<5;i++)\n   {  sum=sum+a;\n      a=/*__BLANK_1__*/;\n      if(/*__BLANK_2__*/)   printf(\"sum=%d\\n\",sum);\n   }\n}\nint main( )\n{  int a=2,d=3;\n   fun(a,d);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nvoid fun(int a, int d) {\n    int i, sum = 0;\n    for (i = 0; i < 5; i++) {\n        sum = sum + a;\n        a = /*__BLANK_1__*/;\n        if (/*__BLANK_2__*/)\n            printf(\"sum=%d\\n\", sum);\n    }\n}\nint main() {\n    int a = 2, d = 3;\n    fun(a, d);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1438,7 +1438,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nvoid fun(int a,int d)\n{  int i,sum=0;\n   for(i=0;i<5;i++)\n   {  sum=sum+a;\n      a= a+d ;\n      if( sum%4==2 )   printf(\"sum=%d\\n\",sum);\n   }\n}\nint main( )\n{  int a=2,d=3;\n   fun(a,d);\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nvoid fun(int a, int d) {\n    int i, sum = 0;\n    for (i = 0; i < 5; i++) {\n        sum = sum + a;\n        a = a + d;\n        if (sum % 4 == 2)\n            printf(\"sum=%d\\n\", sum);\n    }\n}\nint main() {\n    int a = 2, d = 3;\n    fun(a, d);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -1461,7 +1461,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint fun( )\n{  int n=0,i,j,k;\n   for(i=1;i<=9;i++)\n      for(k=0;k<=8;k=/*__BLANK_1__*/)\n         for(j=0;j<=9;j++)\n            if(/*__BLANK_2__*/)  n++;\n   return n;\n}\nint main( )\n{  int n;\n   n=fun( );\n   printf(\"n=%d\\n\",n);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint fun() {\n    int n = 0, i, j, k;\n    for (i = 1; i <= 9; i++)\n        for (k = 0; k <= 8; k = /*__BLANK_1__*/)\n            for (j = 0; j <= 9; j++)\n                if (/*__BLANK_2__*/)\n                    n++;\n    return n;\n}\nint main() {\n    int n;\n    n = fun();\n    printf(\"n=%d\\n\", n);\n    return (0);\n}",
       "blanks": [
         {
           "index": 1,
@@ -1480,7 +1480,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint fun( )\n{  int n=0,i,j,k;\n   for(i=1;i<=9;i++)\n      for(k=0;k<=8;k= k+2 )\n         for(j=0;j<=9;j++)\n            if( i==j&&j==k )  n++;\n   return n;\n}\nint main( )\n{  int n;\n   n=fun( );\n   printf(\"n=%d\\n\",n);\n   return(0);\n}",
+      "solution": "#include <stdio.h>\nint fun() {\n    int n = 0, i, j, k;\n    for (i = 1; i <= 9; i++)\n        for (k = 0; k <= 8; k = k + 2)\n            for (j = 0; j <= 9; j++)\n                if (i == j && j == k)\n                    n++;\n    return n;\n}\nint main() {\n    int n;\n    n = fun();\n    printf(\"n=%d\\n\", n);\n    return (0);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -1499,7 +1499,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nlong long fact(int n) {\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1523,8 +1523,8 @@
           "hint": "递归体：n 乘以 (n-1) 的阶乘"
         }
       ],
-      "code": "#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -1560,7 +1560,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint findMax(int a[], int n)\n{\n    int i, m = /*__BLANK_1__*/;\n\n    for (i = 1; i < n; i++)\n        if (/*__BLANK_2__*/)\n            m = a[i];\n    return m;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint findMax(int a[], int n) {\n    int i, m = /*__BLANK_1__*/;\n\n    for (i = 1; i < n; i++)\n        if (/*__BLANK_2__*/)\n            m = a[i];\n    return m;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1581,8 +1581,8 @@
           "hint": "当前元素比已记录的最大值更大时更新"
         }
       ],
-      "code": "#include <stdio.h>\n\nint findMax(int a[], int n)\n{\n    int i, m = /*__BLANK_1__*/;\n\n    for (i = 1; i < n; i++)\n        if (/*__BLANK_2__*/)\n            m = a[i];\n    return m;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint findMax(int a[], int n)\n{\n    int i, m = a[0];\n\n    for (i = 1; i < n; i++)\n        if (a[i] > m)\n            m = a[i];\n    return m;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint findMax(int a[], int n) {\n    int i, m = /*__BLANK_1__*/;\n\n    for (i = 1; i < n; i++)\n        if (/*__BLANK_2__*/)\n            m = a[i];\n    return m;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint findMax(int a[], int n) {\n    int i, m = a[0];\n\n    for (i = 1; i < n; i++)\n        if (a[i] > m)\n            m = a[i];\n    return m;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", findMax(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n3 9 2 7 1\n",
@@ -1618,7 +1618,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nvoid count(void)\n{\n    /*__BLANK_1__*/ int c = 0;\n\n    /*__BLANK_2__*/;\n    printf(\"%d\\n\", c);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nvoid count(void) {\n    /*__BLANK_1__*/ int c = 0;\n\n    /*__BLANK_2__*/;\n    printf(\"%d\\n\", c);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1640,8 +1640,8 @@
           "hint": "计数加 1"
         }
       ],
-      "code": "#include <stdio.h>\n\nvoid count(void)\n{\n    /*__BLANK_1__*/ int c = 0;\n\n    /*__BLANK_2__*/;\n    printf(\"%d\\n\", c);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nvoid count(void)\n{\n    static int c = 0;\n\n    c++;\n    printf(\"%d\\n\", c);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid count(void) {\n    /*__BLANK_1__*/ int c = 0;\n\n    /*__BLANK_2__*/;\n    printf(\"%d\\n\", c);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nvoid count(void) {\n    static int c = 0;\n\n    c++;\n    printf(\"%d\\n\", c);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n        count();\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3\n",
@@ -1677,7 +1677,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint fib(int n)\n{\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint fib(int n) {\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1700,8 +1700,8 @@
           "hint": "每项等于前两项之和"
         }
       ],
-      "code": "#include <stdio.h>\n\nint fib(int n)\n{\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint fib(int n)\n{\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint fib(int n) {\n    if (/*__BLANK_1__*/)\n        return 1;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint fib(int n) {\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6\n",
@@ -1737,7 +1737,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint sumSquare(int a, int b)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x) {\n    return /*__BLANK_1__*/;\n}\n\nint sumSquare(int a, int b) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1757,8 +1757,8 @@
           "hint": "嵌套调用 square 求两数平方和"
         }
       ],
-      "code": "#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint sumSquare(int a, int b)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x)\n{\n    return x * x;\n}\n\nint sumSquare(int a, int b)\n{\n    return square(a) + square(b);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x) {\n    return /*__BLANK_1__*/;\n}\n\nint sumSquare(int a, int b) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint square(int x);\nint sumSquare(int a, int b);\n\nint square(int x) {\n    return x * x;\n}\n\nint sumSquare(int a, int b) {\n    return square(a) + square(b);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", sumSquare(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 4\n",
@@ -1794,7 +1794,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint rsum(int a[], int n)\n{\n    if (/*__BLANK_1__*/)\n        return 0;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint rsum(int a[], int n) {\n    if (/*__BLANK_1__*/)\n        return 0;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1817,8 +1817,8 @@
           "hint": "末元素加上前 n-1 个元素之和"
         }
       ],
-      "code": "#include <stdio.h>\n\nint rsum(int a[], int n)\n{\n    if (/*__BLANK_1__*/)\n        return 0;\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint rsum(int a[], int n)\n{\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + rsum(a, n - 1);\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint rsum(int a[], int n) {\n    if (/*__BLANK_1__*/)\n        return 0;\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint rsum(int a[], int n) {\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + rsum(a, n - 1);\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", rsum(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5\n",
@@ -1854,7 +1854,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nvoid revPrint(int n)\n{\n    if (/*__BLANK_1__*/)\n        return;\n    printf(\"%d\", /*__BLANK_2__*/);\n    /*__BLANK_3__*/;\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nvoid revPrint(int n) {\n    if (/*__BLANK_1__*/)\n        return;\n    printf(\"%d\", /*__BLANK_2__*/);\n    /*__BLANK_3__*/;\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1883,8 +1883,8 @@
           "hint": "递归处理去掉最低位后的部分"
         }
       ],
-      "code": "#include <stdio.h>\n\nvoid revPrint(int n)\n{\n    if (/*__BLANK_1__*/)\n        return;\n    printf(\"%d\", /*__BLANK_2__*/);\n    /*__BLANK_3__*/;\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nvoid revPrint(int n)\n{\n    if (n == 0)\n        return;\n    printf(\"%d\", n % 10);\n    revPrint(n / 10);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid revPrint(int n) {\n    if (/*__BLANK_1__*/)\n        return;\n    printf(\"%d\", /*__BLANK_2__*/);\n    /*__BLANK_3__*/;\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nvoid revPrint(int n) {\n    if (n == 0)\n        return;\n    printf(\"%d\", n % 10);\n    revPrint(n / 10);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1)\n        return 1;\n    revPrint(n);\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1234\n",
@@ -1920,7 +1920,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x)\n{\n    /*__BLANK_1__*/;\n}\n\nint getSum(void)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x) {\n    /*__BLANK_1__*/;\n}\n\nint getSum(void) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -1941,8 +1941,8 @@
           "hint": "返回累计结果"
         }
       ],
-      "code": "#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x)\n{\n    /*__BLANK_1__*/;\n}\n\nint getSum(void)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x)\n{\n    total = total + x;\n}\n\nint getSum(void)\n{\n    return total;\n}\n\nint main(void)\n{\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x) {\n    /*__BLANK_1__*/;\n}\n\nint getSum(void) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint total = 0;\n\nvoid add(int x) {\n    total = total + x;\n}\n\nint getSum(void) {\n    return total;\n}\n\nint main(void) {\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        add(x);\n    }\n    printf(\"%d\\n\", getSum());\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 4 5\n",
@@ -1978,7 +1978,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (/*__BLANK_1__*/)\n        return /*__BLANK_2__*/;\n    return gcd(b, /*__BLANK_3__*/);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (/*__BLANK_1__*/)\n        return /*__BLANK_2__*/;\n    return gcd(b, /*__BLANK_3__*/);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -2006,8 +2006,8 @@
           "hint": "用余数继续递归"
         }
       ],
-      "code": "#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (/*__BLANK_1__*/)\n        return /*__BLANK_2__*/;\n    return gcd(b, /*__BLANK_3__*/);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (/*__BLANK_1__*/)\n        return /*__BLANK_2__*/;\n    return gcd(b, /*__BLANK_3__*/);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "48 18\n",
@@ -2043,7 +2043,7 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint isPrime(int n)\n{\n    int i;\n\n    if (/*__BLANK_1__*/)\n        return 0;\n    for (i = 2; /*__BLANK_2__*/; i++)\n        if (/*__BLANK_3__*/)\n            return 0;\n    return 1;\n}\n\nint main(void)\n{\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint isPrime(int n) {\n    int i;\n\n    if (/*__BLANK_1__*/)\n        return 0;\n    for (i = 2; /*__BLANK_2__*/; i++)\n        if (/*__BLANK_3__*/)\n            return 0;\n    return 1;\n}\n\nint main(void) {\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -2075,8 +2075,8 @@
           "hint": "能被整除说明不是素数"
         }
       ],
-      "code": "#include <stdio.h>\n\nint isPrime(int n)\n{\n    int i;\n\n    if (/*__BLANK_1__*/)\n        return 0;\n    for (i = 2; /*__BLANK_2__*/; i++)\n        if (/*__BLANK_3__*/)\n            return 0;\n    return 1;\n}\n\nint main(void)\n{\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}",
-      "solution": "#include <stdio.h>\n\nint isPrime(int n)\n{\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; i * i <= n; i++)\n        if (n % i == 0)\n            return 0;\n    return 1;\n}\n\nint main(void)\n{\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}",
+      "code": "#include <stdio.h>\n\nint isPrime(int n) {\n    int i;\n\n    if (/*__BLANK_1__*/)\n        return 0;\n    for (i = 2; /*__BLANK_2__*/; i++)\n        if (/*__BLANK_3__*/)\n            return 0;\n    return 1;\n}\n\nint main(void) {\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}",
+      "solution": "#include <stdio.h>\n\nint isPrime(int n) {\n    int i;\n\n    if (n < 2)\n        return 0;\n    for (i = 2; i * i <= n; i++)\n        if (n % i == 0)\n            return 0;\n    return 1;\n}\n\nint main(void) {\n    int a, b, i, cnt = 0;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < a)\n        return 1;\n    for (i = a; i <= b; i++)\n        cnt = cnt + isPrime(i);\n    printf(\"%d\\n\", cnt);\n}",
       "testCases": [
         {
           "stdin": "1 20\n",
@@ -2118,7 +2118,7 @@
         "分支"
       ],
       "stem": "补全下面程序中的两处空白，使函数 max3 能正确返回三个整数中的最大值。第 1 空应填写当 b 大于当前最大值 m 时把 m 更新为 b 的表达式；第 2 空应填写当 c 大于 m 时进入更新分支的条件。",
-      "code": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m) m = /*__BLANK_1__*/;\n    if (/*__BLANK_2__*/) m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m)\n        m = /*__BLANK_1__*/;\n    if (/*__BLANK_2__*/)\n        m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2136,7 +2136,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m) m = b;\n    if (c > m) m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint max3(int a, int b, int c) {\n    int m = a;\n    if (b > m)\n        m = b;\n    if (c > m)\n        m = c;\n    return m;\n}\nint main(void) {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    printf(\"%d\\n\", max3(a, b, c));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "1 2 3",
@@ -2192,7 +2192,7 @@
         "阶乘"
       ],
       "stem": "补全下面程序中的两处空白，使递归函数 fact 能正确求 n 的阶乘。第 1 空是递归出口（n<=1 时应返回的值）；第 2 空是递归调用时传给 fact 的新实参，使 n 每次递减。",
-      "code": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1) return /*__BLANK_1__*/;\n    return n * fact(/*__BLANK_2__*/);\n}\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1)\n        return /*__BLANK_1__*/;\n    return n * fact(/*__BLANK_2__*/);\n}\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2210,7 +2210,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fact(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -2266,7 +2266,7 @@
         "求和"
       ],
       "stem": "补全下面程序中的两处空白，使函数 sum 能返回数组 a 中前 n 个元素之和。第 1 空是 for 循环的循环条件（下标 i 的有效范围）；第 2 空是累加进 s 的数组元素表达式。",
-      "code": "#include <stdio.h>\nint sum(int a[], int n) {\n    int i, s = 0;\n    for (i = 0; /*__BLANK_1__*/; i++) s += /*__BLANK_2__*/;\n    return s;\n}\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint sum(int a[], int n) {\n    int i, s = 0;\n    for (i = 0; /*__BLANK_1__*/; i++)\n        s += /*__BLANK_2__*/;\n    return s;\n}\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2284,7 +2284,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint sum(int a[], int n) {\n    int i, s = 0;\n    for (i = 0; i < n; i++) s += a[i];\n    return s;\n}\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint sum(int a[], int n) {\n    int i, s = 0;\n    for (i = 0; i < n; i++)\n        s += a[i];\n    return s;\n}\nint main(void) {\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -2340,7 +2340,7 @@
         "存储类别"
       ],
       "stem": "补全下面程序中的一处空白，使函数 counter 每次被调用时都返回「自启动以来累计被调用的次数」。main 会调用 counter 共 n 次，并输出这 n 次调用的返回值。第 1 空应填写一个能对静态局部变量 c 自增的表达式（后面的分号已经给出）。",
-      "code": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    /*__BLANK_1__*/;\n    return c;\n}\nint main(void) {\n    int i, n;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    /*__BLANK_1__*/;\n    return c;\n}\nint main(void) {\n    int i, n;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
       "blanks": [
         {
           "index": 1,
@@ -2353,7 +2353,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    c++;\n    return c;\n}\nint main(void) {\n    int i, n;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
+      "solution": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    c++;\n    return c;\n}\nint main(void) {\n    int i, n;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3",
@@ -2407,7 +2407,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\nvoid fun(int n);\nint main( )\n{   int n;\n    scanf(\"%d\",&n);\n    printf(\"%d=\",n);\n    if(n<0) printf(\"-\");\n    n=abs(n);\n    fun(n);\n    return(0);\n}\nvoid fun(int n)\n{   int k,r;\n    for(k=2; k<=sqrt(n); k++)\n    {   r=n%k;\n        while(r==0)\n        {   printf(\"%d\",k);\n            n=n/k;\n            if(n>1) printf(\"*\");\n            r=n%k;\n        }\n    }\n    if(n!=1) printf(\"%d\\n\",n);\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\nvoid fun(int n);\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d=\", n);\n    if (n < 0)\n        printf(\"-\");\n    n = abs(n);\n    fun(n);\n    return (0);\n}\nvoid fun(int n) {\n    int k, r;\n    for (k = 2; k <= sqrt(n); k++) {\n        r = n % k;\n        while (r == 0) {\n            printf(\"%d\", k);\n            n = n / k;\n            if (n > 1)\n                printf(\"*\");\n            r = n % k;\n        }\n    }\n    if (n != 1)\n        printf(\"%d\\n\", n);\n}",
       "stdin": "-125\n",
       "answer": "-125=-5*5*5",
       "id": "c-ch07-cr-001",
@@ -2425,7 +2425,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint max(int x, int y);\nint main( )\n{   int a=1,b=2,c;\n    c=max(a,b);\n    printf(\"max is %d\\n\",c);\n    return(0);\n}\nint max(int x, int y)\n{   int z;\n    z=(x>y)? x:y;\n    return(z);\n}",
+      "code": "#include <stdio.h>\nint max(int x, int y);\nint main() {\n    int a = 1, b = 2, c;\n    c = max(a, b);\n    printf(\"max is %d\\n\", c);\n    return (0);\n}\nint max(int x, int y) {\n    int z;\n    z = (x > y) ? x : y;\n    return (z);\n}",
       "answer": "max is 2",
       "id": "c-ch07-cr-002",
       "verified": true,
@@ -2445,7 +2445,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint sub(int a);\nint main( )\n{   int a,e[10],c,i=0;\n    printf(\"输入一整数\\n\");\n    scanf(\"%d\",&a);\n    while(a!=0)\n    {   c=sub(a);\n        a=a/2;\n        e[i]=c;\n        i++;\n    }\n    for(; i>0; i--) printf(\"%d\",e[i-1]);\n    return(0);\n}\nint sub(int a)\n{   int c;\n    c=a%2;\n    return c;\n}",
+      "code": "#include <stdio.h>\nint sub(int a);\nint main() {\n    int a, e[10], c, i = 0;\n    printf(\"输入一整数\\n\");\n    scanf(\"%d\", &a);\n    while (a != 0) {\n        c = sub(a);\n        a = a / 2;\n        e[i] = c;\n        i++;\n    }\n    for (; i > 0; i--)\n        printf(\"%d\", e[i - 1]);\n    return (0);\n}\nint sub(int a) {\n    int c;\n    c = a % 2;\n    return c;\n}",
       "stdin": "10\n",
       "answer": "输入一整数\n1010",
       "id": "c-ch07-cr-003",
@@ -2463,7 +2463,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid add(int x,int y,int z);\nint main( )\n{  int x=2,y=3,z=0;\n   printf(\"(1) x=%d y=%d z=%d\\n\",x,y,z);\n   add(x,y,z);\n   printf(\"(3) x=%d y=%d z=%d\\n\",x,y,z);\n   return(0);\n}\nvoid add(int x,int y,int z)\n{  z=x+y; x=x * x; y=y * y;\n   printf(\"(2) x=%d y=%d z=%d\\n\",x,y,z);\n}",
+      "code": "#include <stdio.h>\nvoid add(int x, int y, int z);\nint main() {\n    int x = 2, y = 3, z = 0;\n    printf(\"(1) x=%d y=%d z=%d\\n\", x, y, z);\n    add(x, y, z);\n    printf(\"(3) x=%d y=%d z=%d\\n\", x, y, z);\n    return (0);\n}\nvoid add(int x, int y, int z) {\n    z = x + y;\n    x = x * x;\n    y = y * y;\n    printf(\"(2) x=%d y=%d z=%d\\n\", x, y, z);\n}",
       "answer": "(1) x=2 y=3 z=0\n(2) x=4 y=9 z=5\n(3) x=2 y=3 z=0",
       "id": "c-ch07-cr-004",
       "verified": true,
@@ -2483,7 +2483,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid f(int a[10][10],int n)\n{  int i,j,k;\n   j=n/2+1; a[1][j]=1; i=1;\n   for(k=2; k<=n * n; k++)\n   {  i=i-1; j=j+1;\n      if((i<1)&&(j>n))   { i=i+2; j=j-1; }\n      else\n         {  if(i<1)  i=n;\n            if(j>n)  j=1;\n         }\n      if(a[i][j]==0) a[i][j]=k;\n      else { i=i+2; j=j-1; a[i][j]=k; }\n   }\n}\nint main( )\n{   int a[10][10]={0}, i, j;\n    f(a,5);\n    printf(\"打印 5 阶幻方：\\n\");\n    for(i=1; i<=5; i++)\n    {   for(j=1; j<=5; j++)   printf(\"%4d\",a[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\nvoid f(int a[10][10], int n) {\n    int i, j, k;\n    j = n / 2 + 1;\n    a[1][j] = 1;\n    i = 1;\n    for (k = 2; k <= n * n; k++) {\n        i = i - 1;\n        j = j + 1;\n        if ((i < 1) && (j > n)) {\n            i = i + 2;\n            j = j - 1;\n        } else {\n            if (i < 1)\n                i = n;\n            if (j > n)\n                j = 1;\n        }\n        if (a[i][j] == 0)\n            a[i][j] = k;\n        else {\n            i = i + 2;\n            j = j - 1;\n            a[i][j] = k;\n        }\n    }\n}\nint main() {\n    int a[10][10] = {0}, i, j;\n    f(a, 5);\n    printf(\"打印 5 阶幻方：\\n\");\n    for (i = 1; i <= 5; i++) {\n        for (j = 1; j <= 5; j++)\n            printf(\"%4d\", a[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "answer": "打印 5 阶幻方：\n  17  24   1   8  15\n  23   5   7  14  16\n   4   6  13  20  22\n  10  12  19  21   3\n  11  18  25   2   9",
       "id": "c-ch07-cr-005",
       "verified": true
@@ -2500,7 +2500,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint fact(int value);\nint main( )\n{  printf(\"FACT(5): %d\\n\",fact(5));\n   printf(\"FACT(1): %d\\n\",fact(1));\n   fact(-5);\n   return(0);\n}\nint fact(int value)\n{  if(value<0) { printf(\"FACT(-1):Error!\\n\"); return(-1); }\n   else if(value==1||value==0) return(1);\n   else return(value * fact(value-1));\n}",
+      "code": "#include <stdio.h>\nint fact(int value);\nint main() {\n    printf(\"FACT(5): %d\\n\", fact(5));\n    printf(\"FACT(1): %d\\n\", fact(1));\n    fact(-5);\n    return (0);\n}\nint fact(int value) {\n    if (value < 0) {\n        printf(\"FACT(-1):Error!\\n\");\n        return (-1);\n    } else if (value == 1 || value == 0)\n        return (1);\n    else\n        return (value * fact(value - 1));\n}",
       "answer": "FACT(5): 120\nFACT(1): 1\nFACT(-1):Error!",
       "id": "c-ch07-cr-006",
       "verified": true,
@@ -2520,7 +2520,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint sub(int n);\nint main( )\n{  int i=5;\n   printf(\"%d\\n\",sub(i));\n   return(0);\n}\nint sub(int n)\n{  int a;\n   if(n==1) return 1;\n   a=n+sub(n-1);\n   return(a);\n}",
+      "code": "#include <stdio.h>\nint sub(int n);\nint main() {\n    int i = 5;\n    printf(\"%d\\n\", sub(i));\n    return (0);\n}\nint sub(int n) {\n    int a;\n    if (n == 1)\n        return 1;\n    a = n + sub(n - 1);\n    return (a);\n}",
       "answer": "15",
       "id": "c-ch07-cr-007",
       "verified": true,
@@ -2540,7 +2540,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid f(int a[ ])\n{  int i=0;\n   while(a[i]<=10)\n   {  printf(\"%d \",a[i]);\n      i++;\n   }\n}\nint main( )\n{  int a[ ]={1,5,10,9,11,7};\n   f(a+1);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nvoid f(int a[]) {\n    int i = 0;\n    while (a[i] <= 10) {\n        printf(\"%d \", a[i]);\n        i++;\n    }\n}\nint main() {\n    int a[] = {1, 5, 10, 9, 11, 7};\n    f(a + 1);\n    return (0);\n}",
       "answer": "5 10 9 ",
       "id": "c-ch07-cr-008",
       "verified": true
@@ -2557,7 +2557,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint func(int a[ ][3]);\nint main( )\n{  int a[3][3]={1,3,5,7,9,11,13,15,17}; int sum;\n   sum=func(a);\n   printf(\"\\nsum=%d\\n\",sum);\n   return(0);\n}\nint func(int a[ ][3])\n{  int i,j,sum=0;\n   for(i=0; i<3; i++)\n         for(j=0; j<3; j++)\n         {  a[i][j]=i+j;\n            if(i==j)  sum=sum+a[i][j];\n         }\n   return(sum);\n}",
+      "code": "#include <stdio.h>\nint func(int a[][3]);\nint main() {\n    int a[3][3] = {1, 3, 5, 7, 9, 11, 13, 15, 17};\n    int sum;\n    sum = func(a);\n    printf(\"\\nsum=%d\\n\", sum);\n    return (0);\n}\nint func(int a[][3]) {\n    int i, j, sum = 0;\n    for (i = 0; i < 3; i++)\n        for (j = 0; j < 3; j++) {\n            a[i][j] = i + j;\n            if (i == j)\n                sum = sum + a[i][j];\n        }\n    return (sum);\n}",
       "answer": "\nsum=6",
       "id": "c-ch07-cr-009",
       "verified": true
@@ -2574,7 +2574,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint func(int array[ ][4],int m)\n{  int i,j,k;\n   k=0;\n   for(i=0; i<3; i++)\n         for(j=0; j<4; j++) if(array[i][j]<m) k=k+array[i][j];\n   return(k);\n}\nint main( )\n{  static int a[3][4]={{1,13,5,7},{2,4,26,8},{10,1,3,12}};\n   int i,j,m;\n   for(i=0; i<3; i++)\n   {  for(j=0; j<4; j++) printf(\"%4d \",a[i][j]);\n      printf(\"\\n\");\n   }\n   m=10;\n   printf(\"\\nThe value is %d\\n\",func(a,m));\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint func(int array[][4], int m) {\n    int i, j, k;\n    k = 0;\n    for (i = 0; i < 3; i++)\n        for (j = 0; j < 4; j++)\n            if (array[i][j] < m)\n                k = k + array[i][j];\n    return (k);\n}\nint main() {\n    static int a[3][4] = {{1, 13, 5, 7}, {2, 4, 26, 8}, {10, 1, 3, 12}};\n    int i, j, m;\n    for (i = 0; i < 3; i++) {\n        for (j = 0; j < 4; j++)\n            printf(\"%4d \", a[i][j]);\n        printf(\"\\n\");\n    }\n    m = 10;\n    printf(\"\\nThe value is %d\\n\", func(a, m));\n    return (0);\n}",
       "answer": "   1   13    5    7 \n   2    4   26    8 \n  10    1    3   12 \n\nThe value is 31",
       "id": "c-ch07-cr-010",
       "verified": true
@@ -2591,7 +2591,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{  int a=1,b=2,c=3;\n   ++a;\n   c+=++b;\n   {  int b=4,c;\n      c=b * 3;\n      a+=c;\n      printf(\"first:%d,%d,%d\\n\",a,b,c);\n      a+=c;\n      printf(\"second:%d,%d,%d\\n\",a,b,c);\n   }\n   printf(\"third:%d,%d,%d\\n\",a,b,c);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 1, b = 2, c = 3;\n    ++a;\n    c += ++b;\n    {\n        int b = 4, c;\n        c = b * 3;\n        a += c;\n        printf(\"first:%d,%d,%d\\n\", a, b, c);\n        a += c;\n        printf(\"second:%d,%d,%d\\n\", a, b, c);\n    }\n    printf(\"third:%d,%d,%d\\n\", a, b, c);\n    return (0);\n}",
       "answer": "first:14,4,12\nsecond:26,4,12\nthird:26,3,6",
       "id": "c-ch07-cr-011",
       "verified": true
@@ -2608,7 +2608,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid fun(int m);\nint k=1;\nint main( )\n{  int i=4;\n   fun(i);\n   printf(\"(1) %d,%d\\n\",i,k);\n   return(0);\n}\nvoid fun(int m)\n{  m+=k; k+=m;\n   {  char k='B';\n      printf(\"(2) %d\\n\",k-'A');\n   }\n   printf(\"(3) %d,%d\\n\",m,k);\n}",
+      "code": "#include <stdio.h>\nvoid fun(int m);\nint k = 1;\nint main() {\n    int i = 4;\n    fun(i);\n    printf(\"(1) %d,%d\\n\", i, k);\n    return (0);\n}\nvoid fun(int m) {\n    m += k;\n    k += m;\n    {\n        char k = 'B';\n        printf(\"(2) %d\\n\", k - 'A');\n    }\n    printf(\"(3) %d,%d\\n\", m, k);\n}",
       "answer": "(2) 1\n(3) 5,6\n(1) 4,6",
       "id": "c-ch07-cr-012",
       "verified": true,
@@ -2628,7 +2628,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid sub(int x, int y);\nint x1=30,x2=40;\nint main( )\n{  int x3=10,x4=20;\n   sub(x3,x4);\n   sub(x2,x1);\n   printf(\"%d,%d,%d,%d\\n\",x3,x4,x1,x2);\n   return(0);\n}\nvoid sub(int x,int y)\n{  x1=x;\n   x=y;\n   y=x1;\n}",
+      "code": "#include <stdio.h>\nvoid sub(int x, int y);\nint x1 = 30, x2 = 40;\nint main() {\n    int x3 = 10, x4 = 20;\n    sub(x3, x4);\n    sub(x2, x1);\n    printf(\"%d,%d,%d,%d\\n\", x3, x4, x1, x2);\n    return (0);\n}\nvoid sub(int x, int y) {\n    x1 = x;\n    x = y;\n    y = x1;\n}",
       "answer": "10,20,40,40",
       "id": "c-ch07-cr-013",
       "verified": true,
@@ -2648,7 +2648,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint reset(int i);\nint workover(int i);\nint i=0;\nint main( )\n{  int i=5;\n   reset(i/2);      printf(\"i=%d\\n\",i);\n   reset(i=i/2);    printf(\"i=%d\\n\",i);\n   reset(i/2);      printf(\"i=%d\\n\",i);\n   workover(i);     printf(\"i=%d\\n\",i);\n   return(0);\n}\nint workover(int i)\n{  i=(i%i) * ((i * i)/(2 * i)+4);\n   printf(\"i=%d\\n\",i);\n   return(i);\n}\nint reset(int i)\n{  i=i<=2? 5:0;\n   return(i);\n}",
+      "code": "#include <stdio.h>\nint reset(int i);\nint workover(int i);\nint i = 0;\nint main() {\n    int i = 5;\n    reset(i / 2);\n    printf(\"i=%d\\n\", i);\n    reset(i = i / 2);\n    printf(\"i=%d\\n\", i);\n    reset(i / 2);\n    printf(\"i=%d\\n\", i);\n    workover(i);\n    printf(\"i=%d\\n\", i);\n    return (0);\n}\nint workover(int i) {\n    i = (i % i) * ((i * i) / (2 * i) + 4);\n    printf(\"i=%d\\n\", i);\n    return (i);\n}\nint reset(int i) {\n    i = i <= 2 ? 5 : 0;\n    return (i);\n}",
       "answer": "i=5\ni=2\ni=2\ni=0\ni=2",
       "id": "c-ch07-cr-014",
       "verified": true
@@ -2665,7 +2665,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint a=3,b=5;\nint max(int a,int b)\n{  int c;\n   c=a>b? a:b;\n   return(c);\n}\nint main( )\n{  int a=8;\n   printf(\"%d\",max(a,b));\n   return(0);\n}",
+      "code": "#include <stdio.h>\nint a = 3, b = 5;\nint max(int a, int b) {\n    int c;\n    c = a > b ? a : b;\n    return (c);\n}\nint main() {\n    int a = 8;\n    printf(\"%d\", max(a, b));\n    return (0);\n}",
       "answer": "8",
       "id": "c-ch07-cr-015",
       "verified": true
@@ -2682,7 +2682,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\n#include <math.h>\nint fun(int n)\n{  int i,m=0; long s=1;\n   for(i=1;i<=n;i++) s=s * n;\n   s=s%1000;\n   do\n   {  m=m+s%10;\n      s=s/10;\n   }while(s);\n   return m;\n}\nint main( )\n{  int d;\n   d=fun(5);\n   printf(\"\\nsum=%d\\n\",d);\n   return(0);\n}",
+      "code": "#include <stdio.h>\n#include <math.h>\nint fun(int n) {\n    int i, m = 0;\n    long s = 1;\n    for (i = 1; i <= n; i++)\n        s = s * n;\n    s = s % 1000;\n    do {\n        m = m + s % 10;\n        s = s / 10;\n    } while (s);\n    return m;\n}\nint main() {\n    int d;\n    d = fun(5);\n    printf(\"\\nsum=%d\\n\", d);\n    return (0);\n}",
       "answer": "\nsum=8",
       "id": "c-ch07-cr-016",
       "verified": true
@@ -2699,7 +2699,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nlong fun(long x,long y)\n{  int i; long t=1;\n   for(i=1;i<=y;i++) t=t * x%100;\n   return t;\n}\nint main( )\n{  long x,y,t;\n   printf(\"\\nninput x and y:\\n \"); scanf(\"%ld%ld\",&x,&y);\n   t=fun(x,y);\n   printf(\"\\nx=%ld,y=%ld,last=%ld\\n\",x,y,t);\n   return(0);\n}",
+      "code": "#include <stdio.h>\nlong fun(long x, long y) {\n    int i;\n    long t = 1;\n    for (i = 1; i <= y; i++)\n        t = t * x % 100;\n    return t;\n}\nint main() {\n    long x, y, t;\n    printf(\"\\nninput x and y:\\n \");\n    scanf(\"%ld%ld\", &x, &y);\n    t = fun(x, y);\n    printf(\"\\nx=%ld,y=%ld,last=%ld\\n\", x, y, t);\n    return (0);\n}",
       "stdin": "4 3\n",
       "answer": "\nninput x and y:\n \nx=4,y=3,last=64",
       "id": "c-ch07-cr-017",
@@ -2717,7 +2717,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nvoid func();\nint n=1;\nint main( )\n{  static int x=5; int y;\n   y=n;\n   printf(\"MAIN: x=%2d y=%2d n=%2d\\n\",x,y,n);\n   func( );\n   printf(\"MAIN: x=%2d y=%2d n=%2d\\n\",x,y,n);\n   func( );\n   return(0);\n}\nvoid func( )\n{  static int x=4; int y=10;\n   x=x+2;\n   n=n+10;\n   y=y+n;\n   printf(\"FUNC: x=%2d y=%2d n=%2d\\n\",x,y,n);\n}",
+      "code": "#include <stdio.h>\nvoid func();\nint n = 1;\nint main() {\n    static int x = 5;\n    int y;\n    y = n;\n    printf(\"MAIN: x=%2d y=%2d n=%2d\\n\", x, y, n);\n    func();\n    printf(\"MAIN: x=%2d y=%2d n=%2d\\n\", x, y, n);\n    func();\n    return (0);\n}\nvoid func() {\n    static int x = 4;\n    int y = 10;\n    x = x + 2;\n    n = n + 10;\n    y = y + n;\n    printf(\"FUNC: x=%2d y=%2d n=%2d\\n\", x, y, n);\n}",
       "answer": "MAIN: x= 5 y= 1 n= 1\nFUNC: x= 6 y=21 n=11\nMAIN: x= 5 y= 1 n=11\nFUNC: x= 8 y=31 n=21",
       "id": "c-ch07-cr-018",
       "verified": true
@@ -2730,9 +2730,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid swap(int a, int b)\n{\n    int t = a;\n\n    a = b;\n    b = t;\n}\n\nint main(void)\n{\n    int x = 3, y = 8;\n\n    swap(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid swap(int a, int b) {\n    int t = a;\n\n    a = b;\n    b = t;\n}\n\nint main(void) {\n    int x = 3, y = 8;\n\n    swap(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "3 8",
-      "code": "#include <stdio.h>\n\nvoid swap(int a, int b)\n{\n    int t = a;\n\n    a = b;\n    b = t;\n}\n\nint main(void)\n{\n    int x = 3, y = 8;\n\n    swap(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid swap(int a, int b) {\n    int t = a;\n\n    a = b;\n    b = t;\n}\n\nint main(void) {\n    int x = 3, y = 8;\n\n    swap(x, y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 3 8，主函数中的 x、y 未被交换。推理：C 语言函数参数是值传递，调用时把 x、y 的值复制给形参 a、b，swap 内交换的只是两份副本，函数返回后副本销毁，实参不受影响。易错点：值传递是单向的（实参→形参），想真正交换必须传地址或改用数组；把形参当成实参的别名是最常见的错误认识。",
       "tags": [
@@ -2755,9 +2755,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```\n运行时输入：\n```\n6\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```\n运行时输入：\n```\n6\n```",
       "answer": "720",
-      "code": "#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
       "stdin": "6\n",
       "explanation": "结论：输出 720。推理：fact(6)=6×fact(5)，逐层展开到 fact(1)=1（递归出口），回代得 6×5×4×3×2×1=720。易错点：返回类型必须是 long long，13! 起就超出 int 范围；出口写成 n<=1 可同时覆盖 fact(0)=1；若漏写出口会无限递归导致栈溢出。",
       "tags": [
@@ -2780,9 +2780,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint fib(int n)\n{\n    cnt++;\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    printf(\"%d %d\\n\", fib(6), cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint fib(int n) {\n    cnt++;\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    printf(\"%d %d\\n\", fib(6), cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "8 0",
-      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint fib(int n)\n{\n    cnt++;\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    printf(\"%d %d\\n\", fib(6), cnt);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint fib(int n) {\n    cnt++;\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    printf(\"%d %d\\n\", fib(6), cnt);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 8 15。推理：fib(6)=8 由斐波那契定义直接得出；调用次数满足 T(1)=T(2)=1、T(n)=1+T(n-1)+T(n-2)，算得 T(3)=3、T(4)=5、T(5)=9、T(6)=15，即 2×fib(6)-1。易错点：递归斐波那契存在大量重复计算，调用次数呈指数增长，这正是它效率低于迭代版本的原因；cnt 是全局变量才能在多次调用间累计。",
       "tags": [
@@ -2806,9 +2806,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(void)\n{\n    static int s = 0;\n    int a = 0;\n\n    s++;\n    a++;\n    printf(\"%d %d\\n\", s, a);\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 0; i < 3; i++)\n        f();\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(void) {\n    static int s = 0;\n    int a = 0;\n\n    s++;\n    a++;\n    printf(\"%d %d\\n\", s, a);\n}\n\nint main(void) {\n    int i;\n\n    for (i = 0; i < 3; i++)\n        f();\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "1 1\n2 1\n3 1",
-      "code": "#include <stdio.h>\n\nvoid f(void)\n{\n    static int s = 0;\n    int a = 0;\n\n    s++;\n    a++;\n    printf(\"%d %d\\n\", s, a);\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 0; i < 3; i++)\n        f();\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid f(void) {\n    static int s = 0;\n    int a = 0;\n\n    s++;\n    a++;\n    printf(\"%d %d\\n\", s, a);\n}\n\nint main(void) {\n    int i;\n\n    for (i = 0; i < 3; i++)\n        f();\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：依次输出 1 1、2 1、3 1。推理：static 局部变量存放在静态存储区，只在程序启动时初始化一次，函数返回后仍保留其值，故 s 逐次累加；a 是 auto 变量，每次进入函数都重新创建并初始化为 0，故恒为 1。易错点：static 局部变量的作用域仍限于函数内部，只是生存期变为整个程序运行期；“作用域”和“生存期”是两个不同维度。",
       "tags": [
@@ -2831,9 +2831,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint n = 10;\n\nvoid f(void)\n{\n    int n = 3;\n\n    printf(\"%d \", n);\n}\n\nint main(void)\n{\n    f();\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint n = 10;\n\nvoid f(void) {\n    int n = 3;\n\n    printf(\"%d \", n);\n}\n\nint main(void) {\n    f();\n    printf(\"%d\\n\", n);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "3 10",
-      "code": "#include <stdio.h>\n\nint n = 10;\n\nvoid f(void)\n{\n    int n = 3;\n\n    printf(\"%d \", n);\n}\n\nint main(void)\n{\n    f();\n    printf(\"%d\\n\", n);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint n = 10;\n\nvoid f(void) {\n    int n = 3;\n\n    printf(\"%d \", n);\n}\n\nint main(void) {\n    f();\n    printf(\"%d\\n\", n);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 3 10。推理：f 内定义了与全局变量同名的局部变量 n，在该函数作用域内局部变量遮蔽全局变量，故打印 3；main 中没有同名局部变量，访问的是全局 n，仍为 10，且 f 中的赋值不影响它。易错点：局部变量遮蔽全局变量只在该作用域内生效；若要在函数内使用被遮蔽的全局变量，需要改名或调整作用域，C 语言没有 C++ 那样的作用域解析运算符。",
       "tags": [
@@ -2857,9 +2857,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid change(int a[], int n)\n{\n    int i;\n\n    for (i = 0; i < n; i++)\n        a[i] = a[i] * 2;\n}\n\nint main(void)\n{\n    int a[5] = {1, 2, 3, 4, 5}, i;\n\n    change(a, 5);\n    for (i = 0; i < 5; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid change(int a[], int n) {\n    int i;\n\n    for (i = 0; i < n; i++)\n        a[i] = a[i] * 2;\n}\n\nint main(void) {\n    int a[5] = {1, 2, 3, 4, 5}, i;\n\n    change(a, 5);\n    for (i = 0; i < 5; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "2 4 6 8 10",
-      "code": "#include <stdio.h>\n\nvoid change(int a[], int n)\n{\n    int i;\n\n    for (i = 0; i < n; i++)\n        a[i] = a[i] * 2;\n}\n\nint main(void)\n{\n    int a[5] = {1, 2, 3, 4, 5}, i;\n\n    change(a, 5);\n    for (i = 0; i < 5; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid change(int a[], int n) {\n    int i;\n\n    for (i = 0; i < n; i++)\n        a[i] = a[i] * 2;\n}\n\nint main(void) {\n    int a[5] = {1, 2, 3, 4, 5}, i;\n\n    change(a, 5);\n    for (i = 0; i < 5; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 2 4 6 8 10。推理：数组名作实参时传递的是首元素地址，形参与实参指向同一段内存，函数内对 a[i] 的修改直接作用于主函数的数组。易错点：这与普通变量的值传递不同——数组作参数是“地址值”的传递，数据本身是共享的；正因如此，若不想让函数修改原数组，需要另行拷贝或在函数内用 const 修饰形参。",
       "tags": [
@@ -2882,9 +2882,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint len(int a[])\n{\n    return (int)(sizeof(a) / sizeof(a[0]));\n}\n\nint main(void)\n{\n    int a[10];\n\n    printf(\"%d %d\\n\", (int)(sizeof(a) / sizeof(a[0])), len(a));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint len(int a[]) {\n    return (int)(sizeof(a) / sizeof(a[0]));\n}\n\nint main(void) {\n    int a[10];\n\n    printf(\"%d %d\\n\", (int)(sizeof(a) / sizeof(a[0])), len(a));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "10 2",
-      "code": "#include <stdio.h>\n\nint len(int a[])\n{\n    return (int)(sizeof(a) / sizeof(a[0]));\n}\n\nint main(void)\n{\n    int a[10];\n\n    printf(\"%d %d\\n\", (int)(sizeof(a) / sizeof(a[0])), len(a));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint len(int a[]) {\n    return (int)(sizeof(a) / sizeof(a[0]));\n}\n\nint main(void) {\n    int a[10];\n\n    printf(\"%d %d\\n\", (int)(sizeof(a) / sizeof(a[0])), len(a));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：在 64 位环境下输出 10 2。推理：main 中 a 是真数组，sizeof(a)=40 字节，除以 4 得 10；传入 len 后形参 a 退化为 int* 指针，sizeof(a)=8（指针本身大小），8/4=2。易错点：函数内无法用 sizeof 得知实参数组长度，这是“数组长度必须由参数额外传入”的根本原因；结果随编译环境的指针宽度而变，本题固定按 x86-64 判定。",
       "tags": [
@@ -2908,9 +2908,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(int n)\n{\n    if (n > 0)\n    {\n        printf(\"%d \", n);\n        f(n - 1);\n        printf(\"%d \", n);\n    }\n}\n\nint main(void)\n{\n    f(3);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(int n) {\n    if (n > 0) {\n        printf(\"%d \", n);\n        f(n - 1);\n        printf(\"%d \", n);\n    }\n}\n\nint main(void) {\n    f(3);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "3 2 1 1 2 3",
-      "code": "#include <stdio.h>\n\nvoid f(int n)\n{\n    if (n > 0)\n    {\n        printf(\"%d \", n);\n        f(n - 1);\n        printf(\"%d \", n);\n    }\n}\n\nint main(void)\n{\n    f(3);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid f(int n) {\n    if (n > 0) {\n        printf(\"%d \", n);\n        f(n - 1);\n        printf(\"%d \", n);\n    }\n}\n\nint main(void) {\n    f(3);\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 3 2 1 1 2 3。推理：递归调用前的 printf 在“递推”阶段执行，调用后的 printf 在“回归”阶段执行；f(3) 先打印 3 再调 f(2)，f(2) 打印 2 再调 f(1)，f(1) 打印 1 后调 f(0) 直接返回，随后逐层回归依次打印 1、2、3。易错点：把两句 printf 都放在递归调用之前会得到 3 2 1，都放在之后会得到 1 2 3；理解栈帧的压入与弹出顺序是解此类题的关键。",
       "tags": [
@@ -2934,9 +2934,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}\n```\n运行时输入：\n```\n48 18\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}\n```\n运行时输入：\n```\n48 18\n```",
       "answer": "6",
-      "code": "#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2 || a < 0 || b < 0)\n        return 1;\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
       "stdin": "48 18\n",
       "explanation": "结论：输出 6。推理：辗转相除法 gcd(48,18)→gcd(18,12)→gcd(12,6)→gcd(6,0)，b 为 0 时返回 a=6。易错点：递归出口是 b==0 而不是 a==0；参数顺序必须交换为 (b, a%b)，写成 (a%b, b) 会死循环；求最小公倍数时用 a/gcd*b 可避免中间结果溢出。",
       "tags": [
@@ -2959,9 +2959,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint sq(int x)\n{\n    return x * x;\n}\n\nint sum2(int a, int b)\n{\n    return sq(a) + sq(b);\n}\n\nint main(void)\n{\n    int i, s = 0;\n\n    for (i = 1; i <= 4; i++)\n        s = s + sum2(i, i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint sq(int x) {\n    return x * x;\n}\n\nint sum2(int a, int b) {\n    return sq(a) + sq(b);\n}\n\nint main(void) {\n    int i, s = 0;\n\n    for (i = 1; i <= 4; i++)\n        s = s + sum2(i, i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "84",
-      "code": "#include <stdio.h>\n\nint sq(int x)\n{\n    return x * x;\n}\n\nint sum2(int a, int b)\n{\n    return sq(a) + sq(b);\n}\n\nint main(void)\n{\n    int i, s = 0;\n\n    for (i = 1; i <= 4; i++)\n        s = s + sum2(i, i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint sq(int x) {\n    return x * x;\n}\n\nint sum2(int a, int b) {\n    return sq(a) + sq(b);\n}\n\nint main(void) {\n    int i, s = 0;\n\n    for (i = 1; i <= 4; i++)\n        s = s + sum2(i, i + 1);\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 84。推理：sum2(i,i+1)=i²+(i+1)²，i 取 1..4 得 1+4=5、4+9=13、9+16=25、16+25=41，累加为 84。易错点：这是典型的函数嵌套调用，sum2 内部又调用 sq，调用层次由栈管理；累加时不要漏掉 i=4 的一项，也不要误认为 sum2 只求一次平方。",
       "tags": [
@@ -2984,9 +2984,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "remember",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(int n)\n{\n    if (n % 2 == 0)\n        printf(\"even \");\n    else\n        printf(\"odd \");\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 4; i++)\n        f(i);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid f(int n) {\n    if (n % 2 == 0)\n        printf(\"even \");\n    else\n        printf(\"odd \");\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 4; i++)\n        f(i);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "odd even odd even",
-      "code": "#include <stdio.h>\n\nvoid f(int n)\n{\n    if (n % 2 == 0)\n        printf(\"even \");\n    else\n        printf(\"odd \");\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 4; i++)\n        f(i);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid f(int n) {\n    if (n % 2 == 0)\n        printf(\"even \");\n    else\n        printf(\"odd \");\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 4; i++)\n        f(i);\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 odd even odd even。推理：f 是 void 型函数，没有返回值，其功能完全通过副作用（printf）实现；n 为 1、2、3、4 时依次判为奇、偶、奇、偶。易错点：void 函数中仍可写 return; 用于提前结束，但不能写 return 表达式；调用 void 函数时不能把它当值使用，如 printf(\"%d\", f(3)) 是非法的。",
       "tags": [
@@ -3009,9 +3009,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid toBin(int n)\n{\n    if (n > 1)\n        toBin(n / 2);\n    printf(\"%d\", n % 2);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0)\n        return 1;\n    toBin(n);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n13\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nvoid toBin(int n) {\n    if (n > 1)\n        toBin(n / 2);\n    printf(\"%d\", n % 2);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0)\n        return 1;\n    toBin(n);\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n13\n```",
       "answer": "1101",
-      "code": "#include <stdio.h>\n\nvoid toBin(int n)\n{\n    if (n > 1)\n        toBin(n / 2);\n    printf(\"%d\", n % 2);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0)\n        return 1;\n    toBin(n);\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nvoid toBin(int n) {\n    if (n > 1)\n        toBin(n / 2);\n    printf(\"%d\", n % 2);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0)\n        return 1;\n    toBin(n);\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "13\n",
       "explanation": "结论：输出 1101。推理：递归先处理高位——toBin(13) 调 toBin(6)，再调 toBin(3)、toBin(1)，到 n=1 时不再递归，直接打印 1，随后各层回归时依次打印 13%2=1、6%2=0、3%2=1，拼成 1101。易错点：printf 放在递归调用之后才能实现“先高位后低位”的输出，放在之前会得到逆序；n=0 时按本题写法会打印 0，符合预期。",
       "tags": [
@@ -3034,9 +3034,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nstatic int total = 0;\n\nvoid add(int x)\n{\n    total = total + x;\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 5; i++)\n        add(i);\n    printf(\"%d\\n\", total);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nstatic int total = 0;\n\nvoid add(int x) {\n    total = total + x;\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 5; i++)\n        add(i);\n    printf(\"%d\\n\", total);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "15",
-      "code": "#include <stdio.h>\n\nstatic int total = 0;\n\nvoid add(int x)\n{\n    total = total + x;\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 5; i++)\n        add(i);\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nstatic int total = 0;\n\nvoid add(int x) {\n    total = total + x;\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 5; i++)\n        add(i);\n    printf(\"%d\\n\", total);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 15。推理：total 是文件作用域的 static 变量，只能在本文件内访问，但生存期为整个程序；add 每次把 x 累加进去，1+2+3+4+5=15。易错点：static 修饰全局变量是限制其“链接属性”（不被其他文件 extern 引用），与修饰局部变量延长生存期的作用不同；本文件内的函数都能直接读写它，无需通过参数传递。",
       "tags": [
@@ -3059,9 +3059,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint sum(int a[], int n)\n{\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\n\nint main(void)\n{\n    int a[6], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 6)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}\n```\n运行时输入：\n```\n5\n1 2 3 4 5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint sum(int a[], int n) {\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\n\nint main(void) {\n    int a[6], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 6)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}\n```\n运行时输入：\n```\n5\n1 2 3 4 5\n```",
       "answer": "15",
-      "code": "#include <stdio.h>\n\nint sum(int a[], int n)\n{\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\n\nint main(void)\n{\n    int a[6], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 6)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint sum(int a[], int n) {\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\n\nint main(void) {\n    int a[6], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 6)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
       "stdin": "5\n1 2 3 4 5\n",
       "explanation": "结论：输出 15。推理：sum(a,5)=a[4]+sum(a,4)，逐层递减到 sum(a,0)=0，回代得 5+4+3+2+1=15。易错点：递归出口 n<=0 必须写，否则 n 变为负数后仍访问 a[n-1] 造成越界；数组作参数传的是地址，递归各层共享同一数组，只靠 n 划定当前处理范围。",
       "tags": [
@@ -3084,9 +3084,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint f(int a, int b)\n{\n    return a * 10 + b;\n}\n\nint main(void)\n{\n    int x = 2;\n\n    printf(\"%d %d\\n\", f(x + 1, x * 3), f(x, x));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint f(int a, int b) {\n    return a * 10 + b;\n}\n\nint main(void) {\n    int x = 2;\n\n    printf(\"%d %d\\n\", f(x + 1, x * 3), f(x, x));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "36 22",
-      "code": "#include <stdio.h>\n\nint f(int a, int b)\n{\n    return a * 10 + b;\n}\n\nint main(void)\n{\n    int x = 2;\n\n    printf(\"%d %d\\n\", f(x + 1, x * 3), f(x, x));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint f(int a, int b) {\n    return a * 10 + b;\n}\n\nint main(void) {\n    int x = 2;\n\n    printf(\"%d %d\\n\", f(x + 1, x * 3), f(x, x));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 36 22。推理：实参可以是表达式，调用前先求值再按位置一一传给形参，f(3,6)=3×10+6=36，f(2,2)=2×10+2=22。易错点：形参与实参的对应关系只看位置不看名字，f(x+1,x*3) 中 x+1 给 a、x*3 给 b；实参表达式的求值顺序在 C 语言中未作规定，所以不要在同一实参列表中写有副作用的表达式。",
       "tags": [
@@ -3109,9 +3109,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint trace(int a[][3], int n)\n{\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i][i];\n    return s;\n}\n\nint main(void)\n{\n    int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n\n    printf(\"%d\\n\", trace(a, 3));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint trace(int a[][3], int n) {\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i][i];\n    return s;\n}\n\nint main(void) {\n    int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n\n    printf(\"%d\\n\", trace(a, 3));\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "15",
-      "code": "#include <stdio.h>\n\nint trace(int a[][3], int n)\n{\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i][i];\n    return s;\n}\n\nint main(void)\n{\n    int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n\n    printf(\"%d\\n\", trace(a, 3));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint trace(int a[][3], int n) {\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i][i];\n    return s;\n}\n\nint main(void) {\n    int a[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};\n\n    printf(\"%d\\n\", trace(a, 3));\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 15。推理：主对角线元素是行下标与列下标相等的 a[0][0]=1、a[1][1]=5、a[2][2]=9，和为 15。易错点：二维数组作形参时第一维大小可以省略，但第二维（列数）必须写明，否则编译器无法计算 a[i][j] 的地址偏移；写成 int a[][] 是非法的。",
       "tags": [
@@ -3134,9 +3134,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nvoid hanoi(int n, char a, char b, char c)\n{\n    if (n == 1)\n    {\n        cnt++;\n        return;\n    }\n    hanoi(n - 1, a, c, b);\n    cnt++;\n    hanoi(n - 1, b, a, c);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    hanoi(n, 'A', 'B', 'C');\n    printf(\"%d\\n\", cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n4\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nvoid hanoi(int n, char a, char b, char c) {\n    if (n == 1) {\n        cnt++;\n        return;\n    }\n    hanoi(n - 1, a, c, b);\n    cnt++;\n    hanoi(n - 1, b, a, c);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    hanoi(n, 'A', 'B', 'C');\n    printf(\"%d\\n\", cnt);\n    return 0;\n}\n```\n运行时输入：\n```\n4\n```",
       "answer": "15",
-      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nvoid hanoi(int n, char a, char b, char c)\n{\n    if (n == 1)\n    {\n        cnt++;\n        return;\n    }\n    hanoi(n - 1, a, c, b);\n    cnt++;\n    hanoi(n - 1, b, a, c);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    hanoi(n, 'A', 'B', 'C');\n    printf(\"%d\\n\", cnt);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nvoid hanoi(int n, char a, char b, char c) {\n    if (n == 1) {\n        cnt++;\n        return;\n    }\n    hanoi(n - 1, a, c, b);\n    cnt++;\n    hanoi(n - 1, b, a, c);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    hanoi(n, 'A', 'B', 'C');\n    printf(\"%d\\n\", cnt);\n    return 0;\n}",
       "stdin": "4\n",
       "explanation": "结论：输出 15。推理：设移动次数为 T(n)，则 T(1)=1、T(n)=2T(n-1)+1，解得 T(n)=2ⁿ-1，n=4 时为 15。易错点：两次递归调用之间的 cnt++ 代表把最大盘从起始柱移到目标柱，漏掉它会把结果算成 2ⁿ⁻¹；本题只统计次数不打印路径，若要打印需在 cnt++ 处输出 a→c。",
       "tags": [
@@ -3160,9 +3160,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint depth(int n)\n{\n    if (n == 0)\n        return 0;\n    return 1 + depth(n / 2);\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 8; i = i * 2)\n        printf(\"%d \", depth(i));\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint depth(int n) {\n    if (n == 0)\n        return 0;\n    return 1 + depth(n / 2);\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 8; i = i * 2)\n        printf(\"%d \", depth(i));\n    printf(\"\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "1 2 3 4",
-      "code": "#include <stdio.h>\n\nint depth(int n)\n{\n    if (n == 0)\n        return 0;\n    return 1 + depth(n / 2);\n}\n\nint main(void)\n{\n    int i;\n\n    for (i = 1; i <= 8; i = i * 2)\n        printf(\"%d \", depth(i));\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint depth(int n) {\n    if (n == 0)\n        return 0;\n    return 1 + depth(n / 2);\n}\n\nint main(void) {\n    int i;\n\n    for (i = 1; i <= 8; i = i * 2)\n        printf(\"%d \", depth(i));\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 1 2 3 4。推理：depth(n) 返回把 n 不断整除 2 直到 0 所需的步数，即 floor(log2 n)+1；depth(1)=1、depth(2)=2、depth(4)=3、depth(8)=4。易错点：循环变量用 i=i*2 倍增，只取 1、2、4、8 四个值；depth(0)=0 是递归出口，若写成 n==1 返回 1 结果相同但会漏掉 n=0 的情形导致无限递归。",
       "tags": [
@@ -3185,9 +3185,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint next(void)\n{\n    cnt++;\n    return cnt * cnt;\n}\n\nint main(void)\n{\n    int a = next();\n    int b = next();\n    int c = next();\n\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint cnt = 0;\n\nint next(void) {\n    cnt++;\n    return cnt * cnt;\n}\n\nint main(void) {\n    int a = next();\n    int b = next();\n    int c = next();\n\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}\n```\n运行时输入：\n```\n\n```",
       "answer": "1 4 9",
-      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint next(void)\n{\n    cnt++;\n    return cnt * cnt;\n}\n\nint main(void)\n{\n    int a = next();\n    int b = next();\n    int c = next();\n\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint cnt = 0;\n\nint next(void) {\n    cnt++;\n    return cnt * cnt;\n}\n\nint main(void) {\n    int a = next();\n    int b = next();\n    int c = next();\n\n    printf(\"%d %d %d\\n\", a, b, c);\n    return 0;\n}",
       "stdin": "",
       "explanation": "结论：输出 1 4 9。推理：next 每调用一次就让全局 cnt 加 1 并返回其平方，三次调用依次返回 1²、2²、3²。易错点：把三次调用写进同一个 printf 的实参列表（printf(\"%d %d %d\", next(), next(), next())）时，各实参的求值顺序 C 语言不作规定，输出可能是 9 4 1，属未指定行为；先用三条独立语句赋值可保证顺序确定。",
       "tags": [
@@ -3211,9 +3211,9 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nlong long power(int x, int n)\n{\n    long long h;\n\n    if (n == 0)\n        return 1;\n    if (n % 2 == 0)\n    {\n        h = power(x, n / 2);\n        return h * h;\n    }\n    return x * power(x, n - 1);\n}\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0)\n        return 1;\n    printf(\"%lld\\n\", power(x, n));\n    return 0;\n}\n```\n运行时输入：\n```\n3 5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nlong long power(int x, int n) {\n    long long h;\n\n    if (n == 0)\n        return 1;\n    if (n % 2 == 0) {\n        h = power(x, n / 2);\n        return h * h;\n    }\n    return x * power(x, n - 1);\n}\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0)\n        return 1;\n    printf(\"%lld\\n\", power(x, n));\n    return 0;\n}\n```\n运行时输入：\n```\n3 5\n```",
       "answer": "243",
-      "code": "#include <stdio.h>\n\nlong long power(int x, int n)\n{\n    long long h;\n\n    if (n == 0)\n        return 1;\n    if (n % 2 == 0)\n    {\n        h = power(x, n / 2);\n        return h * h;\n    }\n    return x * power(x, n - 1);\n}\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0)\n        return 1;\n    printf(\"%lld\\n\", power(x, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nlong long power(int x, int n) {\n    long long h;\n\n    if (n == 0)\n        return 1;\n    if (n % 2 == 0) {\n        h = power(x, n / 2);\n        return h * h;\n    }\n    return x * power(x, n - 1);\n}\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0)\n        return 1;\n    printf(\"%lld\\n\", power(x, n));\n    return 0;\n}",
       "stdin": "3 5\n",
       "explanation": "结论：输出 243。推理：n=5 为奇数，走 x×power(x,4)；power(3,4) 为偶数分支，h=power(3,2)，而 power(3,2) 的 h=power(3,1)=3，故 power(3,2)=9、power(3,4)=81，最终 3×81=243。易错点：偶数分支必须先把 power(x,n/2) 存入变量再自乘，写成 return power(x,n/2)*power(x,n/2) 会把递归调用次数翻倍；n=0 时返回 1 是必须的出口。",
       "tags": [
@@ -3268,7 +3268,7 @@
         "递归出口"
       ],
       "stem": "阅读下面程序，写出它运行后的输出结果（只需写出 printf 打印的内容）。",
-      "code": "#include <stdio.h>\nint sum(int n) {\n    if (n == 0) return 0;\n    return n + sum(n - 1);\n}\nint main(void) {\n    printf(\"%d\\n\", sum(5));\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint sum(int n) {\n    if (n == 0)\n        return 0;\n    return n + sum(n - 1);\n}\nint main(void) {\n    printf(\"%d\\n\", sum(5));\n    return 0;\n}",
       "stdin": "",
       "answer": "15",
       "answerIsDescription": false,
@@ -3293,7 +3293,7 @@
         "函数调用计数"
       ],
       "stem": "阅读下面程序，写出它运行后的输出结果（只需写出 printf 打印的内容）。",
-      "code": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    c++;\n    return c;\n}\nint main(void) {\n    int i;\n    for (i = 0; i < 3; i++) printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint counter(void) {\n    static int c = 0;\n    c++;\n    return c;\n}\nint main(void) {\n    int i;\n    for (i = 0; i < 3; i++)\n        printf(\"%d \", counter());\n    printf(\"\\n\");\n    return 0;\n}",
       "stdin": "",
       "answer": "1 2 3",
       "answerIsDescription": false,
@@ -3504,8 +3504,8 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序的功能是计算并输出 n!，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+      "stem": "下列程序的功能是计算并输出 n!，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint fact(int n) {\n    if (n <= 1)\n        return 1;\n    return fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint fact(int n) {\n    if (n <= 1)\n        return 1;\n    return fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n",
@@ -3520,7 +3520,7 @@
           "expected": "2432902008176640000"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nlong long fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nlong long fact(int n) {\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void) {\n    int n;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 20)\n        return 1;\n    printf(\"%lld\\n\", fact(n));\n    return 0;\n}",
       "bugs": [
         "返回类型写成 int，13! 起就会溢出，且与 main 中的 %lld 不匹配，应改为 long long",
         "递归体漏乘 n，返回值恒为 1（等于 (n-1)! 中缺了所有因子），应为 n * fact(n - 1)"
@@ -3547,8 +3547,8 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序用于求 n 个整数的平均值并保留两位小数，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\ndouble avg(int a[], int n)\n{\n    int i, s = 0;\n\n    for (i = 0; i < sizeof(a) / sizeof(a[0]); i++)\n        s = s + a[i];\n    return s / n;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\ndouble avg(int a[], int n)\n{\n    int i, s = 0;\n\n    for (i = 0; i < sizeof(a) / sizeof(a[0]); i++)\n        s = s + a[i];\n    return s / n;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}",
+      "stem": "下列程序用于求 n 个整数的平均值并保留两位小数，但运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\ndouble avg(int a[], int n) {\n    int i, s = 0;\n\n    for (i = 0; i < sizeof(a) / sizeof(a[0]); i++)\n        s = s + a[i];\n    return s / n;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\ndouble avg(int a[], int n) {\n    int i, s = 0;\n\n    for (i = 0; i < sizeof(a) / sizeof(a[0]); i++)\n        s = s + a[i];\n    return s / n;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4\n1 2 3 4\n",
@@ -3563,7 +3563,7 @@
           "expected": "7.00"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\ndouble avg(int a[], int n)\n{\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i];\n    return (double)s / n;\n}\n\nint main(void)\n{\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\ndouble avg(int a[], int n) {\n    int i, s = 0;\n\n    for (i = 0; i < n; i++)\n        s = s + a[i];\n    return (double)s / n;\n}\n\nint main(void) {\n    int a[100], n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    printf(\"%.2f\\n\", avg(a, n));\n    return 0;\n}",
       "bugs": [
         "数组作形参时已退化为指针，sizeof(a)/sizeof(a[0]) 算出的是指针大小与元素大小之比（本机为 2）而不是元素个数，必须使用参数 n",
         "s 与 n 都是 int，s/n 先做整数除法丢失小数部分，再赋给 double 也无济于事，应先把 s 转换为 double"
@@ -3590,8 +3590,8 @@
       "section": "7.6 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序用于输出斐波那契数列前 n 项，但运行时无法正常结束。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint fib(int n)\n{\n    if (n == 0)\n        return 1;\n    return fib(n - 1);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint fib(int n)\n{\n    if (n == 0)\n        return 1;\n    return fib(n - 1);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
+      "stem": "下列程序用于输出斐波那契数列前 n 项，但运行时无法正常结束。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint fib(int n) {\n    if (n == 0)\n        return 1;\n    return fib(n - 1);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint fib(int n) {\n    if (n == 0)\n        return 1;\n    return fib(n - 1);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6\n",
@@ -3606,7 +3606,7 @@
           "expected": "1 1 2 3 5 8 13 21 34 55"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint fib(int n)\n{\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint fib(int n) {\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 30)\n        return 1;\n    for (i = 1; i <= n; i++)\n        printf(\"%d \", fib(i));\n    printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "出口条件写错：fib(1) 不满足 n==0 会继续递归到 fib(0)、fib(-1)……永不终止，应在 n 为 1 或 2 时返回 1",
         "递归体漏掉 fib(n-2) 一项，退化成线性递归，结果不是斐波那契数列"
