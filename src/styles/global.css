@@ -1,11 +1,112 @@
 @import 'tailwindcss';
+@import './vendor/animate-subset.css';
 
 /* ============================================================
-   设计令牌。颜色语义遵循 docs/specs/07-viz-spec.md 第五节：
+   设计令牌 --cp-*（任务07 §四·4.1）
+   :root 即深色（站点身份色），浅色主题用 [data-theme='light'] 覆盖。
+   全站样式一律消费令牌/桥接变量，禁止散落硬编码色值。
+   可视化色语义仍遵循 docs/specs/07-viz-spec.md 第五节：
    比较=黄 / 交换=红 / 就位=绿 / 基准=蓝
    ============================================================ */
+:root {
+  /* 深色四级底色（深空紫系） */
+  --cp-bg-0: #0d0b1a;
+  --cp-bg-1: #16132b;
+  --cp-bg-2: #1f1b3a;
+  --cp-bg-3: #2a2450;
+  --cp-border-1: #2f2960;
+  --cp-border-2: #463c88;
+  /* 二次元点缀色 */
+  --cp-accent-sakura: #ff8fb1;
+  --cp-accent-cyan: #6ee7f9;
+  --cp-accent-lavender: #b39ddb;
+  --cp-accent-mint: #7ee0c0;
+  /* 语义色（深底上均 ≥ 4.5:1 或仅用于图形/大字号） */
+  --cp-success: #6ee7a8;
+  --cp-warn: #ffd479;
+  --cp-danger: #ff7a8a;
+  --cp-info: #6ee7f9;
+  /* 文本三级 */
+  --cp-text-1: #ece9f6;
+  --cp-text-2: #b8b2d1;
+  --cp-text-3: #857fa6;
+  /* 品牌：深色主题=樱粉，配深紫字保证对比度（≈9:1） */
+  --cp-brand: #ff8fb1;
+  --cp-on-brand: #26101f;
+  --cp-link: #6ee7f9;
+  /* 圆角 */
+  --cp-radius-sm: 8px;
+  --cp-radius-md: 14px;
+  --cp-radius-lg: 20px;
+  --cp-radius-pill: 999px;
+  /* 阴影与发光 */
+  --cp-shadow-1: 0 2px 10px rgba(5, 3, 15, 0.45);
+  --cp-shadow-2: 0 10px 30px rgba(5, 3, 15, 0.55);
+  --cp-glow-sakura: 0 0 0 1px rgba(255, 143, 177, 0.38), 0 6px 20px rgba(255, 143, 177, 0.16);
+  --cp-glow-soft: 0 8px 24px rgba(5, 3, 15, 0.5);
+  /* 间距（4px 基准） */
+  --cp-sp-1: 4px;
+  --cp-sp-2: 8px;
+  --cp-sp-3: 12px;
+  --cp-sp-4: 16px;
+  --cp-sp-5: 20px;
+  --cp-sp-6: 24px;
+  --cp-sp-7: 28px;
+  /* 动效 */
+  --cp-dur-fast: 120ms;
+  --cp-dur-base: 180ms;
+  --cp-ease: cubic-bezier(0.2, 0.8, 0.3, 1);
+  /* 字体 */
+  --cp-font-sans: system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  --cp-font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  /* 浅色=纸白微紫，文字色沿用无障碍打磨过的 AA 值 */
+  --cp-bg-0: #ffffff;
+  --cp-bg-1: #f8fafc;
+  --cp-bg-2: #f1f5f9;
+  --cp-bg-3: #e9e5f5;
+  --cp-border-1: #e2e0ee;
+  --cp-border-2: #c9c2e3;
+  --cp-accent-sakura: #d64d77;
+  --cp-accent-cyan: #0e7490;
+  --cp-accent-lavender: #6d4fc4;
+  --cp-accent-mint: #0f8a64;
+  --cp-success: #047857;
+  --cp-warn: #b45309;
+  --cp-danger: #b91c1c;
+  --cp-info: #0e7490;
+  --cp-text-1: #171326;
+  --cp-text-2: #55627a;
+  --cp-text-3: #7a869c;
+  --cp-brand: #2563eb;
+  --cp-on-brand: #ffffff;
+  --cp-link: #2563eb;
+  --cp-shadow-1: 0 1px 4px rgba(15, 23, 42, 0.08);
+  --cp-shadow-2: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --cp-glow-sakura: 0 0 0 1px rgba(214, 77, 119, 0.3), 0 4px 14px rgba(214, 77, 119, 0.12);
+  --cp-glow-soft: 0 6px 18px rgba(15, 23, 42, 0.1);
+  color-scheme: light;
+}
+
+/* 语义桥接层：全站旧变量一律指向 cp 令牌。
+   组件层继续用 --bg/--fg/... 即可换肤，主题切换全靠上面的覆盖生效。 */
+:root {
+  --bg: var(--cp-bg-0);
+  --bg-elev: var(--cp-bg-1);
+  --fg: var(--cp-text-1);
+  --fg-muted: var(--cp-text-2);
+  --border: var(--cp-border-1);
+  --fg-ok: var(--cp-success);
+  --fg-bad: var(--cp-danger);
+  --fg-warn: var(--cp-warn);
+  --fg-link: var(--cp-link);
+}
+
 @theme {
-  --color-brand: #2563eb;
+  --color-brand: var(--cp-brand);
   --color-viz-compare: #f59e0b;
   --color-viz-swap: #ef4444;
   --color-viz-sorted: #10b981;
@@ -13,42 +114,23 @@
   --color-viz-idle: #94a3b8;
   --color-viz-active: #8b5cf6;
   --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
-}
-
-:root[data-theme='light'] {
-  --bg: #ffffff;
-  --bg-elev: #f8fafc;
-  --fg: #0f172a;
-  --fg-muted: #64748b;
-  --border: #e2e8f0;
-  /* 文字级语义色：可视化令牌（--color-viz-*）是给色块用的，拿来做正文只有 2.0–2.5:1，
-     达不到 WCAG AA 的 4.5:1，所以文字另开一组（阶段 10-4 无障碍打磨） */
-  --fg-ok: #047857;
-  --fg-bad: #b91c1c;
-  --fg-warn: #b45309;
-  --fg-link: #2563eb;
-}
-:root[data-theme='dark'] {
-  --bg: #0b1120;
-  --bg-elev: #151d2e;
-  --fg: #e2e8f0;
-  --fg-muted: #94a3b8;
-  --border: #29344a;
-  --fg-ok: #34d399;
-  --fg-bad: #fca5a5;
-  --fg-warn: #fbbf24;
-  --fg-link: #60a5fa;
+  /* 圆角对齐 --cp-radius 体系（8/14/20），全站卡片/按钮统一柔化 */
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
 }
 
 @layer base {
-  html { color-scheme: light dark; }
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    font-family: var(--cp-font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  a { color: var(--fg-link); text-decoration: none; }
+  a {
+    color: var(--fg-link);
+    text-decoration: none;
+    transition: color var(--cp-dur-fast) var(--cp-ease);
+  }
   a:hover { text-decoration: underline; }
   :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
 
@@ -67,14 +149,78 @@
   }
 }
 
+/* ============================================================
+   4.3 点击反馈与过渡（任务07 §四）
+   - 按钮：hover 抬升 + active 缩放 0.97 + 按压涟漪（::after 背景尺寸动画，
+     不越出按钮盒子，无需全局 overflow:hidden，也就不产生滚动条）
+   - 卡片：.cp-card hover 抬升 + 柔和发光 + 边框点亮
+   - 列表行：lavender 8% 混色悬停
+   ============================================================ */
+button { position: relative; }
+button:not(:disabled) {
+  transition:
+    transform var(--cp-dur-fast) var(--cp-ease),
+    box-shadow var(--cp-dur-base) var(--cp-ease),
+    background-color var(--cp-dur-fast) var(--cp-ease),
+    border-color var(--cp-dur-fast) var(--cp-ease),
+    color var(--cp-dur-fast) var(--cp-ease);
+}
+button:hover:not(:disabled) { transform: translateY(-1px); }
+button:active:not(:disabled) { transform: translateY(0) scale(0.97); }
+button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, currentColor 0%, transparent 70%) no-repeat 50% 50%;
+  background-size: 40% 40%;
+}
+button:active:not(:disabled)::after { animation: cp-ripple 320ms var(--cp-ease); }
+@keyframes cp-ripple {
+  from { opacity: 0.22; background-size: 40% 40%; }
+  to { opacity: 0; background-size: 320% 320%; }
+}
+
+.cp-card {
+  transition:
+    transform var(--cp-dur-base) var(--cp-ease),
+    box-shadow var(--cp-dur-base) var(--cp-ease),
+    border-color var(--cp-dur-base) var(--cp-ease);
+}
+.cp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cp-glow-soft);
+  border-color: var(--cp-border-2);
+}
+
+tr[data-role='row'] { transition: background-color var(--cp-dur-fast) var(--cp-ease); }
+tr[data-role='row']:hover {
+  background-color: color-mix(in srgb, var(--cp-accent-lavender) 8%, transparent);
+}
+
+/* 导航/标签选中态过渡（FilterChip 是 button 已覆盖；这里补导航链接） */
+nav a {
+  transition:
+    background-color var(--cp-dur-fast) var(--cp-ease),
+    color var(--cp-dur-fast) var(--cp-ease),
+    border-color var(--cp-dur-fast) var(--cp-ease);
+}
+
 @media print {
   nav, aside, .no-print { display: none !important; }
   body { background: #fff; color: #000; }
 }
 
-/* 尊重"减少动效"偏好：播放器自动播放不受影响，仅关闭装饰性过渡 */
+/* 尊重"减少动效"偏好：一律把时长降到 0.01ms 而非彻底禁用，
+   依赖 animationend/transitionend 的逻辑不断链；播放器自动播放走 rAF 不受影响 */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 /* ============================================================
@@ -97,27 +243,28 @@
   --code-blank-focus-bg: #ffe9b0;
   --code-blank-badge-bg: #f1f5f9;
   --code-blank-badge-fg: #475569;
-  --code-blank-badge-active-bg: #2563eb;
-  --code-blank-badge-active-fg: #ffffff;
+  --code-blank-badge-active-bg: var(--cp-brand);
+  --code-blank-badge-active-fg: var(--cp-on-brand);
 }
 :root[data-theme='dark'] {
-  --code-comment: #7d8aa5;
+  --code-comment: #8b85ab;
   --code-keyword: #c792ea;
   --code-string: #a5e075;
   --code-number: #f78c6c;
   --code-type: #7fd1ff;
   --code-func: #d6b3ff;
-  --code-op: #a8b3c7;
+  --code-op: #b8b2d1;
   --code-preproc: #ffcb6b;
-  --code-line-active: #1b2437;
-  --code-selection: #2b4a7a;
+  --code-line-active: #1f1b3a;
+  --code-selection: #38316b;
   --code-blank-bg: #3a2f14;
   --code-blank-border: #f59e0b;
   --code-blank-focus-bg: #56431a;
-  --code-blank-badge-bg: #24304a;
-  --code-blank-badge-fg: #b9c6dd;
-  --code-blank-badge-active-bg: #1d4ed8; /* 阶段D 无障碍修正：原 #3b82f6 配白字仅 3.68:1，不足 WCAG AA 4.5:1 */
-  --code-blank-badge-active-fg: #ffffff;
+  --code-blank-badge-bg: #24204a;
+  --code-blank-badge-fg: #b8b2d1;
+  /* 品牌底 + on-brand 字：深色主题樱粉底深紫字 ≈9:1，浅色主题蓝底白字 ≈5.2:1，均过 AA */
+  --code-blank-badge-active-bg: var(--cp-brand);
+  --code-blank-badge-active-fg: var(--cp-on-brand);
 }
 
 .cm-host { display: block; width: 100%; }

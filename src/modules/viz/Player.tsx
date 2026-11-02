@@ -94,7 +94,7 @@ export interface PlayerProps {
 
 const bar: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const btn: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)' }
-const btnActive: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: '#fff' }
+const btnActive: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }
 
 function TButton(props: { label: string; onClick: () => void; disabled?: boolean; title?: string }) {
   return (

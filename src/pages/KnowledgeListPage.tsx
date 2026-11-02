@@ -435,7 +435,7 @@ function LinkChip({
       className="rounded-full border px-2.5 py-1 text-xs"
       style={
         active
-          ? { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: '#fff' }
+          ? { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }
           : { ...control }
       }
     >

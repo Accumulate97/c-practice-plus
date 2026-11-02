@@ -18,6 +18,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { MONO_FONT } from '../../../components/common/CodeEditor'
 import { highlightC } from '../../../components/common/CodeBlock'
+import Mascot, { type MascotMood } from '../../../components/common/Mascot'
 
 export const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 export const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -131,23 +132,34 @@ export function StemBlock({ stem, dedupeAgainst }: { stem: string; dedupeAgainst
 /**
  * 结论横幅。概念题即时判定，所以横幅出现的时机就是判分完成的时机，
  * 这里不做 loading 态（没有任何网络请求可等）。
+ *
+ * 任务07 §四·4.3/4.4：横幅出现时 fadeInUp（280ms），并配吉祥物表情
+ * （good→happy / bad→sad / warn→think）；reduced-motion 由 animate-subset
+ * 统一降到 1ms，不影响依赖动画结束的逻辑。
  */
+const MOOD: Record<Tone, MascotMood> = { good: 'happy', bad: 'sad', warn: 'think' }
+
 export function VerdictBanner({
   tone, title, detail, children,
 }: { tone: Tone; title: string; detail?: string; children?: ReactNode }) {
   return (
     <section
-      className="rounded-xl border p-4"
-      style={{ ...panel, borderColor: TONE[tone] }}
+      className="animate__animated animate__fadeInUp rounded-xl border p-4"
+      style={{ ...panel, borderColor: TONE[tone], '--animate-duration': '280ms' } as CSSProperties}
       data-role="verdict"
       role="status"
       aria-live="polite"
       data-tone={tone}
     >
-      <p className="text-sm font-semibold" style={{ color: TONE[tone] }}>{title}</p>
-      {detail !== undefined && detail.length > 0 && (
-        <p className="mt-1 text-sm" style={muted}>{detail}</p>
-      )}
+      <div className="flex items-start gap-3">
+        <Mascot mood={MOOD[tone]} size={44} className="mt-0.5 shrink-0" />
+        <div className="min-w-0">
+          <p className="text-sm font-semibold" style={{ color: TONE[tone] }}>{title}</p>
+          {detail !== undefined && detail.length > 0 && (
+            <p className="mt-1 text-sm" style={muted}>{detail}</p>
+          )}
+        </div>
+      </div>
       {children}
     </section>
   )

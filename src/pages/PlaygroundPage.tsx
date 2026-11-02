@@ -34,7 +34,7 @@ const PLAYGROUND_KEY = `${STORAGE_PREFIX}:playground:v1`
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
 const btn: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)' }
-const btnPrimary: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: '#fff' }
+const btnPrimary: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }
 
 const DEFAULT_CODE = `#include <stdio.h>
 

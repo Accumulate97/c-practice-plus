@@ -172,7 +172,7 @@ export function ProgrammingRenderer({ problem }: Props) {
             onClick={() => void submit()}
             disabled={running || cases.length === 0}
             className="rounded-lg px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-50"
-            style={{ background: 'var(--color-brand)', color: '#fff' }}
+            style={{ background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }}
           >
             {running ? '判分中…' : `提交判分（${cases.length} 组）`}
           </button>

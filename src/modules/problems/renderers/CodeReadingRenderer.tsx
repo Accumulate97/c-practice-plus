@@ -220,7 +220,7 @@ export function CodeReadingRenderer({ problem }: Props) {
                 type="button"
                 onClick={submit}
                 className="rounded-lg px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-50"
-                style={{ background: 'var(--color-brand)', color: '#fff' }}
+                style={{ background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }}
               >
                 提交判分
               </button>

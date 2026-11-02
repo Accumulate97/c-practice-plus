@@ -25,7 +25,7 @@ import type { VizDemo } from '../modules/viz/types'
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
 const btn: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--fg)' }
-const btnActive: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: '#fff' }
+const btnActive: CSSProperties = { borderColor: 'var(--color-brand)', background: 'var(--color-brand)', color: 'var(--cp-on-brand)' }
 
 const MIN_PANELS = 2
 const MAX_PANELS = 4

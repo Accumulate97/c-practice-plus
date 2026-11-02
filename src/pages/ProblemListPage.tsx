@@ -21,6 +21,7 @@ import { pickDaily, pickRandom } from '../modules/problems/random'
 import { loadIndex } from '../modules/problems/data/loader'
 import type { ProblemIndex, ProblemIndexEntry } from '../modules/problems/data/loader'
 import { writeNavContext } from '../modules/problems/nav-context'
+import Mascot from '../components/common/Mascot'
 import { ContinueLast } from '../modules/problems/ContinueLast'
 import { statusOf, useProgress } from '../modules/problems/progress/store'
 import type { ListStatus } from '../modules/problems/progress/store'
@@ -510,7 +511,10 @@ function Ready({ index }: { index: ProblemIndex }) {
       </p>
 
       {sorted.length === 0 ? (
-        <section data-role="empty" className="rounded-xl border p-10 text-center" style={panel}>
+        <section data-role="empty" className="animate__animated animate__fadeIn rounded-xl border p-10 text-center" style={panel}>
+          <div className="mb-3 flex justify-center">
+            <Mascot mood="think" size={72} />
+          </div>
           <p className="text-base font-semibold">无匹配题目</p>
           <p className="mt-2 text-sm" style={muted}>
             当前筛选条件（{[
@@ -647,7 +651,7 @@ function ProblemRow({ problem, status, selfAssessed, onOpen, onTag }: { problem:
                 data-tag={t}
                 onClick={() => onTag(t)}
                 title={`按标签「${t}」筛选`}
-                className="rounded-full border px-1.5 text-[10px] leading-4"
+                className="inline-flex min-h-[24px] items-center rounded-full border px-1.5 text-[10px] leading-4"
                 style={{ borderColor: 'var(--border)', color: 'var(--fg-muted)', cursor: 'pointer', background: 'transparent' }}
               >
                 #{t}

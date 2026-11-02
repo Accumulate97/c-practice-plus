@@ -23,6 +23,7 @@ import type { SearchTotals } from '../modules/search/totals'
 import { statusOf, useProgress } from '../modules/problems/progress/store'
 import { inWrongBook } from '../modules/problems/progress/wrongbook'
 import { ContinueLast } from '../modules/problems/ContinueLast'
+import Mascot from '../components/common/Mascot'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -119,11 +120,21 @@ export function HomePage() {
         className="rounded-2xl border p-6 sm:p-8"
         style={{ borderColor: 'var(--border)', background: 'linear-gradient(135deg, var(--bg-elev) 0%, var(--bg) 70%)' }}
       >
-        <h1 className="m-0 text-3xl font-semibold sm:text-4xl">{APP_NAME}</h1>
-        <p className="m-0 mt-2 max-w-2xl text-sm sm:text-base" style={muted}>
-          不是单纯的刷题站，而是「学 — 懂 — 练」三板块联动的 C 语言与数据结构学习平台：
-          知识卡片讲清概念，分步演示让你看见它怎么跑，题目立刻检验你会不会用，三者双向跳转。
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="m-0 text-3xl font-semibold sm:text-4xl">{APP_NAME}</h1>
+            <p className="m-0 mt-2 max-w-2xl text-sm sm:text-base" style={muted}>
+              不是单纯的刷题站，而是「学 — 懂 — 练」三板块联动的 C 语言与数据结构学习平台：
+              知识卡片讲清概念，分步演示让你看见它怎么跑，题目立刻检验你会不会用，三者双向跳转。
+            </p>
+          </div>
+          {/* 站点原创吉祥物「C 灵」（任务07 §四·4.4），纯装饰 */}
+          <Mascot
+            mood="idle"
+            size={112}
+            className="h-16 w-16 shrink-0 animate__animated animate__fadeIn sm:h-28 sm:w-28"
+          />
+        </div>
 
         <form role="search" onSubmit={onSearch} className="mt-5 flex flex-wrap gap-2" data-role="home-search-form">
           <label htmlFor="home-search" className="sr-only">全站搜索</label>
@@ -166,7 +177,7 @@ export function HomePage() {
           <Link
             key={s.path}
             to={s.path}
-            className="rounded-xl border p-5 transition hover:-translate-y-0.5"
+            className="cp-card rounded-xl border p-5"
             style={{ ...panel, borderColor: 'var(--border)', textDecoration: 'none', color: 'inherit' }}
           >
             <div className="flex items-start justify-between gap-2">
