@@ -221,7 +221,14 @@ function LevelRow({ level, state, open, onToggle }: { level: PathLevel; state: L
   return (
     <li id={detailId} className="rounded-lg border p-3" style={{ ...panel, borderColor: state === 'current' ? 'var(--fg-link)' : 'var(--border)' }} data-role="path-level" data-state={state} data-key={level.key}>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-lg" aria-hidden="true">{meta.icon}</span>
+        {/* 章节图标小徽章化（任务07 §4.4）：圆形徽章底 + 双层边框令牌，随主题换肤 */}
+        <span
+          aria-hidden="true"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-base"
+          style={{ borderColor: 'var(--cp-border-2)', background: 'var(--cp-bg-2)', boxShadow: 'var(--cp-shadow-1)' }}
+        >
+          {meta.icon}
+        </span>
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-semibold">
             第 {level.order} 关 · {level.chapter}

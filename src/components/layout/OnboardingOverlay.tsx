@@ -20,6 +20,7 @@ import { Link, useLocation } from 'react-router-dom'
 import type { CSSProperties } from 'react'
 import { APP_NAME, STORAGE_PREFIX } from '../../app/config'
 import { useProgress } from '../../modules/problems/progress/store'
+import Mascot from '../common/Mascot'
 
 const ONBOARDED_KEY = `${STORAGE_PREFIX}:onboarded:v1`
 
@@ -124,10 +125,11 @@ export function OnboardingOverlay() {
       role="dialog"
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-desc"
-      className="fixed bottom-3 right-3 z-40 w-[min(23rem,calc(100vw-1.5rem))] rounded-xl border p-4 shadow-lg"
-      style={{ borderColor: 'var(--border)', background: 'var(--bg-elev)', color: 'var(--fg)' }}
+      className="animate__animated animate__fadeInUp fixed bottom-3 right-3 z-40 w-[min(23rem,calc(100vw-1.5rem))] rounded-xl border p-4 shadow-lg"
+      style={{ borderColor: 'var(--border)', background: 'var(--bg-elev)', color: 'var(--fg)', ['--animate-duration' as string]: '240ms' }}
     >
       <div className="flex items-start gap-2">
+        <Mascot mood="happy" size={40} className="mt-0.5 shrink-0" />
         <h2 id="onboarding-title" className="flex-1 text-base font-semibold">
           👋 第一次来？
         </h2>
