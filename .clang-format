@@ -1,0 +1,25 @@
+# 全库统一 C 代码排版（任务07 阶段2 · 提示词§一）。
+# 消费方：scripts/format-code.mjs（clang-format --style=file --assume-filename=x.c）与人工格式化。
+# 口径：缩进 4 空格、运算符两侧空格、Attach 花括号（for (...) {）、每行 ≤100 字符、
+#       字符串字面量绝不折断（判分输出的 printf 格式串是考点本体）、include 不重排（顺序可能承载语义）。
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+SortIncludes: Never
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+BreakStringLiterals: false
+ReflowComments: true
+MaxEmptyLinesToKeep: 2
+PointerAlignment: Right
+AlignTrailingComments: true
+IndentCaseLabels: false
+SpaceBeforeParens: ControlStatements
+BinPackArguments: true
+BinPackParameters: true
