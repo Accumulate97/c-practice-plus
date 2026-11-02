@@ -20,8 +20,8 @@
       "stem": "输入一个整数 n，用位运算判断它是奇数还是偶数，输出 \"odd\" 或 \"even\"。要求：不能使用 % 取模运算，必须用按位与 (&) 判断最末位。",
       "input_format": "一个整数 n（-2147483648 ≤ n ≤ 2147483647）",
       "output_format": "若 n 为奇数输出 odd，否则输出 even",
-      "code_starter": "#include <stdio.h>\nint main(void){\n    int n;\n    scanf(\"%d\", &n);\n    /* 用 n 与 1 做按位与，判断最末位是否为 1 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    printf(\"%s\\n\", ((unsigned)n & 1u) ? \"odd\" : \"even\");\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int n;\n    scanf(\"%d\", &n);\n    /* 用 n 与 1 做按位与，判断最末位是否为 1 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1)\n        return 1;\n    printf(\"%s\\n\", ((unsigned)n & 1u) ? \"odd\" : \"even\");\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -88,8 +88,8 @@
       "stem": "输入两个整数 a 和 b，用异或运算（^）交换它们的值并输出。要求：不使用中间临时变量，只允许使用位运算完成交换。",
       "input_format": "两个整数 a 和 b（-2147483648 ≤ a,b ≤ 2147483647）",
       "output_format": "交换后的 a 和 b，空格分隔",
-      "code_starter": "#include <stdio.h>\nint main(void){\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    /* 用三次异或交换 a 与 b */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n    int a, b;\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    unsigned ua = (unsigned)a, ub = (unsigned)b;\n    ua ^= ub;\n    ub ^= ua;\n    ua ^= ub;\n    a = (int)ua;\n    b = (int)ub;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    /* 用三次异或交换 a 与 b */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    int a, b;\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    unsigned ua = (unsigned)a, ub = (unsigned)b;\n    ua ^= ub;\n    ub ^= ua;\n    ua ^= ub;\n    a = (int)ua;\n    b = (int)ub;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 5",
@@ -156,8 +156,8 @@
       "stem": "输入一个无符号整数 n，用位运算统计其二进制表示中 1 的个数（即 popcount）。要求：使用 n &= n-1 这种\"清除最低位的 1\"的技巧，不允许逐位右移数。",
       "input_format": "一个无符号整数 n（0 ≤ n ≤ 4294967295）",
       "output_format": "n 的二进制中 1 的个数",
-      "code_starter": "#include <stdio.h>\nint main(void){\n    unsigned n;\n    scanf(\"%u\", &n);\n    int count = 0;\n    /* 反复执行 n &= n-1 并计数 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n    unsigned n;\n    if (scanf(\"%u\", &n) != 1)\n        return 1;\n    int count = 0;\n    while (n) {\n        n &= n - 1;\n        count++;\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    unsigned n;\n    scanf(\"%u\", &n);\n    int count = 0;\n    /* 反复执行 n &= n-1 并计数 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    unsigned n;\n    if (scanf(\"%u\", &n) != 1)\n        return 1;\n    int count = 0;\n    while (n) {\n        n &= n - 1;\n        count++;\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0",
@@ -224,8 +224,8 @@
       "stem": "输入一个无符号整数 n 和位号 k（0 ≤ k ≤ 31），分别输出：把 n 的第 k 位置 1 的结果、把 n 的第 k 位清 0 的结果，以及 n 第 k 位的当前值（0 或 1）。必须用位运算掩码实现。",
       "input_format": "两个数：无符号整数 n 和位号 k，空格分隔",
       "output_format": "三个数，空格分隔：置位后的值、清位后的值、第 k 位原值",
-      "code_starter": "#include <stdio.h>\nint main(void){\n    unsigned n;\n    int k;\n    scanf(\"%u %d\", &n, &k);\n    /* 用 1u<<k 构造掩码 */\n    return 0;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n    unsigned n;\n    int k;\n    if (scanf(\"%u %d\", &n, &k) != 2)\n        return 1;\n    unsigned set   = n | (1u << k);\n    unsigned clear = n & ~(1u << k);\n    int bit = (int)((n >> k) & 1u);\n    printf(\"%u %u %d\\n\", set, clear, bit);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\nint main(void) {\n    unsigned n;\n    int k;\n    scanf(\"%u %d\", &n, &k);\n    /* 用 1u<<k 构造掩码 */\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    unsigned n;\n    int k;\n    if (scanf(\"%u %d\", &n, &k) != 2)\n        return 1;\n    unsigned set = n | (1u << k);\n    unsigned clear = n & ~(1u << k);\n    int bit = (int)((n >> k) & 1u);\n    printf(\"%u %u %d\\n\", set, clear, bit);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "0 0",
@@ -293,7 +293,7 @@
       "input_format": "三个整数 base、exp、mod（0 ≤ base < 2^64，0 ≤ exp < 2^64，mod > 0），空格分隔",
       "output_format": "base^exp mod mod 的值",
       "code_starter": "#include <stdio.h>\nint main(void) {\n    unsigned long long base, exp, mod, result = 1;\n    scanf(\"%llu %llu %llu\", &base, &exp, &mod);\n    /* 快速幂：base %= mod; while(exp){ if(exp&1)...; base...; exp>>=1; } */\n    return 1;\n}",
-      "reference": "#include <stdio.h>\nint main(void){\n    unsigned long long base, exp, mod, result = 1;\n    if (scanf(\"%llu %llu %llu\", &base, &exp, &mod) != 3)\n        return 1;\n    if (mod == 0)\n        return 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1)\n            result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    result %= mod;\n    printf(\"%llu\\n\", result);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\nint main(void) {\n    unsigned long long base, exp, mod, result = 1;\n    if (scanf(\"%llu %llu %llu\", &base, &exp, &mod) != 3)\n        return 1;\n    if (mod == 0)\n        return 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1)\n            result = (result * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    result %= mod;\n    printf(\"%llu\\n\", result);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "2 10 1000",
@@ -356,7 +356,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nunsigned moveright(unsigned value, int n);\nunsigned moveleft(unsigned value, int n);\nint main(void)\n{ unsigned a;\n  int n;\n  scanf(\"%o\", &a);\n  scanf(\"%d\", &n);\n  a &= 0xFFFFu;                     /* 原书按 16 位字长处理 */\n  if (/*__BLANK_1__*/)\n    { printf(\"%o\\n\", moveright(a, n)); }\n  else\n    { /*__BLANK_2__*/;\n      printf(\"%o\\n\", moveleft(a, n));\n    }\n  return 0;\n}\nunsigned moveright(unsigned value, int n)\n{ unsigned z;\n  value &= 0xFFFFu;\n  z = (value >> n) | (value << (16 - n));\n  return z & 0xFFFFu;\n}\nunsigned moveleft(unsigned value, int n)\n{ unsigned z;\n  value &= 0xFFFFu;\n  /*__BLANK_3__*/;\n  return z & 0xFFFFu;\n}",
+      "code": "#include <stdio.h>\nunsigned moveright(unsigned value, int n);\nunsigned moveleft(unsigned value, int n);\nint main(void) {\n    unsigned a;\n    int n;\n    scanf(\"%o\", &a);\n    scanf(\"%d\", &n);\n    a &= 0xFFFFu; /* 原书按 16 位字长处理 */\n    if (/*__BLANK_1__*/) {\n        printf(\"%o\\n\", moveright(a, n));\n    } else { /*__BLANK_2__*/\n        ;\n        printf(\"%o\\n\", moveleft(a, n));\n    }\n    return 0;\n}\nunsigned moveright(unsigned value, int n) {\n    unsigned z;\n    value &= 0xFFFFu;\n    z = (value >> n) | (value << (16 - n));\n    return z & 0xFFFFu;\n}\nunsigned moveleft(unsigned value, int n) {\n    unsigned z;\n    value &= 0xFFFFu;\n    /*__BLANK_3__*/;\n    return z & 0xFFFFu;\n}",
       "blanks": [
         {
           "index": 1,
@@ -384,7 +384,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nunsigned moveright(unsigned value, int n);\nunsigned moveleft(unsigned value, int n);\nint main(void)\n{ unsigned a;\n  int n;\n  scanf(\"%o\", &a);\n  scanf(\"%d\", &n);\n  a &= 0xFFFFu;                     /* 原书按 16 位字长处理 */\n  if ( (n>0) )\n    { printf(\"%o\\n\", moveright(a, n)); }\n  else\n    {  n=-n ;\n      printf(\"%o\\n\", moveleft(a, n));\n    }\n  return 0;\n}\nunsigned moveright(unsigned value, int n)\n{ unsigned z;\n  value &= 0xFFFFu;\n  z = (value >> n) | (value << (16 - n));\n  return z & 0xFFFFu;\n}\nunsigned moveleft(unsigned value, int n)\n{ unsigned z;\n  value &= 0xFFFFu;\n   z=(value<<n)|(value>>(16-n)) ;\n  return z & 0xFFFFu;\n}",
+      "solution": "#include <stdio.h>\nunsigned moveright(unsigned value, int n);\nunsigned moveleft(unsigned value, int n);\nint main(void) {\n    unsigned a;\n    int n;\n    scanf(\"%o\", &a);\n    scanf(\"%d\", &n);\n    a &= 0xFFFFu; /* 原书按 16 位字长处理 */\n    if ((n > 0)) {\n        printf(\"%o\\n\", moveright(a, n));\n    } else {\n        n = -n;\n        printf(\"%o\\n\", moveleft(a, n));\n    }\n    return 0;\n}\nunsigned moveright(unsigned value, int n) {\n    unsigned z;\n    value &= 0xFFFFu;\n    z = (value >> n) | (value << (16 - n));\n    return z & 0xFFFFu;\n}\nunsigned moveleft(unsigned value, int n) {\n    unsigned z;\n    value &= 0xFFFFu;\n    z = (value << n) | (value >> (16 - n));\n    return z & 0xFFFFu;\n}",
       "testCases": [
         {
           "stdin": "175 3\n",
@@ -417,7 +417,7 @@
       "generated_at": "2026-09-08",
       "type": "code_completion",
       "bloom": "apply",
-      "code": "#include <stdio.h>\nint wordlength(void);\nint main(void)\n{ printf(\"%d\\n\", wordlength());\n  return 0;\n}\nint wordlength(void)\n{ int i;\n  unsigned int v = /*__BLANK_1__*/;    /* 将 int 型单元各二进制位置 1 */\n  for (i = 1; (v = v >> 1) > 0; i++);  /* 计算 int 单元中的位数 */\n  return (/*__BLANK_2__*/);\n}",
+      "code": "#include <stdio.h>\nint wordlength(void);\nint main(void) {\n    printf(\"%d\\n\", wordlength());\n    return 0;\n}\nint wordlength(void) {\n    int i;\n    unsigned int v = /*__BLANK_1__*/; /* 将 int 型单元各二进制位置 1 */\n    for (i = 1; (v = v >> 1) > 0; i++)\n        ; /* 计算 int 单元中的位数 */\n    return (/*__BLANK_2__*/);\n}",
       "blanks": [
         {
           "index": 1,
@@ -436,7 +436,7 @@
           ]
         }
       ],
-      "solution": "#include <stdio.h>\nint wordlength(void);\nint main(void)\n{ printf(\"%d\\n\", wordlength());\n  return 0;\n}\nint wordlength(void)\n{ int i;\n  unsigned int v =  ~0 ;    /* 将 int 型单元各二进制位置 1 */\n  for (i = 1; (v = v >> 1) > 0; i++);  /* 计算 int 单元中的位数 */\n  return ( i );\n}",
+      "solution": "#include <stdio.h>\nint wordlength(void);\nint main(void) {\n    printf(\"%d\\n\", wordlength());\n    return 0;\n}\nint wordlength(void) {\n    int i;\n    unsigned int v = ~0; /* 将 int 型单元各二进制位置 1 */\n    for (i = 1; (v = v >> 1) > 0; i++)\n        ; /* 计算 int 单元中的位数 */\n    return (i);\n}",
       "testCases": [
         {
           "stdin": "",
@@ -455,7 +455,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned setBit(unsigned x, int k)\n{\n    return /*__BLANK_1__*/;\n}\n\nunsigned clearBit(unsigned x, int k)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), /*__BLANK_3__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned setBit(unsigned x, int k) {\n    return /*__BLANK_1__*/;\n}\n\nunsigned clearBit(unsigned x, int k) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), /*__BLANK_3__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -470,8 +470,8 @@
           "answer": "x ^ (1u << k)"
         }
       ],
-      "code": "#include <stdio.h>\n\nunsigned setBit(unsigned x, int k)\n{\n    return /*__BLANK_1__*/;\n}\n\nunsigned clearBit(unsigned x, int k)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), /*__BLANK_3__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nunsigned setBit(unsigned x, int k)\n{\n    return x | (1u << k);\n}\n\nunsigned clearBit(unsigned x, int k)\n{\n    return x & ~(1u << k);\n}\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), x ^ (1u << k));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nunsigned setBit(unsigned x, int k) {\n    return /*__BLANK_1__*/;\n}\n\nunsigned clearBit(unsigned x, int k) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), /*__BLANK_3__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nunsigned setBit(unsigned x, int k) {\n    return x | (1u << k);\n}\n\nunsigned clearBit(unsigned x, int k) {\n    return x & ~(1u << k);\n}\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u %u %u\\n\", setBit(x, k), clearBit(x, k), x ^ (1u << k));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "13 2\n",
@@ -508,7 +508,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (/*__BLANK_1__*/)\n    {\n        x = /*__BLANK_2__*/;\n        c++;\n    }\n    return /*__BLANK_3__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (/*__BLANK_1__*/) {\n        x = /*__BLANK_2__*/;\n        c++;\n    }\n    return /*__BLANK_3__*/;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -523,8 +523,8 @@
           "answer": "c"
         }
       ],
-      "code": "#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (/*__BLANK_1__*/)\n    {\n        x = /*__BLANK_2__*/;\n        c++;\n    }\n    return /*__BLANK_3__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (x != 0)\n    {\n        x = x & (x - 1);\n        c++;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (/*__BLANK_1__*/) {\n        x = /*__BLANK_2__*/;\n        c++;\n    }\n    return /*__BLANK_3__*/;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (x != 0) {\n        x = x & (x - 1);\n        c++;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "255\n",
@@ -560,7 +560,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint isPow2(unsigned x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, /*__BLANK_2__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint isPow2(unsigned x) {\n    return /*__BLANK_1__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, /*__BLANK_2__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -571,8 +571,8 @@
           "answer": "isPow2(x)"
         }
       ],
-      "code": "#include <stdio.h>\n\nint isPow2(unsigned x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, /*__BLANK_2__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint isPow2(unsigned x)\n{\n    return x != 0 && (x & (x - 1)) == 0;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, isPow2(x));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint isPow2(unsigned x) {\n    return /*__BLANK_1__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, /*__BLANK_2__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint isPow2(unsigned x) {\n    return x != 0 && (x & (x - 1)) == 0;\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    printf(\"%u %u %d\\n\", x << n, x >> n, isPow2(x));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "16 2\n",
@@ -608,7 +608,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned lowMask(int n)\n{\n    return /*__BLANK_1__*/;\n}\n\nunsigned highMask(int n)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", /*__BLANK_3__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned lowMask(int n) {\n    return /*__BLANK_1__*/;\n}\n\nunsigned highMask(int n) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", /*__BLANK_3__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -626,8 +626,8 @@
           "answer": "x & lowMask(n)"
         }
       ],
-      "code": "#include <stdio.h>\n\nunsigned lowMask(int n)\n{\n    return /*__BLANK_1__*/;\n}\n\nunsigned highMask(int n)\n{\n    return /*__BLANK_2__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", /*__BLANK_3__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nunsigned lowMask(int n)\n{\n    return ~(~0u << n);\n}\n\nunsigned highMask(int n)\n{\n    return ~0u << (32 - n);\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", x & lowMask(n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nunsigned lowMask(int n) {\n    return /*__BLANK_1__*/;\n}\n\nunsigned highMask(int n) {\n    return /*__BLANK_2__*/;\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", /*__BLANK_3__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nunsigned lowMask(int n) {\n    return ~(~0u << n);\n}\n\nunsigned highMask(int n) {\n    return ~0u << (32 - n);\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%X %X\\n\", lowMask(n), highMask(n));\n    printf(\"%u\\n\", x & lowMask(n));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4660 4\n",
@@ -663,7 +663,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = /*__BLANK_1__*/;\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = /*__BLANK_1__*/;\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -677,8 +677,8 @@
           "answer": "r"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = /*__BLANK_1__*/;\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = r ^ a[i];\n    printf(\"%d\\n\", r);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = /*__BLANK_1__*/;\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int a[100], n, i, r = 0;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n        if (scanf(\"%d\", &a[i]) != 1)\n            return 1;\n    for (i = 0; i < n; i++)\n        r = r ^ a[i];\n    printf(\"%d\\n\", r);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "5\n1 2 3 2 1\n",
@@ -714,7 +714,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if (/*__BLANK_1__*/)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if (/*__BLANK_1__*/)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -725,8 +725,8 @@
           "answer": "perm & ~need"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if (/*__BLANK_1__*/)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if ((perm & need) == need)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", perm & ~need);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if (/*__BLANK_1__*/)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", /*__BLANK_2__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    int perm, need;\n\n    if (scanf(\"%d %d\", &perm, &need) != 2)\n        return 1;\n    if ((perm & need) == need)\n        printf(\"ALLOW\\n\");\n    else\n        printf(\"DENY\\n\");\n    printf(\"%d\\n\", perm & ~need);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "6 6\n",
@@ -762,7 +762,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++)\n    {\n        s = s + (int)(/*__BLANK_1__*/ & 0xFFu);\n        x = /*__BLANK_2__*/;\n    }\n    printf(\"%d\\n\", /*__BLANK_3__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++) {\n        s = s + (int)(/*__BLANK_1__*/ &0xFFu);\n        x = /*__BLANK_2__*/;\n    }\n    printf(\"%d\\n\", /*__BLANK_3__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -777,8 +777,8 @@
           "answer": "s"
         }
       ],
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++)\n    {\n        s = s + (int)(/*__BLANK_1__*/ & 0xFFu);\n        x = /*__BLANK_2__*/;\n    }\n    printf(\"%d\\n\", /*__BLANK_3__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++)\n    {\n        s = s + (int)(x & 0xFFu);\n        x = x >> 8;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++) {\n        s = s + (int)(/*__BLANK_1__*/ &0xFFu);\n        x = /*__BLANK_2__*/;\n    }\n    printf(\"%d\\n\", /*__BLANK_3__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int i, s = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    for (i = 0; i < 4; i++) {\n        s = s + (int)(x & 0xFFu);\n        x = x >> 8;\n    }\n    printf(\"%d\\n\", s);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4660\n",
@@ -814,7 +814,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint myabs(int x)\n{\n    int m = /*__BLANK_1__*/;\n\n    return (/*__BLANK_2__*/) - m;\n}\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint myabs(int x) {\n    int m = /*__BLANK_1__*/;\n\n    return (/*__BLANK_2__*/) - m;\n}\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -825,8 +825,8 @@
           "answer": "x ^ m"
         }
       ],
-      "code": "#include <stdio.h>\n\nint myabs(int x)\n{\n    int m = /*__BLANK_1__*/;\n\n    return (/*__BLANK_2__*/) - m;\n}\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint myabs(int x)\n{\n    int m = x >> 31;\n\n    return (x ^ m) - m;\n}\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint myabs(int x) {\n    int m = /*__BLANK_1__*/;\n\n    return (/*__BLANK_2__*/) - m;\n}\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint myabs(int x) {\n    int m = x >> 31;\n\n    return (x ^ m) - m;\n}\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", myabs(x));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "-5\n",
@@ -862,7 +862,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint card(unsigned s)\n{\n    int c = 0;\n\n    while (s != 0)\n    {\n        s = s & (s - 1);\n        /*__BLANK_1__*/;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(/*__BLANK_2__*/), card(a & b), card(/*__BLANK_3__*/));\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nint card(unsigned s) {\n    int c = 0;\n\n    while (s != 0) {\n        s = s & (s - 1);\n        /*__BLANK_1__*/;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(/*__BLANK_2__*/), card(a & b), card(/*__BLANK_3__*/));\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -880,8 +880,8 @@
           "answer": "a | b"
         }
       ],
-      "code": "#include <stdio.h>\n\nint card(unsigned s)\n{\n    int c = 0;\n\n    while (s != 0)\n    {\n        s = s & (s - 1);\n        /*__BLANK_1__*/;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(/*__BLANK_2__*/), card(a & b), card(/*__BLANK_3__*/));\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nint card(unsigned s)\n{\n    int c = 0;\n\n    while (s != 0)\n    {\n        s = s & (s - 1);\n        c++;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(a), card(a & b), card(a | b));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint card(unsigned s) {\n    int c = 0;\n\n    while (s != 0) {\n        s = s & (s - 1);\n        /*__BLANK_1__*/;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(/*__BLANK_2__*/), card(a & b), card(/*__BLANK_3__*/));\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nint card(unsigned s) {\n    int c = 0;\n\n    while (s != 0) {\n        s = s & (s - 1);\n        c++;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned a, b;\n\n    if (scanf(\"%u %u\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d %d\\n\", card(a), card(a & b), card(a | b));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "12 10\n",
@@ -918,7 +918,7 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned swapBytes(unsigned x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), /*__BLANK_2__*/);\n    return 0;\n}\n```",
+      "stem": "下列程序中有若干空白（/*__BLANK_n__*/），请填入恰当内容，使程序功能完整。\n```\n#include <stdio.h>\n\nunsigned swapBytes(unsigned x) {\n    return /*__BLANK_1__*/;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), /*__BLANK_2__*/);\n    return 0;\n}\n```",
       "blanks": [
         {
           "index": 1,
@@ -929,8 +929,8 @@
           "answer": "swapBytes(x)"
         }
       ],
-      "code": "#include <stdio.h>\n\nunsigned swapBytes(unsigned x)\n{\n    return /*__BLANK_1__*/;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), /*__BLANK_2__*/);\n    return 0;\n}",
-      "solution": "#include <stdio.h>\n\nunsigned swapBytes(unsigned x)\n{\n    return ((x & 0xFFu) << 8) | ((x >> 8) & 0xFFu);\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), swapBytes(x));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nunsigned swapBytes(unsigned x) {\n    return /*__BLANK_1__*/;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), /*__BLANK_2__*/);\n    return 0;\n}",
+      "solution": "#include <stdio.h>\n\nunsigned swapBytes(unsigned x) {\n    return ((x & 0xFFu) << 8) | ((x >> 8) & 0xFFu);\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %X\\n\", swapBytes(x), swapBytes(x));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "4660\n",
@@ -970,7 +970,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nint a=1,b=2;\nif (a&b) printf(\"* * *\\n\");\nelse printf(\"$ $ $\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a = 1, b = 2;\n    if (a & b)\n        printf(\"* * *\\n\");\n    else\n        printf(\"$ $ $\\n\");\n    return 0;\n}",
       "answer": "$ $ $",
       "id": "c-ch11-cr-001",
       "verified": true
@@ -987,7 +987,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nint a=-1;\na=a|0377;\nprintf(\"%d,%o\\n\",a,a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int a = -1;\n    a = a | 0377;\n    printf(\"%d,%o\\n\", a, a);\n    return 0;\n}",
       "answer": "-1,37777777777",
       "id": "c-ch11-cr-002",
       "verified": true
@@ -1004,7 +1004,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned char a,b;\n  a=5 | 4;\n  b=5 & 4;\n  printf(\"%d,%d\\n\",a,b);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned char a, b;\n    a = 5 | 4;\n    b = 5 & 4;\n    printf(\"%d,%d\\n\", a, b);\n    return 0;\n}",
       "answer": "5,4",
       "id": "c-ch11-cr-003",
       "verified": true
@@ -1021,7 +1021,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned char x,y,z;\n  x=0x3; y=x|0x8; z=x<<1;\n  printf(\"%d,%d\\n\",y,z);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned char x, y, z;\n    x = 0x3;\n    y = x | 0x8;\n    z = x << 1;\n    printf(\"%d,%d\\n\", y, z);\n    return 0;\n}",
       "answer": "11,6",
       "id": "c-ch11-cr-004",
       "verified": true
@@ -1038,7 +1038,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ int a=4,b=3,c=1;\n  printf(\"%d\\n\",a/b & ~c);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    int a = 4, b = 3, c = 1;\n    printf(\"%d\\n\", a / b & ~c);\n    return 0;\n}",
       "answer": "0",
       "id": "c-ch11-cr-005",
       "verified": true
@@ -1055,7 +1055,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nint m=20,n=025;\nif (m^n) printf(\"mmm\\n\");\nelse printf(\"nnn\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int m = 20, n = 025;\n    if (m ^ n)\n        printf(\"mmm\\n\");\n    else\n        printf(\"nnn\\n\");\n    return 0;\n}",
       "answer": "mmm",
       "id": "c-ch11-cr-006",
       "verified": true
@@ -1072,7 +1072,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nint x=1;\nprintf(\"%d\\n\", ~x );\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    int x = 1;\n    printf(\"%d\\n\", ~x);\n    return 0;\n}",
       "answer": "-2",
       "id": "c-ch11-cr-007",
       "verified": true
@@ -1089,7 +1089,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned a,b;\n  a=0x9a;\n  b=~a;\n  printf(\"a:%x\\nb:%x\\n\",a,b);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned a, b;\n    a = 0x9a;\n    b = ~a;\n    printf(\"a:%x\\nb:%x\\n\", a, b);\n    return 0;\n}",
       "answer": "a:9a\nb:ffffff65",
       "id": "c-ch11-cr-008",
       "verified": true
@@ -1106,7 +1106,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char a=-8; unsigned char b=248;\n  printf(\"%d,%d\",a>>2,b>>2);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char a = -8;\n    unsigned char b = 248;\n    printf(\"%d,%d\", a >> 2, b >> 2);\n    return 0;\n}",
       "answer": "-2,62",
       "id": "c-ch11-cr-009",
       "verified": true
@@ -1123,7 +1123,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned char a,b;\n  a=0x1b;\n  printf(\"0x%x\\n\",b=a<<2);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned char a, b;\n    a = 0x1b;\n    printf(\"0x%x\\n\", b = a << 2);\n    return 0;\n}",
       "answer": "0x6c",
       "id": "c-ch11-cr-010",
       "verified": true
@@ -1140,7 +1140,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main(void)\n{\nunsigned a=16;\nprintf(\"%d,%d,%d\\n\",a>>2,a=a>>2,a);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned a = 16;\n    printf(\"%d,%d,%d\\n\", a >> 2, a = a >> 2, a);\n    return 0;\n}",
       "answer": "1,4,4",
       "id": "c-ch11-cr-011",
       "verified": true
@@ -1157,7 +1157,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned char a,b;\n  a=0x9d;   b=0xa5;\n  printf(\"a AND b:%x\\n\",a & b);\n  printf(\"a OR b:%x\\n\",a | b);\n  printf(\"a NOR b:%x\\n\",a ^ b);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned char a, b;\n    a = 0x9d;\n    b = 0xa5;\n    printf(\"a AND b:%x\\n\", a & b);\n    printf(\"a OR b:%x\\n\", a | b);\n    printf(\"a NOR b:%x\\n\", a ^ b);\n    return 0;\n}",
       "answer": "a AND b:85\na OR b:bd\na NOR b:38",
       "id": "c-ch11-cr-012",
       "verified": true
@@ -1174,7 +1174,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned a=0112, x,y,z;\n  x=a>>3;   printf(\"x=%o,\", x );\n  y=~(~0<<4 );  printf(\"y=%o,\", y );\n  z=x & y;   printf(\"z=%o\\n\", z );\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned a = 0112, x, y, z;\n    x = a >> 3;\n    printf(\"x=%o,\", x);\n    y = ~(~0 << 4);\n    printf(\"y=%o,\", y);\n    z = x & y;\n    printf(\"z=%o\\n\", z);\n    return 0;\n}",
       "answer": "x=11,y=17,z=11",
       "id": "c-ch11-cr-013",
       "verified": true
@@ -1191,7 +1191,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ unsigned a=0361, x,y; int n=5;\n  x=a << (16-n); printf(\"x=%o\\n\", x );\n  y=a >> n;      printf(\"y1=%o\\n\", y );\n  y |= x;        printf(\"y2=%o\\n\", y );\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    unsigned a = 0361, x, y;\n    int n = 5;\n    x = a << (16 - n);\n    printf(\"x=%o\\n\", x);\n    y = a >> n;\n    printf(\"y1=%o\\n\", y);\n    y |= x;\n    printf(\"y2=%o\\n\", y);\n    return 0;\n}",
       "answer": "x=1704000\ny1=7\ny2=1704007",
       "id": "c-ch11-cr-014",
       "verified": true
@@ -1208,7 +1208,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "#include <stdio.h>\nint main( )\n{ char a=0x95,b,c;\n  b=(a & 0xf)<< 4;\n  c=(a & 0xf0)>> 4;\n  a=b | c;\n  printf(\"%x\\n\",a);\n  return 0;\n}",
+      "code": "#include <stdio.h>\nint main() {\n    char a = 0x95, b, c;\n    b = (a & 0xf) << 4;\n    c = (a & 0xf0) >> 4;\n    a = b | c;\n    printf(\"%x\\n\", a);\n    return 0;\n}",
       "answer": "59",
       "id": "c-ch11-cr-015",
       "verified": true
@@ -1225,7 +1225,7 @@
       "generated_at": "2026-09-08",
       "type": "code_reading",
       "bloom": "analyze",
-      "code": "getbits(unsigned x,unsigned p,unsigned n)\n{ x=((x<<(p+1-n)) & ~((unsigned)~0>>n));\n  return(x);\n}",
+      "code": "getbits(unsigned x, unsigned p, unsigned n) {\n    x = ((x << (p + 1 - n)) & ~((unsigned)~0 >> n));\n    return (x);\n}",
       "answer": "",
       "id": "c-ch11-cr-016",
       "verified": false,
@@ -1239,9 +1239,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", a & b);\n    printf(\"%d\\n\", a | b);\n    printf(\"%d\\n\", a ^ b);\n    return 0;\n}\n```\n运行时输入：\n```\n12 10\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", a & b);\n    printf(\"%d\\n\", a | b);\n    printf(\"%d\\n\", a ^ b);\n    return 0;\n}\n```\n运行时输入：\n```\n12 10\n```",
       "answer": "8\n14\n6",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", a & b);\n    printf(\"%d\\n\", a | b);\n    printf(\"%d\\n\", a ^ b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d\\n\", a & b);\n    printf(\"%d\\n\", a | b);\n    printf(\"%d\\n\", a ^ b);\n    return 0;\n}",
       "stdin": "12 10\n",
       "explanation": "结论：输出 8、14、6。推理：12 是 1100，10 是 1010，按位与只有都为 1 才得 1，结果是 1000 即 8；按位或只要有一位为 1 就得 1，结果是 1110 即 14；异或相同为 0 不同为 1，结果是 0110 即 6。易错点：位运算是按二进制位逐位计算，绝不能按十进制位去想；a+b 恰好等于 (a&b)+(a|b)，也等于 (a^b)+2*(a&b)。",
       "tags": [
@@ -1265,9 +1265,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", ~x);\n    printf(\"%d\\n\", ~~x);\n    printf(\"%d\\n\", ~0);\n    return 0;\n}\n```\n运行时输入：\n```\n5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", ~x);\n    printf(\"%d\\n\", ~~x);\n    printf(\"%d\\n\", ~0);\n    return 0;\n}\n```\n运行时输入：\n```\n5\n```",
       "answer": "-6\n5\n-1",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", ~x);\n    printf(\"%d\\n\", ~~x);\n    printf(\"%d\\n\", ~0);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", ~x);\n    printf(\"%d\\n\", ~~x);\n    printf(\"%d\\n\", ~0);\n    return 0;\n}",
       "stdin": "5\n",
       "explanation": "结论：输出 -6、5、-1。推理：对整数取反等于把它每一位 0 变 1、1 变 0，在补码表示下 ~x 恒等于 -x-1，所以 ~5 是 -6，~0 是 -1；取反是自反运算，两次取反回到原值。易错点：~x 与 -x 不同，~5 是 -6 而不是 -5；构造低 n 位全 1 的掩码常写 ~(~0 << n)，这是取反与左移的组合应用。",
       "tags": [
@@ -1290,9 +1290,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 30)\n        return 1;\n    printf(\"%d\\n\", x << n);\n    printf(\"%d\\n\", 1 << n);\n    printf(\"%d\\n\", x << 1 << 1);\n    return 0;\n}\n```\n运行时输入：\n```\n5 3\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 30)\n        return 1;\n    printf(\"%d\\n\", x << n);\n    printf(\"%d\\n\", 1 << n);\n    printf(\"%d\\n\", x << 1 << 1);\n    return 0;\n}\n```\n运行时输入：\n```\n5 3\n```",
       "answer": "40\n8\n20",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 30)\n        return 1;\n    printf(\"%d\\n\", x << n);\n    printf(\"%d\\n\", 1 << n);\n    printf(\"%d\\n\", x << 1 << 1);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 30)\n        return 1;\n    printf(\"%d\\n\", x << n);\n    printf(\"%d\\n\", 1 << n);\n    printf(\"%d\\n\", x << 1 << 1);\n    return 0;\n}",
       "stdin": "5 3\n",
       "explanation": "结论：输出 40、8、20。推理：左移 n 位相当于乘以 2 的 n 次方，5 左移 3 位是 40；1 左移 n 位是构造只有一位为 1 的掩码的标准写法，这里是 8；连续两次左移 1 位等于左移 2 位，即乘 4。易错点：移位次数不能为负也不能大于等于类型位宽，否则是未定义行为；左移可能把高位移出造成溢出，结果与数学乘积不一致。",
       "tags": [
@@ -1315,9 +1315,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", x >> 2);\n    printf(\"%u\\n\", ((unsigned)x) >> 2);\n    return 0;\n}\n```\n运行时输入：\n```\n-16\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", x >> 2);\n    printf(\"%u\\n\", ((unsigned)x) >> 2);\n    return 0;\n}\n```\n运行时输入：\n```\n-16\n```",
       "answer": "-4\n1073741820",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", x >> 2);\n    printf(\"%u\\n\", ((unsigned)x) >> 2);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", x >> 2);\n    printf(\"%u\\n\", ((unsigned)x) >> 2);\n    return 0;\n}",
       "stdin": "-16\n",
       "explanation": "结论：输出 -4 与 1073741820。推理：有符号负数右移是算术移位，高位补符号位 1，-16 右移 2 位仍是负数 -4；转成 unsigned 后是逻辑移位，高位补 0，(unsigned)-16 为 4294967280，右移 2 位得 1073741820。易错点：同一段二进制位，按有符号还是无符号解释结果完全不同；负数右移的结果由实现定义，但 gcc 等主流编译器都补符号位。",
       "tags": [
@@ -1341,9 +1341,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n3 7\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n```\n运行时输入：\n```\n3 7\n```",
       "answer": "7 3",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}",
       "stdin": "3 7\n",
       "explanation": "结论：输出 7 3，两个变量完成交换。推理：设原值为 A、B，第一步 a 变为 A^B，第二步 b 变为 (A^B)^B = A，第三步 a 变为 (A^B)^A = B，利用了异或的自反性与结合律。易错点：这种写法在 a 与 b 指向同一个存储单元时会把值清零，工程中并不推荐；现代编译器用临时变量的写法反而更高效易读。",
       "tags": [
@@ -1365,9 +1365,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        if ((x & 1) == 0)\n            printf(\"%d even\\n\", x);\n        else\n            printf(\"%d odd\\n\", x);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n4\n3 -2 0 7\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        if ((x & 1) == 0)\n            printf(\"%d even\\n\", x);\n        else\n            printf(\"%d odd\\n\", x);\n    }\n    return 0;\n}\n```\n运行时输入：\n```\n4\n3 -2 0 7\n```",
       "answer": "3 odd\n-2 even\n0 even\n7 odd",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        if ((x & 1) == 0)\n            printf(\"%d even\\n\", x);\n        else\n            printf(\"%d odd\\n\", x);\n    }\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int n, i, x;\n\n    if (scanf(\"%d\", &n) != 1 || n < 1 || n > 20)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1)\n            return 1;\n        if ((x & 1) == 0)\n            printf(\"%d even\\n\", x);\n        else\n            printf(\"%d odd\\n\", x);\n    }\n    return 0;\n}",
       "stdin": "4\n3 -2 0 7\n",
       "explanation": "结论：输出 3 odd、-2 even、0 even、7 odd。推理：x & 1 只保留最低位，最低位为 1 即奇数；补码表示下负数的最低位同样决定奇偶，-2 的补码末位是 0，所以判为偶数。易错点：不能用 x % 2 == 1 判奇数，C 语言中负数取余的结果符号跟随被除数，-3 % 2 得 -1，条件不成立会误判，这正是位运算写法的优势。",
       "tags": [
@@ -1390,9 +1390,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (x != 0)\n    {\n        c = c + (int)(x & 1);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned a, b, c;\n\n    if (scanf(\"%u %u %u\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d %d %d\\n\", count1(a), count1(b), count1(c));\n    return 0;\n}\n```\n运行时输入：\n```\n255 0 7\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (x != 0) {\n        c = c + (int)(x & 1);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned a, b, c;\n\n    if (scanf(\"%u %u %u\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d %d %d\\n\", count1(a), count1(b), count1(c));\n    return 0;\n}\n```\n运行时输入：\n```\n255 0 7\n```",
       "answer": "8 0 3",
-      "code": "#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (x != 0)\n    {\n        c = c + (int)(x & 1);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned a, b, c;\n\n    if (scanf(\"%u %u %u\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d %d %d\\n\", count1(a), count1(b), count1(c));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (x != 0) {\n        c = c + (int)(x & 1);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned a, b, c;\n\n    if (scanf(\"%u %u %u\", &a, &b, &c) != 3)\n        return 1;\n    printf(\"%d %d %d\\n\", count1(a), count1(b), count1(c));\n    return 0;\n}",
       "stdin": "255 0 7\n",
       "explanation": "结论：输出 8 0 3。推理：每轮取出最低位累加再右移，直到值为 0；255 的低 8 位全为 1 所以是 8，0 中没有 1，7 是 111 共 3 个。参数用 unsigned 保证右移是逻辑移位，不会出现负数右移死循环。易错点：若形参是 int 且传入负数，算术右移会不断补 1，循环永不结束，这是统计 1 的个数最经典的错误。",
       "tags": [
@@ -1414,9 +1414,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u\\n\", x | (1u << k));\n    printf(\"%u\\n\", x & ~(1u << k));\n    printf(\"%u\\n\", x ^ (1u << k));\n    return 0;\n}\n```\n运行时输入：\n```\n13 2\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u\\n\", x | (1u << k));\n    printf(\"%u\\n\", x & ~(1u << k));\n    printf(\"%u\\n\", x ^ (1u << k));\n    return 0;\n}\n```\n运行时输入：\n```\n13 2\n```",
       "answer": "13\n9\n9",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u\\n\", x | (1u << k));\n    printf(\"%u\\n\", x & ~(1u << k));\n    printf(\"%u\\n\", x ^ (1u << k));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    printf(\"%u\\n\", x | (1u << k));\n    printf(\"%u\\n\", x & ~(1u << k));\n    printf(\"%u\\n\", x ^ (1u << k));\n    return 0;\n}",
       "stdin": "13 2\n",
       "explanation": "结论：输出 13、9、9。推理：13 是 1101，第 2 位（从 0 数起）本来就是 1，所以置位后仍是 13；清位用与上掩码的反，把该位变 0 得 1001 即 9；异或则把该位翻转，1 变 0 同样得 9。易错点：三个操作的掩码都是 1u << k，必须用无符号常量避免左移进符号位；置位用或、清位用与非、翻转用异或，这一组要记牢。",
       "tags": [
@@ -1440,9 +1440,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "understand",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & (1u << k))\n        printf(\"bit %d = 1\\n\", k);\n    else\n        printf(\"bit %d = 0\\n\", k);\n    printf(\"%u\\n\", (x >> k) & 1u);\n    return 0;\n}\n```\n运行时输入：\n```\n13 1\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & (1u << k))\n        printf(\"bit %d = 1\\n\", k);\n    else\n        printf(\"bit %d = 0\\n\", k);\n    printf(\"%u\\n\", (x >> k) & 1u);\n    return 0;\n}\n```\n运行时输入：\n```\n13 1\n```",
       "answer": "bit 1 = 0\n0",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & (1u << k))\n        printf(\"bit %d = 1\\n\", k);\n    else\n        printf(\"bit %d = 0\\n\", k);\n    printf(\"%u\\n\", (x >> k) & 1u);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & (1u << k))\n        printf(\"bit %d = 1\\n\", k);\n    else\n        printf(\"bit %d = 0\\n\", k);\n    printf(\"%u\\n\", (x >> k) & 1u);\n    return 0;\n}",
       "stdin": "13 1\n",
       "explanation": "结论：输出 bit 1 = 0，然后是 0。推理：13 是 1101，第 0 位与第 2、3 位为 1，第 1 位是 0，所以按位与的结果为 0，条件不成立；先右移 k 位再与 1，等价于取出该位的值。易错点：单独作为 if 的条件时不必再加括号，但若与关系运算混用如 x & 1u << k == 0，因 == 优先级最高会被解析成完全不同的表达式；移位优先级高于按位与，1u << k 也建议加括号以增强可读性。",
       "tags": [
@@ -1464,9 +1464,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %u\\n\", x & 0xFFu, (x >> 8) & 0xFFu);\n    printf(\"%X\\n\", x & 0xFFFFu);\n    return 0;\n}\n```\n运行时输入：\n```\n4660\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %u\\n\", x & 0xFFu, (x >> 8) & 0xFFu);\n    printf(\"%X\\n\", x & 0xFFFFu);\n    return 0;\n}\n```\n运行时输入：\n```\n4660\n```",
       "answer": "52 18\n1234",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %u\\n\", x & 0xFFu, (x >> 8) & 0xFFu);\n    printf(\"%X\\n\", x & 0xFFFFu);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%u %u\\n\", x & 0xFFu, (x >> 8) & 0xFFu);\n    printf(\"%X\\n\", x & 0xFFFFu);\n    return 0;\n}",
       "stdin": "4660\n",
       "explanation": "结论：输出 52 18，然后是 1234。推理：4660 的十六进制是 1234，与 0xFF 相与保留最低字节 0x34 即 52，右移 8 位再与 0xFF 得到次低字节 0x12 即 18；与 0xFFFF 相与保留低 16 位，用 %X 输出正是 1234。易错点：0xFF 是掩码的标准写法，十六进制字面量比十进制 255 更能表达“保留 8 位”的意图；提取高位字节时右移的位数必须与掩码宽度配合。",
       "tags": [
@@ -1489,9 +1489,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n)\n{\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void)\n{\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3 || p < 0 || p > 31 || n < 1 || n > 32)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}\n```\n运行时输入：\n```\n4660 7 4\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n) {\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void) {\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3 || p < 0 || p > 31 || n < 1 || n > 32)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}\n```\n运行时输入：\n```\n4660 7 4\n```",
       "answer": "3",
-      "code": "#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n)\n{\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void)\n{\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3 || p < 0 || p > 31 || n < 1 || n > 32)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n) {\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void) {\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3 || p < 0 || p > 31 || n < 1 || n > 32)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
       "stdin": "4660 7 4\n",
       "explanation": "结论：输出 3。推理：p 表示从右往左数（最右为第 0 位）的起始位，取 n 位就要先右移 p+1-n 位把目标段移到最低位，这里右移 4 位，4660 变成 291 即十六进制 123；再用 ~(~0 << n) 造出低 n 位全 1 的掩码 0xF，相与得 3。易错点：~0 是无符号全 1，左移 n 位后低 n 位为 0，取反正好得到低 n 位掩码；移位量写成 p-n 是常见错误。",
       "tags": [
@@ -1514,9 +1514,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nunsigned rot(unsigned x, int n)\n{\n    return (x << n) | (x >> (32 - n));\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%u\\n\", rot(x, n));\n    return 0;\n}\n```\n运行时输入：\n```\n1 31\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nunsigned rot(unsigned x, int n) {\n    return (x << n) | (x >> (32 - n));\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%u\\n\", rot(x, n));\n    return 0;\n}\n```\n运行时输入：\n```\n1 31\n```",
       "answer": "2147483648",
-      "code": "#include <stdio.h>\n\nunsigned rot(unsigned x, int n)\n{\n    return (x << n) | (x >> (32 - n));\n}\n\nint main(void)\n{\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%u\\n\", rot(x, n));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nunsigned rot(unsigned x, int n) {\n    return (x << n) | (x >> (32 - n));\n}\n\nint main(void) {\n    unsigned x;\n    int n;\n\n    if (scanf(\"%u %d\", &x, &n) != 2 || n < 1 || n > 31)\n        return 1;\n    printf(\"%u\\n\", rot(x, n));\n    return 0;\n}",
       "stdin": "1 31\n",
       "explanation": "结论：输出 2147483648。推理：循环左移 n 位要把移出的高位重新接到低位，方法是 x << n 保留未移出的部分，再或上 x >> (32-n) 把移出的高 n 位挪回低位；1 左移 31 位得 2147483648，右移 1 位得 0，或起来仍是 2147483648。易错点：必须用 unsigned，否则符号位参与移位是未定义行为；n 为 0 时 32-n 等于 32，移位量达到位宽同样未定义，所以题目限制了 n 的范围。",
       "tags": [
@@ -1538,9 +1538,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d\\n\", a && b, a & b);\n    printf(\"%d %d\\n\", a || b, a | b);\n    return 0;\n}\n```\n运行时输入：\n```\n5 2\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d\\n\", a && b, a & b);\n    printf(\"%d %d\\n\", a || b, a | b);\n    return 0;\n}\n```\n运行时输入：\n```\n5 2\n```",
       "answer": "1 0\n1 7",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d\\n\", a && b, a & b);\n    printf(\"%d %d\\n\", a || b, a | b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    printf(\"%d %d\\n\", a && b, a & b);\n    printf(\"%d %d\\n\", a || b, a | b);\n    return 0;\n}",
       "stdin": "5 2\n",
       "explanation": "结论：输出 1 0，然后是 1 7。推理：逻辑运算只关心真假，非零即真，5 与 2 都非零，所以 && 得 1、|| 也得 1；位运算逐位计算，5 是 101、2 是 010，按位与没有同一位都为 1 的情况得 0，按位或是 111 即 7。易错点：& 与 && 绝不能混用，尤其判断“某位是否为 0”时必须用 &；逻辑运算还有短路特性，位运算没有。",
       "tags": [
@@ -1564,9 +1564,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%X\\n\", (unsigned)x);\n    printf(\"%X\\n\", (unsigned)(-x));\n    printf(\"%X\\n\", (unsigned)(x - 1));\n    return 0;\n}\n```\n运行时输入：\n```\n-5\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%X\\n\", (unsigned)x);\n    printf(\"%X\\n\", (unsigned)(-x));\n    printf(\"%X\\n\", (unsigned)(x - 1));\n    return 0;\n}\n```\n运行时输入：\n```\n-5\n```",
       "answer": "FFFFFFFB\n5\nFFFFFFFA",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%X\\n\", (unsigned)x);\n    printf(\"%X\\n\", (unsigned)(-x));\n    printf(\"%X\\n\", (unsigned)(x - 1));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%X\\n\", (unsigned)x);\n    printf(\"%X\\n\", (unsigned)(-x));\n    printf(\"%X\\n\", (unsigned)(x - 1));\n    return 0;\n}",
       "stdin": "-5\n",
       "explanation": "结论：输出 FFFFFFFB、00000005、FFFFFFFA。推理：int 转 unsigned 保持二进制位不变，-5 的补码按 32 位看是 FFFFFFFB；取负是求补运算，得到 5 即 00000005；x-1 得 -6，其补码是 FFFFFFFA。易错点：用 %X 输出 int 类型的负数属类型不匹配，必须先显式转成 unsigned；观察补码时“取反加一”比逐位推算更快。",
       "tags": [
@@ -1589,9 +1589,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    if (a & b == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    if ((a & b) == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n3 4\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    if (a & b == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    if ((a & b) == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    return 0;\n}\n```\n运行时输入：\n```\n3 4\n```",
       "answer": "NONZERO\nZERO",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    if (a & b == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    if ((a & b) == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int a, b;\n\n    if (scanf(\"%d %d\", &a, &b) != 2)\n        return 1;\n    if (a & b == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    if ((a & b) == 0)\n        printf(\"ZERO\\n\");\n    else\n        printf(\"NONZERO\\n\");\n    return 0;\n}",
       "stdin": "3 4\n",
       "explanation": "结论：输出 NONZERO，然后是 ZERO。推理：关系运算符 == 的优先级高于按位与，所以第一个条件被解析成 a & (b == 0)，即 3 & 0 = 0，条件为假走 else；加上括号后计算 (3 & 4) == 0，3 是 011、4 是 100，按位与为 0，条件为真。易错点：这是位运算最高频的错误，凡位运算参与比较一律加括号；优先级顺序为 移位 高于 关系 高于 & 高于 ^ 高于 |。",
       "tags": [
@@ -1614,9 +1614,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x <<= n;\n    printf(\"%d\\n\", x);\n    x |= 1;\n    printf(\"%d\\n\", x);\n    x &= ~1;\n    printf(\"%d\\n\", x);\n    x ^= 3;\n    printf(\"%d\\n\", x);\n    return 0;\n}\n```\n运行时输入：\n```\n1 3\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x <<= n;\n    printf(\"%d\\n\", x);\n    x |= 1;\n    printf(\"%d\\n\", x);\n    x &= ~1;\n    printf(\"%d\\n\", x);\n    x ^= 3;\n    printf(\"%d\\n\", x);\n    return 0;\n}\n```\n运行时输入：\n```\n1 3\n```",
       "answer": "8\n9\n8\n11",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x <<= n;\n    printf(\"%d\\n\", x);\n    x |= 1;\n    printf(\"%d\\n\", x);\n    x &= ~1;\n    printf(\"%d\\n\", x);\n    x ^= 3;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x <<= n;\n    printf(\"%d\\n\", x);\n    x |= 1;\n    printf(\"%d\\n\", x);\n    x &= ~1;\n    printf(\"%d\\n\", x);\n    x ^= 3;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
       "stdin": "1 3\n",
       "explanation": "结论：依次输出 8、9、8、11。推理：x 左移 3 位由 1 变 8；或上 1 把最低位置 1 得 9；与上 ~1（即除最低位外全 1）清掉最低位回到 8；异或 3 把低两位翻转，8 是 1000、3 是 0011，得 1011 即 11。易错点：复合赋值只是简写，x <<= n 等价于 x = x << n，但只计算一次 x，当 x 是带副作用的表达式时二者不等价。",
       "tags": [
@@ -1638,9 +1638,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define READ  1\n#define WRITE 2\n#define EXEC  4\n\nint main(void)\n{\n    int f, k;\n\n    if (scanf(\"%d %d\", &f, &k) != 2)\n        return 1;\n    f = f | WRITE;\n    if (f & READ)\n        printf(\"R \");\n    if (f & WRITE)\n        printf(\"W \");\n    if (f & EXEC)\n        printf(\"E \");\n    printf(\"\\n%d\\n\", f & ~k);\n    return 0;\n}\n```\n运行时输入：\n```\n5 1\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\n#define READ 1\n#define WRITE 2\n#define EXEC 4\n\nint main(void) {\n    int f, k;\n\n    if (scanf(\"%d %d\", &f, &k) != 2)\n        return 1;\n    f = f | WRITE;\n    if (f & READ)\n        printf(\"R \");\n    if (f & WRITE)\n        printf(\"W \");\n    if (f & EXEC)\n        printf(\"E \");\n    printf(\"\\n%d\\n\", f & ~k);\n    return 0;\n}\n```\n运行时输入：\n```\n5 1\n```",
       "answer": "R W E\n6",
-      "code": "#include <stdio.h>\n\n#define READ  1\n#define WRITE 2\n#define EXEC  4\n\nint main(void)\n{\n    int f, k;\n\n    if (scanf(\"%d %d\", &f, &k) != 2)\n        return 1;\n    f = f | WRITE;\n    if (f & READ)\n        printf(\"R \");\n    if (f & WRITE)\n        printf(\"W \");\n    if (f & EXEC)\n        printf(\"E \");\n    printf(\"\\n%d\\n\", f & ~k);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\n#define READ 1\n#define WRITE 2\n#define EXEC 4\n\nint main(void) {\n    int f, k;\n\n    if (scanf(\"%d %d\", &f, &k) != 2)\n        return 1;\n    f = f | WRITE;\n    if (f & READ)\n        printf(\"R \");\n    if (f & WRITE)\n        printf(\"W \");\n    if (f & EXEC)\n        printf(\"E \");\n    printf(\"\\n%d\\n\", f & ~k);\n    return 0;\n}",
       "stdin": "5 1\n",
       "explanation": "结论：输出 R W E，然后是 6。推理：初值 5 是 101，含读与执行两位，或上 WRITE 后得 7，三个标志全部置位；再与上 ~1 清掉读位，7 变 6。用一位表示一个开关、用或置位、与取反清位、与判存在，是位标志集合的标准四件套。易错点：#define 定义标志时应写成 2 的幂，写成 3 这样会与 READ|WRITE 冲突；清除多个标志要一次与上 ~(A|B)。",
       "tags": [
@@ -1663,9 +1663,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    c = (char)x;\n    printf(\"%d\\n\", c);\n    printf(\"%d\\n\", ~c);\n    printf(\"%d\\n\", c << 4);\n    return 0;\n}\n```\n运行时输入：\n```\n128\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    char c;\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    c = (char)x;\n    printf(\"%d\\n\", c);\n    printf(\"%d\\n\", ~c);\n    printf(\"%d\\n\", c << 4);\n    return 0;\n}\n```\n运行时输入：\n```\n128\n```",
       "answer": "-128\n127\n-2048",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    c = (char)x;\n    printf(\"%d\\n\", c);\n    printf(\"%d\\n\", ~c);\n    printf(\"%d\\n\", c << 4);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    char c;\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    c = (char)x;\n    printf(\"%d\\n\", c);\n    printf(\"%d\\n\", ~c);\n    printf(\"%d\\n\", c << 4);\n    return 0;\n}",
       "stdin": "128\n",
       "explanation": "结论：输出 -128、127、-2048。推理：128 超出 signed char 的范围，截断保留低 8 位得 10000000，按有符号字符解释是 -128；参与位运算时 char 先提升为 int，~(-128) 得 127；左移 4 位相当于乘 16，得 -2048，因为提升后的 int 有足够位宽不会截断。易错点：char 是否有符号由实现决定，x86 gcc 默认有符号；涉及位运算的字节数据一律用 unsigned char 更安全。",
       "tags": [
@@ -1688,9 +1688,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "apply",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nstruct Bits\n{\n    unsigned a : 3;\n    unsigned b : 5;\n};\n\nint main(void)\n{\n    struct Bits s;\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    s.a = (unsigned)x;\n    s.b = (unsigned)y;\n    printf(\"%u %u\\n\", s.a, s.b);\n    printf(\"%d\\n\", (int)sizeof(struct Bits));\n    return 0;\n}\n```\n运行时输入：\n```\n11 40\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nstruct Bits {\n    unsigned a : 3;\n    unsigned b : 5;\n};\n\nint main(void) {\n    struct Bits s;\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    s.a = (unsigned)x;\n    s.b = (unsigned)y;\n    printf(\"%u %u\\n\", s.a, s.b);\n    printf(\"%d\\n\", (int)sizeof(struct Bits));\n    return 0;\n}\n```\n运行时输入：\n```\n11 40\n```",
       "answer": "3 8\n4",
-      "code": "#include <stdio.h>\n\nstruct Bits\n{\n    unsigned a : 3;\n    unsigned b : 5;\n};\n\nint main(void)\n{\n    struct Bits s;\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    s.a = (unsigned)x;\n    s.b = (unsigned)y;\n    printf(\"%u %u\\n\", s.a, s.b);\n    printf(\"%d\\n\", (int)sizeof(struct Bits));\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nstruct Bits {\n    unsigned a : 3;\n    unsigned b : 5;\n};\n\nint main(void) {\n    struct Bits s;\n    int x, y;\n\n    if (scanf(\"%d %d\", &x, &y) != 2)\n        return 1;\n    s.a = (unsigned)x;\n    s.b = (unsigned)y;\n    printf(\"%u %u\\n\", s.a, s.b);\n    printf(\"%d\\n\", (int)sizeof(struct Bits));\n    return 0;\n}",
       "stdin": "11 40\n",
       "explanation": "结论：输出 3 8，然后是 4。推理：位段只能保存指定位数，赋值时高位被截断，11 是 1011 保留低 3 位得 011 即 3，40 是 101000 保留低 5 位得 01000 即 8；两个位段共占 8 位，被打包进一个 unsigned int，所以结构体大小是 4 字节。易错点：位段的存储分配顺序与对齐方式由实现定义，跨平台交换二进制数据时不要用位段，应改用移位与掩码手工拼字节。",
       "tags": [
@@ -1713,9 +1713,9 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 1,
       "bloom": "remember",
-      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d %d %d\\n\", 010, 0x10, 10);\n    printf(\"%d\\n\", 010 | 0x10);\n    printf(\"%d\\n\", x & 017);\n    return 0;\n}\n```\n运行时输入：\n```\n255\n```",
+      "stem": "写出下列程序的运行结果。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d %d %d\\n\", 010, 0x10, 10);\n    printf(\"%d\\n\", 010 | 0x10);\n    printf(\"%d\\n\", x & 017);\n    return 0;\n}\n```\n运行时输入：\n```\n255\n```",
       "answer": "8 16 10\n24\n15",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d %d %d\\n\", 010, 0x10, 10);\n    printf(\"%d\\n\", 010 | 0x10);\n    printf(\"%d\\n\", x & 017);\n    return 0;\n}",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    printf(\"%d %d %d\\n\", 010, 0x10, 10);\n    printf(\"%d\\n\", 010 | 0x10);\n    printf(\"%d\\n\", x & 017);\n    return 0;\n}",
       "stdin": "255\n",
       "explanation": "结论：输出 8 16 10，然后是 24，最后是 15。推理：以 0 开头是八进制字面量，010 等于十进制 8；以 0x 开头是十六进制，0x10 等于 16；两者按位或，8 是 1000、16 是 10000，得 11000 即 24；017 是八进制的 15，正好是低 4 位全 1 的掩码，255 与 15 相与得 15。易错点：0 开头的常量极易被误读成十进制，010 不是 10；写掩码时推荐用十六进制，0xF 比 017 直观。",
       "tags": [
@@ -1745,7 +1745,7 @@
         "移位"
       ],
       "stem": "阅读程序，写出运行结果（注意 << 与 & 的优先级）。",
-      "code": "#include <stdio.h>\nint main(void){\n    unsigned x = 3;\n    unsigned y = x << 2 & 5;\n    printf(\"%u\\n\", y);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned x = 3;\n    unsigned y = x << 2 & 5;\n    printf(\"%u\\n\", y);\n    return 0;\n}",
       "stdin": "",
       "answer": "4",
       "answerIsDescription": false,
@@ -1771,7 +1771,7 @@
         "最高位"
       ],
       "stem": "阅读程序，写出运行结果（注意无符号左移 31 位与右移回收）。",
-      "code": "#include <stdio.h>\nint main(void){\n    unsigned x = 1u << 31;\n    printf(\"%u\\n\", x);\n    x >>= 31;\n    printf(\"%u\\n\", x);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned x = 1u << 31;\n    printf(\"%u\\n\", x);\n    x >>= 31;\n    printf(\"%u\\n\", x);\n    return 0;\n}",
       "stdin": "",
       "answer": "2147483648\n1",
       "answerIsDescription": false,
@@ -1797,7 +1797,7 @@
         "最大值"
       ],
       "stem": "阅读程序，写出运行结果（注意按位取反与补码取负的关系）。",
-      "code": "#include <stdio.h>\nint main(void){\n    unsigned x = 7;\n    unsigned y = ~x + 1;\n    unsigned z = ~0u >> 1;\n    printf(\"%u %u\\n\", y, z);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned x = 7;\n    unsigned y = ~x + 1;\n    unsigned z = ~0u >> 1;\n    printf(\"%u %u\\n\", y, z);\n    return 0;\n}",
       "stdin": "",
       "answer": "4294967289 2147483647",
       "answerIsDescription": false,
@@ -1823,7 +1823,7 @@
         "分离高低位"
       ],
       "stem": "阅读程序，写出运行结果（注意用掩码分离一个字节的高低四位）。",
-      "code": "#include <stdio.h>\nint main(void){\n    unsigned char b = 0xAB;\n    printf(\"%u %u %u\\n\", b & 0x0F, (b >> 4) & 0x0F, b);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned char b = 0xAB;\n    printf(\"%u %u %u\\n\", b & 0x0F, (b >> 4) & 0x0F, b);\n    return 0;\n}",
       "stdin": "",
       "answer": "11 10 171",
       "answerIsDescription": false,
@@ -1849,7 +1849,7 @@
         "循环"
       ],
       "stem": "阅读程序，写出运行结果（先做掩码再统计二进制中 1 的个数）。",
-      "code": "#include <stdio.h>\nint main(void){\n    unsigned x = 0x0F0F;\n    unsigned t = x;\n    unsigned masked = t & 0xFF;\n    int ones = 0;\n    while (t) {\n        ones += t & 1;\n        t >>= 1;\n    }\n    printf(\"%u %d\\n\", masked, ones);\n    return 0;\n}",
+      "code": "#include <stdio.h>\nint main(void) {\n    unsigned x = 0x0F0F;\n    unsigned t = x;\n    unsigned masked = t & 0xFF;\n    int ones = 0;\n    while (t) {\n        ones += t & 1;\n        t >>= 1;\n    }\n    printf(\"%u %d\\n\", masked, ones);\n    return 0;\n}",
       "stdin": "",
       "answer": "15 8",
       "answerIsDescription": false,
@@ -1868,8 +1868,8 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & 1u << k == 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x | ~(1u << k));\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & 1u << k == 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x | ~(1u << k));\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & 1u << k == 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x | ~(1u << k));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if (x & 1u << k == 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x | ~(1u << k));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "13 2\n",
@@ -1884,7 +1884,7 @@
           "expected": "0\n0"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if ((x & (1u << k)) != 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x & ~(1u << k));\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k;\n\n    if (scanf(\"%u %d\", &x, &k) != 2 || k < 0 || k > 31)\n        return 1;\n    if ((x & (1u << k)) != 0)\n        printf(\"1\\n\");\n    else\n        printf(\"0\\n\");\n    printf(\"%u\\n\", x & ~(1u << k));\n    return 0;\n}",
       "bugs": [
         "关系运算 == 的优先级高于按位与，原写法被解析成 x & (1u << (k == 0))，判断的根本不是第 k 位；位运算参与比较必须用括号",
         "清除某一位应当与上掩码的反，用或会把所有位都置 1，结果恒为 4294967295"
@@ -1910,8 +1910,8 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 3,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (1)\n    {\n        c = (int)(x & 1u);\n        x = x << 1;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (1)\n    {\n        c = (int)(x & 1u);\n        x = x << 1;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 3 处）。\n```\n#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (1) {\n        c = (int)(x & 1u);\n        x = x << 1;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (1) {\n        c = (int)(x & 1u);\n        x = x << 1;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "255\n",
@@ -1926,7 +1926,7 @@
           "expected": "5"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint count1(unsigned x)\n{\n    int c = 0;\n\n    while (x != 0)\n    {\n        c = c + (int)(x & 1u);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint count1(unsigned x) {\n    int c = 0;\n\n    while (x != 0) {\n        c = c + (int)(x & 1u);\n        x = x >> 1;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned x;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    printf(\"%d\\n\", count1(x));\n    return 0;\n}",
       "bugs": [
         "循环条件写成常量 1 使循环永不退出，程序陷入死循环；应在 x 被移空变成 0 时结束",
         "每轮把计数覆盖为当前最低位，最终只剩最后一次的值，必须累加",
@@ -1953,8 +1953,8 @@
       "section": "11.4 变式练习（代码类）",
       "difficulty": 2,
       "bloom": "analyze",
-      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x >> n;\n    printf(\"%d\\n\", x);\n    x &= 1 << n;\n    printf(\"%d\\n\", x);\n    return 0;\n}\n```",
-      "code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x >> n;\n    printf(\"%d\\n\", x);\n    x &= 1 << n;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+      "stem": "下列程序存在错误，运行结果不正确。请找出错误并改正（共有 2 处）。\n```\n#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x >> n;\n    printf(\"%d\\n\", x);\n    x &= 1 << n;\n    printf(\"%d\\n\", x);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x >> n;\n    printf(\"%d\\n\", x);\n    x &= 1 << n;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
       "testCases": [
         {
           "stdin": "3 2\n",
@@ -1969,7 +1969,7 @@
           "expected": "255\n254"
         }
       ],
-      "fixed_code": "#include <stdio.h>\n\nint main(void)\n{\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x << n;\n    printf(\"%d\\n\", x);\n    x &= ~(1 << n);\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+      "fixed_code": "#include <stdio.h>\n\nint main(void) {\n    int x, n;\n\n    if (scanf(\"%d %d\", &x, &n) != 2 || n < 0 || n > 20)\n        return 1;\n    x = x << n;\n    printf(\"%d\\n\", x);\n    x &= ~(1 << n);\n    printf(\"%d\\n\", x);\n    return 0;\n}",
       "bugs": [
         "题目要求把 x 乘以 2 的 n 次方，应当左移；写成右移变成除以 2 的 n 次方，结果完全不同",
         "要清除第 n 位必须与上掩码的反，直接与 1 << n 只保留该位而清掉了其他所有位"
@@ -2428,10 +2428,10 @@
           "expected": "1\n32\n2\n1"
         }
       ],
-      "reference": "#include <stdio.h>\n\nunsigned countOnes(unsigned x)\n{\n    unsigned c = 0;\n\n    while (x != 0)\n    {\n        x &= x - 1;\n        c++;\n    }\n    return c;\n}\n\nint main(void)\n{\n    unsigned x;\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%u\", &x) != 1)\n            return 1;\n        printf(\"%u\\n\", countOnes(x));\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nunsigned countOnes(unsigned x) {\n    unsigned c = 0;\n\n    while (x != 0) {\n        x &= x - 1;\n        c++;\n    }\n    return c;\n}\n\nint main(void) {\n    unsigned x;\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%u\", &x) != 1)\n            return 1;\n        printf(\"%u\\n\", countOnes(x));\n    }\n    return 0;\n}",
       "input_format": "第一行一个整数 n（0 ≤ n ≤ 100）；第二行 n 个无符号整数（0 ≤ 每个数 ≤ 4294967295），用空格分隔。",
       "output_format": "共 n 行，每行一个整数，表示对应数的二进制中 1 的个数。n 为 0 时无输出。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    unsigned x;\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++)\n    {\n        if (scanf(\"%u\", &x) != 1)\n            return 1;\n        printf(\"%u\\n\", countOnes(x));\n    }\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    unsigned x;\n    int n, i;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%u\", &x) != 1)\n            return 1;\n        printf(\"%u\\n\", countOnes(x));\n    }\n    return 0;\n}",
       "explanation": "结论：三组分别输出 8/0/5、1、1/32/2/1。推理：x &= x - 1 每执行一次恰好消去二进制中最右边的那个 1，所以循环次数就是 1 的个数，效率优于固定 32 次的逐位测试。易错点：统计 4294967295 这类全 1 的数时必须用 unsigned，否则读入 int 会溢出；countOnes 的返回类型写成 unsigned 时 printf 用 %u，混用 %d 在最高位为 1 的数据上会打出负数。",
       "tags": [
         "统计1的个数",
@@ -2468,10 +2468,10 @@
           "expected": "YES 0"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned x;\n    int k = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    if (x == 0 || (x & (x - 1)) != 0)\n    {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    while (x > 1)\n    {\n        x >>= 1;\n        k++;\n    }\n    printf(\"YES %d\\n\", k);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    unsigned x;\n    int k = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    if (x == 0 || (x & (x - 1)) != 0) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    while (x > 1) {\n        x >>= 1;\n        k++;\n    }\n    printf(\"YES %d\\n\", k);\n    return 0;\n}",
       "input_format": "一行一个无符号整数 x（0 ≤ x ≤ 4294967295）。",
       "output_format": "一行：YES k 或 NO。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    unsigned x;\n    int k = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    if (x == 0 || (x & (x - 1)) != 0)\n    {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    while (x > 1)\n    {\n        x >>= 1;\n        k++;\n    }\n    printf(\"YES %d\\n\", k);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    unsigned x;\n    int k = 0;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    if (x == 0 || (x & (x - 1)) != 0) {\n        printf(\"NO\\n\");\n        return 0;\n    }\n    while (x > 1) {\n        x >>= 1;\n        k++;\n    }\n    printf(\"YES %d\\n\", k);\n    return 0;\n}",
       "explanation": "结论：输出 YES 10 / NO / YES 0。推理：2 的整数次幂的二进制中只有一个 1，消去最低位的 1 后必然变成 0，所以判定条件是 x != 0 且 (x & (x-1)) == 0；求幂次则不断右移直到剩下 1，移位次数即 k。易错点：x 为 0 时 x&(x-1) 也等于 0，必须单独排除，否则会把 0 误判成 2 的幂；x = 1 是 2 的 0 次方，要输出 YES 0。",
       "tags": [
         "2的幂",
@@ -2508,10 +2508,10 @@
           "expected": "4294967295\nFFFFFFFF"
         }
       ],
-      "reference": "#include <stdio.h>\n\nunsigned reverseBytes(unsigned x)\n{\n    unsigned r = 0;\n    int i;\n\n    for (i = 0; i < 4; i++)\n    {\n        r = (r << 8) | (x & 0xFFu);\n        x >>= 8;\n    }\n    return r;\n}\n\nint main(void)\n{\n    unsigned x, r;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    r = reverseBytes(x);\n    printf(\"%u\\n\", r);\n    printf(\"%08X\\n\", r);\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nunsigned reverseBytes(unsigned x) {\n    unsigned r = 0;\n    int i;\n\n    for (i = 0; i < 4; i++) {\n        r = (r << 8) | (x & 0xFFu);\n        x >>= 8;\n    }\n    return r;\n}\n\nint main(void) {\n    unsigned x, r;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    r = reverseBytes(x);\n    printf(\"%u\\n\", r);\n    printf(\"%08X\\n\", r);\n    return 0;\n}",
       "input_format": "一行一个无符号整数 x（0 ≤ x ≤ 4294967295）。",
       "output_format": "第一行倒置结果的十进制形式；第二行倒置结果的 8 位大写十六进制形式（不含 0x 前缀）。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    unsigned x, r;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    r = reverseBytes(x);\n    printf(\"%u\\n\", r);\n    printf(\"%08X\\n\", r);\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    unsigned x, r;\n\n    if (scanf(\"%u\", &x) != 1)\n        return 1;\n    r = reverseBytes(x);\n    printf(\"%u\\n\", r);\n    printf(\"%08X\\n\", r);\n    return 0;\n}",
       "explanation": "结论：4660（0x00001234）倒置为 0x34120000 即 873594880；0 与全 1 的数倒置后不变。推理：每轮先用 x & 0xFF 取出当前最低字节，把已积累的结果左移 8 位腾出位置再或进去，循环 4 次即完成整体倒序。易错点：掩码必须写 0xFFu 保证无符号运算；输出十六进制用 %08X 才能补足 8 位并用大写字母，写成 %X 会丢掉前导 0；本函数只适用于 4 字节类型，换成 8 字节要改循环次数。",
       "tags": [
         "字节序",
@@ -2549,10 +2549,10 @@
           "expected": "3\n0 15 31"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    unsigned set = 0, i;\n    int n, k, c = 0, first;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < (unsigned)n; i++)\n    {\n        if (scanf(\"%d\", &k) != 1 || k < 0 || k > 31)\n            return 1;\n        set |= 1u << k;\n    }\n    for (k = 0; k <= 31; k++)\n        if (set & (1u << k))\n            c++;\n    printf(\"%d\\n\", c);\n    if (c > 0)\n    {\n        first = 1;\n        for (k = 0; k <= 31; k++)\n            if (set & (1u << k))\n            {\n                if (!first)\n                    printf(\" \");\n                printf(\"%d\", k);\n                first = 0;\n            }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    unsigned set = 0, i;\n    int n, k, c = 0, first;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < (unsigned)n; i++) {\n        if (scanf(\"%d\", &k) != 1 || k < 0 || k > 31)\n            return 1;\n        set |= 1u << k;\n    }\n    for (k = 0; k <= 31; k++)\n        if (set & (1u << k))\n            c++;\n    printf(\"%d\\n\", c);\n    if (c > 0) {\n        first = 1;\n        for (k = 0; k <= 31; k++)\n            if (set & (1u << k)) {\n                if (!first)\n                    printf(\" \");\n                printf(\"%d\", k);\n                first = 0;\n            }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "input_format": "第一行一个整数 n（0 ≤ n ≤ 100）；第二行 n 个整数，表示要并入集合的位号。",
       "output_format": "第一行一个整数，为集合元素个数；当个数大于 0 时第二行按升序输出全部元素，空格分隔。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    unsigned set = 0, i;\n    int n, k, c = 0, first;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < (unsigned)n; i++)\n    {\n        if (scanf(\"%d\", &k) != 1 || k < 0 || k > 31)\n            return 1;\n        set |= 1u << k;\n    }\n    for (k = 0; k <= 31; k++)\n        if (set & (1u << k))\n            c++;\n    printf(\"%d\\n\", c);\n    if (c > 0)\n    {\n        first = 1;\n        for (k = 0; k <= 31; k++)\n            if (set & (1u << k))\n            {\n                if (!first)\n                    printf(\" \");\n                printf(\"%d\", k);\n                first = 0;\n            }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    unsigned set = 0, i;\n    int n, k, c = 0, first;\n\n    if (scanf(\"%d\", &n) != 1 || n < 0 || n > 100)\n        return 1;\n    for (i = 0; i < (unsigned)n; i++) {\n        if (scanf(\"%d\", &k) != 1 || k < 0 || k > 31)\n            return 1;\n        set |= 1u << k;\n    }\n    for (k = 0; k <= 31; k++)\n        if (set & (1u << k))\n            c++;\n    printf(\"%d\\n\", c);\n    if (c > 0) {\n        first = 1;\n        for (k = 0; k <= 31; k++)\n            if (set & (1u << k)) {\n                if (!first)\n                    printf(\" \");\n                printf(\"%d\", k);\n                first = 0;\n            }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "explanation": "结论：三组分别输出 4 与 0 1 3 5、单独一个 0、3 与 0 15 31。推理：集合的第 k 位为 1 表示元素 k 属于集合，并入用 set |= 1u << k，天然去重；遍历 0 到 31 逐位测试即可按升序取出全部元素。易错点：掩码要写 1u << k，写 1 << 31 会因有符号溢出属未定义行为；n 为 0 时集合为空，只输出个数 0 而不输出第二行，用 c > 0 判断可避免多打一个空行。",
       "tags": [
         "位标志",
@@ -2589,10 +2589,10 @@
           "expected": "1"
         }
       ],
-      "reference": "#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n)\n{\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void)\n{\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3)\n        return 1;\n    if (p < 0 || p > 31 || n < 1 || n > p + 1)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nunsigned getbits(unsigned x, int p, int n) {\n    return (x >> (p + 1 - n)) & ~(~0u << n);\n}\n\nint main(void) {\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3)\n        return 1;\n    if (p < 0 || p > 31 || n < 1 || n > p + 1)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
       "input_format": "一行三个整数：x（0 ≤ x ≤ 4294967295）、p（0 ≤ p ≤ 31）、n（1 ≤ n ≤ p+1）。",
       "output_format": "一行一个无符号整数，为提取出的位段值。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3)\n        return 1;\n    if (p < 0 || p > 31 || n < 1 || n > p + 1)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    unsigned x;\n    int p, n;\n\n    if (scanf(\"%u %d %d\", &x, &p, &n) != 3)\n        return 1;\n    if (p < 0 || p > 31 || n < 1 || n > p + 1)\n        return 1;\n    printf(\"%u\\n\", getbits(x, p, n));\n    return 0;\n}",
       "explanation": "结论：4660 取第 7 到第 4 位得 3；255 取低 4 位得 15；1024 取第 10 位得 1。推理：先把目标位段右移到最低端，右移量是 p+1-n；再用 ~(~0u << n) 构造低 n 位全 1、其余全 0 的掩码按位与，即可清除高位残留。易错点：~0u << n 中 ~0u 必须是 unsigned，否则 ~0 是 int 型的 -1，n 等于 32 时移位量达到位宽属未定义行为；p+1-n 的括号不能省，移位优先级低于加减但不低于关系运算，写错顺序会取到别的位段。",
       "tags": [
         "位段提取",
@@ -2629,10 +2629,10 @@
           "expected": "0\n0\n0"
         }
       ],
-      "reference": "#include <stdio.h>\n\nint main(void)\n{\n    int x, m, s;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    m = x >> 31;\n    printf(\"%d\\n\", (x ^ m) - m);\n    s = (x > 0) - (x < 0);\n    printf(\"%d\\n\", s);\n    printf(\"%u\\n\", (unsigned)(x ^ (x >> 31)));\n    return 0;\n}",
+      "reference": "#include <stdio.h>\n\nint main(void) {\n    int x, m, s;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    m = x >> 31;\n    printf(\"%d\\n\", (x ^ m) - m);\n    s = (x > 0) - (x < 0);\n    printf(\"%d\\n\", s);\n    printf(\"%u\\n\", (unsigned)(x ^ (x >> 31)));\n    return 0;\n}",
       "input_format": "一行一个整数 x（-2147483647 ≤ x ≤ 2147483647）。",
       "output_format": "三行，每行一个整数，依次为绝对值、符号、(unsigned)(x ^ (x >> 31)) 的值。",
-      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void)\n{\n    int x, m, s;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    m = x >> 31;\n    printf(\"%d\\n\", (x ^ m) - m);\n    s = (x > 0) - (x < 0);\n    printf(\"%d\\n\", s);\n    printf(\"%u\\n\", (unsigned)(x ^ (x >> 31)));\n    return 0;\n}",
+      "code_starter": "#include <stdio.h>\n\n/* 请按题目要求实现所需函数，并在 main 中调用 */\nint main(void) {\n    int x, m, s;\n\n    if (scanf(\"%d\", &x) != 1)\n        return 1;\n    m = x >> 31;\n    printf(\"%d\\n\", (x ^ m) - m);\n    s = (x > 0) - (x < 0);\n    printf(\"%d\\n\", s);\n    printf(\"%u\\n\", (unsigned)(x ^ (x >> 31)));\n    return 0;\n}",
       "explanation": "结论：-5 输出 5、-1、4；5 输出 5、1、5；0 输出三行 0。推理：m = x >> 31 是有符号数的算术右移，x 非负时 m 全 0、为负时 m 全 1（即 -1），(x ^ m) - m 于是在非负时原样返回、为负时按位取反再加 1，正好是补码取相反数，全程无分支。易错点：x 等于 INT_MIN 时其绝对值超出 int 范围会溢出，题目已排除该输入；第三行 x ^ (x>>31) 是绝对值减 1 的效果（负数时等于 |x|-1），必须先存 m 再使用，直接写成 printf(\"%d %d\", (x^m)-m, x>>31) 会因实参求值顺序未规定而结果不可预测。",
       "tags": [
         "补码",
@@ -2850,7 +2850,7 @@
       "section": "11.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第11章 位运算 题11.10（PDF p258 / 书页 p247）",
       "difficulty": 3,
-      "stem": "【题 11.10】请读程序段：以上程序段的输出结果是____。\n\n```c\nchar x=56;\nx=x & 056;\nprintf(\"%d,%o\\n\",x,x);\n```",
+      "stem": "【题 11.10】请读程序段：以上程序段的输出结果是____。\n\n```c\nchar x = 56;\nx = x & 056;\nprintf(\"%d,%o\\n\", x, x);\n```",
       "explanation": "056 是八进制常量，等于十进制 46=101110B；x=56=111000B，两者按位与得 101000B=40。printf 中 %d 打印十进制 40，%o 打印 40 的八进制形式 50，故输出 40,50，选 C。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2916,7 +2916,7 @@
       "section": "11.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第11章 位运算 题11.13（PDF p259 / 书页 p248）",
       "difficulty": 3,
-      "stem": "【题 11.13】在执行完以下 C 语句后，B 的值是____。\n\n```c\nchar Z='A';\nint B;\nB=((241&15)&&(Z|'a'));\n```",
+      "stem": "【题 11.13】在执行完以下 C 语句后，B 的值是____。\n\n```c\nchar Z = 'A';\nint B;\nB = ((241 & 15) && (Z | 'a'));\n```",
       "explanation": "241=0xF1，与 15=0x0F 按位与得 1，非 0；Z|'a' 即 'A'|'a' = 0x41|0x61 = 0x61，也非 0。两个非 0 值做逻辑与 &&，结果为 1，故 B=1，选 B（标准 C 没有 TRUE/FALSE 关键字）。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -2982,7 +2982,7 @@
       "section": "11.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第11章 位运算 题11.16（PDF p259 / 书页 p248）",
       "difficulty": 3,
-      "stem": "【题 11.16】若有以下程序段：则执行以上语句后 x 和 y 的值分别是____。\n\n```c\nint x=1,y=2;\nx=x^y;\ny=y^x;\nx=x^y;\n```",
+      "stem": "【题 11.16】若有以下程序段：则执行以上语句后 x 和 y 的值分别是____。\n\n```c\nint x = 1, y = 2;\nx = x ^ y;\ny = y ^ x;\nx = x ^ y;\n```",
       "explanation": "这是经典的异或交换：x=x^y 得 3；y=y^x 得 2^3=1；x=x^y 得 3^1=2。最终 x=2、y=1，选 C。异或交换不需要临时变量，靠的是 x^y^y=x。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
@@ -3004,7 +3004,7 @@
       "section": "11.1 选择题",
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第11章 位运算 题11.17（PDF p259 / 书页 p248）",
       "difficulty": 3,
-      "stem": "【题 11.17】请读程序段：以上程序段的输出结果是____。\n\n```c\nunsigned t=129;\nt=t^00;\nprintf(\"%d,%o\\n\",t,t);\n```",
+      "stem": "【题 11.17】请读程序段：以上程序段的输出结果是____。\n\n```c\nunsigned t = 129;\nt = t ^ 00;\nprintf(\"%d,%o\\n\", t, t);\n```",
       "explanation": "t^00 就是 t^0，与 0 异或不改变原值，t 仍为 129。%d 输出 129，%o 输出 129 的八进制 201（129=2×64+0×8+1），故输出 129,201，选 B。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
