@@ -69,7 +69,11 @@ export function NextProblemCTA({ id }: { id: string }) {
     <section className="rounded-xl border px-4 py-3" style={panel} data-role="next-problem" data-status={status}>
       <div className="flex flex-wrap items-center gap-3">
         <span className="text-sm font-semibold">
-          {status === 'passed' ? '✅ 这一题已通过' : '◐ 这一题已作答（未通过 / 未判定）'}
+          {status === 'passed'
+            ? record?.selfAssessed
+              ? '◑ 这一题已自评「答对」（无自动判分）'
+              : '✅ 这一题已通过'
+            : '◐ 这一题已作答（未通过 / 未判定）'}
         </span>
         <button
           type="button"

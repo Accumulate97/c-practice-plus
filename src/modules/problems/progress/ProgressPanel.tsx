@@ -56,7 +56,11 @@ export function ProgressPanel({ problemId }: Props) {
   const undoDismissWrong = useProgress((s) => s.undoDismissWrong)
 
   const status = statusOf(record)
-  const meta = STATUS_META[status]
+  // 诚实性红线（任务07 §二·3）：自评题（essay/short_answer）的「通过」不是机器判分结论，
+  // 不给绿色「已通过」徽章——如实显示「自评·答对」，颜色用警示色与机器判分区分。
+  const meta = record?.selfAssessed && status === 'passed'
+    ? { label: '自评·答对（无自动判分）', color: 'var(--fg-warn)', dot: '◑' }
+    : STATUS_META[status]
   const [draft, setDraft] = useState<string | null>(null)
   const note = draft ?? record?.note ?? ''
   const dirty = draft !== null && draft !== (record?.note ?? '')

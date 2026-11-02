@@ -420,8 +420,13 @@ async function main() {
     && String(await text('[data-role="sa-reference"]')).length > 30,
     String(await text('[data-role="sa-reference"]')).replace(/\s+/g, ' ').slice(0, 80))
   await page.locator('[data-role="sa-self-pass"]').click()
-  await page.waitForSelector('[data-role="verdict"][data-tone="good"]', { timeout: 10000 })
+  await page.waitForSelector('[data-role="verdict"][data-tone="warn"]', { timeout: 10000 })
   rec = (await lsRecords())[SA_REF_ID]
+  check('简答题：自评「答对」不给绿色通过徽章——verdict 为 warn 调、进度面板显示「自评·答对」而非「已通过」（任务07 §二·3）',
+    (await countSel('[data-role="verdict"][data-tone="good"]')) === 0
+    && /自评·答对/.test(String(await text('[data-role="status-label"]')))
+    && !/已通过/.test(String(await text('[data-role="status-label"]'))),
+    String(await text('[data-role="status-label"]')))
   check('简答题：自评「答对了」→ 结论落盘但标为自评，attempts/wrongCount 一律不动（不污染机器判分正确率）',
     rec?.selfAssessed === true && rec?.everPassed === true && rec?.attempts === 0 && rec?.wrongCount === 0
     && rec?.lastAnswerKind === 'self' && (await attr('[data-role="progress-panel"]', 'status')) === 'passed',

@@ -128,10 +128,10 @@ export function ShortAnswerRenderer({ problem }: Props) {
 
       {verdict !== null && (
         <VerdictBanner
-          tone={verdict === 'pass' ? 'good' : 'bad'}
-          title={verdict === 'pass' ? '✓ 你自评「答对了」' : '◐ 你自评「还没答对」'}
+          tone={verdict === 'pass' ? 'warn' : 'bad'}
+          title={verdict === 'pass' ? '◑ 你自评「答对了」（本题无自动判分）' : '◐ 你自评「还没答对」'}
           detail={verdict === 'pass'
-            ? '本题在「📈 我的进度」里会显示为已通过，并标注结论来自自评。'
+            ? '本题在「📈 我的进度」与列表里会如实显示为「自评·答对」，不给绿色「已通过」徽章——自评结论不计入机器判分正确率。'
             : '本题会进错题本并标注为自评结论；重新自评一次即可更新。'}
         />
       )}

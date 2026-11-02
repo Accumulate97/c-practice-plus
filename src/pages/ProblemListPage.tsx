@@ -553,6 +553,7 @@ function Ready({ index }: { index: ProblemIndex }) {
                     key={p.id}
                     problem={p}
                     status={statusOf(records[p.id])}
+                    selfAssessed={records[p.id]?.selfAssessed === true}
                     onOpen={snapshotNav}
                     onTag={(t) => patch({ tag: tag === t ? '' : t })}
                   />
@@ -588,8 +589,13 @@ function Ready({ index }: { index: ProblemIndex }) {
   )
 }
 
-function ProblemRow({ problem, status, onOpen, onTag }: { problem: ProblemIndexEntry; status: ListStatus; onOpen: (id: string) => void; onTag: (tag: string) => void }) {
-  const meta = STATUS_META[status]
+function ProblemRow({ problem, status, selfAssessed, onOpen, onTag }: { problem: ProblemIndexEntry; status: ListStatus; selfAssessed: boolean; onOpen: (id: string) => void; onTag: (tag: string) => void }) {
+  // 自评题（essay/short_answer）的「通过」是学生自评结论，不是机器判分：
+  // 不给绿色「已通过」徽章，如实显示「自评·答对」（任务07 §二·3 诚实性红线）。
+  const selfPass = status === 'passed' && selfAssessed
+  const meta = selfPass
+    ? { label: '自评·答对', short: '自评', color: 'var(--fg-warn)', dot: '◑' }
+    : STATUS_META[status]
   const renderable = RENDERABLE_TYPES.has(problem.type)
   const to = `/problems/p/${problem.id}`
   const tags = (problem.tags ?? []).slice(0, 3)
@@ -601,6 +607,7 @@ function ProblemRow({ problem, status, onOpen, onTag }: { problem: ProblemIndexE
       data-chapter={shardKey(problem.file)}
       data-difficulty={problem.difficulty}
       data-status={status}
+      data-self-assessed={selfAssessed ? 'true' : 'false'}
       className="border-t align-middle"
       style={{ borderColor: 'var(--border)' }}
     >
@@ -650,7 +657,11 @@ function ProblemRow({ problem, status, onOpen, onTag }: { problem: ProblemIndexE
         )}
       </td>
       <td className="px-3 py-2 whitespace-nowrap text-xs">
-        <span data-role="status" style={{ color: meta.color }}>
+        <span
+          data-role="status"
+          style={{ color: meta.color }}
+          title={selfPass ? '结论来自学生自评（论述/简答题），无自动判分，不计入正确率' : undefined}
+        >
           {meta.dot} {meta.label}
         </span>
       </td>
