@@ -901,7 +901,7 @@
           "expected": "n=4 s=15"
         }
       ],
-      "explanation": "结论：两空依次为 fscanf(fp, \"%d\", &x) 与 s += x，三组输出 n=5 s=15 / n=1 s=7 / n=4 s=15。推理：fscanf 的返回值是成功赋值的项数，读到一个整数时返回 1，读到文件末尾或格式不匹配时返回 EOF 或 0，因此 == 1 是逐个数读取的标准循环条件。易错点：第一个参数是文件指针而不是格式串；%d 对应的实参必须取地址 &x；累加语句要写在计数之后也可以，但 n 与 s 都必须在使用前初始化为 0。",
+      "explanation": "【思路】程序先把标准输入播种到 num.txt，再以读方式打开，用 fscanf 逐个读取整数并统计个数与总和。fscanf 的返回值是成功赋值的项数，读到一个整数时返回 1，读到文件末尾或格式不匹配时返回 EOF 或 0，因此把 fscanf 调用与 1 比较正是逐个数读取的标准循环条件，循环体内先计数后累加。\n\n【步骤】\n1. 第一空填 fscanf(fp,「%d」,&x)：第一个参数是文件指针 fp，格式串是「%d」，第三个实参必须取地址 &x。\n2. 第二空填 s += x，等价写法是 s = s + x：把刚读到的整数累加进总和。\n3. 每成功读一个整数，n 加 1、s 加 x；读取失败时循环自然结束，最后输出 n 与 s。\n4. 对照用例：输入 1 2 3 4 5 输出 n=5 s=15；输入 7 输出 n=1 s=7；输入 10 -3 0 8 输出 n=4 s=15。\n\n【复杂度】时间复杂度 O(文件中整数个数)，每个整数只被读取一次；空间复杂度 O(1)，只用 x、n、s 等固定变量，依据是循环逐个数处理、无额外存储。\n\n【易错点】\n1. fscanf 第一个参数必须是文件指针 fp，「%d」对应的实参必须取地址 &x，写成 x 是未定义行为。\n2. 循环条件若写成 !feof(fp)，最后一次失败的 x 会被重复统计，必须判返回值等于 1。\n3. n 与 s 依赖初值 0（题中已初始化），累加语句放在 n++ 前后皆可，但两空都必须在读取成功之后才使用 x。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fscanf",
         "返回值"
@@ -952,7 +952,7 @@
           "expected": "len=0"
         }
       ],
-      "explanation": "结论：两空依次为 fseek(fp, 0L, SEEK_END) 与 ftell(fp)。推理：ftell 返回位置标记距文件开头的字节数，所以先用 fseek 以文件末尾为基准、偏移 0 把标记移到末尾，再取 ftell 就得到文件长度。易错点：位移量要写成 long 型常量 0L；起点常量是 SEEK_END，写成 SEEK_SET 会把标记移到开头使 len 恒为 0；这里用 \"wb\"/\"rb\" 二进制方式播种与读取，避免文本方式下换行符在 Windows 上被转换成两字节而使长度偏大。",
+      "explanation": "【思路】要求文件长度，标准做法是先把位置标记移到文件末尾，再用 ftell 读出标记距文件开头的字节数。fseek 的三个参数依次是文件指针、long 型位移量、基准位置常量，以末尾为基准且位移 0 即把标记放到末尾。\n\n【步骤】\n1. 第一空填 fseek(fp, 0L, SEEK_END)：位移量写成 long 型常量 0L，基准用 SEEK_END。\n2. 第二空填 ftell(fp)：返回当前位置距文件开头的字节数，赋给 long 型变量 len。\n3. 程序以「wb」「rb」二进制方式播种与读取，避免文本方式下换行符在 Windows 上被转换成两字节而使长度偏大。\n4. 对照用例：输入 abcdefgh 加换行输出 len=9；输入 abc 加换行输出 len=4；空输入输出 len=0。\n\n【复杂度】时间复杂度 O(输入字符数)，播种阶段逐字符写一遍文件，定位与取长度是常数时间；空间复杂度 O(1)，只用 len 与 c 两个变量。\n\n【易错点】\n1. 位移量必须写成 0L，fseek 第二个参数是 long 型；基准误写 SEEK_SET 会把标记移到开头，len 恒为 0。\n2. ftell 返回 long，接收变量与输出格式都要用 %ld；失败时返回 -1L，这是需要知道的约定。\n3. 空文件时 ftell 返回 0，程序应正常输出 len=0，不要以为对空文件定位到末尾会失败。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fseek",
         "ftell",
@@ -1004,7 +1004,7 @@
           "expected": "12345"
         }
       ],
-      "explanation": "结论：两空依次为 fputc(c, out) 与 putchar(c)。推理：文件复制的核心是\"从源文件读一个字符，就往目标文件写一个字符\"，fputc 的第二个参数必须是目标文件指针；复制完成后重新打开 dst.txt，用 putchar 把内容送到标准输出以检查结果。易错点：写成 fputc(c, fp) 会把字符写回源文件、目标文件为空；putchar(c) 等价于 fputc(c, stdout)；两个文件都要 fclose，且 fclose 的顺序不影响结果但都不能漏。",
+      "explanation": "【思路】程序完成一次文件复制：先把标准输入播种到 src.txt，再逐字符读出写入 dst.txt，最后重新打开 dst.txt 把内容送到标准输出以便核对。复制循环已给出读取部分 fgetc，两个空白分别补写入目标文件与输出到屏幕的动作。\n\n【步骤】\n1. 第一空填 fputc(c, out)：把刚从源文件读到的字符写入目标文件，第二个参数必须是目标文件指针 out。\n2. 第二空填 putchar(c)：重新打开 dst.txt 后逐字符输出到屏幕，putchar(c) 等价于 fputc(c, stdout)。\n3. 复制与输出都以 fgetc 返回 EOF 为终止条件。\n4. 对照用例：输入 Hello 输出 Hello；输入 a b c 输出 a b c；输入 12345 输出 12345。\n\n【复杂度】时间复杂度 O(文件字符数)，每个字符经历读、写、输出各一次；空间复杂度 O(1)，只用一个 int 变量 c 中转。\n\n【易错点】\n1. 第一空写成 fputc(c, fp) 会把字符写回源文件，dst.txt 为空，这是文件指针参数最常见的错。\n2. 两个文件用完都要 fclose，漏关会使缓冲区数据不落盘；关闭先后不影响结果但都不能省。\n3. c 必须是 int 型才能正确接收 fgetc 返回的 EOF，用 char 可能把 EOF 误判成有效字符。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "文件复制",
         "fputc",
@@ -1061,7 +1061,7 @@
           "expected": "k=0"
         }
       ],
-      "explanation": "结论：两空依次为 fwrite(a, sizeof(int), n, fp) 与 fread(b, sizeof(int), n, fp)。推理：fwrite/fread 的第 2、3 个参数分别是每个数据项的字节数与项数，一次调用即可整块写出或读入 n 个 int，返回值是实际完成的项数，所以 k 等于 n，数组内容原样恢复。易错点：必须用 \"wb\"/\"rb\" 二进制方式打开；块大小与项数在读写两端要保持一致，否则数据错位；n 为 0 时 fwrite 返回 0、文件长度为 0，程序应正常输出 k=0 而不是崩溃。",
+      "explanation": "【思路】程序把整型数组 a 的前 n 个元素以二进制块方式写入 arr.dat，再整块读回数组 b 并输出。fwrite 与 fread 的第 2、3 个参数分别是每项字节数与项数，返回值是实际完成的项数，一次调用即可搬运整个数组，因此 k 等于 n、内容原样恢复。\n\n【步骤】\n1. 第一空填 fwrite(a, sizeof(int), n, fp)：从数组 a 首地址开始，每项 sizeof(int) 字节，共写 n 项。\n2. 第二空填 fread(b, sizeof(int), n, fp)：按同样的块大小与项数读回 b，返回值强转 int 后赋给 k。\n3. 文件以「wb」「rb」二进制方式打开，保证按内存映像原样读写。\n4. 对照用例：输入 5 与 11 22 33 44 55，输出 k=5 后逐行 11、22、33、44、55；输入 1 与 7 输出 k=1 与 7；输入 0 输出 k=0。\n\n【复杂度】时间复杂度 O(n)，整块写入与读回各一次；空间复杂度 O(n)，需要 a、b 两个上限 20 个 int 的定长数组。\n\n【易错点】\n1. 读写两端的块大小与项数必须一致，否则数据错位或读不满；块大小误写 sizeof(a) 会把整个数组的 80 字节都写出去。\n2. n 为 0 时 fwrite 返回 0、文件长度为 0，程序应正常输出 k=0 而不是崩溃，用例专门覆盖了这一点。\n3. 必须配对使用「wb」与「rb」，文本方式在不同平台可能损坏二进制数据。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fwrite",
         "fread",
@@ -1110,7 +1110,7 @@
           "expected": "n=0\nend"
         }
       ],
-      "explanation": "结论：两空依次为 feof(fp) 与 ferror(fp)，三组均输出 end。推理：EOF 有两种成因，正常读到文件末尾时 feof 为真，发生读写错误时 ferror 为真，所以循环结束后应当用这两个函数区分。易错点：feof 不能用作读取循环的条件，因为结束标志只有在一次读取越过末尾之后才置位，用 while (!feof(fp)) 会多循环一次；三组用例中文件内容分别是 4、3、0 个字符，空文件时循环一次都不执行但仍属正常结束，输出 n=0 与 end。",
+      "explanation": "【思路】fgetc 返回 EOF 有两种成因：正常读到文件末尾，或发生读写错误。循环结束后应先用 feof 判断结束标志，为真则打印 end；否则再用 ferror 判断出错标志，为真则打印 error。两个函数都以文件指针为参数，返回非 0 表示对应标志已置位。\n\n【步骤】\n1. 第一空填 feof(fp)：文件结束标志置位时返回非 0，进入 end 分支。\n2. 第二空填 ferror(fp)：出错标志置位时返回非 0，进入 error 分支。\n3. 三组用例中文件内容分别是 4、3、0 个字符，都属于正常读到末尾，输出 n=4 加 end、n=3 加 end、n=0 加 end。\n\n【复杂度】时间复杂度 O(文件字符数)，逐字符读一遍；空间复杂度 O(1)，只用 c 与 n 两个变量。\n\n【易错点】\n1. feof 不能用作读取循环的条件：结束标志只在一次读取越过末尾之后才置位，while 加 !feof(fp) 的写法会多循环一次。\n2. 空文件时循环一次都不执行，但仍属正常结束，feof 为真，输出 n=0 与 end，不会走 error 分支。\n3. 两空参数都是文件指针 fp，判断顺序先 feof 后 ferror，与 if 和 else if 结构一一对应。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "feof",
         "ferror",
@@ -1158,7 +1158,7 @@
           "expected": "n=0"
         }
       ],
-      "explanation": "结论：该空填 fopen(\"d2.txt\", \"r\")，三组输出 n=4 / n=12 / n=0。推理：以只读方式 \"r\" 打开刚播种好的文件，再用 fgetc 逐字符统计；\"r\" 要求文件已存在，因此必须先完成播种。易错点：模式串必须是字符串字面量并带双引号，写成 r 会被当成未定义标识符；\"w\" 会清空原内容、\"a\" 只在末尾追加，只读统计必须用 \"r\"；打开后一定要判空，否则文件不存在时对 NULL 调用 fgetc 会崩溃。",
+      "explanation": "【思路】程序先把标准输入播种到 d2.txt，再重新打开该文件逐字符统计个数。播种在前、文件必然存在，统计只读不写，所以打开方式必须用只读的「r」；「r」要求文件已存在，若不存在则 fopen 返回 NULL，程序判空后打印 Cannot open file! 并退出。\n\n【步骤】\n1. 该空填 fopen(「d2.txt」,「r」)：文件名与模式都是字符串字面量，必须带双引号。\n2. 打开后判空，失败走报错分支。\n3. 循环用 fgetc 逐字符读取直到 EOF，n 计数，最后输出 n。\n4. 对照用例：输入 abc 加换行输出 n=4；输入 hello world 加换行输出 n=12；空输入输出 n=0。\n\n【复杂度】时间复杂度 O(文件字符数)，逐字符读一遍；空间复杂度 O(1)，只用 c 与 n 两个变量。\n\n【易错点】\n1. 模式串必须是带双引号的字符串字面量，写成不带引号的 r 会被当成未定义标识符而编译报错。\n2. 「w」会清空刚播种的内容使 n 恒为 0，「a」用于追加写入，只读统计必须用「r」。\n3. 打开后必须判空，否则文件不存在时对 NULL 指针调用 fgetc 会崩溃。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fopen",
         "模式"
@@ -1209,7 +1209,7 @@
           "expected": "5"
         }
       ],
-      "explanation": "结论：两空依次为 fgets(line, sizeof(line), fp) 与 strlen(line)，三组分别输出 3 与 2、三个 1、5。推理：fgets 把整行连同换行符读入 line，strlen 求出的长度包含换行符，所以末尾若是 \n 就减 1，得到不含换行的真实行长。易错点：必须包含 string.h 才能用 strlen；strlen 的参数是字符数组名即首地址，返回 size_t，赋给 int 时显式转换可避免警告；n > 0 的判断不能省，否则空行时 line[n-1] 会越界访问。",
+      "explanation": "【思路】程序逐行读文件并输出每行不含换行符的长度。fgets 每次读一整行连同换行符存入 line，成功时返回 line、到末尾或出错时返回 NULL，正好作循环条件；行长用 strlen 求出，它把换行符也算在内，所以末尾若是换行就减 1。\n\n【步骤】\n1. 第一空填 fgets(line, sizeof(line), fp)：三个参数是缓冲区、容量、文件指针，读到换行或读满容量减 1 个字符为止。\n2. 第二空填 strlen(line)：返回 size_t 型长度，显式转成 int 赋给 n 可避免警告。\n3. 若 n 大于 0 且末字符是换行则 n 减 1，再输出该行长度。\n4. 对照用例：输入 abc 与 de 两行输出 3 和 2；输入 x、y、z 三行输出三个 1；输入 hello 一行输出 5。\n\n【复杂度】时间复杂度 O(文件总字符数)，每行读入一次并扫描一次求长度；空间复杂度 O(1)，line 是 80 字节定长缓冲区。\n\n【易错点】\n1. 必须包含 string.h 才能使用 strlen；参数直接写数组名 line 即首地址。\n2. n 大于 0 的判断不能省，否则空行时访问 line[n-1] 就是越界访问。\n3. 超过 79 个字符的行会被 fgets 拆成多次读取，每段各算一行，行长统计随之偏差。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fgets",
         "strlen",
@@ -1264,7 +1264,7 @@
           "expected": "[C99]"
         }
       ],
-      "explanation": "结论：两空依次为 fputs(s, fp) 与 fgets(line, sizeof(line), fp)。推理：fputs 把字符串整体写入文件且不会自动追加换行符，fgets 再从文件中读回一行存入 line，最后用 %s 输出并加上方括号以显示边界。易错点：fputs 的第一个参数是字符串（字符数组名或字符串常量），第二个是文件指针，顺序不能颠倒；与 puts 不同，fputs 不会自动补换行；scanf 用 %79s 限宽可防止 s[80] 溢出。",
+      "explanation": "【思路】程序先用 scanf 读入一个不含空白的字符串 s，把它写入 s.txt，再读回到 line 并用方括号括起输出以显示边界。写字符串整体用 fputs，读一行用 fgets，二者都以文件指针作最后一个参数。\n\n【步骤】\n1. 第一空填 fputs(s, fp)：把 s 整体写入文件，它不会自动追加换行符。\n2. 第二空填 fgets(line, sizeof(line), fp)：从文件读回一行存入 line，fgets 自动补字符串结束符。\n3. 最后 printf 用 %s 输出 line 并加方括号。\n4. 对照用例：输入 hello 输出 [hello]；输入 abc 输出 [abc]；输入 C99 输出 [C99]。\n\n【复杂度】时间复杂度 O(字符串长度)，写一遍读一遍；空间复杂度 O(1)，s 与 line 都是 80 字节定长数组。\n\n【易错点】\n1. fputs 第一个参数是字符串、第二个是文件指针，顺序不能颠倒；与 puts 不同，fputs 不会自动补换行。\n2. 写入时没有换行符，fgets 读到文件末尾也能正常返回非 NULL，line 中即原字符串。\n3. scanf 用 %79s 限宽是防止 s 溢出的关键，直接写 %s 存在越界风险。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fputs",
         "fgets"
@@ -1316,7 +1316,7 @@
           "expected": "AB"
         }
       ],
-      "explanation": "本题考察 fopen 的打开方式。第一次要写文件，打开方式必须用 \"w\"（写方式，若文件存在则先清空内容、否则新建）；第二次要读文件，打开方式用 \"r\"（读方式，文件必须存在）。填空时注意它是字符串字面量，要带双引号。fopen 返回 FILE *，失败时返回 NULL，因此程序里用 if (fp == NULL) return 1; 做了健壮性检查。写完后用 fclose 关闭，再以 \"r\" 打开读取。要点：w 覆盖已有文件，r 只读，a 追加；任何打开的文件用完都必须 fclose，这里最后用 remove(\"t.txt\") 删掉临时文件。",
+      "explanation": "【思路】程序先以写方式打开 t.txt 写入 A、B 两个字符，关闭后再以读方式打开，逐个读出并 putchar 输出。两空都是 fopen 的第二个参数即打开模式字符串：先写后读，分别对应「w」与「r」。\n\n【步骤】\n1. 第一空填「w」：写方式，文件不存在则新建，存在则先清空原内容。\n2. 第二空填「r」：读方式，要求文件已存在；前一步已写入并 fclose，条件满足。\n3. fputc 写入 A 和 B，重新打开后两次 fgetc 依次读到 A、B，putchar 输出后补一个换行，屏幕显示 AB。\n4. 末尾 remove 删除临时文件，属于良好习惯。\n\n【复杂度】时间复杂度 O(1)，只读写两个字符；空间复杂度 O(1)，无动态分配。\n\n【易错点】\n1. 模式是字符串字面量必须带双引号，写成字符常量 'w' 类型不匹配。\n2. 「w」覆盖已有文件、「a」追加、「r」只读，选错模式会清空数据或打开失败返回 NULL。\n3. 两次 fopen 后都要判空；写完必须 fclose 再重新打开，否则缓冲区内容可能尚未落盘。\n【关联】知识标签：fopen、fclose、w、r。本题属于「12.1 文件指针与打开关闭」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "source": "自撰（依据《C程序设计》第12章 文件 知识点体系）",
       "verified": true,
       "variantOf": "",
@@ -1362,7 +1362,7 @@
           "expected": "3 6 9 12"
         }
       ],
-      "explanation": "本题考察 fwrite 与 fread 的签名：fwrite(ptr, size, count, fp)，fread(ptr, size, count, fp)。第一空填 count，即写入的元素个数 4；第二空填 size，即每个元素占的字节数 sizeof(int)。写完后必须 rewind 把位置指针拨回文件开头，否则 fread 会从文件末尾（无内容可读）处读取。fread(b, sizeof(int), 4, fp) 把 4 个 int 依次读入 b。要点：size 与 count 的乘积决定读写字节数；用 sizeof(int) 写 size 能够保证与平台 int 大小一致。",
+      "explanation": "【思路】程序用 tmpfile 建立临时文件，把数组 a 的 4 个 int 整体写入，rewind 拨回开头后用 fread 读回 b 再输出。fwrite 与 fread 的签名都是数据首地址、每项字节数、项数、文件指针，两空分别补项数与每项字节数。\n\n【步骤】\n1. 第一空填 4：a 有 4 个元素，写入项数就是 4。\n2. 第二空填 sizeof(int)：每项字节数与写入端一致，保证与平台 int 大小匹配。\n3. 写完后位置在文件末尾，必须 rewind 把位置指针拨回开头，否则 fread 无内容可读。\n4. 读回后 printf 依次输出 b 的四个元素，结果为 3 6 9 12。\n\n【复杂度】时间复杂度 O(1)，固定 4 个元素的整块读写；空间复杂度 O(1)，a、b 为定长数组。\n\n【易错点】\n1. size 与 count 的乘积决定读写字节数，参数顺序是先字节数后项数，两空不能互换。\n2. 漏掉 rewind 是最大陷阱：写完后直接 fread 会因位置在末尾而读到 0 项，b 保持全 0。\n3. 块大小用 sizeof(int) 而非硬编码，可移植性更好；读写块大小不一致会造成数据错位。\n【关联】知识标签：fwrite、fread、sizeof、rewind。本题属于「12.2 字符与块读写」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "source": "自撰（依据《C程序设计》第12章 文件 知识点体系）",
       "verified": true,
       "variantOf": "",
@@ -1408,7 +1408,7 @@
           "expected": "15"
         }
       ],
-      "explanation": "本题考察 fprintf 与 fscanf 的格式化读写。fprintf 与 printf 用法一致，只是多一个文件指针参数，它把格式化的文本写到文件中。fscanf 与 scanf 用法一致，只是从文件读取输入。要读一个整型并存入 a，格式串必须是 \"%d\"，且第二个参数是变量的地址 &a；读 b 同理。注意 fscanf 会跳过所读数值前的空白字符，两个数据间用空格隔开，因此能正确读出 7 和 8。求和 7+8=15，输出 15。要点：fscanf 的第二个参数必须是地址（&），这是初学者最容易犯的错。",
+      "explanation": "【思路】程序先用 fprintf 向临时文件写入 7 和 8 两个整数的文本形式，rewind 后用两次 fscanf 分别读入 a 和 b，再输出二者之和。fscanf 与 scanf 用法一致，只是第一个参数换成文件指针；要读一个 int，格式串必须是「%d」，且第三个实参必须是变量地址。\n\n【步骤】\n1. 两空都填「%d」：分别对应读入 a 与读入 b。\n2. fscanf 会自动跳过数值前的空白，写入时 7 与 8 之间有空格，两次读取依次得到 7 和 8。\n3. printf 输出 a 加 b，即 7 加 8 等于 15。\n\n【复杂度】时间复杂度 O(1)，固定两次格式化读写；空间复杂度 O(1)，只用 a、b 两个变量。\n\n【易错点】\n1. fscanf 的第三个参数必须是地址 &a、&b，漏掉取地址符是初学者最常犯的错，会导致未定义行为。\n2. 格式串必须是带双引号的「%d」；转换说明的个数必须与后续地址参数个数一致，多写会越界写内存。\n3. rewind 不可省：fprintf 之后位置在文件末尾，不拨回开头将读不到任何数据，a、b 保持未初始化。\n【关联】知识标签：fprintf、fscanf、rewind、格式。本题属于「12.3 格式化读写」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "source": "自撰（依据《C程序设计》第12章 文件 知识点体系）",
       "verified": true,
       "variantOf": "",
@@ -1454,7 +1454,7 @@
           "expected": "6\nC"
         }
       ],
-      "explanation": "本题考察 fseek 与 ftell。fputs 写入 \"ABCDEF\" 后，文件位置在末尾，ftell(fp) 返回当前偏移 6，先输出 6。fseek(fp, offset, whence) 的三参数分别是偏移量、基准位置标志。要从开头起定位到第 2 个字符，偏移是 2，基准用 SEEK_SET（从文件开头算）。所以第一空填 2，第二空填 SEEK_SET。定位后 fgetc 读到索引 2 处的 C，输出 C。要点：SEEK_SET 从开头算、SEEK_CUR 从当前位置算、SEEK_END 从末尾算；偏移可正可负，SEEK_END 常用负偏移往回定位。",
+      "explanation": "【思路】程序向临时文件写入 ABCDEF 六个字符后，先用 ftell 输出当前位置（末尾，偏移 6），再用 fseek 把位置指针定位到从文件开头数第 2 个字节处并读出该处字符。fseek 三个参数是文件指针、位移量、基准常量，从开头起算用 SEEK_SET。\n\n【步骤】\n1. fputs 写入 6 个字符后位置在末尾，第一个 printf 用 %ld 输出 ftell 的结果 6。\n2. 第一空填 2：从基准再前进 2 个字节。\n3. 第二空填 SEEK_SET：以文件开头为基准，定位后位置恰是下标 2 的字符。\n4. fgetc 读到 C（A 下标 0、B 下标 1、C 下标 2），putchar 输出，最终显示两行：6 和 C。\n\n【复杂度】时间复杂度 O(1)，常数次定位与读写；空间复杂度 O(1)，无额外存储。\n\n【易错点】\n1. 三个基准常量要分清：SEEK_SET 从开头算、SEEK_CUR 从当前位置算、SEEK_END 从末尾算；误用 SEEK_CUR 会从偏移 6 再前进 2，fgetc 将返回 EOF。\n2. 偏移量可正可负，SEEK_END 常用负偏移往回定位；第 2 个字符对应偏移 2 而非 1，因为下标从 0 开始。\n3. ftell 返回 long，输出格式必须用 %ld，用 %d 在 long 为 8 字节的平台上会出错。\n【关联】知识标签：fseek、SEEK_SET、ftell、fgetc。本题属于「12.4 文件定位与综合」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "source": "自撰（依据《C程序设计》第12章 文件 知识点体系）",
       "verified": true,
       "variantOf": "",
@@ -1493,7 +1493,7 @@
           "expected": "5"
         }
       ],
-      "explanation": "本题考察以 fgetc 逐字符读取文件的经典循环写法。while ((ch = fgetc(fp)) != EOF) 先把 fgetc 的返回值赋给 ch，再与文件结束标志 EOF 比较；当读到文件末尾时 fgetc 返回 EOF（通常为 -1），循环终止。字符串 \"Count\" 共 5 个字符，循环体内 n++ 计数，故输出 5。要点：必须用括号把赋值包起来 ((ch = fgetc(fp)) != EOF)，因为 != 优先级大于 =；且要在读回文件前 rewind 把指针拨到开头。这个模式是最常见的\"读文件直到结束\"的写法。",
+      "explanation": "【思路】程序向临时文件写入 Count 五个字符，rewind 拨回开头后用 fgetc 逐字符读取并计数，直到文件结束。fgetc 读到末尾时返回 EOF（通常为 -1），所以循环条件是与 EOF 比较，该空填 EOF。\n\n【步骤】\n1. fputs 写入 Count 后 rewind，位置回到文件开头。\n2. 循环条件写成 (ch = fgetc(fp)) != EOF：先赋值再比较，赋值表达式必须用括号包住。\n3. 每读到一个有效字符 n 加 1，共 5 个字符，第 6 次读取返回 EOF，循环结束。\n4. printf 输出 5。\n\n【复杂度】时间复杂度 O(文件字符数)，逐字符读一遍；空间复杂度 O(1)，只用 ch 与 n 两个变量。\n\n【易错点】\n1. 接收 fgetc 返回值的 ch 必须是 int 型：EOF 是负值，用 char 接收可能在无符号字符平台上把 EOF 误判成字符 255，循环无法结束。\n2. 不等于号的优先级高于赋值号，不加括号会把比较结果赋给 ch，条件逻辑完全错误。\n3. 读回前必须 rewind，否则位置在末尾，第一次 fgetc 就返回 EOF，n 为 0。\n【关联】知识标签：fgetc、EOF、循环、计数。本题属于「12.2 字符与块读写」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "source": "自撰（依据《C程序设计》第12章 文件 知识点体系）",
       "verified": true,
       "variantOf": "",
@@ -1507,7 +1507,7 @@
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第12章 文件 题12.41（PDF p275 / 书页 p264）",
       "difficulty": 4,
       "stem": "【题 12.41】假设磁盘上有3个文本文件，其文件名和内容分别为：f1→aaa!、f2→bbb!、f3→ccc!。此外，磁盘上还有以下程序，经编译、连接后生成为e12_41.exe的可执行文件。若在系统提示符下输入：e12_42 f1 f2 f3 ＜回车＞，则程序的运行结果是______。",
-      "explanation": "输出 bbbcccddd。命令行 e12_42 f1 f2 f3 使 argc=4、argv[1]~argv[3] 是三个文件名，while(--argc>0) 正好循环 3 次，依次打开 f1、f2、f3；sub() 用 getc 逐字符读，把每个字符的编码加 1 后 putchar，读到 '!' 就停且不输出它，于是 aaa!→bbb、bbb!→ccc、ccc!→ddd。易错点：c+1 是字符编码加一（'a'+1='b'），三行输出连成一片是因为代码里没有输出换行。\n\n【实机验证·Godbolt cg132 -O0】原题依赖命令行参数与磁盘文件 f1/f2/f3；实机改等价自包含写法：先按题面生成三个文件，再用内置 argv 走原 while+sub 逻辑，输出同原题。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
+      "explanation": "【思路】原题在命令行输入 e12_42 f1 f2 f3，argc 为 4，argv 下标 1 到 3 依次是三个文件名。主循环 while (--argc > 0) 先自减再判断，正好执行 3 次，依次打开 f1、f2、f3。函数 sub 用 getc 逐字符读取，把每个字符编码加 1 后 putchar，读到感叹号即停且不输出它。\n\n【步骤】\n1. 第一轮打开 f1（内容 aaa!），a 加 1 得 b，输出 bbb。\n2. 第二轮打开 f2（内容 bbb!），b 加 1 得 c，输出 ccc。\n3. 第三轮打开 f3（内容 ccc!），c 加 1 得 d，输出 ddd。\n4. 代码中没有输出换行，三段连成一片，运行结果为 bbbcccddd。\n\n【复杂度】时间复杂度 O(三个文件的字符总数)，每个字符读一次输出一次；空间复杂度 O(1)，sub 中只用一个 char 变量中转。\n\n【易错点】\n1. putchar(c + 1) 是字符编码加一（a 加 1 是 b），不是输出数字；感叹号只是终止符，本身不输出。\n2. while (--argc > 0) 是前置自减，先减后判，循环次数恰为文件数 3；写成后置自减次数会不同。\n3. 输出连成一片是因为没有换行符，作答时不要自行添加分隔。\n【关联】本题属于「12.2 填空题」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
       "type": "code_reading",
@@ -1524,7 +1524,7 @@
       "source": "教材原题转录：《C程序设计试题汇编》（谭浩强系列，12 章体例） 第12章 文件 题12.43（PDF p276 / 书页 p265）",
       "difficulty": 4,
       "stem": "【题 12.43】假设执行以下程序之前文件e12_43.txt的内容为：sample，则程序运行后的结果是______。",
-      "explanation": "输出 position=6 与 position=18（两行）。以 \"a\" 追加方式打开时位置指针落在文件末尾，原内容 sample 共 6 个字符，所以第一次 ftell 得 6；fprintf 写入 sample data\\n 共 12 个字符，6+12=18。易错点：把 \"a\" 当成 \"w\"（会先清空文件、ftell 得 0）；另外 C 标准只保证追加模式下第一次写入发生在末尾，打开后立即 ftell 的值属实现定义，glibc 等常见实现给 6。\n\n【实机验证·Godbolt cg132 -O0】原题前提为文件已有 sample（6 字节），实机先生成该文件复现前提，再 \"a\" 追加：首个 ftell=6、写入 sample data\\n（12 字节）后 ftell=18，与书末 position=6/18 一致。若不预置文件则得 0/12（非题面前提）。本题为程序阅读题，原书只给程序段；为实机验证已等价包装为含 #include 与 main 的完整程序，逻辑与输出与原片段一致，答案取自 Godbolt cg132 实机 stdout（-O0）。",
+      "explanation": "【思路】程序以追加方式 a 打开已有内容 sample 的 e12_43.txt。追加模式下位置指针落在文件末尾，原内容 6 个字符，第一次 ftell 得 6；fprintf 写入 sample data 加换行共 12 个字符，6 加 12 等于 18，第二次 ftell 得 18。\n\n【步骤】\n1. 题面前提：执行前文件已有 sample 共 6 字节（实机验证时先等价写入复现前提）。\n2. 以 a 模式打开后位置在末尾，第一次 ftell 输出 position=6。\n3. fprintf 写入 sample data 加换行：11 个可见字符加 1 个换行共 12 字节。\n4. 第二次 ftell 得 18，输出 position=18。最终答案为两行：position=6 与 position=18。\n\n【复杂度】时间复杂度 O(写入字符数)，一次追加写入；空间复杂度 O(1)，只用一个 long 变量记录位置。\n\n【易错点】\n1. 把 a 当成 w 是最大陷阱：w 会先清空文件，两次 ftell 将得 0 和 12。\n2. C 标准只保证追加模式下第一次写入发生在末尾，打开后立即 ftell 的值属实现定义，glibc 等常见实现给 6。\n3. sample data 加换行共 12 个字符，中间的空格也算一个，数错会得 17。\n【关联】本题属于「12.2 填空题」小节，可在题目列表按同小节或同标签筛选后成组复习。",
       "ai_generated": false,
       "generated_at": "2026-09-08",
       "type": "code_reading",
@@ -1546,7 +1546,7 @@
       "answer": "n=3",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    int c, n = 0;\n\n    seed = fopen(\"v.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"v.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while ((c = fgetc(fp)) != EOF)\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')\n            n++;\n    fclose(fp);\n    printf(\"n=%d\\n\", n);\n    return 0;\n}",
       "stdin": "Hello World\n",
-      "explanation": "结论：输出 n=3。推理：标准输入 \"Hello World\" 连同换行被逐字符写入 v.txt，随后用 fgetc 逐个读回，只有小写元音 a e i o u 才计数，命中的是 Hello 中的 e、o 与 World 中的 o，共 3 个。易错点：判断条件里没有大写元音，H 与 W 不参与；换行符也算被读到的字符但不满足元音条件；接收 fgetc 返回值的 c 必须是 int，写成 char 会在 c 为无符号的平台上把 EOF 误判成字符 255。",
+      "explanation": "【思路】程序把标准输入 Hello World 连同换行逐字符播种到 v.txt，再用 fgetc 逐字符读回，只统计小写元音 a e i o u 的出现次数。命中的是 Hello 中的 e 和 o、World 中的 o，共 3 个，输出 n=3。\n\n【步骤】\n1. getchar 循环把输入原样写入 v.txt，空格与换行也写入。\n2. 读回时对每个字符检查是否属于五个小写元音。\n3. Hello 贡献 e、o 两个，World 贡献 o 一个，合计 3。\n4. 最终输出 n=3。\n\n【复杂度】时间复杂度 O(文件字符数)，逐字符扫描一遍；空间复杂度 O(1)，只用 c 与 n 两个变量。\n\n【易错点】\n1. 判断条件里没有大写元音，H 与 W 不参与统计；两个 o 都要计入，漏数会得 2。\n2. 接收 fgetc 返回值的 c 必须是 int，用 char 在部分平台会把 EOF 误判成字符 255。\n3. 换行符也被读回但不满足元音条件，不影响计数结果。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fgetc",
         "字符统计"
@@ -1571,7 +1571,7 @@
       "answer": "words=3",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    char w[64];\n    int c, n = 0;\n\n    seed = fopen(\"w.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"w.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while (fscanf(fp, \"%63s\", w) == 1)\n        n++;\n    fclose(fp);\n    printf(\"words=%d\\n\", n);\n    return 0;\n}",
       "stdin": "one two  three\n",
-      "explanation": "结论：输出 words=3。推理：fscanf 的 %s 会自动跳过前导空白（空格、制表符、换行），读到下一个空白为止，因此连续两个空格不会产生空单词，one、two、three 各算一次，返回值为成功赋值的项数 1。易错点：%s 不做边界检查，必须用 %63s 限制宽度以防溢出 w[64]；若改用 fgetc 手工统计则需要自己维护\"在词内/词外\"状态；循环条件写成 !feof(fp) 会多算一次。",
+      "explanation": "【思路】程序把输入 one two three（two 后有两个空格）播种到 w.txt，再用 fscanf 配合「%63s」逐个读单词。%s 转换会自动跳过前导空白（空格、制表、换行），读到下一个空白为止，连续空格不会产生空单词，所以三个单词各计一次，输出 words=3。\n\n【步骤】\n1. 播种阶段把输入原样写入文件，包括连续空格与末尾换行。\n2. fscanf 每成功读到一个单词返回 1，n 加 1。\n3. one、two、three 依次读完，第四次 fscanf 只剩空白可读，返回 EOF，循环结束。\n4. 最终输出 words=3。\n\n【复杂度】时间复杂度 O(文件字符数)，每个字符被扫描一次；空间复杂度 O(1)，w 是 64 字节定长缓冲区。\n\n【易错点】\n1. %s 不做边界检查，必须用 %63s 限宽，否则超长单词会溢出 w 数组。\n2. 连续两个空格会被自动跳过，不会多出空单词，不要误答成 4。\n3. 循环条件判返回值等于 1；写成 !feof(fp) 会多循环一次把计数弄错。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fscanf",
         "单词统计"
@@ -1596,7 +1596,7 @@
       "answer": "lines=3",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    char line[80];\n    int c, n = 0;\n\n    seed = fopen(\"l.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"l.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while (fgets(line, sizeof(line), fp) != NULL)\n        n++;\n    fclose(fp);\n    printf(\"lines=%d\\n\", n);\n    return 0;\n}",
       "stdin": "a\nb\nc\n",
-      "explanation": "结论：输出 lines=3。推理：fgets 每次最多读 sizeof(line)-1 个字符，遇到换行符就把换行一并存入并结束本次读取，读到文件末尾且无字符可读时返回 NULL，三行输入恰好循环三次。易错点：若某一行超过 79 个字符，fgets 会把它拆成多次读取，行数就会虚增；文本方式写入再读回时换行符经过转换仍是一个 \n，所以计数不受平台影响；最后一行没有换行符时也会被算作一行。",
+      "explanation": "【思路】程序把三行输入 a、b、c 播种到 l.txt，再用 fgets 逐行读回计数。fgets 每次最多读 sizeof(line) 减 1 个字符，遇换行就把换行一并存入并结束本次读取；到文件末尾且无字符可读时返回 NULL。三行恰好循环三次，输出 lines=3。\n\n【步骤】\n1. 播种后文件内容为三行，每行一个字符加一个换行。\n2. 三次 fgets 分别读入 a、b、c 各自的行，n 累计到 3。\n3. 第四次 fgets 已到末尾且无字符可读，返回 NULL，循环结束。\n4. 最终输出 lines=3。\n\n【复杂度】时间复杂度 O(文件字符数)，每行扫描一次；空间复杂度 O(1)，line 为 80 字节定长数组。\n\n【易错点】\n1. 若某行超过 79 个字符，fgets 会把它拆成多次读取，行数虚增；本题每行只有一个字符不受影响。\n2. 最后一行没有换行符时也会被算作一行，fgets 直到真正读尽才返回 NULL。\n3. 文本方式写入再读回，换行符经平台转换仍是一个换行，计数不受影响。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fgets",
         "行数统计"
@@ -1621,7 +1621,7 @@
       "answer": "sum=15",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    int x, s = 0, c;\n\n    seed = fopen(\"s.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"s.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while (fscanf(fp, \"%d\", &x) == 1)\n        s += x;\n    fclose(fp);\n    printf(\"sum=%d\\n\", s);\n    return 0;\n}",
       "stdin": "1 2 3 4 5\n",
-      "explanation": "结论：输出 sum=15。推理：fscanf 用 %d 逐个读取整数，%d 会自动跳过空白并识别可选符号，读到无法构成整数的内容或文件末尾时返回 0 或 EOF，循环随之结束，1+2+3+4+5=15。易错点：循环条件必须判 fscanf 的返回值等于 1，写成 while (!feof(fp)) 会把最后一次失败的 x 重复累加；s 初值为 0 不可省；若文件中出现字母，fscanf 立即失败并停止，后面的整数不会被读到。",
+      "explanation": "【思路】程序把输入 1 2 3 4 5 播种到 s.txt，再用 fscanf 按「%d」逐个读取整数并累加。%d 会自动跳过空白并识别可选符号，读到无法构成整数的内容或文件末尾时返回 0 或 EOF，循环结束。1 加 2 加 3 加 4 加 5 等于 15，输出 sum=15。\n\n【步骤】\n1. 播种后文件内容为五个以空格分隔的整数加换行。\n2. 每轮 fscanf 成功读到一个整数返回 1，s 累加该值。\n3. 五轮后只剩换行可读，第六轮 fscanf 匹配失败返回 EOF，循环终止。\n4. 最终输出 sum=15。\n\n【复杂度】时间复杂度 O(文件中整数个数)，每个整数读一次；空间复杂度 O(1)，只用 x 与 s 两个变量。\n\n【易错点】\n1. 循环条件必须判 fscanf 返回值等于 1；写成 !feof(fp) 会把最后一次失败时 x 的旧值重复累加。\n2. s 初值为 0 不可省，否则累加结果不可预期。\n3. 文件中若混入字母，fscanf 立即失败停止，后面的整数全部读不到。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fscanf",
         "求和"
@@ -1646,7 +1646,7 @@
       "answer": "len=7",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    long len;\n    int c;\n\n    seed = fopen(\"d.bin\", \"wb\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"d.bin\", \"rb\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    fseek(fp, 0L, SEEK_END);\n    len = ftell(fp);\n    fclose(fp);\n    printf(\"len=%ld\\n\", len);\n    return 0;\n}",
       "stdin": "abcdefg",
-      "explanation": "结论：输出 len=7。推理：先把 7 个字符以二进制方式写入 d.bin，再用 fseek(fp, 0L, SEEK_END) 把位置标记移到文件末尾，此时 ftell 返回的偏移量就是文件字节数 7。易错点：位移量必须写成 long 型常量 0L；接收 ftell 结果的变量要用 long 并用 %ld 输出，ftell 失败返回 -1L；这里特意用 \"wb\"/\"rb\" 且输入不带换行，避免文本方式下换行被转换成两字节而使长度与字符数不一致。",
+      "explanation": "【思路】程序把输入 abcdefg 以二进制方式播种到 d.bin，再用 fseek 把位置标记移到文件末尾，ftell 返回标记距文件开头的字节数即文件长度。输入共 7 个字符且不带换行，所以输出 len=7。\n\n【步骤】\n1. 播种用「wb」、读取用「rb」，二进制方式不做换行转换，字节数与字符数一致。\n2. fseek(fp, 0L, SEEK_END) 以末尾为基准偏移 0，把标记放到文件尾。\n3. ftell(fp) 返回 7，赋给 long 型变量 len。\n4. printf 用 %ld 输出，最终结果为 len=7。\n\n【复杂度】时间复杂度 O(输入字符数)，播种逐字符写一遍，定位与取长度为常数操作；空间复杂度 O(1)，只用 len 与 c。\n\n【易错点】\n1. 位移量必须写成 long 型常量 0L；基准误写 SEEK_SET 时标记停在开头，len 恒为 0。\n2. ftell 返回 long，变量类型与 %ld 格式要配套；失败时返回 -1L。\n3. 本题输入不带换行，配合二进制读写保证长度恰为字符数；若带换行且用文本方式，Windows 下换行会存成两字节使长度偏大。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fseek",
         "ftell",
@@ -1672,7 +1672,7 @@
       "answer": "X X",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    int c;\n\n    seed = fopen(\"r.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"r.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    c = fgetc(fp);\n    rewind(fp);\n    printf(\"%c %c\\n\", (char)c, (char)fgetc(fp));\n    fclose(fp);\n    return 0;\n}",
       "stdin": "XYZ",
-      "explanation": "结论：输出 X X。推理：第一次 fgetc 读到 X，rewind(fp) 把文件位置标记重置回开头并清除结束与出错标志，第二次 fgetc 又读到 X，因此两个字符相同。易错点：rewind 无返回值，等价于 fseek(fp, 0L, SEEK_SET) 外加清除 feof/ferror 标志；printf 的两个实参中 (char)c 取的是已保存的变量值，不依赖 fgetc 的调用时刻，所以这里不受实参求值顺序影响，但若把两次 fgetc 都写进同一个 printf 就可能踩到求值顺序的坑。",
+      "explanation": "【思路】程序把输入 XYZ 播种到 r.txt 后打开：先用 fgetc 读到第一个字符 X 存入 c，再 rewind 把位置标记重置回文件开头，随后 printf 输出已保存的 c 与再次 fgetc 读到的字符。重置后第二次读取仍从开头读到 X，所以输出 X X。\n\n【步骤】\n1. 播种后文件内容为 XYZ（输入不带换行）。\n2. 第一次 fgetc 读到 X，存入变量 c。\n3. rewind(fp) 把位置标记拨回开头，同时清除结束与出错标志。\n4. printf 按格式「%c %c」先输出 (char)c 即 X，再输出第二次 fgetc 读到的 X，中间一个空格，答案为 X X。\n\n【复杂度】时间复杂度 O(输入字符数)，播种一遍，读取阶段为常数次操作；空间复杂度 O(1)，只用变量 c。\n\n【易错点】\n1. rewind 无返回值，等价于 fseek(fp, 0L, SEEK_SET) 外加清除 feof 与 ferror 标志。\n2. printf 实参中 (char)c 是已保存的变量值，不依赖 fgetc 的调用时刻；若把两次 fgetc 都写进同一个 printf 就可能踩到实参求值顺序的坑。\n3. 两个 X 之间的空格来自格式串，答案要原样保留。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "rewind",
         "fgetc"
@@ -1697,7 +1697,7 @@
       "answer": "Hello",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *out, *seed;\n    int c;\n\n    seed = fopen(\"src.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"src.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    if ((out = fopen(\"dst.txt\", \"w\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while ((c = fgetc(fp)) != EOF)\n        fputc(c, out);\n    fclose(out);\n    fclose(fp);\n    if ((fp = fopen(\"dst.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while ((c = fgetc(fp)) != EOF)\n        putchar(c);\n    fclose(fp);\n    return 0;\n}",
       "stdin": "Hello\n",
-      "explanation": "结论：输出 Hello（原样打印复制结果）。推理：程序把 stdin 播种到 src.txt，再以\"读一个字符、写一个字符\"的方式复制到 dst.txt，最后重新打开 dst.txt 用 putchar 输出到屏幕。易错点：fputc 的第二个参数必须是目标文件指针，写成 fp 就把数据写回源文件；复制前 dst.txt 以 \"w\" 打开会清空原内容；两个文件用完都要 fclose，否则缓冲区数据可能没有落盘。",
+      "explanation": "【思路】程序完成一次完整的文件复制：把标准输入 Hello 播种到 src.txt，再以读一个字符、写一个字符的方式复制到 dst.txt，最后重新打开 dst.txt 用 putchar 逐字符输出到屏幕，显示的就是复制结果，答案为 Hello。\n\n【步骤】\n1. 播种阶段把 Hello 连同换行写入 src.txt。\n2. 复制循环从 src.txt 逐字符 fgetc，再 fputc 写入 dst.txt，直到 EOF。\n3. 关闭两个文件后，重新以读方式打开 dst.txt。\n4. putchar 循环把内容原样送到标准输出，最终答案为 Hello。\n\n【复杂度】时间复杂度 O(文件字符数)，复制与输出各扫描一遍；空间复杂度 O(1)，只用一个 int 变量 c 中转。\n\n【易错点】\n1. fputc 的第二个参数必须是目标文件指针 out，写成 fp 会把数据写回源文件。\n2. dst.txt 以「w」打开会先清空原内容，保证复制结果纯净。\n3. 文件用完必须 fclose，否则缓冲区数据可能没有落盘，重新打开时读到不完整内容。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "文件复制",
         "fputc"
@@ -1722,7 +1722,7 @@
       "answer": "[abcd]",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    char buf[80];\n    int c;\n\n    seed = fopen(\"f.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"f.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    if (fgets(buf, 5, fp) != NULL)\n        printf(\"[%s]\\n\", buf);\n    fclose(fp);\n    return 0;\n}",
       "stdin": "abcdefghij",
-      "explanation": "结论：输出 [abcd]。推理：fgets 的第二个参数 n=5 表示最多读入 n-1=4 个字符，然后自动补上字符串结束标志 \u0000，所以缓冲区里只有 a、b、c、d 四个字符。易错点：这是 fgets 最经典的考点，n 包含结束符的位置；由于本次没有读到换行符，剩下的 efghij 仍留在文件中，下一次 fgets 会继续读；把 n 写成 sizeof(buf)+1 或忘记留一个位置给 \u0000 会造成缓冲区溢出。",
+      "explanation": "【思路】程序把输入 abcdefghij 播种到 f.txt，再调用一次 fgets(buf, 5, fp)。fgets 的第二个参数 n 表示最多读入 n 减 1 个字符并自动补字符串结束符，所以缓冲区里只装 a、b、c、d 四个字符，printf 加方括号输出，答案为 [abcd]。\n\n【步骤】\n1. 播种后文件内容为 abcdefghij（输入不带换行）。\n2. n 等于 5，最多读 4 个字符，读入 abcd 后补结束符。\n3. 本次没有遇到换行，剩下的 efghij 仍留在文件中，位置标记停在第 5 个字节处。\n4. printf 输出 [abcd]。\n\n【复杂度】时间复杂度 O(输入字符数)，播种一遍，读取阶段为常数；空间复杂度 O(1)，buf 为 80 字节定长数组。\n\n【易错点】\n1. n 包含结束符的位置，最多读 n 减 1 个字符，这是 fgets 最经典的考点；误以为能读 5 个字符会答成 abcde。\n2. 忘记给结束符留位置（把 n 写成 sizeof(buf) 加 1）会造成缓冲区溢出。\n3. 未读完的内容留在文件中，下一次 fgets 会从 efghij 继续读起。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fgets",
         "参数n",
@@ -1748,7 +1748,7 @@
       "answer": "n=4 last=-1",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    int c, n = 0;\n\n    seed = fopen(\"e.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"e.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while (!feof(fp)) {\n        c = fgetc(fp);\n        n++;\n    }\n    fclose(fp);\n    printf(\"n=%d last=%d\\n\", n, c);\n    return 0;\n}",
       "stdin": "abc",
-      "explanation": "结论：输出 n=4 last=-1。推理：文件只有 3 个字符，但 feof 反映的是\"上一次读取是否已越过文件末尾\"，读完第三个字符 c 时结束标志尚未置位，于是又进入第四次循环，这次 fgetc 返回 EOF（-1）并置位，n 被多计一次。易错点：这是教材反复强调的反面写法，正确形式是把读取动作本身作为条件 while ((c = fgetc(fp)) != EOF)；last 打印 -1 说明最后一次读到的不是有效字符，据此可判断程序多循环了一次。",
+      "explanation": "【思路】程序把输入 abc 播种到 e.txt，再用 while 加 !feof(fp) 的写法循环读取计数。feof 反映的是上一次读取是否已越过文件末尾：读完第 3 个字符时结束标志尚未置位，于是又进入第四次循环，这次 fgetc 返回 EOF 即 -1 并置位标志，n 被多计一次，最终输出 n=4 last=-1。\n\n【步骤】\n1. 文件内容为 3 个字符（输入不带换行），前三次循环各读一个字符，c 依次是 a、b、c，n 到 3。\n2. 第三次读取后 feof 仍为假，进入第四次循环。\n3. 第四次 fgetc 已越过末尾，返回 -1 存入 c，n 加到 4，结束标志置位。\n4. 第五次判断 !feof(fp) 为假退出，printf 输出 n=4 last=-1。\n\n【复杂度】时间复杂度 O(文件字符数)，多循环一次不改变量级；空间复杂度 O(1)，只用 c 与 n。\n\n【易错点】\n1. 这是教材反复强调的反面写法：正确形式是把读取动作本身作为条件，即 while ((c = fgetc(fp)) != EOF)。\n2. last 打印 -1 说明最后一次读到的不是有效字符，据此可反推程序多循环了一次。\n3. 若把这种写法用于累加求和，失败一轮的旧值会被重复处理，错得更隐蔽。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "feof",
         "多循环一次"
@@ -1773,7 +1773,7 @@
       "answer": "2 2",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    FILE *fp, *seed;\n    int x, pos = 0, neg = 0, c;\n\n    seed = fopen(\"p.txt\", \"w\");\n    while ((c = getchar()) != EOF)\n        fputc(c, seed);\n    fclose(seed);\n    if ((fp = fopen(\"p.txt\", \"r\")) == NULL) {\n        printf(\"Cannot open file!\\n\");\n        exit(0);\n    }\n    while (fscanf(fp, \"%d\", &x) == 1) {\n        if (x > 0)\n            pos++;\n        else if (x < 0)\n            neg++;\n    }\n    fclose(fp);\n    printf(\"%d %d\\n\", pos, neg);\n    return 0;\n}",
       "stdin": "3 -1 0 7 -5\n",
-      "explanation": "结论：输出 2 2。推理：文件中的五个整数依次是 3、-1、0、7、-5，正数有 3 与 7 共 2 个，负数有 -1 与 -5 共 2 个，0 两个分支都不满足所以不计入任何一方。易错点：else if 的写法保证了 0 被跳过，若把第二个分支写成 else 就会把 0 算作负数；fscanf 返回 1 表示成功读到一个整数，遇到非数字内容会返回 0 使循环结束，因此文件里混入字母时后面的数据全部读不到。",
+      "explanation": "【思路】程序把输入 3 -1 0 7 -5 播种到 p.txt，再用 fscanf 逐个读整数并按正负分类计数：大于 0 计入 pos，小于 0 计入 neg，等于 0 时两个分支都不满足被跳过。正数有 3 与 7 共 2 个，负数有 -1 与 -5 共 2 个，输出 2 2。\n\n【步骤】\n1. 播种后文件内容为五个以空格分隔的整数。\n2. 每轮 fscanf 返回 1 表示成功读到一个整数，进入分类判断。\n3. 3 与 7 使 pos 加到 2；-1 与 -5 使 neg 加到 2；0 被 else if 结构跳过。\n4. 读尽后 fscanf 返回 EOF，循环结束，printf 按「%d %d」输出 2 2。\n\n【复杂度】时间复杂度 O(文件中整数个数)，每个整数读一次判断一次；空间复杂度 O(1)，只用 x、pos、neg 三个变量。\n\n【易错点】\n1. else if 的写法保证 0 被跳过；若第二个分支写成 else，0 会被算作负数得到 2 3。\n2. fscanf 返回 1 才算成功，遇到非数字内容返回 0 使循环结束，文件里混入字母时后面的数据全部读不到。\n3. 输出顺序是先 pos 后 neg，与格式串两个占位符一一对应，不要颠倒。\n【关联】本页下方提供本题关联的知识卡片与可视化演示入口，可跳转对照复习。",
       "tags": [
         "fscanf",
         "分类统计"
