@@ -1,0 +1,19 @@
+{
+  "pages_total": 321,
+  "pages_ok": 321,
+  "pages_fail": 0,
+  "chapters": 11,
+  "chapters_missing": [],
+  "front_offset": 8,
+  "chapters_offset_mismatch": [
+    1
+  ],
+  "appendix_pdf_page": {
+    "附录A": 287,
+    "附录B": 292
+  },
+  "code_marks": 767,
+  "output_chars": 370764,
+  "files_written": 16,
+  "elapsed_sec": 0.3
+}
