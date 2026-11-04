@@ -1,10 +1,10 @@
 # NEXT_SESSION —— 续接说明
 
-状态：**任务07「根治与美化」A 项（全库 3207/3207 结构化详解）已完成；B 项闸门大部分全绿，acceptance:all / acceptance:online 与 C 项 30 道抽检、D 项上线收官进行中**（详见 docs/reports/任务07-根治与美化-最终报告.md，未定项以【待填】标注）。
+状态：**任务07「根治与美化」全部收官（2026-11-04）**：A 全库 3207/3207 结构化详解、B 全套闸门全绿（含 acceptance:all 19/19 与 acceptance:online 31/31）、C 抽检 30/30 道×10 项=301/301、D 已上线（远端 main=df4a103=线上部署版本）。最终报告已定稿：docs/reports/任务07-根治与美化-最终报告.md。
 
 ## 事实速览（2026-11-04 更新）
 - 线上地址：https://accumulate97.github.io/c-practice-plus/ （GitHub Pages，Source = GitHub Actions，push main 即部署）
-- 仓库：Accumulate97/c-practice-plus，分支 main；**本轮本地领先 origin/main（ad7ce00 之后还有大量提交未推送，D 项收官时统一 push + ls-remote 回读核对）**
+- 仓库：Accumulate97/c-practice-plus，分支 main；本地 == origin/main == df4a103（已推送并 ls-remote 回读核对，Pages 已部署该版本）
 - 题库：3207 题（C 2757 + DS 450）；**全库 explanation 已 100% 结构化**（【思路】【步骤】【复杂度】【易错点】四小节 + 合并脚本确定性【关联】块；A=3167 / D=7 描述题 / E=33 essay）
 - 任务05 五提交部署断层已根治：本轮起点即线上版本 cd82c6c，诊断报告 docs/诊断报告_任务05失效根因.md
 - 代码排布：全库 clang-format（ColumnLimit100）+ 渲染层 14px/1.7/tab4/等宽/高亮；stem 围栏 StemParts 去重；83 道「第N行」引用题保护跳过未格式化
@@ -13,11 +13,11 @@
 - 闸门现状：verify:data 0/7warn · verify:spec 0/0 · verify:answers 0/0 · lint:code 0 命中 · scan:doubt 0 残留 · typecheck/build/verify:pages 全绿 · a11y:probe 0 问题（23页×2主题+375px）· **acceptance:all / acceptance:online 见最终报告**
 
 ## 续接第一步该做什么
-1. 读 docs/reports/任务07-根治与美化-最终报告.md 的【待填】项，确认 B/C/D 收尾状态
-2. 若 acceptance:all 有套件失败：先看是否 Godbolt 429（cc 与 dbg 不能背靠背跑），冷却 10+ 分钟后单独重跑该套件
-3. C 项抽检：`node tmp/accept-sample30.mjs`（PORT 4181，需先 `npm run build` 保证 dist 最新）；样本 tmp/sample-30.json（seed=20261102 固定）；任一不过→追根因→修复→重抽 10 道验证泛化→重跑 30 道
-4. D 项收官：push（SNI 绕行见下）→ `git ls-remote` 回读核对 → 等 Actions 部署 → `npm run acceptance:online` → 最终报告定稿
-5. 若要动判分：先读 AGENTS.md 第二节第 5 条 + docs/adr/0001、0002；切勿改双开关/executeParameters 位置/串行约束
+任务07 已全部收官，无必做事项。后续工作参考：
+1. 勘误候选清单在 tmp/corpus-anomalies.md（历史题 answer/testCases 铁律未动，需用户裁决后才改）；83 题「第N行」引用保护跳过格式化（清单 tmp/format-code-report.json reverts skip:true）
+2. 若改判分：先读 AGENTS.md 第二节第 5 条 + docs/adr/0001、0002；切勿改双开关/executeParameters 位置/串行约束
+3. 重跑验收：`npm run acceptance:all`（cc 与 dbg 不能背靠背，429 时冷却 10+ 分钟单独重跑）；`node tmp/accept-sample30.mjs [样本路径]`（需先 `npm run build`）；`npm run acceptance:online`
+4. push 绕行 SNI：`git -c http.curloptResolve=github.com:443:<IP> push origin main`（IP 140.82.113.3/114.3/116.3/121.3 时好时坏），push 后必须 `git ls-remote` 回读核对
 
 ## 工具与脚本资产（tmp/，全部可重跑）
 - 详解管线：prep-exp-batches.mjs（129 批 payload）→ writer-spec.md（写手规范 10 条）→ merge-explanations.mjs（校验+relatedBlock+checkpoint+commit；`--batch=N`/`--range=A-B`/`--all`，`--no-commit` 时 sinceCommit 不清零属正常）→ scan-explanations.mjs（全库盘点 A/B/C/D/E）
