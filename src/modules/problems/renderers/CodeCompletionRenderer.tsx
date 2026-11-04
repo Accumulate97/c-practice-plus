@@ -391,7 +391,7 @@ export function CodeCompletionRenderer({ problem }: Props) {
       )}
 
       {problem.explanation && problem.explanation.trim().length > 0 && (
-        <section className="rounded-xl border p-4" style={panel}>
+        <section className="rounded-xl border p-4" style={panel} data-role="explanation">
           <h2 className="text-sm font-semibold" style={muted}>详解</h2>
           <p className="mt-2 text-sm whitespace-pre-wrap">{problem.explanation}</p>
         </section>

@@ -328,7 +328,7 @@ export function DebugRenderer({ problem }: Props) {
           </h2>
           <div className="mt-2"><CodeBlock code={fields.fixedCode} title="参考修正代码（fixed_code）" /></div>
           <div className="mt-3 text-xs" style={muted}>完整解析</div>
-          <p className="mt-1 text-sm whitespace-pre-wrap">{problem.explanation ?? '（本题暂无解析）'}</p>
+          <p className="mt-1 text-sm whitespace-pre-wrap" data-role="explanation">{problem.explanation ?? '（本题暂无解析）'}</p>
         </section>
       )}
     </div>

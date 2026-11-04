@@ -153,7 +153,7 @@ function ReferenceBody({ problem }: { problem: ProblemRecord }) {
         {explanation.length > 0 && (
           <div>
             <p className="text-sm font-semibold">💡 思路说明</p>
-            <p className="mt-1 whitespace-pre-wrap text-sm" style={muted}>{explanation}</p>
+            <p className="mt-1 whitespace-pre-wrap text-sm" style={muted} data-role="explanation">{explanation}</p>
           </div>
         )}
       </div>
@@ -173,7 +173,7 @@ function ReferenceBody({ problem }: { problem: ProblemRecord }) {
           {explanation.length > 0 && (
             <div>
               <p className="text-sm font-semibold">💡 思路说明</p>
-              <p className="mt-1 whitespace-pre-wrap text-sm" style={muted}>{explanation}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm" style={muted} data-role="explanation">{explanation}</p>
             </div>
           )}
         </div>
@@ -189,7 +189,7 @@ function ReferenceBody({ problem }: { problem: ProblemRecord }) {
         {explanation.length > 0 && (
           <div>
             <p className="text-sm font-semibold">💡 思路说明</p>
-            <p className="mt-1 whitespace-pre-wrap text-sm" style={muted}>{explanation}</p>
+            <p className="mt-1 whitespace-pre-wrap text-sm" style={muted} data-role="explanation">{explanation}</p>
           </div>
         )}
       </div>
@@ -308,7 +308,7 @@ function ConceptBody({ problem }: { problem: ProblemRecord }) {
       {explanation.length > 0 && (
         <div>
           <p className="text-sm font-semibold">💡 思路说明</p>
-          <p className="mt-1 whitespace-pre-wrap text-sm" style={muted}>{explanation}</p>
+          <p className="mt-1 whitespace-pre-wrap text-sm" style={muted} data-role="explanation">{explanation}</p>
         </div>
       )}
     </div>
