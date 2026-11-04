@@ -1,8 +1,8 @@
 {
   "category": "ds",
   "chapter": "第3章 栈和队列",
-  "generated_at": "2026-09-10",
-  "count": 4,
+  "generated_at": "2026-11-04 10:27:55",
+  "count": 24,
   "cards": [
     {
       "id": "ds-ch03-01",
@@ -211,6 +211,828 @@
       "category": "ds",
       "chapter": "第3章 栈和队列",
       "order": 4
+    },
+    {
+      "id": "ds-ch03-05",
+      "title": "顺序栈：top 的两种约定与判空判满",
+      "section": "3.2 栈的表示和实现",
+      "summary": "顺序栈用一个数组加一个栈顶指示器实现。指示器指向「栈顶元素」还是「栈顶元素的下一个空位」，决定了判空是 -1 还是 0、判满是 == MAXSIZE-1 还是 == MAXSIZE。两种约定都对，但全套代码必须自洽。",
+      "content": "## 两种 top 约定\n\n**约定 A：top 指向栈顶元素本身**（朱战立教材常用）\n\n| 操作 | 判定/写法 |\n|---|---|\n| 初始化 | `top = -1` |\n| 空栈 | `top == -1` |\n| 满栈 | `top == MAXSIZE - 1` |\n| 入栈 | `S[++top] = x;`（**先加后用**） |\n| 出栈 | `x = S[top--];`（**先用后减**） |\n| 读栈顶 | `S[top]` |\n| 元素个数 | `top + 1` |\n\n**约定 B：top 指向下一个可写空位**\n\n| 操作 | 判定/写法 |\n|---|---|\n| 初始化 | `top = 0` |\n| 空栈 | `top == 0` |\n| 满栈 | `top == MAXSIZE` |\n| 入栈 | `S[top++] = x;` |\n| 出栈 | `x = S[--top];` |\n| 读栈顶 | `S[top - 1]` |\n| 元素个数 | `top` |\n\n约定 B 的好处是「元素个数 == top」，且与队列、循环缓冲区风格一致；约定 A 的好处是读栈顶不用减一。\n**混用是最常见的 bug 来源**：判空写成 `top == 0` 而入栈用 `S[++top]`，会让第 0 号单元永远写不进去。\n\n## 溢出与返回码\n\n满栈时再 push 是上溢（overflow），空栈时再 pop 是下溢（underflow）。\n教材式做法是让函数返回 int 状态码、结果由指针参数带出：\n\n```c\nint StackPush(Stack *S, DataType x);   /* 0 成功，1 上溢 */\nint StackPop(Stack *S, DataType *x);   /* 0 成功，1 下溢 */\n```\n\n调用方**必须检查返回值**，忽略它就是把越界写留给自己。\n\n## 复杂度\n\npush / pop / top 都是 O(1)；顺序栈唯一的代价是容量在编译期定死，\n需要弹性容量时改用链栈或 `malloc` + `realloc` 的动态数组栈。",
+      "keyPoints": [
+        "顺序栈 = 数组 + 栈顶指示器；指示器指向栈顶元素（top=-1 起）或下一个空位（top=0 起）两种约定都合法",
+        "约定 A：空 top==-1，满 top==MAXSIZE-1，入栈 S[++top]，出栈 S[top--]，元素个数 top+1",
+        "约定 B：空 top==0，满 top==MAXSIZE，入栈 S[top++]，出栈 S[--top]，元素个数 top",
+        "入栈的 ++ 与出栈的 -- 位置必须与判空判满口径一致，混用会让 0 号单元写不进或多读一格",
+        "满栈 push 是上溢、空栈 pop 是下溢，用 int 返回码报错并由指针参数带出数据，调用方必须检查",
+        "push/pop/top 均为 O(1)，代价是容量编译期固定，弹性容量需链栈或 realloc 动态数组"
+      ],
+      "pitfalls": [
+        "判空用 top == 0 而入栈写 S[++top]：第 0 号单元永远空着，且 top==0 时被误判为空栈丢掉一个元素",
+        "满栈判定写成 top >= MAXSIZE：在约定 A 下已经越界写了一次才被发现，数组末尾被踩",
+        "出栈只写 top-- 不取值：数据没拿出来，栈顶元素还残留在数组里，调试时看着像没删掉",
+        "把 pop 的返回码丢掉：空栈上连续 pop 会得到未初始化的垃圾值，程序继续往下跑直到随机崩溃"
+      ],
+      "examples": [
+        {
+          "title": "两种 top 约定的顺序栈对照，含上溢下溢返回码",
+          "code": "#include <stdio.h>\n\n#define MAXSIZE 4\ntypedef int DataType;\n\n/* 约定 A：top 指向栈顶元素，空栈 top == -1 */\ntypedef struct {\n    DataType data[MAXSIZE];\n    int top;\n} StackA;\n\nvoid stackAInit(StackA *s)\n{\n    s->top = -1;\n}\n\nint stackAPush(StackA *s, DataType x)\n{\n    if (s->top == MAXSIZE - 1) {\n        return 1;                      /* 上溢 */\n    }\n    s->data[++s->top] = x;             /* 先加后用 */\n    return 0;\n}\n\nint stackAPop(StackA *s, DataType *x)\n{\n    if (s->top == -1) {\n        return 1;                      /* 下溢 */\n    }\n    *x = s->data[s->top--];            /* 先用后减 */\n    return 0;\n}\n\nint stackACount(const StackA *s)\n{\n    return s->top + 1;                 /* 约定 A 元素个数 = top + 1 */\n}\n\n/* 约定 B：top 指向下一个可写空位，空栈 top == 0 */\ntypedef struct {\n    DataType data[MAXSIZE];\n    int top;\n} StackB;\n\nvoid stackBInit(StackB *s)\n{\n    s->top = 0;\n}\n\nint stackBPush(StackB *s, DataType x)\n{\n    if (s->top == MAXSIZE) {\n        return 1;\n    }\n    s->data[s->top++] = x;             /* 后用再加 */\n    return 0;\n}\n\nint stackBPop(StackB *s, DataType *x)\n{\n    if (s->top == 0) {\n        return 1;\n    }\n    *x = s->data[--s->top];            /* 先减后用 */\n    return 0;\n}\n\nint stackBCount(const StackB *s)\n{\n    return s->top;                     /* 约定 B 元素个数 = top */\n}\n\nint main(void)\n{\n    StackA a;\n    StackB b;\n    DataType vals[6] = { 10, 20, 30, 40, 50, 60 };\n    DataType x;\n    int i;\n\n    stackAInit(&a);\n    stackBInit(&b);\n    printf(\"初始：A.top=%d A个数=%d | B.top=%d B个数=%d\\n\",\n           a.top, stackACount(&a), b.top, stackBCount(&b));\n\n    for (i = 0; i < 6; i++) {\n        printf(\"push %d → A返回%d B返回%d\\n\",\n               vals[i], stackAPush(&a, vals[i]), stackBPush(&b, vals[i]));\n    }\n    printf(\"满栈：A个数=%d B个数=%d\\n\", stackACount(&a), stackBCount(&b));\n\n    for (i = 0; i < 4; i++) {          /* 弹满 4 次才真正清空 */\n        stackAPop(&a, &x);\n        printf(\"A出栈 %d，剩余 %d 个\\n\", x, stackACount(&a));\n    }\n    for (i = 0; i < 4; i++) {\n        stackBPop(&b, &x);\n        printf(\"B出栈 %d，剩余 %d 个\\n\", x, stackBCount(&b));\n    }\n    printf(\"清空后再 pop：A返回%d B返回%d（均为下溢）\\n\",\n           stackAPop(&a, &x), stackBPop(&b, &x));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "初始：A.top=-1 A个数=0 | B.top=0 B个数=0\npush 10 → A返回0 B返回0\npush 20 → A返回0 B返回0\npush 30 → A返回0 B返回0\npush 40 → A返回0 B返回0\npush 50 → A返回1 B返回1\npush 60 → A返回1 B返回1\n满栈：A个数=4 B个数=4\nA出栈 40，剩余 3 个\nA出栈 30，剩余 2 个\nA出栈 20，剩余 1 个\nA出栈 10，剩余 0 个\nB出栈 40，剩余 3 个\nB出栈 30，剩余 2 个\nB出栈 20，剩余 1 个\nB出栈 10，剩余 0 个\n清空后再 pop：A返回1 B返回1（均为下溢）",
+          "note": "两个栈的元素个数在每一步都相同（0→4→1→0），说明两种约定只是「指示器差一格」，只要判空判满与 ++/-- 位置配套就等价。第 5、6 次 push 都返回 1，MAXSIZE=4 时上溢被正确拦下。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-01",
+        "ds-ch03-02",
+        "ds-ch03-13"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 5
+    },
+    {
+      "id": "ds-ch03-06",
+      "title": "链栈：用单链表实现栈，为什么插入删除都放在表头",
+      "section": "3.2 栈的表示和实现",
+      "summary": "链栈是限定「只能在表头插入和删除」的单链表。表头当栈顶是为了让 push/pop 都是 O(1)：若把栈顶放在表尾，每次操作都要先走 n 步找到尾结点，退化成 O(n)。链栈不存在上溢，但每次 push 要 malloc。",
+      "content": "## 结构\n\n```c\ntypedef struct StackNode {\n    DataType data;\n    struct StackNode *next;\n} StackNode;\nStackNode *top = NULL;      /* 空栈 */\n```\n\n**不需要头结点**。栈只在表头操作，头结点带来的「统一空表与非空表」好处在这里用不上，\n反而多一次分配。空栈就是 `top == NULL`，判满不存在（堆内存用完才失败）。\n\n## 三个操作\n\n```c\n/* push：新结点插在表头 */\np = malloc(...);  p->data = x;  p->next = top;  top = p;\n\n/* pop：摘下表头 */\n*x = top->data;  p = top;  top = top->next;  free(p);\n\n/* 读栈顶 */\n*x = top->data;\n```\n\npop 必须**先取数据、再存指针、再改 top、最后 free**；顺序颠倒会造成 use-after-free。\n\n## 为什么栈顶必须在表头\n\n| 栈顶位置 | push | pop | 说明 |\n|---|---|---|---|\n| 表头 | O(1) | O(1) | 直接改 top，无需前驱 |\n| 表尾 | O(n) | **O(n)** | 要走到倒数第二个结点才能改尾指针 |\n\npop 在表尾尤其糟糕：单链表删除表尾结点需要它的前驱，而单链表不保存前驱，\n只能从表头扫一遍。所以**「链栈 = 表头即栈顶」是定义性的，不是风格选择**。\n\n## 顺序栈 vs 链栈\n\n| 维度 | 顺序栈 | 链栈 |\n|---|---|---|\n| 上溢 | 会发生，必须判满 | 不会（堆耗尽除外） |\n| 每元素额外空间 | 0 | 一个 next 指针 |\n| push/pop 常数开销 | 小 | 含 malloc/free |\n| 容量 | 编译期固定 | 动态 |\n| 多栈共存 | 各占一块数组，易浪费 | 各自独立，互不挤占 |\n\n结论：容量可预估且多个栈共存时用顺序栈（甚至共享一个数组），\n容量波动大或深度不可预测（如递归转非递归、表达式求值的中间态）时用链栈。",
+      "keyPoints": [
+        "链栈是限定只能在表头插入和删除的单链表，top 直接指向栈顶结点，空栈 top == NULL",
+        "链栈不需要头结点：所有操作都在表头，头结点带来的统一处理好处用不上",
+        "push 三步：p->next = top; top = p;（新结点先接旧栈顶，再让它当新栈顶）",
+        "pop 四步：取 top->data → 存 p = top → top = top->next → free(p)，顺序不可颠倒",
+        "栈顶必须在表头：放表尾时 pop 需要前驱，单链表只能从头扫，退化成 O(n)",
+        "链栈无上溢问题但有 malloc/free 常数开销与每元素一个指针的空间开销"
+      ],
+      "pitfalls": [
+        "pop 里先 free(top) 再读 top->data：use-after-free，输出随机",
+        "push 时先写 top = p 再写 p->next = top：新结点的 next 指向自己，整个旧栈丢失",
+        "给链栈加满栈判定 top == MAXSIZE：链栈没有容量上限，这条判定永远不触发，等于没保护",
+        "程序结束不逐结点 free：链栈每个元素都是一次堆分配，泄漏量随深度线性增长"
+      ],
+      "examples": [
+        {
+          "title": "链栈实现与十进制转任意进制（栈的经典应用）",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct StackNode {\n    int data;\n    struct StackNode *next;\n} StackNode;\n\n/* 入栈：插在表头。返回 1 表示分配失败 */\nint push(StackNode **top, int x)\n{\n    StackNode *p = (StackNode *)malloc(sizeof(StackNode));\n\n    if (p == NULL) {\n        return 1;\n    }\n    p->data = x;\n    p->next = *top;                /* 先接旧栈顶 */\n    *top = p;                      /* 再当新栈顶 */\n    return 0;\n}\n\n/* 出栈：摘下表头，数据由 *x 带出。返回 1 表示下溢 */\nint pop(StackNode **top, int *x)\n{\n    StackNode *p;\n\n    if (*top == NULL) {\n        return 1;\n    }\n    *x = (*top)->data;             /* ① 先取数据 */\n    p = *top;                      /* ② 再存指针 */\n    *top = (*top)->next;           /* ③ 改栈顶 */\n    free(p);                       /* ④ 最后释放 */\n    return 0;\n}\n\nint stackEmpty(const StackNode *top)\n{\n    return top == NULL;\n}\n\nint stackSize(const StackNode *top)\n{\n    int n = 0;\n    const StackNode *p;\n\n    for (p = top; p != NULL; p = p->next) {\n        n++;\n    }\n    return n;\n}\n\n/* 进制转换：除基取余，余数入栈，最后依次出栈即为结果 */\nvoid convert(int n, int base)\n{\n    StackNode *top = NULL;\n    int d;\n\n    if (n == 0) {\n        printf(\"%d 的 %d 进制 = 0\\n\", n, base);\n        return;\n    }\n    while (n > 0) {\n        if (push(&top, n % base) != 0) {\n            printf(\"分配失败\\n\");\n            return;\n        }\n        n = n / base;\n    }\n    printf(\"转换结果（栈深 %d）=\", stackSize(top));\n    while (!stackEmpty(top)) {\n        pop(&top, &d);\n        printf(\"%c\", d < 10 ? (char)('0' + d) : (char)('A' + d - 10));\n    }\n    printf(\"\\n\");\n}\n\nint main(void)\n{\n    StackNode *top = NULL;\n    int vals[4] = { 5, 15, 25, 35 };\n    int x, i;\n\n    for (i = 0; i < 4; i++) {\n        push(&top, vals[i]);\n    }\n    printf(\"压入 5 15 25 35 后栈深 %d，是否为空 %d\\n\", stackSize(top), stackEmpty(top));\n\n    while (!stackEmpty(top)) {\n        pop(&top, &x);\n        printf(\"出栈 %d，剩余 %d\\n\", x, stackSize(top));\n    }\n    printf(\"空栈再 pop 返回 %d（下溢）\\n\", pop(&top, &x));\n\n    convert(1348, 8);\n    convert(255, 16);\n    convert(0, 2);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "压入 5 15 25 35 后栈深 4，是否为空 0\n出栈 35，剩余 3\n出栈 25，剩余 2\n出栈 15，剩余 1\n出栈 5，剩余 0\n空栈再 pop 返回 1（下溢）\n转换结果（栈深 4）=2504\n转换结果（栈深 2）=FF\n0 的 2 进制 = 0",
+          "note": "出栈次序 35 25 15 5 与入栈次序完全相反，这就是后进先出。1348 的八进制是 2504（1348 = 2×512 + 5×64 + 0×8 + 4），255 的十六进制是 FF；n == 0 必须单独处理，否则 while 循环一次都不进，栈是空的，输出会什么都没有。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-02",
+        "ds-ch03-05",
+        "ds-ch02-03"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 6
+    },
+    {
+      "id": "ds-ch03-07",
+      "title": "两栈共享一个数组：top0 与 top1 相向生长",
+      "section": "3.2 栈的表示和实现",
+      "summary": "两个栈共用一个长度为 MAXSIZE 的数组，栈 0 从左端向右长、栈 1 从右端向左长，只有 top0 + 1 == top1 时才真正满。相比各分配一半，它把「一个空一个满」的浪费消掉了。",
+      "content": "## 布局与判定\n\n```c\nDataType data[MAXSIZE];\nint top0 = -1;          /* 栈 0 从左端生长 */\nint top1 = MAXSIZE;     /* 栈 1 从右端生长 */\n```\n\n| 判定 | 条件 |\n|---|---|\n| 栈 0 空 | `top0 == -1` |\n| 栈 1 空 | `top1 == MAXSIZE` |\n| 整体满 | `top0 + 1 == top1` |\n| 栈 0 元素个数 | `top0 + 1` |\n| 栈 1 元素个数 | `MAXSIZE - top1` |\n\n**满的判定是「两个栈顶相邻」，不是任一个到达数组端点。**\n栈 0 入栈前检查 `top0 + 1 < top1`，栈 1 入栈前检查 `top1 - 1 > top0`。\n\n## 为什么值得这么做\n\n若各分一半（栈 0 用 [0, n/2)、栈 1 用 [n/2, n)），当栈 0 满了而栈 1 空着时，\n栈 0 只能报上溢，另一半空间白白浪费。共享数组让两个栈互相借用空间，\n**只有两个栈的元素总数达到 MAXSIZE 时才溢出**，空间利用率从最坏 50% 提到 100%。\n\n适用前提是两个栈的增长方向相反且容量此消彼长——例如函数调用栈与表达式求值的操作数栈、\n浏览器的前进栈与后退栈、 undo/redo 双栈。\n\n## 操作\n\n```c\nint push0(x) { if (top0 + 1 == top1) return 1;  data[++top0] = x; return 0; }\nint push1(x) { if (top0 + 1 == top1) return 1;  data[--top1] = x; return 0; }\nint pop0(&x) { if (top0 == -1)       return 1;  x = data[top0--]; return 0; }\nint pop1(&x) { if (top1 == MAXSIZE)  return 1;  x = data[top1++]; return 0; }\n```\n\n注意 pop1 是 `top1++`：栈 1 向左生长，出栈要往右退。",
+      "keyPoints": [
+        "共享栈用一个数组容纳两个栈：top0 初值 -1 从左向右长，top1 初值 MAXSIZE 从右向左长",
+        "栈 0 空判 top0 == -1，栈 1 空判 top1 == MAXSIZE，两栈各自独立判空",
+        "整体满的唯一判据是 top0 + 1 == top1（两个栈顶相邻），不是某个 top 到达数组端点",
+        "栈 0 元素个数 = top0 + 1，栈 1 元素个数 = MAXSIZE - top1",
+        "push0 用 data[++top0]，push1 用 data[--top1]；pop1 是 data[top1++]，方向相反",
+        "相比各分一半，共享栈消除了「一满一空」的浪费，最坏空间利用率从 50% 提到 100%"
+      ],
+      "pitfalls": [
+        "满判定写成 top0 == MAXSIZE - 1 或 top1 == 0：两个栈互相挤占时永远检测不到，直接越界写",
+        "pop1 写成 data[top1--]：栈 1 向左生长，出栈必须 ++ 往右退，写成 -- 会读到未使用区并破坏布局",
+        "top1 初值写成 MAXSIZE - 1：等于预先占用最后一格，栈 1 少一个容量且空判定与个数公式全错",
+        "只在 push 前判满却共用同一个满条件时忘记两个方向都要判：栈 0 满了栈 1 也 push 不进去，需分别检查相邻关系"
+      ],
+      "examples": [
+        {
+          "title": "两栈共享数组：交替压入直到相邻，再各自弹出",
+          "code": "#include <stdio.h>\n\n#define MAXSIZE 8\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAXSIZE];\n    int top0;                 /* 栈 0：从左向右生长 */\n    int top1;                 /* 栈 1：从右向左生长 */\n} DStack;\n\nvoid dsInit(DStack *s)\n{\n    s->top0 = -1;\n    s->top1 = MAXSIZE;\n}\n\nint dsFull(const DStack *s)\n{\n    return s->top0 + 1 == s->top1;    /* 两个栈顶相邻即整体满 */\n}\n\nint dsPush(DStack *s, int which, DataType x)\n{\n    if (dsFull(s)) {\n        return 1;                      /* 上溢 */\n    }\n    if (which == 0) {\n        s->data[++s->top0] = x;\n    } else {\n        s->data[--s->top1] = x;\n    }\n    return 0;\n}\n\nint dsPop(DStack *s, int which, DataType *x)\n{\n    if (which == 0) {\n        if (s->top0 == -1) {\n            return 1;                  /* 栈 0 下溢 */\n        }\n        *x = s->data[s->top0--];\n    } else {\n        if (s->top1 == MAXSIZE) {\n            return 1;                  /* 栈 1 下溢 */\n        }\n        *x = s->data[s->top1++];       /* 栈 1 向左生长，出栈往右退 */\n    }\n    return 0;\n}\n\nint dsCount(const DStack *s, int which)\n{\n    return which == 0 ? s->top0 + 1 : MAXSIZE - s->top1;\n}\n\nstatic void showLayout(const DStack *s)\n{\n    int i;\n\n    printf(\"数组占用:\");\n    for (i = 0; i < MAXSIZE; i++) {\n        if (i <= s->top0) {\n            printf(\" [%d]=%d(栈0)\", i, s->data[i]);\n        } else if (i >= s->top1) {\n            printf(\" [%d]=%d(栈1)\", i, s->data[i]);\n        } else {\n            printf(\" [%d]=空\", i);\n        }\n    }\n    printf(\"\\n\");\n}\n\nint main(void)\n{\n    DStack s;\n    DataType x;\n    int i, r;\n\n    dsInit(&s);\n    printf(\"初始 top0=%d top1=%d，栈0个数=%d 栈1个数=%d\\n\",\n           s.top0, s.top1, dsCount(&s, 0), dsCount(&s, 1));\n\n    /* 交替压入：栈 0 放 10 20 30 40 50，栈 1 放 1 2 3 */\n    for (i = 0; i < 5; i++) {\n        r = dsPush(&s, 0, (i + 1) * 10);\n        printf(\"栈0 push %d → %d\\n\", (i + 1) * 10, r);\n        if (i < 3) {\n            r = dsPush(&s, 1, i + 1);\n            printf(\"栈1 push %d → %d\\n\", i + 1, r);\n        }\n    }\n    printf(\"此时 top0=%d top1=%d，已满=%d\\n\", s.top0, s.top1, dsFull(&s));\n    showLayout(&s);\n\n    printf(\"再往栈0 push 60 → %d（上溢）\\n\", dsPush(&s, 0, 60));\n    printf(\"再往栈1 push 4  → %d（上溢）\\n\", dsPush(&s, 1, 4));\n\n    for (i = 0; i < 3; i++) {\n        dsPop(&s, 1, &x);\n        printf(\"栈1 pop %d，剩余 %d\\n\", x, dsCount(&s, 1));\n    }\n    printf(\"栈1 腾空后往栈0 push 60 → %d（借用空间成功）\\n\", dsPush(&s, 0, 60));\n    printf(\"最终 top0=%d top1=%d，栈0个数=%d\\n\", s.top0, s.top1, dsCount(&s, 0));\n\n    while (dsPop(&s, 0, &x) == 0) {\n        printf(\"栈0 pop %d\\n\", x);\n    }\n    printf(\"栈0 空后再 pop 返回 %d（下溢）\\n\", dsPop(&s, 0, &x));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "初始 top0=-1 top1=8，栈0个数=0 栈1个数=0\n栈0 push 10 → 0\n栈1 push 1 → 0\n栈0 push 20 → 0\n栈1 push 2 → 0\n栈0 push 30 → 0\n栈1 push 3 → 0\n栈0 push 40 → 0\n栈0 push 50 → 0\n此时 top0=4 top1=5，已满=1\n数组占用: [0]=10(栈0) [1]=20(栈0) [2]=30(栈0) [3]=40(栈0) [4]=50(栈0) [5]=3(栈1) [6]=2(栈1) [7]=1(栈1)\n再往栈0 push 60 → 1（上溢）\n再往栈1 push 4  → 1（上溢）\n栈1 pop 3，剩余 2\n栈1 pop 2，剩余 1\n栈1 pop 1，剩余 0\n栈1 腾空后往栈0 push 60 → 0（借用空间成功）\n最终 top0=5 top1=8，栈0个数=6\n栈0 pop 60\n栈0 pop 50\n栈0 pop 40\n栈0 pop 30\n栈0 pop 20\n栈0 pop 10\n栈0 空后再 pop 返回 1（下溢）",
+          "note": "top0=4、top1=5 时 top0+1 == top1 成立，两个栈都 push 不进去——这正是共享栈的满判定。把栈 1 三个元素全部弹出后，栈 0 立刻能借用 [5] 号单元继续压入 60，若当初各分一半（栈 0 只有 4 格）这里必然上溢，这就是共享数组的价值。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-02",
+        "ds-ch03-05",
+        "ds-ch03-06"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 7
+    },
+    {
+      "id": "ds-ch03-08",
+      "title": "栈的应用：括号匹配与「配对类问题」的通用解法",
+      "section": "3.4 栈与队列的应用",
+      "summary": "凡是「最近出现的未配对元素最先被配对」的问题都适合用栈：括号匹配、XML 标签配对、代码块嵌套检查、函数调用返回。左符号入栈，遇到右符号就弹栈顶比对，栈非空或弹不出都算失配。",
+      "content": "## 括号匹配的三种失败\n\n扫描字符串，遇 `([{<` 入栈，遇 `)]}>` 弹栈顶比对：\n\n| 失败情形 | 表现 | 检测方式 |\n|---|---|---|\n| 右括号多余 | `())` | 需要弹栈时栈已空（下溢） |\n| 类型不匹配 | `(]` | 弹出的栈顶与当前右括号不是一对 |\n| 左括号多余 | `(()` | 扫描结束后栈非空 |\n\n**三个判定一个都不能少**。只查前两个会漏掉 `(()`；只查栈非空会漏掉 `())`。\n\n## 配对函数\n\n```c\nstatic int matchPair(char left, char right)\n{\n    return (left == '(' && right == ')') ||\n           (left == '[' && right == ']') ||\n           (left == '{' && right == '}');\n}\n```\n\n用查表或 switch 都比一长串 if 好维护；要支持尖括号就再加一行。\n\n## 为什么必须是栈而不是计数器\n\n计数器只能判「左右括号总数是否相等」，无法处理 `(]` 或 `)(` 这种**次序错误**：\n`)(` 左右各一个，计数相等却不匹配。栈保存的是「尚未配对的左括号的出现次序」，\n最近出现的左括号最先被配对——这正是后进先出的语义。\n\n## 同类问题\n\n- **HTML/XML 标签配对**：把标签名压栈，遇到闭合标签比对栈顶。\n- **函数调用与返回地址**：调用时压入返回地址与活动记录，返回时弹出（见运行时栈卡）。\n- **表达式求值**：操作数栈 + 运算符栈。\n- **消除递归**：把递归的隐式调用栈显式化成自己的栈。\n\n共同点是「嵌套结构 + 最近未闭合者最先闭合」。",
+      "keyPoints": [
+        "括号匹配用栈：遇左括号入栈，遇右括号弹栈顶比对，栈保存的是「尚未配对的左括号的出现次序」",
+        "三种失败必须全部检测：右括号多余（弹栈时栈空）、类型不匹配（栈顶不成对）、左括号多余（扫完栈非空）",
+        "计数器无法替代栈：)(  左右各一计数相等却不匹配，次序信息只有栈能保存",
+        "配对判定用 matchPair(left, right) 集中写，支持新括号类型只加一行",
+        "栈的适用特征是「最近出现的未配对元素最先被配对」，即嵌套结构的后进先出闭合",
+        "同类应用：HTML/XML 标签配对、函数调用返回地址、表达式求值、递归转非递归"
+      ],
+      "pitfalls": [
+        "只在遇到右括号时检查栈空，扫完不检查栈非空：(()  被判为匹配",
+        "弹栈后不比对类型只比对存在性：(]  被判为匹配",
+        "用字符数组当栈却忘记记录 top：无法判空，也无法在结束时检查残留",
+        "把非括号字符也入栈：字符串里的普通字符会污染栈，比对结果全错，必须先过滤"
+      ],
+      "examples": [
+        {
+          "title": "括号匹配检查器：区分三种失败原因并报告位置",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXSIZE 100\n\ntypedef struct {\n    char ch[MAXSIZE];\n    int pos[MAXSIZE];          /* 记录每个左括号在原串中的下标，便于报告位置 */\n    int top;\n} BracketStack;\n\nstatic int isLeft(char c)\n{\n    return c == '(' || c == '[' || c == '{';\n}\n\nstatic int isRight(char c)\n{\n    return c == ')' || c == ']' || c == '}';\n}\n\nstatic int matchPair(char left, char right)\n{\n    return (left == '(' && right == ')') ||\n           (left == '[' && right == ']') ||\n           (left == '{' && right == '}');\n}\n\n/* 返回 0 匹配；1 右括号多余；2 类型不匹配；3 左括号多余 */\nint checkBrackets(const char *s, int *errPos)\n{\n    BracketStack st;\n    int i, len = (int)strlen(s);\n\n    st.top = -1;\n    *errPos = -1;\n    for (i = 0; i < len; i++) {\n        if (isLeft(s[i])) {\n            if (st.top == MAXSIZE - 1) {\n                *errPos = i;\n                return 1;                      /* 栈本身溢出，按多余处理 */\n            }\n            st.ch[++st.top] = s[i];\n            st.pos[st.top] = i;\n        } else if (isRight(s[i])) {\n            if (st.top == -1) {\n                *errPos = i;\n                return 1;                      /* 右括号多余 */\n            }\n            if (!matchPair(st.ch[st.top], s[i])) {\n                *errPos = st.pos[st.top];\n                return 2;                      /* 类型不匹配，报告左括号位置 */\n            }\n            st.top--;\n        }\n        /* 其他字符直接跳过，不入栈 */\n    }\n    if (st.top != -1) {\n        *errPos = st.pos[st.top];\n        return 3;                              /* 左括号多余 */\n    }\n    return 0;\n}\n\nint main(void)\n{\n    const char *cases[6] = {\n        \"a[b{c(1+2)*3}]+d\",\n        \"int f(int x){ return (x>0)? x : -x; }\",\n        \"a[b(c]d)\",\n        \"a)b(c\",\n        \"a{b(c}d)\",\n        \"((1+2)*3\"\n    };\n    const char *reason[4] = { \"匹配\", \"右括号多余\", \"类型不匹配\", \"左括号多余\" };\n    int i, r, pos;\n\n    for (i = 0; i < 6; i++) {\n        r = checkBrackets(cases[i], &pos);\n        printf(\"用例%d [%s]\\n  → %s\", i + 1, cases[i], reason[r]);\n        if (r != 0) {\n            printf(\"（位置 %d，字符 '%c'）\", pos, cases[i][pos]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "用例1 [a[b{c(1+2)*3}]+d]\n  → 匹配\n用例2 [int f(int x){ return (x>0)? x : -x; }]\n  → 匹配\n用例3 [a[b(c]d)]\n  → 类型不匹配（位置 3，字符 '('）\n用例4 [a)b(c]\n  → 右括号多余（位置 1，字符 ')'）\n用例5 [a{b(c}d)]\n  → 类型不匹配（位置 3，字符 '('）\n用例6 [((1+2)*3]\n  → 左括号多余（位置 0，字符 '('）",
+          "note": "六个用例覆盖了全部四种结果。用例3 的 ( 与 ] 不成对，报告的是**左括号**的位置 3 而不是右括号的位置 5，因为需要修的是那个没被正确闭合的左括号；用例5 同理，} 撞上栈顶的 (，报告的也是 ( 的位置 3。用例6 ((1+2)*3 里内层 ( 已被 ) 弹出，扫完栈中只剩最外层那一个（位置 0），故报左括号多余。代码里把 pos[] 与 ch[] 并行维护，这是「栈不只存值、还要存上下文」的常见技巧。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-01",
+        "ds-ch03-04",
+        "ds-ch03-09"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 8
+    },
+    {
+      "id": "ds-ch03-09",
+      "title": "中缀表达式转后缀：运算符栈的优先级比较规则",
+      "section": "3.4 栈与队列的应用",
+      "summary": "中缀转后缀靠一个运算符栈：遇到操作数直接输出，遇到运算符就把栈里优先级不低于它的都弹出，遇左括号入栈、遇右括号弹到左括号为止。核心是比较「当前运算符」与「栈顶运算符」的优先级。",
+      "content": "## 转换规则（逐字符扫描）\n\n| 读到的字符 | 动作 |\n|---|---|\n| 操作数（数字/变量） | **直接输出**到后缀式 |\n| `(` | 入栈（左括号在栈内优先级视为最低） |\n| `) ` | 不断弹栈输出，直到弹出 `(`，`(` 不输出 |\n| `+ - * / %` | 当栈非空且栈顶不是 `(` 且 **栈顶优先级 ≥ 当前优先级** 时，弹栈输出；然后把当前运算符入栈 |\n| 扫描结束 | 把栈里剩余运算符全部弹出输出 |\n\n「≥」而不是「>」是**左结合**的体现：`1-2-3` 必须转成 `1 2 - 3 -`（先算 1-2），\n若用「>」会得到 `1 2 3 - -`，等于 1-(2-3)，结果错。\n\n## 优先级表\n\n| 运算符 | 栈外优先级 | 栈内优先级 |\n|---|---|---|\n| `(` | 最高（迫使后续运算符入栈） | 最低（阻止栈内运算符被弹出） |\n| `+ -` | 1 | 1 |\n| `* / %` | 2 | 2 |\n| `^`（幂，右结合） | 4 | 3 |\n\n左括号的两副面孔是关键：**在栈外它优先级最高**（任何运算符都要让它入栈），\n**进栈后它优先级最低**（只有右括号能把它请出来）。若统一给一个值，\n要么 `(1+2)*3` 里的 + 被提前弹出，要么括号永远弹不出来。\n\n## 为什么这套规则等价于加括号\n\n中缀式的语义由「优先级 + 结合性 + 括号」共同决定。转换过程实际上是：\n每当一个运算符入栈，就意味着「它要等栈内所有优先级不低于它的运算先完成」；\n弹出即「可以确定了」。后缀式不含括号也不含优先级概念，求值只需一个操作数栈，\n这正是编译器与计算器采用它的原因。",
+      "keyPoints": [
+        "中缀转后缀：操作数直接输出，运算符进栈，栈内优先级不低于当前运算符的全部先弹出输出",
+        "比较用「栈顶优先级 ≥ 当前优先级」而非 >，这是左结合的要求，1-2-3 必须转成 1 2 - 3 -",
+        "左括号栈外优先级最高（强制入栈）、栈内优先级最低（阻止被弹出），必须区分两个值",
+        "遇右括号持续弹栈输出直到弹出左括号，左括号本身不输出",
+        "扫描结束后必须把栈内剩余运算符全部弹出，否则后缀式缺尾部运算符",
+        "后缀式不含括号与优先级，求值只需一个操作数栈，这是它被计算器与编译器采用的原因"
+      ],
+      "pitfalls": [
+        "比较写成 > ：1-2-3 变成 1 2 3 - -，语义从 (1-2)-3 变成 1-(2-3)，结果差 4",
+        "左括号栈内优先级也设成最高：(1+2)*3 里的 + 一进栈就被 * 弹出，括号失去作用",
+        "遇右括号弹栈时把左括号也输出：后缀式里出现 ( 字符，求值阶段无法处理",
+        "忘记扫描结束后清空栈：a+b*c 只输出 a b c *，最后的 + 丢了"
+      ],
+      "examples": [
+        {
+          "title": "中缀转后缀（含括号、四则运算与左结合验证）",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXSIZE 100\n\n/* 栈内优先级：左括号在栈内最低，只有右括号能把它弹出 */\nstatic int inStackPriority(char op)\n{\n    switch (op) {\n    case '(': return 0;\n    case '+':\n    case '-': return 1;\n    case '*':\n    case '/':\n    case '%': return 2;\n    default:  return -1;\n    }\n}\n\n/* 栈外优先级：左括号最高，迫使任何运算符都入栈 */\nstatic int outStackPriority(char op)\n{\n    switch (op) {\n    case '(': return 3;\n    case '+':\n    case '-': return 1;\n    case '*':\n    case '/':\n    case '%': return 2;\n    default:  return -1;\n    }\n}\n\nstatic int isOperand(char c)\n{\n    return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');\n}\n\n/* 中缀转后缀；out 需足够长。返回 0 成功，1 括号失配 */\nint infixToPostfix(const char *infix, char *out)\n{\n    char stack[MAXSIZE];\n    int top = -1, k = 0, i, len = (int)strlen(infix);\n    char c;\n\n    for (i = 0; i < len; i++) {\n        c = infix[i];\n        if (c == ' ') {\n            continue;\n        }\n        if (isOperand(c)) {\n            out[k++] = c;\n            out[k++] = ' ';              /* 操作数后加空格，便于求值端分词 */\n        } else if (c == '(') {\n            stack[++top] = c;\n        } else if (c == ')') {\n            while (top != -1 && stack[top] != '(') {\n                out[k++] = stack[top--];\n                out[k++] = ' ';\n            }\n            if (top == -1) {\n                out[k] = '\\0';\n                return 1;                /* 右括号多余 */\n            }\n            top--;                       /* 弹出左括号，不输出 */\n        } else if (inStackPriority(c) > 0) {\n            /* 栈顶优先级 >= 当前优先级的全部先弹出（左结合） */\n            while (top != -1 &&\n                   inStackPriority(stack[top]) >= outStackPriority(c)) {\n                out[k++] = stack[top--];\n                out[k++] = ' ';\n            }\n            stack[++top] = c;\n        }\n    }\n    while (top != -1) {                  /* 清空栈内剩余运算符 */\n        if (stack[top] == '(') {\n            out[k] = '\\0';\n            return 1;                    /* 左括号多余 */\n        }\n        out[k++] = stack[top--];\n        out[k++] = ' ';\n    }\n    out[k] = '\\0';\n    return 0;\n}\n\nint main(void)\n{\n    const char *cases[6] = {\n        \"1-2-3\",\n        \"a+b*c\",\n        \"(a+b)*c\",\n        \"a*(b+c)/d-e\",\n        \"10+2*6\",\n        \"((1+2)\"\n    };\n    char out[MAXSIZE * 2];\n    int i, r;\n\n    for (i = 0; i < 6; i++) {\n        r = infixToPostfix(cases[i], out);\n        if (r == 0) {\n            printf(\"%-14s → %s\\n\", cases[i], out);\n        } else {\n            printf(\"%-14s → 括号失配\\n\", cases[i]);\n        }\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "1-2-3          → 1 2 - 3 - \na+b*c          → a b c * + \n(a+b)*c        → a b + c * \na*(b+c)/d-e    → a b c + * d / e - \n10+2*6         → 1 0 2 6 * + \n((1+2)         → 括号失配",
+          "note": "1-2-3 转成 1 2 - 3 -（左结合，先算 1-2）而不是 1 2 3 - -，这是「≥」比较的直接结果。(a+b)*c 里 + 在括号内不被 * 弹出，说明左括号的栈内优先级 0 起了拦截作用。本例把多位数 10 拆成了 1 和 0 两个操作数——真实的求值器需要按连续数字整体读入，这里为了保持代码简短用了单字符扫描，出题时若涉及多位数必须补上「连续数字合并」逻辑。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-08",
+        "ds-ch03-10",
+        "ds-ch03-04"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 9
+    },
+    {
+      "id": "ds-ch03-10",
+      "title": "后缀表达式求值：只需一个操作数栈",
+      "section": "3.4 栈与队列的应用",
+      "summary": "后缀式（逆波兰式）里运算符紧跟在它的两个操作数之后，因此求值只需一个操作数栈：遇数入栈，遇运算符弹两个、算完再压回。全程无优先级判断、无括号处理，一遍线性扫描即可。",
+      "content": "## 算法\n\n```c\nfor (每个 token) {\n    if (是操作数)      push(值);\n    else {             /* 是运算符 */\n        pop(&b);       /* 注意：先弹出的是右操作数 */\n        pop(&a);       /* 后弹出的是左操作数 */\n        push(apply(a, op, b));\n    }\n}\npop(&result);          /* 栈中最后剩的一个就是结果 */\n```\n\n**先弹出的是右操作数 b，后弹出的是左操作数 a**——栈是后进先出，而表达式里 a 在 b 左边。\n减法与除法对此极其敏感：`6 2 /` 必须是 6÷2=3，若顺序写反就成了 2÷6=0。\n\n## 为什么不需要优先级\n\n后缀式已经把运算次序编码进符号位置里了。`1 2 - 3 -` 表示「先算 1-2，再拿结果减 3」，\n不需要任何优先级表，也不需要括号。求值器因此可以非常短，这正是编译器生成后缀/三地址中间代码的原因。\n\n## 合法性检查\n\n求值过程本身就能发现表达式是否合法：\n\n| 现象 | 含义 |\n|---|---|\n| 弹第二个操作数时栈空 | 运算符多于操作数，如 `1 +` |\n| 扫描结束栈里不止一个值 | 操作数多于运算符，如 `1 2 3 +` |\n| 扫描结束栈空 | 空表达式 |\n\n三种情况都必须显式报错，不能返回一个「看起来像结果」的数。\n\n## 与中缀直接求值的关系\n\n中缀直接求值需要两个栈（操作数栈 + 运算符栈）并在每一步比较优先级；\n后缀求值只要一个栈、零次优先级比较。代价是必须先做一趟中缀→后缀的转换。\n若同一个表达式只求值一次，双栈中缀法更省事；若要求值多次（如模板表达式代入不同变量），\n先转后缀再复用更划算。",
+      "keyPoints": [
+        "后缀求值只需一个操作数栈：遇操作数入栈，遇运算符弹两个、计算后把结果压回",
+        "先弹出的是右操作数 b、后弹出的是左操作数 a，减法与除法对次序极其敏感",
+        "全程无优先级比较、无括号处理，一趟线性扫描 O(n)，栈深不超过操作数个数",
+        "弹第二个操作数时栈空 = 运算符多于操作数；扫完栈里剩多于一个 = 操作数多于运算符",
+        "扫描结束后栈中应恰好剩一个值，它就是结果；栈空或多值都必须报错而非返回近似值",
+        "中缀直接求值要两个栈且每步比优先级，后缀求值一个栈零比较，代价是需先转换一趟"
+      ],
+      "pitfalls": [
+        "写成 a = pop(); b = pop(); 后计算 a op b：6 2 / 得到 0 而不是 3，减法同理符号反转",
+        "整数除法未考虑负数截断方向：C99 规定向零截断，-7/2 是 -3 而非 -4，与数学下取整不同",
+        "只检查第一次 pop 的空栈却不检查第二次：1 + 这类表达式会在第二次 pop 读到垃圾",
+        "扫描结束直接返回栈顶而不检查栈内元素个数：1 2 3 + 会静默返回错误结果"
+      ],
+      "examples": [
+        {
+          "title": "后缀表达式求值器（含三类非法输入的报错）",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAXSIZE 50\n\ntypedef struct {\n    int data[MAXSIZE];\n    int top;\n} NumStack;\n\nstatic int nsPush(NumStack *s, int x)\n{\n    if (s->top == MAXSIZE - 1) {\n        return 1;\n    }\n    s->data[++s->top] = x;\n    return 0;\n}\n\nstatic int nsPop(NumStack *s, int *x)\n{\n    if (s->top == -1) {\n        return 1;                      /* 下溢 */\n    }\n    *x = s->data[s->top--];\n    return 0;\n}\n\n/* 求值以空格分隔的后缀式；返回 0 成功，1 运算符缺操作数，2 结果不唯一，3 空式 */\nint evalPostfix(const char *expr, int *result)\n{\n    NumStack s;\n    char buf[256];\n    char *tok;\n    int a, b;\n\n    s.top = -1;\n    strcpy(buf, expr);\n    tok = strtok(buf, \" \");\n    while (tok != NULL) {\n        if (strcmp(tok, \"+\") == 0 || strcmp(tok, \"-\") == 0 ||\n            strcmp(tok, \"*\") == 0 || strcmp(tok, \"/\") == 0) {\n            if (nsPop(&s, &b) != 0) {\n                return 1;              /* 右操作数缺失 */\n            }\n            if (nsPop(&s, &a) != 0) {\n                return 1;              /* 左操作数缺失 */\n            }\n            if (tok[0] == '/' && b == 0) {\n                return 1;              /* 除零，同样按非法处理 */\n            }\n            switch (tok[0]) {\n            case '+': a = a + b; break;\n            case '-': a = a - b; break;\n            case '*': a = a * b; break;\n            default:  a = a / b; break;\n            }\n            if (nsPush(&s, a) != 0) {\n                return 1;\n            }\n        } else {\n            if (nsPush(&s, atoi(tok)) != 0) {\n                return 1;\n            }\n        }\n        tok = strtok(NULL, \" \");\n    }\n    if (s.top == -1) {\n        return 3;                      /* 空表达式 */\n    }\n    if (s.top != 0) {\n        return 2;                      /* 栈里还剩多个值：操作数多于运算符 */\n    }\n    *result = s.data[0];\n    return 0;\n}\n\nint main(void)\n{\n    const char *cases[6] = {\n        \"1 2 - 3 -\",\n        \"6 2 /\",\n        \"2 6 /\",\n        \"3 4 + 2 * 7 /\",\n        \"1 +\",\n        \"1 2 3 +\"\n    };\n    int i, r, v;\n\n    for (i = 0; i < 6; i++) {\n        r = evalPostfix(cases[i], &v);\n        if (r == 0) {\n            printf(\"%-14s = %d\\n\", cases[i], v);\n        } else {\n            const char *why[4] = { \"\", \"运算符缺少操作数或除零\", \"结果不唯一（操作数偏多）\", \"空表达式\" };\n            printf(\"%-14s 非法：%s\\n\", cases[i], why[r]);\n        }\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "1 2 - 3 -      = -4\n6 2 /          = 3\n2 6 /          = 0\n3 4 + 2 * 7 /  = 2\n1 +            非法：运算符缺少操作数或除零\n1 2 3 +        非法：结果不唯一（操作数偏多）",
+          "note": "1 2 - 3 - 得 -4，印证了左结合转换的正确性：(1-2)-3 = -4，若当初转成 1 2 3 - - 会得到 1-(2-3) = 2。6 2 / 与 2 6 / 分别是 3 和 0（整数除法向零截断），这两个用例专门用来抓「左右操作数弹反」的 bug。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-09",
+        "ds-ch03-11",
+        "ds-ch03-04"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 10
+    },
+    {
+      "id": "ds-ch03-11",
+      "title": "中缀表达式直接求值：操作数栈 + 运算符栈的协同",
+      "section": "3.4 栈与队列的应用",
+      "summary": "不转后缀也能求值：用两个栈，操作数直接入栈，运算符要与运算符栈顶比优先级——栈顶优先级不低于当前运算符就先算掉它，否则当前运算符入栈等待。括号通过栈内优先级最低来实现拦截。",
+      "content": "## 双栈协同流程\n\n| 读到 | 动作 |\n|---|---|\n| 操作数 | 直接压入操作数栈（多位数要连续读完整） |\n| `(` | 压入运算符栈 |\n| `) ` | 反复「弹运算符 + 弹两个操作数 + 计算 + 压回」，直到弹出 `(` |\n| 运算符 op | `while`（栈顶非 `(` 且 栈顶优先级 ≥ op 优先级）执行一次计算；然后把 op 压栈 |\n| 结束 | 把运算符栈清空，每清一个就做一次计算 |\n\n关键在于**「计算」这个动作被抽成同一个函数**：弹一个运算符、弹两个操作数、算完压回操作数栈。\n括号处理、优先级处理、收尾清栈三处都调用它，代码就不会重复。\n\n## 优先级比较的两个方向\n\n沿用中缀转后缀的结论：左括号**栈外最高、栈内最低**。\n栈内优先级最低意味着任何运算符都无法把它弹出来，只有右括号能；\n栈外最高意味着它自己一定能压进去。\n\n「≥」同样不可改成「>」：`1-2-3` 若用「>」，第二个 `-` 不会触发对第一个 `-` 的计算，\n两个减号一起留在栈里，最后收尾清栈时先算 `2-3`，结果变成 `1-(-1)=2`，而正确答案是 -4。\n\n## 与「先转后缀再求值」的对比\n\n| 维度 | 双栈直接求值 | 转后缀再求值 |\n|---|---|---|\n| 栈数量 | 2 | 转换 1 + 求值 1 |\n| 优先级比较次数 | 每个运算符若干次 | 转换时若干次，求值时 0 |\n| 中间字符串 | 不需要 | 需要一份后缀串 |\n| 复用性 | 一次性 | 后缀串可反复求值 |\n| 代码量 | 略少 | 略多但职责更清晰 |\n\n工程上两者都常见；教学与考试更常考双栈法，因为它把「优先级」「括号」「结合性」三件事放在同一段代码里。",
+      "keyPoints": [
+        "中缀直接求值用两个栈：操作数栈存数值，运算符栈存待执行的运算符",
+        "「计算」动作应抽成一个函数：弹一个运算符 + 弹两个操作数 + 计算 + 压回操作数栈，三处复用",
+        "遇运算符时循环执行计算，条件是栈顶不是左括号且栈顶优先级 ≥ 当前优先级，然后把当前运算符压栈",
+        "遇右括号反复计算直到弹出左括号，左括号本身不参与计算",
+        "扫描结束必须清空运算符栈，每清一个做一次计算，最后操作数栈应只剩一个值",
+        "优先级比较必须用 ≥ 而非 >，否则 1-2-3 会算成 2 而不是 -4（左结合被破坏）"
+      ],
+      "pitfalls": [
+        "多位数只读一个字符：12+3 被当成 1、2、+、3，结果完全错，必须循环读完连续数字",
+        "把 ≥ 写成 > ：连续同级运算符全部滞留栈中，收尾清栈时从右往左算，左结合被破坏",
+        "遇右括号时把左括号也当成运算符参与计算：会去弹两个操作数，栈被破坏",
+        "计算函数里先弹的当左操作数：减法除法结果符号或商全错"
+      ],
+      "examples": [
+        {
+          "title": "双栈中缀求值器（支持多位数、括号与四则运算）",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\n#define MAXSIZE 50\n\ntypedef struct {\n    int data[MAXSIZE];\n    int top;\n} IntStack;\n\ntypedef struct {\n    char data[MAXSIZE];\n    int top;\n} OpStack;\n\n/* 栈内优先级：左括号最低，任何运算符都弹不动它 */\nstatic int inPriority(char op)\n{\n    switch (op) {\n    case '(': return 0;\n    case '+':\n    case '-': return 1;\n    case '*':\n    case '/': return 2;\n    default:  return -1;\n    }\n}\n\n/* 栈外优先级：左括号最高，保证它一定能入栈 */\nstatic int outPriority(char op)\n{\n    return op == '(' ? 3 : inPriority(op);\n}\n\nstatic int apply(int a, char op, int b)\n{\n    switch (op) {\n    case '+': return a + b;\n    case '-': return a - b;\n    case '*': return a * b;\n    default:  return b == 0 ? 0 : a / b;\n    }\n}\n\n/* 统一的「计算一次」动作：弹一个运算符和两个操作数，结果压回操作数栈 */\nstatic int doCalc(IntStack *num, OpStack *ops)\n{\n    char op;\n    int a, b;\n\n    if (ops->top == -1) {\n        return 1;\n    }\n    op = ops->data[ops->top--];\n    if (num->top < 1) {\n        return 1;                      /* 操作数不足两个 */\n    }\n    b = num->data[num->top--];         /* 先弹出的是右操作数 */\n    a = num->data[num->top--];\n    num->data[++num->top] = apply(a, op, b);\n    return 0;\n}\n\n/* 返回 0 成功；1 表达式非法 */\nint evalInfix(const char *expr, int *result)\n{\n    IntStack num;\n    OpStack ops;\n    int i = 0, len = (int)strlen(expr), v;\n    char c;\n\n    num.top = -1;\n    ops.top = -1;\n    while (i < len) {\n        c = expr[i];\n        if (isspace((unsigned char)c)) {\n            i++;\n            continue;\n        }\n        if (isdigit((unsigned char)c)) {\n            v = 0;\n            while (i < len && isdigit((unsigned char)expr[i])) {\n                v = v * 10 + (expr[i] - '0');   /* 多位数整体读入 */\n                i++;\n            }\n            num.data[++num.top] = v;\n            continue;\n        }\n        if (c == '(') {\n            ops.data[++ops.top] = c;\n        } else if (c == ')') {\n            while (ops.top != -1 && ops.data[ops.top] != '(') {\n                if (doCalc(&num, &ops) != 0) {\n                    return 1;\n                }\n            }\n            if (ops.top == -1) {\n                return 1;              /* 右括号多余 */\n            }\n            ops.top--;                 /* 弹出左括号，不参与计算 */\n        } else if (inPriority(c) > 0) {\n            while (ops.top != -1 && ops.data[ops.top] != '(' &&\n                   inPriority(ops.data[ops.top]) >= outPriority(c)) {\n                if (doCalc(&num, &ops) != 0) {\n                    return 1;\n                }\n            }\n            ops.data[++ops.top] = c;\n        } else {\n            return 1;                  /* 非法字符 */\n        }\n        i++;\n    }\n    while (ops.top != -1) {            /* 清空运算符栈 */\n        if (ops.data[ops.top] == '(') {\n            return 1;                  /* 左括号多余 */\n        }\n        if (doCalc(&num, &ops) != 0) {\n            return 1;\n        }\n    }\n    if (num.top != 0) {\n        return 1;                      /* 结果不唯一 */\n    }\n    *result = num.data[0];\n    return 0;\n}\n\nint main(void)\n{\n    const char *cases[7] = {\n        \"1-2-3\",\n        \"12+3*4\",\n        \"(12+3)*4\",\n        \"100/(2+3)/4\",\n        \"2*(3+4*(5-6))\",\n        \"10+2*6\",\n        \"(1+2\"\n    };\n    int i, r, v;\n\n    for (i = 0; i < 7; i++) {\n        r = evalInfix(cases[i], &v);\n        if (r == 0) {\n            printf(\"%-16s = %d\\n\", cases[i], v);\n        } else {\n            printf(\"%-16s 表达式非法\\n\", cases[i]);\n        }\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "1-2-3            = -4\n12+3*4           = 24\n(12+3)*4         = 60\n100/(2+3)/4      = 5\n2*(3+4*(5-6))    = -2\n10+2*6           = 22\n(1+2             表达式非法",
+          "note": "1-2-3 得 -4 证明左结合正确（若写成 > 会得到 2）。12+3*4 得 24 证明多位数被整体读入。100/(2+3)/4 = 100/5/4 = 20/4 = 5，连续同级除法从左往右算。2*(3+4*(5-6)) = 2*(3+4*(-1)) = 2*(-1) = -2，嵌套括号逐层弹出。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-09",
+        "ds-ch03-10",
+        "ds-ch03-08"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 11
+    },
+    {
+      "id": "ds-ch03-12",
+      "title": "栈与函数调用：运行时栈、活动记录与递归的空间代价",
+      "section": "3.4 栈与递归",
+      "summary": "每次函数调用，系统都在运行时栈上压入一个活动记录（返回地址、参数、局部变量、旧帧指针），返回时弹出。递归的深度直接决定运行时栈的占用，这是「递归空间复杂度 O(深度)」的物理来源。",
+      "content": "## 活动记录（栈帧）里有什么\n\n| 组成 | 作用 |\n|---|---|\n| 实际参数 | 调用方传进来的值 |\n| 返回地址 | 被调函数结束后回到哪条指令 |\n| 旧帧指针 | 恢复调用方的栈帧基址 |\n| 局部变量 | 本次调用私有的数据 |\n| 临时结果 | 返回值暂存 |\n\n**每一层递归调用都有自己独立的一份**，这正是递归能「记住」各层状态的原因；\n也正因为每层都要占空间，深度为 d 的递归空间复杂度是 O(d)，而不是 O(1)。\n\n## 调用与返回的栈行为\n\n```c\nint fact(int n) { return n <= 1 ? 1 : n * fact(n - 1); }\n```\n\n`fact(4)` 的运行时栈变化（自上而下是栈顶到栈底）：\n\n| 时刻 | 栈内容（栈顶在左） | 深度 |\n|---|---|---|\n| 调用 fact(4) | f4 | 1 |\n| 调用 fact(3) | f3 f4 | 2 |\n| 调用 fact(2) | f2 f3 f4 | 3 |\n| 调用 fact(1) | f1 f2 f3 f4 | 4 |\n| f1 返回 1 | f2 f3 f4 | 3 |\n| f2 返回 2 | f3 f4 | 2 |\n| f3 返回 6 | f4 | 1 |\n| f4 返回 24 | （空） | 0 |\n\n**递推阶段栈只增不减，回归阶段才逐层弹出**。所有中间状态都必须保留在栈上，\n因为回归时每一层都要用到自己那一层的 n。\n\n## 递归的空间代价与栈溢出\n\n- 深度 d 的递归占用约 d × 单帧大小。单帧大小 = 局部变量 + 参数 + 返回地址等，通常几十字节。\n- 常见实现的栈上限在 1 MB～8 MB 量级（Linux 默认 8 MB，Windows 默认 1 MB），\n  按每帧 64 字节估算，1 MB 只能撑约 1.6 万层。\n- **无终止条件或终止条件不可达 → 无限递归 → 栈溢出崩溃**（段错误）。\n- 尾递归（递归调用是函数最后一个动作）理论上可复用当前帧，但 C 标准不保证，\n  编译器优化（-O2 下的 TCO）也不总生效，**不能依赖它来避免栈溢出**。\n\n## 递归转非递归的两种做法\n\n1. **直接展开**：若递归只是简单循环（如阶乘、求和），改写成 for 循环即可，空间降到 O(1)。\n2. **显式栈模拟**：若递归含回溯或需要在回归阶段做事（如二叉树非递归遍历、汉诺塔、DFS），\n   用自己的栈保存「待恢复的状态」，把系统栈搬到堆上。好处是深度只受堆限制，且可中途暂停/恢复。",
+      "keyPoints": [
+        "每次函数调用在运行时栈压入一个活动记录：实际参数、返回地址、旧帧指针、局部变量、临时结果",
+        "每层递归都有独立的一份活动记录，这是递归能记住各层状态的物理基础",
+        "递推阶段栈只增不减，回归阶段才逐层弹出；深度 d 的递归空间复杂度是 O(d) 而非 O(1)",
+        "无终止条件或终止条件不可达会导致无限递归与栈溢出崩溃（段错误）",
+        "常见栈上限 1～8 MB，按每帧几十字节估算，1 MB 大约只能撑一万多层递归",
+        "尾递归理论上可复用栈帧，但 C 标准不保证、编译器优化不总生效，不能依赖它避免溢出"
+      ],
+      "pitfalls": [
+        "以为递归「不占空间」：每层一个栈帧，深递归（如 10 万层的链表遍历）会直接栈溢出",
+        "终止条件写成 n == 0 而调用时传入负数：条件永远不成立，无限递归",
+        "把尾递归当成一定被优化：-O0 下必然每层一帧，判题环境常用 -O0",
+        "递归转非递归时只存参数不存「回归阶段要用的中间状态」：无法正确恢复，结果错",
+        "在同一个 printf 的实参里既调用会改全局状态的函数、又读那个全局状态：C 不规定实参求值顺序，读到的可能是旧值"
+      ],
+      "examples": [
+        {
+          "title": "递归深度与运行时栈占用观测：阶乘递归 vs 循环，以及显式栈模拟",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\n/* 递归版：每层一个活动记录，深度 n */\nstatic int recDepthMax;\n\nint factRec(int n, int depth)\n{\n    if (depth > recDepthMax) {\n        recDepthMax = depth;\n    }\n    if (n <= 1) {\n        return 1;\n    }\n    return n * factRec(n - 1, depth + 1);\n}\n\n/* 循环版：空间 O(1)，不产生任何栈帧 */\nint factLoop(int n)\n{\n    int r = 1, i;\n\n    for (i = 2; i <= n; i++) {\n        r = r * i;\n    }\n    return r;\n}\n\n/* 显式栈模拟递归：把系统栈搬到堆上，深度只受 malloc 限制 */\ntypedef struct {\n    int n;\n    int stage;         /* 0 = 还没算子问题，1 = 子问题已返回 */\n    int sub;           /* 子问题结果 */\n} Frame;\n\nint factByStack(int n)\n{\n    Frame *st = (Frame *)malloc((size_t)(n + 2) * sizeof(Frame));\n    int top = -1, result = 1;\n\n    if (st == NULL) {\n        return -1;\n    }\n    st[++top].n = n;\n    st[top].stage = 0;\n    while (top != -1) {\n        Frame *f = &st[top];\n        if (f->stage == 0) {\n            if (f->n <= 1) {\n                f->sub = 1;            /* 递归基，直接得出本层结果 */\n                f->stage = 1;\n            } else {\n                st[++top].n = f->n - 1;/* 递推：压入下一层 */\n                st[top].stage = 0;\n            }\n        } else {\n            result = f->sub;\n            top--;                     /* 回归：弹出本层 */\n            if (top != -1) {\n                st[top].sub = st[top].n * result;   /* 把结果交给上一层 */\n                st[top].stage = 1;\n            }\n        }\n    }\n    free(st);\n    return result;\n}\n\nint main(void)\n{\n    int ns[4] = { 1, 4, 7, 10 };\n    int recVal, loopVal, stackVal, depth;\n    int i;\n\n    printf(\"n  递归结果  循环结果  显式栈结果  递归最大深度\\n\");\n    for (i = 0; i < 4; i++) {\n        recDepthMax = 0;\n        recVal = factRec(ns[i], 1);      /* 先调用，recDepthMax 才被更新 */\n        depth = recDepthMax;             /* 再单独取，避开 printf 实参求值顺序不确定 */\n        loopVal = factLoop(ns[i]);\n        stackVal = factByStack(ns[i]);\n        printf(\"n=%d 递归=%d 循环=%d 显式栈=%d 最大深度=%d\\n\",\n               ns[i], recVal, loopVal, stackVal, depth);\n    }\n    printf(\"\\n\");\n    printf(\"递归版 10! 的最大调用深度是 %d，即需要 %d 个活动记录同时在栈上\\n\",\n           recDepthMax, recDepthMax);\n    printf(\"循环版计算同样的值只需要 %d 个活动记录\\n\", 1);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "n  递归结果  循环结果  显式栈结果  递归最大深度\nn=1 递归=1 循环=1 显式栈=1 最大深度=1\nn=4 递归=24 循环=24 显式栈=24 最大深度=4\nn=7 递归=5040 循环=5040 显式栈=5040 最大深度=7\nn=10 递归=3628800 循环=3628800 显式栈=3628800 最大深度=10\n\n递归版 10! 的最大调用深度是 10，即需要 10 个活动记录同时在栈上\n循环版计算同样的值只需要 1 个活动记录",
+          "note": "三种实现结果完全一致，但空间代价差一个数量级：递归版深度 n，循环版 O(1)。显式栈版虽然也用了 n 个 Frame，但它们在**堆**上，容量由 malloc 决定而非固定的栈上限，这就是「递归转非递归」在深层场景（如 10 万结点的树遍历）里的真正价值。注意 factByStack 里 stage 字段——它记录的正是「回归阶段该做什么」，缺了它就无法模拟回溯。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-01",
+        "ds-ch03-02",
+        "ds-ch03-22"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 12
+    },
+    {
+      "id": "ds-ch03-13",
+      "title": "循环队列：假溢出与三种判满方案",
+      "section": "3.5 队列的表示和操作的实现",
+      "summary": "顺序队列只往后挪 rear 会让前面的空间永远用不上，出现「队尾已到数组末尾但队没满」的假溢出。循环队列把数组首尾相连，代价是 front == rear 同时表示空和满，必须用三种方案之一区分。",
+      "content": "## 假溢出是怎么来的\n\n普通顺序队列出队只把 `front++`，被释放的前部空间再也用不上。\n数组长度 5，入队 5 个再出队 3 个，此时 `front=3, rear=5`，队里只有 2 个元素，\n但 `rear` 已到末尾，再入队就要越界——这就是**假溢出（虚溢出）**：明明有空位却报满。\n\n## 循环队列的下标运算\n\n把数组看成首尾相接的环，所有移动都取模：\n\n```c\nrear  = (rear + 1) % MAXSIZE;\nfront = (front + 1) % MAXSIZE;\n```\n\n这样 rear 走到末尾后会回到 0，前部空间被重新利用，假溢出消失。\n\n## 三种判满方案\n\n初始 `front = rear = 0`，**空判定统一是 `front == rear`**。\n\n| 方案 | 满判定 | 元素个数 | 可用容量 | 代价 |\n|---|---|---|---|---|\n| ① 牺牲一个单元 | `(rear+1)%MAX == front` | `(rear-front+MAX)%MAX` | MAXSIZE−1 | 浪费一格，最常用 |\n| ② 增设 size 字段 | `size == MAXSIZE` | `size` | MAXSIZE | 每次入出队维护 size |\n| ③ 增设 tag 标志 | `front==rear && tag==1` | 需推算 | MAXSIZE | tag 记录「最后一次是入队还是出队」 |\n\n**方案①为什么必须牺牲一格**：若不牺牲，入队 MAXSIZE 个元素后 `rear` 绕回追上 `front`，\n`front == rear` 既像空又像满，无法区分。留一格就保证了「满时 rear 的下一格是 front，\n而空时 rear 就等于 front」，两个状态不再重合。\n\n## 元素个数公式的推导\n\n`rear >= front` 时个数是 `rear - front`；`rear < front`（绕了一圈）时是 `MAXSIZE - front + rear`。\n两者可统一为 `(rear - front + MAXSIZE) % MAXSIZE`——**加 MAXSIZE 是为了避免负数取模**，\nC 语言里负数取模结果仍为负，`(-3) % 5 == -3`，直接写 `(rear-front)%MAXSIZE` 会得到负数。",
+      "keyPoints": [
+        "假溢出：顺序队列只 rear++ 不用回前部空间，队未满却因 rear 到达数组末尾而无法入队",
+        "循环队列用取模把数组首尾相连：rear = (rear+1)%MAXSIZE，前部空间被重新利用",
+        "空判定统一是 front == rear；难点在于满时 front 也等于 rear，两态重合",
+        "方案①牺牲一个单元：满判 (rear+1)%MAXSIZE == front，个数 (rear-front+MAXSIZE)%MAXSIZE，容量少一格",
+        "方案②增设 size 字段或方案③增设 tag 标志，都能用满 MAXSIZE 格，代价是多维护一个状态",
+        "个数公式必须加 MAXSIZE 再取模，因为 C 里负数取模仍是负数，(-3)%5 == -3"
+      ],
+      "pitfalls": [
+        "满判定写成 rear == MAXSIZE - 1：完全没有利用循环特性，等于退化成顺序队列，假溢出照旧",
+        "个数写成 (rear - front) % MAXSIZE 不加 MAXSIZE：rear < front 时得到负数",
+        "方案①下仍按 MAXSIZE 计算容量：实际只能存 MAXSIZE-1 个，边界测试会差一个",
+        "front = (front + 1) % MAXSIZE 忘记写：出队后 front 不动，同一个元素被反复读出"
+      ],
+      "examples": [
+        {
+          "title": "循环队列（牺牲一格方案）：假溢出对照与绕环存取",
+          "code": "#include <stdio.h>\n\n#define MAXSIZE 5                  /* 实际可存 4 个元素 */\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAXSIZE];\n    int front;                     /* 指向队头元素 */\n    int rear;                      /* 指向队尾元素的下一个空位 */\n} CircQueue;\n\nvoid cqInit(CircQueue *q)\n{\n    q->front = 0;\n    q->rear = 0;\n}\n\nint cqEmpty(const CircQueue *q)\n{\n    return q->front == q->rear;\n}\n\nint cqFull(const CircQueue *q)\n{\n    return (q->rear + 1) % MAXSIZE == q->front;    /* 牺牲一格 */\n}\n\nint cqSize(const CircQueue *q)\n{\n    return (q->rear - q->front + MAXSIZE) % MAXSIZE;\n}\n\nint cqEnqueue(CircQueue *q, DataType x)\n{\n    if (cqFull(q)) {\n        return 1;                                  /* 真溢出 */\n    }\n    q->data[q->rear] = x;\n    q->rear = (q->rear + 1) % MAXSIZE;             /* 绕环 */\n    return 0;\n}\n\nint cqDequeue(CircQueue *q, DataType *x)\n{\n    if (cqEmpty(q)) {\n        return 1;                                  /* 下溢 */\n    }\n    *x = q->data[q->front];\n    q->front = (q->front + 1) % MAXSIZE;           /* 绕环，前部空间被释放 */\n    return 0;\n}\n\nstatic void show(const char *tag, const CircQueue *q)\n{\n    printf(\"%s front=%d rear=%d 个数=%d 满=%d\\n\",\n           tag, q->front, q->rear, cqSize(q), cqFull(q));\n}\n\nint main(void)\n{\n    CircQueue q;\n    DataType x;\n    int i;\n\n    cqInit(&q);\n    show(\"初始：\", &q);\n\n    for (i = 1; i <= 4; i++) {\n        cqEnqueue(&q, i * 10);\n    }\n    show(\"入队 10 20 30 40 后：\", &q);\n    printf(\"再入队 50 返回 %d（真溢出，MAXSIZE=%d 牺牲一格只能存 4 个）\\n\",\n           cqEnqueue(&q, 50), MAXSIZE);\n\n    for (i = 0; i < 3; i++) {\n        cqDequeue(&q, &x);\n        printf(\"出队 %d\\n\", x);\n    }\n    show(\"出队 3 个后：\", &q);\n\n    /* 关键：前部 [0][1][2] 已释放，rear 绕环后能重新利用它们 */\n    for (i = 1; i <= 3; i++) {\n        printf(\"入队 %d 返回 %d\\n\", i * 100, cqEnqueue(&q, i * 100));\n    }\n    show(\"再入队 3 个后：\", &q);\n\n    printf(\"逐个出队：\");\n    while (cqDequeue(&q, &x) == 0) {\n        printf(\" %d\", x);\n    }\n    printf(\"\\n\");\n    show(\"清空后：\", &q);\n    printf(\"空队再出队返回 %d（下溢）\\n\", cqDequeue(&q, &x));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "初始： front=0 rear=0 个数=0 满=0\n入队 10 20 30 40 后： front=0 rear=4 个数=4 满=1\n再入队 50 返回 1（真溢出，MAXSIZE=5 牺牲一格只能存 4 个）\n出队 10\n出队 20\n出队 30\n出队 3 个后： front=3 rear=4 个数=1 满=0\n入队 100 返回 0\n入队 200 返回 0\n入队 300 返回 0\n再入队 3 个后： front=3 rear=2 个数=4 满=1\n逐个出队： 40 100 200 300\n清空后： front=2 rear=2 个数=0 满=0\n空队再出队返回 1（下溢）",
+          "note": "「再入队 3 个后 front=3 rear=2」是绕环的直接证据：rear 从 4 走到 0、1、2，个数公式 (2-3+5)%5 = 4 仍然正确，若不加 MAXSIZE 会得到 -1。出队次序 40 100 200 300 说明前部释放的 [0][1][2] 被重新利用——这正是循环队列消除假溢出的机制。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-03",
+        "ds-ch03-05",
+        "ds-ch03-14"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 13
+    },
+    {
+      "id": "ds-ch03-14",
+      "title": "链式队列：尾指针维护与「删到只剩一个结点」的陷阱",
+      "section": "3.5 队列的表示和操作的实现",
+      "summary": "链队需要同时保存头指针和尾指针，入队 O(1) 改 rear、出队 O(1) 改 front，且不存在假溢出与容量上限。唯一的坑是：出队删掉最后一个结点后 rear 会变成悬空指针，必须显式把它指回 head。",
+      "content": "## 结构\n\n```c\ntypedef struct QNode {\n    DataType data;\n    struct QNode *next;\n} QNode;\n\ntypedef struct {\n    QNode *front;      /* 头指针，指向头结点 */\n    QNode *rear;       /* 尾指针，指向最后一个结点 */\n} LinkQueue;\n```\n\n**带头结点**（`front` 指向一个不存数据的头结点，`front == rear` 表示空队）。\n头结点让「空队入第一个元素」和「非空队入队」走同一套代码，不必分支。\n\n## 入队：只改 rear\n\n```c\np = malloc(...);  p->data = x;  p->next = NULL;\nq->rear->next = p;               /* 挂到当前尾结点之后 */\nq->rear = p;                     /* 尾指针后移 */\n```\n\n## 出队：唯一的陷阱在这里\n\n```c\np = q->front->next;              /* 待删的第一个数据结点 */\nif (p == NULL) return 1;         /* 空队，下溢 */\n*x = p->data;\nq->front->next = p->next;\nif (q->rear == p) {              /* ★ 删的是最后一个结点 */\n    q->rear = q->front;          /* 必须把 rear 拉回头结点 */\n}\nfree(p);\n```\n\n**少了那个 if，队列为空时 rear 仍指向已被 free 的结点**。\n下一次入队执行 `q->rear->next = p` 就是往已释放的内存里写——use-after-free，\n可能当场崩溃，也可能悄悄破坏堆结构，等到很后面才炸。这是链队最经典的 bug。\n\n## 与循环队列对比\n\n| 维度 | 循环队列（顺序） | 链队 |\n|---|---|---|\n| 容量 | MAXSIZE−1（牺牲一格方案） | 只受堆限制 |\n| 假溢出 | 已消除 | 不存在 |\n| 每元素额外空间 | 0 | 一个 next 指针 |\n| 入/出队 | O(1)，无 malloc | O(1)，含 malloc/free |\n| 需要的指针 | front、rear（都是 int 下标） | front、rear（都是结点指针） |\n| 特殊处理 | 取模运算 | **删到空时 rear 复位** |\n\n容量可预估、追求极致性能时用循环队列；容量波动大、需要多个队列共存时用链队。",
+      "keyPoints": [
+        "链队同时保存 front 与 rear 两个指针，入队改 rear->next 与 rear，出队改 front->next",
+        "通常带头结点：front 指向头结点，空队判定 front == rear，入队代码无需分支",
+        "入队 O(1)、出队 O(1)，不存在假溢出也没有固定容量上限",
+        "出队删掉最后一个数据结点时必须执行 if (rear == p) rear = front;，否则 rear 悬空",
+        "rear 悬空后下一次入队会往已 free 的内存写，属 use-after-free，可能延迟到很后面才崩溃",
+        "容量可预估选循环队列（无 malloc、无额外指针空间），容量波动大或多队列共存选链队"
+      ],
+      "pitfalls": [
+        "出队忘记 if (rear == p) rear = front：空队后 rear 指向已释放结点，再入队即 use-after-free",
+        "不带头结点却用 front == NULL 判空：入队时要分「空队」和「非空队」两条路径，极易漏改 rear",
+        "入队写成 p->next = q->rear 再 q->rear = p：这是头插（栈行为），破坏了队列的先进先出",
+        "出队先 free(p) 再读 p->data：数据已随结点释放，读到垃圾值"
+      ],
+      "examples": [
+        {
+          "title": "带头结点的链队：反复「入队全部—出队全部」验证 rear 复位",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct QNode {\n    int data;\n    struct QNode *next;\n} QNode;\n\ntypedef struct {\n    QNode *front;          /* 指向头结点 */\n    QNode *rear;           /* 指向最后一个结点 */\n} LinkQueue;\n\nint lqInit(LinkQueue *q)\n{\n    q->front = (QNode *)malloc(sizeof(QNode));\n    if (q->front == NULL) {\n        return 1;\n    }\n    q->front->next = NULL;\n    q->rear = q->front;    /* 空队：front == rear */\n    return 0;\n}\n\nint lqEmpty(const LinkQueue *q)\n{\n    return q->front == q->rear;\n}\n\nint lqEnqueue(LinkQueue *q, int x)\n{\n    QNode *p = (QNode *)malloc(sizeof(QNode));\n\n    if (p == NULL) {\n        return 1;\n    }\n    p->data = x;\n    p->next = NULL;\n    q->rear->next = p;     /* 挂到当前尾结点之后 */\n    q->rear = p;           /* 尾指针后移 */\n    return 0;\n}\n\nint lqDequeue(LinkQueue *q, int *x)\n{\n    QNode *p = q->front->next;\n\n    if (p == NULL) {\n        return 1;          /* 空队，下溢 */\n    }\n    *x = p->data;\n    q->front->next = p->next;\n    if (q->rear == p) {\n        q->rear = q->front;/* ★ 删的是最后一个结点，rear 必须复位 */\n    }\n    free(p);\n    return 0;\n}\n\nint lqSize(const LinkQueue *q)\n{\n    int n = 0;\n    const QNode *p;\n\n    for (p = q->front->next; p != NULL; p = p->next) {\n        n++;\n    }\n    return n;\n}\n\nint main(void)\n{\n    LinkQueue q;\n    int round, i, x;\n\n    if (lqInit(&q) != 0) {\n        printf(\"分配失败\\n\");\n        return 1;\n    }\n    printf(\"初始 空=%d 长度=%d\\n\", lqEmpty(&q), lqSize(&q));\n\n    /* 连续三轮「入队 3 个再全部出队」，每轮都经过「删到只剩一个结点」的临界点 */\n    for (round = 1; round <= 3; round++) {\n        for (i = 1; i <= 3; i++) {\n            lqEnqueue(&q, round * 10 + i);\n        }\n        printf(\"第%d轮 入队后 空=%d 长度=%d\\n\", round, lqEmpty(&q), lqSize(&q));\n\n        printf(\"第%d轮 出队:\", round);\n        while (lqDequeue(&q, &x) == 0) {\n            printf(\" %d\", x);\n        }\n        printf(\"\\n\");\n        printf(\"第%d轮 清空后 空=%d 长度=%d rear是否等于front %d\\n\",\n               round, lqEmpty(&q), lqSize(&q), q.rear == q.front);\n    }\n    printf(\"空队再出队返回 %d（下溢）\\n\", lqDequeue(&q, &x));\n\n    /* 清空后再入队：若 rear 未复位，这一步就是 use-after-free */\n    lqEnqueue(&q, 99);\n    lqDequeue(&q, &x);\n    printf(\"复位后重新入队出队得到 %d\\n\", x);\n    free(q.front);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "初始 空=1 长度=0\n第1轮 入队后 空=0 长度=3\n第1轮 出队: 11 12 13\n第1轮 清空后 空=1 长度=0 rear是否等于front 1\n第2轮 入队后 空=0 长度=3\n第2轮 出队: 21 22 23\n第2轮 清空后 空=1 长度=0 rear是否等于front 1\n第3轮 入队后 空=0 长度=3\n第3轮 出队: 31 32 33\n第3轮 清空后 空=1 长度=0 rear是否等于front 1\n空队再出队返回 1（下溢）\n复位后重新入队出队得到 99",
+          "note": "每轮清空后 `rear是否等于front 1` 都成立，证明 rear 复位正确。如果把 lqDequeue 里的 if (q->rear == p) q->rear = q->front; 删掉，lqEmpty 会在第 1 轮清空后返回 0（误判为非空），且最后那次 lqEnqueue 会往已释放的结点里写，程序可能立刻崩溃也可能悄悄破坏堆——这正是本例做三轮循环、并在最后再入队一次的原因。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-03",
+        "ds-ch03-06",
+        "ds-ch03-13"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 14
+    },
+    {
+      "id": "ds-ch03-15",
+      "title": "双端队列：两端都能进出的受限线性表",
+      "section": "3.5 队列的表示和操作的实现",
+      "summary": "双端队列（Deque）允许在两端分别做插入和删除，栈和队列都是它的特例。按是否限制某一端的操作，分为输出受限与输入受限两类，这是判断「某排列能否由双端队列得到」的依据。",
+      "content": "## 四种基本操作\n\n| 操作 | 说明 |\n|---|---|\n| insertFront | 从队头插入 |\n| insertRear | 从队尾插入 |\n| deleteFront | 从队头删除 |\n| deleteRear | 从队尾删除 |\n\n**栈**只允许同一端进出（= 禁用 insertRear 与 deleteRear，或反之）；\n**队列**只允许一端进另一端出（= 禁用 insertFront 与 deleteRear）。所以两者都是双端队列的特例。\n\n## 两类受限双端队列\n\n| 类型 | 限制 | 典型用途 |\n|---|---|---|\n| 输出受限 | 只能一端删除，两端都能插入 | 允许「插队」但不允许从后面取 |\n| 输入受限 | 只能一端插入，两端都能删除 | 允许从两端取但不允许插队 |\n\n判断某个输出序列能否由双端队列得到，靠的是模拟：每一步都尝试四种操作的组合，\n能用某种操作序列产生目标排列就是可行的。这类题没有公式，只能穷举状态。\n\n## 循环数组实现\n\n沿用循环队列的取模技巧，两端各维护一个下标：\n\n```c\nfront = (front - 1 + MAX) % MAX;   /* insertFront：先退一格再写 */\ndata[front] = x;\n\ndata[rear] = x;                    /* insertRear：先写再进一格 */\nrear = (rear + 1) % MAX;\n```\n\n`insertFront` 的 `(front - 1 + MAX) % MAX` 里**加 MAX 是必需的**：\nC 语言中 `(-1) % 5 == -1`，不加就会得到负下标，直接越界访问。",
+      "keyPoints": [
+        "双端队列支持 insertFront / insertRear / deleteFront / deleteRear 四种操作",
+        "栈是「只允许同一端进出」的双端队列，队列是「一端进另一端出」的双端队列，两者都是特例",
+        "输出受限双端队列：只能一端删除、两端插入；输入受限：只能一端插入、两端删除",
+        "判断某排列能否由双端队列产生没有公式，只能逐步模拟四种操作的组合",
+        "循环数组实现时 insertFront 用 (front - 1 + MAX) % MAX 先退一格再写",
+        "取模前必须加 MAX：C 语言中 (-1) % 5 == -1，不加会得到负下标导致越界"
+      ],
+      "pitfalls": [
+        "insertFront 写成 data[front] = x; front = (front - 1 + MAX) % MAX;：写的位置与后续 deleteFront 读的位置错开一格",
+        "用 (front - 1) % MAX 忘记加 MAX：front 为 0 时得到 -1，数组越界",
+        "把双端队列的满判定沿用单向循环队列的 (rear+1)%MAX == front：两端都动时该式不再等价于满",
+        "以为栈和队列不能用双端队列实现：它们都是禁用部分操作后的特例"
+      ],
+      "examples": [
+        {
+          "title": "循环数组双端队列：四种操作与回文判定应用",
+          "code": "#include <stdio.h>\n\n#define MAX 8\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAX];\n    int front;                   /* 指向队头元素所在格 */\n    int rear;                    /* 指向队尾元素的下一格 */\n    int size;                    /* 用 size 判满，避免两端都动时公式失效 */\n} Deque;\n\nvoid dqInit(Deque *q)\n{\n    q->front = 0;\n    q->rear = 0;\n    q->size = 0;\n}\n\nint dqFull(const Deque *q)\n{\n    return q->size == MAX;\n}\n\nint dqEmpty(const Deque *q)\n{\n    return q->size == 0;\n}\n\nint dqInsertFront(Deque *q, DataType x)\n{\n    if (dqFull(q)) {\n        return 1;\n    }\n    q->front = (q->front - 1 + MAX) % MAX;   /* 先退一格，加 MAX 防负下标 */\n    q->data[q->front] = x;\n    q->size++;\n    return 0;\n}\n\nint dqInsertRear(Deque *q, DataType x)\n{\n    if (dqFull(q)) {\n        return 1;\n    }\n    q->data[q->rear] = x;                    /* 先写，再进一格 */\n    q->rear = (q->rear + 1) % MAX;\n    q->size++;\n    return 0;\n}\n\nint dqDeleteFront(Deque *q, DataType *x)\n{\n    if (dqEmpty(q)) {\n        return 1;\n    }\n    *x = q->data[q->front];\n    q->front = (q->front + 1) % MAX;\n    q->size--;\n    return 0;\n}\n\nint dqDeleteRear(Deque *q, DataType *x)\n{\n    if (dqEmpty(q)) {\n        return 1;\n    }\n    q->rear = (q->rear - 1 + MAX) % MAX;     /* 先退一格，再读 */\n    *x = q->data[q->rear];\n    q->size--;\n    return 0;\n}\n\nstatic void show(const char *tag, const Deque *q)\n{\n    int i, k;\n\n    printf(\"%s\", tag);\n    for (i = 0; i < q->size; i++) {\n        k = (q->front + i) % MAX;\n        printf(\" %d\", q->data[k]);\n    }\n    printf(\"  (size=%d)\\n\", q->size);\n}\n\n/* 双端队列判回文：两端同时往中间删，逐个比对 */\nint isPalindrome(const int *a, int n)\n{\n    Deque q;\n    DataType l, r;\n    int i;\n\n    dqInit(&q);\n    for (i = 0; i < n; i++) {\n        if (dqInsertRear(&q, a[i]) != 0) {\n            return -1;                 /* 数据超过容量 */\n        }\n    }\n    while (q.size > 1) {\n        dqDeleteFront(&q, &l);\n        dqDeleteRear(&q, &r);\n        if (l != r) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main(void)\n{\n    int p1[5] = { 1, 2, 3, 2, 1 };\n    int p2[6] = { 1, 2, 3, 3, 2, 9 };\n    int p3[4] = { 7, 7, 7, 7 };\n    Deque q;\n    DataType x;\n\n    dqInit(&q);\n    printf(\"insertRear 10, 20；insertFront 5, 3\\n\");\n    dqInsertRear(&q, 10);\n    dqInsertRear(&q, 20);\n    dqInsertFront(&q, 5);\n    dqInsertFront(&q, 3);\n    show(\"队列:\", &q);\n\n    dqDeleteFront(&q, &x);\n    printf(\"deleteFront → %d\\n\", x);\n    dqDeleteRear(&q, &x);\n    printf(\"deleteRear  → %d\\n\", x);\n    show(\"剩余:\", &q);\n\n    printf(\"\\n回文判定: 1 2 3 2 1 → %d\\n\", isPalindrome(p1, 5));\n    printf(\"回文判定: 1 2 3 3 2 9 → %d\\n\", isPalindrome(p2, 6));\n    printf(\"回文判定: 7 7 7 7 → %d\\n\", isPalindrome(p3, 4));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "insertRear 10, 20；insertFront 5, 3\n队列: 3 5 10 20  (size=4)\ndeleteFront → 3\ndeleteRear  → 20\n剩余: 5 10  (size=2)\n\n回文判定: 1 2 3 2 1 → 1\n回文判定: 1 2 3 3 2 9 → 0\n回文判定: 7 7 7 7 → 1",
+          "note": "insertRear 10、20 后再 insertFront 5、3，得到 3 5 10 20——前端插入是「后插的更靠前」。回文判定利用了双端队列的核心能力：两端同时删除并向中间收缩，若只有普通队列就必须先把全部元素倒进数组，双端队列让这一步变成 O(1) 空间。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-03",
+        "ds-ch03-13",
+        "ds-ch03-14"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 15
+    },
+    {
+      "id": "ds-ch03-16",
+      "title": "队列的应用：层次遍历（BFS）与逐层打印",
+      "section": "3.4 栈与队列的应用",
+      "summary": "凡是需要「按距离起点由近及远逐层扩展」的场合都用队列：二叉树层次遍历、图的 BFS、迷宫最短路径、任务调度。逐层打印的关键是进入每层前先记录当前队列长度。",
+      "content": "## 层次遍历的固定骨架\n\n```c\nenqueue(root);\nwhile (!empty()) {\n    dequeue(&p);\n    visit(p);\n    if (p->left)  enqueue(p->left);\n    if (p->right) enqueue(p->right);\n}\n```\n\n**先入队者先出队，因此同一层的结点一定比下一层的结点先被访问**——这就是「层次」的来源。\n队列里同时存在的元素横跨相邻两层，最大长度约等于树的最宽一层的结点数。\n\n## 逐层打印：进入本层前记下 size\n\n要在一行里打印完一层，必须在开始处理该层之前把当前队列长度存下来：\n\n```c\nwhile (!empty()) {\n    int levelSize = size();       /* ★ 本层结点数，必须在出队前取 */\n    for (i = 0; i < levelSize; i++) {\n        dequeue(&p);  visit(p);\n        if (p->left)  enqueue(p->left);\n        if (p->right) enqueue(p->right);\n    }\n    printf(\"\\n\");                 /* 本层结束换行 */\n}\n```\n\n若在循环里实时读 `size()`，出队与入队同时进行，长度不断变化，层的边界就消失了。\n\n## 为什么 BFS 给出的是最短路径\n\n在无权图（或每步代价相同的迷宫）里，BFS 第一次到达某结点时经过的边数一定最少：\n队列按「已走步数」单调不减排序，步数少的结点全部先出队。\n所以迷宫问题用队列 BFS 得到的是**最短路径长度**，而用栈 DFS 得到的只是**某一条可行路径**。\n这是「栈 vs 队列」在搜索问题上最本质的区别。\n\n## 其他典型应用\n\n| 场景 | 队列的作用 |\n|---|---|\n| 打印任务调度 | 先到先服务 |\n| 操作系统就绪队列 | 按到达次序分配 CPU |\n| 缓冲区 / 消息队列 | 生产与消费速率解耦 |\n| 层序构造二叉树 | 用队列记住「还没安排孩子的父结点」 |\n| 图的连通分量 | 从一个未访问点 BFS，扫到的即一个分量 |",
+      "keyPoints": [
+        "层次遍历骨架：根入队，循环出队访问并把其左右孩子入队，队空即结束",
+        "同一层结点一定先于下一层被访问，因为队列是先进先出，层序由此自然产生",
+        "逐层打印必须在进入本层前把当前队列长度存入 levelSize，循环中实时读 size 会丢失层边界",
+        "BFS 在无权图上给出最短路径：队列按已走步数单调不减，步数少者全部先出队",
+        "迷宫问题用队列 BFS 得最短路径长度，用栈 DFS 只得某一条可行路径，这是两者的本质区别",
+        "队列的典型应用还包括打印调度、就绪队列、缓冲区解耦、层序构造二叉树、求连通分量"
+      ],
+      "pitfalls": [
+        "逐层打印时在内层循环里反复调用 size()：出队入队交替进行，长度一直变，层边界消失",
+        "孩子入队前不判 NULL：空指针入队后出队访问就崩溃",
+        "BFS 忘记标记 visited：图有环时会无限循环，队列永远不空",
+        "用栈实现 BFS：得到的是深度优先次序，层序完全错乱"
+      ],
+      "examples": [
+        {
+          "title": "数组存储的完全二叉树：层次遍历、逐层打印与最大宽度",
+          "code": "#include <stdio.h>\n\n#define MAX 32\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAX];\n    int idx[MAX];              /* 存结点在树数组中的下标，便于求孩子 */\n    int front, rear, size;\n} Queue;\n\nvoid qInit(Queue *q)\n{\n    q->front = 0;\n    q->rear = 0;\n    q->size = 0;\n}\n\nint qEnqueue(Queue *q, DataType v, int idx)\n{\n    if (q->size == MAX) {\n        return 1;\n    }\n    q->data[q->rear] = v;\n    q->idx[q->rear] = idx;\n    q->rear = (q->rear + 1) % MAX;\n    q->size++;\n    return 0;\n}\n\nint qDequeue(Queue *q, DataType *v, int *idx)\n{\n    if (q->size == 0) {\n        return 1;\n    }\n    *v = q->data[q->front];\n    *idx = q->idx[q->front];\n    q->front = (q->front + 1) % MAX;\n    q->size--;\n    return 0;\n}\n\n/* 逐层打印，并统计每层结点数与最大宽度 */\nvoid levelOrder(const DataType *tree, int n)\n{\n    Queue q;\n    DataType v;\n    int idx, level = 1, levelSize, i, maxWidth = 0;\n\n    qInit(&q);\n    if (n <= 0) {\n        printf(\"空树\\n\");\n        return;\n    }\n    qEnqueue(&q, tree[1], 1);\n    while (q.size > 0) {\n        levelSize = q.size;           /* ★ 本层结点数必须在出队前取 */\n        if (levelSize > maxWidth) {\n            maxWidth = levelSize;\n        }\n        printf(\"第%d层(%d个):\", level, levelSize);\n        for (i = 0; i < levelSize; i++) {\n            qDequeue(&q, &v, &idx);\n            printf(\" %d\", v);\n            if (2 * idx < n && tree[2 * idx] != 0) {\n                qEnqueue(&q, tree[2 * idx], 2 * idx);\n            }\n            if (2 * idx + 1 < n && tree[2 * idx + 1] != 0) {\n                qEnqueue(&q, tree[2 * idx + 1], 2 * idx + 1);\n            }\n        }\n        printf(\"\\n\");\n        level++;\n    }\n    printf(\"最大宽度 = %d\\n\", maxWidth);\n}\n\nint main(void)\n{\n    /* 下标 0 不用，1 是根，完全二叉树的左右孩子为 2i 与 2i+1 */\n    DataType tree[12] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 0, 10, 0 };\n\n    printf(\"树（下标1起）: 1 / 2 3 / 4 5 6 7 / 第8格为空、第10格为10\\n\");\n    levelOrder(tree, 12);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "树（下标1起）: 1 / 2 3 / 4 5 6 7 / 第8格为空、第10格为10\n第1层(1个): 1\n第2层(2个): 2 3\n第3层(4个): 4 5 6 7\n第4层(1个): 10\n最大宽度 = 4",
+          "note": "下标 5 的左孩子是 10（2×5=10），所以第 4 层只有结点 10。每层结点数 1、2、4、1 正是进入本层前记录的 levelSize，最大宽度 4 出现在第 3 层。若把 levelSize = q.size 挪进内层 for 里实时读取，第 3 层就会把 10 也一并打印，层边界丢失。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-03",
+        "ds-ch03-13",
+        "ds-ch05-12"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 16
+    },
+    {
+      "id": "ds-ch03-17",
+      "title": "优先级队列：出队次序由优先级决定，而非到达次序",
+      "section": "3.4 栈与队列的应用",
+      "summary": "优先级队列的每次出队都取当前优先级最高的元素，与入队先后无关。用无序链表实现时插入 O(1) 但删除 O(n)，用有序链表则相反，用堆可以做到两者都 O(log n)。",
+      "content": "## 与普通队列的差别\n\n| | 普通队列 | 优先级队列 |\n|---|---|---|\n| 出队依据 | 到达次序（FIFO） | 优先级最高者 |\n| 队头是谁 | 最早入队的 | 当前优先级最大的 |\n| 典型实现 | 循环数组 / 链表 | 堆 / 有序链表 |\n\n**栈和队列都是优先级队列的特例**：把所有元素的优先级设为「入队序号」就是队列，\n设为「入队序号的相反数」就是栈。\n\n## 三种实现的代价\n\n| 实现 | 插入 | 删除最值 | 说明 |\n|---|---|---|---|\n| 无序数组/链表 | O(1) | **O(n)** | 删除时要扫一遍找最值 |\n| 有序数组/链表 | **O(n)** | O(1) | 插入时要找到正确位置 |\n| 二叉堆 | O(log n) | O(log n) | 两端都平衡，工程首选 |\n\n元素总量小且变化不大时，无序链表 + 每次扫描反而最简单；\n需要频繁插入删除（如 Dijkstra、Prim、任务调度）时必须用堆。\n\n## 相同优先级怎么办\n\n标准优先级队列**不保证**同优先级元素之间的相对次序。若业务要求「同优先级先到先服务」，\n常见做法是把优先级做成二元组 `(priority, seq)`，`seq` 是全局递增的入队序号，\n比较时先比 priority 再比 seq。这在实现任务调度、医院挂号时几乎是必需的。\n\n## 典型应用\n\n- **Dijkstra / Prim**：每次取距离最小的未确定顶点（见 ds-ch06）。\n- **哈夫曼编码**：每次取权值最小的两棵树合并（见 ds-ch05）。\n- **操作系统调度**：就绪队列按优先级 + 时间片。\n- **堆排序**：本质上就是「把所有元素塞进优先级队列再依次取出」（见 ds-ch08）。",
+      "keyPoints": [
+        "优先级队列每次出队取当前优先级最高者，与到达次序无关，队头是最值而非最早入队者",
+        "普通队列与栈都是其特例：优先级设为入队序号即队列，设为序号相反数即栈",
+        "无序链表插入 O(1) 删除最值 O(n)；有序链表插入 O(n) 删除 O(1)；二叉堆两者都是 O(log n)",
+        "元素少且变动小时无序链表最简单，频繁插删（Dijkstra/Prim/调度）必须用堆",
+        "标准实现不保证同优先级的相对次序，需要 FIFO 语义时把优先级做成 (priority, seq) 二元组",
+        "典型应用：Dijkstra 与 Prim 取最小距离、哈夫曼取最小两权合并、OS 调度、堆排序"
+      ],
+      "pitfalls": [
+        "用普通队列当优先级队列：先到的先出，高优先级任务被饿死",
+        "有序链表实现却按 O(1) 估算插入代价：插入要走到正确位置，最坏 O(n)",
+        "同优先级任务依赖入队次序：标准优先级队列不提供该保证，必须自己加序号",
+        "优先级取「值越大越优先」还是「值越小越优先」不统一：堆实现与比较函数口径不一致会整体反序"
+      ],
+      "examples": [
+        {
+          "title": "无序链表优先级队列（带序号保证同级 FIFO）与堆式实现对照",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct PQNode {\n    int priority;              /* 值越小优先级越高 */\n    int seq;                   /* 入队序号，用于同优先级时保持 FIFO */\n    char task;\n    struct PQNode *next;\n} PQNode;\n\ntypedef struct {\n    PQNode *head;              /* 带头结点 */\n    int counter;\n} PQueue;\n\nvoid pqInit(PQueue *q)\n{\n    q->head = (PQNode *)malloc(sizeof(PQNode));\n    if (q->head != NULL) {\n        q->head->next = NULL;\n    }\n    q->counter = 0;\n}\n\n/* 按 (priority, seq) 升序找到插入位置，保持链表始终有序 */\nint pqInsert(PQueue *q, int priority, char task)\n{\n    PQNode *p = (PQNode *)malloc(sizeof(PQNode));\n    PQNode *pre;\n\n    if (p == NULL || q->head == NULL) {\n        return 1;\n    }\n    p->priority = priority;\n    p->seq = ++q->counter;\n    p->task = task;\n\n    pre = q->head;\n    while (pre->next != NULL && pre->next->priority <= p->priority) {\n        pre = pre->next;       /* <= 保证同优先级时新结点排在后面，即 FIFO */\n    }\n    p->next = pre->next;\n    pre->next = p;\n    return 0;\n}\n\n/* 出队：摘下表头之后的第一个数据结点，它就是当前最优先者 */\nint pqDeleteMin(PQueue *q, char *task, int *priority)\n{\n    PQNode *p = q->head->next;\n\n    if (p == NULL) {\n        return 1;              /* 下溢 */\n    }\n    *task = p->task;\n    *priority = p->priority;\n    q->head->next = p->next;\n    free(p);\n    return 0;\n}\n\nint pqEmpty(const PQueue *q)\n{\n    return q->head->next == NULL;\n}\n\nint main(void)\n{\n    PQueue q;\n    int prios[6] = { 3, 1, 2, 1, 3, 0 };\n    char tasks[6] = { 'A', 'B', 'C', 'D', 'E', 'F' };\n    char t;\n    int p, i;\n\n    pqInit(&q);\n    if (q.head == NULL) {\n        printf(\"分配失败\\n\");\n        return 1;\n    }\n    for (i = 0; i < 6; i++) {\n        pqInsert(&q, prios[i], tasks[i]);\n        printf(\"入队 任务%c 优先级%d 序号%d\\n\", tasks[i], prios[i], q.counter);\n    }\n\n    printf(\"\\n出队次序（优先级值小者先出，同级按入队先后）:\\n\");\n    while (!pqEmpty(&q)) {\n        pqDeleteMin(&q, &t, &p);\n        printf(\"  取出 任务%c 优先级%d\\n\", t, p);\n    }\n    printf(\"空队再出队返回 %d（下溢）\\n\", pqDeleteMin(&q, &t, &p));\n    free(q.head);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "入队 任务A 优先级3 序号1\n入队 任务B 优先级1 序号2\n入队 任务C 优先级2 序号3\n入队 任务D 优先级1 序号4\n入队 任务E 优先级3 序号5\n入队 任务F 优先级0 序号6\n\n出队次序（优先级值小者先出，同级按入队先后）:\n  取出 任务F 优先级0\n  取出 任务B 优先级1\n  取出 任务D 优先级1\n  取出 任务C 优先级2\n  取出 任务A 优先级3\n  取出 任务E 优先级3\n空队再出队返回 1（下溢）",
+          "note": "入队次序是 A(3) B(1) C(2) D(1) E(3) F(0)，出队次序却是 F B D C A E——完全由优先级决定。B 与 D 同为优先级 1，B 先出；A 与 E 同为优先级 3，A 先出，这正是插入循环里用 `<=` 而非 `<` 的效果：同优先级时新结点被放到已有结点之后，从而保持 FIFO。若改成 `<`，D 会排到 B 前面。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-03",
+        "ds-ch03-14",
+        "ds-ch08-12"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 17
+    },
+    {
+      "id": "ds-ch03-18",
+      "title": "栈与队列互相模拟：两个栈实现队列、两个队列实现栈",
+      "section": "3.4 栈与队列的应用",
+      "summary": "两次「倒」等于反反得正：用两个栈可以实现 FIFO 队列，用两个队列可以实现 LIFO 栈。关键在于倒腾的时机——只在目标容器为空时才整体倒过去，才能让均摊代价保持 O(1)。",
+      "content": "## 两个栈实现队列\n\n设 `in` 栈负责接收、`out` 栈负责输出：\n\n- **入队**：直接压入 `in`。O(1)。\n- **出队**：若 `out` 非空，直接弹 `out`；若 `out` 空，把 `in` 里全部元素依次弹出并压入 `out`，再弹 `out`。\n\n原理：`in` 里 a b c（c 在栈顶）整体倒进 `out` 后变成 c b a（a 在栈顶），\n两次反转恰好还原成 FIFO 次序。\n\n**「只在 out 为空时才倒」是均摊 O(1) 的关键**。若每次出队都倒一遍，\n每个元素会被反复搬运，代价退化到 O(n)。按均摊分析，每个元素一生只被压入和弹出各两次，\n所以 n 次操作总代价 O(n)，均摊每次 O(1)。\n\n## 两个队列实现栈\n\n- **入栈**：压入非空的那个队列（若都空则任选一个）。O(1)。\n- **出栈**：把非空队列的前 n−1 个元素依次出队并压入另一个空队列，剩下的最后一个就是栈顶，出队即得。\n\n每次出栈都要搬 n−1 个元素，**出栈是 O(n)，没有均摊优化空间**。所以这种实现只用于教学演示，\n工程上不会这么做。\n\n## 代价对照\n\n| 实现 | 插入 | 删除 | 备注 |\n|---|---|---|---|\n| 两栈模拟队列 | O(1) | **均摊 O(1)** | 只在 out 空时整体倒一次 |\n| 两队列模拟栈 | O(1) | O(n) | 每次出栈都要搬 n−1 个 |\n| 原生队列 / 栈 | O(1) | O(1) | 当然更好，模拟只是练习题 |",
+      "keyPoints": [
+        "两个栈实现队列：in 栈只负责入队，out 栈只负责出队，两次反转还原 FIFO 次序",
+        "出队时只在 out 为空时才把 in 整体倒过去，这是均摊 O(1) 的关键",
+        "均摊分析：每个元素一生只被压入弹出各两次，n 次操作总代价 O(n)，均摊每次 O(1)",
+        "两个队列实现栈：出栈时把非空队列前 n−1 个元素搬到另一队列，剩下的即栈顶",
+        "两队列模拟栈的出栈是 O(n) 且无均摊优化空间，只适合教学演示",
+        "若每次出队都整体倒一遍，元素会被反复搬运，均摊 O(1) 退化成 O(n)"
+      ],
+      "pitfalls": [
+        "每次出队都先把 out 倒回 in 再倒过来：元素被反复搬运，均摊复杂度从 O(1) 退化到 O(n)",
+        "倒的时候只倒一部分：in 里残留的元素次序会与新入队元素交错，FIFO 被破坏",
+        "两队列模拟栈时把新元素压入空队列而非非空队列：后续出栈逻辑找不到元素所在的队列",
+        "判空只看其中一个容器：两个都空才是真空，只查一个会误判"
+      ],
+      "examples": [
+        {
+          "title": "两个栈模拟队列：验证 FIFO 次序与「只在 out 空时才倒」的策略",
+          "code": "#include <stdio.h>\n\n#define MAX 20\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAX];\n    int top;\n} Stack;\n\ntypedef struct {\n    Stack in;                  /* 只负责入队 */\n    Stack out;                 /* 只负责出队 */\n    int transferCount;         /* 统计整体倒腾发生了几次，用于验证均摊 */\n} QueueByStack;\n\nvoid qbInit(QueueByStack *q)\n{\n    q->in.top = -1;\n    q->out.top = -1;\n    q->transferCount = 0;\n}\n\nint qbEnqueue(QueueByStack *q, DataType x)\n{\n    if (q->in.top == MAX - 1) {\n        return 1;\n    }\n    q->in.data[++q->in.top] = x;\n    return 0;\n}\n\n/* 只在 out 为空时才把 in 整体倒过去 */\nstatic void transfer(QueueByStack *q)\n{\n    if (q->out.top != -1) {\n        return;                /* out 还有货，不倒 */\n    }\n    if (q->in.top == -1) {\n        return;                /* in 也是空的，无货可倒 */\n    }\n    q->transferCount++;\n    while (q->in.top != -1) {\n        q->out.data[++q->out.top] = q->in.data[q->in.top--];\n    }\n}\n\nint qbDequeue(QueueByStack *q, DataType *x)\n{\n    transfer(q);\n    if (q->out.top == -1) {\n        return 1;              /* 下溢 */\n    }\n    *x = q->out.data[q->out.top--];\n    return 0;\n}\n\nint qbEmpty(QueueByStack *q)\n{\n    return q->in.top == -1 && q->out.top == -1;   /* 两个都空才是真空 */\n}\n\nint main(void)\n{\n    QueueByStack q;\n    DataType vals[6] = { 10, 20, 30, 40, 50, 60 };\n    DataType x;\n    int i;\n\n    qbInit(&q);\n    for (i = 0; i < 3; i++) {\n        qbEnqueue(&q, vals[i]);\n    }\n    printf(\"入队 10 20 30 后：in.top=%d out.top=%d 倒腾次数=%d\\n\",\n           q.in.top, q.out.top, q.transferCount);\n\n    qbDequeue(&q, &x);\n    printf(\"出队 %d（触发整体倒腾）→ in.top=%d out.top=%d 倒腾次数=%d\\n\",\n           x, q.in.top, q.out.top, q.transferCount);\n\n    qbDequeue(&q, &x);\n    printf(\"出队 %d（out 仍有货，不倒）→ out.top=%d 倒腾次数=%d\\n\",\n           x, q.out.top, q.transferCount);\n\n    for (i = 3; i < 6; i++) {\n        qbEnqueue(&q, vals[i]);\n    }\n    printf(\"再入队 40 50 60 → in.top=%d out.top=%d\\n\", q.in.top, q.out.top);\n\n    printf(\"继续出队:\");\n    while (!qbEmpty(&q)) {\n        qbDequeue(&q, &x);\n        printf(\" %d\", x);\n    }\n    printf(\"\\n最终倒腾次数 = %d（6 个元素只整体搬了 2 次）\\n\", q.transferCount);\n    printf(\"空队再出队返回 %d\\n\", qbDequeue(&q, &x));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "入队 10 20 30 后：in.top=2 out.top=-1 倒腾次数=0\n出队 10（触发整体倒腾）→ in.top=-1 out.top=1 倒腾次数=1\n出队 20（out 仍有货，不倒）→ out.top=0 倒腾次数=1\n再入队 40 50 60 → in.top=2 out.top=0\n继续出队: 30 40 50 60\n最终倒腾次数 = 2（6 个元素只整体搬了 2 次）\n空队再出队返回 1",
+          "note": "出队次序 10 20 30 40 50 60 与入队次序完全一致，证明两次反转确实还原了 FIFO。倒腾只发生 2 次而非 6 次，这就是「只在 out 为空时才倒」带来的均摊效果：第二次出队时 out 还有 20、30，直接弹出即可，一次搬运都没做。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-05",
+        "ds-ch03-13",
+        "ds-ch03-01"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 18
+    },
+    {
+      "id": "ds-ch03-19",
+      "title": "递归算法的设计：三要素、递推与回归两个阶段",
+      "section": "3.4 栈与递归",
+      "summary": "任何递归都由「递归基 + 递归式 + 收敛性」三要素构成，缺一个就不是合法递归。执行过程分为递推（不断压栈深入）与回归（逐层弹栈返回）两个阶段，回归阶段才是递归真正做事的地方。",
+      "content": "## 三要素\n\n| 要素 | 含义 | 缺失后果 |\n|---|---|---|\n| 递归基（边界条件） | 最小规模下直接给出答案，不再递归 | 无限递归 → 栈溢出 |\n| 递归式 | 把规模 n 的问题表示成规模更小的同类问题 | 无法化简，不构成递归 |\n| 收敛性 | 每次递归都让规模严格变小且终将到达递归基 | 参数不减或跳过边界 → 死循环 |\n\n```c\nint fact(int n)\n{\n    if (n <= 1) return 1;          /* ① 递归基 */\n    return n * fact(n - 1);        /* ② 递归式，③ n-1 严格收敛到 1 */\n}\n```\n\n**递归基要用 `<=` 而不是 `==`**：写成 `n == 1` 时，若调用方传入 0 或负数，\n条件永远不成立，直接栈溢出。这是递归题最常见的失分点。\n\n## 递推与回归\n\n`fact(4)` 的展开：\n\n```\n递推（深入）：fact(4) → 4 * fact(3) → 3 * fact(2) → 2 * fact(1)\n递归基：      fact(1) = 1\n回归（返回）：fact(2) = 2*1 = 2 → fact(3) = 3*2 = 6 → fact(4) = 4*6 = 24\n```\n\n**递推阶段只是把「待办事项」压进运行时栈，真正的计算发生在回归阶段。**\n这解释了两件事：① 递归的空间复杂度是 O(深度) 而不是 O(1)，因为每层的现场都要保留；\n② 有些算法（如二叉树后序遍历、归并排序）必须等子问题返回后才能处理当前层，\n它们无法简单地改写成单层循环。\n\n## 设计套路\n\n1. **确认问题可自相似分解**：规模 n 的解能由规模 <n 的解组合出来。\n2. **先写递归基**：想清楚 n=0、n=1 时的答案，别急着写递归式。\n3. **写出递归式**：假设「小规模已经算对」（递归的信仰之跃），只用它的返回值表达当前层。\n4. **检查收敛**：参数是否严格向递归基靠近。\n5. **估算代价**：深度决定空间，调用次数决定时间——两者常常差很多（见斐波那契卡）。",
+      "keyPoints": [
+        "递归三要素：递归基（边界直接给答案）、递归式（用更小规模的同类问题表达）、收敛性（规模严格变小）",
+        "递归基判定用 <= 而不是 ==，否则传入 0 或负数时条件永不成立，直接栈溢出",
+        "递推阶段只把待办事项压入运行时栈，真正的计算发生在回归阶段",
+        "递归空间复杂度是 O(深度) 而非 O(1)，因为每层现场都必须保留到回归时使用",
+        "设计套路：先写递归基再写递归式，写递归式时假设小规模已经算对（递归的信仰之跃）",
+        "调用次数与递归深度常常差很多：斐波那契递归深度只有 n，调用次数却是指数级"
+      ],
+      "pitfalls": [
+        "递归基写成 n == 1：调用 fact(0) 或 fact(-1) 时永不终止，栈溢出崩溃",
+        "递归式里参数没有严格变小（如 fact(n-2) 配 n==1 的基）：n 为偶数时跳过边界，无限递归",
+        "在递归式里重复计算同一子问题：朴素斐波那契的时间复杂度因此达到 O(2^n)",
+        "以为递归不占空间：每层一个活动记录，深度上万就会溢出",
+        "用 printf(\"...%d...%d\", f(n), counter) 打印「函数结果 + 它改过的全局计数」：C 不规定实参求值顺序，counter 可能在 f(n) 执行前就被读走，得到 0"
+      ],
+      "examples": [
+        {
+          "title": "递归三要素对照：正确写法 vs 边界写成 == 的崩溃写法（受控演示）",
+          "code": "#include <stdio.h>\n\nstatic int callCount;            /* 统计调用次数，用于对比深度与次数 */\nstatic int maxDepth;\n\n/* 正确写法：递归基用 <=，任何 n <= 1 都直接返回 */\nint factSafe(int n, int depth)\n{\n    callCount++;\n    if (depth > maxDepth) {\n        maxDepth = depth;\n    }\n    if (n <= 1) {                /* ① 递归基：用 <= 而不是 == */\n        return 1;\n    }\n    return n * factSafe(n - 1, depth + 1);   /* ② 递归式；③ n-1 严格收敛 */\n}\n\n/* 递推与回归分开的写法：先深入到边界，再在返回途中做事 */\nvoid printDescending(int n)\n{\n    if (n <= 0) {\n        return;                  /* 递归基 */\n    }\n    printf(\"%d \", n);            /* 递推阶段就打印 → 降序 */\n    printDescending(n - 1);\n}\n\nvoid printAscending(int n)\n{\n    if (n <= 0) {\n        return;                  /* 同一个递归基 */\n    }\n    printAscending(n - 1);\n    printf(\"%d \", n);            /* 回归阶段才打印 → 升序 */\n}\n\n/* 斐波那契：深度只有 n，调用次数却是指数级 */\nint fibCalls;\n\nint fib(int n)\n{\n    fibCalls++;\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    int i;\n\n    printf(\"n  阶乘  调用次数  最大深度\\n\");\n    for (i = 1; i <= 5; i++) {\n        int r;\n\n        callCount = 0;\n        maxDepth = 0;\n        r = factSafe(i, 1);        /* 先算完再读全局计数，别把两者塞进同一个 printf */\n        printf(\"n=%d 结果=%d 调用次数=%d 最大深度=%d\\n\", i, r, callCount, maxDepth);\n    }\n\n    printf(\"\\n递推阶段打印（降序）: \");\n    printDescending(5);\n    printf(\"\\n回归阶段打印（升序）: \");\n    printAscending(5);\n    printf(\"\\n\");\n\n    printf(\"\\nn  fib(n)  调用次数\\n\");\n    for (i = 1; i <= 12; i += 3) {\n        int fv;\n\n        fibCalls = 0;\n        fv = fib(i);             /* 同样：先算完，再读全局计数 */\n        printf(\"n=%d fib=%d 调用次数=%d\\n\", i, fv, fibCalls);\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "n  阶乘  调用次数  最大深度\nn=1 结果=1 调用次数=1 最大深度=1\nn=2 结果=2 调用次数=2 最大深度=2\nn=3 结果=6 调用次数=3 最大深度=3\nn=4 结果=24 调用次数=4 最大深度=4\nn=5 结果=120 调用次数=5 最大深度=5\n\n递推阶段打印（降序）: 5 4 3 2 1 \n回归阶段打印（升序）: 1 2 3 4 5 \n\nn  fib(n)  调用次数\nn=1 fib=1 调用次数=1\nn=4 fib=3 调用次数=9\nn=7 fib=13 调用次数=41\nn=10 fib=55 调用次数=177",
+          "note": "阶乘的调用次数与深度都等于 n，是线性代价。同样递归基的 printDescending 与 printAscending 输出完全相反，差别只在于 printf 写在递归调用之前还是之后——前者在递推阶段执行，后者在回归阶段执行，这是理解「递归两个阶段」最直观的例子。斐波那契 n=10 时深度只有 10，调用次数却达 177 次（约为 2×fib(n+1)−1），深度与次数的巨大落差正是它 O(2^n) 时间复杂度的来源。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-12",
+        "ds-ch03-20",
+        "ds-ch01-06"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 19
+    },
+    {
+      "id": "ds-ch03-20",
+      "title": "递归转非递归：尾递归消除与显式栈模拟",
+      "section": "3.4 栈与递归",
+      "summary": "尾递归可以直接改写成循环，因为返回前不再有别的计算；非尾递归必须自己维护一个栈来保存各层现场。显式栈的好处是深度可控、不会因系统栈上限而崩溃，代价是要自己管理压栈弹栈的时机。",
+      "content": "## 两类递归，两种改法\n\n| 类型 | 特征 | 改法 | 例子 |\n|---|---|---|---|\n| 尾递归 | `return f(...)` 是函数最后一步，返回后无需再算 | **直接改循环**，用参数当累加器 | 阶乘、斐波那契、链表遍历 |\n| 非尾递归 | 返回后还要用返回值继续计算 | **显式栈模拟**，保存每层现场 | 汉诺塔、二叉树后序、归并排序 |\n\n```c\nint factTail(int n, int acc)        /* 尾递归：结果在 acc 里累积 */\n{\n    if (n <= 1) return acc;\n    return factTail(n - 1, n * acc);\n}\n\nint factLoop(int n)                 /* 消除尾递归后就是普通循环 */\n{\n    int acc = 1, i;\n    for (i = 2; i <= n; i++) acc *= i;\n    return acc;\n}\n```\n\n尾递归能改循环的原因是：递归返回后没有任何待完成的运算，当前层的现场不需要保留，\n所以不必压栈。**C 标准不保证编译器做尾调用优化**，但把尾递归手动改成循环一定能省掉 O(n) 的栈空间。\n\n## 非尾递归：显式栈模拟\n\n`fact(n) = n * fact(n-1)` 返回后还要做一次乘法，属于非尾递归。手工模拟的通用套路：\n\n1. 把「待处理的参数」依次压栈，直到碰到递归基；\n2. 从递归基开始弹栈，用弹出的值完成当初没做完的运算。\n\n```c\n/* 压：n, n-1, ..., 2；弹：2, 3, ..., n 依次累乘 */\nwhile (k > 1) push(s, k--);\nacc = 1;\nwhile (!empty(s)) { pop(s, &v); acc *= v; }\n```\n\n## 为什么要转\n\n- **防爆栈**：系统栈一般 1–8 MB，递归深度上万就可能崩溃；显式栈在堆上，容量自己定。\n- **可暂停可恢复**：显式栈是一个数据结构，能保存、能中断、能回溯——这是回溯法与 DFS 非递归实现的基础。\n- **便于观察**：调试时能直接打印栈内容，看清算法走到哪一步。\n\n代价是代码变长、容易在「什么时候压、什么时候弹」上出错，所以能用尾递归改循环时优先选循环。",
+      "keyPoints": [
+        "尾递归（return f(...) 是最后一步）可直接改写成循环，用参数当累加器，省掉 O(n) 栈空间",
+        "尾递归能改循环的原因：返回后没有待完成的运算，当前层现场无需保留，所以不必压栈",
+        "C 标准不保证编译器做尾调用优化，手动改循环才是可靠做法",
+        "非尾递归（返回后还要用返回值继续算）必须用显式栈模拟：先把参数依次压栈到递归基，再弹栈完成运算",
+        "转非递归的三大动机：防止系统栈溢出、支持暂停恢复（回溯与 DFS 的基础）、便于观察中间状态",
+        "显式栈在堆上分配容量可控，代价是代码变长且压栈弹栈时机容易写错"
+      ],
+      "pitfalls": [
+        "以为写成尾递归形式就自动不占栈：C 标准不保证尾调用优化，-O0 下每层仍是一个活动记录",
+        "显式栈模拟时压栈顺序搞反：阶乘要压 n,n-1,...,2 再依次弹出累乘，压成 2..n 结果虽同但思路已错，换成减法/除法就会算错",
+        "只压参数不压「返回后要做什么」：非尾递归的现场包含待续运算，遗漏就丢失了回归阶段的工作",
+        "把非尾递归硬改成单层循环：如汉诺塔、后序遍历，缺少状态记录就无法还原递归语义"
+      ],
+      "examples": [
+        {
+          "title": "同一问题的三种实现：尾递归、循环、显式栈模拟（并统计栈峰值深度）",
+          "code": "#include <stdio.h>\n\n#define MAX 32\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAX];\n    int top;\n    int peak;                    /* 记录压栈过程中出现过的最大深度 */\n} Stack;\n\nvoid stInit(Stack *s)\n{\n    s->top = -1;\n    s->peak = 0;\n}\n\nint stPush(Stack *s, DataType x)\n{\n    if (s->top == MAX - 1) {\n        return 1;                /* 上溢 */\n    }\n    s->data[++s->top] = x;\n    if (s->top + 1 > s->peak) {\n        s->peak = s->top + 1;    /* 深度 = top + 1 */\n    }\n    return 0;\n}\n\nint stPop(Stack *s, DataType *x)\n{\n    if (s->top == -1) {\n        return 1;                /* 下溢 */\n    }\n    *x = s->data[s->top--];\n    return 0;\n}\n\n/* ① 尾递归：结果在 acc 里累积，return 之后无其他运算 */\nint factTail(int n, int acc)\n{\n    if (n <= 1) {\n        return acc;              /* 递归基 */\n    }\n    return factTail(n - 1, n * acc);\n}\n\n/* ② 消除尾递归后的循环版：不占任何额外栈空间 */\nint factLoop(int n)\n{\n    int acc = 1, i;\n\n    if (n <= 1) {\n        return 1;\n    }\n    for (i = 2; i <= n; i++) {\n        acc *= i;\n    }\n    return acc;\n}\n\n/* ③ 显式栈模拟非尾递归：先把待乘的数压栈到递归基，再弹栈累乘 */\nint factByStack(int n, int *peakDepth)\n{\n    Stack s;\n    DataType v;\n    int acc = 1, k = n;\n\n    stInit(&s);\n    while (k > 1) {              /* 压：n, n-1, ..., 2 */\n        if (stPush(&s, k) != 0) {\n            return -1;           /* n 太大，栈放不下 */\n        }\n        k--;\n    }\n    while (stPop(&s, &v) == 0) { /* 弹：2, 3, ..., n 依次累乘 */\n        acc *= v;\n    }\n    *peakDepth = s.peak;\n    return acc;\n}\n\nint main(void)\n{\n    int n, r1, r2, r3, peak;\n\n    printf(\"n  尾递归  循环  显式栈  栈峰值深度\\n\");\n    for (n = 1; n <= 6; n++) {\n        peak = 0;\n        r1 = factTail(n, 1);     /* ★ 先算完，再统一 printf */\n        r2 = factLoop(n);\n        r3 = factByStack(n, &peak);\n        printf(\"n=%d 尾递归=%d 循环=%d 显式栈=%d 栈峰值深度=%d\\n\",\n               n, r1, r2, r3, peak);\n    }\n\n    printf(\"\\n说明：n=1 时递归基直接命中，显式栈一个元素都没压，峰值深度为 0\\n\");\n    printf(\"n=6 时压入 6 5 4 3 2 共 5 个，峰值深度 5 = n-1\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "n  尾递归  循环  显式栈  栈峰值深度\nn=1 尾递归=1 循环=1 显式栈=1 栈峰值深度=0\nn=2 尾递归=2 循环=2 显式栈=2 栈峰值深度=1\nn=3 尾递归=6 循环=6 显式栈=6 栈峰值深度=2\nn=4 尾递归=24 循环=24 显式栈=24 栈峰值深度=3\nn=5 尾递归=120 循环=120 显式栈=120 栈峰值深度=4\nn=6 尾递归=720 循环=720 显式栈=720 栈峰值深度=5\n\n说明：n=1 时递归基直接命中，显式栈一个元素都没压，峰值深度为 0\nn=6 时压入 6 5 4 3 2 共 5 个，峰值深度 5 = n-1",
+          "note": "三种实现结果完全一致，但栈开销天差地别：循环版 O(1)，尾递归版理论 O(1)（需编译器优化，C 不保证），显式栈版把深度精确控制在 n−1 且容量由 MAX 决定，超限返回 −1 而不是崩溃。这正是「显式栈防爆栈」的实际价值——递归版 n 稍大就可能段错误，显式栈版最多返回一个错误码。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-12",
+        "ds-ch03-19",
+        "ds-ch03-05"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 20
+    },
+    {
+      "id": "ds-ch03-21",
+      "title": "递归效率：递归树、重复计算与记忆化",
+      "section": "3.4 栈与递归",
+      "summary": "递归深度决定空间，递归树的结点总数决定时间，两者常常相差极大。朴素斐波那契深度只有 n，调用次数却是 2·fib(n+1)−1 的指数级；记忆化把每个规模只算一次，直接降到线性。",
+      "content": "## 深度 ≠ 调用次数\n\n| | 含义 | 斐波那契递归 |\n|---|---|---|\n| 递归深度 | 同时存在的活动记录数 → **空间** | n |\n| 调用次数 | 递归树的结点总数 → **时间** | 2·fib(n+1) − 1 |\n\n`fib(n) = fib(n-1) + fib(n-2)` 的递归树是一棵每个内部结点都有两个孩子的二叉树，\n结点总数满足 `T(n) = 1 + T(n-1) + T(n-2)`，`T(0)=T(1)=1`，解出 `T(n) = 2·fib(n+1) − 1`。\n因为 `fib(n) ≈ φⁿ/√5`（φ≈1.618），所以 **时间复杂度 O(φⁿ)，即指数级**。\n\nn=20 时调用 21891 次，n=40 时约 3.3 亿次——这是「递归很慢」的典型来源。\n\n## 慢的根源是重复计算\n\n`fib(5)` 的展开里 `fib(3)` 被算了 2 次、`fib(2)` 被算了 3 次。\n规模越大重复越夸张：`fib(n-2)` 在整个递归树里被计算的次数正好等于 `fib(n-1)` 的量级。\n\n## 记忆化：把递归树压成一条链\n\n用一个数组缓存已算过的结果，命中就直接返回：\n\n```c\nif (memo[n] >= 0) return memo[n];      /* 命中缓存，不再展开 */\nmemo[n] = fibMemo(n - 1) + fibMemo(n - 2);\n```\n\n于是每个规模 n 只被真正展开一次，**需要展开的规模只有 2..n 共 n−1 个**，时间降到 O(n)。\n递归树从「指数个结点的二叉树」被压扁成「n−1 个结点的链」。\n\n## 三种解法对照\n\n| 解法 | 时间 | 空间 | 说明 |\n|---|---|---|---|\n| 朴素递归 | O(φⁿ) | O(n) | 深度 n，但重复计算爆炸 |\n| 记忆化递归 | O(n) | O(n) | 缓存消除重复，仍是递归写法 |\n| 自底向上循环 | O(n) | O(1) | 只保留前两项，最优 |\n\n**自底向上（递推）通常优于自顶向下（记忆化递归）**：省掉栈开销、省掉缓存数组、也没有函数调用成本。\n记忆化的价值在于「递归关系复杂、不方便写成循环」时（如区间 DP、树形 DP），\n能用递推表达的问题应优先写递推。\n\n## 判断递归效率的方法\n\n1. 画递归树，数结点总数 → 时间复杂度。\n2. 看树的最大深度 → 空间复杂度（每层一个活动记录）。\n3. 检查是否存在**重叠子问题**：同一个参数被多次计算 → 可记忆化。\n4. 若子问题不重叠（如归并排序、汉诺塔），递归本身就是最优的，不必改写。",
+      "keyPoints": [
+        "递归深度决定空间（同时存在的活动记录数），递归树结点总数决定时间，两者常相差极大",
+        "朴素斐波那契深度只有 n，调用次数 T(n)=1+T(n-1)+T(n-2) 解出为 2·fib(n+1)−1，是指数级 O(φⁿ)",
+        "慢的根源是重叠子问题：fib(5) 里 fib(3) 被算 2 次、fib(2) 被算 3 次，规模越大重复越夸张",
+        "记忆化用数组缓存已算结果，命中即返回，每个规模只展开一次，时间从指数降到 O(n)",
+        "自底向上递推通常优于记忆化递归：省栈开销、省缓存数组、省函数调用成本，空间可降到 O(1)",
+        "若子问题不重叠（归并排序、汉诺塔），递归本身就是最优解，不必强行改写"
+      ],
+      "pitfalls": [
+        "只看递归深度就断定复杂度：深度 n 不等于时间 O(n)，斐波那契深度 n 而时间是指数",
+        "以为递归一定比循环慢：归并排序、汉诺塔的递归没有重复计算，效率与循环版同级",
+        "记忆化数组用 0 当「未计算」标记：fib(0)=0 会被反复重算，应用 −1 之类的哨兵值初始化",
+        "记忆化数组开成局部变量：每次调用都重新初始化，缓存完全失效，退化成朴素递归"
+      ],
+      "examples": [
+        {
+          "title": "朴素递归 vs 记忆化递归 vs 自底向上循环：调用次数与迭代次数对照",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MEMO_N 32\n\nstatic int naiveCalls;           /* 朴素递归的调用次数 */\nstatic int memoCalls;            /* 记忆化中「真正展开」的次数 */\nstatic int memo[MEMO_N];\n\n/* ① 朴素递归：不缓存，重复计算 */\nint fibNaive(int n)\n{\n    naiveCalls++;\n    if (n <= 1) {\n        return n;                /* 递归基 */\n    }\n    return fibNaive(n - 1) + fibNaive(n - 2);\n}\n\n/* ② 记忆化递归：命中缓存直接返回，不计入展开次数 */\nint fibMemo(int n)\n{\n    if (n <= 1) {\n        return n;\n    }\n    if (memo[n] >= 0) {\n        return memo[n];          /* ★ 命中缓存，不再展开 */\n    }\n    memoCalls++;                 /* 只有真正展开才计数 */\n    memo[n] = fibMemo(n - 1) + fibMemo(n - 2);\n    return memo[n];\n}\n\n/* ③ 自底向上循环：只保留前两项，空间 O(1) */\nint fibLoop(int n, int *iters)\n{\n    int a = 0, b = 1, t, i;\n\n    *iters = 0;\n    if (n <= 0) {\n        return 0;\n    }\n    for (i = 2; i <= n; i++) {\n        t = a + b;\n        a = b;\n        b = t;\n        (*iters)++;\n    }\n    return (n == 1) ? 1 : b;\n}\n\nint main(void)\n{\n    int ns[4] = { 5, 10, 15, 20 };\n    int i, f1, f2, f3, iters, same;\n\n    printf(\"n  fib(n)  三法一致  朴素递归调用次数  记忆化展开次数  循环迭代次数\\n\");\n    for (i = 0; i < 4; i++) {\n        naiveCalls = 0;\n        memoCalls = 0;\n        memset(memo, -1, sizeof(memo));   /* ★ 用 -1 表示「未算过」，不能用 0 */\n\n        f1 = fibNaive(ns[i]);\n        f2 = fibMemo(ns[i]);\n        f3 = fibLoop(ns[i], &iters);\n        same = (f1 == f2 && f2 == f3) ? 1 : 0;   /* 三法结果必须相同 */\n        printf(\"n=%d fib=%d 三法一致=%d 朴素递归=%d 记忆化=%d 循环=%d\\n\",\n               ns[i], f1, same, naiveCalls, memoCalls, iters);\n    }\n\n    printf(\"\\n三列 fib 值必须完全一致，否则实现有错\\n\");\n    printf(\"朴素递归次数满足 T(n)=2*fib(n+1)-1：n=20 时 2*10946-1=21891\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "n  fib(n)  三法一致  朴素递归调用次数  记忆化展开次数  循环迭代次数\nn=5 fib=5 三法一致=1 朴素递归=15 记忆化=4 循环=4\nn=10 fib=55 三法一致=1 朴素递归=177 记忆化=9 循环=9\nn=15 fib=610 三法一致=1 朴素递归=1973 记忆化=14 循环=14\nn=20 fib=6765 三法一致=1 朴素递归=21891 记忆化=19 循环=19\n\n三列 fib 值必须完全一致，否则实现有错\n朴素递归次数满足 T(n)=2*fib(n+1)-1：n=20 时 2*10946-1=21891",
+          "note": "三种解法的 fib 值完全一致，但代价天差地别：n=20 时朴素递归调用 21891 次，记忆化只展开 19 次，循环只迭代 19 次——差了三个数量级。记忆化展开次数与循环迭代次数都是 n−1，因为需要真正计算的规模只有 2..n。循环版还省掉了递归栈与缓存数组，是三者中空间最省的。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-19",
+        "ds-ch03-12",
+        "ds-ch01-06"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 21
+    },
+    {
+      "id": "ds-ch03-22",
+      "title": "回溯法：递归 + 撤销选择",
+      "section": "3.4 栈与递归",
+      "summary": "回溯法在递归的「递推」阶段做出选择、在「回归」阶段撤销选择，从而用一份状态数组枚举所有可能方案。撤销这一步是回溯法的灵魂：没有它，上一步的选择会污染下一步的搜索。",
+      "content": "## 固定骨架\n\n```c\nvoid backtrack(int depth)\n{\n    if (depth == n) { record(); return; }   /* 递归基：得到一个完整解 */\n    for (每个候选 c) {\n        if (!valid(c)) continue;            /* 剪枝：不合法直接跳过 */\n        choose(c);                          /* 做选择 */\n        backtrack(depth + 1);               /* 深入下一层 */\n        unchoose(c);                        /* ★ 撤销选择 */\n    }\n}\n```\n\n**「做选择 → 递归 → 撤销选择」三步必须成对出现**。撤销发生在递归返回之后，\n也就是递归的回归阶段，因此回溯法天然依赖运行时栈保存各层现场。\n\n## 为什么必须撤销\n\n全排列里用 `used[i]` 标记数字 i 是否已用。若在 `backtrack(depth+1)` 返回后不写\n`used[i] = 0`，那么当外层 for 尝试下一个候选时，`used` 里还残留着上一次搜索的标记，\n后续分支会误以为某些数字已被占用，**搜索树被错误裁剪，解的数量直接变少**。\n\n同理，若解保存在 `path[]` 数组里，撤销就是 `pathLen--`；\n若是棋盘类问题（n 皇后），撤销就是把那一格改回空。\n\n## 剪枝决定效率\n\n回溯法的时间复杂度通常是指数级或阶乘级（全排列 n!、n 皇后上界 nⁿ），\n**能不能剪掉整棵子树是唯一有效的优化手段**：\n\n| 问题 | 剪枝时机 |\n|---|---|\n| 全排列 | `used[i]` 已为真则跳过 |\n| n 皇后 | 放之前先查同列、两条对角线是否冲突 |\n| 子集和 | 剩余元素全加上也达不到目标，直接返回 |\n| 迷宫 | 走到墙、走出界、走过标记格，直接返回 |\n\n「先判断合法再递归」比「递归进去再判断」省一整棵子树，这是回溯法最重要的实现技巧。\n\n## 与 DFS 的关系\n\n回溯法 = 在**解空间树**上做 DFS。图论里的 DFS 遍历的是给定的图，\n回溯法遍历的是「所有可能选择构成的隐式树」，结点不需要显式存储，靠递归深度隐式表达。\n两者都用栈（系统栈或显式栈），都需要标记访问状态并在返回时清理。",
+      "keyPoints": [
+        "回溯法骨架：递归基记录解 + for 遍历候选 + 剪枝判断 + 做选择 + 递归深入 + 撤销选择",
+        "「做选择 → 递归 → 撤销选择」必须成对出现，撤销发生在递归返回后的回归阶段",
+        "不撤销选择会污染后续分支：used 标记残留导致搜索树被错误裁剪，解的数量变少",
+        "撤销的具体形式随状态而定：used[i]=0、pathLen--、棋盘格改回空",
+        "回溯法时间是指数级或阶乘级，剪掉整棵子树是唯一有效优化，「先判合法再递归」比「递归进去再判」省一整棵子树",
+        "回溯法就是在解空间树上做 DFS：遍历的是所有可能选择构成的隐式树，结点靠递归深度隐式表达"
+      ],
+      "pitfalls": [
+        "漏写撤销语句：最经典的回溯错误，结果数量偏少且很难察觉",
+        "把撤销写在递归调用之前：等于选择还没用就被清掉，搜索完全错乱",
+        "剪枝判断放在递归内部而不是递归之前：白白展开一整棵注定失败的子树",
+        "在递归基里只打印不保存：需要收集全部解时必须把 path 复制出去，否则后续修改会改掉已记录的解"
+      ],
+      "examples": [
+        {
+          "title": "全排列回溯：统计选择/撤销次数，并演示漏写撤销会少多少解",
+          "code": "#include <stdio.h>\n\n#define MAXN 8\n\nstatic int n;\nstatic int path[MAXN];           /* 当前已选的数字序列 */\nstatic int used[MAXN];           /* used[i]=1 表示数字 i+1 已被占用 */\nstatic int chooseCount;          /* 做选择次数 */\nstatic int unchooseCount;        /* 撤销选择次数 */\nstatic int solutionCount;        /* 找到的解个数 */\n\nstatic void printPath(void)\n{\n    int i;\n\n    solutionCount++;\n    printf(\"解%d:\", solutionCount);\n    for (i = 0; i < n; i++) {\n        printf(\" %d\", path[i]);\n    }\n    printf(\"\\n\");\n}\n\n/* 正确版：做选择 → 递归 → 撤销选择 */\nvoid permute(int depth)\n{\n    int i;\n\n    if (depth == n) {            /* 递归基：n 个位置都填好了 */\n        printPath();\n        return;\n    }\n    for (i = 1; i <= n; i++) {\n        if (used[i]) {\n            continue;            /* 剪枝：该数字已用过 */\n        }\n        path[depth] = i;         /* 做选择 */\n        used[i] = 1;\n        chooseCount++;\n\n        permute(depth + 1);      /* 深入下一层 */\n\n        used[i] = 0;             /* ★ 撤销选择，恢复现场 */\n        unchooseCount++;\n    }\n}\n\n/* 错误版：忘记撤销，用于对比解的数量 */\nstatic int badCount;\nstatic int badUsed[MAXN];\nstatic int badPath[MAXN];\n\nvoid permuteNoUndo(int depth)\n{\n    int i;\n\n    if (depth == n) {\n        badCount++;\n        return;\n    }\n    for (i = 1; i <= n; i++) {\n        if (badUsed[i]) {\n            continue;\n        }\n        badPath[depth] = i;\n        badUsed[i] = 1;          /* 做了选择 */\n        permuteNoUndo(depth + 1);\n        /* ★ 这里漏了 badUsed[i] = 0 */\n    }\n}\n\nint main(void)\n{\n    int i;\n\n    n = 3;\n    for (i = 0; i <= n; i++) {\n        used[i] = 0;\n        badUsed[i] = 0;\n    }\n    chooseCount = 0;\n    unchooseCount = 0;\n    solutionCount = 0;\n    badCount = 0;\n\n    printf(\"n=%d 的全部排列（正确回溯，含撤销）:\\n\", n);\n    permute(0);\n    printf(\"选择次数=%d 撤销次数=%d 解个数=%d（应为 %d! = 6）\\n\",\n           chooseCount, unchooseCount, solutionCount, n);\n\n    printf(\"\\n同样的搜索但漏写撤销:\\n\");\n    permuteNoUndo(0);\n    printf(\"解个数=%d —— 少了 %d 个，因为 used 标记被上一层污染\\n\",\n           badCount, solutionCount - badCount);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "n=3 的全部排列（正确回溯，含撤销）:\n解1: 1 2 3\n解2: 1 3 2\n解3: 2 1 3\n解4: 2 3 1\n解5: 3 1 2\n解6: 3 2 1\n选择次数=15 撤销次数=15 解个数=6（应为 3! = 6）\n\n同样的搜索但漏写撤销:\n解个数=1 —— 少了 5 个，因为 used 标记被上一层污染",
+          "note": "正确版得到全部 6 个排列，选择与撤销次数都是 15（= 3 + 3×2 + 3×2×1，即搜索树上所有「做选择」的结点数），两者严格相等正是「成对出现」的验证。漏写撤销的版本只找到 1 个解：第一次深入把 1、2、3 全部标记为已用，返回后标记没清，外层 for 的 i=2、i=3 分支都因 used 为真被剪掉，搜索树被砍得只剩一条路径。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-19",
+        "ds-ch03-12",
+        "ds-ch03-20"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 22
+    },
+    {
+      "id": "ds-ch03-23",
+      "title": "分治递归：汉诺塔与归并排序的递归结构",
+      "section": "3.4 栈与递归",
+      "summary": "分治法把问题拆成若干同构子问题、递归求解、再合并结果。汉诺塔的移动次数是 2ⁿ−1，归并排序的比较发生在合并阶段，两者的递归式都是 T(n)=2T(n/2)+O(n) 或 T(n)=2T(n−1)+O(1) 的典型。",
+      "content": "## 分治三步\n\n| 步骤 | 含义 | 汉诺塔 | 归并排序 |\n|---|---|---|---|\n| 分解 | 把规模 n 拆成更小的同类子问题 | 把 n−1 个盘看作一个整体 | 把数组从中间切成两半 |\n| 求解 | 递归处理子问题 | 递归移动 n−1 个盘 | 递归排序左右两半 |\n| 合并 | 组合子问题的解 | 把最大盘移到目标，再搬回 n−1 个盘 | 双指针合并两个有序段 |\n\n## 汉诺塔：T(n) = 2T(n−1) + 1\n\n```c\nvoid hanoi(int n, char from, char to, char aux)\n{\n    if (n <= 0) return;\n    hanoi(n - 1, from, aux, to);     /* ① 上面 n-1 个盘挪到辅助柱 */\n    printf(\"%c->%c\\n\", from, to);    /* ② 最大盘直接到目标柱 */\n    hanoi(n - 1, aux, to, from);     /* ③ 再把 n-1 个盘挪到目标柱 */\n}\n```\n\n递推 `T(n) = 2T(n-1) + 1`、`T(1)=1`，解出 **`T(n) = 2ⁿ − 1`**：\nn=3 → 7 次，n=10 → 1023 次，n=64 → 约 1.8×10¹⁹ 次。这是「指数级不可优化」的经典例子——\n不存在更少的移动方案，因为每个盘都必须被搬动这么多次。\n\n**递归深度的价值**：虽然总移动次数是指数级，但递归深度只有 n，空间 O(n)。\n\n## 归并排序：T(n) = 2T(n/2) + O(n)\n\n分解是「切一半」（O(1)），合并是「双指针扫一遍」（O(n)）。\n由主定理得 **时间 O(n log n)，且最好/最坏/平均都一样**——这是归并排序相对快排的最大优势（快排最坏 O(n²)）。\n空间 O(n)（需要等长的辅助数组）+ O(log n)（递归栈）。\n\n合并阶段的核心：\n\n```c\nwhile (i <= mid && j <= right) {\n    if (a[i] <= a[j]) tmp[k++] = a[i++];   /* <= 保证稳定性 */\n    else              tmp[k++] = a[j++];\n}\nwhile (i <= mid)   tmp[k++] = a[i++];      /* 左段剩余 */\nwhile (j <= right) tmp[k++] = a[j++];      /* 右段剩余 */\n```\n\n`<=` 而不是 `<` 是**稳定性**的来源：相等元素时先取左段的，原有相对次序不变。\n\n## 两类递归式的区别\n\n| 递归式 | 时间 | 空间 | 代表 |\n|---|---|---|---|\n| T(n)=2T(n−1)+O(1) | **O(2ⁿ)** | O(n) | 汉诺塔、朴素斐波那契 |\n| T(n)=2T(n/2)+O(n) | O(n log n) | O(n) | 归并排序 |\n| T(n)=2T(n/2)+O(1) | O(n) | O(log n) | 二叉树遍历 |\n\n**关键差别在于子问题规模是「减 1」还是「除以 2」**：减 1 会让递归树深度达到 n 且每层结点数翻倍（指数），\n除以 2 则深度只有 log n（多项式）。看到递归式先问这一句，复杂度基本就定了。",
+      "keyPoints": [
+        "分治三步：分解成同构子问题、递归求解、合并结果；汉诺塔与归并排序都是标准范例",
+        "汉诺塔递推 T(n)=2T(n-1)+1、T(1)=1，解出 T(n)=2ⁿ−1：n=3 时 7 次，n=10 时 1023 次",
+        "汉诺塔的指数级不可优化——不存在更少移动方案，但递归深度只有 n，空间是 O(n)",
+        "归并排序 T(n)=2T(n/2)+O(n)，时间 O(n log n) 且最好最坏平均一致，优于快排（快排最坏 O(n²)）",
+        "归并合并时用 a[i] <= a[j] 而非 < 是稳定性的来源：相等时先取左段，保持原有相对次序",
+        "判断递归复杂度先问子问题规模是「减 1」还是「除以 2」：减 1 深度 n 且指数级，除以 2 深度 log n 且多项式级"
+      ],
+      "pitfalls": [
+        "汉诺塔两次递归的参数顺序写错：三根柱子的角色必须正确轮换，写成 hanoi(n-1, from, to, aux) 会把盘挪到错误的柱子上",
+        "归并合并时用 < 代替 <=：相等元素的相对次序被打乱，排序失去稳定性",
+        "归并忘记处理某一段的剩余元素：只写第一个 while 会丢掉数据，结果数组长度变短",
+        "把 T(n)=2T(n-1)+1 误判成 O(n log n)：子问题规模是减 1 而非减半，实际是指数级"
+      ],
+      "examples": [
+        {
+          "title": "汉诺塔移动序列与次数 + 归并排序（含稳定性验证）",
+          "code": "#include <stdio.h>\n\nstatic int moveCount;\n\n/* 把 n 个盘从 from 借助 aux 移到 to */\nvoid hanoi(int n, char from, char to, char aux)\n{\n    if (n <= 0) {\n        return;                  /* 递归基 */\n    }\n    hanoi(n - 1, from, aux, to); /* ① 上面 n-1 个盘挪到辅助柱 */\n    moveCount++;\n    printf(\"  %c->%c\\n\", from, to);/* ② 最大盘直接到目标柱 */\n    hanoi(n - 1, aux, to, from); /* ③ n-1 个盘再挪到目标柱 */\n}\n\n#define MAXN 32\n\nstatic int tmp[MAXN];\n\n/* 合并 [left..mid] 与 [mid+1..right] 两个有序段 */\nvoid merge(int *a, int left, int mid, int right)\n{\n    int i = left, j = mid + 1, k = left;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j]) {      /* ★ <= 保证稳定性：相等时先取左段 */\n            tmp[k++] = a[i++];\n        } else {\n            tmp[k++] = a[j++];\n        }\n    }\n    while (i <= mid) {           /* 左段剩余 */\n        tmp[k++] = a[i++];\n    }\n    while (j <= right) {         /* 右段剩余 */\n        tmp[k++] = a[j++];\n    }\n    for (i = left; i <= right; i++) {\n        a[i] = tmp[i];           /* 写回原数组 */\n    }\n}\n\nvoid mergeSort(int *a, int left, int right)\n{\n    int mid;\n\n    if (left >= right) {         /* 递归基：只剩 0 或 1 个元素 */\n        return;\n    }\n    mid = (left + right) / 2;\n    mergeSort(a, left, mid);\n    mergeSort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void)\n{\n    int a[7] = { 5, 2, 8, 1, 9, 3, 7 };\n    int i;\n\n    printf(\"汉诺塔 n=3（A 借助 B 移到 C）:\\n\");\n    moveCount = 0;\n    hanoi(3, 'A', 'C', 'B');\n    printf(\"移动次数=%d（2^3-1=7）\\n\", moveCount);\n\n    printf(\"\\n各 n 的移动次数:\\n\");\n    for (i = 1; i <= 5; i++) {\n        /* 不打印过程，只算次数：2^i - 1 */\n        printf(\"n=%d 次数=%d\\n\", i, (1 << i) - 1);\n    }\n\n    printf(\"\\n归并排序:\\n  原数组:\");\n    for (i = 0; i < 7; i++) {\n        printf(\" %d\", a[i]);\n    }\n    mergeSort(a, 0, 6);\n    printf(\"\\n  排序后:\");\n    for (i = 0; i < 7; i++) {\n        printf(\" %d\", a[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "汉诺塔 n=3（A 借助 B 移到 C）:\n  A->C\n  A->B\n  C->B\n  A->C\n  B->A\n  B->C\n  A->C\n移动次数=7（2^3-1=7）\n\n各 n 的移动次数:\nn=1 次数=1\nn=2 次数=3\nn=3 次数=7\nn=4 次数=15\nn=5 次数=31\n\n归并排序:\n  原数组: 5 2 8 1 9 3 7\n  排序后: 1 2 3 5 7 8 9",
+          "note": "汉诺塔 7 步与 2³−1 吻合，移动序列呈现明显的自相似结构：第 4 步 A->C 是唯一一次移动最大盘，前 3 步与后 3 步分别是它的两个 T(n−1) 子问题。各 n 的次数 1、3、7、15、31 正是 2ⁿ−1。归并排序对 {5,2,8,1,9,3,7} 得到 {1,2,3,5,7,8,9}，合并时用 <= 而非 < 保证了相等元素的相对次序不变。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-19",
+        "ds-ch03-21",
+        "ds-ch08-13"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 23
+    },
+    {
+      "id": "ds-ch03-24",
+      "title": "栈的其他经典应用：数制转换与回文判定",
+      "section": "3.4 栈与队列的应用",
+      "summary": "数制转换的余数产生次序与书写次序正好相反，是「后进先出」的教科书级例子；回文判定则利用栈把前半段逆序后与后半段比对。两者都体现同一个模式：需要逆序处理时用栈。",
+      "content": "## 数制转换：余数逆序输出\n\n十进制转 R 进制的除基取余法：\n\n```\n1348 ÷ 8 = 168 余 4     ← 最先产生，却是最低位\n 168 ÷ 8 =  21 余 0\n  21 ÷ 8 =   2 余 5\n   2 ÷ 8 =   0 余 2     ← 最后产生，却是最高位\n```\n\n**产生次序（4 0 5 2）与书写次序（2 5 0 4）恰好相反**，所以把余数依次压栈、\n除到商为 0 后全部弹栈，就得到正确结果。这是栈最典型的应用模式：**当输出次序是输入次序的逆序时，用栈**。\n\n##  digits 超过 10 怎么办\n\n十六进制需要 A–F，用一张字符表转换：\n\n```c\nstatic const char DIGITS[] = \"0123456789ABCDEF\";\nprintf(\"%c\", DIGITS[d]);      /* d 的范围必须是 0..15 */\n```\n\n## 回文判定：栈的另一种用法\n\n把字符串前半段压栈，再逐个弹栈与后半段比对：\n\n| 长度 | 处理 |\n|---|---|\n| 偶数 | 前 n/2 个压栈，后 n/2 个逐个与弹栈值比对 |\n| 奇数 | 前 n/2 个压栈，**跳过正中间那个字符**，再比对后 n/2 个 |\n\n若用双端队列则可以从两端同时向中间收缩（见 ds-ch03-15），代码更短；\n但只用普通栈时，「压前半 + 弹栈比后半」是标准做法。\n\n## 栈的应用模式总结\n\n| 模式 | 判据 | 例子 |\n|---|---|---|\n| 逆序输出 | 产生次序与需要次序相反 | 数制转换、递归转非递归 |\n| 就近匹配 | 后出现的先被匹配掉 | 括号匹配、HTML 标签配对 |\n| 延迟计算 | 运算符要等右操作数到齐才能算 | 表达式求值 |\n| 现场保存 | 返回后还要继续做事 | 函数调用、回溯法 |\n| 撤销操作 | 撤销最后一次动作 | 编辑器 undo、浏览器后退 |\n\n判断「该不该用栈」只需问一句：**最后进来的东西是不是要最先被处理？**",
+      "keyPoints": [
+        "数制转换用除基取余法，余数产生次序（低位先）与书写次序（高位先）恰好相反，所以压栈再全部弹出",
+        "栈的典型应用模式是「输出次序是输入次序的逆序」，数制转换是最经典的例子",
+        "十六进制等 R>10 的进制需要字符表 \"0123456789ABCDEF\" 把余数转成字符",
+        "回文判定：偶数长度压前 n/2 个再比对后 n/2 个；奇数长度必须跳过正中间那个字符",
+        "栈的五种应用模式：逆序输出、就近匹配、延迟计算、现场保存、撤销操作",
+        "判断该不该用栈只需问一句：最后进来的东西是不是要最先被处理"
+      ],
+      "pitfalls": [
+        "数制转换不压栈直接打印余数：得到的是逆序结果（1348 转 8 进制会打印 4052 而不是 2504）",
+        "忘记处理 n == 0 的特殊情况：while 循环一次都不执行，输出空串而不是 \"0\"",
+        "回文判定奇数长度时没跳过中间字符：中间字符与自己比对虽然相等，但会让前后两半错位一格",
+        "十六进制转换用 printf(\"%X\", d) 逐位打印：会把每个余数当成独立整数格式化，d=10 打印 \"A\" 没问题但整体缺少拼接逻辑"
+      ],
+      "examples": [
+        {
+          "title": "数制转换（8/16/2 进制，含 n=0）与栈式回文判定",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 64\ntypedef int DataType;\n\ntypedef struct {\n    DataType data[MAX];\n    int top;\n} Stack;\n\nvoid stInit(Stack *s)\n{\n    s->top = -1;\n}\n\nint stPush(Stack *s, DataType x)\n{\n    if (s->top == MAX - 1) {\n        return 1;\n    }\n    s->data[++s->top] = x;\n    return 0;\n}\n\nint stPop(Stack *s, DataType *x)\n{\n    if (s->top == -1) {\n        return 1;\n    }\n    *x = s->data[s->top--];\n    return 0;\n}\n\nint stEmpty(const Stack *s)\n{\n    return s->top == -1;\n}\n\nstatic const char DIGITS[] = \"0123456789ABCDEF\";\n\n/* 十进制 n 转 R 进制并打印；余数入栈 → 全部出栈即为逆序还原 */\nvoid convert(int n, int r)\n{\n    Stack s;\n    DataType d;\n\n    stInit(&s);\n    printf(\"%d 的 %d 进制 = \", n, r);\n    if (n == 0) {                /* ★ 特例：0 在任何进制下都是 \"0\" */\n        printf(\"0\\n\");\n        return;\n    }\n    while (n > 0) {\n        if (stPush(&s, n % r) != 0) {\n            printf(\"[栈溢出]\\n\");\n            return;\n        }\n        n /= r;\n    }\n    while (stPop(&s, &d) == 0) {\n        printf(\"%c\", DIGITS[d]); /* 出栈次序正好是高位到低位 */\n    }\n    printf(\"\\n\");\n}\n\n/* 栈式回文判定：前半段压栈，后半段逐个与弹栈值比对 */\nint isPalindrome(const char *str)\n{\n    Stack s;\n    DataType d;\n    int len = (int)strlen(str);\n    int half = len / 2;\n    int i, j;\n\n    stInit(&s);\n    for (i = 0; i < half; i++) {\n        stPush(&s, str[i]);\n    }\n    j = (len % 2 == 1) ? half + 1 : half;   /* ★ 奇数长度跳过正中间 */\n    for (; j < len; j++) {\n        if (stPop(&s, &d) != 0) {\n            return 0;\n        }\n        if ((char)d != str[j]) {\n            return 0;\n        }\n    }\n    return stEmpty(&s);\n}\n\nint main(void)\n{\n    const char *words[4] = { \"level\", \"abc\", \"12321\", \"abca\" };\n    int i;\n\n    printf(\"== 数制转换（除基取余 + 栈逆序输出）==\\n\");\n    convert(1348, 8);\n    convert(255, 16);\n    convert(13, 2);\n    convert(0, 8);\n\n    printf(\"\\n== 回文判定 ==\\n\");\n    for (i = 0; i < 4; i++) {\n        printf(\"%s → %d\\n\", words[i], isPalindrome(words[i]));\n    }\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== 数制转换（除基取余 + 栈逆序输出）==\n1348 的 8 进制 = 2504\n255 的 16 进制 = FF\n13 的 2 进制 = 1101\n0 的 8 进制 = 0\n\n== 回文判定 ==\nlevel → 1\nabc → 0\n12321 → 1\nabca → 0",
+          "note": "1348 转 8 进制的余数依次是 4、0、5、2，压栈后弹出次序变成 2、5、0、4，正是正确答案 2504——这就是「输出次序是输入次序的逆序时用栈」的直接体现。0 是必须单独处理的特例，否则 while 循环一次都不执行会输出空串。回文判定中 \"level\" 与 \"12321\" 长度为奇数，靠 j = half + 1 跳过中间的 e 和 3；\"abca\" 前半 \"ab\" 压栈后与后半 \"ca\" 比对，第一个就不等，返回 0。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch03-01",
+        "ds-ch03-15",
+        "ds-ch03-08"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "order": 24
     }
   ]
 }
