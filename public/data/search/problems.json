@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "99ca2559de075cde",
+  "content_sha": "b541074b29483dd9",
   "fields": [
     "title",
     "tags",
@@ -36386,7 +36386,7 @@
     {
       "id": "ds-ch04-cx-001",
       "file": "ds-ch04.json",
-      "title": "写出下列程序段的时间复杂度",
+      "title": "按行优先存储的地址计算口径",
       "tags": [
         "数组",
         "地址计算"

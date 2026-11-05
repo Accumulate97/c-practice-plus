@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "845d856568c6abf1",
+  "content_sha": "13c15271e15922d1",
   "schema_version": 1,
   "data_version": "0.1.0",
   "count": 3207,
@@ -45311,7 +45311,7 @@
         "数组",
         "地址计算"
       ],
-      "title": "写出下列程序段的时间复杂度",
+      "title": "按行优先存储的地址计算口径",
       "file": "ds-ch04.json"
     },
     {

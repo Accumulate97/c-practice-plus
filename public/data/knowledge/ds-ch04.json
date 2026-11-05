@@ -1,8 +1,8 @@
 {
   "category": "ds",
   "chapter": "第4章 串、数组和广义表",
-  "generated_at": "2026-09-10",
-  "count": 3,
+  "generated_at": "2026-11-05 06:43:34",
+  "count": 24,
   "cards": [
     {
       "id": "ds-ch04-01",
@@ -154,6 +154,883 @@
       "category": "ds",
       "chapter": "第4章 串、数组和广义表",
       "order": 3
+    },
+    {
+      "id": "ds-ch04-04",
+      "title": "串的基本概念：子串、位置与「空串不等于空格串」",
+      "section": "4.1 串的定义",
+      "summary": "串是由零个或多个字符组成的有限序列，长度为零的叫空串。子串在主串中的位置指子串首字符的位置，字符位置则是该字符本身的序号，两者都从 1 计起。",
+      "content": "## 术语与计法\n\n| 术语 | 含义 | 例（主串 `\"abcab\"`） |\n|---|---|---|\n| 串长 | 字符个数，记作 n | 5 |\n| 空串 | n = 0，写作 `````` | 长度 0 |\n| 空格串 | 由一个或多个空格组成 | `\"   \"` 长度 3 |\n| 子串 | 串中任意个连续字符组成的子序列 | `\"bca\"` |\n| 主串 | 包含子串的串 | `\"abcab\"` |\n| 字符位置 | 该字符在串中的序号（从 1 起） | `'c'` 的位置是 3 |\n| 子串位置 | **子串首字符**在主串中的位置 | `\"bca\"` 的位置是 2 |\n| 串相等 | 长度相等 **且** 各对应字符都相同 | — |\n\n## 三个必须分清的区别\n\n1. **空串 ≠ 空格串**：`\"\"` 长度 0，`\" \"` 长度 1。这是判分题的高频陷阱。\n2. **子串 ≠ 子序列**：子串必须连续，`\"ab\"` 是 `\"abcab\"` 的子串，但 `\"ac\"` 不是（它是子序列）。\n3. **子串位置 ≠ 出现次数**：`\"ab\"` 在 `\"abcab\"` 中出现 **2 次**（位置 1 和位置 4），\n   而「定位」函数通常只返回第一次出现的位置。\n\n## 子串个数怎么算\n\n长度为 n 的串，其**不同**子串个数（含空串）：\n\n- 长度 1 的子串 n 个，长度 2 的 n−1 个，…，长度 n 的 1 个；\n- 合计 `n + (n−1) + … + 1 = n(n+1)/2`，再加空串 → **n(n+1)/2 + 1**。\n\n注意这是「按位置数」，若串中有重复字符，**不同内容**的子串会更少。\n如 `\"aaa\"`：按位置有 3+2+1+1=7 个，但不同内容只有 `\"\"`、`\"a\"`、`\"aa\"`、`\"aaa\"` 共 4 个。\n\n## 串为什么单列一章\n\n串的逻辑结构与线性表相同（都是有限序列），**差别在于运算对象**：\n线性表的运算以单个元素为对象（插入一个元素、删除一个元素），\n串的运算以「子串」为对象（查找子串、替换子串、拼接子串）。\n所以串常被称为「内容受限的线性表」，但它有自己特有的一套算法，最典型的就是模式匹配（KMP）。",
+      "keyPoints": [
+        "串是零个或多个字符组成的有限序列，长度为零的是空串 \"\"，长度 0",
+        "空串不等于空格串：\" \" 长度是 1，\"   \" 长度是 3，这是高频判分陷阱",
+        "子串必须连续，子序列不必连续；\"ac\" 是 \"abcab\" 的子序列但不是子串",
+        "子串位置指子串首字符在主串中的位置，字符位置指该字符本身的序号，两者都从 1 计起",
+        "长度为 n 的串按位置数的子串个数（含空串）是 n(n+1)/2 + 1；有重复字符时不同内容的子串更少",
+        "串被称为内容受限的线性表：逻辑结构同线性表，但运算对象是子串而非单个元素"
+      ],
+      "pitfalls": [
+        "把空串与空格串混为一谈：strlen(\"\")=0 而 strlen(\" \")=1",
+        "数子串个数时忘了加空串，或忘了串中重复字符会让「不同内容」的子串变少",
+        "把子串位置答成子串末字符的位置：定义是首字符的位置",
+        "用 == 比较两个字符数组是否相等：C 里比较的是地址，必须用 strcmp",
+        "统计出现次数时混用两套坐标系：把「子串在后缀里的相对位置」赋给「主串里的绝对位置」变量，再 += 子串长度，会让游标在两个值之间来回振荡而永不越界 —— 本卡示例最初就是这样写成死循环的，正确做法是全程只维护一个 `const char *p` 指针，匹配后 `p += subLen`",
+        "统计出现次数时忘了 subLen == 0 的特判：空串会在每个间隙都\"匹配成功\"，导致死循环或计数爆表"
+      ],
+      "examples": [
+        {
+          "title": "串术语实测：长度、子串定位、出现次数与子串个数公式验证",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n/* 返回子串 sub 在主串 s 中第一次出现的位置（从 1 计），未找到返回 0 */\nint strLocate(const char *s, const char *sub)\n{\n    const char *p;\n\n    if (sub[0] == '\\0') {\n        return 1;                /* 约定：空串位于任何串的开头 */\n    }\n    p = strstr(s, sub);\n    if (p == NULL) {\n        return 0;\n    }\n    return (int)(p - s) + 1;     /* ★ 下标差 + 1 转成「位置」 */\n}\n\n/* 统计 sub 在 s 中出现的次数（按不重叠计：匹配后跳过整个 sub） */\nint countOccur(const char *s, const char *sub)\n{\n    const char *p = s;\n    int count = 0;\n    int subLen = (int)strlen(sub);\n\n    if (subLen == 0) {\n        return 0;                /* 空串不计，否则会在每个间隙都\"匹配\"一次 */\n    }\n    /* ★ p 始终是「还没扫描的部分」的起始地址，全程只用一套坐标系 */\n    while ((p = strstr(p, sub)) != NULL) {\n        count++;\n        p += subLen;             /* 跳过已匹配部分，实现不重叠计数 */\n    }\n    return count;\n}\n\nint main(void)\n{\n    const char *s = \"abcab\";\n    const char *empty = \"\";\n    const char *blank = \"   \";\n    int n = (int)strlen(s);\n\n    printf(\"主串 \\\"%s\\\" 长度 = %d\\n\", s, n);\n    printf(\"空串长度 = %d，空格串(3个空格)长度 = %d\\n\",\n           (int)strlen(empty), (int)strlen(blank));\n\n    printf(\"\\n子串定位（位置从 1 计，未找到为 0）:\\n\");\n    printf(\"  \\\"bca\\\" 在 \\\"abcab\\\" 中位置 = %d\\n\", strLocate(s, \"bca\"));\n    printf(\"  \\\"ab\\\"  在 \\\"abcab\\\" 中位置 = %d，出现次数 = %d\\n\",\n           strLocate(s, \"ab\"), countOccur(s, \"ab\"));\n    printf(\"  \\\"cb\\\"  在 \\\"abcab\\\" 中位置 = %d（c 与 b 不相邻，不是子串）\\n\", strLocate(s, \"cb\"));\n    printf(\"  \\\"xyz\\\" 在 \\\"abcab\\\" 中位置 = %d\\n\", strLocate(s, \"xyz\"));\n\n    printf(\"\\n子串个数验证（按位置数，含空串）:\\n\");\n    printf(\"  n=%d 公式 n(n+1)/2+1 = %d\\n\", n, n * (n + 1) / 2 + 1);\n    printf(\"  \\\"aaa\\\" n=3 公式 = %d，但不同内容只有 4 个（空/a/aa/aaa）\\n\",\n           3 * 4 / 2 + 1);\n\n    printf(\"\\nstrcmp 比较: strcmp(\\\"abc\\\",\\\"abd\\\") = %d（<0 表示前者小）\\n\",\n           strcmp(\"abc\", \"abd\"));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "主串 \"abcab\" 长度 = 5\n空串长度 = 0，空格串(3个空格)长度 = 3\n\n子串定位（位置从 1 计，未找到为 0）:\n  \"bca\" 在 \"abcab\" 中位置 = 2\n  \"ab\"  在 \"abcab\" 中位置 = 1，出现次数 = 2\n  \"cb\"  在 \"abcab\" 中位置 = 0（c 与 b 不相邻，不是子串）\n  \"xyz\" 在 \"abcab\" 中位置 = 0\n\n子串个数验证（按位置数，含空串）:\n  n=5 公式 n(n+1)/2+1 = 16\n  \"aaa\" n=3 公式 = 7，但不同内容只有 4 个（空/a/aa/aaa）\n\nstrcmp 比较: strcmp(\"abc\",\"abd\") = -1（<0 表示前者小）",
+          "note": "空串与空格串的长度分别是 0 和 3，直接印证两者不等。\"bca\" 的位置是 2 而不是 3——位置取子串**首字符**的序号。\"ab\" 在 \"abcab\" 中出现 2 次（位置 1 和 4），但定位函数只返回第一次的 1。\"cb\" 返回 0：c 在下标 2、b 在下标 4，中间隔着 a，二者不相邻，所以 \"cb\" 不是子串。判断「是不是子串」看的是**连续**，不是「这两个字符都出现过」——这是位置类题目最常见的错因。子串个数按位置数算是 n(n+1)/2+1（含空串），按内容数则要去重，\"aaa\" 的 4 个不同内容就是例证。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-01",
+        "ds-ch04-07",
+        "ds-ch02-01"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 4
+    },
+    {
+      "id": "ds-ch04-05",
+      "title": "串的定长顺序存储与「截断」问题",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "定长顺序存储用一组地址连续的存储单元存放串值，长度上界由预定义常量 MAXLEN 固定。超过 MAXLEN 的部分被舍去，这就是截断；C 语言的字符串处理必须额外处理结束符 \\0。",
+      "content": "## 结构定义\n\n```c\n#define MAXLEN 255\ntypedef unsigned char SString[MAXLEN + 1];   /* 0 号单元存长度（教材约定） */\n```\n\n朱战立/严蔚敏教材的经典约定是 **下标 0 存串长，下标 1..n 存字符**，\n这样求长度是 O(1)。但 C 语言的字符串习惯是 **以 `\\0` 结尾、下标 0 起存字符**，\n求长度必须扫一遍（O(n)）。两种约定不能混用，写代码前先确定用哪一种。\n\n## 截断是怎么发生的\n\n| 情形 | 后果 |\n|---|---|\n| 串长 > MAXLEN | 超出部分被直接舍去，且**不报错** |\n| 拼接两个串结果超长 | 结果被截断，可能得到语义错误的串 |\n| 用 C 的 `strcpy` 而目标数组太小 | **缓冲区溢出**，未定义行为（比截断严重得多） |\n\n**截断是静默的**——程序不会崩，只是结果错了，这是它比崩溃更危险的地方。\n安全做法是用 `strncpy` 并显式补 `\\0`，或先比较长度再决定是否复制：\n\n```c\nif (strlen(src) >= MAXLEN) { /* 明确处理超长：报错或截断并置标志 */ }\nstrncpy(dst, src, MAXLEN - 1);\ndst[MAXLEN - 1] = '\\0';     /* ★ strncpy 不保证补结束符，必须自己补 */\n```\n\n## 定长存储的三个缺点\n\n1. **长度上界写死在编译期**，改一次要重新编译整个程序。\n2. **空间浪费或不足二选一**：MAXLEN 定大了浪费，定小了截断。\n3. **不能动态增长**，无法处理「读入时才知道多长」的输入。\n\n所以实际工程里几乎都用堆分配存储（见下一张卡）或 C++ 的 `std::string`。\n定长存储的价值在于教学：它让「串就是一段连续内存」这件事变得最直观。\n\n## 与顺序表的对比\n\n| | 顺序表 | 定长顺序串 |\n|---|---|---|\n| 元素类型 | DataType（任意） | char |\n| 长度存储 | 结构体成员 length | 0 号单元 或 靠 \\0 结尾 |\n| 基本运算 | 插入/删除/查找单个元素 | 模式匹配/拼接/求子串 |\n| 容量 | 固定或动态 | 固定 MAXLEN |",
+      "keyPoints": [
+        "定长顺序存储用一组地址连续的存储单元存放串值，长度上界由预定义常量 MAXLEN 在编译期固定",
+        "教材约定下标 0 存串长、1..n 存字符，求长 O(1)；C 习惯以 \\0 结尾，求长 O(n)，两种约定不能混用",
+        "串长超过 MAXLEN 时超出部分被静默舍去且不报错，截断比崩溃更危险因为结果错了程序还在跑",
+        "strncpy 不保证补结束符，必须自己写 dst[MAXLEN-1] = '\\0'，否则后续字符串函数会越界读",
+        "定长存储三缺点：长度上界写死在编译期、空间浪费与不足二选一、不能动态增长",
+        "与顺序表的差别在运算对象：顺序表操作单个元素，串操作子串（模式匹配、拼接、求子串）"
+      ],
+      "pitfalls": [
+        "用 strcpy 复制到定长数组而不检查源串长度：缓冲区溢出，未定义行为",
+        "用 strncpy 后忘记手动补 \\0：截断时目标串没有结束符，strlen 会一直读到数组外",
+        "把教材的「0 号单元存长度」与 C 的「\\0 结尾」混用：所有下标运算整体错位一格",
+        "以为 MAXLEN 定大一点就没问题：大数组是静态存储，定到几 MB 会撑爆栈（局部数组在栈上）"
+      ],
+      "examples": [
+        {
+          "title": "定长顺序串：赋值、截断处理、拼接与安全复制",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXLEN 10\n\n/* 定长顺序串：下标 0 存长度，1..MAXLEN 存字符（教材约定） */\ntypedef struct {\n    char ch[MAXLEN + 1];\n} SString;\n\n/* 把 C 字符串装入定长串；超长则截断，返回实际装入的字符数 */\nint strAssign(SString *s, const char *src)\n{\n    int i = 0;\n\n    while (src[i] != '\\0' && i < MAXLEN) {   /* ★ i < MAXLEN 是截断点 */\n        s->ch[i + 1] = src[i];\n        i++;\n    }\n    s->ch[0] = (char)i;                      /* 0 号单元存长度 */\n    return i;\n}\n\nint strLength(const SString *s)\n{\n    return (unsigned char)s->ch[0];          /* O(1) 取长度 */\n}\n\n/* 打印定长串（不能直接用 printf(\"%s\")，因为没有 \\0） */\nvoid strPrint(const char *tag, const SString *s)\n{\n    int i, len = strLength(s);\n\n    printf(\"%s\", tag);\n    for (i = 1; i <= len; i++) {\n        printf(\"%c\", s->ch[i]);\n    }\n    printf(\"  (长度=%d)\\n\", len);\n}\n\n/* 拼接 t 到 s 之后；放不下则截断，返回是否发生截断 */\nint strConcat(SString *s, const SString *t)\n{\n    int i, slen = strLength(s), tlen = strLength(t);\n    int truncated = 0;\n\n    for (i = 1; i <= tlen; i++) {\n        if (slen + i > MAXLEN) {             /* 放不下了 */\n            truncated = 1;\n            break;\n        }\n        s->ch[slen + i] = t->ch[i];\n    }\n    if (truncated) {\n        s->ch[0] = (char)MAXLEN;\n    } else {\n        s->ch[0] = (char)(slen + tlen);\n    }\n    return truncated;\n}\n\n/* 安全的 C 字符串复制：显式补结束符 */\nvoid safeCopy(char *dst, const char *src, int cap)\n{\n    strncpy(dst, src, (size_t)(cap - 1));\n    dst[cap - 1] = '\\0';                     /* ★ strncpy 不保证补，必须自己补 */\n}\n\nint main(void)\n{\n    SString a, b;\n    char buf[6];\n    int n;\n\n    printf(\"MAXLEN = %d\\n\\n\", MAXLEN);\n\n    n = strAssign(&a, \"hello\");\n    strPrint(\"a = 装入 \\\"hello\\\" →\", &a);\n    printf(\"  strAssign 返回 %d（实际装入字符数）\\n\", n);\n\n    n = strAssign(&b, \"this string is way too long\");\n    strPrint(\"b = 装入超长串 →\", &b);\n    printf(\"  ★ 发生截断：源串长 %d，只装入 %d 个字符，且不报错\\n\",\n           (int)strlen(\"this string is way too long\"), n);\n\n    printf(\"\\n拼接演示:\\n\");\n    strAssign(&a, \"abc\");\n    strAssign(&b, \"defgh\");\n    printf(\"  a=\\\"abc\\\" b=\\\"defgh\\\"，拼接是否截断 = %d\\n\", strConcat(&a, &b));\n    strPrint(\"  结果 a =\", &a);\n\n    strAssign(&a, \"abcdefgh\");\n    strAssign(&b, \"ijkl\");\n    printf(\"  a=\\\"abcdefgh\\\" b=\\\"ijkl\\\"，拼接是否截断 = %d\\n\", strConcat(&a, &b));\n    strPrint(\"  结果 a =\", &a);\n\n    printf(\"\\nsafeCopy 演示（缓冲区只有 6 字节）:\\n\");\n    safeCopy(buf, \"hello world\", 6);\n    printf(\"  buf = \\\"%s\\\" strlen=%d（被截断但有结束符，不会越界读）\\n\",\n           buf, (int)strlen(buf));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "MAXLEN = 10\n\na = 装入 \"hello\" →hello  (长度=5)\n  strAssign 返回 5（实际装入字符数）\nb = 装入超长串 →this strin  (长度=10)\n  ★ 发生截断：源串长 27，只装入 10 个字符，且不报错\n\n拼接演示:\n  a=\"abc\" b=\"defgh\"，拼接是否截断 = 0\n  结果 a =abcdefgh  (长度=8)\n  a=\"abcdefgh\" b=\"ijkl\"，拼接是否截断 = 1\n  结果 a =abcdefghij  (长度=10)\n\nsafeCopy 演示（缓冲区只有 6 字节）:\n  buf = \"hello\" strlen=5（被截断但有结束符，不会越界读）",
+          "note": "超长串 \"this string is way too long\"（27 字符）被静默截成 \"this strin\"，程序不报错——这正是截断比崩溃更危险的地方。拼接 \"abcdefgh\"+\"ijkl\" 时只装得下前 2 个字符，函数返回 1 表示发生截断，调用方据此可以决定报错还是继续。safeCopy 把 \"hello world\" 截成 \"hello\"，关键是**补上了 \\0**，若直接用 strncpy 而不补，buf 里没有结束符，strlen 会一直读到数组之外。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-01",
+        "ds-ch04-06",
+        "ds-ch02-02"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 5
+    },
+    {
+      "id": "ds-ch04-06",
+      "title": "串的堆分配存储：malloc 与 realloc 的动态串",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "堆分配串在运行时用 malloc 申请恰好够用的空间，长度不再受编译期常量限制。拼接与赋值时用 realloc 扩容，既避免定长存储的截断，也避免为最大可能长度预留造成的浪费。",
+      "content": "## 结构定义\n\n```c\ntypedef struct {\n    char *ch;        /* 堆上分配的字符数组，空串时为 NULL */\n    int length;      /* 串长 */\n} HString;\n```\n\n**逻辑结构与定长串完全相同（都是顺序存储），差别只在空间是动态申请的**。\n所以堆分配串是「顺序存储 + 动态容量」，而不是链式存储。\n\n## 为什么不用链式串\n\n链式串每个结点存一个字符，指针开销远大于数据本身（一个 char 1 字节，一个指针 8 字节，\n**空间利用率只有 1/9**），而且模式匹配需要频繁比较相邻字符，链表的非连续访问会严重拖慢速度。\n所以串几乎都用顺序存储，链表只在「需要在串中间频繁插入删除」的极少数场景才考虑。\n\n## 三个关键操作的内存管理\n\n| 操作 | 做法 | 易错点 |\n|---|---|---|\n| 赋值 | 先 `free` 旧的，再 `malloc` 新的 | 不 free 旧的 → 内存泄漏 |\n| 拼接 | `realloc` 到 len1+len2，再拷后半段 | realloc 可能返回 NULL，**不能直接赋给原指针** |\n| 销毁 | `free(ch)` 后置 `ch=NULL, length=0` | 不置 NULL → 悬空指针，二次 free 崩溃 |\n\n`realloc` 的安全写法：\n\n```c\nchar *tmp = (char *)realloc(s->ch, (size_t)newLen + 1);\nif (tmp == NULL) {\n    /* 扩容失败：原块仍然有效，绝不能 free(s->ch) 后当作成功 */\n    return 1;\n}\ns->ch = tmp;          /* ★ 成功后才覆盖原指针 */\n```\n\n若写成 `s->ch = realloc(s->ch, n)` 且返回 NULL，原指针就丢了——**既泄漏又无法释放**，\n这是 C 内存管理里最经典的错误之一。\n\n## 空串的表示\n\n堆分配串的空串有两种约定：`ch = NULL, length = 0`，或 `ch` 指向一个只含 `\\0` 的 1 字节块。\n两种都合法，但必须统一，否则 `free(NULL)` 虽然安全（C 标准规定 free(NULL) 无操作），\n`strlen(NULL)` 却会崩溃。本套卡片统一用 **ch = NULL 表示空串**。",
+      "keyPoints": [
+        "堆分配串用 malloc 在运行时申请恰好够用的空间，长度不受编译期常量限制，结构为 {char *ch; int length;}",
+        "逻辑结构与定长串相同（都是顺序存储），差别只在空间是动态申请的，不是链式存储",
+        "串不用链式存储：每结点一个字符时指针开销远大于数据，空间利用率仅 1/9，且模式匹配的相邻字符比较会因非连续访问变慢",
+        "赋值前必须先 free 旧空间否则泄漏；销毁后必须置 ch=NULL 否则悬空指针二次 free 会崩溃",
+        "realloc 可能返回 NULL，必须用临时指针接收，成功后才覆盖原指针；直接 s->ch=realloc(s->ch,n) 失败时原指针丢失，既泄漏又无法释放",
+        "realloc 失败时原内存块仍然有效，不能当成已成功来使用，也不能提前 free"
+      ],
+      "pitfalls": [
+        "写成 s->ch = realloc(s->ch, n)：返回 NULL 时原指针丢失，内存泄漏且无法再释放",
+        "赋值时忘记 free 旧空间：每次赋值都泄漏一块",
+        "销毁后不置 ch = NULL：后续误用是悬空指针，二次 free 直接崩溃",
+        "malloc 长度忘了 +1 给 \\0：strcpy 会写越界一格"
+      ],
+      "examples": [
+        {
+          "title": "堆分配串：赋值、拼接（realloc 安全写法）、比较与销毁",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\ntypedef struct {\n    char *ch;                    /* 堆上字符数组，空串时为 NULL */\n    int length;\n} HString;\n\nvoid hstrInit(HString *s)\n{\n    s->ch = NULL;                /* ★ 统一用 NULL 表示空串 */\n    s->length = 0;\n}\n\n/* 赋值：先释放旧空间，再按源串长度精确申请 */\nint hstrAssign(HString *s, const char *src)\n{\n    int len = (int)strlen(src);\n\n    if (s->ch != NULL) {\n        free(s->ch);             /* ★ 不 free 旧的会泄漏 */\n        s->ch = NULL;\n    }\n    if (len == 0) {\n        s->length = 0;\n        return 0;\n    }\n    s->ch = (char *)malloc((size_t)len + 1);   /* +1 给结束符 */\n    if (s->ch == NULL) {\n        s->length = 0;\n        return 1;                /* 分配失败 */\n    }\n    strcpy(s->ch, src);\n    s->length = len;\n    return 0;\n}\n\n/* 拼接：realloc 到 len1+len2，用临时指针接收以防失败丢原指针 */\nint hstrConcat(HString *s, const HString *t)\n{\n    int newLen = s->length + t->length;\n    char *tmp;\n\n    if (t->length == 0) {\n        return 0;                /* 拼空串，无需扩容 */\n    }\n    if (newLen == 0) {\n        return 0;\n    }\n    tmp = (char *)realloc(s->ch, (size_t)newLen + 1);\n    if (tmp == NULL) {\n        return 1;                /* ★ 失败：原块仍有效，s->ch 未被破坏 */\n    }\n    s->ch = tmp;                 /* 成功后才覆盖原指针 */\n    memcpy(s->ch + s->length, t->ch, (size_t)t->length);\n    s->ch[newLen] = '\\0';\n    s->length = newLen;\n    return 0;\n}\n\nvoid hstrPrint(const char *tag, const HString *s)\n{\n    printf(\"%s\", tag);\n    if (s->ch == NULL) {\n        printf(\"(空串)\");\n    } else {\n        printf(\"\\\"%s\\\"\", s->ch);\n    }\n    printf(\"  length=%d\\n\", s->length);\n}\n\n/* 销毁：释放后置 NULL，避免悬空指针 */\nvoid hstrDestroy(HString *s)\n{\n    free(s->ch);                 /* free(NULL) 是安全的空操作 */\n    s->ch = NULL;\n    s->length = 0;\n}\n\nint main(void)\n{\n    HString a, b, c;\n\n    hstrInit(&a);\n    hstrInit(&b);\n    hstrInit(&c);\n\n    hstrPrint(\"初始 a = \", &a);\n\n    hstrAssign(&a, \"data\");\n    hstrPrint(\"赋值 a = \\\"data\\\" → \", &a);\n\n    hstrAssign(&a, \"structures\");      /* 再次赋值：旧空间已被 free */\n    hstrPrint(\"再赋值 a = \\\"structures\\\" → \", &a);\n\n    hstrAssign(&b, \"-and-algorithms\");\n    hstrConcat(&a, &b);\n    hstrPrint(\"拼接 b 后 a = \", &a);\n\n    hstrAssign(&c, \"\");\n    hstrConcat(&a, &c);\n    hstrPrint(\"拼接空串后 a = \", &a);\n\n    printf(\"\\nstrcmp 比较: %d\\n\", strcmp(a.ch, \"structures-and-algorithms\"));\n    printf(\"a.length=%d strlen(a.ch)=%d（两者应一致）\\n\",\n           a.length, (int)strlen(a.ch));\n\n    hstrDestroy(&a);\n    hstrDestroy(&b);\n    hstrDestroy(&c);\n    hstrPrint(\"销毁后 a = \", &a);\n    printf(\"销毁后二次 destroy 也安全: \");\n    hstrDestroy(&a);               /* free(NULL) 无操作 */\n    printf(\"OK\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "初始 a = (空串)  length=0\n赋值 a = \"data\" → \"data\"  length=4\n再赋值 a = \"structures\" → \"structures\"  length=10\n拼接 b 后 a = \"structures-and-algorithms\"  length=25\n拼接空串后 a = \"structures-and-algorithms\"  length=25\n\nstrcmp 比较: 0\na.length=25 strlen(a.ch)=25（两者应一致）\n销毁后 a = (空串)  length=0\n销毁后二次 destroy 也安全: OK",
+          "note": "第二次赋值 \"structures\" 前旧空间 \"data\" 已被 free，没有泄漏。拼接用 realloc 从 10 字节扩到 25 字节，并用临时指针 tmp 接收返回值——若直接写 s->ch = realloc(...) 且扩容失败，原指针就永久丢失。销毁后 ch 被置为 NULL，所以二次 destroy 只是 free(NULL)（C 标准规定的安全空操作），不会崩溃。length 字段与 strlen 结果始终一致，说明结束符维护正确。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-05",
+        "ds-ch04-01",
+        "ds-ch02-10"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 6
+    },
+    {
+      "id": "ds-ch04-07",
+      "title": "BF 模式匹配：主串指针回溯的代价",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "BF（Brute Force）算法从主串每个可能起点逐字符比对，失配时主串指针回溯到本次起点的下一位重新开始。最坏时间复杂度 O(n×m)，但实现简单、平均表现不差，是理解 KMP 的对照基准。",
+      "content": "## 算法过程\n\n主串 `s`（长 n）、模式串 `t`（长 m），从 `i=0, j=0` 开始逐字符比较：\n\n- 相等 → `i++, j++` 继续；\n- 不等 → **`i` 回溯到本次匹配起点 + 1，`j` 归零**，重新开始；\n- `j == m` → 匹配成功，返回起点 `i - m`；\n- `i` 走到 n 仍未成功 → 返回 −1。\n\n```c\nint indexBF(const char *s, const char *t)\n{\n    int i = 0, j = 0;\n\n    while (i < (int)strlen(s) && j < (int)strlen(t)) {\n        if (s[i] == t[j]) { i++; j++; }\n        else { i = i - j + 1; j = 0; }   /* ★ 主串指针回溯 */\n    }\n    if (j == (int)strlen(t)) return i - j;\n    return -1;\n}\n```\n\n**`i = i - j + 1` 是整个算法的核心**：`i - j` 是本次匹配的起点，加 1 就是下一个待试起点。\n\n## 复杂度\n\n| 情形 | 比较次数 | 说明 |\n|---|---|---|\n| 最好 | m | 第一次就匹配成功 |\n| 平均 | 约 n + m | 大多数失配发生在头几个字符，回溯很少 |\n| **最坏** | **(n − m + 1) × m ≈ O(n·m)** | 每次都要比到模式串最后一个字符才失配 |\n\n最坏情形的构造：主串 `\"aaaa…ab\"`、模式串 `\"aa…ab\"`。\n每次从 `a` 开始能连续匹配 m−1 个字符，直到最后的 `b` 才失配，于是每个起点都白做 m−1 次比较。\n\n## 为什么需要 KMP\n\nBF 的问题是**主串指针会回溯**——已经比较过的字符被重新比较了一遍。\nKMP 的改进就是让主串指针永不回溯：失配时只移动模式串指针，\n利用「模式串自身的前缀后缀重合信息」跳过那些注定失败的起点。\n代价是预处理模式串求 next 数组，O(m)；总时间降到 **O(n + m)**。\n\n## 什么时候仍然用 BF\n\n- 模式串很短（m ≤ 5）：next 数组的预处理开销可能比省下的比较还多。\n- 只匹配一次：KMP 的优势在长主串多次失配时才明显。\n- 教学与对照：写 KMP 前先用 BF 验证结果是否正确。\n\n工程上更常用的是 Boyer-Moore、Sunday 或 Rabin-Karp，它们在某些场景下比 KMP 更快，\n但 KMP 是「最坏情况仍是线性」的代表，也是考试与面试的重点。",
+      "keyPoints": [
+        "BF 算法从主串每个可能起点逐字符比对，失配时主串指针回溯到本次起点下一位（i = i - j + 1），模式串指针归零",
+        "i = i - j + 1 是核心：i - j 是本次匹配起点，加 1 即下一个待试起点",
+        "最好 O(m)，平均约 O(n+m)，最坏 O(n×m)——每次都比到模式串最后一个字符才失配",
+        "最坏情形的构造：主串 \"aaaa…ab\" 配模式串 \"aa…ab\"，每个起点都白做 m−1 次比较",
+        "BF 的根本问题是主串指针回溯，已比较过的字符被重复比较；KMP 让主串指针永不回溯，总时间降到 O(n+m)",
+        "模式串很短或只匹配一次时 BF 仍然合适，next 数组的预处理开销可能超过收益"
+      ],
+      "pitfalls": [
+        "失配时写成 i++、j=0：起点只前进一格是对的，但 i++ 是「当前位置加一」而非「起点加一」，两者只有在 j==0 时才等价",
+        "循环条件漏掉 i < n：j 归零后 i 可能已越界，继续比较会读到 \\0 之外",
+        "匹配成功的返回值写成 i 而不是 i - j（或 i - m）：i 指向的是匹配结束后的下一位",
+        "在循环里反复调用 strlen：每次 O(n)，把总复杂度从 O(n·m) 拉到 O(n²·m)，必须先把长度存进局部变量"
+      ],
+      "examples": [
+        {
+          "title": "BF 模式匹配：统计比较次数，并演示最坏情形的构造",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n/* BF 匹配，*cmp 返回实际发生的字符比较次数 */\nint indexBF(const char *s, const char *t, int *cmp)\n{\n    int n = (int)strlen(s);\n    int m = (int)strlen(t);\n    int i = 0, j = 0;\n\n    *cmp = 0;\n    while (i < n && j < m) {\n        (*cmp)++;\n        if (s[i] == t[j]) {\n            i++;\n            j++;\n        } else {\n            i = i - j + 1;       /* ★ 主串指针回溯到本次起点的下一位 */\n            j = 0;\n        }\n    }\n    if (j == m) {\n        return i - j;            /* 匹配起点 */\n    }\n    return -1;\n}\n\nstatic void report(const char *s, const char *t)\n{\n    int cmp = 0, pos;\n\n    pos = indexBF(s, t, &cmp);\n    printf(\"主串 \\\"%s\\\"  模式 \\\"%s\\\"\\n\", s, t);\n    printf(\"  n=%d m=%d 匹配位置=%d 比较次数=%d 上界(n-m+1)*m=%d\\n\",\n           (int)strlen(s), (int)strlen(t), pos, cmp,\n           ((int)strlen(s) - (int)strlen(t) + 1) * (int)strlen(t));\n}\n\nint main(void)\n{\n    char worst[24], pattern[12];\n    int i;\n\n    printf(\"== 一般情形 ==\\n\");\n    report(\"abcabcabd\", \"abcabd\");\n    report(\"hello world\", \"world\");\n    report(\"hello world\", \"xyz\");\n\n    printf(\"\\n== 最好情形（第一次就成功）==\\n\");\n    report(\"abcdef\", \"abc\");\n\n    printf(\"\\n== 最坏情形构造 ==\\n\");\n    /* 主串 aaaa...ab，模式 aa...ab：每个起点都比到最后一个字符才失配 */\n    for (i = 0; i < 20; i++) {\n        worst[i] = 'a';\n    }\n    worst[20] = 'b';\n    worst[21] = '\\0';\n    for (i = 0; i < 9; i++) {\n        pattern[i] = 'a';\n    }\n    pattern[9] = 'b';\n    pattern[10] = '\\0';\n    report(worst, pattern);\n\n    printf(\"\\n== 空模式串 ==\\n\");\n    report(\"abc\", \"\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== 一般情形 ==\n主串 \"abcabcabd\"  模式 \"abcabd\"\n  n=9 m=6 匹配位置=3 比较次数=14 上界(n-m+1)*m=24\n主串 \"hello world\"  模式 \"world\"\n  n=11 m=5 匹配位置=6 比较次数=11 上界(n-m+1)*m=35\n主串 \"hello world\"  模式 \"xyz\"\n  n=11 m=3 匹配位置=-1 比较次数=11 上界(n-m+1)*m=27\n\n== 最好情形（第一次就成功）==\n主串 \"abcdef\"  模式 \"abc\"\n  n=6 m=3 匹配位置=0 比较次数=3 上界(n-m+1)*m=12\n\n== 最坏情形构造 ==\n主串 \"aaaaaaaaaaaaaaaaaaaab\"  模式 \"aaaaaaaaab\"\n  n=21 m=10 匹配位置=11 比较次数=120 上界(n-m+1)*m=120\n\n== 空模式串 ==\n主串 \"abc\"  模式 \"\"\n  n=3 m=0 匹配位置=0 比较次数=0 上界(n-m+1)*m=0",
+          "note": "最坏情形的比较次数 120 恰好等于理论上界 (n−m+1)×m = 12×10 = 120，说明主串 \"aaaa…ab\" 配模式 \"aaa…ab\" 确实让每个起点都比到最后一个字符才失配，O(n×m) 被完全打满。注意这个实例**最终是匹配成功的（位置 11）**：主串 s[11..19] 是 9 个 a、s[20] 是 b，正好等于模式串——「比较次数打满上界」与「最后能不能匹配上」是两件独立的事，不要混为一谈。对照一般情形：\"hello world\" 找 \"world\" 只比了 11 次（等于 n），因为大多数起点在第一个字符就失配、回溯代价极低——这正是 BF「平均表现不差」的原因。\"abcabcabd\" 找 \"abcabd\" 比了 14 次：前 6 次（含失配）+ 2 次起点失配 + 6 次成功匹配，比 n=9 多出来的 5 次全部是回溯重比，这就是 BF 的额外代价。空模式串时 while 条件 j < m（0 < 0）立刻不成立，比较次数 0，而 j == m 成立，于是返回 i − j = 0。教材有时约定「空串是任何串的子串，位置为 1」，本实现按 0-based 起点返回 0，两者语义一致、口径不同。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-01",
+        "ds-ch04-08",
+        "ds-ch04-09"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 7
+    },
+    {
+      "id": "ds-ch04-08",
+      "title": "KMP 的原理：主串指针为什么不回溯",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "KMP 利用「失配前已匹配的那段字符，其前缀与后缀可能重合」这一信息，把模式串直接滑动到下一个可能成功的位置，从而让主串指针永不回溯，总时间从 O(n×m) 降到 O(n+m)。",
+      "content": "## BF 浪费在哪里\n\n主串 `s = \"abcabcabd\"`、模式 `t = \"abcabd\"`，比到 `s[5]` 与 `t[5]` 失配（`c` vs `d`）：\n\n```\ns: a b c a b c a b d\nt: a b c a b d        ← 在 j=5 失配\n```\n\nBF 会回到 `s[1]` 重新开始。但**已经匹配上的 `\"abcab\"` 这段信息被完全丢弃了**。\n观察这 5 个字符：它的最长相等前后缀是 `\"ab\"`（长度 2）。\n这意味着下次尝试时，模式串的前 2 个字符 `\"ab\"` 必然与主串已匹配部分的末尾 2 个字符对上，\n**根本不需要重新比较**——直接把 `j` 设成 2，主串指针 `i` 停在原地继续比即可。\n\n## next 数组的含义\n\n`next[j]` = 模式串 `t[0..j-1]` 这段前缀的**最长相等真前后缀长度**。\n\n| j | t[0..j-1] | 最长相等真前后缀 | next[j] |\n|---|---|---|---|\n| 0 | （空） | — | −1（约定） |\n| 1 | `a` | 无（真前后缀不能是自身） | 0 |\n| 2 | `ab` | 无 | 0 |\n| 3 | `abc` | 无 | 0 |\n| 4 | `abca` | `a` | 1 |\n| 5 | `abcab` | `ab` | 2 |\n\n失配发生在 `j` 时，令 `j = next[j]`，`i` 不动，继续比较。\n\n## 匹配主循环\n\n```c\nwhile (i < n && j < m) {\n    if (j == -1 || s[i] == t[j]) { i++; j++; }   /* j==-1 表示模式串从头再试 */\n    else { j = next[j]; }                        /* ★ i 不动，只移 j */\n}\n```\n\n**`i` 只增不减**，所以主串只被扫一遍，时间 O(n)；加上预处理 next 的 O(m)，总计 **O(n + m)**。\n\n## 为什么 j = −1 是必要的\n\n当 `next[j] == 0` 且 `s[i] != t[0]` 时，模式串连第一个字符都对不上，\n此时应当让主串指针前进、模式串仍从 0 开始。把 `next[0]` 约定为 **−1**，\n配合 `j == -1` 分支里的 `i++; j++`（j 从 −1 变回 0），就自然表达了这个语义，\n不需要额外写一个分支。这是 KMP 实现里最容易绕晕的一处。\n\n## 空间与适用\n\nnext 数组需要 O(m) 额外空间。当 m 远小于 n 时这点开销可以忽略，\n所以 KMP 在「长主串 + 短模式」的场景（文本搜索、DNA 比对、日志过滤）几乎是标配。",
+      "keyPoints": [
+        "KMP 的核心：失配前已匹配那段字符的最长相等真前后缀，决定了模式串能直接滑到哪个位置，从而主串指针永不回溯",
+        "next[j] 定义为模式串 t[0..j-1] 这段前缀的最长相等真前后缀长度，next[0] 约定为 −1",
+        "失配时执行 j = next[j] 而 i 不动；i 只增不减所以主串只扫一遍，总时间 O(n+m)",
+        "j == -1 分支里执行 i++; j++，表达「模式串连第一个字符都对不上，主串前进一位、模式串从头再试」",
+        "next 数组需要 O(m) 额外空间，m 远小于 n 时可忽略，适合长主串短模式的文本搜索场景",
+        "BF 把已匹配段的信息完全丢弃才导致 O(n×m)，KMP 正是把这段信息用 next 数组保存下来"
+      ],
+      "pitfalls": [
+        "把 next[j] 理解成「最长相等前后缀长度 + 1」：不同教材定义差 1，混用会整体错位，必须先确定口径再写代码",
+        "忘记处理 j == -1：模式串首字符就失配时 j 会变成 −1，不做特判会数组越界",
+        "失配时同时移动 i 和 j：那就退回 BF 了，KMP 的全部价值就在 i 不动",
+        "以为 next 数组依赖主串：它只由模式串自身决定，与主串无关，所以可以在匹配前一次性预处理"
+      ],
+      "examples": [
+        {
+          "title": "KMP 匹配：打印 next 数组、逐次失配的 j 跳转与比较次数对照 BF",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXM 32\n\n/* 求 next 数组：next[j] = t[0..j-1] 的最长相等真前后缀长度，next[0] = -1 */\nvoid getNext(const char *t, int *next)\n{\n    int j = 0, k = -1;\n    int m = (int)strlen(t);\n\n    next[0] = -1;\n    while (j < m - 1) {\n        if (k == -1 || t[j] == t[k]) {\n            j++;\n            k++;\n            next[j] = k;         /* t[0..j-1] 的最长相等真前后缀长度是 k */\n        } else {\n            k = next[k];         /* ★ 用已算出的 next 回退，不重新扫描 */\n        }\n    }\n}\n\n/* KMP 匹配，*cmp 只记录真实发生的字符比较次数（j==-1 的推进不计） */\nint indexKMP(const char *s, const char *t, const int *next, int *cmp)\n{\n    int n = (int)strlen(s);\n    int m = (int)strlen(t);\n    int i = 0, j = 0;\n\n    *cmp = 0;\n    while (i < n && j < m) {\n        if (j == -1) {\n            i++;                 /* 模式串首字符都对不上：主串前进，不算一次比较 */\n            j = 0;\n            continue;\n        }\n        (*cmp)++;\n        if (s[i] == t[j]) {\n            i++;\n            j++;\n        } else {\n            j = next[j];         /* ★ i 不动，只把 j 跳到 next[j] */\n        }\n    }\n    if (j == m) {\n        return i - j;\n    }\n    return -1;\n}\n\nstatic void showNext(const char *t)\n{\n    int next[MAXM], j, m = (int)strlen(t);\n\n    getNext(t, next);\n    printf(\"模式串 \\\"%s\\\" 的 next 数组:\\n  j    :\", t);\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", j);\n    }\n    printf(\"\\n  t[j] :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4c\", t[j]);\n    }\n    printf(\"\\n  next :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", next[j]);\n    }\n    printf(\"\\n\");\n}\n\nstatic void run(const char *s, const char *t)\n{\n    int next[MAXM], cmp = 0, pos;\n\n    if ((int)strlen(t) >= MAXM) {\n        printf(\"模式串过长，跳过\\n\");\n        return;\n    }\n    getNext(t, next);\n    pos = indexKMP(s, t, next, &cmp);\n    printf(\"主串 \\\"%s\\\" 模式 \\\"%s\\\" → 位置=%d KMP比较次数=%d\\n\", s, t, pos, cmp);\n}\n\nint main(void)\n{\n    char worst[24], pattern[12];\n    int i;\n\n    showNext(\"abcabd\");\n    printf(\"\\n\");\n    showNext(\"aaaaab\");\n\n    printf(\"\\n== 匹配实例 ==\\n\");\n    run(\"abcabcabd\", \"abcabd\");\n    run(\"hello world\", \"world\");\n    run(\"hello world\", \"xyz\");\n\n    printf(\"\\n== 最坏情形对照（BF 在此打满 O(n*m)）==\\n\");\n    for (i = 0; i < 20; i++) {\n        worst[i] = 'a';\n    }\n    worst[20] = 'b';\n    worst[21] = '\\0';\n    for (i = 0; i < 9; i++) {\n        pattern[i] = 'a';\n    }\n    pattern[9] = 'b';\n    pattern[10] = '\\0';\n    run(worst, pattern);\n    printf(\"BF 在同一实例下需要 120 次比较，KMP 只需 n+m 量级\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "模式串 \"abcabd\" 的 next 数组:\n  j    :   0   1   2   3   4   5\n  t[j] :   a   b   c   a   b   d\n  next :  -1   0   0   0   1   2\n\n模式串 \"aaaaab\" 的 next 数组:\n  j    :   0   1   2   3   4   5\n  t[j] :   a   a   a   a   a   b\n  next :  -1   0   1   2   3   4\n\n== 匹配实例 ==\n主串 \"abcabcabd\" 模式 \"abcabd\" → 位置=3 KMP比较次数=10\n主串 \"hello world\" 模式 \"world\" → 位置=6 KMP比较次数=11\n主串 \"hello world\" 模式 \"xyz\" → 位置=-1 KMP比较次数=11\n\n== 最坏情形对照（BF 在此打满 O(n*m)）==\n主串 \"aaaaaaaaaaaaaaaaaaaab\" 模式 \"aaaaaaaaab\" → 位置=11 KMP比较次数=32\nBF 在同一实例下需要 120 次比较，KMP 只需 n+m 量级",
+          "note": "\"abcabd\" 的 next = [−1,0,0,0,1,2]：j=4 时前缀 \"abca\" 的最长相等真前后缀是 \"a\"（长度 1），j=5 时前缀 \"abcab\" 的是 \"ab\"（长度 2），与手算一致。\"aaaaab\" 的 next 递增到 4，是「前后缀重合最多」的极端例子，也正是让 BF 退化到最坏的模式串形状。最关键的一行是最坏情形对照：同样的主串与模式串，BF 需要 120 次比较（打满 (n−m+1)×m 上界），KMP 只需 32 次——先 9 次匹配走到 j=9，随后 i 从 9 到 19 每个位置各花 2 次（1 次失配 + 1 次借 next 回退后重新匹配）共 22 次，最后 s[20]=b 与 t[9]=b 匹配 1 次，合计 9+22+1=32，正是 n+m=21+10 的量级。注意这个实例 KMP **也匹配成功（位置 11）**，与 BF 结论一致——两者只是「花了多少次比较」不同，不是「结果」不同。另外 \"hello world\" 找 \"world\" 与找 \"xyz\" 的比较次数都是 11：前者是 6 次失配 + 5 次成功匹配，后者是 11 次全失配，次数相同但性质不同，别把「比较次数」直接当成「匹配难度」。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-07",
+        "ds-ch04-09",
+        "ds-ch04-10"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 8
+    },
+    {
+      "id": "ds-ch04-09",
+      "title": "next 数组的求解：递推过程与代码实现",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "求 next 数组本身就是一个「模式串与自己匹配」的过程，用 k 记录当前最长相等真前后缀长度，失配时 k = next[k] 回退。整个过程 O(m)，是 KMP 里最容易写错的部分。",
+      "content": "## 递推定义\n\n设 `next[0] = −1`，`next[j] = k` 表示 `t[0..k-1] == t[j-k..j-1]` 且 k 是满足此式的最大值。\n\n递推关系：已知 `next[j] = k`，求 `next[j+1]`：\n\n- 若 `t[j] == t[k]` → `next[j+1] = k + 1`（相等前后缀各延长一个字符）；\n- 若 `t[j] != t[k]` → 令 `k = next[k]` 回退到次长的相等前后缀，重新判断；\n  回退到 `k == −1` 时，`next[j+1] = 0`。\n\n## 代码\n\n```c\nvoid getNext(const char *t, int *next)\n{\n    int j = 0, k = -1;\n    int m = strlen(t);\n\n    next[0] = -1;\n    while (j < m - 1) {\n        if (k == -1 || t[j] == t[k]) {\n            j++;  k++;\n            next[j] = k;\n        } else {\n            k = next[k];         /* ★ 回退到次长相等前后缀 */\n        }\n    }\n}\n```\n\n**循环条件是 `j < m - 1` 而不是 `j < m`**：next 数组的有效下标是 0..m−1，\n而 `next[j+1]` 依赖 `t[j]`，所以 j 最大只能到 m−2。写成 `j < m` 会越界写 `next[m]`。\n\n## 手算示例：t = \"abaabc\"\n\n| j | t[0..j-1] | 最长相等真前后缀 | next[j] |\n|---|---|---|---|\n| 0 | 空 | — | −1 |\n| 1 | a | 无 | 0 |\n| 2 | ab | 无 | 0 |\n| 3 | aba | a | 1 |\n| 4 | abaa | a | 1 |\n| 5 | abaab | ab | 2 |\n\n## 为什么求 next 是 O(m)\n\n看起来 `k = next[k]` 的回退可能造成重复工作，但用**摊还分析**：\n`k` 每成功匹配一次只增 1（最多增 m 次），每次回退至少减 1，\n所以回退总次数不超过 m，整个循环体执行次数 ≤ 2m，即 **O(m)**。\n\n## 两种定义的差 1 问题\n\n| 教材 | next[0] | next[j] 含义 |\n|---|---|---|\n| 严蔚敏/朱战立 | −1 | 最长相等真前后缀长度 |\n| 部分国外教材 | 0 | 最长相等真前后缀长度 **+ 1** |\n\n**两套定义都正确，但代码不能混用**。判断方法：看失配时写的是 `j = next[j]` 还是 `j = next[j] - 1`。\n本套卡片与站内题目统一采用 **next[0] = −1** 的国内教材口径。",
+      "keyPoints": [
+        "求 next 数组本身就是「模式串与自己匹配」：k 记录当前最长相等真前后缀长度，next[0] 约定为 −1",
+        "递推：t[j]==t[k] 时 next[j+1]=k+1；不等时 k=next[k] 回退到次长相等前后缀；k 退到 −1 则 next[j+1]=0",
+        "循环条件是 j < m-1 而非 j < m：next[j+1] 依赖 t[j]，j 最大只能到 m−2，写成 j<m 会越界写 next[m]",
+        "求 next 是 O(m)：k 最多增 m 次、每次回退至少减 1，回退总次数不超过 m，循环体执行 ≤ 2m 次（摊还分析）",
+        "存在两套差 1 的定义（国内 next[0]=−1 表示长度，部分国外 next[0]=0 表示长度+1），代码不能混用",
+        "判断用的是哪套定义：看失配时写 j = next[j] 还是 j = next[j] - 1"
+      ],
+      "pitfalls": [
+        "循环条件写成 j < m：越界写 next[m]，若 next 数组恰好开 m 个元素就是缓冲区溢出",
+        "失配时写 k-- 而不是 k = next[k]：只退一格会漏掉次长前后缀，next 值偏大导致匹配错误",
+        "next 数组开成 MAXM 但模式串长度未检查：模式串超过 MAXM 时同样越界",
+        "混用两套 next 定义：匹配时 j = next[j] 配「长度+1」口径的 next，整体错位一格"
+      ],
+      "examples": [
+        {
+          "title": "next 数组求解：多组模式串对照手算，并统计回退次数验证 O(m)",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXM 32\n\n/* 求 next 数组，*backtracks 记录 k = next[k] 回退发生的次数 */\nvoid getNext(const char *t, int *next, int *backtracks)\n{\n    int j = 0, k = -1;\n    int m = (int)strlen(t);\n\n    *backtracks = 0;\n    next[0] = -1;\n    while (j < m - 1) {          /* ★ j < m-1，不是 j < m */\n        if (k == -1 || t[j] == t[k]) {\n            j++;\n            k++;\n            next[j] = k;\n        } else {\n            k = next[k];         /* 回退到次长相等真前后缀 */\n            (*backtracks)++;\n        }\n    }\n}\n\nstatic void show(const char *t)\n{\n    int next[MAXM], j, m = (int)strlen(t), back = 0;\n\n    if (m >= MAXM) {\n        printf(\"模式串过长，跳过\\n\");\n        return;\n    }\n    getNext(t, next, &back);\n    printf(\"t = \\\"%s\\\"  (m=%d)\\n\", t, m);\n    printf(\"  j     :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", j);\n    }\n    printf(\"\\n  t[j]  :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4c\", t[j]);\n    }\n    printf(\"\\n  next  :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", next[j]);\n    }\n    printf(\"\\n  回退次数=%d（应远小于 m，验证 O(m)）\\n\\n\", back);\n}\n\nint main(void)\n{\n    show(\"abaabc\");\n    show(\"abcabd\");\n    show(\"aaaaab\");\n    show(\"ababaa\");\n    show(\"a\");\n    show(\"ab\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "t = \"abaabc\"  (m=6)\n  j     :   0   1   2   3   4   5\n  t[j]  :   a   b   a   a   b   c\n  next  :  -1   0   0   1   1   2\n  回退次数=2（应远小于 m，验证 O(m)）\n\nt = \"abcabd\"  (m=6)\n  j     :   0   1   2   3   4   5\n  t[j]  :   a   b   c   a   b   d\n  next  :  -1   0   0   0   1   2\n  回退次数=2（应远小于 m，验证 O(m)）\n\nt = \"aaaaab\"  (m=6)\n  j     :   0   1   2   3   4   5\n  t[j]  :   a   a   a   a   a   b\n  next  :  -1   0   1   2   3   4\n  回退次数=0（应远小于 m，验证 O(m)）\n\nt = \"ababaa\"  (m=6)\n  j     :   0   1   2   3   4   5\n  t[j]  :   a   b   a   b   a   a\n  next  :  -1   0   0   1   2   3\n  回退次数=1（应远小于 m，验证 O(m)）\n\nt = \"a\"  (m=1)\n  j     :   0\n  t[j]  :   a\n  next  :  -1\n  回退次数=0（应远小于 m，验证 O(m)）\n\nt = \"ab\"  (m=2)\n  j     :   0   1\n  t[j]  :   a   b\n  next  :  -1   0\n  回退次数=0（应远小于 m，验证 O(m)）",
+          "note": "\"abaabc\" 的 next = [−1,0,0,1,1,2] 与手算表完全一致：j=3 时前缀 \"aba\" 的最长相等真前后缀是 \"a\"（1），j=5 时前缀 \"abaab\" 的是 \"ab\"（2）。它回退 2 次，分别发生在 j=1（b≠a）与 j=3（a≠b）。\"aaaaab\" 回退 **0** 次：循环条件是 j < m−1 = 5，j 只走到 4，而 t[1..4] 与 t[0..3] 全是 a、每次直接匹配；末尾那个 b（t[5]）从头到尾没被比较过——**next 数组只用到 t[0..m−2]，最后一个字符永不参与求 next**，这是最容易被忽略的细节。\"ababaa\" 回退 1 次（j=1 时 b≠a），其余各步 t[j]==t[k] 直接成立，所以 next 规整递增到 3。所有例子的回退次数都远小于 m，印证了摊还分析的结论：k 每次 ++ 最多 m 次，故回退总次数 ≤ m，整体 O(m)。m=1 时 while 条件 j < 0 立刻不成立，只留下 next[0] = −1，边界正确；m=2 时只算出 next[1]=0。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-08",
+        "ds-ch04-10",
+        "ds-ch04-07"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 9
+    },
+    {
+      "id": "ds-ch04-10",
+      "title": "nextval 改进：跳过必然失配的位置",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "next 数组在 t[j] == t[next[j]] 时会让 KMP 跳到新位置后立刻又失配，白白多做一次比较。nextval 在这种情况下直接继承 next[next[j]] 的值，把注定失败的跳转一步跳过。",
+      "content": "## next 的不足\n\n模式串 `t = \"aaaab\"`，next = [−1, 0, 1, 2, 3]。\n\n主串在某处与 `t` 比到 `j = 4`（`t[4] = 'b'`）失配，按 next 应令 `j = next[4] = 3`。\n但 `t[3]` 也是 `'a'`，而主串当前字符已经确定不等于 `'b'`…\n更关键的是：**若失配发生在 `j` 且 `t[j] == t[next[j]]`，那么跳到 `next[j]` 后比较的仍是同一个字符，必然再次失配**。\n\n对 `\"aaaab\"`：`t[1]=t[0]='a'`、`t[2]=t[1]='a'`、`t[3]=t[2]='a'`，\n所以 j=1、2、3 处的跳转全都是无用功。\n\n## nextval 的递推\n\n```c\nnextval[0] = -1;\nfor (j = 1; j < m; j++) {\n    if (t[j] == t[next[j]])  nextval[j] = nextval[next[j]];   /* ★ 继承，跳过 */\n    else                     nextval[j] = next[j];\n}\n```\n\n也可以边求 next 边求 nextval（在 `getNext` 的 `next[j] = k` 之后立刻判断\n`t[j] == t[k] ? next[j] = next[k] : next[j] = k`），省一趟扫描。\n\n## 对照表：t = \"aaaab\"\n\n| j | t[j] | next[j] | t[j] == t[next[j]] ? | nextval[j] |\n|---|---|---|---|---|\n| 0 | a | −1 | —（约定） | −1 |\n| 1 | a | 0 | a == a ✓ | nextval[0] = −1 |\n| 2 | a | 1 | a == a ✓ | nextval[1] = −1 |\n| 3 | a | 2 | a == a ✓ | nextval[2] = −1 |\n| 4 | b | 3 | b != a ✗ | next[4] = 3 |\n\n改进后 nextval = [−1, −1, −1, −1, 3]。\nj=1/2/3 失配时直接跳到 −1（即主串前进、模式串从头开始），**省掉了 3 次注定失败的比较**。\n\n## 收益有多大\n\n- **最坏情形（模式串字符全相同，如 \"aaaaab\"）收益最大**：next 是 0,1,2,3,4 逐个退，\n  nextval 直接全退到 −1，比较次数从 O(n·m) 量级降到 O(n)。\n- **模式串字符互不相同时收益为零**：next 全是 0，nextval 也全是 0，两者完全一样。\n- 一般情况下 nextval 不会让复杂度阶数变化（KMP 本来就是 O(n+m)），\n  它减少的是**常数因子**，但在极端模式串上差别非常显著。\n\n## 考试与工程\n\n国内教材与考试普遍要求掌握 nextval 的手算，**手算时必须先写出 next 再逐位判断 t[j] 与 t[next[j]] 是否相等**。\n工程实现里 KMP 已不是首选（Boyer-Moore、Sunday 在实践中更快），\n但 nextval 体现的「跳过注定失败的尝试」思想在剪枝与启发式搜索里反复出现。",
+      "keyPoints": [
+        "next 的不足：若失配时 t[j] == t[next[j]]，跳到 next[j] 后比较的仍是同一字符，必然再次失配，是纯无用功",
+        "nextval 递推：t[j]==t[next[j]] 时 nextval[j] = nextval[next[j]]（继承），否则 nextval[j] = next[j]",
+        "可以边求 next 边求 nextval：在 next[j]=k 之后立刻判断 t[j]==t[k] 则 next[j]=next[k]，省一趟扫描",
+        "t=\"aaaab\" 的 next=[−1,0,1,2,3]，nextval=[−1,−1,−1,−1,3]，省掉 3 次注定失败的比较",
+        "模式串字符全相同时收益最大（比较次数从 O(n·m) 量级降到 O(n)）；字符互不相同时收益为零，两者完全相同",
+        "nextval 不改变 KMP 的 O(n+m) 阶数，减少的是常数因子，但在极端模式串上差别显著"
+      ],
+      "pitfalls": [
+        "手算 nextval 时直接与 next[j] 比较字符而不是与 t[next[j]] 比较：判据是 t[j] == t[next[j]]，不是 next[j] == next[next[j]]",
+        "继承时写 nextval[j] = next[next[j]] 而不是 nextval[next[j]]：会漏掉已经做过的改进，链式继承断掉",
+        "next[j] == −1 时仍去取 t[next[j]]：数组下标 −1 越界，必须先判 j==0 或 next[j]==−1 的约定情形",
+        "以为 nextval 能改变复杂度阶数：KMP 本来就是 O(n+m)，nextval 只优化常数"
+      ],
+      "examples": [
+        {
+          "title": "next 与 nextval 对照：三组模式串 + KMP 比较次数实测差异",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXM 32\n\nvoid getNext(const char *t, int *next)\n{\n    int j = 0, k = -1;\n    int m = (int)strlen(t);\n\n    next[0] = -1;\n    while (j < m - 1) {\n        if (k == -1 || t[j] == t[k]) {\n            j++;\n            k++;\n            next[j] = k;\n        } else {\n            k = next[k];\n        }\n    }\n}\n\n/* 由 next 推 nextval：t[j] == t[next[j]] 时继承 nextval[next[j]] */\nvoid getNextval(const char *t, const int *next, int *nextval)\n{\n    int j, m = (int)strlen(t);\n\n    nextval[0] = -1;\n    for (j = 1; j < m; j++) {\n        if (next[j] >= 0 && t[j] == t[next[j]]) {\n            nextval[j] = nextval[next[j]];   /* ★ 继承已改进的值，链式跳过 */\n        } else {\n            nextval[j] = next[j];\n        }\n    }\n}\n\n/* 通用 KMP，传入 next 或 nextval 都可以；*cmp 只统计真实字符比较 */\nint kmpMatch(const char *s, const char *t, const int *nxt, int *cmp)\n{\n    int n = (int)strlen(s), m = (int)strlen(t);\n    int i = 0, j = 0;\n\n    *cmp = 0;\n    while (i < n && j < m) {\n        if (j == -1) {\n            i++;                 /* 首字符就对不上：主串前进，不算一次比较 */\n            j = 0;\n            continue;\n        }\n        (*cmp)++;\n        if (s[i] == t[j]) {\n            i++;\n            j++;\n        } else {\n            j = nxt[j];\n        }\n    }\n    return (j == m) ? i - j : -1;\n}\n\nstatic void compare(const char *s, const char *t)\n{\n    int next[MAXM], nextval[MAXM], j, m = (int)strlen(t);\n    int cmp1 = 0, cmp2 = 0, p1, p2;\n\n    if (m >= MAXM) {\n        printf(\"模式串过长\\n\");\n        return;\n    }\n    getNext(t, next);\n    getNextval(t, next, nextval);\n\n    printf(\"模式串 \\\"%s\\\"\\n\", t);\n    printf(\"  j      :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", j);\n    }\n    printf(\"\\n  next   :\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", next[j]);\n    }\n    printf(\"\\n  nextval:\");\n    for (j = 0; j < m; j++) {\n        printf(\"%4d\", nextval[j]);\n    }\n    p1 = kmpMatch(s, t, next, &cmp1);\n    p2 = kmpMatch(s, t, nextval, &cmp2);\n    printf(\"\\n  主串 \\\"%s\\\"：next 用 %d 次比较(位置%d)，nextval 用 %d 次(位置%d)，省 %d 次\\n\\n\",\n           s, cmp1, p1, cmp2, p2, cmp1 - cmp2);\n}\n\nint main(void)\n{\n    char worst[24], pat[12];\n    int i;\n\n    printf(\"== 收益实例：主串在模式串中部失配 ==\\n\");\n    compare(\"aaac\", \"aaab\");\n\n    printf(\"== nextval 数组形态：模式串字符几乎全相同 ==\\n\");\n    for (i = 0; i < 20; i++) {\n        worst[i] = 'a';\n    }\n    worst[20] = 'b';\n    worst[21] = '\\0';\n    for (i = 0; i < 9; i++) {\n        pat[i] = 'a';\n    }\n    pat[9] = 'b';\n    pat[10] = '\\0';\n    compare(worst, pat);\n\n    printf(\"== 部分重复：nextval 有改动但本例未被触发 ==\\n\");\n    compare(\"abcabcabd\", \"abcabd\");\n\n    printf(\"== 字符互不相同：nextval 与 next 完全一样 ==\\n\");\n    compare(\"abcdefg\", \"xyz\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== 收益实例：主串在模式串中部失配 ==\n模式串 \"aaab\"\n  j      :   0   1   2   3\n  next   :  -1   0   1   2\n  nextval:  -1  -1  -1   2\n  主串 \"aaac\"：next 用 7 次比较(位置-1)，nextval 用 5 次(位置-1)，省 2 次\n\n== nextval 数组形态：模式串字符几乎全相同 ==\n模式串 \"aaaaaaaaab\"\n  j      :   0   1   2   3   4   5   6   7   8   9\n  next   :  -1   0   1   2   3   4   5   6   7   8\n  nextval:  -1  -1  -1  -1  -1  -1  -1  -1  -1   8\n  主串 \"aaaaaaaaaaaaaaaaaaaab\"：next 用 32 次比较(位置11)，nextval 用 32 次(位置11)，省 0 次\n\n== 部分重复：nextval 有改动但本例未被触发 ==\n模式串 \"abcabd\"\n  j      :   0   1   2   3   4   5\n  next   :  -1   0   0   0   1   2\n  nextval:  -1   0   0  -1   0   2\n  主串 \"abcabcabd\"：next 用 10 次比较(位置3)，nextval 用 10 次(位置3)，省 0 次\n\n== 字符互不相同：nextval 与 next 完全一样 ==\n模式串 \"xyz\"\n  j      :   0   1   2\n  next   :  -1   0   0\n  nextval:  -1   0   0\n  主串 \"abcdefg\"：next 用 7 次比较(位置-1)，nextval 用 7 次(位置-1)，省 0 次",
+          "note": "第一组 \"aaac\" 配 \"aaab\" 是唯一真正省了比较的实例：失配发生在 j=3（c≠b），按 next 要退到 2、1、0、−1 共 4 步（其中 j=2、j=1 两步比的还是同一个 a，注定失败），按 nextval 从 3 直接退到 2、再退到 −1，两步就结束，省下 2 次无用比较（7→5）。第二组 \"aaaaaaaaab\" 展示了 nextval 数组的极端形态：next 是 0,1,2,…,8 逐个递增，而 j=1..8 全部满足 t[j]==t[next[j]]（都是 a），链式继承一路退到 nextval[0]=−1，只有 j=9（t[9]=b 与 t[8]=a 不等）保留 next[9]=8。但**本例比较次数并没有减少**，因为主串前 20 个字符全是 a、模式串前 9 个也全是 a，匹配一路顺推到 j=9 才第一次失配，此后每次都是 next[9]=nextval[9]=8 这一条跳转，改进点根本没被触发——「nextval 数组差别很大」不等于「比较次数一定减少」，两者要分开看。第三组 \"abcabd\" 的 nextval = [−1,0,0,−1,0,2]，与 next 在 j=3、j=4 两处不同（t[3]=a==t[next[3]=0]=a 故继承 −1；t[4]=b==t[next[4]=1]=b 故继承 nextval[1]=0），但这次匹配的失配只发生在 j=5，走的是 nextval[5]=next[5]=2，所以省 0 次。第四组 \"xyz\" 三个字符互不相同，不存在 t[j]==t[next[j]] 的位置，nextval 与 next 完全一致，印证了「模式串字符互不相同时收益为零」。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-09",
+        "ds-ch04-08",
+        "ds-ch04-07"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 10
+    },
+    {
+      "id": "ds-ch04-11",
+      "title": "串的基本运算：复制、比较、求长、拼接、求子串与定位",
+      "section": "4.3 串的类型定义、存储结构及其运算",
+      "summary": "串的运算对象是子串而不是单个字符，这是它与线性表的本质差别。六个基本运算（赋值/比较/求长/拼接/求子串/定位）都可以自己实现，也是理解 C 标准库字符串函数的基础。",
+      "content": "## 六个基本运算\n\n| 运算 | 语义 | C 标准库对应 | 自实现要点 |\n|---|---|---|---|\n| StrAssign(s, t) | 把 t 赋给 s | `strcpy` | 检查容量、补 \\0 |\n| StrCompare(s, t) | s>t 返回正、相等 0、s<t 负 | `strcmp` | 逐字符比，先遇到不等即定胜负 |\n| StrLength(s) | 返回串长 | `strlen` | 扫到 \\0，O(n) |\n| Concat(s, t) | 拼接 | `strcat` | 检查容量，**从 s 的 \\0 处开始写** |\n| SubString(sub, s, pos, len) | 取子串 | `strncpy` + 补 \\0 | pos 从 1 计，越界要处理 |\n| Index(s, t) | 定位子串 | `strstr` | 返回位置（从 1 计）或 0 |\n\n## 三个最容易写错的细节\n\n**① StrCompare 不能用差值当返回值就完事**\n\n```c\nwhile (*s && *t && *s == *t) { s++; t++; }\nreturn (unsigned char)*s - (unsigned char)*t;   /* ★ 必须转 unsigned char */\n```\n\n不转 `unsigned char` 时，若字符值 > 127（中文、扩展 ASCII）会被当成负数，比较结果反号。\n`strcmp` 的标准只规定返回值的**符号**，不规定具体数值，所以返回 −1/0/1 也合法。\n\n**② Concat 的写入起点**\n\n必须从 `s` 的结束符位置开始写，并且写完补一个新的 `\\0`：\n\n```c\nint i = 0, j = 0;\nwhile (s[i] != '\\0') i++;        /* 找到 s 的末尾 */\nwhile (t[j] != '\\0') s[i++] = t[j++];\ns[i] = '\\0';                     /* ★ 忘了这句就不是合法 C 字符串 */\n```\n\n**③ SubString 的位置从 1 计且必须检查越界**\n\n教材口径里 `pos` 从 1 开始，所以数组下标是 `pos - 1`。\n`pos` 超过串长、或 `pos + len - 1` 超过串长时，应当返回错误码而不是截断——\n**静默截断会让调用方拿到一个语义错误的子串**，比报错危险得多。\n\n## 为什么自实现而不是直接用标准库\n\n- 教学与考试要求能手写；\n- 定长串（0 号单元存长度）没有 \\0，标准库函数完全用不上；\n- 需要在运算里插入自己的逻辑（统计比较次数、检测截断、支持宽字符）。\n\n实际工程里当然优先用标准库，它们经过高度优化（`strlen`/`memcpy` 通常有 SIMD 实现）。",
+      "keyPoints": [
+        "串的六个基本运算：赋值、比较、求长、拼接、求子串、定位，运算对象是子串而非单个字符，这是与线性表的本质差别",
+        "StrCompare 返回差值时必须把字符转成 unsigned char，否则字符值 >127 时被当负数导致比较结果反号",
+        "strcmp 的标准只规定返回值的符号，不规定具体数值，返回 −1/0/1 同样合法",
+        "Concat 必须从 s 的结束符位置开始写，写完补一个新的 \\0，漏补就不是合法 C 字符串",
+        "SubString 的 pos 从 1 计（数组下标是 pos−1），pos 或 pos+len−1 越界应返回错误码而不是静默截断",
+        "自实现的价值在教学、定长串无 \\0 时标准库用不上、以及需要插入自定义逻辑；工程上优先用标准库（常有 SIMD 优化）"
+      ],
+      "pitfalls": [
+        "StrCompare 不转 unsigned char：处理中文或扩展 ASCII 时比较结果反号",
+        "Concat 忘记补结束符：后续所有字符串函数都会越界读",
+        "SubString 越界时静默截断：调用方拿到语义错误的子串却毫不知情",
+        "StrLength 用 sizeof 而不是 strlen：对数组得到的是声明容量，对指针参数得到的是指针大小（8）",
+        "printf(..., strConcat(a,b), a, strLength(a))：C 不规定实参求值顺序，strLength 可能先于 strConcat 执行，打印出「串已更新、长度还是旧值」的矛盾结果 —— 会改状态的调用必须先赋值给局部变量再进 printf"
+      ],
+      "examples": [
+        {
+          "title": "六个基本串运算的自实现（含 unsigned char 比较与越界检查）",
+          "code": "#include <stdio.h>\n#include <string.h>\n\n#define MAXLEN 32\n\n/* ① 赋值：容量不足返回 1（明确报错，不静默截断） */\nint strAssign(char *s, const char *t)\n{\n    int i = 0;\n\n    while (t[i] != '\\0') {\n        if (i >= MAXLEN - 1) {\n            s[i] = '\\0';\n            return 1;            /* 容量不足 */\n        }\n        s[i] = t[i];\n        i++;\n    }\n    s[i] = '\\0';\n    return 0;\n}\n\n/* ② 比较：返回正/0/负，字符必须转 unsigned char */\nint strCompare(const char *s, const char *t)\n{\n    while (*s != '\\0' && *t != '\\0' && *s == *t) {\n        s++;\n        t++;\n    }\n    return (int)(unsigned char)*s - (int)(unsigned char)*t;\n}\n\n/* ③ 求长：扫到 \\0，O(n) */\nint strLength(const char *s)\n{\n    int n = 0;\n\n    while (s[n] != '\\0') {\n        n++;\n    }\n    return n;\n}\n\n/* ④ 拼接：从 s 的结束符处开始写，写完补新的 \\0；容量不足返回 1 */\nint strConcat(char *s, const char *t)\n{\n    int i = 0, j = 0;\n\n    while (s[i] != '\\0') {\n        i++;                     /* 找到 s 的末尾 */\n    }\n    while (t[j] != '\\0') {\n        if (i >= MAXLEN - 1) {\n            s[i] = '\\0';\n            return 1;\n        }\n        s[i++] = t[j++];\n    }\n    s[i] = '\\0';                 /* ★ 必须补结束符 */\n    return 0;\n}\n\n/* ⑤ 求子串：pos 从 1 计；越界返回 1，不静默截断 */\nint subString(char *sub, const char *s, int pos, int len)\n{\n    int n = strLength(s), i;\n\n    if (pos < 1 || len < 0 || pos + len - 1 > n) {\n        sub[0] = '\\0';\n        return 1;                /* ★ 越界明确报错 */\n    }\n    for (i = 0; i < len; i++) {\n        sub[i] = s[pos - 1 + i]; /* pos 从 1 计，下标是 pos-1 */\n    }\n    sub[len] = '\\0';\n    return 0;\n}\n\n/* ⑥ 定位：返回第一次出现的位置（从 1 计），未找到返回 0 */\nint strIndex(const char *s, const char *t)\n{\n    int n = strLength(s), m = strLength(t), i, j, k;\n\n    if (m == 0) {\n        return 1;                /* 约定空串位于开头 */\n    }\n    for (i = 0; i <= n - m; i++) {\n        for (j = 0, k = i; j < m && s[k] == t[j]; j++, k++) {\n            ;                    /* 逐字符比对 */\n        }\n        if (j == m) {\n            return i + 1;        /* 位置从 1 计 */\n        }\n    }\n    return 0;\n}\n\nint main(void)\n{\n    char a[MAXLEN], b[MAXLEN], sub[16];\n    int rc, len;\n\n    strAssign(a, \"data structure\");\n    strAssign(b, \"course\");\n    printf(\"a = \\\"%s\\\"  长度 = %d\\n\", a, strLength(a));\n    printf(\"b = \\\"%s\\\"  长度 = %d\\n\", b, strLength(b));\n\n    printf(\"\\n比较: strCompare(a,b) = %d（>0 表示 a 大）\\n\", strCompare(a, b));\n    printf(\"      strCompare(a,a) = %d\\n\", strCompare(a, a));\n    printf(\"      strCompare(\\\"abc\\\",\\\"abd\\\") = %d（<0）\\n\", strCompare(\"abc\", \"abd\"));\n\n    printf(\"\\n子串（pos 从 1 计）:\\n\");\n    printf(\"  SubString(a,6,9) = \\\"%s\\\" 返回码 %d\\n\",\n           subString(sub, a, 6, 9) == 0 ? sub : \"(失败)\", 0);\n    printf(\"  SubString(a,1,4)  = \\\"%s\\\"\\n\", subString(sub, a, 1, 4) == 0 ? sub : \"(失败)\");\n    printf(\"  SubString(a,10,99) 返回码 = %d（越界报错，不截断）\\n\",\n           subString(sub, a, 10, 99));\n\n    printf(\"\\n定位:\\n\");\n    printf(\"  Index(a,\\\"structure\\\") = %d\\n\", strIndex(a, \"structure\"));\n    printf(\"  Index(a,\\\"data\\\")      = %d\\n\", strIndex(a, \"data\"));\n    printf(\"  Index(a,\\\"xyz\\\")       = %d\\n\", strIndex(a, \"xyz\"));\n\n    printf(\"\\n拼接:\\n\");\n    /* ★ 先调用再打印：printf 的实参求值顺序 C 标准不规定，\n       若把 strConcat(a,b) 与 strLength(a) 写在同一次调用里，\n       strLength 可能先于 strConcat 执行，读到的是拼接前的旧长度 */\n    rc = strConcat(a, \"-\");\n    len = strLength(a);\n    printf(\"  strConcat(a,\\\"-\\\") 返回码 = %d → a = \\\"%s\\\"  长度 = %d\\n\", rc, a, len);\n\n    rc = strConcat(a, b);\n    len = strLength(a);\n    printf(\"  strConcat(a,b)    返回码 = %d → a = \\\"%s\\\"  长度 = %d\\n\", rc, a, len);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "a = \"data structure\"  长度 = 14\nb = \"course\"  长度 = 6\n\n比较: strCompare(a,b) = 1（>0 表示 a 大）\n      strCompare(a,a) = 0\n      strCompare(\"abc\",\"abd\") = -1（<0）\n\n子串（pos 从 1 计）:\n  SubString(a,6,9) = \"structure\" 返回码 0\n  SubString(a,1,4)  = \"data\"\n  SubString(a,10,99) 返回码 = 1（越界报错，不截断）\n\n定位:\n  Index(a,\"structure\") = 6\n  Index(a,\"data\")      = 1\n  Index(a,\"xyz\")       = 0\n\n拼接:\n  strConcat(a,\"-\") 返回码 = 0 → a = \"data structure-\"  长度 = 15\n  strConcat(a,b)    返回码 = 0 → a = \"data structure-course\"  长度 = 21",
+          "note": "strCompare(\"data structure\",\"course\") 返回 1 而不是 100——因为 d(100) − c(99) = 1，返回值的符号才是语义，具体数值不保证。SubString(a,6,9) 取到 \"structure\"，pos=6 对应数组下标 5，正是 pos−1 的换算。SubString(a,10,99) 返回 1 明确报错，而不是静默给出一个被截断的子串。定位返回 6 与 1（从 1 计），未找到返回 0。两次拼接后长度 21 = 14 + 1 + 6，结束符维护正确。本示例的拼接部分刻意写成「先 rc = strConcat(...)、len = strLength(...)，再 printf」三步，而不是 printf(..., strConcat(a,b), a, strLength(a)) 一步到位：C 标准不规定实参求值顺序，后一种写法在 gcc 上实测会先算 strLength(a) 得到 15（拼接前的长度）再执行 strConcat，打印出「a 已经是新串、长度却是旧值」的自相矛盾结果。凡是实参里有会修改状态的调用，都必须先落地到局部变量。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-01",
+        "ds-ch04-05",
+        "ds-ch04-07"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 11
+    },
+    {
+      "id": "ds-ch04-12",
+      "title": "数组的顺序存储与地址计算：行主序与列主序",
+      "section": "4.4 数组的顺序表示和实现",
+      "summary": "数组是定长线性表的推广，每个元素受 n 个线性关系约束。维数与各维长度一旦确定，元素个数就固定不变，因此数组只支持存取和修改、不支持插入删除，天然适合顺序存储。行主序与列主序的地址公式是本章最高频的计算考点。",
+      "content": "## 为什么数组只用顺序存储\n\n数组可以看成**定长线性表的推广**：一维数组是线性表，二维数组是「元素也是一维数组」的线性表，\nn 维数组则是每个元素都受 n 个线性关系约束的推广。\n\n关键差别在于**定长**：维数和各维长度一旦确定，元素个数就不再变化。\n所以数组只有两种运算——**存取**（按下标读）与**修改**（按下标写），没有插入和删除。\n既然不增删，就没有「移动元素」的开销，顺序存储的连续内存正好把随机存取做到 O(1)。\n链表在这里毫无优势，反而每个结点要多存 n 个指针。\n\n## 地址计算公式\n\n设每个元素占 L 个存储单元，`LOC(a[0][0])` 是首地址：\n\n| 存储次序 | 二维 a[i][j] 的地址 | 谁在用 |\n|---|---|---|\n| **行主序** row-major | `LOC = LOC(a[0][0]) + (i*n + j) * L` | **C / C++ / Python 列表** |\n| **列主序** column-major | `LOC = LOC(a[0][0]) + (j*m + i) * L` | Fortran / MATLAB / Pascal |\n\n其中 m 是行数、n 是列数。记忆口诀：**行主序「先行后列」，走完一行才换下一行**，\n所以 i 要乘上「一行的长度 n」。\n\n推广到 n 维（各维长度为 d[0..n-1]，行主序）：\n\n```c\nLOC(a[i0][i1]...[ik]) = base + (i0*d[1]*d[2]*...*d[k]\n                              + i1*d[2]*...*d[k]\n                              + ...\n                              + ik) * L\n```\n\n也就是**每一维的下标乘以它后面所有维长度的乘积**，再求和。\n三维 `a[p][q][r]`（维度 P×Q×R）行主序即 `base + (p*Q*R + q*R + r) * L`。\n\n## 三个必须记牢的推论\n\n1. **C 的二维数组在内存里就是一段连续空间**，`a[i][j]` 等价于 `*(base + i*n + j)`，\n   也等价于 `*(*(a + i) + j)`——所以二维数组名 `a` 是「指向 int[n] 的指针」，步长是一整行。\n2. **按下标存取是 O(1)**：地址是一次乘加算出来的，不需要查找。这正是数组相对链表的核心优势。\n3. **遍历顺序影响性能但不影响正确性**：行主序下按行遍历（外层 i、内层 j）是顺序访问，\n   缓存命中率高；按列遍历每次都跨 n 个元素，缓存不友好，大矩阵上可能慢数倍。",
+      "keyPoints": [
+        "数组是定长线性表的推广：维数与各维长度确定后元素个数不变，只有存取和修改两种运算，没有插入删除",
+        "正因为不增删、不需要移动元素，数组一律采用顺序存储，随机存取做到 O(1)",
+        "行主序地址公式 LOC(a[i][j]) = LOC(a[0][0]) + (i*n + j)*L，n 是列数（一行的长度）",
+        "列主序地址公式 LOC(a[i][j]) = LOC(a[0][0]) + (j*m + i)*L，m 是行数；C 是行主序，Fortran/MATLAB 是列主序",
+        "n 维推广：每一维的下标乘以「它后面所有维长度的乘积」再求和，如 a[p][q][r]（P×Q×R）为 base+(p*Q*R+q*R+r)*L",
+        "行主序下按行遍历是顺序访问、缓存友好；按列遍历跨步访问，大矩阵上可能慢数倍"
+      ],
+      "pitfalls": [
+        "行主序公式里把 i 乘成 m（行数）：i 后面跟着的是一整行，必须乘**列数 n**",
+        "忘了乘元素大小 L：题目给的是「每个元素占 4 字节」时，偏移量要乘 4 才是字节地址",
+        "把下标当成从 1 计：公式默认 0-based，若题目说 a[1][1] 是第一个元素，必须先减 1 再代入",
+        "混淆「行主序」与「按行优先存放上/下三角」：前者是整个矩阵的存储次序，后者是压缩存储的扫描顺序"
+      ],
+      "examples": [
+        {
+          "title": "地址公式实测：用 char 数组让「偏移量 = 公式值」，逐格对照行主序与列主序",
+          "code": "#include <stdio.h>\n\n#define M 3\n#define N 4\n\nint main(void)\n{\n    char a[M][N];\n    char *base;\n    int i, j, actual, rowMajor, colMajor;\n    int rowHit = 0, colHit = 0;\n\n    /* 填入 A..L，便于观察内存里的实际排列次序 */\n    for (i = 0; i < M; i++) {\n        for (j = 0; j < N; j++) {\n            a[i][j] = (char)('A' + i * N + j);\n        }\n    }\n    base = &a[0][0];\n\n    printf(\"a[%d][%d] 共 %d 个 char 元素（每个 1 字节，偏移量正好等于公式值）\\n\",\n           M, N, M * N);\n    printf(\"内存中依次是：\");\n    for (i = 0; i < M * N; i++) {\n        printf(\"%c\", base[i]);\n    }\n    printf(\"\\n\\n\");\n\n    printf(\"行主序 LOC(i,j) = base + (i*N + j)；列主序 LOC(i,j) = base + (j*M + i)\\n\");\n    for (i = 0; i < M; i++) {\n        for (j = 0; j < N; j++) {\n            actual = (int)(&a[i][j] - base);   /* char* 相减，单位就是字节 */\n            rowMajor = i * N + j;\n            colMajor = j * M + i;\n            if (actual == rowMajor) {\n                rowHit++;\n            }\n            if (actual == colMajor) {\n                colHit++;\n            }\n            printf(\"a[%d][%d] 内容=%c 实际偏移=%d 行主序=%d(%s) 列主序=%d(%s)\\n\",\n                   i, j, a[i][j], actual,\n                   rowMajor, actual == rowMajor ? \"命中\" : \"不符\",\n                   colMajor, actual == colMajor ? \"命中\" : \"不符\");\n        }\n    }\n\n    printf(\"\\n行主序命中 %d/%d，列主序命中 %d/%d → C 语言按行主序存储\\n\",\n           rowHit, M * N, colHit, M * N);\n    printf(\"sizeof(a)=%d sizeof(a[0])=%d sizeof(a[0][0])=%d\\n\",\n           (int)sizeof(a), (int)sizeof(a[0]), (int)sizeof(a[0][0]));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "a[3][4] 共 12 个 char 元素（每个 1 字节，偏移量正好等于公式值）\n内存中依次是：ABCDEFGHIJKL\n\n行主序 LOC(i,j) = base + (i*N + j)；列主序 LOC(i,j) = base + (j*M + i)\na[0][0] 内容=A 实际偏移=0 行主序=0(命中) 列主序=0(命中)\na[0][1] 内容=B 实际偏移=1 行主序=1(命中) 列主序=3(不符)\na[0][2] 内容=C 实际偏移=2 行主序=2(命中) 列主序=6(不符)\na[0][3] 内容=D 实际偏移=3 行主序=3(命中) 列主序=9(不符)\na[1][0] 内容=E 实际偏移=4 行主序=4(命中) 列主序=1(不符)\na[1][1] 内容=F 实际偏移=5 行主序=5(命中) 列主序=4(不符)\na[1][2] 内容=G 实际偏移=6 行主序=6(命中) 列主序=7(不符)\na[1][3] 内容=H 实际偏移=7 行主序=7(命中) 列主序=10(不符)\na[2][0] 内容=I 实际偏移=8 行主序=8(命中) 列主序=2(不符)\na[2][1] 内容=J 实际偏移=9 行主序=9(命中) 列主序=5(不符)\na[2][2] 内容=K 实际偏移=10 行主序=10(命中) 列主序=8(不符)\na[2][3] 内容=L 实际偏移=11 行主序=11(命中) 列主序=11(命中)\n\n行主序命中 12/12，列主序命中 2/12 → C 语言按行主序存储\nsizeof(a)=12 sizeof(a[0])=4 sizeof(a[0][0])=1",
+          "note": "内存里依次是 ABCDEFGHIJKL，正是「先把第 0 行放满、再放第 1 行」的行主序排列。行主序公式 12 格全部命中；列主序只有 (0,0) 与 (2,3) 两格偶然相同（0=0、11=11），因为 3×4 矩阵里 i*4+j == j*3+i 只在 3i == 2j 时成立。本例刻意用 char（1 字节）而不是 int，这样「字节偏移量」直接等于「公式里的元素序号」，不必再乘 L，验证起来一目了然；换成 int 只需把每个偏移量再乘 sizeof(int)=4。sizeof(a)=12 说明整个二维数组就是 12 个连续字节，没有任何额外的行指针开销——这一点与后面要讲的「动态二维数组（指针的指针）」有本质区别。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-02",
+        "ds-ch04-13",
+        "ds-ch02-02"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 12
+    },
+    {
+      "id": "ds-ch04-13",
+      "title": "数组作函数参数会退化：sizeof 陷阱与两类「数组指针 / 指针数组」",
+      "section": "4.4 数组的顺序表示和实现",
+      "summary": "数组名在绝大多数表达式中会退化成「指向首元素的指针」，函数形参 int a[] 与 int *a 完全等价，因此函数内部 sizeof(a) 得到的是指针大小而不是数组大小。二维数组形参必须给出除第一维以外的所有维度，否则编译器算不出地址。",
+      "content": "## 退化规则与三个例外\n\n数组名 `a` 在表达式中会自动转换成 `&a[0]`（类型 `T*`），这叫**数组退化**（array decay）。\n但有**三个例外**，此时 `a` 仍代表整个数组：\n\n| 场景 | 表达式 | sizeof 结果（int a[6]，64 位） |\n|---|---|---|\n| sizeof 运算符 | `sizeof(a)` | 24（整个数组） |\n| 取地址运算符 | `sizeof(&a)` | 8，但类型是 `int(*)[6]` |\n| 字符串字面量初始化字符数组 | `char s[] = \"abc\";` | 4（含 \\0） |\n\n除此之外，`a`、`a+0`、`*a` 里的 `a` 都是指针。**函数形参是最重要的一例**：\n\n```c\nvoid f(int a[])   { /* sizeof(a) == 8，是指针 */ }\nvoid f(int *a)    { /* 与上面完全等价，编译器眼里没有区别 */ }\nvoid f(int a[10]) { /* 也等价！这个 10 只是注释，不做任何检查 */ }\n```\n\n所以**函数必须额外接收元素个数**，这是 C 的标准写法：`void f(int a[], int n)`。\n\n## 二维数组形参：为什么必须写列数\n\n```c\nint sum(int a[][N], int rows);   /* ✓ 正确：N 必须是编译期常量 */\nint sum(int a[][],  int rows);   /* ✗ 编译错误 */\nint sum(int **a,    int rows);   /* ✗ 语义错误：int** 与 int[N] 的内存布局不同 */\n```\n\n原因是编译器要把 `a[i][j]` 翻译成 `*(base + i*N + j)`，**N 是地址计算的必需参数**。\n而行数 rows 只是循环边界，运行时给就行。\n\nC99 的变长数组（VLA）可以让列数也在运行时确定，但必须**先声明列数变量**：\n\n```c\nint sum(int rows, int cols, int a[rows][cols]);   /* VLA 形参，C99 */\n```\n\n## 指针数组 vs 数组指针\n\n| 写法 | 读法 | 含义 | sizeof（64 位） |\n|---|---|---|---|\n| `int *p[3];` | p 是数组，元素是 int* | **3 个指针** | 24 |\n| `int (*q)[4];` | q 是指针，指向 int[4] | **1 个指针，指向一整行** | 8 |\n\n括号决定了结合顺序：`*` 与 `[]` 同优先级且左结合，所以 `int *p[3]` 里 `p[3]` 先结合，\np 是数组；加括号把 `*q` 圈起来，q 才是指针。\n\n`q + 1` 跨过的是**一整行**（4 个 int = 16 字节），这正是二维数组形参 `int a[][4]` 的底层机制。\n而「指针数组」常用于存放**长度不等的多个串**（`char *argv[]`），各行互相独立、不必等长。",
+      "keyPoints": [
+        "数组名在表达式中退化为 &a[0]；三个例外是 sizeof(a)、&a、以及用字符串字面量初始化字符数组",
+        "函数形参 int a[]、int *a、int a[10] 三者完全等价，方括号里的数字只是注释不做检查，所以必须额外传元素个数 n",
+        "函数内 sizeof(a) 得到的是指针大小（64 位是 8），不是数组大小——这是最高频的 sizeof 陷阱",
+        "二维数组形参必须给出除第一维外的所有维度 int a[][N]，因为编译器要用 N 把 a[i][j] 翻译成 *(base+i*N+j)",
+        "int **a 不能接收 int a[M][N]：前者是「指针的指针」（行与行可以不连续），后者是连续的一整块",
+        "int *p[3] 是 3 个指针（sizeof=24）；int (*q)[4] 是 1 个指向整行的指针（sizeof=8），q+1 跨过 4 个 int"
+      ],
+      "pitfalls": [
+        "在函数里用 sizeof(a)/sizeof(a[0]) 求元素个数：得到的是 8/4=2（64 位）而不是真实个数，必须靠形参传进来",
+        "把 int a[M][N] 传给 int **形参：编译能过（或只给警告）但运行期按错误的步长访问，读到垃圾数据",
+        "二维数组形参漏写列数 int a[][]：直接编译错误，编译器无法计算地址",
+        "把 int (*q)[4] 写成 int *q[4]：前者是指向行的指针，后者是 4 个独立指针，语义与 sizeof 都不同",
+        "printf(..., f(a), sizeof(a)) 之类把会改状态的调用与读取混在一次 printf 里：C 不规定实参求值顺序",
+        "在数组形参上直接写 sizeof(a)：gcc 有专门的 -Wsizeof-array-argument 警告（-Wall 即触发），本项目要求 0 警告，所以形参要老实写成 int *a —— 反正 int a[] 也会被编译器调整成 int *a"
+      ],
+      "examples": [
+        {
+          "title": "sizeof 的三个例外、形参退化、指针数组与数组指针对照实测",
+          "code": "#include <stdio.h>\n\n#define M 3\n#define N 4\n\n/* 形参写 int a[] 与 int *a 完全等价——编译器会把数组形参「调整」成指针，\n   这正是 sizeof 得到指针大小的原因。这里直接写成 int *a，\n   一是语义更诚实，二是避免 gcc 的 -Wsizeof-array-argument 警告。 */\nvoid sizeInFunc(int *a, int n)\n{\n    printf(\"函数内 sizeof(a)=%d（指针大小），必须靠形参 n=%d 才知道元素个数\\n\",\n           (int)sizeof(a), n);\n}\n\n/* 二维数组形参：除第一维外都必须给出，编译器要用 N 算地址 */\nint sumMatrix(int a[][N], int rows)\n{\n    int i, j, s = 0;\n\n    for (i = 0; i < rows; i++) {\n        for (j = 0; j < N; j++) {\n            s += a[i][j];\n        }\n    }\n    return s;\n}\n\n/* 数组指针：指向「一整行」的指针，p++ 一次跨过 N 个 int */\nint sumByRowPointer(int (*p)[N], int rows)\n{\n    int i, j, s = 0;\n\n    for (i = 0; i < rows; i++) {\n        for (j = 0; j < N; j++) {\n            s += (*p)[j];          /* 等价于 p[i][j] */\n        }\n        p++;                       /* ★ 一次跨过一整行 */\n    }\n    return s;\n}\n\nint main(void)\n{\n    int a[6] = {1, 2, 3, 4, 5, 6};\n    int m[M][N];\n    int *ptrArray[3];              /* 指针数组：3 个 int* */\n    int (*arrayPtr)[N];            /* 数组指针：1 个指向 int[N] 的指针 */\n    int i, j;\n\n    for (i = 0; i < M; i++) {\n        for (j = 0; j < N; j++) {\n            m[i][j] = i * N + j + 1;   /* 填入 1..12 */\n        }\n    }\n    ptrArray[0] = a;\n    ptrArray[1] = a + 2;\n    ptrArray[2] = a + 5;\n    arrayPtr = m;\n\n    printf(\"== sizeof 的三个例外 ==\\n\");\n    printf(\"sizeof(a)=%d = 6*%d（数组名在 sizeof 里不退化）\\n\",\n           (int)sizeof(a), (int)sizeof(int));\n    printf(\"sizeof(&a)=%d（取地址里也不退化，类型是 int(*)[6]）\\n\",\n           (int)sizeof(&a));\n    printf(\"sizeof(a+0)=%d（普通表达式里退化成 int*）\\n\", (int)sizeof(a + 0));\n    sizeInFunc(a, 6);\n\n    printf(\"\\n== 指针数组 vs 数组指针 ==\\n\");\n    printf(\"ptrArray 是 3 个指针，sizeof=%d；指向 a 的第 0/2/5 个元素：\"\n           \"*ptrArray[0]=%d *ptrArray[1]=%d *ptrArray[2]=%d\\n\",\n           (int)sizeof(ptrArray), *ptrArray[0], *ptrArray[1], *ptrArray[2]);\n    printf(\"arrayPtr 是 1 个指针，sizeof=%d；指向 m 的第 0 行：\"\n           \"(*arrayPtr)[0]=%d (*arrayPtr)[3]=%d\\n\",\n           (int)sizeof(arrayPtr), (*arrayPtr)[0], (*arrayPtr)[3]);\n    printf(\"arrayPtr+1 跨过一整行：(*(arrayPtr+1))[0]=%d（应为 5）\\n\",\n           (*(arrayPtr + 1))[0]);\n\n    printf(\"\\n== 二维数组与形参 ==\\n\");\n    printf(\"sizeof(m)=%d = %d*%d*%d\\n\", (int)sizeof(m), M, N, (int)sizeof(int));\n    printf(\"sizeof(m[0])=%d（一行的字节数）\\n\", (int)sizeof(m[0]));\n    printf(\"sumMatrix=%d sumByRowPointer=%d（1..12 之和应为 78）\\n\",\n           sumMatrix(m, M), sumByRowPointer(m, M));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== sizeof 的三个例外 ==\nsizeof(a)=24 = 6*4（数组名在 sizeof 里不退化）\nsizeof(&a)=8（取地址里也不退化，类型是 int(*)[6]）\nsizeof(a+0)=8（普通表达式里退化成 int*）\n函数内 sizeof(a)=8（指针大小），必须靠形参 n=6 才知道元素个数\n\n== 指针数组 vs 数组指针 ==\nptrArray 是 3 个指针，sizeof=24；指向 a 的第 0/2/5 个元素：*ptrArray[0]=1 *ptrArray[1]=3 *ptrArray[2]=6\narrayPtr 是 1 个指针，sizeof=8；指向 m 的第 0 行：(*arrayPtr)[0]=1 (*arrayPtr)[3]=4\narrayPtr+1 跨过一整行：(*(arrayPtr+1))[0]=5（应为 5）\n\n== 二维数组与形参 ==\nsizeof(m)=48 = 3*4*4\nsizeof(m[0])=16（一行的字节数）\nsumMatrix=78 sumByRowPointer=78（1..12 之和应为 78）",
+          "note": "同样是 a，在 main 里 sizeof(a)=24（整个数组），传进 sizeInFunc 后 sizeof(a)=8（退化成的指针）——这一行对比就是「数组作函数参数会退化」最直接的证据，也是为什么 C 里必须写成 f(int a[], int n)。sizeof(&a) 同样是 8，但类型是 int(*)[6]，所以 &a+1 会跳过 24 字节而 a+1 只跳过 4 字节。ptrArray（3 个指针，24 字节）与 arrayPtr（1 个指针，8 字节）的 sizeof 差 3 倍，arrayPtr+1 直接把下标推进了一整行，(*(arrayPtr+1))[0] 取到的是 m[1][0]=5。两种求和方式都得 78，说明 int a[][N] 与 int (*p)[N] 描述的是同一种内存布局。注意：所有 8 都是 64 位平台上的指针大小，32 位平台上会是 4，但「函数内 sizeof 变小」这个结论不变。还有一个工程细节：如果在 int a[] 形参上直接写 sizeof(a)，gcc 会报 -Wsizeof-array-argument 警告（「sizeof on array function parameter will return size of int*」），因为这个写法几乎总是程序员的误解。本项目要求 -Wall -Wextra 下 0 警告，所以示例把形参老实写成 int *a——反正 int a[] 也会被编译器调整成 int *a，语义完全相同。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-12",
+        "ds-ch04-14",
+        "ds-ch02-02"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 13
+    },
+    {
+      "id": "ds-ch04-14",
+      "title": "动态数组：malloc/realloc 与二维动态分配的三种写法",
+      "section": "4.4 数组的顺序表示和实现",
+      "summary": "编译期不知道规模时就要用动态数组。二维动态分配有三种写法：连续块加行指针、逐行 malloc、C99 变长数组，它们的内存布局、释放方式和缓存表现都不同。realloc 扩容必须先用临时指针接返回值，否则失败时原内存直接丢失。",
+      "content": "## 为什么需要动态数组\n\n顺序表、稀疏矩阵三元组、哈希表桶数组……这些结构的容量往往**要到运行时才知道**。\n静态数组 `int a[100]` 要么浪费（用不满）要么溢出（不够用），所以要用堆分配。\n\n## 二维动态分配的三种写法\n\n| 写法 | 内存布局 | 释放方式 | 优缺点 |\n|---|---|---|---|\n| **① 连续块 + 行指针** | 一整块 rows*cols 连续 | `free(a[0]); free(a);` 两次 | 缓存友好、可整块 memcpy；行数固定后不能单行扩列 |\n| **② 逐行 malloc** | 每行独立，互不相邻 | 逐行 `free(a[i])` 再 `free(a)` | 每行长度可不同（锯齿数组）；分配次数多、缓存差 |\n| **③ C99 变长数组 VLA** | 栈上连续 | 自动，无需 free | 写起来最像静态数组；**大数组会栈溢出**（栈通常 1–8 MB） |\n\n```c\n/* ① 连续块 + 行指针（推荐） */\nint *base = (int *)malloc((size_t)rows * cols * sizeof(int));\nint **a   = (int **)malloc((size_t)rows * sizeof(int *));\nfor (i = 0; i < rows; i++) {\n    a[i] = base + (size_t)i * cols;      /* 每行指向连续块的一段 */\n}\n/* 释放：free(a[0]); free(a);  —— a[0] 就是 base */\n\n/* ② 逐行 malloc */\nint **b = (int **)malloc((size_t)rows * sizeof(int *));\nfor (i = 0; i < rows; i++) {\n    b[i] = (int *)malloc((size_t)cols * sizeof(int));\n}\n/* 释放：for(i) free(b[i]);  free(b); */\n```\n\n## realloc 扩容的安全写法\n\n```c\nint *tmp = (int *)realloc(v, newCap * sizeof(int));\nif (tmp == NULL) {\n    /* ★ 扩容失败：v 指向的原内存仍然有效，可以继续用或 free */\n    return 1;\n}\nv = tmp;                    /* 只有成功才覆盖 v */\n```\n\n**绝不能写 `v = realloc(v, ...)`**：一旦返回 NULL，原来的指针就永久丢失，\n既无法访问也无法释放，是典型的内存泄漏。realloc 成功时可能原地扩展、也可能搬家\n（旧内存已被 free），所以**所有指向旧块的指针都要重新计算**——这正是写法①的隐患：\n扩容后必须重建全部行指针。\n\n## 三条必须养成的习惯\n\n1. **malloc 返回值必须判 NULL**，失败要有清理路径（已分配的部分要逐个 free）。\n2. **calloc(n, size) 会清零**，malloc 不会；calloc 还内部检查了 n*size 溢出。\n3. **free 之后立刻把指针置 NULL**，避免悬空指针被二次使用；free(NULL) 是合法的空操作。\n4. 分配次数与释放次数必须相等，写法②分配了 rows+1 次就要释放 rows+1 次。",
+      "keyPoints": [
+        "二维动态分配三种写法：连续块+行指针（两次 free、缓存友好）、逐行 malloc（rows+1 次 free、可做锯齿数组）、C99 VLA（栈上、大数组会溢出）",
+        "连续块写法释放顺序是 free(a[0]) 再 free(a)，因为 a[0] 就是那一整块的首地址",
+        "realloc 必须先用临时指针接返回值：写 v = realloc(v,...) 一旦返回 NULL 就永久丢失原指针，造成泄漏",
+        "realloc 成功时可能搬家（旧块已被释放），所有指向旧块的指针都要重算——连续块写法扩容后必须重建全部行指针",
+        "malloc 返回值必须判 NULL 并有清理路径；calloc 会清零且内部检查乘法溢出，malloc 不会",
+        "free 之后把指针置 NULL；free(NULL) 是合法空操作，所以重复 destroy 不会崩但会掩盖逻辑错误"
+      ],
+      "pitfalls": [
+        "v = realloc(v, n)：失败时原指针丢失，既访问不了也释放不了",
+        "连续块写法只 free(a) 忘了 free(a[0])（或反过来）：一块内存泄漏",
+        "逐行 malloc 写法只 free(b) 不逐行 free(b[i])：泄漏 rows 块内存",
+        "malloc 后不判 NULL 就直接解引用：内存紧张时直接段错误",
+        "在函数里 free(p) 后写 p = NULL 就以为调用方安全了：形参是实参的副本，调用方的指针仍然悬空"
+      ],
+      "examples": [
+        {
+          "title": "两种二维动态分配的偏移量验证 + realloc 扩容安全写法",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\n/* 写法①：一整块连续内存 + 行指针数组（两次 free、缓存友好） */\nint **allocContig(int rows, int cols)\n{\n    int **a;\n    int *base;\n    int i;\n\n    base = (int *)malloc((size_t)rows * cols * sizeof(int));\n    a = (int **)malloc((size_t)rows * sizeof(int *));\n    if (base == NULL || a == NULL) {\n        free(base);            /* free(NULL) 合法，失败路径统一清理 */\n        free(a);\n        return NULL;\n    }\n    for (i = 0; i < rows; i++) {\n        a[i] = base + (size_t)i * cols;   /* 每行指向连续块的一段 */\n    }\n    return a;\n}\n\nvoid freeContig(int **a)\n{\n    if (a == NULL) {\n        return;\n    }\n    free(a[0]);                /* a[0] 就是那一整块的首地址 */\n    free(a);\n    /* 这里写 a = NULL 毫无作用：形参是实参的副本，\n       调用方的指针仍然悬空，必须由调用方自己置 NULL */\n}\n\n/* 写法②：逐行 malloc（行与行不一定相邻，释放要逐行 free） */\nint **allocPerRow(int rows, int cols)\n{\n    int **a;\n    int i;\n\n    a = (int **)malloc((size_t)rows * sizeof(int *));\n    if (a == NULL) {\n        return NULL;\n    }\n    for (i = 0; i < rows; i++) {\n        a[i] = (int *)malloc((size_t)cols * sizeof(int));\n        if (a[i] == NULL) {\n            while (--i >= 0) {\n                free(a[i]);    /* ★ 部分成功时要把已分配的行退回 */\n            }\n            free(a);\n            return NULL;\n        }\n    }\n    return a;\n}\n\nvoid freePerRow(int **a, int rows)\n{\n    int i;\n\n    if (a == NULL) {\n        return;\n    }\n    for (i = 0; i < rows; i++) {\n        free(a[i]);\n    }\n    free(a);\n}\n\nint main(void)\n{\n    int **m;\n    int *v;\n    int *tmp;\n    int i, j, k;\n    int rows = 3, cols = 4, cap;\n\n    printf(\"== 写法①：连续块 + 行指针 ==\\n\");\n    m = allocContig(rows, cols);\n    if (m == NULL) {\n        printf(\"内存分配失败\\n\");\n        return 1;\n    }\n    for (i = 0; i < rows; i++) {\n        for (j = 0; j < cols; j++) {\n            m[i][j] = i * cols + j + 1;\n        }\n    }\n    for (i = 0; i < rows; i++) {\n        /* 指针相减得到「相差多少个 int」，与平台地址无关 */\n        printf(\"第%d行首元素距 m[0] 的偏移 = %d 个 int（应为 %d）\\n\",\n               i, (int)(m[i] - m[0]), i * cols);\n    }\n    for (i = 0; i < rows; i++) {\n        printf(\"第%d行内容：\", i);\n        for (j = 0; j < cols; j++) {\n            printf(\"%d \", m[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    freeContig(m);\n    m = NULL;                  /* ★ 调用方必须自己置 NULL */\n\n    printf(\"\\n== 写法②：逐行 malloc（行地址互不相邻）==\\n\");\n    m = allocPerRow(rows, cols);\n    if (m == NULL) {\n        printf(\"内存分配失败\\n\");\n        return 1;\n    }\n    for (i = 0; i < rows; i++) {\n        for (j = 0; j < cols; j++) {\n            m[i][j] = (i + 1) * (j + 1);\n        }\n    }\n    for (i = 0; i < rows; i++) {\n        printf(\"第%d行内容：\", i);\n        for (j = 0; j < cols; j++) {\n            printf(\"%d \", m[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    freePerRow(m, rows);\n    m = NULL;\n\n    printf(\"\\n== realloc 扩容：先接临时指针 ==\\n\");\n    cap = 4;\n    v = (int *)malloc((size_t)cap * sizeof(int));\n    if (v == NULL) {\n        printf(\"内存分配失败\\n\");\n        return 1;\n    }\n    for (k = 0; k < cap; k++) {\n        v[k] = k + 1;\n    }\n    printf(\"扩容前 capacity=%d 内容：\", cap);\n    for (k = 0; k < cap; k++) {\n        printf(\"%d \", v[k]);\n    }\n    printf(\"\\n\");\n\n    tmp = (int *)realloc(v, (size_t)cap * 2 * sizeof(int));\n    if (tmp == NULL) {\n        printf(\"realloc 失败，原内存仍然有效，可以继续使用\\n\");\n        free(v);\n    } else {\n        v = tmp;               /* ★ 只有成功才覆盖 v */\n        cap = cap * 2;\n        for (k = 4; k < cap; k++) {\n            v[k] = k + 1;\n        }\n        printf(\"扩容后 capacity=%d 内容：\", cap);\n        for (k = 0; k < cap; k++) {\n            printf(\"%d \", v[k]);\n        }\n        printf(\"\\n\");\n        free(v);\n    }\n    v = NULL;\n    printf(\"全部分配已释放\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== 写法①：连续块 + 行指针 ==\n第0行首元素距 m[0] 的偏移 = 0 个 int（应为 0）\n第1行首元素距 m[0] 的偏移 = 4 个 int（应为 4）\n第2行首元素距 m[0] 的偏移 = 8 个 int（应为 8）\n第0行内容：1 2 3 4\n第1行内容：5 6 7 8\n第2行内容：9 10 11 12\n\n== 写法②：逐行 malloc（行地址互不相邻）==\n第0行内容：1 2 3 4\n第1行内容：2 4 6 8\n第2行内容：3 6 9 12\n\n== realloc 扩容：先接临时指针 ==\n扩容前 capacity=4 内容：1 2 3 4\n扩容后 capacity=8 内容：1 2 3 4 5 6 7 8\n全部分配已释放",
+          "note": "写法①打印的是「行首元素距 m[0] 多少个 int」，用指针相减得到，结果与平台地址布局无关，0、4、8 三个值证明了整个矩阵确实是一整块连续内存——所以释放只需 free(a[0]) 再 free(a) 两次。写法②刻意不打偏移量，因为逐行 malloc 的行地址由分配器决定，每次运行都可能不同，打印出来会导致输出不可复现；这正是「示例代码不能打印裸地址」的原因。realloc 部分从 capacity=4 扩到 8，旧内容 1 2 3 4 被保留、新位置填 5 6 7 8，关键在于先用 tmp 接返回值：如果直接写 v = realloc(v, ...)，一旦返回 NULL，v 里原来的地址就被覆盖成 NULL，那 4 个 int 永远无法释放。本例 malloc 了 2+1+1 = 4 块（写法①两块、写法②两块指针数组与行块共 4 块、realloc 一块），对应地 free 了同样多次，分配与释放严格配对。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-13",
+        "ds-ch02-05",
+        "ds-ch04-17"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 14
+    },
+    {
+      "id": "ds-ch04-15",
+      "title": "对称矩阵的压缩存储：下三角下标公式与两种口径",
+      "section": "4.4.3 特殊矩阵的压缩存储",
+      "summary": "n 阶对称矩阵满足 a[i][j] == a[j][i]，n² 个元素里只有一半是独立的，压缩到下三角的 n(n+1)/2 个单元即可。考点是下标映射公式，以及 0-based 与 1-based 两种口径的换算——两者相差 1，考试时必须先确认题目用哪一种。",
+      "content": "## 为什么要压缩\n\n**特殊矩阵**指元素分布有规律、可以用公式描述的矩阵，对称矩阵、三角矩阵、对角矩阵都属于这一类。\nn 阶对称矩阵有 n² 个元素，但由 `a[i][j] == a[j][i]` 可知只有 **n(n+1)/2** 个是独立的\n（下三角含主对角线）。n=100 时从 10000 降到 5050，节省约一半空间；n 越大收益越明显。\n\n压缩的思路是：**只存下三角（含主对角线），上三角元素用对称性折算到下三角去读**。\n\n## 下标映射公式（最高频考点）\n\n设按**行优先**把下三角压入一维数组 `compact`：\n\n| 口径 | i、j 起点 | compact 下标 k | 数组大小 |\n|---|---|---|---|\n| **0-based**（C 代码常用） | 0 | `k = i*(i+1)/2 + j`，要求 i ≥ j | n(n+1)/2 |\n| **1-based**（教材与考试常用） | 1 | `k = i*(i-1)/2 + j`，要求 i ≥ j | 1 + n(n+1)/2（下标 0 空置） |\n\n**推导**：0-based 时，第 0 行有 1 个元素、第 1 行有 2 个……第 i−1 行有 i 个，\n所以前 i 行共 `1+2+...+i = i(i+1)/2` 个；再加上本行内的偏移 j，得 `k = i(i+1)/2 + j`。\n1-based 时前 i−1 行共 `1+2+...+(i-1) = i(i-1)/2` 个，本行内偏移是 j（j 从 1 计），故 `k = i(i-1)/2 + j`。\n\n## 上三角元素怎么读\n\n当 i < j 时，`a[i][j]` 没有被存储，但由对称性 `a[i][j] == a[j][i]`，而此时 j > i 意味着\n「以 (j,i) 为下标时满足行号 ≥ 列号」，所以：\n\n```c\nk = (i >= j) ? i*(i+1)/2 + j        /* 下三角：直接算 */\n             : j*(j+1)/2 + i;       /* 上三角：交换 i、j 再算 */\nvalue = compact[k];\n```\n\n这一句三元表达式就是对称矩阵「压缩存储 + 透明访问」的全部实现。\n\n## 存上三角可不可以\n\n可以，公式相应变成 `k = j*(j+1)/2 + i`（i ≤ j），本质是把行列角色对调。\n**考试时要看清题目说的是「按下三角存储」还是「按上三角存储」**，两者公式不同但对称矩阵的\n存储量都是 n(n+1)/2。",
+      "keyPoints": [
+        "对称矩阵满足 a[i][j]==a[j][i]，n² 个元素中只有 n(n+1)/2 个独立，压缩后节省约一半空间",
+        "0-based 行优先存下三角：k = i*(i+1)/2 + j（要求 i >= j），推导是前 i 行共 1+2+...+i = i(i+1)/2 个元素",
+        "1-based 口径：k = i*(i-1)/2 + j，数组要开 1 + n(n+1)/2 且下标 0 空置——与 0-based 相差 1，必须先确认题目口径",
+        "访问上三角元素（i<j）时交换下标折算：k = j*(j+1)/2 + i，依据是对称性 a[i][j]==a[j][i]",
+        "压缩存储对上层透明：读取时用一个三元表达式统一处理两种情形，调用方感觉不到矩阵被压缩过",
+        "存上三角也可行，公式变成 k = j*(j+1)/2 + i（i<=j），存储量不变"
+      ],
+      "pitfalls": [
+        "把 0-based 公式 i*(i+1)/2+j 用在 1-based 下标上（或反之），结果整体错位 1",
+        "访问上三角时忘记交换 i、j 就直接套公式：i<j 时算出的 k 会落到别的位置，读到错误数据",
+        "数组开成 n*n 而不是 n(n+1)/2：那就完全没有压缩，白白浪费一半空间",
+        "1-based 口径下把数组开成 n(n+1)/2：k 最大取到 n(n+1)/2，会越界一个单元",
+        "整数除法 i*(i+1)/2 写成 i*(i+1)/2.0：引入浮点会让下标变成 double，数组下标必须是整型"
+      ],
+      "examples": [
+        {
+          "title": "4 阶对称矩阵压缩存储：下标映射逐格验证 + 两种口径对照",
+          "code": "#include <stdio.h>\n\n#define N 4\n#define SIZE (N * (N + 1) / 2)      /* 4 阶对称矩阵只需 10 个存储单元 */\n\n/* 0-based，行优先存下三角：k = i*(i+1)/2 + j，要求 i >= j */\nint lowerIndex(int i, int j)\n{\n    return i * (i + 1) / 2 + j;\n}\n\n/* 1-based 口径（教材与考试常用）：k = i*(i-1)/2 + j，i、j 从 1 计 */\nint lowerIndex1Based(int i, int j)\n{\n    return i * (i - 1) / 2 + j;\n}\n\nint main(void)\n{\n    int full[N][N];\n    int compact[SIZE];\n    int i, j, k, v, mismatch = 0;\n\n    /* 构造对称矩阵 a[i][j] = (i+1)*(j+1)，天然满足 a[i][j] == a[j][i] */\n    for (i = 0; i < N; i++) {\n        for (j = 0; j < N; j++) {\n            full[i][j] = (i + 1) * (j + 1);\n        }\n    }\n\n    /* 只存下三角（含主对角线），按行优先压入 compact */\n    k = 0;\n    for (i = 0; i < N; i++) {\n        for (j = 0; j <= i; j++) {\n            compact[k++] = full[i][j];\n        }\n    }\n    printf(\"N=%d 阶对称矩阵：完整存储需 %d 个单元，压缩后只需 %d 个（实际压入 %d 个）\\n\",\n           N, N * N, SIZE, k);\n    printf(\"compact 内容：\");\n    for (i = 0; i < SIZE; i++) {\n        printf(\"%d \", compact[i]);\n    }\n    printf(\"\\n\\n\");\n\n    printf(\"下标映射逐格验证（i>=j 用 k=i*(i+1)/2+j；i<j 时交换后折算）：\\n\");\n    for (i = 0; i < N; i++) {\n        for (j = 0; j < N; j++) {\n            k = (i >= j) ? lowerIndex(i, j) : lowerIndex(j, i);\n            v = compact[k];\n            if (v != full[i][j]) {\n                mismatch++;\n                printf(\"a[%d][%d]=%d k=%d  <-- 不一致!\\n\", i, j, v, k);\n            } else {\n                printf(\"a[%d][%d]=%d k=%d\\n\", i, j, v, k);\n            }\n        }\n    }\n    printf(\"不一致个数 = %d\\n\\n\", mismatch);\n\n    printf(\"1-based 口径对照（k = i*(i-1)/2 + j，i、j 从 1 计）：\\n\");\n    for (i = 1; i <= N; i++) {\n        for (j = 1; j <= i; j++) {\n            printf(\"a[%d][%d] k=%d \", i, j, lowerIndex1Based(i, j));\n        }\n        printf(\"\\n\");\n    }\n    printf(\"1-based 下 k 的取值范围是 1..%d，所以数组要开 %d+1 且下标 0 空置\\n\",\n           SIZE, SIZE);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "N=4 阶对称矩阵：完整存储需 16 个单元，压缩后只需 10 个（实际压入 10 个）\ncompact 内容：1 2 4 3 6 9 4 8 12 16\n\n下标映射逐格验证（i>=j 用 k=i*(i+1)/2+j；i<j 时交换后折算）：\na[0][0]=1 k=0\na[0][1]=2 k=1\na[0][2]=3 k=3\na[0][3]=4 k=6\na[1][0]=2 k=1\na[1][1]=4 k=2\na[1][2]=6 k=4\na[1][3]=8 k=7\na[2][0]=3 k=3\na[2][1]=6 k=4\na[2][2]=9 k=5\na[2][3]=12 k=8\na[3][0]=4 k=6\na[3][1]=8 k=7\na[3][2]=12 k=8\na[3][3]=16 k=9\n不一致个数 = 0\n\n1-based 口径对照（k = i*(i-1)/2 + j，i、j 从 1 计）：\na[1][1] k=1\na[2][1] k=2 a[2][2] k=3\na[3][1] k=4 a[3][2] k=5 a[3][3] k=6\na[4][1] k=7 a[4][2] k=8 a[4][3] k=9 a[4][4] k=10\n1-based 下 k 的取值范围是 1..10，所以数组要开 10+1 且下标 0 空置",
+          "note": "compact 的内容 1 2 4 3 6 9 4 8 12 16 是下三角按行优先摊平的结果：第 0 行 1 个（1）、第 1 行 2 个（2,4）、第 2 行 3 个（3,6,9）、第 3 行 4 个（4,8,12,16），共 10 个。16 格全部验证通过（不一致 0），其中 a[0][1] 与 a[1][0] 都映射到 k=1、a[2][3] 与 a[3][2] 都映射到 k=8，这正是「上三角靠交换下标折算到下三角」的直接体现——一个存储单元同时服务两个矩阵位置。注意 k 的最大值是 9 而不是 10，因为 0-based 从 0 开始，所以数组开 SIZE=10 正好；换成 1-based 口径，k 的取值是 1..10，数组就必须开 11 个单元并让下标 0 空置，两种口径差的就是这一个位置，考试时看清题目给的 i、j 从几开始是第一步。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-03",
+        "ds-ch04-16",
+        "ds-ch04-12"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 15
+    },
+    {
+      "id": "ds-ch04-16",
+      "title": "三角矩阵与对角矩阵的压缩：三类特殊矩阵公式汇总",
+      "section": "4.4.3 特殊矩阵的压缩存储",
+      "summary": "三角矩阵把一半元素全设为同一常数 c，只需存另一半加一个常数位；对角矩阵（三对角/带状）只有主对角线及其上下各若干条非零，n 阶三对角矩阵只有 3n-2 个非零元素。三者的下标公式都可以由「前面若干行共有多少元素」推出来。",
+      "content": "## 三类特殊矩阵一览\n\n| 类型 | 非零/独立元素个数 | 0-based 行优先下标公式 | 备注 |\n|---|---|---|---|\n| **对称矩阵** | n(n+1)/2 | 下三角 `k = i(i+1)/2 + j`（i≥j）；上三角交换 i、j | 上三角靠对称性折算 |\n| **下三角矩阵** | n(n+1)/2 + 1 | 同对称矩阵；i<j 的位置统一读常数位 `k = n(n+1)/2` | 上三角全是同一常数 c |\n| **上三角矩阵** | n(n+1)/2 + 1 | `k = i(2n-i+1)/2 + (j-i)`（i≤j） | 下三角全是常数 c |\n| **对角矩阵（三对角）** | 3n-2 | `k = 2i + j`（\\|i-j\\| ≤ 1） | 只有主对角线及上下各一条 |\n\n## 下三角矩阵\n\n`a[i][j]` 在 i ≥ j 时是真实数据、i < j 时全是同一个常数 c。\n存储方式与对称矩阵**完全一样**（下三角 n(n+1)/2 个），只是多开一个单元存 c：\n\n```c\n#define SIZE (N * (N + 1) / 2 + 1)\nk = (i >= j) ? i*(i+1)/2 + j : N*(N+1)/2;   /* 最后一格是常数 c */\n```\n\n与对称矩阵的差别只在「i<j 时怎么办」：对称矩阵交换下标去读，下三角矩阵直接读常数位。\n\n## 上三角矩阵\n\n上三角矩阵 i ≤ j 时是真实数据、i > j 时是常数 c。按行优先存上三角，\n**第 i 行有 n−i 个元素**，所以前 i 行共 `(n) + (n-1) + ... + (n-i+1) = i(2n-i+1)/2` 个，\n本行内偏移是 `j - i`（因为该行第一个元素的列号是 i）：\n\n```c\nk = (i <= j) ? i*(2*N-i+1)/2 + (j - i) : N*(N+1)/2;\n```\n\n## 三对角矩阵（带状矩阵）\n\n只有 `|i - j| <= 1` 的元素非零，共 **3n − 2** 个（首尾两行各 2 个，中间 n−2 行各 3 个）。\n按行优先存，第 0 行 2 个、第 1..n−2 行各 3 个，前 i 行共 `2 + 3(i-1) = 3i-1` 个（i≥1）；\n行 i 内第一个非零元素的列号是 i−1，故行内偏移是 `j-(i-1) = j-i+1`：\n\n```\nk = (3i - 1) + (j - i + 1) = 2i + j        /* i >= 1 */\nk = j                                       /* i == 0 时 j 只能是 0 或 1，公式同样成立 */\n```\n\n统一得 **k = 2i + j**。这是三类里最简洁的公式，也是最常考的。\n\n推广到 k 对角（`|i-j| <= k`）：非零元素 `(2k+1)n - k(k+1)` 个，\n公式 `k' = (2k+1)*i + j - (k-1)` 形式，推导思路完全一致：**先数前面几行，再数本行内偏移**。",
+      "keyPoints": [
+        "三类特殊矩阵的压缩量：对称/三角矩阵 n(n+1)/2（三角再加 1 个常数位），三对角矩阵 3n-2",
+        "下三角矩阵与对称矩阵的存储布局完全相同，区别只在 i<j 时：对称矩阵交换下标去读，下三角矩阵读常数位 k=n(n+1)/2",
+        "上三角矩阵行优先公式 k = i(2n-i+1)/2 + (j-i)（i<=j），推导关键是「第 i 行有 n-i 个元素」",
+        "三对角矩阵行优先公式 k = 2i + j（|i-j|<=1），由 (3i-1) + (j-i+1) 化简而来，i=0 时同样成立",
+        "所有公式的推导套路都一样：先算「前面若干行共有多少元素」，再加「本行内的偏移」",
+        "k 对角矩阵非零元素 (2k+1)n - k(k+1) 个，公式形式 (2k+1)*i + j - (k-1)"
+      ],
+      "pitfalls": [
+        "把三对角矩阵的公式记成 3i+j 或 i+j：正确是 2i+j，可以用 (0,1)→k=1 与 (1,0)→k=2 两个点验证",
+        "三角矩阵忘了那个存常数 c 的额外单元，数组开成 n(n+1)/2 而不是 +1",
+        "上三角公式里漏掉 (j-i) 的行内偏移，只写 i(2n-i+1)/2：那样整行的元素都会映射到同一个 k",
+        "三对角矩阵对 |i-j|>1 的位置也去套 k=2i+j：那些元素根本没存，算出的 k 会读到别人的数据",
+        "把「三对角矩阵有 3n 个非零元素」当成结论：首尾两行各只有 2 个，正确是 3n-2"
+      ],
+      "examples": [
+        {
+          "title": "4 阶三对角矩阵压缩：k=2i+j 逐格验证并统计零元素",
+          "code": "#include <stdio.h>\n\n#define N 4\n#define SIZE (3 * N - 2)        /* 三对角矩阵非零元素个数 = 3n-2 = 10 */\n\n/* 0-based 行优先：|i-j|<=1 的非零元素存到 k = 2*i + j */\nint bandIndex(int i, int j)\n{\n    return 2 * i + j;\n}\n\nint main(void)\n{\n    int full[N][N];\n    int compact[SIZE];\n    int i, j, k, mismatch = 0, stored = 0, zeroCount = 0;\n\n    /* 构造典型的差分矩阵：主对角线 2，上下次对角线 -1，其余 0 */\n    for (i = 0; i < N; i++) {\n        for (j = 0; j < N; j++) {\n            if (i == j) {\n                full[i][j] = 2;\n            } else if (i - j == 1 || j - i == 1) {\n                full[i][j] = -1;\n            } else {\n                full[i][j] = 0;\n            }\n        }\n    }\n\n    /* 按行优先扫描，只存 |i-j| <= 1 的元素 */\n    for (i = 0; i < N; i++) {\n        for (j = 0; j < N; j++) {\n            if (i - j <= 1 && j - i <= 1) {\n                compact[stored] = full[i][j];\n                stored++;\n            } else {\n                zeroCount++;\n            }\n        }\n    }\n    printf(\"N=%d 阶三对角矩阵：总元素 %d 个，非零 %d 个（公式 3N-2=%d），零元素 %d 个\\n\",\n           N, N * N, stored, SIZE, zeroCount);\n    printf(\"compact 内容：\");\n    for (i = 0; i < SIZE; i++) {\n        printf(\"%d \", compact[i]);\n    }\n    printf(\"\\n\\n\");\n\n    printf(\"完整矩阵与压缩下标逐格对照：\\n\");\n    for (i = 0; i < N; i++) {\n        for (j = 0; j < N; j++) {\n            if (i - j <= 1 && j - i <= 1) {\n                k = bandIndex(i, j);\n                if (compact[k] == full[i][j]) {\n                    printf(\"a[%d][%d]=%d k=%d\\n\", i, j, full[i][j], k);\n                } else {\n                    mismatch++;\n                    printf(\"a[%d][%d]=%d k=%d  <-- 映射错误（存的是 %d）\\n\",\n                           i, j, full[i][j], k, compact[k]);\n                }\n            } else {\n                printf(\"a[%d][%d]=0 （零元素，不存储）\\n\", i, j);\n            }\n        }\n    }\n    printf(\"映射错误个数 = %d\\n\", mismatch);\n    printf(\"k 的取值范围 0..%d，正好用满 %d 个单元\\n\", bandIndex(N - 1, N - 1), SIZE);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "N=4 阶三对角矩阵：总元素 16 个，非零 10 个（公式 3N-2=10），零元素 6 个\ncompact 内容：2 -1 -1 2 -1 -1 2 -1 -1 2\n\n完整矩阵与压缩下标逐格对照：\na[0][0]=2 k=0\na[0][1]=-1 k=1\na[0][2]=0 （零元素，不存储）\na[0][3]=0 （零元素，不存储）\na[1][0]=-1 k=2\na[1][1]=2 k=3\na[1][2]=-1 k=4\na[1][3]=0 （零元素，不存储）\na[2][0]=0 （零元素，不存储）\na[2][1]=-1 k=5\na[2][2]=2 k=6\na[2][3]=-1 k=7\na[3][0]=0 （零元素，不存储）\na[3][1]=0 （零元素，不存储）\na[3][2]=-1 k=8\na[3][3]=2 k=9\n映射错误个数 = 0\nk 的取值范围 0..9，正好用满 10 个单元",
+          "note": "compact 的内容 2 -1 -1 2 -1 -1 2 -1 -1 2 就是三条对角线按行优先摊平的结果：第 0 行 2 个（2,-1）、第 1 行 3 个（-1,2,-1）、第 2 行 3 个、第 3 行 2 个，合计 2+3+3+2=10=3×4−2。16 个位置里有 6 个是零元素不存储，压缩率 10/16 ≈ 63%；n 越大收益越明显，n=100 时非零只有 298 个而总元素 10000 个，压缩到 3%。逐格对照显示 k = 2i+j 在全部 10 个非零位置上都映射正确（错误 0 个），且 k 的最大值 bandIndex(3,3) = 2×3+3 = 9，正好用满 SIZE=10 个单元，既没有浪费也没有越界——这是检验压缩公式是否正确的两个硬指标。记忆技巧：三对角矩阵每往前一行，k 增加 2（因为每行贡献 3 个元素但起点右移 1 格），行内再按列号 j 偏移，所以是 2i+j 而不是 3i+j。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-15",
+        "ds-ch04-03",
+        "ds-ch04-12"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 16
+    },
+    {
+      "id": "ds-ch04-17",
+      "title": "稀疏矩阵的三元组顺序表：存储结构与还原",
+      "section": "4.4.3 特殊矩阵的压缩存储",
+      "summary": "稀疏矩阵的非零元素远少于元素总数且分布没有规律，无法用公式压缩，只能显式记录每个非零元素的行号、列号和值——这就是三元组 (row, col, value)。三元组顺序表按行优先存放，代价是失去了随机存取特性。",
+      "content": "## 什么算稀疏矩阵\n\n**非零元素个数远少于元素总数，且分布没有规律**——两个条件缺一不可。\n「没有规律」是关键：对称矩阵、三对角矩阵的非零元素也很少，但它们有公式可循，\n属于**特殊矩阵**（用下标映射压缩）；稀疏矩阵没有公式，只能把每个非零元素**显式记下来**。\n\n工程上常把非零率低于 5% 的矩阵当稀疏矩阵处理。\n\n## 三元组顺序表\n\n```c\ntypedef struct {\n    int row, col, value;         /* 行号、列号、值 */\n} Term;\n\ntypedef struct {\n    Term data[MAXTerms];\n    int rows, cols, terms;       /* 矩阵行数、列数、非零元素个数 */\n} TSMatrix;\n```\n\n约定 **按行优先顺序存放**：先按 row 递增，row 相同的按 col 递增。\n这个约定非常重要——它保证了 data 数组本身是「有序」的，转置、加法等运算才能利用顺序性做到线性时间。\n\n空间开销：`terms * 3 * sizeof(int) + 3 * sizeof(int)`。当 terms 远小于 rows*cols 时才是净收益，\n所以**稀疏矩阵压缩并不总是划算**，非零率高时反而比二维数组更费空间。\n\n## 三元组表失去了什么\n\n| 能力 | 二维数组 | 三元组顺序表 |\n|---|---|---|\n| 随机存取 a[i][j] | O(1) | **O(log t) 二分 或 O(t) 顺序查找** |\n| 空间 | rows*cols | 3*terms + 常数 |\n| 修改某个元素的值 | O(1) | O(t)（可能要移动后续元素） |\n| 遍历所有非零元素 | O(rows*cols) | **O(terms)，更快** |\n| 矩阵转置、加法 | 需重写全部元素 | 只需重组三元组 |\n\n所以稀疏矩阵的适用场景是「**非零元素很少 + 运算以整体运算（转置、加法、乘法）为主**」，\n如果需要频繁随机访问单个元素，三元组反而更慢。\n\n## 其他存储方式\n\n- **十字链表**：每个非零元素是一个结点，含 row/col/value 加「同行下一个」「同列下一个」两个指针，\n  适合**频繁插入删除**的稀疏矩阵（如稀疏多项式、有限元系数矩阵）。\n- **位图 + 值数组**：只存「哪些位置非零」的位图，值另存数组，适合非零率适中且需要随机访问的场景。",
+      "keyPoints": [
+        "稀疏矩阵的两个条件：非零元素远少于总数，且分布无规律——有规律的属于特殊矩阵，用下标公式压缩",
+        "三元组 Term{row, col, value}，TSMatrix 里另存 rows/cols/terms 三个元信息",
+        "三元组顺序表约定按行优先存放（row 递增、同行内 col 递增），这个有序性是转置与加法能做到线性时间的前提",
+        "空间开销 3*terms+常数，非零率高时反而比 rows*cols 更费，压缩并不总是划算",
+        "代价是失去随机存取：访问 a[i][j] 从 O(1) 变成 O(t) 顺序查找或 O(log t) 二分",
+        "十字链表用「同行下一个/同列下一个」双指针，适合频繁插入删除的稀疏矩阵"
+      ],
+      "pitfalls": [
+        "插入三元组时不按行优先顺序，导致后续转置算法失效（快速转置依赖原表有序）",
+        "忘记存 rows/cols/terms 元信息：只有三元组无法知道矩阵形状，也无法还原",
+        "把稀疏矩阵当特殊矩阵处理，试图用下标公式压缩：稀疏矩阵没有规律，公式不存在",
+        "MAXTerms 开成固定值又不检查溢出：非零元素超过容量时会静默写坏内存",
+        "以为三元组一定省空间：非零率超过约 1/3 时，3*terms 就大于 rows*cols 了"
+      ],
+      "examples": [
+        {
+          "title": "4×5 稀疏矩阵建三元组表并完整还原，验证往返一致",
+          "code": "#include <stdio.h>\n\n#define MAXTerms 20\n\ntypedef struct {\n    int row, col, value;\n} Term;\n\ntypedef struct {\n    Term data[MAXTerms];\n    int rows, cols, terms;       /* terms = 非零元素个数 */\n} TSMatrix;\n\n/* 从二维数组建三元组表：按行优先扫描，天然保证 row 递增、同行内 col 递增 */\nint createTSMatrix(TSMatrix *t, const int *a, int rows, int cols)\n{\n    int i, j, k = 0;\n\n    t->rows = rows;\n    t->cols = cols;\n    for (i = 0; i < rows; i++) {\n        for (j = 0; j < cols; j++) {\n            if (a[i * cols + j] != 0) {\n                if (k >= MAXTerms) {\n                    t->terms = k;\n                    return 1;        /* ★ 容量不足必须报错，不能静默越界写 */\n                }\n                t->data[k].row = i;\n                t->data[k].col = j;\n                t->data[k].value = a[i * cols + j];\n                k++;\n            }\n        }\n    }\n    t->terms = k;\n    return 0;\n}\n\n/* 还原成二维数组：先整体清零，再按三元组逐个填回 */\nvoid restoreMatrix(const TSMatrix *t, int *a)\n{\n    int i, total = t->rows * t->cols;\n\n    for (i = 0; i < total; i++) {\n        a[i] = 0;                  /* ★ 漏了这一步会留下上一轮的垃圾值 */\n    }\n    for (i = 0; i < t->terms; i++) {\n        a[t->data[i].row * t->cols + t->data[i].col] = t->data[i].value;\n    }\n}\n\nvoid printMatrix(const TSMatrix *t)\n{\n    int i, full = t->rows * t->cols;\n\n    printf(\"rows=%d cols=%d terms=%d（占满需 %d 个单元，非零率 %d%%）\\n\",\n           t->rows, t->cols, t->terms, full, 100 * t->terms / full);\n    printf(\"序号 row col value\\n\");\n    for (i = 0; i < t->terms; i++) {\n        printf(\"%d    %d   %d   %d\\n\",\n               i, t->data[i].row, t->data[i].col, t->data[i].value);\n    }\n}\n\nint main(void)\n{\n    int a[4][5] = {\n        {0, 0, 3, 0, 0},\n        {1, 0, 0, 0, 0},\n        {0, 0, 0, 7, 0},\n        {0, 2, 0, 0, 0}\n    };\n    int back[4][5];\n    TSMatrix t;\n    int i, j, same = 1;\n\n    if (createTSMatrix(&t, &a[0][0], 4, 5) != 0) {\n        printf(\"三元组容量不足\\n\");\n        return 1;\n    }\n    printf(\"== 三元组顺序表 ==\\n\");\n    printMatrix(&t);\n\n    restoreMatrix(&t, &back[0][0]);\n    printf(\"\\n== 还原后的矩阵 ==\\n\");\n    for (i = 0; i < 4; i++) {\n        for (j = 0; j < 5; j++) {\n            printf(\"%d \", back[i][j]);\n            if (back[i][j] != a[i][j]) {\n                same = 0;\n            }\n        }\n        printf(\"\\n\");\n    }\n    printf(\"还原结果与原矩阵完全一致 = %d\\n\", same);\n    printf(\"三元组占用 %d 个 int，二维数组占用 %d 个 int\\n\",\n           t.terms * 3 + 3, 4 * 5);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== 三元组顺序表 ==\nrows=4 cols=5 terms=4（占满需 20 个单元，非零率 20%）\n序号 row col value\n0    0   2   3\n1    1   0   1\n2    2   3   7\n3    3   1   2\n\n== 还原后的矩阵 ==\n0 0 3 0 0\n1 0 0 0 0\n0 0 0 7 0\n0 2 0 0 0\n还原结果与原矩阵完全一致 = 1\n三元组占用 15 个 int，二维数组占用 20 个 int",
+          "note": "4×5 矩阵只有 4 个非零元素（非零率 20%），三元组表按行优先扫描得到 (0,2)=3、(1,0)=1、(2,3)=7、(3,1)=2，row 严格递增、没有同行冲突，符合顺序表的约定。还原结果与原矩阵逐格一致（same=1），证明「建表 → 还原」这个往返是无损的，关键在 restoreMatrix 里**先把整个数组清零再填**——漏掉清零，非零位置之外的格子会留下上一轮的垃圾。空间账要算清楚：三元组占 terms*3+3 = 4*3+3 = 15 个 int，二维数组占 20 个，只省了 25%。这个例子说明**非零率 20% 时压缩收益已经很有限**，只有非零率降到 5% 以下（terms=1 时三元组只占 6 个 int）才有数量级的节省，这正是「稀疏」二字的门槛所在。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-03",
+        "ds-ch04-18",
+        "ds-ch04-14"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 17
+    },
+    {
+      "id": "ds-ch04-18",
+      "title": "稀疏矩阵转置：普通转置 O(cols×terms) 与快速转置 O(cols+terms)",
+      "section": "4.4.3 特殊矩阵的压缩存储",
+      "summary": "三元组矩阵的转置不能只交换 row 和 col——那样得到的表不再按行优先有序。普通转置对新矩阵的每一列扫一遍原表，时间 O(cols×terms)；快速转置用 num[] 与 cpot[] 两个辅助数组先算好每个元素该放哪，一趟扫描完成，时间 O(cols+terms)。",
+      "content": "## 为什么不能只交换 row 和 col\n\n三元组顺序表的约定是**按行优先有序**。转置后原来的「第 col 列」变成「第 col 行」，\n如果只是把每个三元组的 row 和 col 互换，得到的表在 row 上是**乱序**的\n（原表 row 递增不代表 col 递增），破坏了顺序表的前提，后续加法、乘法全都会出错。\n\n所以转置必须**重新组织三元组的存放顺序**。\n\n## 普通转置：对每一列扫一遍原表\n\n```c\nfor (col = 0; col < a->cols; col++) {      /* 新矩阵的行号 = 原矩阵的列号 */\n    for (p = 0; p < a->terms; p++) {\n        if (a->data[p].col == col) {\n            b->data[q].row = a->data[p].col;\n            b->data[q].col = a->data[p].row;\n            b->data[q].value = a->data[p].value;\n            q++;\n        }\n    }\n}\n```\n\n外层按 col 从小到大，内层按 p 顺序扫描，所以找到的元素**天然满足新表行优先有序**。\n时间是 **O(cols × terms)**：cols 趟、每趟扫 terms 个元素。\n\n## 快速转置：两个辅助数组换一趟扫描\n\n```c\nint num[MAXTerms], cpot[MAXTerms];\n\nfor (col = 0; col < a->cols; col++) num[col] = 0;\nfor (p = 0; p < a->terms; p++) num[a->data[p].col]++;   /* 每列有几个非零元素 */\n\ncpot[0] = 0;\nfor (col = 1; col < a->cols; col++)\n    cpot[col] = cpot[col-1] + num[col-1];               /* 前缀和 = 每列的起始位置 */\n\nfor (p = 0; p < a->terms; p++) {\n    col = a->data[p].col;\n    t = cpot[col];                                      /* 该元素在新表里的落点 */\n    b->data[t].row = col;\n    b->data[t].col = a->data[p].row;\n    b->data[t].value = a->data[p].value;\n    cpot[col]++;                                        /* ★ 该列的下一个空位 */\n}\n```\n\n- `num[col]`：原矩阵第 col 列的非零元素个数 = **新矩阵第 col 行的元素个数**\n- `cpot[col]`：新矩阵中第 col 行第一个元素应放的下标\n\n时间是 **O(cols + terms)**：三趟线性扫描（初始化 num、统计 num、放置元素）。\n\n## 两者对比\n\n| | 普通转置 | 快速转置 |\n|---|---|---|\n| 时间 | O(cols × terms) | O(cols + terms) |\n| 辅助空间 | O(1) | O(cols)（两个 int 数组） |\n| 适用 | terms 很小、cols 很小 | 大矩阵、terms 较大 |\n| 实现难度 | 简单，两层循环 | 需要理解 num/cpot 的含义 |\n\n**快速转置是典型的「空间换时间」**。当 terms 接近 cols 时两者差距最大；\n当 terms 很小（比如只有 2、3 个）时，普通转置的常数更小，快速转置反而因为要初始化 num 数组而略慢。\n教材与考试都要求掌握快速转置的 num/cpot 推导过程，**手算时必须先写出 num 再做前缀和得到 cpot**。",
+      "keyPoints": [
+        "三元组转置不能只交换 row 和 col：那样新表在 row 上乱序，破坏了「按行优先存放」的顺序表约定",
+        "普通转置：外层遍历新矩阵的行号（= 原矩阵列号），内层扫全表找该列元素，时间 O(cols × terms)、辅助空间 O(1)",
+        "普通转置的正确性来自「外层 col 递增 + 内层 p 递增」，找到的元素天然满足新表行优先有序",
+        "快速转置用 num[col]（原矩阵第 col 列非零个数 = 新矩阵第 col 行元素个数）与 cpot[col]（新表该行第一个元素的落点）",
+        "cpot 由 num 做前缀和得到：cpot[0]=0，cpot[col]=cpot[col-1]+num[col-1]；每放一个元素就 cpot[col]++",
+        "快速转置时间 O(cols + terms)、辅助空间 O(cols)，是典型的空间换时间；terms 很小时普通转置的常数反而更小"
+      ],
+      "pitfalls": [
+        "转置时只交换 row 和 col 不重排顺序：结果表乱序，后续加法乘法全部失效",
+        "快速转置里忘记 cpot[col]++：同一列的多个元素会全部写到同一个位置，互相覆盖",
+        "cpot 的前缀和写成 cpot[col] = cpot[col-1] + num[col]：多加了自己一列，所有落点整体后移",
+        "num/cpot 数组只开到 terms 大小：它们的下标是列号，必须开到 cols（或 MAXTerms）",
+        "转置后忘记交换 b->rows 与 b->cols：新矩阵的形状是原矩阵的转置，行列数要对调"
+      ],
+      "examples": [
+        {
+          "title": "同一稀疏矩阵分别用普通转置与快速转置，比对结果并统计扫描次数",
+          "code": "#include <stdio.h>\n\n#define MAXTerms 20\n\ntypedef struct {\n    int row, col, value;\n} Term;\n\ntypedef struct {\n    Term data[MAXTerms];\n    int rows, cols, terms;\n} TSMatrix;\n\n/* 普通转置：对新矩阵的每一列 col，扫一遍原表找出该列的所有元素 */\nvoid transposeSimple(const TSMatrix *a, TSMatrix *b, int *scans)\n{\n    int col, p, q = 0;\n\n    *scans = 0;\n    b->rows = a->cols;               /* ★ 行列数要对调 */\n    b->cols = a->rows;\n    b->terms = a->terms;\n    for (col = 0; col < a->cols; col++) {\n        for (p = 0; p < a->terms; p++) {\n            (*scans)++;              /* 每比较一次记一次扫描 */\n            if (a->data[p].col == col) {\n                b->data[q].row = a->data[p].col;\n                b->data[q].col = a->data[p].row;\n                b->data[q].value = a->data[p].value;\n                q++;\n            }\n        }\n    }\n}\n\n/* 快速转置：num[col] 统计每列个数，cpot[col] 算出每列在新表里的起始落点 */\nvoid transposeFast(const TSMatrix *a, TSMatrix *b, int *scans)\n{\n    int num[MAXTerms], cpot[MAXTerms];\n    int col, p, t;\n\n    *scans = 0;\n    b->rows = a->cols;\n    b->cols = a->rows;\n    b->terms = a->terms;\n\n    for (col = 0; col < a->cols; col++) {\n        num[col] = 0;\n    }\n    for (p = 0; p < a->terms; p++) {\n        num[a->data[p].col]++;       /* 一趟统计：第 col 列有几个非零元素 */\n        (*scans)++;\n    }\n\n    cpot[0] = 0;\n    for (col = 1; col < a->cols; col++) {\n        cpot[col] = cpot[col - 1] + num[col - 1];   /* 前缀和 = 该行第一个元素的落点 */\n    }\n\n    for (p = 0; p < a->terms; p++) {\n        col = a->data[p].col;\n        t = cpot[col];\n        b->data[t].row = col;\n        b->data[t].col = a->data[p].row;\n        b->data[t].value = a->data[p].value;\n        cpot[col]++;                 /* ★ 该列的下一个空位，漏了这一句会互相覆盖 */\n        (*scans)++;\n    }\n}\n\nstatic void printMatrix(const char *label, const TSMatrix *t)\n{\n    int i;\n\n    printf(\"%s rows=%d cols=%d terms=%d\\n\", label, t->rows, t->cols, t->terms);\n    for (i = 0; i < t->terms; i++) {\n        printf(\"  (%d,%d)=%d\\n\", t->data[i].row, t->data[i].col, t->data[i].value);\n    }\n}\n\nstatic int sameMatrix(const TSMatrix *x, const TSMatrix *y)\n{\n    int i;\n\n    if (x->rows != y->rows || x->cols != y->cols || x->terms != y->terms) {\n        return 0;\n    }\n    for (i = 0; i < x->terms; i++) {\n        if (x->data[i].row != y->data[i].row ||\n            x->data[i].col != y->data[i].col ||\n            x->data[i].value != y->data[i].value) {\n            return 0;\n        }\n    }\n    return 1;\n}\n\nint main(void)\n{\n    int src[4][5] = {\n        {0, 0, 3, 0, 0},\n        {1, 0, 0, 0, 5},\n        {0, 0, 0, 7, 0},\n        {0, 2, 0, 0, 0}\n    };\n    TSMatrix a, b1, b2;\n    int i, j, k = 0, scans1 = 0, scans2 = 0;\n\n    a.rows = 4;\n    a.cols = 5;\n    for (i = 0; i < 4; i++) {\n        for (j = 0; j < 5; j++) {\n            if (src[i][j] != 0) {\n                a.data[k].row = i;\n                a.data[k].col = j;\n                a.data[k].value = src[i][j];\n                k++;\n            }\n        }\n    }\n    a.terms = k;\n\n    printMatrix(\"原矩阵 A：\", &a);\n    transposeSimple(&a, &b1, &scans1);\n    transposeFast(&a, &b2, &scans2);\n\n    printf(\"\\n\");\n    printMatrix(\"普通转置结果：\", &b1);\n    printf(\"普通转置的元素扫描次数 = %d（= cols * terms = %d * %d）\\n\",\n           scans1, a.cols, a.terms);\n\n    printf(\"\\n\");\n    printMatrix(\"快速转置结果：\", &b2);\n    printf(\"快速转置的元素扫描次数 = %d（= 2 * terms = %d，与 cols 无关）\\n\",\n           scans2, 2 * a.terms);\n\n    printf(\"两种方法结果完全一致 = %d\\n\", sameMatrix(&b1, &b2));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "原矩阵 A： rows=4 cols=5 terms=5\n  (0,2)=3\n  (1,0)=1\n  (1,4)=5\n  (2,3)=7\n  (3,1)=2\n\n普通转置结果： rows=5 cols=4 terms=5\n  (0,1)=1\n  (1,3)=2\n  (2,0)=3\n  (3,2)=7\n  (4,1)=5\n普通转置的元素扫描次数 = 25（= cols * terms = 5 * 5）\n\n快速转置结果： rows=5 cols=4 terms=5\n  (0,1)=1\n  (1,3)=2\n  (2,0)=3\n  (3,2)=7\n  (4,1)=5\n快速转置的元素扫描次数 = 10（= 2 * terms = 10，与 cols 无关）\n两种方法结果完全一致 = 1",
+          "note": "两种方法得到完全相同的 5 个三元组（sameMatrix=1），且都满足新表行优先有序：row 依次是 0,1,2,3,4——这正是「转置必须重排顺序」的目的，如果只交换 row/col，结果会是 (2,0),(0,1),(4,1),(3,2),(1,3) 这种乱序。扫描次数的对比把复杂度差异量化了：普通转置 25 = cols×terms = 5×5，快速转置 10 = 2×terms（一趟统计 num、一趟放置），与 cols 无关。本例 terms 只有 5，差距是 2.5 倍；若 terms=1000、cols=500，普通转置要 500000 次而快速转置只要 2000 次，差 250 倍——这就是 O(cols×terms) 与 O(cols+terms) 的区别。快速转置的 cpot 推导可以手算验证：num = [1,1,1,1,1]（每列各一个非零元素），前缀和得 cpot = [0,1,2,3,4]，所以第 col 列的元素正好落到新表的第 col 个位置。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-17",
+        "ds-ch04-03",
+        "ds-ch02-11"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 18
+    },
+    {
+      "id": "ds-ch04-19",
+      "title": "广义表的定义：表头、表尾、长度与深度",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "广义表是线性表的推广：元素既可以是原子，也可以是子表。表头是第一个元素（可以是原子或子表），表尾是其余元素组成的表——表尾一定是表，这是最高频的概念陷阱。长度数最外层元素个数，深度数括号嵌套层数。",
+      "content": "## 定义\n\n**广义表**（generalized list / lists）是 n 个元素的有限序列，记作：\n\n```\nLS = (a1, a2, ..., an)\n```\n\n其中 ai 既可以是**原子**（不可再分的单元素），也可以是**子表**（另一个广义表）。\nn = 0 时是空表，记作 `()`。线性表是广义表的特例——所有元素都是原子。\n\n因为子表本身还可以含子表，广义表是**递归定义**的结构，这也决定了它的所有运算都天然用递归实现。\n\n## 表头与表尾（最容易错的地方）\n\n| 概念 | 定义 | 类型 |\n|---|---|---|\n| **表头 head** | 第一个元素 a1 | **可以是原子，也可以是子表** |\n| **表尾 tail** | 其余元素组成的表 (a2, ..., an) | **一定是表**（哪怕只剩一个元素也要再套一层括号） |\n\n以 `D = (a, (b, c))` 为例：\n\n- head(D) = `a`（原子）\n- tail(D) = `((b, c))` ← **注意是两层括号**！它是「由 (b,c) 这一个元素组成的表」，不是 (b,c) 本身\n- head(tail(D)) = `(b, c)`（子表）\n- tail(tail(D)) = `()`（空表）\n\n**空表没有表头和表尾**——这是定义上的硬性规定。\n\n## 长度与深度\n\n- **长度** = 最外层元素的个数（子表整体算 1 个元素，不管它内部有多少）\n- **深度** = 括号嵌套的最大层数。约定：**原子的深度为 0，空表 () 的深度为 1**\n\n递推式：\n\n```\ndepth(原子)    = 0\ndepth(())      = 1\ndepth(a1,...,an) = 1 + max{ depth(a1), ..., depth(an) }\n```\n\n## 六个典型例子\n\n| 广义表 | 长度 | 深度 | 说明 |\n|---|---|---|---|\n| `A = ()` | 0 | 1 | 空表，无表头表尾 |\n| `B = (a)` | 1 | 1 | 表头是原子 a，表尾是 () |\n| `C = (a,b,c)` | 3 | 1 | 全原子，退化成线性表 |\n| `D = (a,(b,c))` | 2 | 2 | 表尾是 ((b,c))，长度 1 |\n| `E = ((a),(b,(c,d)))` | 2 | 3 | 最深的一支是 (b,(c,d)) |\n| `F = ((()))` | 1 | 3 | 三对括号，长度只有 1 |\n\n**长度和深度是两个独立维度**：F 长度 1 但深度 3；C 长度 3 但深度 1。\n\n## 递归表\n\n`E = (a, E)` 这种把自身作为子表的叫**递归表**，深度无穷。\n教材一般只讨论非递归表；实现时必须避免构造出环，否则所有递归函数都会栈溢出。",
+      "keyPoints": [
+        "广义表是线性表的推广：n 个元素的有限序列，每个元素可以是原子也可以是子表，线性表是「全为原子」的特例",
+        "表头 head 是第一个元素，可以是原子也可以是子表；表尾 tail 是其余元素组成的表，一定是表",
+        "D=(a,(b,c)) 的表尾是 ((b,c)) 而不是 (b,c)——只剩一个元素时仍要再套一层括号，这是最高频的概念陷阱",
+        "空表 () 没有表头和表尾；长度 = 最外层元素个数，子表整体算 1 个",
+        "深度 = 括号嵌套最大层数，约定原子深度 0、空表深度 1，递推式 depth = 1 + max{各元素深度}",
+        "长度与深度是两个独立维度：((())) 长度 1 深度 3，(a,b,c) 长度 3 深度 1"
+      ],
+      "pitfalls": [
+        "把 tail((a,(b,c))) 答成 (b,c)：正确答案是 ((b,c))，表尾永远是一个表",
+        "把空表的深度答成 0：约定是 1（一对括号就是一层）；原子的深度才是 0",
+        "数长度时把子表里的元素也数进去：(a,(b,c)) 的长度是 2 不是 3",
+        "数深度时只数最外层括号：深度取的是所有分支里的最大嵌套层数",
+        "构造出递归表 E=(a,E) 还去调用 depth：环会让递归永不终止，直接栈溢出"
+      ],
+      "examples": [
+        {
+          "title": "六个广义表的长度、深度、表头与表尾实测（孩子兄弟链表示）",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\n/* 孩子兄弟链：ATOM 结点用 atom 域，LIST 结点用 hp 指向子表，所有结点都有 tp 指向兄弟 */\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct GLNode *hp;\n    } val;\n    struct GLNode *tp;\n} GLNode, *GList;\n\nstatic GList mkAtom(char c, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    p->tp = tp;\n    return p;\n}\n\nstatic GList mkList(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.hp = hp;\n    p->tp = tp;\n    return p;\n}\n\n/* 长度 = 最外层兄弟结点的个数 */\nstatic int length(GList ls)\n{\n    int n = 0;\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n    }\n    return n;\n}\n\n/* 深度：空表 1；否则 1 + 各元素深度的最大值（原子算 0） */\nstatic int depth(GList ls)\n{\n    int maxD = 0, d;\n    GList p;\n\n    if (ls == NULL) {\n        return 1;\n    }\n    for (p = ls; p != NULL; p = p->tp) {\n        d = (p->tag == ATOM) ? 0 : depth(p->val.hp);\n        if (d > maxD) {\n            maxD = d;\n        }\n    }\n    return maxD + 1;\n}\n\nstatic void destroyGL(GList ls)\n{\n    GList p, next;\n\n    for (p = ls; p != NULL; p = next) {\n        next = p->tp;\n        if (p->tag == LIST) {\n            destroyGL(p->val.hp);\n        }\n        free(p);\n    }\n}\n\nstatic void describe(const char *name, GList ls)\n{\n    printf(\"%s 长度=%d 深度=%d\", name, length(ls), depth(ls));\n    if (ls == NULL) {\n        printf(\" 表头=无（空表无表头表尾） 表尾=无\\n\");\n        return;\n    }\n    if (ls->tag == ATOM) {\n        printf(\" 表头=原子 %c\", ls->val.atom);\n    } else {\n        printf(\" 表头=子表(长度%d 深度%d)\", length(ls->val.hp), depth(ls->val.hp));\n    }\n    printf(\" 表尾长度=%d\\n\", length(ls->tp));\n}\n\nint main(void)\n{\n    GList A = NULL;                                        /* () */\n    GList B = mkAtom('a', NULL);                           /* (a) */\n    GList C = mkAtom('a', mkAtom('b', mkAtom('c', NULL))); /* (a,b,c) */\n    GList D, E, F;\n\n    /* D = (a,(b,c)) */\n    D = mkAtom('a', mkList(mkAtom('b', mkAtom('c', NULL)), NULL));\n    /* E = ((a),(b,(c,d)))：最深的一支是 (b,(c,d)) */\n    E = mkList(mkAtom('a', NULL),\n               mkList(mkAtom('b', mkList(mkAtom('c', mkAtom('d', NULL)), NULL)),\n                      NULL));\n    /* F = ((()))：三对括号，深度 3，长度 1 */\n    F = mkList(mkList(NULL, NULL), NULL);\n\n    describe(\"A=()\", A);\n    describe(\"B=(a)\", B);\n    describe(\"C=(a,b,c)\", C);\n    describe(\"D=(a,(b,c))\", D);\n    describe(\"E=((a),(b,(c,d)))\", E);\n    describe(\"F=((()))\", F);\n\n    printf(\"\\n== 表尾一定是「表」：tail(D) 与 D 的第二个元素不是一回事 ==\\n\");\n    printf(\"D=(a,(b,c))：第二个元素是子表 (b,c)，它自己的长度=%d\\n\",\n           length(D->tp->val.hp));\n    printf(\"但 tail(D) 是「由其余元素组成的表」= ((b,c))，长度=%d\\n\",\n           length(D->tp));\n\n    destroyGL(A);\n    destroyGL(B);\n    destroyGL(C);\n    destroyGL(D);\n    destroyGL(E);\n    destroyGL(F);\n    printf(\"全部 6 个广义表已释放\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "A=() 长度=0 深度=1 表头=无（空表无表头表尾） 表尾=无\nB=(a) 长度=1 深度=1 表头=原子 a 表尾长度=0\nC=(a,b,c) 长度=3 深度=1 表头=原子 a 表尾长度=2\nD=(a,(b,c)) 长度=2 深度=2 表头=原子 a 表尾长度=1\nE=((a),(b,(c,d))) 长度=2 深度=3 表头=子表(长度1 深度1) 表尾长度=1\nF=((())) 长度=1 深度=3 表头=子表(长度1 深度2) 表尾长度=0\n\n== 表尾一定是「表」：tail(D) 与 D 的第二个元素不是一回事 ==\nD=(a,(b,c))：第二个元素是子表 (b,c)，它自己的长度=2\n但 tail(D) 是「由其余元素组成的表」= ((b,c))，长度=1\n全部 6 个广义表已释放",
+          "note": "最后两行是本卡的核心考点：D=(a,(b,c)) 的第二个元素 (b,c) 长度是 2，但 tail(D) = ((b,c)) 长度只有 1——因为表尾是「由其余元素**组成的表**」，哪怕只剩一个元素也要再套一层括号。答成 (b,c) 就丢了这一层。F=((())) 的表头是子表，它的长度 1、深度 2，正是 (())；F 自己深度 3、长度 1，说明「括号层数」和「元素个数」完全无关。E 的深度 3 来自最深的那一支 (b,(c,d))：depth((c,d))=1 → depth((b,(c,d)))=2 → depth(E)=3，而另一支 (a) 只有深度 1，取的是 max 不是求和。A=() 用 NULL 表示，length 返回 0、depth 返回 1，两个边界都由递归基直接给出。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-03",
+        "ds-ch04-20",
+        "ds-ch04-22"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 19
+    },
+    {
+      "id": "ds-ch04-20",
+      "title": "广义表的头尾链存储结构：hp 指表头、tp 指表尾",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "头尾链是广义表的经典存储方式：LIST 结点的 hp 指向表头（第一个元素），tp 指向表尾（其余元素构成的表），ATOM 结点只有值域。它的优点是表头表尾可以直接取到，缺点是每层都要额外的表结点，空间开销明显大于孩子兄弟链。",
+      "content": "## 结点定义\n\n```c\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;                        /* 区分原子结点与表结点 */\n    union {\n        char atom;                        /* ATOM：值域 */\n        struct {\n            struct GLNode *hp, *tp;       /* LIST：hp 指表头，tp 指表尾 */\n        } ptr;\n    } val;\n} GLNode, *GList;\n```\n\n- **ATOM 结点**：`tag = ATOM`，只有 `atom` 有意义，没有指针\n- **LIST 结点（表结点）**：`tag = LIST`，`hp` 指向表头（第一个元素，可以是 ATOM 或 LIST 结点），\n  `tp` 指向表尾（其余元素构成的那个表所对应的 LIST 结点；只有一个元素时 tp = NULL）\n\n**tag 域是必需的**：两种结点共用一块内存（union），只能靠 tag 判断当前该读 atom 还是读 hp/tp。\n\n## D = (a, (b, c)) 的头尾链\n\n```\nGList ─→ [LIST]──hp──→ [ATOM 'a']\n           │\n           tp\n           ↓\n         [LIST]──hp──→ [LIST]──hp──→ [ATOM 'b']\n           │              │\n           tp=NULL         tp\n                           ↓\n                         [LIST]──hp──→ [ATOM 'c']\n                           │\n                           tp=NULL\n```\n\n一共 **4 个 LIST 结点 + 3 个 ATOM 结点 = 7 个结点**。\n\n## 空间开销的账\n\n设广义表有 t 个原子、s 个子表（LIST 元素）。头尾链的结点数是：\n\n```\n结点数 = t（原子） + s（子表本身） + (s + 1)（每个子表以及最外层都需要 tp 链上的表结点）\n```\n\n对 D：t=3、s=1 → 3 + 1 + 3 = 7 ✓（tp 链上共 3 个表结点：最外层、tail(D)、tail((b,c))）\n\n**孩子兄弟链只需 t + s = 4 个结点**，省掉了整条 tp 表结点链。\n这就是为什么实际实现（以及后面的卡片）大多改用孩子兄弟链。\n\n## 头尾链的优点\n\n1. **表头表尾是「一等公民」**：`ls->val.ptr.hp` 就是 head，`ls->val.ptr.tp` 就是 tail，\n   不需要任何转换——与教材的形式定义一一对应，写递归式最自然。\n2. **空表用 NULL 表示**，不需要特殊结点。\n3. 递归函数结构清晰：`f(LS) = g(head(LS), f(tail(LS)))`，直接翻译成代码。\n\n## 三个实现要点\n\n- **union 节省空间但必须严格靠 tag 分派**：读错域会得到随机的指针值，直接段错误\n- **释放必须后序**：先递归释放 hp 和 tp，再 free 自己；反过来会丢失子树指针造成泄漏\n- **共享子表要加引用计数**：广义表允许两个表共享同一个子表，此时不能简单 free，\n  否则会产生悬空指针。教材的 destroy 通常假设无共享",
+      "keyPoints": [
+        "头尾链结点：tag 区分类型；ATOM 只有值域，LIST 有 hp（指表头/第一个元素）与 tp（指表尾/其余元素构成的表）",
+        "tp 指向的是「表尾这个表」的 LIST 结点，不是下一个兄弟——只有一个元素时 tp = NULL",
+        "tag 域必需：两种结点共用 union 内存，只能靠 tag 判断该读 atom 还是读 hp/tp",
+        "D=(a,(b,c)) 在头尾链下占 4 个 LIST 结点 + 3 个 ATOM 结点 = 7 个，孩子兄弟链只需 4 个",
+        "优点是表头表尾可直接取到、与教材形式定义一一对应、递归式最好写；缺点是 tp 表结点链造成明显空间浪费",
+        "释放必须后序（先递归 free hp 与 tp 再 free 自己）；共享子表需要引用计数，否则 free 会产生悬空指针"
+      ],
+      "pitfalls": [
+        "把 tp 当成「下一个兄弟」用：头尾链的 tp 指向的是表尾对应的 LIST 结点，语义与孩子兄弟链的 tp 不同",
+        "不判 tag 就读 val.atom 或 val.ptr.hp：union 两种布局重叠，读错域得到随机值",
+        "释放时先 free(ls) 再递归子结点：子树指针已随结点内存一起丢失，永久泄漏",
+        "以为 tp=NULL 表示空表：tp=NULL 表示「表尾为空」即本表只有一个元素；空表整体用 NULL 表示",
+        "忘记 LIST 结点的 hp 也可能是 NULL：hp=NULL 且 tag=LIST 表示这个元素是空表 ()"
+      ],
+      "examples": [
+        {
+          "title": "D=(a,(b,c)) 的头尾链结构逐层打印与结点计数",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\n/* 头尾链：LIST 结点的 hp 指表头（第一个元素），tp 指表尾（其余元素构成的表） */\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct {\n            struct GLNode *hp, *tp;\n        } ptr;\n    } val;\n} GLNode, *GList;\n\nstatic GList mkAtomHT(char c)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    return p;\n}\n\nstatic GList mkListHT(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.ptr.hp = hp;\n    p->val.ptr.tp = tp;\n    return p;\n}\n\nstatic void pad(int level)\n{\n    int i;\n\n    for (i = 0; i < level; i++) {\n        printf(\"  \");\n    }\n}\n\n/* 递归打印：LIST 结点分别展开 hp 与 tp 两支 */\nstatic void dumpHT(GList ls, int level)\n{\n    if (ls == NULL) {\n        pad(level);\n        printf(\"(空)\\n\");\n        return;\n    }\n    if (ls->tag == ATOM) {\n        pad(level);\n        printf(\"ATOM '%c'\\n\", ls->val.atom);\n        return;\n    }\n    pad(level);\n    printf(\"LIST 结点\\n\");\n    pad(level + 1);\n    printf(\"hp（表头）->\\n\");\n    dumpHT(ls->val.ptr.hp, level + 2);\n    pad(level + 1);\n    printf(\"tp（表尾）->\\n\");\n    dumpHT(ls->val.ptr.tp, level + 2);\n}\n\nstatic int countAll(GList ls)\n{\n    if (ls == NULL) {\n        return 0;\n    }\n    if (ls->tag == ATOM) {\n        return 1;\n    }\n    return 1 + countAll(ls->val.ptr.hp) + countAll(ls->val.ptr.tp);\n}\n\nstatic int countByTag(GList ls, ElemTag want)\n{\n    if (ls == NULL) {\n        return 0;\n    }\n    if (ls->tag == ATOM) {\n        return (want == ATOM) ? 1 : 0;\n    }\n    return ((want == LIST) ? 1 : 0)\n         + countByTag(ls->val.ptr.hp, want)\n         + countByTag(ls->val.ptr.tp, want);\n}\n\n/* 释放必须后序：先递归两支，再 free 自己 */\nstatic void destroyHT(GList ls)\n{\n    if (ls == NULL) {\n        return;\n    }\n    if (ls->tag == LIST) {\n        destroyHT(ls->val.ptr.hp);\n        destroyHT(ls->val.ptr.tp);\n    }\n    free(ls);\n}\n\nint main(void)\n{\n    /* (b,c) 本身是一个表：LIST 结点 hp->ATOM b，tp->(只剩 c 的表) */\n    GList bc = mkListHT(mkAtomHT('b'), mkListHT(mkAtomHT('c'), NULL));\n    /* D = (a, (b,c))：hp->ATOM a，tp->(只剩 (b,c) 这一个元素的表) */\n    GList D = mkListHT(mkAtomHT('a'), mkListHT(bc, NULL));\n\n    printf(\"D = (a,(b,c)) 的头尾链存储结构：\\n\");\n    dumpHT(D, 0);\n\n    printf(\"\\n结点总数 = %d（LIST 结点 %d 个 + ATOM 结点 %d 个）\\n\",\n           countAll(D), countByTag(D, LIST), countByTag(D, ATOM));\n    printf(\"表头 head(D) = \");\n    if (D->val.ptr.hp->tag == ATOM) {\n        printf(\"原子 '%c'\\n\", D->val.ptr.hp->val.atom);\n    } else {\n        printf(\"子表\\n\");\n    }\n    printf(\"表尾 tail(D) 是否为空 = %d（0 表示非空，因为 D 有 2 个元素）\\n\",\n           D->val.ptr.tp == NULL);\n\n    destroyHT(D);\n    printf(\"释放后 countAll(NULL) = %d\\n\", countAll(NULL));\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "D = (a,(b,c)) 的头尾链存储结构：\nLIST 结点\n  hp（表头）->\n    ATOM 'a'\n  tp（表尾）->\n    LIST 结点\n      hp（表头）->\n        LIST 结点\n          hp（表头）->\n            ATOM 'b'\n          tp（表尾）->\n            LIST 结点\n              hp（表头）->\n                ATOM 'c'\n              tp（表尾）->\n                (空)\n      tp（表尾）->\n        (空)\n\n结点总数 = 7（LIST 结点 4 个 + ATOM 结点 3 个）\n表头 head(D) = 原子 'a'\n表尾 tail(D) 是否为空 = 0（0 表示非空，因为 D 有 2 个元素）\n释放后 countAll(NULL) = 0",
+          "note": "打印出来的树形结构把头尾链的本质暴露得很清楚：**每往下一层，tp 支上就要多一个 LIST 结点**。D 只有 3 个原子和 1 个子表，却用了 7 个结点，其中 4 个是纯粹的「表结点」（最外层 D、tail(D)=((b,c))、(b,c) 本身、tail((b,c))=(c)）。同样的表用孩子兄弟链只要 4 个结点（3 个 ATOM + 1 个 LIST），省下的正是整条 tp 表结点链。注意 (空) 出现在两处：一是 tail((b,c)) 为空（c 是最后一个元素），二是 tail(D) 的那一层——后者表示「((b,c)) 这个表只有一个元素」，与「D 本身是空表」是完全不同的含义。表头直接就是 D->val.ptr.hp，表尾直接就是 D->val.ptr.tp，不需要任何计算，这是头尾链唯一的、但也是教材偏爱它的理由：与 head/tail 的形式定义严格对应。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-19",
+        "ds-ch04-21",
+        "ds-ch04-03"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 20
+    },
+    {
+      "id": "ds-ch04-21",
+      "title": "广义表的孩子兄弟链存储：tp 改指兄弟，结点数量减半",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "孩子兄弟链（改进链表）把 tp 的含义从「表尾」改成「下一个兄弟」，并让所有结点都带 tp 域。这样一个广义表就是一串兄弟结点，子表用 hp 挂下去，省掉了头尾链的整条表结点链，结点数从 t+2s+1 降到 t+s。",
+      "content": "## 结点定义\n\n```c\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;               /* ATOM：值 */\n        struct GLNode *hp;       /* LIST：指向第一个孩子（子表的元素链） */\n    } val;\n    struct GLNode *tp;           /* ★ 所有结点都有：指向下一个兄弟 */\n} GLNode, *GList;\n```\n\n与头尾链的两点关键区别：\n\n| | 头尾链 | 孩子兄弟链 |\n|---|---|---|\n| tp 的含义 | 指向**表尾**（一个 LIST 结点） | 指向**下一个兄弟**（同层的下一个元素） |\n| tp 域存在于 | 只有 LIST 结点 | **所有结点**（含 ATOM） |\n| 一个表怎么表示 | 一个 LIST 结点 + hp/tp 两支 | 一串用 tp 连起来的兄弟结点 |\n| GList 变量指向 | LIST 结点 | 第一个兄弟结点（空表是 NULL） |\n\n## D = (a, (b, c)) 的孩子兄弟链\n\n```\nGList ─→ [ATOM 'a'] ─tp→ [LIST] ─tp→ NULL\n                            │ hp\n                            ↓\n                        [ATOM 'b'] ─tp→ [ATOM 'c'] ─tp→ NULL\n```\n\n**只用 4 个结点**（3 个 ATOM + 1 个 LIST），而头尾链要 7 个。\n\n## 空间对比公式\n\n设 t 个原子、s 个子表：\n\n| 存储方式 | 结点数 | D=(a,(b,c)) 实例（t=3, s=1） |\n|---|---|---|\n| 头尾链 | `t + 2s + 1` | 3 + 2 + 1 = 6…（实际 7，因为 tail 链上还有一层） |\n| **孩子兄弟链** | `t + s` | 3 + 1 = **4** ✓ |\n\n孩子兄弟链的公式是精确的：**每个原子一个结点、每个子表一个 LIST 结点，没有多余**。\n头尾链因为要为「每一层的表尾」额外建 LIST 结点，实际开销随嵌套层数增长。\n\n## 三个直接收益\n\n1. **表尾就是 `ls->tp`**：不需要额外的表结点，取 tail 是 O(1) 的指针运算\n2. **长度就是兄弟链的长度**：`for (p = ls; p; p = p->tp) n++;`，与线性表遍历完全一样\n3. **递归函数更像树的遍历**：hp 是「孩子」、tp 是「兄弟」，正好对应二叉树的\n   「左孩子右兄弟」表示——所以广义表的很多算法可以直接套用树的算法\n\n## 代价\n\n- ATOM 结点也要带一个 tp 指针，单个结点比头尾链的 ATOM 结点大（多 8 字节）\n- 但结点**数量**少得多，总空间仍然显著更优；而且缓存局部性更好（同层元素物理相邻的可能性更高）\n- **表头的语义变了**：head 是 `ls` 自己（第一个兄弟结点），不是 `ls->val.hp`；\n  `ls->val.hp` 是「第一个元素如果是子表，它的孩子链」",
+      "keyPoints": [
+        "孩子兄弟链把 tp 的含义从「表尾」改成「下一个兄弟」，并让 ATOM 结点也带 tp 域",
+        "一个广义表 = 一串用 tp 连起来的兄弟结点；GList 指向第一个兄弟，空表用 NULL 表示",
+        "LIST 结点的 hp 指向子表的第一个孩子；ATOM 结点的 val 只有 atom 有意义",
+        "结点数 = t + s（t 个原子 + s 个子表），精确无冗余；头尾链要为每层表尾额外建 LIST 结点，随嵌套层数增长",
+        "D=(a,(b,c)) 孩子兄弟链只用 4 个结点，头尾链要 7 个——这是改用孩子兄弟链的直接动机",
+        "hp/tp 正好对应二叉树的「左孩子右兄弟」，所以广义表算法可以直接套用树的遍历算法"
+      ],
+      "pitfalls": [
+        "把头尾链的递归写法照搬到孩子兄弟链：两者 tp 语义不同，head 的取法也不同",
+        "在孩子兄弟链里用 ls->val.hp 当表头：表头是 ls 自己，hp 是「ls 若是子表，它的第一个孩子」",
+        "遍历时只走 hp 不走 tp：那样只能访问最左的一条链，同层兄弟全部漏掉",
+        "释放时先 free(p) 再取 p->tp：必须先用 next 存住 p->tp，再递归 free 孩子，最后 free(p)",
+        "ATOM 结点的 hp 域未初始化就去读：union 里 atom 与 hp 重叠，读 hp 会得到字符值被当指针解释的垃圾"
+      ],
+      "examples": [
+        {
+          "title": "D 与 E 的孩子兄弟链结构打印、结点计数，并与头尾链开销对比",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct GLNode *hp;\n    } val;\n    struct GLNode *tp;           /* ★ 所有结点都有兄弟指针 */\n} GLNode, *GList;\n\nstatic GList mkAtom(char c, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    p->tp = tp;\n    return p;\n}\n\nstatic GList mkList(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.hp = hp;\n    p->tp = tp;\n    return p;\n}\n\nstatic void pad(int level)\n{\n    int i;\n\n    for (i = 0; i < level; i++) {\n        printf(\"  \");\n    }\n}\n\n/* 兄弟链横向打印，LIST 结点的孩子缩进一层纵向打印 */\nstatic void dumpCS(GList ls, int level)\n{\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        pad(level);\n        if (p->tag == ATOM) {\n            printf(\"ATOM '%c'\\n\", p->val.atom);\n        } else {\n            printf(\"LIST\\n\");\n            dumpCS(p->val.hp, level + 1);\n        }\n    }\n}\n\nstatic int countAll(GList ls)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n        if (p->tag == LIST) {\n            n += countAll(p->val.hp);\n        }\n    }\n    return n;\n}\n\nstatic int countTag(GList ls, ElemTag want)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == want) {\n            n++;\n        }\n        if (p->tag == LIST) {\n            n += countTag(p->val.hp, want);\n        }\n    }\n    return n;\n}\n\nstatic int length(GList ls)\n{\n    int n = 0;\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n    }\n    return n;\n}\n\nstatic int depth(GList ls)\n{\n    int maxD = 0, d;\n    GList p;\n\n    if (ls == NULL) {\n        return 1;\n    }\n    for (p = ls; p != NULL; p = p->tp) {\n        d = (p->tag == ATOM) ? 0 : depth(p->val.hp);\n        if (d > maxD) {\n            maxD = d;\n        }\n    }\n    return maxD + 1;\n}\n\nstatic void destroyGL(GList ls)\n{\n    GList p, next;\n\n    for (p = ls; p != NULL; p = next) {\n        next = p->tp;            /* ★ 先存住兄弟，再释放孩子和自己 */\n        if (p->tag == LIST) {\n            destroyGL(p->val.hp);\n        }\n        free(p);\n    }\n}\n\nint main(void)\n{\n    GList D = mkAtom('a', mkList(mkAtom('b', mkAtom('c', NULL)), NULL));\n    GList E = mkList(mkAtom('a', NULL),\n                     mkList(mkAtom('b', mkList(mkAtom('c', mkAtom('d', NULL)), NULL)),\n                            NULL));\n\n    printf(\"D = (a,(b,c)) 的孩子兄弟链：\\n\");\n    dumpCS(D, 0);\n    printf(\"D 结点总数 = %d（ATOM %d 个 + LIST %d 个）\\n\",\n           countAll(D), countTag(D, ATOM), countTag(D, LIST));\n    printf(\"表头 = 第一个兄弟结点，tag=%s\\n\", D->tag == ATOM ? \"ATOM\" : \"LIST\");\n    printf(\"表尾 = ls->tp（兄弟链），长度 = %d，不需要额外表结点\\n\", length(D->tp));\n    printf(\"头尾链存同一个 D 需要 7 个结点，节省了 %d 个\\n\", 7 - countAll(D));\n\n    printf(\"\\nE = ((a),(b,(c,d))) 的孩子兄弟链：\\n\");\n    dumpCS(E, 0);\n    printf(\"E 结点总数 = %d（ATOM %d 个 + LIST %d 个）\\n\",\n           countAll(E), countTag(E, ATOM), countTag(E, LIST));\n    printf(\"E 长度 = %d，深度 = %d\\n\", length(E), depth(E));\n    printf(\"结点数 %d = 原子数 %d + 子表数 %d，公式 t+s 精确成立\\n\",\n           countAll(E), countTag(E, ATOM), countTag(E, LIST));\n\n    destroyGL(D);\n    destroyGL(E);\n    printf(\"两个表已释放\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "D = (a,(b,c)) 的孩子兄弟链：\nATOM 'a'\nLIST\n  ATOM 'b'\n  ATOM 'c'\nD 结点总数 = 4（ATOM 3 个 + LIST 1 个）\n表头 = 第一个兄弟结点，tag=ATOM\n表尾 = ls->tp（兄弟链），长度 = 1，不需要额外表结点\n头尾链存同一个 D 需要 7 个结点，节省了 3 个\n\nE = ((a),(b,(c,d))) 的孩子兄弟链：\nLIST\n  ATOM 'a'\nLIST\n  ATOM 'b'\n  LIST\n    ATOM 'c'\n    ATOM 'd'\nE 结点总数 = 7（ATOM 4 个 + LIST 3 个）\nE 长度 = 2，深度 = 3\n结点数 7 = 原子数 4 + 子表数 3，公式 t+s 精确成立\n两个表已释放",
+          "note": "D 的打印结果只有 4 行，正好对应 4 个结点：第 0 层的两个兄弟（ATOM a 和 LIST），加上 LIST 缩进一层的两个孩子（ATOM b、ATOM c）。头尾链要 7 个结点，省下的 3 个全部是「纯粹为表示表尾而存在」的 LIST 结点。E 有 4 个原子和 3 个子表（(a)、(b,(c,d))、(c,d)），结点总数 7 = 4 + 3，验证了孩子兄弟链「结点数 = t + s」这个公式是**精确等式**而不是上界。注意 E 的长度是 2（最外层两个兄弟）、深度是 3（最深的一支 (b,(c,d)) 有三层括号），这两个值在打印的缩进结构里都能直接读出来：横向数兄弟得长度，纵向数缩进得深度。destroyGL 里 `next = p->tp` 必须先于 free(p) 执行，否则兄弟链断掉、后面的结点全部泄漏。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-20",
+        "ds-ch04-19",
+        "ds-ch05-03"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 21
+    },
+    {
+      "id": "ds-ch04-22",
+      "title": "广义表深度与长度的递归计算：递归式、递归树与调用轨迹",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "深度和长度都是递归定义的，所以实现天然递归：depth(空表)=1、depth(原子)=0、depth(表)=1+max(各元素深度)。递归深度等于表的深度，总调用次数等于结点总数。把每次进入与返回都打印出来，就能看清「回归阶段逐层上报」的过程。",
+      "content": "## 递归式\n\n```\nlength(())            = 0\nlength(a1, a2, ..., an) = 1 + length(a2, ..., an)        /* 或直接数兄弟 */\n\ndepth(原子)            = 0\ndepth(())              = 1\ndepth(a1, ..., an)     = 1 + max{ depth(a1), ..., depth(an) }\n```\n\n代码（孩子兄弟链）：\n\n```c\nint depth(GList ls)\n{\n    int maxD = 0, d;\n    GList p;\n\n    if (ls == NULL) return 1;                    /* 递归基：空表 */\n    for (p = ls; p != NULL; p = p->tp) {\n        d = (p->tag == ATOM) ? 0 : depth(p->val.hp);   /* 递归步 */\n        if (d > maxD) maxD = d;\n    }\n    return maxD + 1;\n}\n```\n\n## 递归的代价怎么算\n\n| 指标 | 值 | 原因 |\n|---|---|---|\n| **递归最大深度** | 表的深度 | 每进入一个子表压一帧 |\n| **总调用次数** | 子表个数 s + 1 | 每个 LIST 结点触发一次 depth 调用 |\n| **访问结点数** | 全部 t + s 个 | 每个结点都被 for 循环扫过一次 |\n| **时间复杂度** | O(t + s) | 一趟遍历，每个结点常数时间 |\n| **空间复杂度** | O(表深度) | 运行时栈的深度 |\n\n**注意 length 与 depth 的递归形态不同**：length 是「沿兄弟链横向累加」，\ndepth 是「沿 hp 纵向深入并取 max」。写混了会得到完全错误的结果。\n\n## 一个隐蔽的性能陷阱\n\n上面 depth 的实现里，如果为了打印而在递归中调用 length(ls)，\n就变成 **每层都重新扫一遍兄弟链**，复杂度从 O(t+s) 退化到 O((t+s)·深度)。\n本卡的示例为了展示轨迹刻意这么做了（表很小无所谓），**生产代码必须避免**。\n\n## 递归轨迹怎么读\n\n打印格式是「进入时一行、返回时一行」，缩进表示递归层级：\n\n- **进入行**（`depth(进入一层…)`）出现在递推阶段，缩进逐层加深\n- **返回行**（`depth(本层) = 1 + max(…) = …`）出现在回归阶段，缩进逐层变浅\n- 原子的 `深度 0` 是递归基，不再往下调用\n\n这正是「递归 = 递推 + 回归」的可视化：**下去的时候收集信息，上来的时候合并结果**。\ndepth 用的是 max 合并（求最深的一支），如果改成 sum 合并，得到的就是「所有子表的深度之和」，\n那是另一个量，别混淆。",
+      "keyPoints": [
+        "depth 递归式：depth(原子)=0、depth(())=1、depth(表)=1+max{各元素深度}；两个递归基缺一不可",
+        "length 沿兄弟链横向累加，depth 沿 hp 纵向深入取 max——两者递归形态完全不同，写混结果全错",
+        "递归最大深度 = 表的深度；总调用次数 = 子表数 s + 1；时间 O(t+s)、空间 O(表深度)",
+        "递归轨迹的「进入行」在递推阶段（缩进加深），「返回行」在回归阶段（缩进变浅）",
+        "max 合并得到深度，sum 合并得到「所有子表深度之和」，是不同的量，不要混淆",
+        "在递归里反复调用 length(ls) 会让复杂度从 O(t+s) 退化到 O((t+s)×深度)，生产代码要避免"
+      ],
+      "pitfalls": [
+        "漏掉 depth(()) = 1 这个递归基：空表返回 0 会让所有嵌套的深度少算 1",
+        "把 max 写成 sum：((a),(b,(c,d))) 会得到 1+1+2=4 而不是正确的 3",
+        "把原子深度当成 1：约定原子深度为 0，只有「一对括号」才贡献 1 层",
+        "递归里调用 length(ls) 打印信息：小表看不出问题，大表直接慢一个数量级",
+        "忘了 for 循环要走完整个兄弟链就 return：只处理第一个元素会漏掉更深的分支"
+      ],
+      "examples": [
+        {
+          "title": "D 与 F 的 depth 递归调用轨迹（缩进表示递归层级）",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct GLNode *hp;\n    } val;\n    struct GLNode *tp;\n} GLNode, *GList;\n\nstatic GList mkAtom(char c, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    p->tp = tp;\n    return p;\n}\n\nstatic GList mkList(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.hp = hp;\n    p->tp = tp;\n    return p;\n}\n\nstatic void pad(int level)\n{\n    int i;\n\n    for (i = 0; i < level; i++) {\n        printf(\"  \");\n    }\n}\n\nstatic int length(GList ls)\n{\n    int n = 0;\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n    }\n    return n;\n}\n\n/* 带轨迹打印的 depth：进入时一行、返回时一行，缩进表示递归层级 */\nstatic int depthTrace(GList ls, int level, int *calls)\n{\n    int maxD = 0, d;\n    GList p;\n\n    (*calls)++;\n    if (ls == NULL) {\n        pad(level);\n        printf(\"depth(空表) -> 1        [递归基]\\n\");\n        return 1;\n    }\n    pad(level);\n    printf(\"depth(进入一层，本层有 %d 个元素)\\n\", length(ls));\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) {\n            pad(level + 1);\n            printf(\"元素 ATOM '%c' -> 深度 0   [递归基，不再下探]\\n\", p->val.atom);\n            d = 0;\n        } else {\n            pad(level + 1);\n            printf(\"元素 LIST -> 下探它的孩子链：\\n\");\n            d = depthTrace(p->val.hp, level + 2, calls);\n            pad(level + 1);\n            printf(\"该子表返回深度 = %d\\n\", d);\n        }\n        if (d > maxD) {\n            maxD = d;\n        }\n    }\n    pad(level);\n    printf(\"depth(本层) = 1 + max(%d) = %d   [回归阶段上报]\\n\", maxD, maxD + 1);\n    return maxD + 1;\n}\n\nstatic void destroyGL(GList ls)\n{\n    GList p, next;\n\n    for (p = ls; p != NULL; p = next) {\n        next = p->tp;\n        if (p->tag == LIST) {\n            destroyGL(p->val.hp);\n        }\n        free(p);\n    }\n}\n\nint main(void)\n{\n    GList D = mkAtom('a', mkList(mkAtom('b', mkAtom('c', NULL)), NULL));\n    GList F = mkList(mkList(NULL, NULL), NULL);\n    int calls = 0, d;\n\n    printf(\"== D = (a,(b,c)) 的 depth 递归轨迹 ==\\n\");\n    d = depthTrace(D, 0, &calls);\n    printf(\"结果 depth(D) = %d，depth 函数共被调用 %d 次\\n\", d, calls);\n\n    printf(\"\\n== F = ((())) 的 depth 递归轨迹（含空表递归基）==\\n\");\n    calls = 0;\n    d = depthTrace(F, 0, &calls);\n    printf(\"结果 depth(F) = %d，depth 函数共被调用 %d 次\\n\", d, calls);\n\n    destroyGL(D);\n    destroyGL(F);\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== D = (a,(b,c)) 的 depth 递归轨迹 ==\ndepth(进入一层，本层有 2 个元素)\n  元素 ATOM 'a' -> 深度 0   [递归基，不再下探]\n  元素 LIST -> 下探它的孩子链：\n    depth(进入一层，本层有 2 个元素)\n      元素 ATOM 'b' -> 深度 0   [递归基，不再下探]\n      元素 ATOM 'c' -> 深度 0   [递归基，不再下探]\n    depth(本层) = 1 + max(0) = 1   [回归阶段上报]\n  该子表返回深度 = 1\ndepth(本层) = 1 + max(1) = 2   [回归阶段上报]\n结果 depth(D) = 2，depth 函数共被调用 2 次\n\n== F = ((())) 的 depth 递归轨迹（含空表递归基）==\ndepth(进入一层，本层有 1 个元素)\n  元素 LIST -> 下探它的孩子链：\n    depth(进入一层，本层有 1 个元素)\n      元素 LIST -> 下探它的孩子链：\n        depth(空表) -> 1        [递归基]\n      该子表返回深度 = 1\n    depth(本层) = 1 + max(1) = 2   [回归阶段上报]\n  该子表返回深度 = 2\ndepth(本层) = 1 + max(2) = 3   [回归阶段上报]\n结果 depth(F) = 3，depth 函数共被调用 3 次",
+          "note": "两段轨迹把「递推 + 回归」拍得清清楚楚：缩进逐层加深是递推（下探子表），缩进逐层变浅是回归（逐层上报 max+1）。D 的调用次数是 2 = 子表数 1 + 1（最外层），F 是 3 = 子表数 2 + 1，验证了「depth 的调用次数 = LIST 结点数 + 1」这个结论——ATOM 结点不触发递归调用，只在 for 循环里被扫过。D 的最外层 max 取的是 max(0, 1) = 1：原子 a 贡献 0、子表 (b,c) 贡献 1，**取最大值而不是求和**，所以 D 的深度是 2 而不是 3。F 的轨迹里出现了「depth(空表) -> 1」这一行，它就是 depth(())=1 这个递归基被真正触发的时刻；没有它，((())) 的深度会算成 2 而不是 3。本例为了打印轨迹在递归里调用了 length(ls)，复杂度退化成 O((t+s)×深度)——表很小看不出来，生产代码应该把 length 换成一个传入的参数或干脆不打印。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-19",
+        "ds-ch04-21",
+        "ds-ch03-19"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 22
+    },
+    {
+      "id": "ds-ch04-23",
+      "title": "广义表的遍历与带括号输出：printGL 与先序序列",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "带括号输出 printGL 是最典型的广义表递归应用：进入时打左括号、沿兄弟链逐个输出、退出时打右括号。先序遍历则是「先访问表头，再递归表头的子表，最后递归表尾」，输出所有原子的先后次序。",
+      "content": "## 带括号输出 printGL\n\n```c\nvoid printGL(GList ls)\n{\n    GList p;\n    int first = 1;\n\n    printf(\"(\");\n    for (p = ls; p != NULL; p = p->tp) {\n        if (!first) printf(\",\");       /* 元素之间补逗号，第一个前面不补 */\n        first = 0;\n        if (p->tag == ATOM) printf(\"%c\", p->val.atom);\n        else                printGL(p->val.hp);   /* 子表递归，自动补上括号 */\n    }\n    printf(\")\");\n}\n```\n\n三个要点：\n\n1. **括号由递归自然产生**：每进入一层 printGL 就打一对 `(` `)`，\n   所以嵌套层数与括号对数严格一致——这也是「深度 = 括号层数」的代码级证明\n2. **逗号要用 first 标志控制**：直接 `if (p != ls) printf(\",\")` 也行，\n   但用标志位对「空表」和「单元素表」都自动正确\n3. **空表打印成 `()`**：ls == NULL 时 for 循环一次不执行，只剩一对括号，天然正确\n\n## 先序遍历\n\n广义表的**先序遍历**定义：若表非空，则\n\n1. 访问表头 a1\n2. 若 a1 是子表，递归先序遍历 a1\n3. 递归先序遍历表尾 (a2, ..., an)\n\n```c\nvoid preorder(GList ls)\n{\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) printf(\"%c \", p->val.atom);\n        else                preorder(p->val.hp);   /* 先深入子表，再继续兄弟 */\n    }\n}\n```\n\n对孩子兄弟链而言，这个 for 循环本身就同时完成了「遍历表头」和「遍历表尾」两件事，\n因为**兄弟链就是表尾的展开形式**。\n\n## 遍历次序对照\n\n以 `E = ((a), (b, (c, d)))` 为例：\n\n| 遍历方式 | 输出 | 说明 |\n|---|---|---|\n| printGL | `((a),(b,(c,d)))` | 还原成标准书写形式 |\n| 先序（只输出原子） | `a b c d` | 与「从左到右读所有字母」一致 |\n| 后序（先子表后自身） | `a c d b` | 需要额外区分「访问结点」与「访问原子」 |\n\n先序遍历的原子次序，恰好等于**把括号全部去掉后从左到右的字符次序**——\n这个性质常用来快速验算遍历结果对不对。\n\n## 三个常用统计函数\n\n```c\nint countAtoms(GList ls);   /* 原子总数：ATOM 计 1，LIST 递归孩子链 */\nint countNodes(GList ls);   /* 结点总数：每个结点计 1 + LIST 递归孩子链 */\nint countLists(GList ls);   /* 子表个数 = countNodes - countAtoms */\n```\n\n三者都是 O(t+s) 的一趟遍历，递归结构与 depth 完全相同，只是合并方式从 max 变成 sum。",
+      "keyPoints": [
+        "printGL 的括号由递归自然产生：每进入一层打一对 ( )，嵌套层数与括号对数严格一致",
+        "逗号用 first 标志控制（或 if (p != ls)），空表与单元素表都自动正确；空表打印成 ()",
+        "先序遍历定义：访问表头 → 若表头是子表则递归它 → 递归表尾；孩子兄弟链里 for 兄弟链就同时覆盖了后两步",
+        "先序遍历输出的原子次序 = 把括号全部去掉后从左到右的字符次序，可用来快速验算",
+        "countAtoms / countNodes / countLists 与 depth 的递归结构相同，只是合并方式从 max 换成 sum",
+        "printGL 是「结构还原」，先序遍历是「内容提取」，两者用途不同但递归骨架一致"
+      ],
+      "pitfalls": [
+        "printGL 里逗号无条件打印：会得到 (a,,(b,c)) 或末尾多一个逗号",
+        "printGL 忘了最外层的括号：只递归子表而不在本层打 ( )，嵌套关系就丢了",
+        "先序遍历里遇到 LIST 结点先打印再递归孩子：LIST 结点本身不是原子，不该出现在原子序列里",
+        "遍历只走 hp 不走 tp：同层兄弟全部漏掉，((a),(b)) 只会输出 a",
+        "countNodes 里对 ATOM 结点也去读 val.hp：union 重叠，读到的是字符值被当指针的垃圾"
+      ],
+      "examples": [
+        {
+          "title": "四个广义表的 printGL 还原、先序原子序列与三类计数",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct GLNode *hp;\n    } val;\n    struct GLNode *tp;\n} GLNode, *GList;\n\nstatic GList mkAtom(char c, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    p->tp = tp;\n    return p;\n}\n\nstatic GList mkList(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.hp = hp;\n    p->tp = tp;\n    return p;\n}\n\n/* 带括号输出：每进入一层打一对括号，逗号用 first 标志控制 */\nstatic void printGL(GList ls)\n{\n    GList p;\n    int first = 1;\n\n    printf(\"(\");\n    for (p = ls; p != NULL; p = p->tp) {\n        if (!first) {\n            printf(\",\");\n        }\n        first = 0;\n        if (p->tag == ATOM) {\n            printf(\"%c\", p->val.atom);\n        } else {\n            printGL(p->val.hp);\n        }\n    }\n    printf(\")\");\n}\n\n/* 先序遍历：只输出原子，遇到子表就递归进去，然后继续兄弟 */\nstatic void preorder(GList ls)\n{\n    GList p;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) {\n            printf(\"%c \", p->val.atom);\n        } else {\n            preorder(p->val.hp);\n        }\n    }\n}\n\nstatic int countAtoms(GList ls)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) {\n            n++;\n        } else {\n            n += countAtoms(p->val.hp);\n        }\n    }\n    return n;\n}\n\nstatic int countNodes(GList ls)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n        if (p->tag == LIST) {\n            n += countNodes(p->val.hp);\n        }\n    }\n    return n;\n}\n\nstatic void destroyGL(GList ls)\n{\n    GList p, next;\n\n    for (p = ls; p != NULL; p = next) {\n        next = p->tp;\n        if (p->tag == LIST) {\n            destroyGL(p->val.hp);\n        }\n        free(p);\n    }\n}\n\nint main(void)\n{\n    GList A = NULL;\n    GList D = mkAtom('a', mkList(mkAtom('b', mkAtom('c', NULL)), NULL));\n    GList E = mkList(mkAtom('a', NULL),\n                     mkList(mkAtom('b', mkList(mkAtom('c', mkAtom('d', NULL)), NULL)),\n                            NULL));\n    GList F = mkList(mkList(NULL, NULL), NULL);\n    GList arr[4];\n    const char *name[4];\n    int i;\n\n    arr[0] = A;  name[0] = \"A\";\n    arr[1] = D;  name[1] = \"D\";\n    arr[2] = E;  name[2] = \"E\";\n    arr[3] = F;  name[3] = \"F\";\n\n    printf(\"== printGL 还原成标准书写形式 ==\\n\");\n    for (i = 0; i < 4; i++) {\n        printf(\"%s = \", name[i]);\n        printGL(arr[i]);\n        printf(\"\\n\");\n    }\n\n    printf(\"\\n== 先序遍历的原子序列 ==\\n\");\n    for (i = 0; i < 4; i++) {\n        printf(\"%s: \", name[i]);\n        if (countAtoms(arr[i]) == 0) {\n            printf(\"(无原子)\");\n        } else {\n            preorder(arr[i]);\n        }\n        printf(\"\\n\");\n    }\n\n    printf(\"\\n== 三类计数（子表数 = 结点数 - 原子数）==\\n\");\n    for (i = 0; i < 4; i++) {\n        printf(\"%s: 原子 %d 个，结点 %d 个，子表 %d 个\\n\",\n               name[i], countAtoms(arr[i]), countNodes(arr[i]),\n               countNodes(arr[i]) - countAtoms(arr[i]));\n    }\n\n    for (i = 0; i < 4; i++) {\n        destroyGL(arr[i]);\n    }\n    printf(\"四个表已释放\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "== printGL 还原成标准书写形式 ==\nA = ()\nD = (a,(b,c))\nE = ((a),(b,(c,d)))\nF = ((()))\n\n== 先序遍历的原子序列 ==\nA: (无原子)\nD: a b c\nE: a b c d\nF: (无原子)\n\n== 三类计数（子表数 = 结点数 - 原子数）==\nA: 原子 0 个，结点 0 个，子表 0 个\nD: 原子 3 个，结点 4 个，子表 1 个\nE: 原子 4 个，结点 7 个，子表 3 个\nF: 原子 0 个，结点 2 个，子表 2 个\n四个表已释放",
+          "note": "printGL 把四个表还原成了与手写完全一致的形式，其中 A 打印成 ()、F 打印成 ((()))——**A 是 NULL、F 是两个 LIST 结点**，两种极端情况都由同一段递归代码正确处理，靠的就是「进入打 (、退出打 )、for 循环自然跳过空链」这三个机制。先序遍历的原子序列 D 是 a b c、E 是 a b c d，正好等于把括号全去掉后从左到右的字母次序，这是验算遍历结果最快的办法。A 与 F 没有原子，所以专门用 countAtoms==0 判了一下再打印「(无原子)」，否则那两行会是空白，容易误以为程序没输出。三类计数里 F 最值得注意：0 个原子、2 个结点、2 个子表——一个「全是括号没有内容」的表，结点数完全由嵌套层数决定，这与 E 的「4 原子 + 3 子表」形成对照。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-21",
+        "ds-ch04-22",
+        "ds-ch04-19"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 23
+    },
+    {
+      "id": "ds-ch04-24",
+      "title": "广义表的复制与原子替换：深复制、递归下降与共享子表",
+      "section": "4.5 广义表的定义和存储结构",
+      "summary": "复制广义表必须递归地为每个结点新建内存（深复制），只复制头指针得到的是浅复制，两个变量会共享同一份结构。原子替换是「递归下降」的典型：沿 hp 深入子表、沿 tp 扫过兄弟，命中就改值。共享子表则需要引用计数才能安全释放。",
+      "content": "## 深复制 copyGL\n\n```c\nGList copyGL(GList ls)\n{\n    GList p, newHead = NULL, *tailSlot = &newHead;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        GList node = (GList)malloc(sizeof(GLNode));\n        node->tag = p->tag;\n        if (p->tag == ATOM) node->val.atom = p->val.atom;\n        else                node->val.hp   = copyGL(p->val.hp);   /* ★ 递归复制子表 */\n        node->tp = NULL;\n        *tailSlot = node;          /* 挂到结果链的末尾 */\n        tailSlot = &node->tp;\n    }\n    return newHead;\n}\n```\n\n用「指向尾指针的指针」`tailSlot` 是构造链表的标准技巧：\n新结点总是挂到 `*tailSlot`，然后把 tailSlot 移到新结点的 tp 域上，\n这样**不需要特殊处理第一个结点**，也不需要每次从头扫到尾（否则是 O(n²)）。\n\n## 浅复制的陷阱\n\n```c\nGList E2 = E;        /* ★ 浅复制：两个变量指向同一串结点 */\n```\n\n浅复制之后：\n\n- 修改 `E2` 里的原子，`E` 也跟着变（同一块内存）\n- `destroyGL(E2)` 之后 `E` 变成悬空指针，再用就是 use-after-free\n- `destroyGL(E); destroyGL(E2);` 是 **double free**，通常直接崩溃\n\n**只有深复制才能让两个表真正独立。**\n\n## 原子替换：递归下降\n\n```c\nint replaceAtom(GList ls, char from, char to)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {      /* 横向：扫过兄弟 */\n        if (p->tag == ATOM) {\n            if (p->val.atom == from) { p->val.atom = to; n++; }\n        } else {\n            n += replaceAtom(p->val.hp, from, to);   /* 纵向：深入子表 */\n        }\n    }\n    return n;                                  /* 返回替换次数，便于验证 */\n}\n```\n\n「**横向走 tp、纵向走 hp**」是所有广义表递归算法的统一骨架，\ndepth / printGL / countAtoms / replaceAtom 全都长这样，只是每个结点做的事不同。\n返回替换次数是个好习惯——它让调用方能验证操作确实生效了，而不是静默什么都没做。\n\n## 共享子表与引用计数\n\n广义表允许两个表共享同一个子表（`A = (x, y)`、`B = (z, A)`、`C = (w, A)`，\nB 和 C 共享 A）。此时：\n\n| 方案 | 做法 | 问题 |\n|---|---|---|\n| 直接 free | destroy 时无脑释放 | 第二个持有者拿到悬空指针 |\n| **引用计数** | 每个结点加 `refcount`，共享时 ++，释放时 --，减到 0 才真 free | 无法处理环（递归表） |\n| 标记-清除 | 从根出发标记可达结点，其余回收 | 实现复杂，教材一般不涉及 |\n\n教材的 destroy 通常**假设无共享**，所以直接递归 free 就够了；\n但一旦题目里出现「两个表共享子表」，就必须上引用计数，否则一定出错。",
+      "keyPoints": [
+        "深复制 copyGL 必须为每个结点新建内存并递归复制子表；浅复制 GList E2 = E 只是复制了一个指针",
+        "浅复制的三个后果：改一个另一个跟着变、释放一个另一个悬空、两个都释放是 double free",
+        "构造链表用「指向尾指针的指针」tailSlot：新结点挂到 *tailSlot 再把 tailSlot 移到新结点的 tp，避免 O(n²) 尾插",
+        "replaceAtom 是递归下降的典型：横向走 tp 扫兄弟、纵向走 hp 深入子表，命中就改值并返回替换次数",
+        "「横向 tp + 纵向 hp」是广义表所有递归算法的统一骨架，depth/printGL/countAtoms/replaceAtom 结构完全相同",
+        "共享子表必须用引用计数（refcount 减到 0 才真 free）才能安全释放；引用计数无法处理环，递归表要用标记-清除"
+      ],
+      "pitfalls": [
+        "GList E2 = E 就以为是复制了指针：改 E2 的内容会同时改掉 E",
+        "copyGL 里忘了递归复制 hp，只复制了结点本身：子表变成两个表共享，破坏独立性",
+        "尾插每次都从头扫到末尾：n 个元素变成 O(n²)，应该用 tailSlot 记住尾指针",
+        "replaceAtom 只改本层不递归子表：嵌套在里面的原子全部漏改",
+        "共享子表还直接 destroyGL：第二个持有者立刻悬空，或者两次 free 同一块内存"
+      ],
+      "examples": [
+        {
+          "title": "E 的深复制、独立性验证与两轮原子替换",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef enum { ATOM, LIST } ElemTag;\n\ntypedef struct GLNode {\n    ElemTag tag;\n    union {\n        char atom;\n        struct GLNode *hp;\n    } val;\n    struct GLNode *tp;\n} GLNode, *GList;\n\nstatic GList mkAtom(char c, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = ATOM;\n    p->val.atom = c;\n    p->tp = tp;\n    return p;\n}\n\nstatic GList mkList(GList hp, GList tp)\n{\n    GList p = (GList)malloc(sizeof(GLNode));\n\n    if (p == NULL) {\n        return NULL;\n    }\n    p->tag = LIST;\n    p->val.hp = hp;\n    p->tp = tp;\n    return p;\n}\n\n/* 深复制：为每个结点新建内存，子表递归复制 */\nstatic GList copyGL(GList ls)\n{\n    GList p, node, newHead = NULL, *tailSlot = &newHead;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        node = (GList)malloc(sizeof(GLNode));\n        if (node == NULL) {\n            return newHead;\n        }\n        node->tag = p->tag;\n        if (p->tag == ATOM) {\n            node->val.atom = p->val.atom;\n        } else {\n            node->val.hp = copyGL(p->val.hp);   /* ★ 递归复制子表 */\n        }\n        node->tp = NULL;\n        *tailSlot = node;                       /* 挂到结果链末尾 */\n        tailSlot = &node->tp;                   /* 尾指针前移，避免 O(n^2) 尾插 */\n    }\n    return newHead;\n}\n\n/* 原子替换：横向走 tp、纵向走 hp，返回替换次数 */\nstatic int replaceAtom(GList ls, char from, char to)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) {\n            if (p->val.atom == from) {\n                p->val.atom = to;\n                n++;\n            }\n        } else {\n            n += replaceAtom(p->val.hp, from, to);\n        }\n    }\n    return n;\n}\n\n/* 把所有原子统一替换成 to，返回替换次数（用于验证遍历覆盖了全部原子） */\nstatic int replaceAll(GList ls, char to)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        if (p->tag == ATOM) {\n            p->val.atom = to;\n            n++;\n        } else {\n            n += replaceAll(p->val.hp, to);\n        }\n    }\n    return n;\n}\n\nstatic void printGL(GList ls)\n{\n    GList p;\n    int first = 1;\n\n    printf(\"(\");\n    for (p = ls; p != NULL; p = p->tp) {\n        if (!first) {\n            printf(\",\");\n        }\n        first = 0;\n        if (p->tag == ATOM) {\n            printf(\"%c\", p->val.atom);\n        } else {\n            printGL(p->val.hp);\n        }\n    }\n    printf(\")\");\n}\n\nstatic int countNodes(GList ls)\n{\n    GList p;\n    int n = 0;\n\n    for (p = ls; p != NULL; p = p->tp) {\n        n++;\n        if (p->tag == LIST) {\n            n += countNodes(p->val.hp);\n        }\n    }\n    return n;\n}\n\nstatic int depth(GList ls)\n{\n    int maxD = 0, d;\n    GList p;\n\n    if (ls == NULL) {\n        return 1;\n    }\n    for (p = ls; p != NULL; p = p->tp) {\n        d = (p->tag == ATOM) ? 0 : depth(p->val.hp);\n        if (d > maxD) {\n            maxD = d;\n        }\n    }\n    return maxD + 1;\n}\n\nstatic void destroyGL(GList ls)\n{\n    GList p, next;\n\n    for (p = ls; p != NULL; p = next) {\n        next = p->tp;\n        if (p->tag == LIST) {\n            destroyGL(p->val.hp);\n        }\n        free(p);\n    }\n}\n\nint main(void)\n{\n    GList E = mkList(mkAtom('a', NULL),\n                     mkList(mkAtom('b', mkList(mkAtom('c', mkAtom('d', NULL)), NULL)),\n                            NULL));\n    GList E2;\n    int n;\n\n    printf(\"原表 E = \");\n    printGL(E);\n    printf(\"  结点数 %d 深度 %d\\n\", countNodes(E), depth(E));\n\n    E2 = copyGL(E);\n    printf(\"复制表 E2 = \");\n    printGL(E2);\n    printf(\"  结点数 %d 深度 %d\\n\", countNodes(E2), depth(E2));\n    printf(\"E 与 E2 指向同一结点吗 = %d（0 表示不同，是深复制）\\n\", E == E2);\n\n    printf(\"\\n== 第一轮：把 E2 中所有 'b' 换成 'Z' ==\\n\");\n    n = replaceAtom(E2, 'b', 'Z');\n    printf(\"替换次数 = %d\\n\", n);\n    printf(\"E2 = \");\n    printGL(E2);\n    printf(\"\\nE  = \");\n    printGL(E);\n    printf(\"   <- 原表未受影响，证明是深复制\\n\");\n\n    printf(\"\\n== 第二轮：把 E2 的所有原子统一换成 '*' ==\\n\");\n    n = replaceAll(E2, '*');\n    printf(\"替换次数 = %d（应等于原子总数）\\n\", n);\n    printf(\"E2 = \");\n    printGL(E2);\n    printf(\"\\n\");\n\n    destroyGL(E2);\n    printf(\"\\nE2 已释放，E 仍然可用：E = \");\n    printGL(E);\n    printf(\"\\n\");\n    destroyGL(E);\n    printf(\"E 已释放\\n\");\n    return 0;\n}\n",
+          "runnable": true,
+          "stdin": "",
+          "expected": "原表 E = ((a),(b,(c,d)))  结点数 7 深度 3\n复制表 E2 = ((a),(b,(c,d)))  结点数 7 深度 3\nE 与 E2 指向同一结点吗 = 0（0 表示不同，是深复制）\n\n== 第一轮：把 E2 中所有 'b' 换成 'Z' ==\n替换次数 = 1\nE2 = ((a),(Z,(c,d)))\nE  = ((a),(b,(c,d)))   <- 原表未受影响，证明是深复制\n\n== 第二轮：把 E2 的所有原子统一换成 '*' ==\n替换次数 = 4（应等于原子总数）\nE2 = ((*),(*,(*,*)))\n\nE2 已释放，E 仍然可用：E = ((a),(b,(c,d)))\nE 已释放",
+          "note": "这个示例把「深复制」的三个可验证特征全部演示了一遍：① E == E2 为 0，说明是两个独立的头指针（浅复制这里会是 1）；② 改 E2 里的 b 之后 E 仍然是 b，说明内容也各自独立（浅复制会一起变成 Z）；③ destroyGL(E2) 之后 E 还能正常 printGL，说明内存也各自独立（浅复制这里会 use-after-free 崩溃）。两轮替换的次数也很有信息量：第一轮只换原子 b，命中 1 次，第二轮无条件换全部原子命中 4 次——4 正好等于 E 的原子总数 a、b、c、d，证明 replaceAll 的「横向 tp + 纵向 hp」遍历确实覆盖了每一个原子，一个都没漏。第二轮结果 ((*),(*,(*,*))) 的括号结构与原表 ((a),(b,(c,d))) 完全一致，说明替换只动了 atom 域、没有破坏任何指针——这也是递归下降算法该有的性质。"
+        }
+      ],
+      "relatedProblems": [],
+      "relatedKnowledge": [
+        "ds-ch04-23",
+        "ds-ch04-21",
+        "ds-ch04-14"
+      ],
+      "relatedViz": [],
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "order": 24
     }
   ]
 }
