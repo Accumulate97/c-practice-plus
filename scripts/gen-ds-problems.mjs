@@ -26,8 +26,8 @@
  * 而手写四道题就会出现「改错题的正确版本和填空题的答案不是同一份代码」这种漂移。
  */
 import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join, dirname } from 'node:path'
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { join, dirname, basename } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)))
@@ -162,19 +162,43 @@ const fails = []
 const fail = (msg) => { fails.push(msg); return null }
 
 /* ── 读程序库 ───────────────────────────────────────────────────────────── */
-const bankFile = join(BANK, `${CHAPTER}.mjs`)
-if (!existsSync(bankFile)) {
-  console.error(`找不到程序库：${bankFile}`)
+/* 程序库可以拆成多个文件：ds-chNN.mjs、ds-chNN-b.mjs、ds-chNN-c.mjs …
+   大章（ds-ch04 要 120 道）一个文件写不下也不好维护，拆开后可以一章一章地推进、
+   每写完一个文件就 --resume 生成一次，不必等整章写完。所有文件的 entries 合并，
+   key 冲突直接报错（两个文件用同一个 key 会让 checkpoint 的 --resume 记不清谁跑过了）。 */
+const bankFiles = readdirSync(BANK)
+  .filter((f) => f === `${CHAPTER}.mjs` || (f.startsWith(`${CHAPTER}-`) && f.endsWith('.mjs')))
+  .sort()
+  .map((f) => join(BANK, f))
+if (bankFiles.length === 0) {
+  console.error(`找不到程序库：${join(BANK, `${CHAPTER}.mjs`)}（或 ${CHAPTER}-*.mjs）`)
   process.exit(2)
 }
-const mod = await import(pathToFileURL(bankFile).href)
-const bankDef = mod.default ?? mod
-if (bankDef.shard !== CHAPTER) {
-  console.error(`程序库的 shard 是 ${bankDef.shard}，与 --chapter=${CHAPTER} 不一致`)
-  process.exit(2)
+const entries = []
+let chapterName = ''
+const seenKeys = new Map()
+for (const bankFile of bankFiles) {
+  const mod = await import(pathToFileURL(bankFile).href)
+  const bankDef = mod.default ?? mod
+  if (bankDef.shard !== CHAPTER) {
+    console.error(`${bankFile} 的 shard 是 ${bankDef.shard}，与 --chapter=${CHAPTER} 不一致`)
+    process.exit(2)
+  }
+  if (bankDef.chapter && chapterName && bankDef.chapter !== chapterName) {
+    console.error(`${bankFile} 的 chapter 是「${bankDef.chapter}」，与已读到的「${chapterName}」不一致`)
+    process.exit(2)
+  }
+  if (bankDef.chapter) chapterName = String(bankDef.chapter)
+  for (const e of Array.isArray(bankDef.entries) ? bankDef.entries : []) {
+    if (seenKeys.has(e.key)) {
+      console.error(`entry key「${e.key}」在 ${seenKeys.get(e.key)} 与 ${bankFile} 里重复`)
+      process.exit(2)
+    }
+    seenKeys.set(e.key, bankFile)
+    entries.push(e)
+  }
+  console.log(`读入 ${basename(bankFile)}：${(bankDef.entries ?? []).length} 条 entry`)
 }
-const entries = Array.isArray(bankDef.entries) ? bankDef.entries : []
-const chapterName = String(bankDef.chapter ?? '')
 
 /* ── checkpoint（--resume 用）──────────────────────────────────────────── */
 const ckFile = join(ROOT, 'tmp', `ds-checkpoint.${CHAPTER}.json`)
@@ -385,12 +409,22 @@ function deriveOptimization(e, code, inputs, cases) {
       return fail(`${e.key} 的慢版本在「${inp.note ?? ''}」上输出「${r.out}」，与正确版本「${inp.expected}」不一致`)
     }
   }
+  /* ★ 字段名容错 + 显式校验。生成器读的是 o.baseline / o.target，写进题目时才叫
+     baselineComplexity / targetComplexity；程序库里两种写法都常见，所以两个都认。
+     但「一个都没有」必须硬失败：undefined 会被 JSON.stringify 整个丢掉，题目就少了两个字段，
+     而旧 schema 的 code_optimization 分支没把它们列进 required，于是 ds-ch01-opt-001 曾带着
+     缺失字段通过了全部七道闸门。schema 那边现在也补了 required（双重保险）。 */
+  const baseline = o.baselineComplexity ?? o.baseline
+  const target = o.targetComplexity ?? o.target
+  if (!baseline || !target) {
+    return fail(`${e.key} 的 opt 缺复杂度字段：要写 opt.baseline 与 opt.target（或 baselineComplexity / targetComplexity），两个都不能省`)
+  }
   return baseFields(e, 'code_optimization', {
     stem: `${o.stem}\n\`\`\`c\n${o.code}\n\`\`\``,
     code: o.code,
     reference: code,
-    baselineComplexity: o.baseline,
-    targetComplexity: o.target,
+    baselineComplexity: baseline,
+    targetComplexity: target,
     testCases: cases,
     explanation: buildExplain(e, 'code_optimization', [], e.knowledgeIds, o.notes),
   })
@@ -420,26 +454,38 @@ function deriveAlgorithm(e, inputs) {
   return p
 }
 
-function deriveCxa(e) {
-  if (!e.asks) return null
-  /* 程序库可以写两种形状：
+function deriveCxas(e) {
+  /* 一个 entry 可以出多道 complexity_analysis：e.cxas = [{ stem, asks, complexity, accepted, askSpace, code, notes }, …]
+     每道问的是同一段程序的不同侧面（比较次数 / 移动次数 / 空间 / 递归深度 / ASL），
+     题干与 gradedAsk 全不相同，所以不是「换个数值再问一遍」。
+     单数形式 e.asks 仍然支持（向后兼容 ds-ch01 的程序库）。 */
+  if (Array.isArray(e.cxas)) return e.cxas.map((a, i) => deriveCxa(e, a, i)).filter(Boolean)
+  return e.asks ? [deriveCxa(e)].filter(Boolean) : []
+}
+
+function deriveCxa(e, override = null, seq = 0) {
+  if (!override && !e.asks) return null
+  /* 程序库可以写三种形状：
      ① 扁平（自然写法，一个 entry 本来就带着 code 与复杂度）：
         e.asks 是 gradedAsk 数组，题干另放 e.cxaStem，复杂度放 e.complexity，等价写法放 e.cxaAccepted
      ② 嵌套（这道题要单独给一段与 e.code 不同的代码时用）：
         e.asks = { stem, code, asks: [...], complexity, accepted, askSpace, notes }
+     ③ 复数 e.cxas = [ ②那样的对象, … ]，一个 entry 派生多道
      ★ 第一版只认②，而程序库写的是①，于是 a.asks / a.stem 全是 undefined：
        stem 变成字面串 "undefined"、asks 键被 JSON.stringify 丢掉 ⇒ schema 报「缺 required 属性 asks」。
        undefined 不会报错、只会静默产出坏题，所以这里显式校验 list 是不是非空数组。 */
-  const nested = !Array.isArray(e.asks)
-  const a = nested ? e.asks : {}
-  const list = nested ? a.asks : e.asks
+  const a = override ?? (Array.isArray(e.asks) ? {} : e.asks)
+  const nested = override ? true : !Array.isArray(e.asks)
+  const list = override ? override.asks : (nested ? a.asks : e.asks)
+  const label = `${e.key}${override ? ` cxas[${seq}]` : ' asks'}`
   if (!Array.isArray(list) || list.length === 0) {
-    return fail(`${e.key} 的 asks 不是非空数组（扁平写法要直接给 gradedAsk 数组，嵌套写法要给 { asks: [...] }）`)
+    return fail(`${label} 不是非空数组（扁平写法要直接给 gradedAsk 数组，嵌套写法要给 { asks: [...] }）`)
   }
   const code = nested ? (a.code ?? '') : (e.code ?? '')
   const stem = nested
     ? a.stem
     : (e.cxaStem ?? `阅读下面这段程序，然后回答后面的 ${list.length} 个问题。`)
+  if (!stem || typeof stem !== 'string') return fail(`${label} 缺 stem（题干不能为空）`)
   return baseFields(e, 'complexity_analysis', {
     stem: stem + (code ? `\n\`\`\`c\n${code}\n\`\`\`` : ''),
     code,
@@ -451,9 +497,15 @@ function deriveCxa(e) {
   })
 }
 
-function deriveStr(e) {
-  if (!e.struct) return null
-  const s = e.struct
+function deriveStrs(e) {
+  /* 同 deriveCxas：一个 entry 可以出多道 structure_trace（问树形 / 问遍历序列 / 问最终数组） */
+  if (Array.isArray(e.structs)) return e.structs.map((s) => deriveStr(e, s)).filter(Boolean)
+  return e.struct ? [deriveStr(e)].filter(Boolean) : []
+}
+
+function deriveStr(e, override = null) {
+  const s = override ?? e.struct
+  if (!s) return null
   return baseFields(e, 'structure_trace', {
     stem: s.stem + (s.code ? `\n\`\`\`c\n${s.code}\n\`\`\`` : ''),
     code: s.code ?? '',
@@ -512,7 +564,7 @@ for (const e of entries) {
   /* 纯概念 entry（没有 code，例如 term_explanation）：只派生不依赖实机的题型，
      跳过「编译正确版本 + 逐组实跑」这一段 —— 它既没有程序可编译，也没有 stdin 可读。 */
   if (String(e.code ?? '').trim() === '') {
-    const nonCode = [deriveTerm(e), deriveCxa(e), deriveStr(e)].filter(Boolean)
+    const nonCode = [deriveTerm(e), ...deriveCxas(e), ...deriveStrs(e)].filter(Boolean)
     if (nonCode.length === 0) {
       fails.push(`${e.key} 既没有 code，也没有 term/asks/struct，派生不出任何题`)
     }
@@ -553,8 +605,8 @@ for (const e of entries) {
     deriveOptimization(e, e.code, inputs, cases),
     derivePointerTrace(e),
     deriveAlgorithm(e, inputs),
-    deriveCxa(e),
-    deriveStr(e),
+    ...deriveCxas(e),
+    ...deriveStrs(e),
     deriveTerm(e),
   ].filter(Boolean)
 

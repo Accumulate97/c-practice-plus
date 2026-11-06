@@ -334,12 +334,12 @@
     {
       "if": { "properties": { "type": { "const": "code_optimization" } } },
       "then": {
-        "required": ["code", "reference", "testCases"],
+        "required": ["code", "reference", "baselineComplexity", "targetComplexity", "testCases"],
         "properties": {
           "code": { "type": "string", "description": "能跑通但低效的代码，需改优并保持输出一致" },
           "reference": { "type": "string", "description": "优化后的参考实现" },
-          "baselineComplexity": { "type": "string", "description": "原代码复杂度，如 O(n^2)" },
-          "targetComplexity": { "type": "string", "description": "目标复杂度，如 O(n log n)" },
+          "baselineComplexity": { "type": "string", "minLength": 1, "description": "原代码复杂度，如 O(n^2)。★ 这两个字段被列为 required：批量生成器曾因程序库字段名写成 baselineComplexity（生成器读的是 o.baseline）而静默丢字段，undefined 被 JSON.stringify 丢掉后 schema 又不检查，于是 ds-ch01-opt-001 带着缺失字段通过了全部七道闸门。" },
+          "targetComplexity": { "type": "string", "minLength": 1, "description": "目标复杂度，如 O(n log n)" },
           "testCases": { "$ref": "#/definitions/testCases" }
         }
       }
