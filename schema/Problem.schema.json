@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Problem",
-  "description": "C practice 题目统一数据结构 v3.2。基础字段共用，按 type 追加特有字段。支持 20 种题型。根节点 unevaluatedProperties:false 禁止规范外字段（如 score），新增字段必须先改本 Schema。",
+  "description": "C practice 题目统一数据结构 v3.3。基础字段共用，按 type 追加特有字段。支持 25 种题型。根节点 unevaluatedProperties:false 禁止规范外字段（如 score），新增字段必须先改本 Schema。",
   "type": "object",
   "required": ["id", "type", "category", "chapter", "section", "difficulty", "bloom", "stem", "explanation"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt|pt|mb|ti|sr|ad|opt|rv|te|ea|alg|mdb)-[0-9]{3}$",
-      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配 pt指针追踪 mb多空填空 ti限时实现 sr标准库重实现 adAPI练习 opt代码优化 rv代码评审 te术语解释 ea论述 alg算法实现 mdb多错改"
+      "pattern": "^[cd]s?-ch[0-9]{2}-(cc|dbg|cr|pg|sc|tf|fb|co|sa|cx|mt|pt|mb|ti|sr|ad|opt|rv|te|ea|alg|mdb|dsdbg|cxa|str)-[0-9]{3}$",
+      "description": "全局唯一。格式：{c|ds}-章号-题型缩写-序号。题型缩写：cc程序填空 dbg改错 cr阅读 pg编程 sc选择 tf判断 fb概念填空 co代码排序 sa简答 cx复杂度 mt匹配 pt指针追踪 mb多空填空 ti限时实现 sr标准库重实现 adAPI练习 opt代码优化 rv代码评审 te术语解释 ea论述 alg算法实现 mdb多错改 dsdbg数据结构改错 cxa数值型复杂度分析 str结构构造追踪"
     },
     "type": {
       "type": "string",
@@ -18,8 +18,9 @@
                "pointer_trace", "multi_blank", "timed_impl", "stdlib_reimpl",
                "api_drill", "code_optimization", "code_review",
                "term_explanation", "essay_answer",
-               "algorithm_impl", "multi_bug_debug"],
-      "description": "主力题型为前四种；pointer_trace/timed_impl/stdlib_reimpl/api_drill/code_optimization/code_review/multi_blank 为扩张主力；algorithm_impl/multi_bug_debug 为任务04量产主力；term_explanation/essay_answer 为概念型"
+               "algorithm_impl", "multi_bug_debug",
+               "ds_debug", "complexity_analysis", "structure_trace"],
+      "description": "主力题型为前四种；pointer_trace/timed_impl/stdlib_reimpl/api_drill/code_optimization/code_review/multi_blank 为扩张主力；algorithm_impl/multi_bug_debug 为任务04量产主力；term_explanation/essay_answer 为概念型；ds_debug/complexity_analysis/structure_trace 为 DS 板块扩充新增三型（数据结构改错 / 数值型复杂度与 ASL 分析 / 结构构造追踪）"
     },
     "category": {
       "type": "string",
@@ -412,6 +413,83 @@
           "testCases": { "$ref": "#/definitions/testCases" }
         }
       }
+    },
+    {
+      "if": { "properties": { "type": { "const": "ds_debug" } } },
+      "then": {
+        "required": ["code", "bugs", "fixed_code", "testCases"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "含缺陷的数据结构程序。缺陷取自 DS 高频错误库：链表断链 / 指针丢失 / 遍历死循环 / 栈溢出 / 队列假溢出 / AVL 旋转漏情况 / 哈希冲突处理错误 / 越界访问 / 内存泄漏"
+          },
+          "bugs": {
+            "type": "array", "minItems": 1, "maxItems": 3,
+            "items": { "type": "string" },
+            "description": "植入的错误说明，不展示给学生（三级提示的第 3 级才展开原文）"
+          },
+          "defectKind": {
+            "type": "string",
+            "enum": ["链表断链", "指针丢失", "遍历死循环", "栈溢出", "队列假溢出",
+                     "AVL旋转漏情况", "哈希冲突处理错误", "越界访问", "内存泄漏", "其他"],
+            "description": "缺陷类别，用于筛选与统计；缺省按「其他」处理"
+          },
+          "fixed_code": { "type": "string", "description": "修正后的完整程序，judge:verify 实机编译执行的就是这一份" },
+          "testCases": { "$ref": "#/definitions/testCases" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "complexity_analysis" } } },
+      "then": {
+        "required": ["asks"],
+        "properties": {
+          "code": { "type": "string", "description": "可选：待分析的程序或算法片段" },
+          "asks": {
+            "type": "array", "minItems": 1, "maxItems": 6,
+            "items": { "$ref": "#/definitions/gradedAsk" },
+            "description": "逐问的数值答案：ASL成功 / ASL失败 / 比较次数 / 移动次数 / 交换次数 / 递归深度 / 队列峰值 / WPL 等。全部数值精确比对（tolerance 缺省 0）"
+          },
+          "complexity": {
+            "type": "string",
+            "description": "可选：渐近结论，如 O(n log n)。非空时也要作答，按复杂度归一化比对"
+          },
+          "accepted": { "type": "array", "items": { "type": "string" }, "description": "complexity 的可接受写法" },
+          "askSpace": { "type": "boolean", "default": false, "description": "true 表示 complexity 问的是空间复杂度" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "structure_trace" } } },
+      "then": {
+        "required": ["sequence", "structureKind"],
+        "properties": {
+          "sequence": { "type": "string", "description": "给定的输入序列或边集，如 49 38 65 97 76 13 27" },
+          "structureKind": {
+            "type": "string",
+            "enum": ["bst", "avl", "huffman", "heap", "mst", "shortest_path", "topo", "critical_path",
+                     "hash_table", "btree", "forest", "general_list", "other"],
+            "description": "要构造的结构类别"
+          },
+          "nodeSpec": {
+            "type": "string",
+            "description": "期望的最终结构。括号表示法如 45(24(12,37),53(-,93))，堆用数组形式如 97 76 65 49 49 13 27。空串表示不问结构本身"
+          },
+          "traversalOrder": {
+            "type": "array", "items": { "$ref": "#/definitions/gradedAsk" },
+            "description": "期望的遍历序列，每条独立判分。label 用「先序」「中序」「后序」「层序」这类固定字样"
+          },
+          "constructionResult": {
+            "type": "string",
+            "description": "期望的构造结果：MST 边集与总权值 / 哈夫曼编码表 / WPL / 拓扑序列 / 关键路径 等。空串表示不问"
+          },
+          "traceSteps": {
+            "type": "array", "items": { "type": "string" },
+            "description": "构造过程的分步快照（每插入一个元素后的形态、每趟调整后的数组）。只在参考答案面板展示，不参与判分"
+          },
+          "code": { "type": "string", "description": "可选：构造过程的可运行程序，供学生对照" }
+        }
+      }
     }
   ],
 
@@ -427,6 +505,24 @@
           "expected": { "type": "string" },
           "note": { "type": "string", "description": "如 边界情况、典型输入" }
         }
+      }
+    },
+    "gradedAsk": {
+      "type": "object",
+      "required": ["label", "answer"],
+      "properties": {
+        "label": { "type": "string", "description": "问什么，如「ASL成功」「比较次数」「先序」" },
+        "answer": { "type": "string", "description": "期望值。写成字符串以保留 49/15 这类分数形式与 O(n log n) 这类符号" },
+        "accepted": {
+          "type": "array", "items": { "type": "string" },
+          "description": "等价写法，如 [\"3.27\",\"3.2667\",\"49/15\"]。判分时与 answer 一视同仁"
+        },
+        "tolerance": {
+          "type": "number", "minimum": 0, "default": 0,
+          "description": "允许的绝对误差。缺省 0 表示必须数值精确相等；写 0.01 才接受两位小数的舍入"
+        },
+        "unit": { "type": "string", "description": "单位，如「次」「bit」「层」，仅作展示，不参与比对" },
+        "hint": { "type": "string", "description": "作答提示，学生点击后才展开" }
       }
     }
   }

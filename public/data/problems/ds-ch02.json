@@ -2732,6 +2732,69 @@
       "ai_generated": true,
       "generated_at": "2026-09-12",
       "verified": true
+    },
+    {
+      "id": "ds-ch02-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "defectKind": "链表断链",
+      "tags": [
+        "单链表",
+        "插入",
+        "指针次序",
+        "断链"
+      ],
+      "stem": "下面的程序先建一条单链表 1→2→3→4→5，然后从标准输入读入两个整数 key 与 x，\n在第一个值为 key 的结点之后插入值为 x 的新结点（找不到 key 就不插），最后按次序打印整条链。\n程序能编译通过、也能跑出结果，但输出是错的。请找出错误并改正。\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node { int data; struct Node *next; } Node;\n/* 尾插法建一条 1->2->3->4->5 的单链表 */\nstatic Node *buildList(void)\n{\n    Node *head = NULL, *tail = NULL;\n    int i;\n    for (i = 1; i <= 5; i++) {\n        Node *p = (Node *)malloc(sizeof(Node));\n        p->data = i; p->next = NULL;\n        if (tail == NULL) head = tail = p;\n        else { tail->next = p; tail = p; }\n    }\n    return head;\n}\n/* 在第一个值为 key 的结点之后插入 x；找不到 key 就不插 */\nstatic void insertAfter(Node *head, int key, int x)\n{\n    Node *p = head, *s;\n    while (p != NULL && p->data != key) p = p->next;\n    if (p == NULL) return;\n    s = (Node *)malloc(sizeof(Node));\n    s->data = x;\n    p->next = s;\n    s->next = NULL;\n}\nint main(void)\n{\n    int key, x; Node *head, *p;\n    if (scanf(\"%d %d\", &key, &x) != 2) return 1;\n    head = buildList();\n    insertAfter(head, key, x);\n    for (p = head; p != NULL; p = p->next) {\n        if (p != head) printf(\" \");\n        printf(\"%d\", p->data);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node { int data; struct Node *next; } Node;\n/* 尾插法建一条 1->2->3->4->5 的单链表 */\nstatic Node *buildList(void)\n{\n    Node *head = NULL, *tail = NULL;\n    int i;\n    for (i = 1; i <= 5; i++) {\n        Node *p = (Node *)malloc(sizeof(Node));\n        p->data = i; p->next = NULL;\n        if (tail == NULL) head = tail = p;\n        else { tail->next = p; tail = p; }\n    }\n    return head;\n}\n/* 在第一个值为 key 的结点之后插入 x；找不到 key 就不插 */\nstatic void insertAfter(Node *head, int key, int x)\n{\n    Node *p = head, *s;\n    while (p != NULL && p->data != key) p = p->next;\n    if (p == NULL) return;\n    s = (Node *)malloc(sizeof(Node));\n    s->data = x;\n    p->next = s;\n    s->next = NULL;\n}\nint main(void)\n{\n    int key, x; Node *head, *p;\n    if (scanf(\"%d %d\", &key, &x) != 2) return 1;\n    head = buildList();\n    insertAfter(head, key, x);\n    for (p = head; p != NULL; p = p->next) {\n        if (p != head) printf(\" \");\n        printf(\"%d\", p->data);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "bugs": [
+        "insertAfter 里改指针的次序反了：先执行 p->next = s 让前驱指向新结点，此刻 p 原来的后继地址已经丢失，紧接着的 s->next = NULL 又把新结点封成链尾，于是 key 之后的整条链都被截断。正确次序是先把原后继接到新结点上（s->next = p->next），再让前驱指向新结点（p->next = s）。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node { int data; struct Node *next; } Node;\n/* 尾插法建一条 1->2->3->4->5 的单链表 */\nstatic Node *buildList(void)\n{\n    Node *head = NULL, *tail = NULL;\n    int i;\n    for (i = 1; i <= 5; i++) {\n        Node *p = (Node *)malloc(sizeof(Node));\n        p->data = i; p->next = NULL;\n        if (tail == NULL) head = tail = p;\n        else { tail->next = p; tail = p; }\n    }\n    return head;\n}\n/* 在第一个值为 key 的结点之后插入 x；找不到 key 就不插 */\nstatic void insertAfter(Node *head, int key, int x)\n{\n    Node *p = head, *s;\n    while (p != NULL && p->data != key) p = p->next;\n    if (p == NULL) return;\n    s = (Node *)malloc(sizeof(Node));\n    s->data = x;\n    s->next = p->next;\n    p->next = s;\n}\nint main(void)\n{\n    int key, x; Node *head, *p;\n    if (scanf(\"%d %d\", &key, &x) != 2) return 1;\n    head = buildList();\n    insertAfter(head, key, x);\n    for (p = head; p != NULL; p = p->next) {\n        if (p != head) printf(\" \");\n        printf(\"%d\", p->data);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3 30",
+          "expected": "1 2 3 30 4 5",
+          "note": "常规：在链中间插入"
+        },
+        {
+          "stdin": "1 10",
+          "expected": "1 10 2 3 4 5",
+          "note": "在表头结点之后插入"
+        },
+        {
+          "stdin": "5 50",
+          "expected": "1 2 3 4 5 50",
+          "note": "在表尾结点之后插入"
+        },
+        {
+          "stdin": "9 90",
+          "expected": "1 2 3 4 5",
+          "note": "key 不存在：不应插入"
+        },
+        {
+          "stdin": "2 0",
+          "expected": "1 2 0 3 4 5",
+          "note": "x = 0 边界值"
+        },
+        {
+          "stdin": "4 -7",
+          "expected": "1 2 3 4 -7 5",
+          "note": "x 为负数"
+        }
+      ],
+      "explanation": "【思路】链表插入是「先接后断」：新结点必须先记住原来的后继，才能安全地让前驱改指向。一旦先改前驱，原后继的地址就只存在于已经被覆盖的那个指针域里，再也拿不回来。\n【步骤】1. 定位：p 从头结点开始往后走，直到 p->data == key 或 p == NULL。2. 建新结点 s 并填入 x。3. s->next = p->next —— 这一步必须在改 p->next 之前完成。4. p->next = s。5. 若第 1 步走到 p == NULL，说明 key 不在链上，直接返回不做插入。\n【复杂度】定位需要遍历链表，时间 O(n)；插入本身只改两个指针，O(1)；额外空间 O(1)。\n【易错点】1. 把 p->next = s 写在 s->next = p->next 之前，这正是本题的 bug，后果是断链而不是死循环，因为错误版本把 s->next 显式置成了 NULL。若写成 s->next = s 或漏掉赋值，则可能形成自环导致遍历死循环。2. 忘记特判 key 不存在的情况，对 NULL 指针解引用会段错误。3. 打印时用「先打分隔符再打数据」或「先打数据再判断是否末结点」都可以，但不要在数据后面留尾随空格。\n【关联】ds-ch02-05（单链表的基本操作）、ds-ch02-06（链表插入删除的指针次序）。同一个「先接后断」原则也出现在 ds-ch04 广义表深复制的 tailSlot 技巧与 ds-ch07 BST 删除的 slot 技巧里。",
+      "source": "自撰变式（依据 第2章 线性表 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch02-05",
+        "ds-ch02-06"
+      ],
+      "vizIds": [],
+      "verified": true
     }
   ]
 }

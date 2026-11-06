@@ -2324,6 +2324,69 @@
       "ai_generated": true,
       "generated_at": "2026-09-12",
       "verified": true
+    },
+    {
+      "id": "ds-ch03-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "defectKind": "队列假溢出",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "取模",
+        "队满判定"
+      ],
+      "stem": "下面的程序用一个容量 MAXQ = 4 的顺序队列，从标准输入先读一个整数 n，再读 n 个整数；\n每一轮先尝试把刚读到的数入队，再尝试出队一个数，并打印这一轮的结果，最后打印总轮数。\n程序在轮数较多时会莫名其妙地报「队满」和「队空」，明明前面已经出过队、腾出了空位。请找出错误并改正。\n\n```c\n#include <stdio.h>\n#define MAXQ 4\ntypedef struct { int data[MAXQ]; int front, rear; } Queue;\nstatic void initQ(Queue *q) { q->front = 0; q->rear = 0; }\nstatic int qEmpty(const Queue *q) { return q->front == q->rear; }\nstatic int qFull(const Queue *q) { return q->rear == MAXQ; }\nstatic int enQueue(Queue *q, int x)\n{\n    if (qFull(q)) return 0;\n    q->data[q->rear++] = x;\n    return 1;\n}\nstatic int deQueue(Queue *q, int *x)\n{\n    if (qEmpty(q)) return 0;\n    *x = q->data[q->front++];\n    return 1;\n}\nint main(void)\n{\n    Queue q; int n, i, x, ok, out;\n    initQ(&q);\n    if (scanf(\"%d\", &n) != 1) return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) return 1;\n        ok = enQueue(&q, x);\n        printf(\"入%d:%s\", x, ok ? \"成功\" : \"队满\");\n        if (deQueue(&q, &out)) printf(\" 出%d\", out);\n        else printf(\" 出:队空\");\n        printf(\"\\n\");\n    }\n    printf(\"共处理 %d 轮\\n\", n);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 4\ntypedef struct { int data[MAXQ]; int front, rear; } Queue;\nstatic void initQ(Queue *q) { q->front = 0; q->rear = 0; }\nstatic int qEmpty(const Queue *q) { return q->front == q->rear; }\nstatic int qFull(const Queue *q) { return q->rear == MAXQ; }\nstatic int enQueue(Queue *q, int x)\n{\n    if (qFull(q)) return 0;\n    q->data[q->rear++] = x;\n    return 1;\n}\nstatic int deQueue(Queue *q, int *x)\n{\n    if (qEmpty(q)) return 0;\n    *x = q->data[q->front++];\n    return 1;\n}\nint main(void)\n{\n    Queue q; int n, i, x, ok, out;\n    initQ(&q);\n    if (scanf(\"%d\", &n) != 1) return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) return 1;\n        ok = enQueue(&q, x);\n        printf(\"入%d:%s\", x, ok ? \"成功\" : \"队满\");\n        if (deQueue(&q, &out)) printf(\" 出%d\", out);\n        else printf(\" 出:队空\");\n        printf(\"\\n\");\n    }\n    printf(\"共处理 %d 轮\\n\", n);\n    return 0;\n}",
+      "bugs": [
+        "队列被写成了线性队列而不是循环队列：qFull 只判断 rear == MAXQ，入队用 data[rear++]、出队用 data[front++]，两个下标都只增不减。于是 front 前面已经出队的格子永远用不上，rear 一旦到达 MAXQ 就再也入不了队 —— 这就是「假溢出」。修法是牺牲一个存储单元，判满改成 (rear + 1) % MAXQ == front，入队与出队的下标推进都改成对 MAXQ 取模。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXQ 4\ntypedef struct { int data[MAXQ]; int front, rear; } Queue;\nstatic void initQ(Queue *q) { q->front = 0; q->rear = 0; }\nstatic int qEmpty(const Queue *q) { return q->front == q->rear; }\nstatic int qFull(const Queue *q) { return (q->rear + 1) % MAXQ == q->front; }\nstatic int enQueue(Queue *q, int x)\n{\n    if (qFull(q)) return 0;\n    q->data[q->rear] = x;\n    q->rear = (q->rear + 1) % MAXQ;\n    return 1;\n}\nstatic int deQueue(Queue *q, int *x)\n{\n    if (qEmpty(q)) return 0;\n    *x = q->data[q->front];\n    q->front = (q->front + 1) % MAXQ;\n    return 1;\n}\nint main(void)\n{\n    Queue q; int n, i, x, ok, out;\n    initQ(&q);\n    if (scanf(\"%d\", &n) != 1) return 1;\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) return 1;\n        ok = enQueue(&q, x);\n        printf(\"入%d:%s\", x, ok ? \"成功\" : \"队满\");\n        if (deQueue(&q, &out)) printf(\" 出%d\", out);\n        else printf(\" 出:队空\");\n        printf(\"\\n\");\n    }\n    printf(\"共处理 %d 轮\\n\", n);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "6\n10 20 30 40 50 60",
+          "expected": "入10:成功 出10\n入20:成功 出20\n入30:成功 出30\n入40:成功 出40\n入50:成功 出50\n入60:成功 出60\n共处理 6 轮",
+          "note": "轮数超过容量：暴露假溢出"
+        },
+        {
+          "stdin": "4\n1 2 3 4",
+          "expected": "入1:成功 出1\n入2:成功 出2\n入3:成功 出3\n入4:成功 出4\n共处理 4 轮",
+          "note": "轮数恰等于容量：两版输出相同"
+        },
+        {
+          "stdin": "1\n7",
+          "expected": "入7:成功 出7\n共处理 1 轮",
+          "note": "n = 1 最小规模"
+        },
+        {
+          "stdin": "0",
+          "expected": "共处理 0 轮",
+          "note": "n = 0 边界"
+        },
+        {
+          "stdin": "8\n5 5 5 5 5 5 5 5",
+          "expected": "入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n入5:成功 出5\n共处理 8 轮",
+          "note": "全部元素相同"
+        },
+        {
+          "stdin": "5\n-1 -2 -3 -4 -5",
+          "expected": "入-1:成功 出-1\n入-2:成功 出-2\n入-3:成功 出-3\n入-4:成功 出-4\n入-5:成功 出-5\n共处理 5 轮",
+          "note": "含负数"
+        }
+      ],
+      "explanation": "【思路】顺序队列的 front 与 rear 都只往后走，出队留下的空位在数组头部却用不上，这就是假溢出。循环队列把数组首尾相接，用取模让下标回绕；为了区分「队空」与「队满」这两种 front == rear 的情况，约定牺牲一个存储单元，队满的条件是 rear 的下一格追上 front。\n【步骤】1. 队空：front == rear。2. 队满：(rear + 1) % MAXQ == front。3. 入队：data[rear] = x; rear = (rear + 1) % MAXQ。4. 出队：*x = data[front]; front = (front + 1) % MAXQ。5. 队列长度：(rear - front + MAXQ) % MAXQ。\n【复杂度】入队出队都是 O(1)；空间 O(MAXQ)。牺牲一个单元换来的是判满判空都只看两个下标，不需要额外计数器。\n【易错点】1. 只改判满条件而不改下标推进方式，rear 仍会冲出数组上界造成越界写。2. 判满写成 rear == front，那与判空完全重合，队列一个元素都存不下。3. 忘记牺牲单元又不加 size 字段，就无法区分空与满。4. 本题 n = 4 那一组两版输出完全相同，说明「跑通几组样例」不等于「没有 bug」，必须有一组轮数超过容量的数据才能暴露它。\n【关联】ds-ch03-13（循环队列：假溢出与三种判满方案）、ds-ch03-03（队列与循环队列）。",
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03"
+      ],
+      "vizIds": [],
+      "verified": true
     }
   ]
 }

@@ -201,6 +201,34 @@ function nonCodeAnswerGap(p: ProblemLike): { level: Level; msg: string } | null 
     }
     return null
   }
+  // 阶段3.0 新增两型：complexity_analysis / structure_trace 都没有顶层 answer，
+  // 判分内容分别落在 asks[] 与 nodeSpec/traversalOrder/constructionResult，
+  // 必须在下面那条「缺 answer」兜底之前分派，否则会被误报。
+  if (p.type === 'complexity_analysis') {
+    const asks = Array.isArray(p.asks) ? (p.asks as Array<Record<string, unknown>>) : []
+    if (asks.length === 0) {
+      if (isBlank(p.complexity)) {
+        return { level: 'error', msg: 'complexity_analysis 缺 asks 且 complexity 为空，verified:true 却无法判分' }
+      }
+      return null
+    }
+    const bad = asks.map((a, i) => ({ a, i })).filter(({ a }) => isBlank(a.label) || isBlank(a.answer))
+    if (bad.length > 0) {
+      return { level: 'error', msg: 'complexity_analysis 的 asks[' + bad.map(({ i }) => String(i)).join('、') + '] 缺 label 或 answer，verified:true 却无法判分' }
+    }
+    return null
+  }
+  if (p.type === 'structure_trace') {
+    const order = Array.isArray(p.traversalOrder) ? (p.traversalOrder as Array<Record<string, unknown>>) : []
+    if (isBlank(p.nodeSpec) && isBlank(p.constructionResult) && order.length === 0) {
+      return { level: 'error', msg: 'structure_trace 的 nodeSpec/traversalOrder/constructionResult 全为空，verified:true 却无法判分' }
+    }
+    const bad = order.map((a, i) => ({ a, i })).filter(({ a }) => isBlank(a.label) || isBlank(a.answer))
+    if (bad.length > 0) {
+      return { level: 'error', msg: 'structure_trace 的 traversalOrder[' + bad.map(({ i }) => String(i)).join('、') + '] 缺 label 或 answer，verified:true 却无法判分' }
+    }
+    return null
+  }
   // true_false / complexity / matching 等其余非代码型：answer 必须有内容（布尔 false 是合法答案）
   if (isBlank(p.answer)) return { level: 'error', msg: String(p.type) + ' 缺 answer，verified:true 却无法判分' }
   return null

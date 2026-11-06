@@ -16,6 +16,9 @@ import { CodeOrderingRenderer } from '../modules/problems/renderers/CodeOrdering
 import { ComplexityRenderer } from '../modules/problems/renderers/ComplexityRenderer'
 import { ShortAnswerRenderer } from '../modules/problems/renderers/ShortAnswerRenderer'
 import { MatchingRenderer } from '../modules/problems/renderers/MatchingRenderer'
+// 阶段 3.0 新增两型的渲染器：都是前端即时判定（数值 / 结构文本精确比对），不联网
+import { ComplexityAnalysisRenderer } from '../modules/problems/renderers/ComplexityAnalysisRenderer'
+import { StructureTraceRenderer } from '../modules/problems/renderers/StructureTraceRenderer'
 import { ProgressPanel } from '../modules/problems/progress/ProgressPanel'
 import { ReferenceAnswerPanel } from '../modules/problems/renderers/ReferenceAnswerPanel'
 import { Breadcrumb, ProblemNav } from '../modules/problems/ProblemNav'
@@ -291,6 +294,9 @@ const CONCEPT_RENDERERS: Record<string, ComponentType<{ problem: ProblemRecord }
   complexity: ComplexityRenderer,
   short_answer: ShortAnswerRenderer,
   matching: MatchingRenderer,
+  // 阶段 3.0 新增两型：与七个概念题渲染器同构（{ problem }、前端即时判定），所以进同一张表
+  complexity_analysis: ComplexityAnalysisRenderer,
+  structure_trace: StructureTraceRenderer,
 }
 
 function TypeRenderer({ problem }: { problem: ProblemRecord }) {
@@ -324,6 +330,9 @@ function TypeRenderer({ problem }: { problem: ProblemRecord }) {
   // 任务04 量产主力：algorithm_impl 与编程题同构，multi_bug_debug 与改错题同构，直接复用渲染器。
   if (problem.type === 'algorithm_impl') return <ProgrammingRenderer problem={problem} />
   if (problem.type === 'multi_bug_debug') return <DebugRenderer problem={problem} />
+  // 阶段 3.0 新增：ds_debug 与改错题完全同构（code + bugs + fixed_code + testCases），
+  // 三级提示阶梯与 Godbolt 实机判分都不用改，直接复用 DebugRenderer。
+  if (problem.type === 'ds_debug') return <DebugRenderer problem={problem} />
   // 任务04 新增概念型：前端即时判定（term_explanation / code_review）与自评（essay_answer）
   if (problem.type === 'term_explanation') return <TermExplanationRenderer problem={problem} />
   if (problem.type === 'code_review') return <CodeReviewRenderer problem={problem} />

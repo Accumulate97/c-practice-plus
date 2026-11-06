@@ -5,6 +5,11 @@ import path from 'node:path'
 const dir = 'public/data/problems'
 const MAIN = ['code_completion', 'debug', 'code_reading', 'programming']
 const AUX = ['single_choice', 'true_false', 'fill_blank', 'code_ordering', 'complexity', 'short_answer', 'matching']
+// 阶段 3.0 新增三型：ds_debug 走 Godbolt 实机判分，算主力代码题；
+// complexity_analysis / structure_trace 前端即时判定，算辅助。
+// 单列一组，免得被下面当成「未登记题型」漏掉。
+const NEW_MAIN = ['ds_debug']
+const NEW_AUX = ['complexity_analysis', 'structure_trace']
 
 const files = fs.readdirSync(dir).filter((f) => /^(c|ds)-ch\d+\.json$/.test(f)).sort()
 const byType = {}, byCat = { c: {}, ds: {} }, byChapter = {}
@@ -20,7 +25,7 @@ for (const f of files) {
     const bk = `${cat}:${j.chapter || f}`
     byChapter[bk] = byChapter[bk] || { total: 0, main: 0 }
     byChapter[bk].total++
-    if (MAIN.includes(p.type)) byChapter[bk].main++
+    if (MAIN.includes(p.type) || NEW_MAIN.includes(p.type)) byChapter[bk].main++
   }
 }
 delete byChapter[Object.keys(byChapter)[0]] // 清理误建的裸 chapter 键（若与 bk 重复无影响）
@@ -32,19 +37,20 @@ const mainOf = (o) => MAIN.reduce((a, t) => a + (o[t] || 0), 0)
 console.log(`总题量 ${total}（C 语言 ${catTotal('c')} · 数据结构 ${catTotal('ds')}）`)
 console.log('')
 console.log('题型'.padEnd(20), '全库'.padStart(6), '占比'.padStart(8), '  C语言'.padStart(8), '  数据结构'.padStart(8))
-for (const t of [...MAIN, ...AUX]) {
+for (const t of [...MAIN, ...NEW_MAIN, ...AUX, ...NEW_AUX]) {
   const n = byType[t] || 0
   if (!n) continue
-  const grp = MAIN.includes(t) ? '主力' : '辅助'
+  const grp = (MAIN.includes(t) || NEW_MAIN.includes(t)) ? '主力' : '辅助'
   console.log(`${t}(${grp})`.padEnd(24), String(n).padStart(5), pct(n, total).padStart(8), String(byCat.c[t] || 0).padStart(8), String(byCat.ds[t] || 0).padStart(10))
 }
-const unknown = Object.keys(byType).filter((t) => !MAIN.includes(t) && !AUX.includes(t))
+const KNOWN = [...MAIN, ...NEW_MAIN, ...AUX, ...NEW_AUX]
+const unknown = Object.keys(byType).filter((t) => !KNOWN.includes(t))
 if (unknown.length) console.log('未登记题型:', unknown.map((t) => `${t}=${byType[t]}`).join(', '))
 
-const mainAll = MAIN.reduce((a, t) => a + (byType[t] || 0), 0)
+const mainAll = [...MAIN, ...NEW_MAIN].reduce((a, t) => a + (byType[t] || 0), 0)
 console.log('')
-console.log(`主力题型（程序填空/改错/阅读/编程）合计 ${mainAll} = ${pct(mainAll, total)}  ·  目标 80%`)
-console.log(`辅助题型（选择/判断/填空/排序/复杂度/简答/连线）合计 ${total - mainAll} = ${pct(total - mainAll, total)}  ·  目标 20%`)
+console.log(`主力题型（程序填空/改错/阅读/编程/数据结构改错，全部实机判分）合计 ${mainAll} = ${pct(mainAll, total)}  ·  目标 80%`)
+console.log(`辅助题型（选择/判断/填空/排序/复杂度/简答/连线/数值分析/结构构造）合计 ${total - mainAll} = ${pct(total - mainAll, total)}  ·  目标 20%`)
 console.log('')
 console.log('分片主力占比（章）:')
 for (const [k, v] of Object.entries(byChapter)) {

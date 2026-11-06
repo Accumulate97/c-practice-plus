@@ -1836,6 +1836,246 @@
       "ai_generated": true,
       "generated_at": "2026-09-12",
       "verified": true
+    },
+    {
+      "id": "ds-ch07-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "defectKind": "哈希冲突处理错误",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "懒删除",
+        "探测链"
+      ],
+      "stem": "下面的程序用除留余数法 H(key) = key mod 13 与线性探测建立一个散列表，依次插入教材经典例的 12 个关键字 19 14 23 1 68 20 84 27 55 11 10 79，\n然后从标准输入读入两个整数 del 与 probe：先删除 del，再查找 probe，打印查找结果与整张表。\n程序在删除某个关键字之后，会连原本明明还在表里的关键字也查不到。请找出错误并改正。\n\n```c\n#include <stdio.h>\n#define M 13\nenum { EMPTY = -1, DELETED = -2 };\n#define H(key) ((key) % M)\nstatic int table[M];\nstatic int insertKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M) {\n        if (table[h] == EMPTY || table[h] == DELETED) { table[h] = key; return h; }\n        if (table[h] == key) return h;\n    }\n    return -1;\n}\nstatic int searchKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M)\n        if (table[h] == key) return h; else if (table[h] == EMPTY) return -1;\n    return -1;\n}\nstatic void deleteKey(int key)\n{\n    int h = searchKey(key);\n    if (h >= 0) table[h] = EMPTY;\n}\nint main(void)\n{\n    int keys[12] = { 19, 14, 23, 1, 68, 20, 84, 27, 55, 11, 10, 79 };\n    int i, del, probe, pos;\n    for (i = 0; i < M; i++) table[i] = EMPTY;\n    for (i = 0; i < 12; i++) insertKey(keys[i]);\n    if (scanf(\"%d %d\", &del, &probe) != 2) return 1;\n    deleteKey(del);\n    pos = searchKey(probe);\n    printf(\"删除 %d 之后查找 %d：%s（下标 %d）\\n\", del, probe, pos >= 0 ? \"找到\" : \"找不到\", pos);\n    for (i = 0, printf(\"表：\"); i < M; i++) { if (i > 0) printf(\" \"); printf(\"%d\", table[i]); }\n    printf(\"\\n\"); return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define M 13\nenum { EMPTY = -1, DELETED = -2 };\n#define H(key) ((key) % M)\nstatic int table[M];\nstatic int insertKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M) {\n        if (table[h] == EMPTY || table[h] == DELETED) { table[h] = key; return h; }\n        if (table[h] == key) return h;\n    }\n    return -1;\n}\nstatic int searchKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M)\n        if (table[h] == key) return h; else if (table[h] == EMPTY) return -1;\n    return -1;\n}\nstatic void deleteKey(int key)\n{\n    int h = searchKey(key);\n    if (h >= 0) table[h] = EMPTY;\n}\nint main(void)\n{\n    int keys[12] = { 19, 14, 23, 1, 68, 20, 84, 27, 55, 11, 10, 79 };\n    int i, del, probe, pos;\n    for (i = 0; i < M; i++) table[i] = EMPTY;\n    for (i = 0; i < 12; i++) insertKey(keys[i]);\n    if (scanf(\"%d %d\", &del, &probe) != 2) return 1;\n    deleteKey(del);\n    pos = searchKey(probe);\n    printf(\"删除 %d 之后查找 %d：%s（下标 %d）\\n\", del, probe, pos >= 0 ? \"找到\" : \"找不到\", pos);\n    for (i = 0, printf(\"表：\"); i < M; i++) { if (i > 0) printf(\" \"); printf(\"%d\", table[i]); }\n    printf(\"\\n\"); return 0;\n}",
+      "bugs": [
+        "deleteKey 做的是真删除：if (h >= 0) table[h] = EMPTY; 把格子置回「从未使用过」。但线性探测的查找是靠「遇到 EMPTY 就断定关键字不存在」来终止的，真删除会把穿过这个格子的探测链一刀切断，导致后面因冲突而被挤到更远处的关键字全部查不到。修法是懒删除：另设一个 DELETED 标记，删除时写 table[h] = DELETED；查找遇到 DELETED 要跳过并继续探测，只有遇到 EMPTY 才终止；插入时 DELETED 格子可以复用。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define M 13\nenum { EMPTY = -1, DELETED = -2 };\n#define H(key) ((key) % M)\nstatic int table[M];\nstatic int insertKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M) {\n        if (table[h] == EMPTY || table[h] == DELETED) { table[h] = key; return h; }\n        if (table[h] == key) return h;\n    }\n    return -1;\n}\nstatic int searchKey(int key)\n{\n    int h = H(key), i;\n    for (i = 0; i < M; i++, h = (h + 1) % M)\n        if (table[h] == key) return h; else if (table[h] == EMPTY) return -1;\n    return -1;\n}\nstatic void deleteKey(int key)\n{\n    int h = searchKey(key);\n    if (h >= 0) table[h] = DELETED;\n}\nint main(void)\n{\n    int keys[12] = { 19, 14, 23, 1, 68, 20, 84, 27, 55, 11, 10, 79 };\n    int i, del, probe, pos;\n    for (i = 0; i < M; i++) table[i] = EMPTY;\n    for (i = 0; i < 12; i++) insertKey(keys[i]);\n    if (scanf(\"%d %d\", &del, &probe) != 2) return 1;\n    deleteKey(del);\n    pos = searchKey(probe);\n    printf(\"删除 %d 之后查找 %d：%s（下标 %d）\\n\", del, probe, pos >= 0 ? \"找到\" : \"找不到\", pos);\n    for (i = 0, printf(\"表：\"); i < M; i++) { if (i > 0) printf(\" \"); printf(\"%d\", table[i]); }\n    printf(\"\\n\"); return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "27 55",
+          "expected": "删除 27 之后查找 55：找到（下标 5）\n表：-1 14 1 68 -2 55 19 20 84 79 23 11 10",
+          "note": "删 27 后查 55：探测链穿过 27 的格子"
+        },
+        {
+          "stdin": "27 27",
+          "expected": "删除 27 之后查找 27：找不到（下标 -1）\n表：-1 14 1 68 -2 55 19 20 84 79 23 11 10",
+          "note": "删掉之后再查它自己：应当查不到"
+        },
+        {
+          "stdin": "14 1",
+          "expected": "删除 14 之后查找 1：找到（下标 2）\n表：-1 -2 1 68 27 55 19 20 84 79 23 11 10",
+          "note": "删 14 后查 1：1 的探测链穿过下标 1"
+        },
+        {
+          "stdin": "999 19",
+          "expected": "删除 999 之后查找 19：找到（下标 6）\n表：-1 14 1 68 27 55 19 20 84 79 23 11 10",
+          "note": "删除一个不存在的关键字：表不应有任何变化"
+        },
+        {
+          "stdin": "79 79",
+          "expected": "删除 79 之后查找 79：找不到（下标 -1）\n表：-1 14 1 68 27 55 19 20 84 -2 23 11 10",
+          "note": "删 79 后查 79：查不到，且表里留下 DELETED 标记"
+        },
+        {
+          "stdin": "19 79",
+          "expected": "删除 19 之后查找 79：找到（下标 9）\n表：-1 14 1 68 27 55 -2 20 84 79 23 11 10",
+          "note": "删表头附近的 19 后查堆积最严重的 79"
+        }
+      ],
+      "explanation": "【思路】开放定址法的探测序列是「从 H(key) 开始连续往后数直到遇到空槽」，所以一个格子是不是空槽，决定了查找会不会提前终止。删除若把格子真的清空，就等于在这条链上剪了一刀，链后面所有靠穿越这一格才落位的关键字都会被判成不存在。\n【步骤】1. 引入第三个状态 DELETED（本题取 -2，与 EMPTY = -1 区分开）。2. 删除：先按查找逻辑定位，命中就写 DELETED 而不是 EMPTY。3. 查找：命中关键字则返回下标；遇 EMPTY 返回 -1；遇 DELETED 继续往前探。4. 插入：EMPTY 与 DELETED 都可以落位（本题的 insertKey 把两者合并判断）。\n【复杂度】查找、插入、删除的期望代价都由装填因子 α 决定，与表长无关；线性探测在 α 接近 1 时会因堆积迅速恶化，本题 12 个关键字装进 13 格，α = 12/13 ≈ 0.923 已经是极端情况。\n【易错点】1. 只改 deleteKey 却忘了让 searchKey 跳过 DELETED，查找会在标记处提前终止，bug 换个形式仍然存在。2. 插入时不复用 DELETED 格子，反复增删会让表里堆满标记而提前「满」。3. 把 DELETED 与 EMPTY 用同一个值，两个状态就分不开了。4. 链地址法不存在这个问题——摘掉一个链表结点不会切断任何东西，可以直接真删。\n【关联】ds-ch07-14（散列表：装填因子、堆积与懒删除）、ds-ch07-04（ASL 成功与失败要分开算）。",
+      "source": "自撰变式（依据 第7章 查找 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch07-14",
+        "ds-ch07-04"
+      ],
+      "vizIds": [],
+      "verified": true
+    },
+    {
+      "id": "ds-ch07-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "查找",
+        "折半查找",
+        "判定树",
+        "ASL",
+        "平均查找长度"
+      ],
+      "stem": "对长度为 15 的有序表做折半查找，表中的元素依次是：\n\n```\n下标： 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14\n元素： 2  4  6  8 10 12 14 16 18 20 22 24 26 28 30\n```\n\n查找算法用最常见的写法：`low = 0; high = n - 1;` 循环条件 `low <= high`，\n每轮取 `mid = (low + high) / 2`（整数除法），比较一次后按大小收缩区间。\n\n请依次回答下面 6 问，最后再给出折半查找的时间复杂度。\n\n★ 提示：先把判定树画出来。n = 15 = 2⁴ − 1，所以判定树是一棵**满二叉树**。",
+      "asks": [
+        {
+          "label": "判定树的高度 h",
+          "answer": "4",
+          "accepted": [
+            "4层",
+            "4 层"
+          ],
+          "tolerance": 0,
+          "unit": "层",
+          "hint": "根在第 1 层。n = 2^h − 1 时 h = log2(n+1)。"
+        },
+        {
+          "label": "第 3 层的结点个数",
+          "answer": "4",
+          "accepted": [],
+          "tolerance": 0,
+          "unit": "个",
+          "hint": "满二叉树第 k 层有 2^(k-1) 个结点。"
+        },
+        {
+          "label": "查找成功时所有元素的比较次数之和",
+          "answer": "49",
+          "accepted": [],
+          "tolerance": 0,
+          "unit": "次",
+          "hint": "Σ(层数 × 该层结点数) = 1×1 + 2×2 + 3×4 + 4×8。"
+        },
+        {
+          "label": "ASL成功",
+          "answer": "49/15",
+          "accepted": [
+            "3.2667",
+            "3.27",
+            "3.266666"
+          ],
+          "tolerance": 0.001,
+          "unit": "",
+          "hint": "成功时的 ASL = 比较次数之和 / 元素个数。写成分数或小数都行。"
+        },
+        {
+          "label": "失败区间（外部结点）的个数",
+          "answer": "16",
+          "accepted": [
+            "n+1"
+          ],
+          "tolerance": 0,
+          "unit": "个",
+          "hint": "n 个内部结点的二叉树有 n+1 个外部结点。"
+        },
+        {
+          "label": "ASL失败",
+          "answer": "4",
+          "accepted": [
+            "4.0",
+            "64/16"
+          ],
+          "tolerance": 0,
+          "unit": "次",
+          "hint": "★ 失败时比较的是路径上的内部结点，所以是「外部结点深度 − 1」。满树时所有失败区间都在同一层。"
+        }
+      ],
+      "complexity": "O(log n)",
+      "accepted": [
+        "O(log2 n)",
+        "O(logn)",
+        "log n",
+        "O(log2n)",
+        "对数阶"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】\n折半查找的全部性能指标都长在它的判定树上，所以第一步是把判定树画出来。n = 15 = 2⁴ − 1 是最舒服的情形：判定树是一棵满二叉树，四层分别有 1、2、4、8 个结点，16 个失败区间（外部结点）全部挂在第 5 层。\n\n【步骤】\n1. 高度 h：满二叉树满足 n = 2^h − 1，15 = 2⁴ − 1，所以 h = 4。等价地 h = ⌈log₂(n+1)⌉ = ⌈log₂16⌉ = 4。\n2. 第 3 层结点数 = 2^(3−1) = 4。\n3. 成功时的比较次数之和 = 1×1 + 2×2 + 3×4 + 4×8 = 1 + 4 + 12 + 32 = 49。\n4. ASL成功 = 49 / 15 ≈ 3.2667。教材常写的近似公式 log₂(n+1) − 1 = 4 − 1 = 3 比它小 0.27，差值来自「丢掉分子里的 +1、分母里的 −1」这两处近似，n 越大越接近。\n5. 失败区间个数 = n + 1 = 16（二叉树的基本性质：n 个内部结点对应 n+1 个外部结点）。\n6. ASL失败：满树的 16 个外部结点都在第 5 层，而失败时真正发生比较的是路径上的 4 个内部结点，所以每次都比较 4 次，ASL失败 = 64 / 16 = 4，恰好等于 h。\n\n【复杂度】\n时间 O(log n)，空间 O(1)（迭代写法）。判定树的高度就是最坏比较次数，所以折半查找的最坏与平均都是对数级。\n\n【易错点】\n1. **失败时的比较次数是「外部结点深度 − 1」，不是外部结点深度。** 外部结点本身是虚拟的、不会真的去比较它，比较发生在从根走到它父亲的那条路径上。满树 n=15 时外部结点在第 5 层，失败比较 4 次。写成 5 就多算了一次。\n2. **ASL成功 与 ASL失败 的分母不同。** 成功的分母是「元素个数」n = 15，失败的分母是「失败区间个数」n + 1 = 16。用 15 去除 64 会得到 4.27，是个没有意义的数。\n3. **近似公式 log₂(n+1) − 1 只在 n 是 2ᵏ−1 时才比较准，而且它算的是成功 ASL。** 拿它去套失败 ASL 会差整整一层。\n4. **判定树由 mid 的取法唯一确定，不能按查找概率调整。** 如果各元素的查找概率不相等，折半查找并不是最优的 —— 这正是静态最优查找树与二叉排序树要解决的问题。\n\n【关联】\n知识点：ds-ch07-06（折半查找与判定树）、ds-ch07-04（ASL 基础与成功失败分开算）、ds-ch07-07（分块查找）。这三张卡的示例程序把本例的所有数值都实机打印过一遍。",
+      "source": "自撰变式（依据 第7章 查找 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch07-06",
+        "ds-ch07-04",
+        "ds-ch07-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-06",
+      "verified": true
+    },
+    {
+      "id": "ds-ch07-str-001",
+      "type": "structure_trace",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "平衡二叉树",
+        "AVL",
+        "旋转",
+        "LL",
+        "RR",
+        "构造"
+      ],
+      "stem": "按下面的次序把关键字**依次插入**一棵初始为空的 AVL 树（平衡二叉树）：\n\n```\n3  2  1  4  5  6  7\n```\n\nAVL 的约定：结点的平衡因子 **BF = 左子树高度 − 右子树高度**，必须始终在 {−1, 0, +1} 里。\n每次插入后从插入点往上回溯，第一个 |BF| = 2 的结点就是失衡点，按下面这张表旋转**一次**：\n\n```\nA.bf = +2 且 B.bf = +1  →  LL，对 A 做右单旋\nA.bf = +2 且 B.bf = −1  →  LR，先对 B 左旋再对 A 右旋\nA.bf = −2 且 B.bf = −1  →  RR，对 A 做左单旋\nA.bf = −2 且 B.bf = +1  →  RL，先对 B 右旋再对 A 左旋\n```\n\n（B 是 A 的那一侧较高的孩子。★ 插入引起的失衡只需要调整一次，因为旋转后子树高度复原。）\n\n请回答：最终结构（括号表示法）、中序 / 先序 / 层序三种遍历序列。\n\n★ 书写约定同 BST 题：`根(左,右)`，叶子不带括号，空孩子写 `-`。",
+      "sequence": "3 2 1 4 5 6 7",
+      "structureKind": "avl",
+      "nodeSpec": "4(2(1,3),6(5,7))",
+      "traversalOrder": [
+        {
+          "label": "中序",
+          "answer": "1 2 3 4 5 6 7",
+          "accepted": [
+            "1,2,3,4,5,6,7"
+          ],
+          "tolerance": 0,
+          "unit": "",
+          "hint": "AVL 也是 BST，中序必然严格升序 —— 这一条不能用来检查旋转对不对，只能检查你有没有漏插关键字。"
+        },
+        {
+          "label": "先序",
+          "answer": "4 2 1 3 6 5 7",
+          "accepted": [
+            "4,2,1,3,6,5,7"
+          ],
+          "tolerance": 0,
+          "unit": "",
+          "hint": "根 → 左子树 → 右子树。"
+        },
+        {
+          "label": "层序",
+          "answer": "4 2 6 1 3 5 7",
+          "accepted": [
+            "4,2,6,1,3,5,7"
+          ],
+          "tolerance": 0,
+          "unit": "",
+          "hint": "这是一棵满二叉树，层序就是逐层从左到右。"
+        }
+      ],
+      "constructionResult": "",
+      "traceSteps": [
+        "插入 3 → 3（BF=0，无旋转）",
+        "插入 2 → 3(2,-)；3 的 BF = +1，没失衡（无旋转）",
+        "插入 1 → 3(2(1,-),-)；3 的 BF = +2、孩子 2 的 BF = +1 ⇒ LL，对 3 右单旋 → 2(1,3)",
+        "插入 4 → 2(1,3(-,4))；结点 3 的 BF = −1，全树 |BF| ≤ 1（无旋转）",
+        "插入 5 → 2(1,3(-,4(-,5)))；3 的 BF = −2、孩子 4 的 BF = −1 ⇒ RR，对 3 左单旋 → 2(1,4(3,5))",
+        "插入 6 → 4 的 BF 变成 −2、孩子 5 的 BF = −1 ⇒ RR，对根 4 左单旋 → 4(2(1,3),5(-,6))",
+        "插入 7 → 5 的 BF = −2、孩子 6 的 BF = −1 ⇒ RR，对 5 左单旋 → 4(2(1,3),6(5,7))",
+        "共 7 次插入、4 次旋转（LL 1 次、RR 3 次、LR 0 次、RL 0 次）。最终高度 3，恰等于理想下界 ⌈log₂(7+1)⌉ = 3。",
+        "★ 对照：同一组关键字用普通 BST 插入会退化成 3(2(1,-),4(-,5(-,6(-,7))))，高度 6，是 AVL 的两倍。"
+      ],
+      "explanation": "【思路】\n这组数据是**升序插入**，普通 BST 会退化成一条右单支链。AVL 靠旋转把它拉回平衡，而升序插入触发的失衡类型非常规律：每次都是「右子树的右子树过高」，也就是 RR，用左单旋解决。\n\n【步骤】\n1. 插 3、插 2：树是 3(2,-)，BF(3) = +1，合法。\n2. 插 1：树变成 3(2(1,-),-)，BF(3) = +2 失衡。较高的孩子是 2，BF(2) = +1 ⇒ **LL 型**，对 3 做右单旋：2 上位当根，3 变成 2 的右孩子，2 原来的右孩子（空）挂到 3 的左边。得 **2(1,3)**。旋转后这棵子树高度从 3 回到 2，父结点看到的没变，回溯停止。\n3. 插 4：4 > 2 往右到 3，4 > 3 挂到 3 的右边，得 2(1,3(-,4))。BF(3) = −1、BF(2) = −1，都合法。\n4. 插 5：挂到 4 的右边，3 的 BF 变成 −2，孩子 4 的 BF = −1 ⇒ **RR 型**，对 3 左单旋得 4(3,5)，整棵树是 **2(1,4(3,5))**。\n5. 插 6：挂到 5 的右边。此时 BF(4) = 1 − 3 = −2（左子树高 1、右子树高 3），孩子 5 的 BF = −1 ⇒ **RR 型**，对根 4 左单旋：5 上位，4 变成 5 的左孩子，5 原来的左孩子（空）挂到 4 的右边。得 **4(2(1,3),5(-,6))**。\n6. 插 7：挂到 6 的右边，BF(5) = −2、孩子 6 的 BF = −1 ⇒ **RR 型**，对 5 左单旋得 6(5,7)，整棵树是 **4(2(1,3),6(5,7))**。\n7. 遍历：中序 1 2 3 4 5 6 7（AVL 也是 BST）；先序 4 2 1 3 6 5 7；层序 4 2 6 1 3 5 7。\n\n【复杂度】\n插入 O(log n) + 最多 1 次旋转（O(1)）。删除 O(log n) + 最多 O(log n) 次旋转（删除后高度可能变矮，失衡会往上传播）。n 个结点的 AVL 高度上界是 1.44·log₂(n+2) − 1.328。\n\n【易错点】\n1. **旋转后子树高度复原，所以插入只需调整一次；删除可能要调整 O(log n) 次。** 这是两者的本质区别，也是「插入比删除简单」的原因。\n2. **BF 的定义是「左 − 右」还是「右 − 左」要先确认。** 国内教材一律「左 − 右」，英文书（如 CLRS）常用「右 − 左」，符号会全反。用错约定会把 LL 判成 RR。\n3. **双旋时那个中间结点的 BF（记作 c）必须在两次旋转之前读出来。** 旋转之后树形变了，再读就不是原来的值，而 A 与 B 的新 BF 完全由 c 决定（c = +1 / −1 / 0 三种情况各不相同）。\n4. **A 失衡时 B 的 BF 一定不是 0。** 如果 B 的两棵子树等高，插入后 B 的高度不变，A 的 BF 也不会变、根本不会失衡。这条推论能把判定表从 6 种情况砍到 4 种。\n5. **中序升序不能用来验证旋转对不对。** 任何 BST（包括旋转做错的）中序都是升序，因为旋转保持中序不变。要检查旋转，得看**树高**与**每个结点的 |BF| ≤ 1**。\n\n【关联】\n知识点：ds-ch07-10（AVL 四类旋转 LL/RR/LR/RL 与 BF 更新表，十个案例 × 4 条断言逐格验证）、ds-ch07-11（AVL 插入全过程与 Fibonacci 高度上界）、ds-ch07-08（BST）。ds-ch07-11 的示例程序用更长的序列 {3,2,1,4,5,6,7,16,15,14,13,12,8,9} 打印过每一步的形态、旋转类型与失衡点，本题是它的前 7 步。",
+      "source": "自撰变式（依据 第7章 查找 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch07-10",
+        "ds-ch07-11",
+        "ds-ch07-08"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-06",
+      "verified": true
     }
   ]
 }

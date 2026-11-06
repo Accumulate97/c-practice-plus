@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "13c15271e15922d1",
+  "content_sha": "d1fdc8b18f018273",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 3207,
+  "count": 3216,
   "shard_count": 21,
   "shards": [
     {
@@ -108,14 +108,14 @@
       "file": "ds-ch02.json",
       "category": "ds",
       "chapter": "第2章 线性表",
-      "count": 70,
+      "count": 71,
       "url": "data/problems/ds-ch02.json"
     },
     {
       "file": "ds-ch03.json",
       "category": "ds",
       "chapter": "第3章 栈和队列",
-      "count": 60,
+      "count": 61,
       "url": "data/problems/ds-ch03.json"
     },
     {
@@ -129,28 +129,28 @@
       "file": "ds-ch05.json",
       "category": "ds",
       "chapter": "第5章 树和二叉树",
-      "count": 80,
+      "count": 82,
       "url": "data/problems/ds-ch05.json"
     },
     {
       "file": "ds-ch06.json",
       "category": "ds",
       "chapter": "第6章 图",
-      "count": 60,
+      "count": 61,
       "url": "data/problems/ds-ch06.json"
     },
     {
       "file": "ds-ch07.json",
       "category": "ds",
       "chapter": "第7章 查找",
-      "count": 50,
+      "count": 53,
       "url": "data/problems/ds-ch07.json"
     },
     {
       "file": "ds-ch08.json",
       "category": "ds",
       "chapter": "第8章 排序",
-      "count": 60,
+      "count": 61,
       "url": "data/problems/ds-ch08.json"
     }
   ],
@@ -44222,6 +44222,24 @@
       "file": "ds-ch02.json"
     },
     {
+      "id": "ds-ch02-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 2,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "插入",
+        "指针次序",
+        "断链"
+      ],
+      "title": "下面的程序先建一条单链表 1→2→3→4→5",
+      "file": "ds-ch02.json"
+    },
+    {
       "id": "ds-ch03-sc-001",
       "type": "single_choice",
       "category": "ds",
@@ -45183,6 +45201,24 @@
         "进制转换"
       ],
       "title": "编写程序",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "取模",
+        "队满判定"
+      ],
+      "title": "下面的程序用一个容量 MAXQ = 4 的顺序队列",
       "file": "ds-ch03.json"
     },
     {
@@ -47182,6 +47218,46 @@
       "file": "ds-ch05.json"
     },
     {
+      "id": "ds-ch05-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "哈夫曼树",
+        "WPL",
+        "带权路径长度",
+        "哈夫曼编码",
+        "压缩率"
+      ],
+      "title": "六个字符的使用频次如下",
+      "file": "ds-ch05.json"
+    },
+    {
+      "id": "ds-ch05-str-001",
+      "type": "structure_trace",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "二叉排序树",
+        "BST",
+        "构造",
+        "先序遍历",
+        "中序遍历",
+        "后序遍历",
+        "层序遍历"
+      ],
+      "title": "按下面的次序把关键字**依次插入**一棵初始为空的二叉排序树",
+      "file": "ds-ch05.json"
+    },
+    {
       "id": "ds-ch06-sc-001",
       "type": "single_choice",
       "category": "ds",
@@ -48184,6 +48260,25 @@
       "file": "ds-ch06.json"
     },
     {
+      "id": "ds-ch06-str-001",
+      "type": "structure_trace",
+      "category": "ds",
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "最小生成树",
+        "MST",
+        "Kruskal",
+        "Prim",
+        "并查集"
+      ],
+      "title": "一个 n = 6、e = 10 的无向带权连通网",
+      "file": "ds-ch06.json"
+    },
+    {
       "id": "ds-ch07-sc-001",
       "type": "single_choice",
       "category": "ds",
@@ -49002,6 +49097,63 @@
         "编程题"
       ],
       "title": "编写程序",
+      "file": "ds-ch07.json"
+    },
+    {
+      "id": "ds-ch07-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "散列表",
+        "线性探测",
+        "懒删除",
+        "探测链"
+      ],
+      "title": "下面的程序用除留余数法 H",
+      "file": "ds-ch07.json"
+    },
+    {
+      "id": "ds-ch07-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "查找",
+        "折半查找",
+        "判定树",
+        "ASL",
+        "平均查找长度"
+      ],
+      "title": "对长度为 15 的有序表做折半查找",
+      "file": "ds-ch07.json"
+    },
+    {
+      "id": "ds-ch07-str-001",
+      "type": "structure_trace",
+      "category": "ds",
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "平衡二叉树",
+        "AVL",
+        "旋转",
+        "LL",
+        "RR",
+        "构造"
+      ],
+      "title": "按下面的次序把关键字**依次插入**一棵初始为空的 AVL 树",
       "file": "ds-ch07.json"
     },
     {
@@ -49951,6 +50103,25 @@
         "编程"
       ],
       "title": "编写程序",
+      "file": "ds-ch08.json"
+    },
+    {
+      "id": "ds-ch08-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "排序",
+        "直接插入排序",
+        "逆序对",
+        "比较次数",
+        "移动次数"
+      ],
+      "title": "对下面这个序列做**直接插入排序**",
       "file": "ds-ch08.json"
     }
   ],

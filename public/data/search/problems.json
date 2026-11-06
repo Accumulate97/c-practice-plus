@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "b541074b29483dd9",
+  "content_sha": "6363420ef7cf5173",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 3207,
+  "count": 3216,
   "docs": [
     {
       "id": "c-ch01-cc-001",
@@ -35508,6 +35508,21 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch02-dsdbg-001",
+      "file": "ds-ch02.json",
+      "title": "下面的程序先建一条单链表 1→2→3→4→5",
+      "tags": [
+        "单链表",
+        "插入",
+        "指针次序",
+        "断链"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch03-sc-001",
       "file": "ds-ch03.json",
       "title": "栈的插入和删除操作都只能在表的一端进行",
@@ -36289,6 +36304,21 @@
       "chapter": "第3章 栈和队列",
       "section": "3.6 栈与队列的应用",
       "type": "programming",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-001",
+      "file": "ds-ch03.json",
+      "title": "下面的程序用一个容量 MAXQ = 4 的顺序队列",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "取模",
+        "队满判定"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "ds_debug",
       "category": "ds"
     },
     {
@@ -37928,6 +37958,40 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch05-cxa-001",
+      "file": "ds-ch05.json",
+      "title": "六个字符的使用频次如下",
+      "tags": [
+        "哈夫曼树",
+        "WPL",
+        "带权路径长度",
+        "哈夫曼编码",
+        "压缩率"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-str-001",
+      "file": "ds-ch05.json",
+      "title": "按下面的次序把关键字**依次插入**一棵初始为空的二叉排序树",
+      "tags": [
+        "二叉排序树",
+        "BST",
+        "构造",
+        "先序遍历",
+        "中序遍历",
+        "后序遍历",
+        "层序遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "structure_trace",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch06-sc-001",
       "file": "ds-ch06.json",
       "title": "具有 10 个顶点的无向完全图",
@@ -38750,6 +38814,22 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch06-str-001",
+      "file": "ds-ch06.json",
+      "title": "一个 n = 6、e = 10 的无向带权连通网",
+      "tags": [
+        "最小生成树",
+        "MST",
+        "Kruskal",
+        "Prim",
+        "并查集"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "structure_trace",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch07-sc-001",
       "file": "ds-ch07.json",
       "title": "衡量一个查找算法效率的主要指标是平均查找长度 ASL",
@@ -39418,6 +39498,54 @@
       "chapter": "第7章 查找",
       "section": "7.5 散列表",
       "type": "programming",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-001",
+      "file": "ds-ch07.json",
+      "title": "下面的程序用除留余数法 H",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "懒删除",
+        "探测链"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-001",
+      "file": "ds-ch07.json",
+      "title": "对长度为 15 的有序表做折半查找",
+      "tags": [
+        "查找",
+        "折半查找",
+        "判定树",
+        "ASL",
+        "平均查找长度"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-str-001",
+      "file": "ds-ch07.json",
+      "title": "按下面的次序把关键字**依次插入**一棵初始为空的 AVL 树",
+      "tags": [
+        "平衡二叉树",
+        "AVL",
+        "旋转",
+        "LL",
+        "RR",
+        "构造"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "structure_trace",
       "category": "ds"
     },
     {
@@ -40187,6 +40315,22 @@
       "chapter": "第8章 排序",
       "section": "8.5 归并排序与基数排序",
       "type": "programming",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-001",
+      "file": "ds-ch08.json",
+      "title": "对下面这个序列做**直接插入排序**",
+      "tags": [
+        "排序",
+        "直接插入排序",
+        "逆序对",
+        "比较次数",
+        "移动次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "complexity_analysis",
       "category": "ds"
     }
   ]

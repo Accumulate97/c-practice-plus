@@ -91,6 +91,11 @@ const CONTENT_FIELD: Record<string, string[]> = {
   essay_answer: ['reference_answer', 'keyPoints'],
   algorithm_impl: ['reference', 'testCases'],
   multi_bug_debug: ['code', 'bugs', 'fixed_code', 'testCases'],
+  ds_debug: ['code', 'bugs', 'fixed_code', 'testCases'],
+  // 下面两型只列「可判分目标」字段，不列 schema 已 required 的那些：
+  // 判据是「至少命中一个」，列 required 字段等于恒过、查不出「建了题却没有任何可判分内容」。
+  complexity_analysis: ['asks', 'complexity'],
+  structure_trace: ['nodeSpec', 'traversalOrder', 'constructionResult'],
 }
 
 /** 审核 constraints 必填的题型（任务书 1.1：algorithm_impl 与熟练度专项 timed_impl） */

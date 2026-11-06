@@ -173,7 +173,7 @@ const GCC_FIELDS = new Set(['solution', 'reference', 'fixed_code'])
 const LINE_REF = /第\s*[0-9]+\s*行/
 
 function problemLineRefSkip(p) {
-  const isDebug = p.type === 'debug' || p.type === 'multi_bug_debug'
+  const isDebug = p.type === 'debug' || p.type === 'multi_bug_debug' || p.type === 'ds_debug'
   if (isDebug) {
     const texts = [p.stem, p.explanation, ...(Array.isArray(p.bugs) ? p.bugs : [])]
     if (texts.some((t) => typeof t === 'string' && LINE_REF.test(t))) return 'debug 题文本含行号引用（提示阶梯依赖）'

@@ -42,6 +42,10 @@ const CODE_SOLUTION_FIELD: Record<string, string> = {
   multi_blank: 'solution',
   debug: 'fixed_code',
   multi_bug_debug: 'fixed_code',
+  // 阶段 3.0：数据结构改错题与改错题同构，答案代码同样落在 fixed_code。
+  // 漏了这一行，ds_debug 题的底部就只有详解、没有完整参考源代码 —— 直接违反
+  // 「页面底部必须有完整参考源代码 + 结构化详解」这条红线，而且是 30 道抽检才会暴露的那种。
+  ds_debug: 'fixed_code',
 }
 
 /** localStorage 展开状态键 */

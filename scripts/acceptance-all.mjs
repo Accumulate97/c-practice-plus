@@ -37,6 +37,9 @@ const SUITES = [
   'acceptance:search', 'acceptance:failover', 'acceptance:onboard',
   // 阶段 2.2：章节导言/重点难点/知识点清单/章节小结（只在选中某一章时渲染，所以单独一套）
   'acceptance:chapnote',
+  // 阶段 3.0：ds_debug / complexity_analysis / structure_trace 三型的渲染、判分闭环、
+  // 等价写法、三级提示阶梯、底部参考源代码与窄屏可达性
+  'acceptance:newtypes',
 ]
 const HARD_TIMEOUT_MS = 12 * 60 * 1000
 const SUMMARY = 'tmp/acc-summary.txt'

@@ -20,13 +20,13 @@
 /** 首尾可剥的标点：学生常把「编译。」当答案交上来，句号不属于答案本身 */
 const TRIM_PUNCT = '。，、；：！？…·．,.:;!?～~"\'“”‘’「」『』'
 
-/** NFKC 漏网的上标字符（² ³ 已被 NFKC 转成 2 3，ⁿ 这类不会） */
-const SUPERSCRIPTS: Record<string, string> = {
+/** NFKC 漏网的上标字符（² ³ 已被 NFKC 转成 2 3，ⁿ 这类不会）。trace-match.ts 共用这一份 */
+export const SUPERSCRIPTS: Record<string, string> = {
   '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4',
   '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', 'ⁿ': 'n',
 }
 
-function asText(value: unknown): string {
+export function asText(value: unknown): string {
   return typeof value === 'string' ? value : value === null || value === undefined ? '' : String(value)
 }
 

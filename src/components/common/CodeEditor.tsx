@@ -55,7 +55,7 @@ export function CodeEditor({ value, onChange, disabled = false, rows = 16, ariaL
 
   return (
     <div
-      className="flex overflow-hidden rounded-lg border"
+      className="cp-focus-ring-wrap flex overflow-hidden rounded-lg border transition-shadow"
       style={{ borderColor: 'var(--border)', background: 'var(--bg-elev)' }}
     >
       <div

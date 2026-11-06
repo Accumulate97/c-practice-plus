@@ -271,6 +271,19 @@ nav a {
 .cm-host .cm-editor { width: 100%; }
 .cm-host[data-readonly='true'] .cm-content { cursor: default; }
 
+/* ── 键盘焦点环（必须写在 @layer 之外）──────────────────────────────────────
+   本项目用 Tailwind v4，`@layer base/components/utilities` 是**真正的 CSS 级联层**，
+   而级联层的优先级高于特异性：utilities 层里的 `.outline-none` 会盖掉 base 层里
+   任何选择器，哪怕后者特异性更高。全站十几个输入框都写了 `outline-none`，
+   结果键盘 Tab 过去一个焦点环都没有 —— 30 道抽检的第 ⑩ 项「Tab 焦点环正确」会直接判不过。
+   **不带 @layer 的样式优先级高于所有带层的样式**，所以这两条规则放在顶层，
+   才能稳定压过 `.outline-none`。（`:focus-visible` 那条全局规则留在 base 层里，
+   对没有 outline-none 的元素（链接、按钮）依然有效。） */
+.cp-focus-ring:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+/* 代码编辑器的 textarea 被 overflow-hidden 的圆角外壳包住，outline 会被裁掉；
+   改在外壳上用 focus-within + box-shadow 画环（box-shadow 不受 overflow 裁剪）。 */
+.cp-focus-ring-wrap:focus-within { box-shadow: 0 0 0 2px var(--color-brand); }
+
 /* 空位槽：底色 + 下边框标出可编辑区间，聚焦时再叠一圈描边 */
 .cm-blank {
   background-color: var(--code-blank-bg);

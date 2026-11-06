@@ -31,6 +31,10 @@ export const TYPE_LABEL: Record<string, string> = {
   essay_answer: '论述题',
   algorithm_impl: '算法实现',
   multi_bug_debug: '多错改错',
+  // 阶段 3.0：DS 板块扩充新增三型
+  ds_debug: '数据结构改错',
+  complexity_analysis: '数值分析',
+  structure_trace: '结构构造',
 }
 
 export function typeLabel(type: string): string {
@@ -95,6 +99,12 @@ export const RENDERABLE_TYPES: ReadonlySet<string> = new Set([
   'essay_answer',
   'algorithm_impl',
   'multi_bug_debug',
+  // 阶段 3.0 新增三型：ds_debug 复用 DebugRenderer（同一套 code+bugs+fixed_code+testCases 契约，
+  // 三级提示阶梯与 Godbolt 实机判分都不用改），complexity_analysis / structure_trace 各有自己的
+  // 渲染器，一律前端即时判定、不发请求。三型的渲染器与分派都已落地并经 acceptance:newtypes 真浏览器验证。
+  'ds_debug',
+  'complexity_analysis',
+  'structure_trace',
 ])
 
 /**
@@ -119,11 +129,14 @@ export const TYPE_ORDER: readonly string[] = [
   'essay_answer',
   'algorithm_impl',
   'multi_bug_debug',
+  'ds_debug',
   'single_choice',
   'fill_blank',
   'short_answer',
   'true_false',
   'code_ordering',
   'complexity',
+  'complexity_analysis',
+  'structure_trace',
   'matching',
 ]

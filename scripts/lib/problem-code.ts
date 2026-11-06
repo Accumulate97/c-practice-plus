@@ -38,8 +38,14 @@ export let CODE_TYPES: string[] = [
   'api_drill',
   'code_optimization',
   'algorithm_impl',
-  'multi_bug_debug'
+  'multi_bug_debug',
+  'ds_debug'
 ]
+
+/* 注意：complexity_analysis 与 structure_trace 刻意不在上面这张表里。
+   两者都由前端按数值/文本精确比对即时判定，不联网、不消耗 Godbolt 额度，
+   buildRunnableSource 对它们走 default 返回 null（structure_trace 的 code 字段
+   只是给学生对照的参考程序，不是待判分的作答）。 */
 
 export function isCodeType(type: string): boolean {
   return CODE_TYPES.indexOf(type) >= 0
@@ -148,6 +154,14 @@ export function buildRunnableSource(p: ProblemLike): Runnable | null {
     }
     case 'multi_bug_debug': {
       // 多错改错：与 debug 同构（code + bugs + fixed_code + testCases），判分取修正后的 fixed_code。
+      let code = str(p, 'fixed_code')
+      if (!code) return null
+      return { code, cases: casesOf(p), checkedField: 'fixed_code' }
+    }
+    case 'ds_debug': {
+      // 数据结构改错：与 debug/multi_bug_debug 同构，缺陷取自 DS 高频错误库
+      // （链表断链 / 指针丢失 / 遍历死循环 / 栈溢出 / 队列假溢出 / AVL 旋转漏情况 / 哈希冲突处理错误）。
+      // 判分同样取修正后的 fixed_code —— 学生改完必须真能跑通测试用例才算过。
       let code = str(p, 'fixed_code')
       if (!code) return null
       return { code, cases: casesOf(p), checkedField: 'fixed_code' }
