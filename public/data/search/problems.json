@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "6363420ef7cf5173",
+  "content_sha": "1fae5c67c322d654",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 3216,
+  "count": 3242,
   "docs": [
     {
       "id": "c-ch01-cc-001",
@@ -34536,6 +34536,396 @@
       "chapter": "第1章 绪论",
       "section": "1.4 算法和算法分析",
       "type": "programming",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-007",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-008",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-004",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-001",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-001",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-001",
+      "file": "ds-ch01.json",
+      "title": "下面这段程序读入一个正整数 n",
+      "tags": [
+        "时间复杂度",
+        "语句频度",
+        "渐进符号",
+        "绪论"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-009",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-010",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-005",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-002",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-002",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-opt-001",
+      "file": "ds-ch01.json",
+      "title": "下面这个程序用**朴素递归**求 Fibonacci 数列并逐项打印",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_optimization",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-002",
+      "file": "ds-ch01.json",
+      "title": "下面这段程序读入 n",
+      "tags": [
+        "时间复杂度",
+        "递归",
+        "Fibonacci",
+        "指数阶"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-011",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序存储",
+        "行优先",
+        "二维数组",
+        "存储结构"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-006",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序存储",
+        "行优先",
+        "二维数组",
+        "存储结构"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-003",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序存储",
+        "行优先",
+        "二维数组",
+        "存储结构"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-003",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序存储",
+        "行优先",
+        "二维数组",
+        "存储结构"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-003",
+      "file": "ds-ch01.json",
+      "title": "下面这段程序把 1..12 按行优先依次填入一个 3 行 4 列的二维数组",
+      "tags": [
+        "顺序存储",
+        "行优先",
+        "二维数组",
+        "存储结构"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-012",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-013",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-007",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-004",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-004",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-004",
+      "file": "ds-ch01.json",
+      "title": "下面这段程序读入 n",
+      "tags": [
+        "ADT",
+        "抽象数据类型",
+        "循环队列",
+        "封装"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.3 抽象数据类型的表示与实现",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-te-001",
+      "file": "ds-ch01.json",
+      "title": "请解释「数据结构的三个层次」",
+      "tags": [
+        "逻辑结构",
+        "存储结构",
+        "运算",
+        "基本概念"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.2 基本概念和术语",
+      "type": "term_explanation",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-te-002",
+      "file": "ds-ch01.json",
+      "title": "请列出算法的**五个特性**",
+      "tags": [
+        "算法特性",
+        "有穷性",
+        "确定性",
+        "可行性"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "term_explanation",
       "category": "ds"
     },
     {
