@@ -34,3 +34,7 @@ coverage/
 
 # 验收/调试 scratch（证据与截图可再生，跑 npm run acceptance:cc 重建）
 tmp/
+
+# Python 缓存（_tools / scripts 里的辅助脚本产物）
+__pycache__/
+*.pyc
