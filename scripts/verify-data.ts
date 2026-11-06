@@ -372,6 +372,55 @@ function checkAll(shards: ShardFile[], strict: boolean): Issue[] {
     for (const rp of n.problems) if (!problemIds.has(rp)) add('error', 'REF-DANGLING-REV', n.file + ' ' + n.id, 'relatedProblems 指向不存在的题 ' + rp)
   }
 
+  /* ---- H. 章节说明（阶段 2.2）：DS 每一章都必须有导言 / 重点与难点 / 小结 ---- */
+  /*
+   * 字数口径：去掉所有空白后的字符数（中文按字算，标点计入）。区间取自任务书
+   * 「导言 80–150 字、小结约 100 字、难点 ≥3 条」，小结上限放宽到 160 是给「约」留余量。
+   * 只对 category === 'ds' 的分片强制 —— C 语言的 13 章暂时没写章节说明，缺了不报错，
+   * 将来补上后同样受这条闸门约束。三个字段全缺才算「没写」，只写了一部分按各自区间单独判。
+   */
+  {
+    const kdir = join(DATA, 'knowledge')
+    const clen = (s: string): number => s.replace(/\s+/g, '').length
+    const INTRO_MIN = 80
+    const INTRO_MAX = 150
+    const SUM_MIN = 60
+    const SUM_MAX = 160
+    const DIFF_MIN = 3
+    const DIFF_ITEM_MIN = 10
+    if (existsSync(kdir)) {
+      for (const name of readdirSync(kdir).sort()) {
+        if (!isShardName(name)) continue
+        const top = JSON.parse(readFileSync(join(kdir, name), 'utf8')) as Record<string, unknown>
+        if (top.category !== 'ds') continue
+        const intro = typeof top.intro === 'string' ? top.intro : ''
+        const summary = typeof top.summary === 'string' ? top.summary : ''
+        const diffs = strArr(top.keyDifficulties)
+        if (intro.length === 0 && summary.length === 0 && diffs.length === 0) {
+          add('error', 'CHAPNOTE-MISSING', name, 'DS 章节缺少 intro / keyDifficulties / summary（阶段 2.2 要求每个 DS 章节都补章节说明）')
+          continue
+        }
+        const introLen = clen(intro)
+        if (introLen < INTRO_MIN || introLen > INTRO_MAX) {
+          add('error', 'CHAPNOTE-INTRO', name, `章节导言 ${introLen} 字，要求 ${INTRO_MIN}–${INTRO_MAX} 字`)
+        }
+        if (diffs.length < DIFF_MIN) {
+          add('error', 'CHAPNOTE-DIFF', name, `重点与难点只有 ${diffs.length} 条，要求 ≥${DIFF_MIN} 条`)
+        }
+        diffs.forEach((d, i) => {
+          const n = clen(d)
+          if (n < DIFF_ITEM_MIN) {
+            add('error', 'CHAPNOTE-DIFF-SHORT', `${name} 难点#${i + 1}`, `只有 ${n} 字，要求 ≥${DIFF_ITEM_MIN} 字`)
+          }
+        })
+        const sumLen = clen(summary)
+        if (sumLen < SUM_MIN || sumLen > SUM_MAX) {
+          add('error', 'CHAPNOTE-SUMMARY', name, `章节小结 ${sumLen} 字，要求 ${SUM_MIN}–${SUM_MAX} 字`)
+        }
+      }
+    }
+  }
+
   if (problemCount === 0) add('error', 'NO-DATA', 'data/problems', '一道题都没有')
   if (strict) return issues.map((i) => (i.level === 'warn' && STRICT_PROMOTES.has(i.code) ? { ...i, level: 'error' as Level } : i))
   return issues

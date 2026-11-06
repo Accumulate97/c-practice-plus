@@ -16,10 +16,15 @@ import { Link, useSearchParams } from 'react-router-dom'
 import {
   categoryLabel,
   chapterKey,
+  chapterMeta,
   groupByChapter,
   loadKnowledgeIndex,
+  topicsOfChapter,
+  type ChapterGroup,
+  type KnowledgeChapterMeta,
   type KnowledgeIndex,
   type KnowledgeIndexEntry,
+  type TopicSection,
 } from '../modules/knowledge/data/loader'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
@@ -160,7 +165,13 @@ function Ready({ index }: { index: KnowledgeIndex }) {
   const from = filtered.length === 0 ? 0 : (page - 1) * pageSize + 1
   const to = (page - 1) * pageSize + rows.length
   const activeFilterCount = [cat, chapter, query, link].filter((v) => v.trim().length > 0).length
-  const chapterName = groups.find((g) => g.key === chapter)?.chapter ?? ''
+  const activeGroup = useMemo(() => groups.find((g) => g.key === chapter), [groups, chapter])
+  const chapterName = activeGroup?.chapter ?? ''
+  /** 阶段 2.2：选中某一章时才渲染章节说明面板；该章没写说明（如 C 语言各章）则整块不出现 */
+  const meta = useMemo(() => (chapter.length > 0 ? chapterMeta(index, chapter) : undefined), [index, chapter])
+  /** 知识点清单由卡片现算派生，保证「与卡片一一对应」，不另存一份会漂移的副本 */
+  const topics = useMemo(() => (activeGroup ? topicsOfChapter(activeGroup) : []), [activeGroup])
+  const topicCount = useMemo(() => topics.reduce((n, t) => n + t.items.length, 0), [topics])
 
   return (
     <div className="space-y-4" data-role="knowledge-list">
@@ -289,6 +300,8 @@ function Ready({ index }: { index: KnowledgeIndex }) {
         {chapterName.length > 0 && <> · 章节：{chapterName}</>}
       </p>
 
+      {meta && activeGroup && <ChapterPanel meta={meta} group={activeGroup} topics={topics} topicCount={topicCount} />}
+
       {filtered.length === 0 ? (
         <section data-role="empty" className="rounded-xl border p-10 text-center" style={panel}>
           <p className="text-base font-semibold">没有匹配的知识卡片</p>
@@ -352,6 +365,134 @@ function Ready({ index }: { index: KnowledgeIndex }) {
         </nav>
       )}
     </div>
+  )
+}
+
+/**
+ * 阶段 2.2：章节说明面板（导言 / 重点与难点 / 知识点清单 / 小结）。
+ *
+ * 只在「选中了某一章」且「该章写了说明」时出现 —— 目前 DS 八章有内容，C 语言十三章没有，
+ * 后者整块不渲染而不是渲染一个空壳（判断在 loader 的 chapterMeta 里）。
+ *
+ * 四块内容各自独立判空：将来给某一章只补了导言、还没写难点，也不会渲染出空标题。
+ * 知识点清单里的每一条都是真链接，点进去就是那张卡片 —— 「与卡片一一对应」由 topicsOfChapter
+ * 从索引现算保证，不存在第二份会漂移的副本。
+ */
+function ChapterPanel({
+  meta,
+  group,
+  topics,
+  topicCount,
+}: {
+  meta: KnowledgeChapterMeta
+  group: ChapterGroup
+  topics: TopicSection[]
+  topicCount: number
+}) {
+  return (
+    <section
+      data-role="chapter-panel"
+      data-chapter={group.key}
+      data-topic-count={topicCount}
+      aria-label={`${meta.chapter} 章节说明`}
+      className="space-y-4 rounded-xl border p-4"
+      style={panel}
+    >
+      <header className="space-y-1">
+        <h2 className="text-base font-semibold" style={{ color: 'var(--fg)' }}>
+          {categoryLabel(meta.category)} · {meta.chapter}
+        </h2>
+        <p className="text-xs" style={muted}>
+          本章 {meta.count} 张卡片{topicCount > 0 && <> · {topics.length} 个小节</>}
+        </p>
+      </header>
+
+      {meta.intro.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>📌 本章导言</h3>
+          <p
+            data-role="chapter-intro"
+            className="mt-1 text-sm leading-relaxed"
+            style={{ color: 'var(--fg-muted)' }}
+          >
+            {meta.intro}
+          </p>
+        </div>
+      )}
+
+      {meta.keyDifficulties.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>⚠️ 重点与难点</h3>
+          <ol className="mt-1 space-y-1.5">
+            {meta.keyDifficulties.map((d, i) => (
+              <li
+                key={i}
+                data-role="chapter-difficulty"
+                data-index={i + 1}
+                className="flex gap-2 text-sm leading-relaxed"
+                style={{ color: 'var(--fg-muted)' }}
+              >
+                <span className="shrink-0 font-mono text-xs" style={muted} aria-hidden="true">
+                  {i + 1}.
+                </span>
+                <span>{d}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {topics.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>
+            🗂 知识点清单
+            <span className="ml-1 font-normal text-xs" style={muted}>
+              （{topicCount} 条，与卡片一一对应）
+            </span>
+          </h3>
+          <div data-role="chapter-topics" className="mt-1 space-y-2">
+            {topics.map((t) => (
+              <div key={t.section}>
+                <p className="text-xs font-semibold" style={muted}>
+                  {t.section}
+                </p>
+                <ol className="mt-0.5 space-y-0.5">
+                  {t.items.map((c) => (
+                    <li key={c.id} className="text-xs">
+                      <Link
+                        to={'/knowledge/' + c.id}
+                        data-role="chapter-topic-link"
+                        data-id={c.id}
+                        className="hover:underline"
+                        style={{ color: 'var(--fg-link)' }}
+                      >
+                        <span className="font-mono" style={muted} aria-hidden="true">
+                          {String(c.order).padStart(2, '0')}
+                        </span>{' '}
+                        {c.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {meta.summary.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>✅ 本章小结</h3>
+          <p
+            data-role="chapter-summary"
+            className="mt-1 text-sm leading-relaxed"
+            style={{ color: 'var(--fg-muted)' }}
+          >
+            {meta.summary}
+          </p>
+        </div>
+      )}
+    </section>
   )
 }
 

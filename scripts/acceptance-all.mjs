@@ -35,6 +35,8 @@ const SUITES = [
   'acceptance:dbg-ui', 'acceptance:subpath', 'acceptance:stage10', 'acceptance:cc', 'acceptance:dbg',
   'acceptance:viz3d', 'acceptance:playground', 'acceptance:learn', 'acceptance:bugs', 'acceptance:review',
   'acceptance:search', 'acceptance:failover', 'acceptance:onboard',
+  // 阶段 2.2：章节导言/重点难点/知识点清单/章节小结（只在选中某一章时渲染，所以单独一套）
+  'acceptance:chapnote',
 ]
 const HARD_TIMEOUT_MS = 12 * 60 * 1000
 const SUMMARY = 'tmp/acc-summary.txt'

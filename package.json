@@ -22,6 +22,7 @@
     "acceptance:subpath": "node scripts/acceptance-subpath.mjs",
     "acceptance:online": "node scripts/acceptance-online.mjs",
     "acceptance:stage10": "node scripts/acceptance-stage10.mjs",
+    "acceptance:chapnote": "node scripts/acceptance-chapter-notes.mjs",
     "acceptance:viz-ui": "node scripts/acceptance-viz-ui.mjs",
     "acceptance:viz3d": "node scripts/acceptance-viz3d-ui.mjs",
     "acceptance:playground": "node scripts/acceptance-playground.mjs",

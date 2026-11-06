@@ -185,7 +185,16 @@ const searchIndex = {
  * 不进索引就得为一行摘要把 20 个分片（≈1.2 MB）全拉下来，那个代价大得多。
  * 正文 content、示例代码、易错点仍留在分片里，由详情页按 file 懒加载。
  */
-interface KnowledgeShard { file: string; category: unknown; chapter: unknown; cards: Record<string, unknown>[] }
+interface KnowledgeShard {
+  file: string
+  category: unknown
+  chapter: unknown
+  /** 阶段 2.2：章节导言 / 重点与难点 / 章节小结。只有 DS 八章写了，C 章节为空串与空数组 */
+  intro: string
+  keyDifficulties: string[]
+  summary: string
+  cards: Record<string, unknown>[]
+}
 
 function loadKnowledgeShards(): KnowledgeShard[] {
   const dir = join(DATA, 'knowledge')
@@ -198,6 +207,11 @@ function loadKnowledgeShards(): KnowledgeShard[] {
       file: name,
       category: parsed.category,
       chapter: parsed.chapter,
+      intro: typeof parsed.intro === 'string' ? parsed.intro : '',
+      keyDifficulties: Array.isArray(parsed.keyDifficulties)
+        ? parsed.keyDifficulties.filter((k): k is string => typeof k === 'string')
+        : [],
+      summary: typeof parsed.summary === 'string' ? parsed.summary : '',
       cards: Array.isArray(parsed.cards) ? (parsed.cards as Record<string, unknown>[]) : [],
     })
   }
@@ -227,6 +241,21 @@ function knowledgeIndexShaped(): Record<string, unknown> {
     content_sha: CONTENT_SHA,
     count: kCards.length,
     shard_count: kShards.length,
+    /**
+     * 阶段 2.2：章节说明随索引下发。列表页只 fetch 索引、一个分片都不碰是既有设计，
+     * 所以「导言 / 重点与难点 / 小结」必须进索引；8 章 × 约 600 字 ≈ 5 KB，可接受。
+     * 知识点清单不放这里 —— 它由 cards 现算派生（按 chapter 分组、按 order 排序），
+     * 这样「与卡片一一对应」是构造性成立的，永远不会和卡片漂移。
+     */
+    chapters: kShards.map((s) => ({
+      file: s.file,
+      category: typeof s.category === 'string' ? s.category : '',
+      chapter: typeof s.chapter === 'string' ? s.chapter : '',
+      count: s.cards.length,
+      intro: s.intro,
+      keyDifficulties: s.keyDifficulties,
+      summary: s.summary,
+    })),
     cards: kCards,
   }
 }

@@ -24,9 +24,26 @@ export interface KnowledgeIndexEntry {
   relatedViz: string[]
 }
 
+/**
+ * 阶段 2.2：章节说明。随 index.json 下发（列表页只 fetch 索引、不碰分片）。
+ * 目前只有 DS 八章写了内容；C 章节 intro/summary 为空串、keyDifficulties 为空数组，
+ * 前端据此判断「这一章没有章节说明」并整块不渲染，而不是渲染一个空面板。
+ */
+export interface KnowledgeChapterMeta {
+  file: string
+  category: string
+  chapter: string
+  count: number
+  intro: string
+  keyDifficulties: string[]
+  summary: string
+}
+
 export interface KnowledgeIndex {
   count: number
   shard_count?: number
+  /** 章节说明；旧索引没有这个字段，所以是可选的 */
+  chapters?: KnowledgeChapterMeta[]
   cards: KnowledgeIndexEntry[]
   content_sha?: string
 }
@@ -145,6 +162,47 @@ export function groupByChapter(index: KnowledgeIndex): ChapterGroup[] {
     g.items.sort((a, b) => (a.order - b.order !== 0 ? a.order - b.order : a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
   }
   return order.map((key) => map.get(key) as ChapterGroup)
+}
+
+/**
+ * 阶段 2.2：按 chapterKey 取章节说明。
+ * 返回 undefined 的两种情况都要「整块不渲染」而不是渲染一个空壳面板：
+ *   · 索引是旧版（没有 chapters 字段，比如构建产物没更新）
+ *   · 这一章没写说明（目前只有 DS 八章写了，C 的 13 章三字段全空）
+ */
+export function chapterMeta(index: KnowledgeIndex, key: string): KnowledgeChapterMeta | undefined {
+  if (!Array.isArray(index.chapters)) return undefined
+  const meta = index.chapters.find((c) => chapterKey(c.category, c.chapter) === key)
+  if (!meta) return undefined
+  const hasContent =
+    meta.intro.length > 0 || meta.summary.length > 0 || (meta.keyDifficulties?.length ?? 0) > 0
+  return hasContent ? meta : undefined
+}
+
+/**
+ * 阶段 2.2 的「知识点清单」：由卡片现算派生，不另存一份。
+ * 这样「与卡片一一对应」是构造性成立的 —— 加一张卡、改一个标题，清单立刻跟着变，永远不会漂移。
+ * 按 section 分组（同节的卡片聚在一起），组内沿用 groupByChapter 已经排好的 order。
+ */
+export interface TopicSection {
+  section: string
+  items: KnowledgeIndexEntry[]
+}
+
+export function topicsOfChapter(group: ChapterGroup): TopicSection[] {
+  const order: string[] = []
+  const map = new Map<string, KnowledgeIndexEntry[]>()
+  for (const item of group.items) {
+    const key = item.section.length > 0 ? item.section : '（未标小节）'
+    let bucket = map.get(key)
+    if (!bucket) {
+      bucket = []
+      map.set(key, bucket)
+      order.push(key)
+    }
+    bucket.push(item)
+  }
+  return order.map((section) => ({ section, items: map.get(section) as KnowledgeIndexEntry[] }))
 }
 
 /** id → 条目。关联字段里存的是裸 id，标题要靠这张表解析（缺失就当没有，不报错） */
