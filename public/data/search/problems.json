@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "1fae5c67c322d654",
+  "content_sha": "3688838eae8aa678",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 3242,
+  "count": 3277,
   "docs": [
     {
       "id": "c-ch01-cc-001",
@@ -35910,6 +35910,531 @@
       "chapter": "第2章 线性表",
       "section": "2.3 线性表的链式表示（单链表）",
       "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-012",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-013",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-011",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-002",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-001",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-001",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序对**有序**顺序表做就地去重",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-002",
+      "file": "ds-ch02.json",
+      "title": "同一个就地去重算法",
+      "tags": [
+        "顺序表",
+        "就地去重",
+        "双下标",
+        "有序表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-014",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-015",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-012",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-003",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-002",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-pt-001",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序把 n=4、m=2 的约瑟夫环**每一步的环状态**都打印出来",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "pointer_trace",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-003",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序用**循环链表**解约瑟夫环",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-004",
+      "file": "ds-ch02.json",
+      "title": "同一个约瑟夫环问题",
+      "tags": [
+        "循环链表",
+        "约瑟夫环",
+        "结点删除",
+        "报数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-016",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-017",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-013",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-004",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-003",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-005",
+      "file": "ds-ch02.json",
+      "title": "下面这个程序在**顺序表**上做一次插入和一次删除",
+      "tags": [
+        "顺序表",
+        "插入删除",
+        "元素移动次数",
+        "线性表"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-018",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-019",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-014",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-005",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-004",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-pt-002",
+      "file": "ds-ch02.json",
+      "title": "下面这个程序在一条**固定的三结点链表**",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "pointer_trace",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-006",
+      "file": "ds-ch02.json",
+      "title": "下面这个程序用**三指针法**把一条带头结点的单链表就地逆置",
+      "tags": [
+        "单链表",
+        "就地逆置",
+        "三指针",
+        "头结点"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-020",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-021",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-015",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-006",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-005",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-alg-001",
+      "file": "ds-ch02.json",
+      "title": "读入两个**递增有序**的整数序列",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "algorithm_impl",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-007",
+      "file": "ds-ch02.json",
+      "title": "下面这个程序用**双指针归并**把两条递增有序的单链表合成一条递增有序表",
+      "tags": [
+        "单链表",
+        "有序表合并",
+        "双指针",
+        "归并"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
       "category": "ds"
     },
     {

@@ -33,7 +33,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)))
 const GCC = 'D:/mingw/mingw64/bin/gcc.exe'
 const TMP = join(ROOT, 'tmp', 'kcode')
-const BANK = join(ROOT, 'tmp', 'ds-bank')
+const BANK = join(ROOT, 'scripts', 'ds-bank')
 const PROB = join(ROOT, 'public', 'data', 'problems')
 
 const args = process.argv.slice(2)
