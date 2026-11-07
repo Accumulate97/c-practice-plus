@@ -4,7 +4,7 @@
 
 纯静态、可直接部署到 GitHub Pages 的 C 语言 + 数据结构在线学习平台。三大板块联动：📖 学（知识卡片）→ 🎬 懂（可视化演示）→ ✍️ 练（在线判分刷题），通过 `knowledgeIds` / `vizIds` / `relatedProblems` 双向关联。
 
-- **线上访问**：https://accumulate97.github.io/c-practice-plus/
+- **线上访问**：https://c-practice.xyz
 - **仓库**：https://github.com/Accumulate97/c-practice-plus （分支 `main`）
 
 ---
