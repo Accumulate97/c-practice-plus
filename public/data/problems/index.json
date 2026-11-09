@@ -1,9 +1,9 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "e16f3b014fbcdaf6",
+  "content_sha": "7a37be3c244683f7",
   "schema_version": 1,
   "data_version": "0.1.0",
-  "count": 3277,
+  "count": 3391,
   "shard_count": 21,
   "shards": [
     {
@@ -108,21 +108,21 @@
       "file": "ds-ch02.json",
       "category": "ds",
       "chapter": "第2章 线性表",
-      "count": 106,
+      "count": 121,
       "url": "data/problems/ds-ch02.json"
     },
     {
       "file": "ds-ch03.json",
       "category": "ds",
       "chapter": "第3章 栈和队列",
-      "count": 61,
+      "count": 82,
       "url": "data/problems/ds-ch03.json"
     },
     {
       "file": "ds-ch04.json",
       "category": "ds",
       "chapter": "第4章 串、数组和广义表",
-      "count": 40,
+      "count": 118,
       "url": "data/problems/ds-ch04.json"
     },
     {
@@ -45338,6 +45338,276 @@
       "file": "ds-ch02.json"
     },
     {
+      "id": "ds-ch02-cr-022",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cr-023",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cc-016",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-dsdbg-007",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-mdb-006",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cxa-008",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "下面这段程序用**快慢指针**在带头结点的单链表上找倒数第 k 个结点",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cxa-009",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "快慢指针",
+        "倒数第k个",
+        "一趟遍历"
+      ],
+      "title": "接上题",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cr-024",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cr-025",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cc-017",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-dsdbg-008",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-mdb-007",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cxa-010",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "下面这段程序用**带头结点的单链表**表示一元多项式",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-cxa-011",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "单链表",
+        "一元多项式",
+        "归并",
+        "线性表应用"
+      ],
+      "title": "接上题",
+      "file": "ds-ch02.json"
+    },
+    {
+      "id": "ds-ch02-te-001",
+      "type": "term_explanation",
+      "category": "ds",
+      "chapter": "第2章 线性表",
+      "section": "2.5 线性表的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "顺序表",
+        "链表",
+        "存储结构选型",
+        "线性表"
+      ],
+      "title": "顺序表",
+      "file": "ds-ch02.json"
+    },
+    {
       "id": "ds-ch03-sc-001",
       "type": "single_choice",
       "category": "ds",
@@ -46320,6 +46590,384 @@
       "file": "ds-ch03.json"
     },
     {
+      "id": "ds-ch03-cr-009",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cr-010",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cc-008",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-dsdbg-002",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "下面这段程序用一维数组实现顺序栈",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-002",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "title": "顺序栈有两种常见的 top 约定",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cr-011",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cr-012",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cc-009",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-dsdbg-003",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-003",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "下面这段程序用一个字符栈判断只含 ",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-004",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "title": "还是这段括号匹配程序",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cr-013",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cr-014",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cc-010",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-dsdbg-004",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-005",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "下面这段程序用一维数组实现循环队列",
+      "file": "ds-ch03.json"
+    },
+    {
+      "id": "ds-ch03-cxa-006",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "title": "循环队列有三种常见的判满方案",
+      "file": "ds-ch03.json"
+    },
+    {
       "id": "ds-ch04-sc-001",
       "type": "single_choice",
       "category": "ds",
@@ -46969,6 +47617,1410 @@
         "递归"
       ],
       "title": "下列程序递归求广义表的深度",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-008",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-009",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-008",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "指针回溯"
+      ],
+      "title": "下面这段程序实现 BF",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-010",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-011",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-009",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-002",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-002",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "next数组",
+        "模式匹配",
+        "字符串"
+      ],
+      "title": "下面这段程序实现 KMP 算法中 next 数组的求解",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-012",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-013",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-010",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-003",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-003",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "快速转置",
+        "数组"
+      ],
+      "title": "下面这段程序实现稀疏矩阵的**快速转置**",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-014",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-015",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-011",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-004",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-004",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-004",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "求长",
+        "比较",
+        "字符串"
+      ],
+      "title": "阅读下面的串基本运算程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-016",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-017",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-012",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-005",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-005",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-005",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址计算",
+        "一维下标"
+      ],
+      "title": "阅读下面的数组地址计算程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-018",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-019",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-013",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-006",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-006",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-006",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "特殊矩阵",
+        "对称矩阵",
+        "下三角",
+        "压缩存储"
+      ],
+      "title": "阅读下面的对称矩阵压缩存储程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-020",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-021",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-014",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-007",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-007",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-007",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "主串不回溯"
+      ],
+      "title": "阅读下面的 KMP 模式匹配程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-022",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-023",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-015",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-008",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-008",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-008",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "深度",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "阅读下面的广义表深度计算程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-024",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-025",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-016",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-009",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-009",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-009",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "串",
+        "子串",
+        "SubString",
+        "定位"
+      ],
+      "title": "阅读下面的求子串程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-026",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-027",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-017",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-010",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-010",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-010",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "KMP",
+        "nextval",
+        "改进",
+        "模式匹配"
+      ],
+      "title": "阅读下面的 nextval 计算程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-028",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-029",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-018",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-011",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-011",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-011",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "广义表",
+        "打印",
+        "递归",
+        "表头表尾"
+      ],
+      "title": "阅读下面的广义表打印程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-030",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-031",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-019",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 2,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-012",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-012",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-012",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "数组",
+        "行主序",
+        "地址",
+        "LOC"
+      ],
+      "title": "阅读下面的二维数组行主序地址计算程序",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-032",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cr-033",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "understand",
+      "verified": false,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "写出下列程序在给定输入下的运行结果",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cc-020",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 3,
+      "bloom": "apply",
+      "verified": false,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "把下列程序中的空位补全",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-dsdbg-013",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "下面的程序本应完成题面描述的功能",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-mdb-013",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": false,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "下面的程序有两处错误",
+      "file": "ds-ch04.json"
+    },
+    {
+      "id": "ds-ch04-cxa-013",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "verified": true,
+      "tags": [
+        "对称矩阵",
+        "下三角",
+        "压缩存储",
+        "下标映射"
+      ],
+      "title": "阅读下面的对称矩阵下三角压缩存储程序",
       "file": "ds-ch04.json"
     },
     {

@@ -2387,6 +2387,1211 @@
       ],
       "vizIds": [],
       "verified": true
+    },
+    {
+      "id": "ds-ch03-cr-009",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n3\n10 20 30\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "stdin": "3\n10 20 30\n",
+      "answer": "压入 10：成功，栈内[ 10 ] top=0\n压入 20：成功，栈内[ 10 20 ] top=1\n压入 30：成功，栈内[ 10 20 30 ] top=2\n弹出 30，栈内[ 10 20 ] top=1\n弹出 20，栈内[ 10 ] top=0\n弹出 10，栈内[ ] top=-1\n压入成功 3 次、失败 0 次、弹出 3 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。顺序栈把「后进先出」压成两句话：所有操作都发生在数组的同一端，而这一端的位置由一个整数 top 记着。程序里每一次压入弹出都把整个栈的内容与 top 一起打出来，就是为了把这个「同一端」变成看得见的东西。\n【步骤】\n1. 约定 top 是栈顶元素的下标、空栈 top = -1，于是「栈里元素个数 == top + 1」，判空判满都变成对 top 的一次比较。\n2. 压入：先判满（top == MAXS - 1），再 data[++top] = x。前缀自增保证「先挪下标再写数据」。\n3. 弹出：先判空（top == -1），再 *out = data[top--]。后缀自减保证「先取数据再挪下标」。\n4. main 里统计 pushed / failed / popped 三个数并做两条自检：pushed == popped（全部压进去的都弹出来了）、failed == n - pushed（失败的次数正好是没压进去的次数）。这两条让「栈没丢元素」变成输出里可读的 1 或 0。\n5. ★ 结构体写成 SqStack s = { { 0 }, -1 } 而不是只写 s.top = -1：数组显式清零之后，即使错误版本读到了不该读的格子，读到的也是确定的 0，程序行为在不同编译器下都一样。\n【复杂度】压入与弹出都是 O(1)；空间 O(MAXS)，是编译期定死的。整个 main 的时间是 O(n + pushed)，n 是输入的元素个数。\n【易错点】\n1. 判空判满条件与 top 的约定不配套：约定「top 是栈顶下标、空栈 -1」时判空是 top == -1、判满是 top == MAXS - 1；约定「top 是下一个可用位置、空栈 0」时判空是 top == 0、判满是 top == MAXS。混用会让容量差一格，而且不崩溃、只在压满时才暴露。\n2. 压入写成 data[top++]（后缀）而配 -1 初值：第一个元素写到 data[-1]，是往数组前面越界写，可能改掉相邻变量甚至返回地址。\n3. 弹出写成 data[--top]（前缀）：取到的是栈顶下面那个元素，真正的栈顶永远留在数组里。程序不崩溃，弹出序列整体错位一位。\n4. ★ 栈满时压入失败必须有返回值并且调用方要检查。很多教材代码把 sPush 写成 void，栈满了就静默丢数据 —— 那种写法在判题里表现为「输出少一行」，很难定位。\n5. 顺序栈的容量是编译期定死的，真实工程要么动态扩容（realloc，单次 O(n)、均摊 O(1)）要么改链栈（按需 malloc，代价是每结点多一个指针、失去缓存局部性）。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-cr-010",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n8\n1 2 3 4 5 6 7 8\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "stdin": "8\n1 2 3 4 5 6 7 8\n",
+      "answer": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 0 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。顺序栈把「后进先出」压成两句话：所有操作都发生在数组的同一端，而这一端的位置由一个整数 top 记着。程序里每一次压入弹出都把整个栈的内容与 top 一起打出来，就是为了把这个「同一端」变成看得见的东西。\n【步骤】\n1. 约定 top 是栈顶元素的下标、空栈 top = -1，于是「栈里元素个数 == top + 1」，判空判满都变成对 top 的一次比较。\n2. 压入：先判满（top == MAXS - 1），再 data[++top] = x。前缀自增保证「先挪下标再写数据」。\n3. 弹出：先判空（top == -1），再 *out = data[top--]。后缀自减保证「先取数据再挪下标」。\n4. main 里统计 pushed / failed / popped 三个数并做两条自检：pushed == popped（全部压进去的都弹出来了）、failed == n - pushed（失败的次数正好是没压进去的次数）。这两条让「栈没丢元素」变成输出里可读的 1 或 0。\n5. ★ 结构体写成 SqStack s = { { 0 }, -1 } 而不是只写 s.top = -1：数组显式清零之后，即使错误版本读到了不该读的格子，读到的也是确定的 0，程序行为在不同编译器下都一样。\n【复杂度】压入与弹出都是 O(1)；空间 O(MAXS)，是编译期定死的。整个 main 的时间是 O(n + pushed)，n 是输入的元素个数。\n【易错点】\n1. 判空判满条件与 top 的约定不配套：约定「top 是栈顶下标、空栈 -1」时判空是 top == -1、判满是 top == MAXS - 1；约定「top 是下一个可用位置、空栈 0」时判空是 top == 0、判满是 top == MAXS。混用会让容量差一格，而且不崩溃、只在压满时才暴露。\n2. 压入写成 data[top++]（后缀）而配 -1 初值：第一个元素写到 data[-1]，是往数组前面越界写，可能改掉相邻变量甚至返回地址。\n3. 弹出写成 data[--top]（前缀）：取到的是栈顶下面那个元素，真正的栈顶永远留在数组里。程序不崩溃，弹出序列整体错位一位。\n4. ★ 栈满时压入失败必须有返回值并且调用方要检查。很多教材代码把 sPush 写成 void，栈满了就静默丢数据 —— 那种写法在判题里表现为「输出少一行」，很难定位。\n5. 顺序栈的容量是编译期定死的，真实工程要么动态扩容（realloc，单次 O(n)、均摊 O(1)）要么改链栈（按需 malloc，代价是每结点多一个指针、失去缓存局部性）。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-cc-008",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; /*__BLANK_1__*/ return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; /*__BLANK_2__*/ return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; /*__BLANK_1__*/ return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; /*__BLANK_2__*/ return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "s->data[++s->top] = x;",
+          "accepted": [
+            "s->data[s->top + 1] = x; s->top++;",
+            "s->top++; s->data[s->top] = x;",
+            "s->top = s->top + 1; s->data[s->top] = x;"
+          ],
+          "hint": "压入时要动两个东西：栈顶下标与存数据的格子。"
+        },
+        {
+          "index": 2,
+          "answer": "*out = s->data[s->top--];",
+          "accepted": [
+            "*out = s->data[s->top]; s->top--;",
+            "s->top--; *out = s->data[s->top + 1];"
+          ],
+          "hint": "弹出时要先取走栈顶的值，再让 top 退一格。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "压入 10：成功，栈内[ 10 ] top=0\n压入 20：成功，栈内[ 10 20 ] top=1\n压入 30：成功，栈内[ 10 20 30 ] top=2\n弹出 30，栈内[ 10 20 ] top=1\n弹出 20，栈内[ 10 ] top=0\n弹出 10，栈内[ ] top=-1\n压入成功 3 次、失败 0 次、弹出 3 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "常规：压 3 弹 3"
+        },
+        {
+          "stdin": "10\n1 2 3 4 5 6 7 8 9 10\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 9：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 10：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 2 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "超出容量：前 8 个成功、后 2 个栈满失败"
+        },
+        {
+          "stdin": "8\n1 2 3 4 5 6 7 8\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 0 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "正好压满：top 到 7，失败 0 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "压入 42：成功，栈内[ 42 ] top=0\n弹出 42，栈内[ ] top=-1\n压入成功 1 次、失败 0 次、弹出 1 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "压入成功 0 次、失败 0 次、弹出 0 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "空栈：压入 0 次、弹出 0 次，三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。顺序栈把「后进先出」压成两句话：所有操作都发生在数组的同一端，而这一端的位置由一个整数 top 记着。程序里每一次压入弹出都把整个栈的内容与 top 一起打出来，就是为了把这个「同一端」变成看得见的东西。\n【步骤】\n1. 约定 top 是栈顶元素的下标、空栈 top = -1，于是「栈里元素个数 == top + 1」，判空判满都变成对 top 的一次比较。\n2. 压入：先判满（top == MAXS - 1），再 data[++top] = x。前缀自增保证「先挪下标再写数据」。\n3. 弹出：先判空（top == -1），再 *out = data[top--]。后缀自减保证「先取数据再挪下标」。\n4. main 里统计 pushed / failed / popped 三个数并做两条自检：pushed == popped（全部压进去的都弹出来了）、failed == n - pushed（失败的次数正好是没压进去的次数）。这两条让「栈没丢元素」变成输出里可读的 1 或 0。\n5. ★ 结构体写成 SqStack s = { { 0 }, -1 } 而不是只写 s.top = -1：数组显式清零之后，即使错误版本读到了不该读的格子，读到的也是确定的 0，程序行为在不同编译器下都一样。\n【复杂度】压入与弹出都是 O(1)；空间 O(MAXS)，是编译期定死的。整个 main 的时间是 O(n + pushed)，n 是输入的元素个数。\n【易错点】\n1. 判空判满条件与 top 的约定不配套：约定「top 是栈顶下标、空栈 -1」时判空是 top == -1、判满是 top == MAXS - 1；约定「top 是下一个可用位置、空栈 0」时判空是 top == 0、判满是 top == MAXS。混用会让容量差一格，而且不崩溃、只在压满时才暴露。\n2. 压入写成 data[top++]（后缀）而配 -1 初值：第一个元素写到 data[-1]，是往数组前面越界写，可能改掉相邻变量甚至返回地址。\n3. 弹出写成 data[--top]（前缀）：取到的是栈顶下面那个元素，真正的栈顶永远留在数组里。程序不崩溃，弹出序列整体错位一位。\n4. ★ 栈满时压入失败必须有返回值并且调用方要检查。很多教材代码把 sPush 写成 void，栈满了就静默丢数据 —— 那种写法在判题里表现为「输出少一行」，很难定位。\n5. 顺序栈的容量是编译期定死的，真实工程要么动态扩容（realloc，单次 O(n)、均摊 O(1)）要么改链栈（按需 malloc，代价是每结点多一个指针、失去缓存局部性）。\n6. 前缀自增 ++s->top 是关键：因为 top 是「栈顶元素的下标」，所以要先把 top 加一再存。若改用另一种约定（top 表示「下一个可用位置」、空栈 top = 0），就要写 s->data[s->top++] = x。两种约定都对，但判空判满的条件要跟着换，混用是顺序栈最常见的错处。\n7. 后缀自减 s->top-- 是「先用旧值再减一」，正好对应「取走栈顶、然后栈变矮」。写成 *out = s->data[--s->top]; 会取到栈顶下面那个元素，而且栈顶元素永远留在数组里 —— 程序不崩溃，输出的弹出序列却整体错位一位。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-dsdbg-002",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top <= 0) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top <= 0) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "bugs": [
+        "判空条件从 top == -1 写成 top <= 0，于是栈里只剩一个元素（top == 0）时也被误判成空栈，那个栈底元素永远弹不出来。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "压入 10：成功，栈内[ 10 ] top=0\n压入 20：成功，栈内[ 10 20 ] top=1\n压入 30：成功，栈内[ 10 20 30 ] top=2\n弹出 30，栈内[ 10 20 ] top=1\n弹出 20，栈内[ 10 ] top=0\n弹出 10，栈内[ ] top=-1\n压入成功 3 次、失败 0 次、弹出 3 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "常规：压 3 弹 3"
+        },
+        {
+          "stdin": "10\n1 2 3 4 5 6 7 8 9 10\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 9：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 10：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 2 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "超出容量：前 8 个成功、后 2 个栈满失败"
+        },
+        {
+          "stdin": "8\n1 2 3 4 5 6 7 8\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 0 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "正好压满：top 到 7，失败 0 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "压入 42：成功，栈内[ 42 ] top=0\n弹出 42，栈内[ ] top=-1\n压入成功 1 次、失败 0 次、弹出 1 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "压入成功 0 次、失败 0 次、弹出 0 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "空栈：压入 0 次、弹出 0 次，三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。顺序栈把「后进先出」压成两句话：所有操作都发生在数组的同一端，而这一端的位置由一个整数 top 记着。程序里每一次压入弹出都把整个栈的内容与 top 一起打出来，就是为了把这个「同一端」变成看得见的东西。\n【步骤】\n1. 约定 top 是栈顶元素的下标、空栈 top = -1，于是「栈里元素个数 == top + 1」，判空判满都变成对 top 的一次比较。\n2. 压入：先判满（top == MAXS - 1），再 data[++top] = x。前缀自增保证「先挪下标再写数据」。\n3. 弹出：先判空（top == -1），再 *out = data[top--]。后缀自减保证「先取数据再挪下标」。\n4. main 里统计 pushed / failed / popped 三个数并做两条自检：pushed == popped（全部压进去的都弹出来了）、failed == n - pushed（失败的次数正好是没压进去的次数）。这两条让「栈没丢元素」变成输出里可读的 1 或 0。\n5. ★ 结构体写成 SqStack s = { { 0 }, -1 } 而不是只写 s.top = -1：数组显式清零之后，即使错误版本读到了不该读的格子，读到的也是确定的 0，程序行为在不同编译器下都一样。\n【复杂度】压入与弹出都是 O(1)；空间 O(MAXS)，是编译期定死的。整个 main 的时间是 O(n + pushed)，n 是输入的元素个数。\n【易错点】\n1. 判空判满条件与 top 的约定不配套：约定「top 是栈顶下标、空栈 -1」时判空是 top == -1、判满是 top == MAXS - 1；约定「top 是下一个可用位置、空栈 0」时判空是 top == 0、判满是 top == MAXS。混用会让容量差一格，而且不崩溃、只在压满时才暴露。\n2. 压入写成 data[top++]（后缀）而配 -1 初值：第一个元素写到 data[-1]，是往数组前面越界写，可能改掉相邻变量甚至返回地址。\n3. 弹出写成 data[--top]（前缀）：取到的是栈顶下面那个元素，真正的栈顶永远留在数组里。程序不崩溃，弹出序列整体错位一位。\n4. ★ 栈满时压入失败必须有返回值并且调用方要检查。很多教材代码把 sPush 写成 void，栈满了就静默丢数据 —— 那种写法在判题里表现为「输出少一行」，很难定位。\n5. 顺序栈的容量是编译期定死的，真实工程要么动态扩容（realloc，单次 O(n)、均摊 O(1)）要么改链栈（按需 malloc，代价是每结点多一个指针、失去缓存局部性）。\n6. 这类「假空」错误的表现是弹出次数比压入次数少 1，而且最终 top 停在 0 而不是 -1 —— 本程序两条自检（pushed==popped、最终 top 相符）会同时变成 0。★ 注意 n=1 那组输入最能说明问题：压入 1 个却一个都弹不出来；n=3 那组会弹出 2 个、把栈底的 10 留在数组里。判空条件必须与 top 的约定配套：约定「top 是栈顶下标、空栈 -1」时判空就是 top == -1；约定「top 是下一个可用位置、空栈 0」时判空才是 top == 0。写成 top <= 0 会把「还剩一个元素」也当空栈，属于同一类「判空多判一格」的错误。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top >= MAXS - 2) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top <= 0) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top >= MAXS - 2) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top <= 0) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "bugs": [
+        "判空条件从 top == -1 写成 top <= 0，于是栈里只剩一个元素（top == 0）时也被误判成空栈，那个栈底元素永远弹不出来。",
+        "判满条件保守了一格，栈容量从 8 变成 7，第 8 次压入就报栈满。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXS 8\ntypedef struct { int data[MAXS]; int top; } SqStack;   /* top 是栈顶元素的下标，空栈 top = -1 */\nstatic void show(const char *lb, const SqStack *s) { int j; printf(\"%s[\", lb); for (j = 0; j <= s->top; j++) printf(\" %d\", s->data[j]); printf(\" ] top=%d\\n\", s->top); }\nstatic int sPush(SqStack *s, int x) { if (s->top == MAXS - 1) return 0; s->data[++s->top] = x; return 1; }\nstatic int sPop(SqStack *s, int *out) { if (s->top == -1) return 0; *out = s->data[s->top--]; return 1; }\nint main(void) {\n    SqStack s = { { 0 }, -1 };                         /* 空栈：top = -1，数组显式清零 */\n    int n, i, x, v, ok, pushed = 0, failed = 0, popped = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = sPush(&s, x);\n        if (ok) pushed++; else failed++;\n        printf(\"压入 %d：%s\", x, ok ? \"成功\" : \"栈满失败\");\n        show(\"，栈内\", &s);\n    }\n    while (sPop(&s, &v)) { popped++; printf(\"弹出 %d\", v); show(\"，栈内\", &s); }\n    printf(\"压入成功 %d 次、失败 %d 次、弹出 %d 次；pushed==popped ? %d，failed==n-pushed ? %d\\n\", pushed, failed, popped, pushed == popped, failed == n - pushed);\n    printf(\"最终 top = %d（空栈应为 -1）相符=%d\\n\", s.top, s.top == -1);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "压入 10：成功，栈内[ 10 ] top=0\n压入 20：成功，栈内[ 10 20 ] top=1\n压入 30：成功，栈内[ 10 20 30 ] top=2\n弹出 30，栈内[ 10 20 ] top=1\n弹出 20，栈内[ 10 ] top=0\n弹出 10，栈内[ ] top=-1\n压入成功 3 次、失败 0 次、弹出 3 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "常规：压 3 弹 3"
+        },
+        {
+          "stdin": "10\n1 2 3 4 5 6 7 8 9 10\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 9：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n压入 10：栈满失败，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 2 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "超出容量：前 8 个成功、后 2 个栈满失败"
+        },
+        {
+          "stdin": "8\n1 2 3 4 5 6 7 8\n",
+          "expected": "压入 1：成功，栈内[ 1 ] top=0\n压入 2：成功，栈内[ 1 2 ] top=1\n压入 3：成功，栈内[ 1 2 3 ] top=2\n压入 4：成功，栈内[ 1 2 3 4 ] top=3\n压入 5：成功，栈内[ 1 2 3 4 5 ] top=4\n压入 6：成功，栈内[ 1 2 3 4 5 6 ] top=5\n压入 7：成功，栈内[ 1 2 3 4 5 6 7 ] top=6\n压入 8：成功，栈内[ 1 2 3 4 5 6 7 8 ] top=7\n弹出 8，栈内[ 1 2 3 4 5 6 7 ] top=6\n弹出 7，栈内[ 1 2 3 4 5 6 ] top=5\n弹出 6，栈内[ 1 2 3 4 5 ] top=4\n弹出 5，栈内[ 1 2 3 4 ] top=3\n弹出 4，栈内[ 1 2 3 ] top=2\n弹出 3，栈内[ 1 2 ] top=1\n弹出 2，栈内[ 1 ] top=0\n弹出 1，栈内[ ] top=-1\n压入成功 8 次、失败 0 次、弹出 8 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "正好压满：top 到 7，失败 0 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "压入 42：成功，栈内[ 42 ] top=0\n弹出 42，栈内[ ] top=-1\n压入成功 1 次、失败 0 次、弹出 1 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "压入成功 0 次、失败 0 次、弹出 0 次；pushed==popped ? 1，failed==n-pushed ? 1\n最终 top = -1（空栈应为 -1）相符=1",
+          "note": "空栈：压入 0 次、弹出 0 次，三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。顺序栈把「后进先出」压成两句话：所有操作都发生在数组的同一端，而这一端的位置由一个整数 top 记着。程序里每一次压入弹出都把整个栈的内容与 top 一起打出来，就是为了把这个「同一端」变成看得见的东西。\n【步骤】\n1. 约定 top 是栈顶元素的下标、空栈 top = -1，于是「栈里元素个数 == top + 1」，判空判满都变成对 top 的一次比较。\n2. 压入：先判满（top == MAXS - 1），再 data[++top] = x。前缀自增保证「先挪下标再写数据」。\n3. 弹出：先判空（top == -1），再 *out = data[top--]。后缀自减保证「先取数据再挪下标」。\n4. main 里统计 pushed / failed / popped 三个数并做两条自检：pushed == popped（全部压进去的都弹出来了）、failed == n - pushed（失败的次数正好是没压进去的次数）。这两条让「栈没丢元素」变成输出里可读的 1 或 0。\n5. ★ 结构体写成 SqStack s = { { 0 }, -1 } 而不是只写 s.top = -1：数组显式清零之后，即使错误版本读到了不该读的格子，读到的也是确定的 0，程序行为在不同编译器下都一样。\n【复杂度】压入与弹出都是 O(1)；空间 O(MAXS)，是编译期定死的。整个 main 的时间是 O(n + pushed)，n 是输入的元素个数。\n【易错点】\n1. 判空判满条件与 top 的约定不配套：约定「top 是栈顶下标、空栈 -1」时判空是 top == -1、判满是 top == MAXS - 1；约定「top 是下一个可用位置、空栈 0」时判空是 top == 0、判满是 top == MAXS。混用会让容量差一格，而且不崩溃、只在压满时才暴露。\n2. 压入写成 data[top++]（后缀）而配 -1 初值：第一个元素写到 data[-1]，是往数组前面越界写，可能改掉相邻变量甚至返回地址。\n3. 弹出写成 data[--top]（前缀）：取到的是栈顶下面那个元素，真正的栈顶永远留在数组里。程序不崩溃，弹出序列整体错位一位。\n4. ★ 栈满时压入失败必须有返回值并且调用方要检查。很多教材代码把 sPush 写成 void，栈满了就静默丢数据 —— 那种写法在判题里表现为「输出少一行」，很难定位。\n5. 顺序栈的容量是编译期定死的，真实工程要么动态扩容（realloc，单次 O(n)、均摊 O(1)）要么改链栈（按需 malloc，代价是每结点多一个指针、失去缓存局部性）。\n6. 这类「假空」错误的表现是弹出次数比压入次数少 1，而且最终 top 停在 0 而不是 -1 —— 本程序两条自检（pushed==popped、最终 top 相符）会同时变成 0。★ 注意 n=1 那组输入最能说明问题：压入 1 个却一个都弹不出来；n=3 那组会弹出 2 个、把栈底的 10 留在数组里。判空条件必须与 top 的约定配套：约定「top 是栈顶下标、空栈 -1」时判空就是 top == -1；约定「top 是下一个可用位置、空栈 0」时判空才是 top == 0。写成 top <= 0 会把「还剩一个元素」也当空栈，属于同一类「判空多判一格」的错误。\n7. ★ 判满写保守一格是最隐蔽的栈错误：程序不崩溃、不越界、看起来一切正常，只是容量少了 1，只有在压满时才暴露。本例 n=8 那组会从「失败 0 次」变成「失败 1 次」，n=10 那组从失败 2 次变成失败 3 次。正确的判满要与 top 的约定配套：top 是栈顶下标时判满是 top == MAXS - 1；top 是下一个可用位置时判满是 top == MAXS。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-cxa-001",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面这段程序用一维数组实现顺序栈，MAXS = 8，约定 top 是栈顶元素的下标、空栈 top = -1。请回答后面的问题，答案都填整数。",
+      "code": "",
+      "asks": [
+        {
+          "label": "MAXS = 8 时这个栈最多能存几个元素",
+          "answer": "8"
+        },
+        {
+          "label": "空栈时 top 的值",
+          "answer": "-1"
+        },
+        {
+          "label": "栈满时 top 的值",
+          "answer": "7"
+        },
+        {
+          "label": "压入 n 个元素（n ≤ 8）之后 top 的值（用含 n 的式子回答，例如 n+1）",
+          "answer": "n-1",
+          "accepted": [
+            "n−1"
+          ]
+        },
+        {
+          "label": "压入 n 个之后再弹出 k 个（k ≤ n），top 的值（用含 n、k 的式子回答）",
+          "answer": "n-k-1",
+          "accepted": [
+            "n−k−1",
+            "n - k - 1"
+          ]
+        }
+      ],
+      "complexity": "O(1)",
+      "accepted": [
+        "O(1)",
+        "常数阶",
+        "常数时间"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。顺序栈的三个量（容量、top、元素个数）之间是精确的代数关系，把这些关系写出来就不必背结论。\n【步骤】\n1. 约定「top 是栈顶元素的下标、空栈 top = -1」之后，栈里元素个数恒等于 top + 1，这是所有结论的出发点。\n2. 容量：data 数组一共 MAXS 个格子，下标 0..MAXS-1，所以最多存 MAXS 个；栈满时 top = MAXS - 1 = 7。\n3. 压入 n 个之后元素个数是 n，故 top + 1 = n，即 top = n - 1。\n4. 再弹出 k 个，元素个数变成 n - k，故 top = n - k - 1。k = n 时 top = -1 回到空栈。\n5. ★ 判空判满条件必须与这个约定配套：判空 top == -1、判满 top == MAXS - 1。换成「top 是下一个可用位置、空栈 top = 0」的约定，两条就变成 top == 0 与 top == MAXS。\n【复杂度】压入与弹出都只动 top 一个整数并读写一个数组元素，是严格的 O(1)，与栈里已有多少元素无关。这正是栈相对普通线性表的价值：它牺牲了「按下标随机访问」的能力，换来两端操作都恒定时间。\n【易错点】\n1. 把「栈里元素个数」与「top 的值」当成同一个数：在 top = -1 表示空栈的约定下它们差 1，所有关于容量的推算都会跟着错一位。\n2. 判满写 top == MAXS 而不是 top == MAXS - 1：那样第 MAXS+1 次压入才会被挡住，而第 MAXS+1 次压入已经把数据写到 data[MAXS] 越界了。C 语言不做数组下标检查，越界写不会立刻崩溃，它可能悄悄改掉相邻变量（本例就是紧挨着 data 的 top 字段），表现是统计数字莫名其妙地乱掉。\n3. ★ 顺序栈的容量是编译期定死的。真实工程里要么动态扩容（malloc + realloc，扩容一次 O(n)、均摊 O(1)），要么改用链栈（按需 malloc，代价是每结点多一个指针且失去数组的缓存局部性）。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-cxa-002",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "顺序栈",
+        "top的两种约定",
+        "判空判满",
+        "后进先出"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-05",
+        "ds-ch03-02",
+        "ds-ch03-01",
+        "ds-ch03-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "顺序栈有两种常见的 top 约定，另外还有一种「两个栈共享一个数组」的做法。请回答后面的问题，答案都填整数（第 3 问填数组下标表达式的结果）。",
+      "code": "",
+      "asks": [
+        {
+          "label": "约定 A：top 是栈顶元素的下标、空栈 top = -1。这种约定下空栈时 top 的值",
+          "answer": "-1"
+        },
+        {
+          "label": "约定 B：top 是「下一个可用位置」的下标、空栈 top = 0。这种约定下压入一个元素的语句是 s->data[s->top++] = x，那么压入 3 个元素后 top 的值",
+          "answer": "3"
+        },
+        {
+          "label": "约定 B 下的判满条件是 top == MAXS（MAXS = 8），那么栈里最多能存几个元素",
+          "answer": "8"
+        },
+        {
+          "label": "两个栈共享一个长度为 8 的数组：栈 0 的 top0 从 0 往右长、栈 1 的 top1 从 7 往左长，判满条件是 top1 - top0 == 1。这种布局下两个栈加起来最多能存几个元素",
+          "answer": "8"
+        },
+        {
+          "label": "若改成给两个栈各分一个长度为 4 的独立数组，最坏情况下（一个栈全满、另一个全空）实际存进去的元素总数最多是几个",
+          "answer": "4"
+        }
+      ],
+      "complexity": "O(1)",
+      "accepted": [
+        "O(1)",
+        "常数阶",
+        "常数时间"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。两种 top 约定只是「下标基准差 1」，但共享栈那一问考的是另一件事：空间利用率取决于「容量能不能互相调剂」。\n【步骤】\n1. 约定 A：元素个数 = top + 1，空栈 top = -1、满栈 top = MAXS - 1，压入写 data[++top]。\n2. 约定 B：元素个数 = top，空栈 top = 0、满栈 top = MAXS，压入写 data[top++]。压入 3 个后 top = 3。\n3. ★ 两种约定的容量都是 MAXS，差别只在基准。真正会出错的是「用约定 A 的初值配约定 B 的判满」这类混搭：那会让容量多算或少算一格，而且不崩溃、只在压满时暴露。\n4. 共享栈：top0 从左端往右、top1 从右端往左，两者相向生长。只要 top1 - top0 > 1 就还有空间，所以两个栈加起来能存满整个数组 8 个元素。判满写成 top1 - top0 == 1（或等价地 top0 + 1 == top1）而不是 top0 == top1，因为后者意味着两个栈已经重叠了一格。\n5. ★ 分成两个独立的 4 格数组时，最坏情况是栈 0 塞满 4 个而栈 1 一个都没有 —— 明明数组还有一半空着却报栈满。这就是共享栈存在的理由：它把「两个栈各自的容量上限」换成「两个栈的总量上限」，适合两个栈的规模此消彼长的场景（例如一个递归的调用栈配一个回溯的撤销栈）。\n【复杂度】共享栈的压入弹出仍然是 O(1)：判满只是比较两个整数，没有因为共享而增加任何循环。它省的是空间，不是时间。\n【易错点】\n1. 共享栈的判满条件写成 top0 == top1：那一刻两个栈已经占用了同一个格子，数据被覆盖了。正确条件是 top1 - top0 == 1（还剩 0 个空位）。\n2. 共享栈里栈 1 的方向容易写反：它的压入是 data[--top1]、弹出是 data[top1++]，与栈 0 完全镜像。把栈 1 也写成 ++top1 会让它往右长，很快撞上数组末尾越界。\n3. ★ 共享栈只在「两个栈的用量此消彼长」时才划算。如果两个栈经常同时接近满，共享反而更容易同时报满，还不如各自独立扩容。\n【关联】知识点卡片 ds-ch03-05、ds-ch03-02、ds-ch03-01、ds-ch03-07"
+    },
+    {
+      "id": "ds-ch03-cr-011",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n{[()()]}\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "stdin": "{[()()]}\n",
+      "answer": "输入串：{[()()]}（长度 8）\n匹配成功；最大嵌套深度 = 3",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。括号匹配是「配对类问题」的原型：遇到开就记下来、遇到关就去和最近记下的那个配。最近记下的正是栈顶，所以栈是唯一自然的容器。程序里把成功、四种失败分别报出来，还顺带统计最大嵌套深度，就是为了让这四个分支都在输出里留下可判定的痕迹。\n【步骤】\n1. 扫到左括号就压栈，同时把它的下标存进平行数组 si —— 下标不是用来配对的，是用来在「串扫完还剩左括号」时报位置的。\n2. 压栈时更新最大深度 d = top + 1（栈里元素个数），只在 d 更大时写进 maxDepth，所以 maxDepth 是全程最高水位。\n3. 扫到右括号先判栈空（右括号多了，报当前位置），再弹栈并比类型（类型错配，报当前位置）。\n4. 串扫完再判一次栈空：非空说明左括号没配完，报 si[0] 也就是最早那个未配对左括号的位置。\n5. ★ 四种失败各有一个返回码（-1 右括号多、-2 栈溢出、-3 类型错配、-4 左括号剩），main 里按返回码分支打印。把失败分类而不是笼统返回 0，判题时才能区分「答案错」与「错得不一样」。\n【复杂度】时间 O(n)（每个字符只看一次），空间 O(最大嵌套深度)。最大深度可以是 n（全是左括号），所以最坏空间也是 O(n)。\n【易错点】\n1. 只判「栈非空」不判类型：([)] 会被判成匹配成功。这是括号匹配最经典的错误。\n2. 左括号与右括号的判定写成两处独立条件，改了一处忘了另一处：本批的 defect1 就是漏掉 { 而 } 还在，程序报的却是「右括号多了」，看不出真因。\n3. 「串扫完还剩左括号」时报串长而不是最早未配对左括号的下标：两个数只有在「最后一个字符是左括号」时才恰好相等，((( 的串长是 3 而答案应该是 0。\n4. 最大深度写成 top 而不是 top + 1：top 是栈顶下标，栈里有 k 个元素时 top == k - 1。这个差 1 不影响匹配成功与否，只影响附加统计，而统计恰恰是题目要问的。\n5. ★ 栈容量按串长的一半估：最坏情况整个串都是左括号，容量必须 ≥ 串长。\n6. 只用一个计数器判多种括号：([)] 会得到 0 并被判成功；而且即使只有一种括号，也必须检查计数器中途有没有减到负数，否则 )(  会漏过去。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cr-012",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n([)]\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "stdin": "([)]\n",
+      "answer": "输入串：([)]（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。括号匹配是「配对类问题」的原型：遇到开就记下来、遇到关就去和最近记下的那个配。最近记下的正是栈顶，所以栈是唯一自然的容器。程序里把成功、四种失败分别报出来，还顺带统计最大嵌套深度，就是为了让这四个分支都在输出里留下可判定的痕迹。\n【步骤】\n1. 扫到左括号就压栈，同时把它的下标存进平行数组 si —— 下标不是用来配对的，是用来在「串扫完还剩左括号」时报位置的。\n2. 压栈时更新最大深度 d = top + 1（栈里元素个数），只在 d 更大时写进 maxDepth，所以 maxDepth 是全程最高水位。\n3. 扫到右括号先判栈空（右括号多了，报当前位置），再弹栈并比类型（类型错配，报当前位置）。\n4. 串扫完再判一次栈空：非空说明左括号没配完，报 si[0] 也就是最早那个未配对左括号的位置。\n5. ★ 四种失败各有一个返回码（-1 右括号多、-2 栈溢出、-3 类型错配、-4 左括号剩），main 里按返回码分支打印。把失败分类而不是笼统返回 0，判题时才能区分「答案错」与「错得不一样」。\n【复杂度】时间 O(n)（每个字符只看一次），空间 O(最大嵌套深度)。最大深度可以是 n（全是左括号），所以最坏空间也是 O(n)。\n【易错点】\n1. 只判「栈非空」不判类型：([)] 会被判成匹配成功。这是括号匹配最经典的错误。\n2. 左括号与右括号的判定写成两处独立条件，改了一处忘了另一处：本批的 defect1 就是漏掉 { 而 } 还在，程序报的却是「右括号多了」，看不出真因。\n3. 「串扫完还剩左括号」时报串长而不是最早未配对左括号的下标：两个数只有在「最后一个字符是左括号」时才恰好相等，((( 的串长是 3 而答案应该是 0。\n4. 最大深度写成 top 而不是 top + 1：top 是栈顶下标，栈里有 k 个元素时 top == k - 1。这个差 1 不影响匹配成功与否，只影响附加统计，而统计恰恰是题目要问的。\n5. ★ 栈容量按串长的一半估：最坏情况整个串都是左括号，容量必须 ≥ 串长。\n6. 只用一个计数器判多种括号：([)] 会得到 0 并被判成功；而且即使只有一种括号，也必须检查计数器中途有没有减到负数，否则 )(  会漏过去。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cc-009",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n/*__BLANK_1__*/\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n/*__BLANK_2__*/\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n/*__BLANK_1__*/\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n/*__BLANK_2__*/\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "            st[++top] = c; si[top] = i;",
+          "accepted": [
+            "st[++top] = c;\n            si[top] = i;",
+            "top++; st[top] = c; si[top] = i;",
+            "si[++top] = i; st[top] = c;"
+          ],
+          "hint": "压栈时要同时记两样东西。"
+        },
+        {
+          "index": 2,
+          "answer": "            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }",
+          "accepted": [
+            "if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }",
+            "if (!((c == ')' && o == '(') || (c == ']' && o == '[') || (c == '}' && o == '{'))) { *pos = i; return -3; }"
+          ],
+          "hint": "弹出一个左括号之后还不能直接算配对成功，要比一下类型。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "{[()()]}\n",
+          "expected": "输入串：{[()()]}（长度 8）\n匹配成功；最大嵌套深度 = 3",
+          "note": "三种括号混合嵌套，最大深度 3"
+        },
+        {
+          "stdin": "(([]))([])\n",
+          "expected": "输入串：(([]))([])（长度 10）\n匹配成功；最大嵌套深度 = 3",
+          "note": "两组并列，深度先升到 3 再回到 0 又升到 2"
+        },
+        {
+          "stdin": "([)]\n",
+          "expected": "输入串：([)]（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "类型错配：下标 2 的 ) 遇到栈顶的 ["
+        },
+        {
+          "stdin": "(((\n",
+          "expected": "输入串：(((（长度 3）\n匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 0",
+          "note": "左括号没配完，最早未配对的位置是 0"
+        },
+        {
+          "stdin": ")(()\n",
+          "expected": "输入串：)(()（长度 4）\n匹配失败：下标 0 处的右括号没有对应的左括号",
+          "note": "右括号多了，下标 0 就没有左括号可配"
+        },
+        {
+          "stdin": "{(]}\n",
+          "expected": "输入串：{(]}（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "★ 只检查圆括号类型时会漏过去、最后判成匹配成功"
+        },
+        {
+          "stdin": "()[]{}\n",
+          "expected": "输入串：()[]{}（长度 6）\n匹配成功；最大嵌套深度 = 1",
+          "note": "三种括号各一对、完全不嵌套，深度 1"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。括号匹配是「配对类问题」的原型：遇到开就记下来、遇到关就去和最近记下的那个配。最近记下的正是栈顶，所以栈是唯一自然的容器。程序里把成功、四种失败分别报出来，还顺带统计最大嵌套深度，就是为了让这四个分支都在输出里留下可判定的痕迹。\n【步骤】\n1. 扫到左括号就压栈，同时把它的下标存进平行数组 si —— 下标不是用来配对的，是用来在「串扫完还剩左括号」时报位置的。\n2. 压栈时更新最大深度 d = top + 1（栈里元素个数），只在 d 更大时写进 maxDepth，所以 maxDepth 是全程最高水位。\n3. 扫到右括号先判栈空（右括号多了，报当前位置），再弹栈并比类型（类型错配，报当前位置）。\n4. 串扫完再判一次栈空：非空说明左括号没配完，报 si[0] 也就是最早那个未配对左括号的位置。\n5. ★ 四种失败各有一个返回码（-1 右括号多、-2 栈溢出、-3 类型错配、-4 左括号剩），main 里按返回码分支打印。把失败分类而不是笼统返回 0，判题时才能区分「答案错」与「错得不一样」。\n【复杂度】时间 O(n)（每个字符只看一次），空间 O(最大嵌套深度)。最大深度可以是 n（全是左括号），所以最坏空间也是 O(n)。\n【易错点】\n1. 只判「栈非空」不判类型：([)] 会被判成匹配成功。这是括号匹配最经典的错误。\n2. 左括号与右括号的判定写成两处独立条件，改了一处忘了另一处：本批的 defect1 就是漏掉 { 而 } 还在，程序报的却是「右括号多了」，看不出真因。\n3. 「串扫完还剩左括号」时报串长而不是最早未配对左括号的下标：两个数只有在「最后一个字符是左括号」时才恰好相等，((( 的串长是 3 而答案应该是 0。\n4. 最大深度写成 top 而不是 top + 1：top 是栈顶下标，栈里有 k 个元素时 top == k - 1。这个差 1 不影响匹配成功与否，只影响附加统计，而统计恰恰是题目要问的。\n5. ★ 栈容量按串长的一半估：最坏情况整个串都是左括号，容量必须 ≥ 串长。\n6. 只用一个计数器判多种括号：([)] 会得到 0 并被判成功；而且即使只有一种括号，也必须检查计数器中途有没有减到负数，否则 )(  会漏过去。\n7. 栈里必须同时存字符与下标：字符用来判类型是否配对，下标用来在「串扫完还剩左括号」时报出最早那个未配对的位置。只存字符的话最后一种失败就说不清是哪里出的问题，只能报一个「串长」，而串长并不是出错位置。\n8. ★ 只判「栈非空」而不判类型，会把 ([)] 判成匹配成功 —— 这是括号匹配最经典的错误。它的输出看起来完全正常（既没有多余括号也没有剩余括号），只有类型对不上，所以必须逐种括号写成对的条件。写成 !( 三种正确组合之一 ) 也等价，但那要求把三种组合全列对，漏一种就多放过去一类错配。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-dsdbg-003",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "bugs": [
+        "左括号的判定里漏掉了花括号，于是 { 被当成普通字符跳过，而 } 仍然被当成右括号去弹栈。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "{[()()]}\n",
+          "expected": "输入串：{[()()]}（长度 8）\n匹配成功；最大嵌套深度 = 3",
+          "note": "三种括号混合嵌套，最大深度 3"
+        },
+        {
+          "stdin": "(([]))([])\n",
+          "expected": "输入串：(([]))([])（长度 10）\n匹配成功；最大嵌套深度 = 3",
+          "note": "两组并列，深度先升到 3 再回到 0 又升到 2"
+        },
+        {
+          "stdin": "([)]\n",
+          "expected": "输入串：([)]（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "类型错配：下标 2 的 ) 遇到栈顶的 ["
+        },
+        {
+          "stdin": "(((\n",
+          "expected": "输入串：(((（长度 3）\n匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 0",
+          "note": "左括号没配完，最早未配对的位置是 0"
+        },
+        {
+          "stdin": ")(()\n",
+          "expected": "输入串：)(()（长度 4）\n匹配失败：下标 0 处的右括号没有对应的左括号",
+          "note": "右括号多了，下标 0 就没有左括号可配"
+        },
+        {
+          "stdin": "{(]}\n",
+          "expected": "输入串：{(]}（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "★ 只检查圆括号类型时会漏过去、最后判成匹配成功"
+        },
+        {
+          "stdin": "()[]{}\n",
+          "expected": "输入串：()[]{}（长度 6）\n匹配成功；最大嵌套深度 = 1",
+          "note": "三种括号各一对、完全不嵌套，深度 1"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。括号匹配是「配对类问题」的原型：遇到开就记下来、遇到关就去和最近记下的那个配。最近记下的正是栈顶，所以栈是唯一自然的容器。程序里把成功、四种失败分别报出来，还顺带统计最大嵌套深度，就是为了让这四个分支都在输出里留下可判定的痕迹。\n【步骤】\n1. 扫到左括号就压栈，同时把它的下标存进平行数组 si —— 下标不是用来配对的，是用来在「串扫完还剩左括号」时报位置的。\n2. 压栈时更新最大深度 d = top + 1（栈里元素个数），只在 d 更大时写进 maxDepth，所以 maxDepth 是全程最高水位。\n3. 扫到右括号先判栈空（右括号多了，报当前位置），再弹栈并比类型（类型错配，报当前位置）。\n4. 串扫完再判一次栈空：非空说明左括号没配完，报 si[0] 也就是最早那个未配对左括号的位置。\n5. ★ 四种失败各有一个返回码（-1 右括号多、-2 栈溢出、-3 类型错配、-4 左括号剩），main 里按返回码分支打印。把失败分类而不是笼统返回 0，判题时才能区分「答案错」与「错得不一样」。\n【复杂度】时间 O(n)（每个字符只看一次），空间 O(最大嵌套深度)。最大深度可以是 n（全是左括号），所以最坏空间也是 O(n)。\n【易错点】\n1. 只判「栈非空」不判类型：([)] 会被判成匹配成功。这是括号匹配最经典的错误。\n2. 左括号与右括号的判定写成两处独立条件，改了一处忘了另一处：本批的 defect1 就是漏掉 { 而 } 还在，程序报的却是「右括号多了」，看不出真因。\n3. 「串扫完还剩左括号」时报串长而不是最早未配对左括号的下标：两个数只有在「最后一个字符是左括号」时才恰好相等，((( 的串长是 3 而答案应该是 0。\n4. 最大深度写成 top 而不是 top + 1：top 是栈顶下标，栈里有 k 个元素时 top == k - 1。这个差 1 不影响匹配成功与否，只影响附加统计，而统计恰恰是题目要问的。\n5. ★ 栈容量按串长的一半估：最坏情况整个串都是左括号，容量必须 ≥ 串长。\n6. 只用一个计数器判多种括号：([)] 会得到 0 并被判成功；而且即使只有一种括号，也必须检查计数器中途有没有减到负数，否则 )(  会漏过去。\n7. ★ 这个错误的表现很反直觉：程序报的是「右括号没有对应的左括号」，而且位置在串尾（} 那里），完全看不出真正的原因是 { 根本没进栈。原因是左括号与右括号的判定是两处独立的条件，改了一处另一处不会跟着变。这类「两侧条件不对称」的错误在字符分类、词法分析、状态机里都很常见，检查办法是把两处条件并排抄出来逐个字符对照。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if (c == ')' && o != '(') { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if (c == ')' && o != '(') { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "bugs": [
+        "左括号的判定里漏掉了花括号，于是 { 被当成普通字符跳过，而 } 仍然被当成右括号去弹栈。",
+        "类型检查只写了圆括号那一组，方括号与花括号的错配全部漏过去。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXS 64\n/* 括号匹配：栈里只存「还没配对的左括号」，遇到右括号就弹一个出来配 */\nstatic int match(const char *s, int *pos, int *maxDepth) {\n    char st[MAXS]; int si[MAXS]; int top = -1, i, d;\n    *pos = -1; *maxDepth = 0;\n    for (i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == MAXS - 1) { *pos = i; return -2; }\n            st[++top] = c; si[top] = i;\n            d = top + 1; if (d > *maxDepth) *maxDepth = d;\n        } else if (c == ')' || c == ']' || c == '}') {\n            char o;\n            if (top == -1) { *pos = i; return -1; }\n            o = st[top--];\n            if ((c == ')' && o != '(') || (c == ']' && o != '[') || (c == '}' && o != '{')) { *pos = i; return -3; }\n        }\n    }\n    if (top != -1) { *pos = si[0]; return -4; }\n    return 1;\n}\nint main(void) {\n    char buf[128]; int r, pos, md, len = 0;\n    if (scanf(\"%127s\", buf) != 1) { printf(\"输入有误\\n\"); return 0; }\n    while (buf[len] != '\\0') len++;\n    r = match(buf, &pos, &md);\n    printf(\"输入串：%s（长度 %d）\\n\", buf, len);\n    if (r == 1) printf(\"匹配成功；最大嵌套深度 = %d\\n\", md);\n    else if (r == -1) printf(\"匹配失败：下标 %d 处的右括号没有对应的左括号\\n\", pos);\n    else if (r == -2) printf(\"匹配失败：左括号太多，容量 %d 的栈溢出，位置 %d\\n\", MAXS, pos);\n    else if (r == -3) printf(\"匹配失败：下标 %d 处的右括号与栈顶左括号类型不同\\n\", pos);\n    else printf(\"匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 %d\\n\", pos);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "{[()()]}\n",
+          "expected": "输入串：{[()()]}（长度 8）\n匹配成功；最大嵌套深度 = 3",
+          "note": "三种括号混合嵌套，最大深度 3"
+        },
+        {
+          "stdin": "(([]))([])\n",
+          "expected": "输入串：(([]))([])（长度 10）\n匹配成功；最大嵌套深度 = 3",
+          "note": "两组并列，深度先升到 3 再回到 0 又升到 2"
+        },
+        {
+          "stdin": "([)]\n",
+          "expected": "输入串：([)]（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "类型错配：下标 2 的 ) 遇到栈顶的 ["
+        },
+        {
+          "stdin": "(((\n",
+          "expected": "输入串：(((（长度 3）\n匹配失败：串扫完后栈里还剩左括号，最早那个未配对的位置是 0",
+          "note": "左括号没配完，最早未配对的位置是 0"
+        },
+        {
+          "stdin": ")(()\n",
+          "expected": "输入串：)(()（长度 4）\n匹配失败：下标 0 处的右括号没有对应的左括号",
+          "note": "右括号多了，下标 0 就没有左括号可配"
+        },
+        {
+          "stdin": "{(]}\n",
+          "expected": "输入串：{(]}（长度 4）\n匹配失败：下标 2 处的右括号与栈顶左括号类型不同",
+          "note": "★ 只检查圆括号类型时会漏过去、最后判成匹配成功"
+        },
+        {
+          "stdin": "()[]{}\n",
+          "expected": "输入串：()[]{}（长度 6）\n匹配成功；最大嵌套深度 = 1",
+          "note": "三种括号各一对、完全不嵌套，深度 1"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。括号匹配是「配对类问题」的原型：遇到开就记下来、遇到关就去和最近记下的那个配。最近记下的正是栈顶，所以栈是唯一自然的容器。程序里把成功、四种失败分别报出来，还顺带统计最大嵌套深度，就是为了让这四个分支都在输出里留下可判定的痕迹。\n【步骤】\n1. 扫到左括号就压栈，同时把它的下标存进平行数组 si —— 下标不是用来配对的，是用来在「串扫完还剩左括号」时报位置的。\n2. 压栈时更新最大深度 d = top + 1（栈里元素个数），只在 d 更大时写进 maxDepth，所以 maxDepth 是全程最高水位。\n3. 扫到右括号先判栈空（右括号多了，报当前位置），再弹栈并比类型（类型错配，报当前位置）。\n4. 串扫完再判一次栈空：非空说明左括号没配完，报 si[0] 也就是最早那个未配对左括号的位置。\n5. ★ 四种失败各有一个返回码（-1 右括号多、-2 栈溢出、-3 类型错配、-4 左括号剩），main 里按返回码分支打印。把失败分类而不是笼统返回 0，判题时才能区分「答案错」与「错得不一样」。\n【复杂度】时间 O(n)（每个字符只看一次），空间 O(最大嵌套深度)。最大深度可以是 n（全是左括号），所以最坏空间也是 O(n)。\n【易错点】\n1. 只判「栈非空」不判类型：([)] 会被判成匹配成功。这是括号匹配最经典的错误。\n2. 左括号与右括号的判定写成两处独立条件，改了一处忘了另一处：本批的 defect1 就是漏掉 { 而 } 还在，程序报的却是「右括号多了」，看不出真因。\n3. 「串扫完还剩左括号」时报串长而不是最早未配对左括号的下标：两个数只有在「最后一个字符是左括号」时才恰好相等，((( 的串长是 3 而答案应该是 0。\n4. 最大深度写成 top 而不是 top + 1：top 是栈顶下标，栈里有 k 个元素时 top == k - 1。这个差 1 不影响匹配成功与否，只影响附加统计，而统计恰恰是题目要问的。\n5. ★ 栈容量按串长的一半估：最坏情况整个串都是左括号，容量必须 ≥ 串长。\n6. 只用一个计数器判多种括号：([)] 会得到 0 并被判成功；而且即使只有一种括号，也必须检查计数器中途有没有减到负数，否则 )(  会漏过去。\n7. ★ 这个错误的表现很反直觉：程序报的是「右括号没有对应的左括号」，而且位置在串尾（} 那里），完全看不出真正的原因是 { 根本没进栈。原因是左括号与右括号的判定是两处独立的条件，改了一处另一处不会跟着变。这类「两侧条件不对称」的错误在字符分类、词法分析、状态机里都很常见，检查办法是把两处条件并排抄出来逐个字符对照。\n8. 后果不是「报错位置不准」这么轻：{(]} 这个串会被判成匹配成功（] 弹出 ( 时条件为假、} 弹出 { 时条件也为假，扫完栈空于是返回 1）。★ 只测 ([)] 发现不了这个错误，因为那里的错配恰好是圆括号，仍会被抓住。测「类型检查写全了没有」必须让每一种括号都错配一次，例如 [(]}、{[)]、([}]。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cxa-003",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面这段程序用一个字符栈判断只含 ()[]{}  六种字符的串是否括号匹配，并在失败时报出错位置。请回答后面的问题，答案都填整数。",
+      "code": "",
+      "asks": [
+        {
+          "label": "串 {[()()]} 的最大嵌套深度",
+          "answer": "3"
+        },
+        {
+          "label": "串 (([]))([]) 的最大嵌套深度",
+          "answer": "3"
+        },
+        {
+          "label": "串 ([)] 匹配失败，报出的出错下标",
+          "answer": "2"
+        },
+        {
+          "label": "串 ((( 匹配失败，报出的「最早未配对左括号」下标",
+          "answer": "0"
+        },
+        {
+          "label": "串 )(( 匹配失败，报出的出错下标",
+          "answer": "0"
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [
+        "O(n)",
+        "线性",
+        "线性阶",
+        "O(串长)"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。深度与出错下标都能靠逐个字符手工模拟得到，关键是分清「深度是当前栈里的元素个数」而「出错下标取决于失败发生在哪一种情况」。\n【步骤】\n1. {[()()]}：{ 深度 1、[ 深度 2、( 深度 3、) 回到 2、( 又到 3、) 回到 2、] 回到 1、} 回到 0，扫完栈空 ⇒ 成功，最大深度 3。\n2. (([]))([])：( 1、( 2、[ 3、] 2、) 1、) 0、( 1、[ 2、] 1、) 0 ⇒ 成功，最大深度 3。★ 注意深度回到 0 之后又升起来，所以最大深度是全程的最高水位，不是结束时的值（结束时永远是 0）。\n3. ([)]：( 压入、[ 压入、) 到来时弹出栈顶 [，类型不同 ⇒ 在下标 2 报 -3。\n4. (((: 三个左括号全部压入，串结束时栈非空 ⇒ 报 -4，位置取 si[0]，也就是最早压入那个左括号的下标 0，而不是串长 3。\n5. )((: 下标 0 就是右括号而栈是空的 ⇒ 报 -1，位置 0。这是四种失败里唯一「一开头就失败」的一种。\n【复杂度】每个字符只被读一次、最多压栈弹栈各一次，所以时间是 O(n)、空间是 O(最大嵌套深度) ≤ O(n)。★ 空间不是 O(1)：嵌套多深栈就要多深，这是所有「配对类问题」的共同特征。\n【易错点】\n1. 把「最大嵌套深度」与「串长的一半」混为一谈：()()() 长度 6 但深度只有 1，((()))  长度 6 深度是 3。深度取决于嵌套，不取决于括号总数。\n2. 四种失败的报错位置含义各不相同：-1（右括号多）与 -3（类型错配）报的是当前右括号的下标，-4（左括号剩）报的是最早那个未配对左括号的下标，-2（栈溢出）报的是压不进去那个左括号的下标。答题时要先判断是哪一种失败，再决定报哪个位置。\n3. ★ 栈里存下标不是多余的：没有它，-4 那种失败就只能报「串长」，而串长并不是任何一个左括号的位置，学生很容易把这两个数当成同一个。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cxa-004",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "栈的应用",
+        "括号匹配",
+        "嵌套深度",
+        "配对类问题"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-08",
+        "ds-ch03-04",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "还是这段括号匹配程序（栈容量 MAXS = 64）。请回答后面几个关于容量与替代做法的问题，答案都填整数。",
+      "code": "",
+      "asks": [
+        {
+          "label": "串 {[()()]} 中压栈操作的总次数",
+          "answer": "4"
+        },
+        {
+          "label": "串 {[()()]} 中弹栈操作的总次数",
+          "answer": "4"
+        },
+        {
+          "label": "串长最多 64 时，要保证任何输入都不会栈溢出，栈容量至少要多大",
+          "answer": "64"
+        },
+        {
+          "label": "若改用一个计数器（遇左括号加一、遇右括号减一，不看类型）判断串 ([)] ，扫描结束后计数器的值",
+          "answer": "0"
+        },
+        {
+          "label": "本算法扫描输入串的趟数",
+          "answer": "1"
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [
+        "O(n)",
+        "线性",
+        "线性阶",
+        "O(串长)"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。这四问其实在比较「栈」与「计数器」两种做法的能力边界：计数器只能判数量，栈能判类型与顺序。\n【步骤】\n1. {[()()]} 有 4 个左括号（{ [ ( (），每个压一次；每个左括号最终都被一个右括号配掉，所以弹栈也是 4 次。★ 匹配成功时压栈次数 == 弹栈次数 == 左括号个数，这是一条现成的验算等式。\n2. 容量：最坏情况是整个串全是左括号，那时要压 n 次，所以容量必须 ≥ 串长。容量取串长的一半是不够的 —— ((((((  长度 6、需要 6 格。\n3. 计数器判 ([)]：( 加一到 1、[ 不认识跳过、) 减一到 0、] 不认识跳过，结束时计数器是 0 ⇒ 会被判成匹配成功。★ 这正是计数器做法的致命处：它既不看类型也不看顺序，([)] 与 ([]) 在它眼里完全一样。\n4. 趟数：主循环从左到右扫一遍就结束，是 1 趟。这也是为什么括号匹配能做到 O(n) —— 没有回溯、没有嵌套循环。\n5. ★ 如果只有圆括号一种，计数器做法是正确的（此时类型不会错，而「先减到负数」可以用一个判断挡住），而且空间是 O(1)。栈做法的价值恰好体现在「多种括号」上：它能记住顺序，所以 ([)] 会被抓住。\n【复杂度】时间 O(n)、空间 O(最大深度)。若只有一种括号，改用计数器可以把空间降到 O(1)，时间仍是 O(n)。\n【易错点】\n1. 容量按「串长的一半」估：那是「括号成对出现」时的平均值，不是最坏情况。最坏情况是全是左括号，容量必须等于串长。\n2. 以为计数器做法能判多种括号：它对 ([)] 会给 0 并判成功。计数器只在「只有一种括号」时等价于栈。\n3. ★ 计数器做法还必须检查「中途有没有减到负数」：)(  这个串用计数器算完是 0，但它在第一个字符就已经失败了。只检查最终值等于 0 是不够的，这与栈做法里 top == -1 的那个判断是同一件事。\n【关联】知识点卡片 ds-ch03-08、ds-ch03-04、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cr-013",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n3\n10 20 30\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "stdin": "3\n10 20 30\n",
+      "answer": "入队 10：成功  队列[ 10 ] front=0 rear=1 size=1\n入队 20：成功  队列[ 10 20 ] front=0 rear=2 size=2\n入队 30：成功  队列[ 10 20 30 ] front=0 rear=3 size=3\n出队 10  队列[ 20 30 ] front=1 rear=3 size=2\n出队 20  队列[ 30 ] front=2 rear=3 size=1\n出队 30  队列[ ] front=3 rear=3 size=0\n入队成功 3 次、失败 0 次、出队 3 次；en==de ? 1，fail==n-en ? 1\n最终 front=3 rear=3 size=0（size 应为 0）相符=1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。循环队列要解决的是「假溢出」：普通顺序队列里 rear 一路往右走，走到数组末尾就再也入不了队，可前面因为出队空出来的格子全用不上。把数组看成首尾相接的环、下标一律取模，空出来的格子就能重新用上。本程序另外维护 size 字段，把判空判满从「比较两个下标」变成「比较一个计数」，从根上绕开了 rear == front 的歧义。\n【步骤】\n1. 约定 front 指向队头元素、rear 指向下一个可用位置、size 是元素个数；三者都要在入队出队时同步维护。\n2. 入队：判满（size == MAXQ）→ data[rear] = x → rear = (rear + 1) % MAXQ → size++。★ 先写数据再挪 rear，顺序不能颠倒。\n3. 出队：判空（size == 0）→ *out = data[front] → front = (front + 1) % MAXQ → size--。\n4. show 从 front 开始按 (front + i) % MAXQ 依次打印 size 个元素，所以打印的永远是「逻辑上的队列顺序」，而不是数组的物理顺序 —— 队列回绕之后这两者是不一样的。\n5. ★ 结构体写成 Queue q = { { 0 }, 0, 0, 0 } 而不是只初始化三个下标：data 清零之后，即使错误版本读到不该读的格子，读到的也是确定的 0，行为可复现。\n【复杂度】入队出队都是 O(1)，整个 main 是 O(n + 成功入队的个数)。空间 O(MAXQ)，编译期定死，没有任何 malloc。\n【易错点】\n1. 用 rear == front 判空或判满：满与空两种状态都会让它成立。本程序入队 5 个之后 rear 与 front 都是 0 而 size 是 5，这个状态在输出里能直接看到。\n2. 入队时先挪 rear 再写数据：每个元素都存到了后面一格，第一个格子永远是空的，出队先读到一个 0。\n3. 忘记取模：下标一路涨出数组，越界写不崩溃但会改掉相邻字段。\n4. ★ 判满写成 size == MAXQ - 1：那是「牺牲一个单元」方案的条件，用 size 计数时判满就是 size == MAXQ。两种方案混用会白白损失一格容量，而且不崩溃、只在压满时暴露。\n5. 用 (rear - front + MAXQ) % MAXQ 算元素个数时漏掉 + MAXQ：C99 里 -1 % 5 等于 -1，会得到负的元素个数。\n6. 出队失败时没有返回值或调用方不检查：队空时静默返回一个上次遗留的值，判题时表现为「输出多了一行且数字莫名其妙」。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cr-014",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n5\n1 2 3 4 5\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "stdin": "5\n1 2 3 4 5\n",
+      "answer": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 0 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。循环队列要解决的是「假溢出」：普通顺序队列里 rear 一路往右走，走到数组末尾就再也入不了队，可前面因为出队空出来的格子全用不上。把数组看成首尾相接的环、下标一律取模，空出来的格子就能重新用上。本程序另外维护 size 字段，把判空判满从「比较两个下标」变成「比较一个计数」，从根上绕开了 rear == front 的歧义。\n【步骤】\n1. 约定 front 指向队头元素、rear 指向下一个可用位置、size 是元素个数；三者都要在入队出队时同步维护。\n2. 入队：判满（size == MAXQ）→ data[rear] = x → rear = (rear + 1) % MAXQ → size++。★ 先写数据再挪 rear，顺序不能颠倒。\n3. 出队：判空（size == 0）→ *out = data[front] → front = (front + 1) % MAXQ → size--。\n4. show 从 front 开始按 (front + i) % MAXQ 依次打印 size 个元素，所以打印的永远是「逻辑上的队列顺序」，而不是数组的物理顺序 —— 队列回绕之后这两者是不一样的。\n5. ★ 结构体写成 Queue q = { { 0 }, 0, 0, 0 } 而不是只初始化三个下标：data 清零之后，即使错误版本读到不该读的格子，读到的也是确定的 0，行为可复现。\n【复杂度】入队出队都是 O(1)，整个 main 是 O(n + 成功入队的个数)。空间 O(MAXQ)，编译期定死，没有任何 malloc。\n【易错点】\n1. 用 rear == front 判空或判满：满与空两种状态都会让它成立。本程序入队 5 个之后 rear 与 front 都是 0 而 size 是 5，这个状态在输出里能直接看到。\n2. 入队时先挪 rear 再写数据：每个元素都存到了后面一格，第一个格子永远是空的，出队先读到一个 0。\n3. 忘记取模：下标一路涨出数组，越界写不崩溃但会改掉相邻字段。\n4. ★ 判满写成 size == MAXQ - 1：那是「牺牲一个单元」方案的条件，用 size 计数时判满就是 size == MAXQ。两种方案混用会白白损失一格容量，而且不崩溃、只在压满时暴露。\n5. 用 (rear - front + MAXQ) % MAXQ 算元素个数时漏掉 + MAXQ：C99 里 -1 % 5 等于 -1，会得到负的元素个数。\n6. 出队失败时没有返回值或调用方不检查：队空时静默返回一个上次遗留的值，判题时表现为「输出多了一行且数字莫名其妙」。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cc-010",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\n/*__BLANK_2__*/\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; /*__BLANK_1__*/ return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\n/*__BLANK_2__*/\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; /*__BLANK_1__*/ return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "q->rear = (q->rear + 1) % MAXQ; q->size++;",
+          "accepted": [
+            "q->rear = (q->rear + 1) % MAXQ;\n    q->size++;",
+            "q->size++; q->rear = (q->rear + 1) % MAXQ;",
+            "q->rear = (q->rear + 1) % 5; q->size = q->size + 1;"
+          ],
+          "hint": "入队成功时要动两个字段：rear 与 size。"
+        },
+        {
+          "index": 2,
+          "answer": "static int qFull(const Queue *q) { return q->size == MAXQ; }",
+          "accepted": [
+            "static int qFull(const Queue *q) { return q->size == 5; }",
+            "static int qFull(const Queue *q) {\n    return q->size == MAXQ;\n}"
+          ],
+          "hint": "判满的条件是什么？注意本程序另外维护了 size 字段。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "入队 10：成功  队列[ 10 ] front=0 rear=1 size=1\n入队 20：成功  队列[ 10 20 ] front=0 rear=2 size=2\n入队 30：成功  队列[ 10 20 30 ] front=0 rear=3 size=3\n出队 10  队列[ 20 30 ] front=1 rear=3 size=2\n出队 20  队列[ 30 ] front=2 rear=3 size=1\n出队 30  队列[ ] front=3 rear=3 size=0\n入队成功 3 次、失败 0 次、出队 3 次；en==de ? 1，fail==n-en ? 1\n最终 front=3 rear=3 size=0（size 应为 0）相符=1",
+          "note": "常规：入 3 出 3，rear 走到 3 没有回绕"
+        },
+        {
+          "stdin": "7\n1 2 3 4 5 6 7\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 2 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "★ 超出容量：入 5 成功后 rear 取模回到 0，此时 front==rear 而队列是满的"
+        },
+        {
+          "stdin": "5\n1 2 3 4 5\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 0 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "正好装满，失败 0 次"
+        },
+        {
+          "stdin": "9\n1 2 3 4 5 6 7 8 9\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 8：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 9：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 4 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "入 5 成功、失败 4 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "入队 42：成功  队列[ 42 ] front=0 rear=1 size=1\n出队 42  队列[ ] front=1 rear=1 size=0\n入队成功 1 次、失败 0 次、出队 1 次；en==de ? 1，fail==n-en ? 1\n最终 front=1 rear=1 size=0（size 应为 0）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "入队成功 0 次、失败 0 次、出队 0 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "空队列：三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。循环队列要解决的是「假溢出」：普通顺序队列里 rear 一路往右走，走到数组末尾就再也入不了队，可前面因为出队空出来的格子全用不上。把数组看成首尾相接的环、下标一律取模，空出来的格子就能重新用上。本程序另外维护 size 字段，把判空判满从「比较两个下标」变成「比较一个计数」，从根上绕开了 rear == front 的歧义。\n【步骤】\n1. 约定 front 指向队头元素、rear 指向下一个可用位置、size 是元素个数；三者都要在入队出队时同步维护。\n2. 入队：判满（size == MAXQ）→ data[rear] = x → rear = (rear + 1) % MAXQ → size++。★ 先写数据再挪 rear，顺序不能颠倒。\n3. 出队：判空（size == 0）→ *out = data[front] → front = (front + 1) % MAXQ → size--。\n4. show 从 front 开始按 (front + i) % MAXQ 依次打印 size 个元素，所以打印的永远是「逻辑上的队列顺序」，而不是数组的物理顺序 —— 队列回绕之后这两者是不一样的。\n5. ★ 结构体写成 Queue q = { { 0 }, 0, 0, 0 } 而不是只初始化三个下标：data 清零之后，即使错误版本读到不该读的格子，读到的也是确定的 0，行为可复现。\n【复杂度】入队出队都是 O(1)，整个 main 是 O(n + 成功入队的个数)。空间 O(MAXQ)，编译期定死，没有任何 malloc。\n【易错点】\n1. 用 rear == front 判空或判满：满与空两种状态都会让它成立。本程序入队 5 个之后 rear 与 front 都是 0 而 size 是 5，这个状态在输出里能直接看到。\n2. 入队时先挪 rear 再写数据：每个元素都存到了后面一格，第一个格子永远是空的，出队先读到一个 0。\n3. 忘记取模：下标一路涨出数组，越界写不崩溃但会改掉相邻字段。\n4. ★ 判满写成 size == MAXQ - 1：那是「牺牲一个单元」方案的条件，用 size 计数时判满就是 size == MAXQ。两种方案混用会白白损失一格容量，而且不崩溃、只在压满时暴露。\n5. 用 (rear - front + MAXQ) % MAXQ 算元素个数时漏掉 + MAXQ：C99 里 -1 % 5 等于 -1，会得到负的元素个数。\n6. 出队失败时没有返回值或调用方不检查：队空时静默返回一个上次遗留的值，判题时表现为「输出多了一行且数字莫名其妙」。\n7. 两处都要改：rear 前进一格并取模回到数组开头（这就是「循环」的全部含义），size 加一。只改 rear 不改 size，队列很快就被判满；只改 size 不改 rear，所有元素都写进同一个格子。★ 取模的除数必须是数组长度 MAXQ 而不是容量上限的其它写法，写错会让 rear 落到数组外面。\n8. ★ 判满绝不能写 q->rear == q->front：本程序 MAXQ = 5，入队 5 次之后 rear 取模回到 0、front 还是 0，两者相等而队列是满的；反过来队空时两者也相等。rear == front 既不能判满也不能判空，这正是「假溢出」问题的来源。既然已经用 size 计数，判满就是 size == MAXQ。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-dsdbg-004",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "队列假溢出",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ - 1; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ - 1; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "bugs": [
+        "判满条件保守了一格，容量 5 的队列只能存 4 个元素，第 5 次入队就报队满。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "入队 10：成功  队列[ 10 ] front=0 rear=1 size=1\n入队 20：成功  队列[ 10 20 ] front=0 rear=2 size=2\n入队 30：成功  队列[ 10 20 30 ] front=0 rear=3 size=3\n出队 10  队列[ 20 30 ] front=1 rear=3 size=2\n出队 20  队列[ 30 ] front=2 rear=3 size=1\n出队 30  队列[ ] front=3 rear=3 size=0\n入队成功 3 次、失败 0 次、出队 3 次；en==de ? 1，fail==n-en ? 1\n最终 front=3 rear=3 size=0（size 应为 0）相符=1",
+          "note": "常规：入 3 出 3，rear 走到 3 没有回绕"
+        },
+        {
+          "stdin": "7\n1 2 3 4 5 6 7\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 2 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "★ 超出容量：入 5 成功后 rear 取模回到 0，此时 front==rear 而队列是满的"
+        },
+        {
+          "stdin": "5\n1 2 3 4 5\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 0 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "正好装满，失败 0 次"
+        },
+        {
+          "stdin": "9\n1 2 3 4 5 6 7 8 9\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 8：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 9：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 4 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "入 5 成功、失败 4 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "入队 42：成功  队列[ 42 ] front=0 rear=1 size=1\n出队 42  队列[ ] front=1 rear=1 size=0\n入队成功 1 次、失败 0 次、出队 1 次；en==de ? 1，fail==n-en ? 1\n最终 front=1 rear=1 size=0（size 应为 0）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "入队成功 0 次、失败 0 次、出队 0 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "空队列：三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。循环队列要解决的是「假溢出」：普通顺序队列里 rear 一路往右走，走到数组末尾就再也入不了队，可前面因为出队空出来的格子全用不上。把数组看成首尾相接的环、下标一律取模，空出来的格子就能重新用上。本程序另外维护 size 字段，把判空判满从「比较两个下标」变成「比较一个计数」，从根上绕开了 rear == front 的歧义。\n【步骤】\n1. 约定 front 指向队头元素、rear 指向下一个可用位置、size 是元素个数；三者都要在入队出队时同步维护。\n2. 入队：判满（size == MAXQ）→ data[rear] = x → rear = (rear + 1) % MAXQ → size++。★ 先写数据再挪 rear，顺序不能颠倒。\n3. 出队：判空（size == 0）→ *out = data[front] → front = (front + 1) % MAXQ → size--。\n4. show 从 front 开始按 (front + i) % MAXQ 依次打印 size 个元素，所以打印的永远是「逻辑上的队列顺序」，而不是数组的物理顺序 —— 队列回绕之后这两者是不一样的。\n5. ★ 结构体写成 Queue q = { { 0 }, 0, 0, 0 } 而不是只初始化三个下标：data 清零之后，即使错误版本读到不该读的格子，读到的也是确定的 0，行为可复现。\n【复杂度】入队出队都是 O(1)，整个 main 是 O(n + 成功入队的个数)。空间 O(MAXQ)，编译期定死，没有任何 malloc。\n【易错点】\n1. 用 rear == front 判空或判满：满与空两种状态都会让它成立。本程序入队 5 个之后 rear 与 front 都是 0 而 size 是 5，这个状态在输出里能直接看到。\n2. 入队时先挪 rear 再写数据：每个元素都存到了后面一格，第一个格子永远是空的，出队先读到一个 0。\n3. 忘记取模：下标一路涨出数组，越界写不崩溃但会改掉相邻字段。\n4. ★ 判满写成 size == MAXQ - 1：那是「牺牲一个单元」方案的条件，用 size 计数时判满就是 size == MAXQ。两种方案混用会白白损失一格容量，而且不崩溃、只在压满时暴露。\n5. 用 (rear - front + MAXQ) % MAXQ 算元素个数时漏掉 + MAXQ：C99 里 -1 % 5 等于 -1，会得到负的元素个数。\n6. 出队失败时没有返回值或调用方不检查：队空时静默返回一个上次遗留的值，判题时表现为「输出多了一行且数字莫名其妙」。\n7. 这是把「牺牲一个单元」方案的判满条件误用到了「用 size 计数」的方案上：牺牲一格方案里判满是 (rear + 1) % MAXQ == front，等价于 size == MAXQ - 1；既然已经用 size 字段计数，判满就该是 size == MAXQ。★ 两种方案不能混用，混用的后果是容量白白少一格，而且程序不崩溃、不越界，只有压满时才暴露 —— 本例 n=5 那组会从「失败 0 次」变成「失败 1 次」。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ - 1; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->rear = (q->rear + 1) % MAXQ; q->data[q->rear] = x; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ - 1; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->rear = (q->rear + 1) % MAXQ; q->data[q->rear] = x; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "bugs": [
+        "判满条件保守了一格，容量 5 的队列只能存 4 个元素，第 5 次入队就报队满。",
+        "先让 rear 前进再存数据，于是每个元素都被存到了它后面一格，第一个格子永远是空的。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXQ 5\ntypedef struct { int data[MAXQ]; int front, rear, size; } Queue;   /* 用 size 判满，另两种方案见详解 */\nstatic int qFull(const Queue *q) { return q->size == MAXQ; }\nstatic int qEmpty(const Queue *q) { return q->size == 0; }\nstatic int enQueue(Queue *q, int x) { if (qFull(q)) return 0; q->data[q->rear] = x; q->rear = (q->rear + 1) % MAXQ; q->size++; return 1; }\nstatic int deQueue(Queue *q, int *out) { if (qEmpty(q)) return 0; *out = q->data[q->front]; q->front = (q->front + 1) % MAXQ; q->size--; return 1; }\nstatic void show(const char *lb, const Queue *q) { int i, k; printf(\"%s[\", lb); for (i = 0; i < q->size; i++) { k = (q->front + i) % MAXQ; printf(\" %d\", q->data[k]); } printf(\" ] front=%d rear=%d size=%d\\n\", q->front, q->rear, q->size); }\nint main(void) {\n    Queue q = { { 0 }, 0, 0, 0 };                      /* 整个结构体显式清零，让错误版本的行为也可复现 */\n    int n, i, x, v, ok, en = 0, fail = 0, de = 0;\n    if (scanf(\"%d\", &n) != 1 || n < 0) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) {\n        if (scanf(\"%d\", &x) != 1) { printf(\"输入有误\\n\"); return 0; }\n        ok = enQueue(&q, x);\n        if (ok) en++; else fail++;\n        printf(\"入队 %d：%s\", x, ok ? \"成功\" : \"队满失败\");\n        show(\"  队列\", &q);\n    }\n    while (deQueue(&q, &v)) { de++; printf(\"出队 %d\", v); show(\"  队列\", &q); }\n    printf(\"入队成功 %d 次、失败 %d 次、出队 %d 次；en==de ? %d，fail==n-en ? %d\\n\", en, fail, de, en == de, fail == n - en);\n    printf(\"最终 front=%d rear=%d size=%d（size 应为 0）相符=%d\\n\", q.front, q.rear, q.size, q.size == 0);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "3\n10 20 30\n",
+          "expected": "入队 10：成功  队列[ 10 ] front=0 rear=1 size=1\n入队 20：成功  队列[ 10 20 ] front=0 rear=2 size=2\n入队 30：成功  队列[ 10 20 30 ] front=0 rear=3 size=3\n出队 10  队列[ 20 30 ] front=1 rear=3 size=2\n出队 20  队列[ 30 ] front=2 rear=3 size=1\n出队 30  队列[ ] front=3 rear=3 size=0\n入队成功 3 次、失败 0 次、出队 3 次；en==de ? 1，fail==n-en ? 1\n最终 front=3 rear=3 size=0（size 应为 0）相符=1",
+          "note": "常规：入 3 出 3，rear 走到 3 没有回绕"
+        },
+        {
+          "stdin": "7\n1 2 3 4 5 6 7\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 2 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "★ 超出容量：入 5 成功后 rear 取模回到 0，此时 front==rear 而队列是满的"
+        },
+        {
+          "stdin": "5\n1 2 3 4 5\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 0 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "正好装满，失败 0 次"
+        },
+        {
+          "stdin": "9\n1 2 3 4 5 6 7 8 9\n",
+          "expected": "入队 1：成功  队列[ 1 ] front=0 rear=1 size=1\n入队 2：成功  队列[ 1 2 ] front=0 rear=2 size=2\n入队 3：成功  队列[ 1 2 3 ] front=0 rear=3 size=3\n入队 4：成功  队列[ 1 2 3 4 ] front=0 rear=4 size=4\n入队 5：成功  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 6：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 7：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 8：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n入队 9：队满失败  队列[ 1 2 3 4 5 ] front=0 rear=0 size=5\n出队 1  队列[ 2 3 4 5 ] front=1 rear=0 size=4\n出队 2  队列[ 3 4 5 ] front=2 rear=0 size=3\n出队 3  队列[ 4 5 ] front=3 rear=0 size=2\n出队 4  队列[ 5 ] front=4 rear=0 size=1\n出队 5  队列[ ] front=0 rear=0 size=0\n入队成功 5 次、失败 4 次、出队 5 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "入 5 成功、失败 4 次"
+        },
+        {
+          "stdin": "1\n42\n",
+          "expected": "入队 42：成功  队列[ 42 ] front=0 rear=1 size=1\n出队 42  队列[ ] front=1 rear=1 size=0\n入队成功 1 次、失败 0 次、出队 1 次；en==de ? 1，fail==n-en ? 1\n最终 front=1 rear=1 size=0（size 应为 0）相符=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "入队成功 0 次、失败 0 次、出队 0 次；en==de ? 1，fail==n-en ? 1\n最终 front=0 rear=0 size=0（size 应为 0）相符=1",
+          "note": "空队列：三条自检在退化情况下仍须成立"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。循环队列要解决的是「假溢出」：普通顺序队列里 rear 一路往右走，走到数组末尾就再也入不了队，可前面因为出队空出来的格子全用不上。把数组看成首尾相接的环、下标一律取模，空出来的格子就能重新用上。本程序另外维护 size 字段，把判空判满从「比较两个下标」变成「比较一个计数」，从根上绕开了 rear == front 的歧义。\n【步骤】\n1. 约定 front 指向队头元素、rear 指向下一个可用位置、size 是元素个数；三者都要在入队出队时同步维护。\n2. 入队：判满（size == MAXQ）→ data[rear] = x → rear = (rear + 1) % MAXQ → size++。★ 先写数据再挪 rear，顺序不能颠倒。\n3. 出队：判空（size == 0）→ *out = data[front] → front = (front + 1) % MAXQ → size--。\n4. show 从 front 开始按 (front + i) % MAXQ 依次打印 size 个元素，所以打印的永远是「逻辑上的队列顺序」，而不是数组的物理顺序 —— 队列回绕之后这两者是不一样的。\n5. ★ 结构体写成 Queue q = { { 0 }, 0, 0, 0 } 而不是只初始化三个下标：data 清零之后，即使错误版本读到不该读的格子，读到的也是确定的 0，行为可复现。\n【复杂度】入队出队都是 O(1)，整个 main 是 O(n + 成功入队的个数)。空间 O(MAXQ)，编译期定死，没有任何 malloc。\n【易错点】\n1. 用 rear == front 判空或判满：满与空两种状态都会让它成立。本程序入队 5 个之后 rear 与 front 都是 0 而 size 是 5，这个状态在输出里能直接看到。\n2. 入队时先挪 rear 再写数据：每个元素都存到了后面一格，第一个格子永远是空的，出队先读到一个 0。\n3. 忘记取模：下标一路涨出数组，越界写不崩溃但会改掉相邻字段。\n4. ★ 判满写成 size == MAXQ - 1：那是「牺牲一个单元」方案的条件，用 size 计数时判满就是 size == MAXQ。两种方案混用会白白损失一格容量，而且不崩溃、只在压满时暴露。\n5. 用 (rear - front + MAXQ) % MAXQ 算元素个数时漏掉 + MAXQ：C99 里 -1 % 5 等于 -1，会得到负的元素个数。\n6. 出队失败时没有返回值或调用方不检查：队空时静默返回一个上次遗留的值，判题时表现为「输出多了一行且数字莫名其妙」。\n7. 这是把「牺牲一个单元」方案的判满条件误用到了「用 size 计数」的方案上：牺牲一格方案里判满是 (rear + 1) % MAXQ == front，等价于 size == MAXQ - 1；既然已经用 size 字段计数，判满就该是 size == MAXQ。★ 两种方案不能混用，混用的后果是容量白白少一格，而且程序不崩溃、不越界，只有压满时才暴露 —— 本例 n=5 那组会从「失败 0 次」变成「失败 1 次」。\n8. 必须先「写到 rear 指着的那个格子」再让 rear 前进，因为本程序的约定是 rear 指向「下一个可用位置」。顺序一颠倒，出队时先读到的是 data[0]，而它从来没被写过。★ 本程序把整个结构体初始化成 Queue q = { { 0 }, 0, 0, 0 }，所以读到的确定是 0，输出会变成「出队 0、10、20」而不是「出队 10、20、30」；若不初始化，读到的是未定义的垃圾值，同一份代码在不同编译器下输出都不一样，judge:verify 今天过了明天就挂。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cxa-005",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面这段程序用一维数组实现循环队列，MAXQ = 5，另外维护一个 size 字段用来判空判满，front 指向队头元素、rear 指向下一个可用位置。请回答后面的问题，答案都填整数（最后一问填 1 表示「能」、0 表示「不能」）。",
+      "code": "",
+      "asks": [
+        {
+          "label": "MAXQ = 5 时这个队列最多能存几个元素",
+          "answer": "5"
+        },
+        {
+          "label": "依次入队 1、2、3、4、5 之后 rear 的值",
+          "answer": "0"
+        },
+        {
+          "label": "依次入队 1、2、3、4、5 之后 front 的值",
+          "answer": "0"
+        },
+        {
+          "label": "此时队列是满的，那么「rear == front」能不能用来判空",
+          "answer": "0",
+          "accepted": [
+            "不能",
+            "否",
+            "false"
+          ]
+        },
+        {
+          "label": "依次入队 7 个元素（1 到 7）时，入队失败的次数",
+          "answer": "2"
+        }
+      ],
+      "complexity": "O(1)",
+      "accepted": [
+        "O(1)",
+        "常数阶",
+        "常数时间"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。循环队列的全部难点都在「rear 与 front 会回绕」这一件事上，而回绕的直接后果就是 rear == front 有了两种含义。\n【步骤】\n1. 容量：data 数组有 MAXQ = 5 个格子，本程序用 size 计数、判满是 size == MAXQ，所以 5 个格子全部可用。\n2. 入队 5 次之后 rear 从 0 走到 5，而 5 % 5 == 0，于是 rear 回到 0；front 一直没动（还没出过队）也是 0。\n3. ★ 此刻 size == 5 是满的，而 rear == front。反过来队空时 size == 0，rear 与 front 也相等。同一个等式对应两种完全相反的状态，所以 rear == front 既不能判满也不能判空 —— 这就是循环队列必须引入第三个信息（size 字段 / 牺牲一格 / tag 标志）的根本原因。\n4. 入队 7 个：前 5 个成功（size 到 5），第 6、7 个都因为 size == MAXQ 被判满挡回去，所以失败 2 次；失败时 size 保持 5 不变，rear 也不动。\n5. 出队 5 次之后 front 从 0 走到 5 再取模回到 0，size 回到 0。此时 front == rear == 0 与初始状态完全一样，这也是「循环」的意义：下标永远在 0..MAXQ-1 里转，不会因为反复入队出队而跑到数组外面。\n【复杂度】入队与出队都只改两三个整数字段，是严格的 O(1)。★ 循环队列相对链式队列的优势是没有任何 malloc/free，也保留了数组的缓存局部性；代价是容量编译期定死。\n【易错点】\n1. 用 rear == front 判空：满的时候也成立，于是装满的队列会被判成空队列，出队一个都出不来。\n2. 用 rear == front 判满：空的时候也成立，于是空队列被判成满的，一个都入不进去。★ 这两个错误方向相反，但根源是同一个：一个等式承担了两种含义。\n3. 忘记取模：rear = rear + 1 会让下标一路涨出数组，写越界不崩溃但会改掉相邻变量（本例是紧挨着 data 的 front/rear/size 字段），表现是统计数字乱掉。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
+    },
+    {
+      "id": "ds-ch03-cxa-006",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "循环队列",
+        "假溢出",
+        "判满三种方案",
+        "取模"
+      ],
+      "source": "自撰变式（依据 第3章 栈和队列 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch03-13",
+        "ds-ch03-03",
+        "ds-ch03-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "循环队列有三种常见的判满方案（仍以 MAXQ = 5 为例）：方案一额外维护 size 字段、方案二牺牲一个单元、方案三增设 tag 标志。请回答后面的问题，答案都填整数。",
+      "code": "",
+      "asks": [
+        {
+          "label": "方案一（维护 size，判满 size == MAXQ）最多能存几个元素",
+          "answer": "5"
+        },
+        {
+          "label": "方案二（牺牲一个单元，判满 (rear + 1) % MAXQ == front）最多能存几个元素",
+          "answer": "4"
+        },
+        {
+          "label": "方案三（增设 tag，判满 front == rear && tag == 1）最多能存几个元素",
+          "answer": "5"
+        },
+        {
+          "label": "方案一相对方案二多存的元素个数",
+          "answer": "1"
+        },
+        {
+          "label": "方案一相对方案二多占的空间是一个 int 字段。若元素类型是 4 字节的 int、MAXQ = 5，那么这个字段占整个 data 数组字节数的百分之几（取整数部分）",
+          "answer": "5",
+          "accepted": [
+            "5%",
+            "4/20",
+            "0.05"
+          ]
+        }
+      ],
+      "complexity": "O(1)",
+      "accepted": [
+        "O(1)",
+        "常数阶",
+        "常数时间"
+      ],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。三种方案解决的是同一个问题（rear == front 有两种含义），代价各不相同：一个多占字段、一个少存元素、一个多一个标志位与两处维护。\n【步骤】\n1. 方案一：额外存一个 size，入队 size++、出队 size--，判空 size == 0、判满 size == MAXQ。5 个格子全部可用，代价是多一个 int 字段与两次自增自减。\n2. 方案二：不存 size，约定「rear 追上 front 的前一格就算满」，判满 (rear + 1) % MAXQ == front、判空 rear == front。这样 rear == front 只剩「空」一种含义，但代价是永远有一个格子空着 ⇒ MAXQ = 5 时只能存 4 个。\n3. 方案三：不存 size，改存一个 tag 记录「最后一次操作是入队还是出队」。入队后 tag = 1、出队后 tag = 0，判满 front == rear && tag == 1、判空 front == rear && tag == 0。5 个格子全部可用，代价是一个标志位与两处维护（漏改一处就判错）。\n4. ★ 方案一与方案三都能用满全部格子，方案二少一格。当 MAXQ 很大时少一格无所谓，当 MAXQ 很小（例如 5、8）时少一格就是 20% 的容量损失。\n5. 空间代价的量化：data 数组是 5 × 4 = 20 字节，多一个 int 字段是 4 字节，占 20%——★ 注意这是「相对于 data 数组」的比例，不是相对于整个结构体（整个结构体是 24 字节，占 1/6 ≈ 16%）。本题问的是前者。元素类型越大这个比例越低：若元素是 100 字节，data 是 500 字节，多一个 int 只占 0.8%。\n【复杂度】三种方案的入队出队都是 O(1)，区别只在常数项与空间。没有任何一种方案会因为判满方式而引入循环。\n【易错点】\n1. 方案二的判满写成 rear == front（漏掉「牺牲一格」）：那就退化成前面说的「一个等式两种含义」，装满的队列会被判成空。\n2. 方案三的 tag 漏改：只在入队时置 1 而忘记在出队时置 0，于是出队到空之后 tag 还是 1，front == rear && tag == 1 成立 ⇒ 空队列被判成满的。\n3. ★ 三种方案里只有方案一的 size 能直接回答「队列里有几个元素」。方案二与方案三要算 (rear - front + MAXQ) % MAXQ，这个式子里的 + MAXQ 是必需的：C99 里 -1 % 5 等于 -1 而不是 4，不加上 MAXQ 会得到负的元素个数。\n【关联】知识点卡片 ds-ch03-13、ds-ch03-03、ds-ch03-01"
     }
   ]
 }
