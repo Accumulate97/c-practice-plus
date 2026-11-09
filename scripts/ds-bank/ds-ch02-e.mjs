@@ -65,7 +65,7 @@ int main(void) {
       ],
       blanks: [
         { find: '    if (p->next != NULL) p->next->prior = s;', accepted: ['    if (p->next != NULL) p->next->prior = s;', '    if (p->next) p->next->prior = s;'], hint: '新结点插进 p 与 p 的后继之间，那个后继的 prior 必须改成指向新结点；但 p 可能本来就是尾结点，那时没有后继要改', pitfall: '★ 这一句必须写在 p->next = s 之前，因为它要用到 p->next 的旧值。顺序一颠倒，p->next 已经是 s 了，这句就变成 s->prior = s，新结点自己指向自己，反向遍历会走进死循环' },
-        { find: '    p->prior->next = p->next;', accepted: ['    p->prior->next = p->next;', '    p->prior->next = p->next ;'], hint: '删除 p 要先让 p 的前驱跳过 p 直接指向 p 的后继', pitfall: '双向链表里 p->prior 一定存在（头结点的 prior 是 NULL，但数据结点的 prior 至少是头结点），所以这一句不用判空；要判空的是下一句改后继 prior 的那一句，因为 p 可能是尾结点' },
+        { find: 'p->prior->next = p->next;', accepted: ['p->prior->next = p->next;', 'p->prior->next = p->next ;'], hint: '删除 p 要先让 p 的前驱跳过 p 直接指向 p 的后继', pitfall: '双向链表里 p->prior 一定存在（头结点的 prior 是 NULL，但数据结点的 prior 至少是头结点），所以这一句不用判空；要判空的是下一句改后继 prior 的那一句，因为 p 可能是尾结点' },
       ],
       defects: [
         { kind: '指针丢失', find: '    if (p->next != NULL) p->next->prior = s;', replace: '', why: '少改了后继的 prior，它仍然指着 p；于是正向遍历完全正常，只有反向遍历会从后继直接跳回 p，把新插入的结点整个跳过', pitfall: '★ 这是双向链表最隐蔽的一类错误：程序不崩溃、不死循环、正向输出的序列与结点数全对，只有把反向序列也打出来才发现少了一个结点。所以双向链表的测试输出必须同时包含两个方向 —— 只测正向等于没测 prior 链' },

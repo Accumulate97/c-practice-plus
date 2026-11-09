@@ -2322,6 +2322,617 @@
       ],
       "reference_answer": "算法的**五个特性**是：\n\n1. **有穷性** —— 算法必须在执行有限步之后结束，且每一步都在有限时间内完成。\n2. **确定性** —— 算法中每条指令都有确切的含义，没有歧义；对于相同的输入只能得出相同的输出。\n3. **可行性** —— 算法中描述的操作都可以通过已经实现的基本运算执行有限次来实现。\n4. **输入** —— 一个算法有零个或多个输入。\n5. **输出** —— 一个算法有一个或多个输出，没有输出的算法是没有意义的。\n\n其中**有穷性是「算法」与「程序」的根本区别**：算法一定要有穷，而程序不一定 —— 操作系统、网络服务、事件循环这类程序是被设计成「永不结束」的，它们仍然是合法的程序，但不能称为一个算法。**可以说「程序 = 算法 + 数据结构」，但反过来，一个不终止的程序里也可以包含若干个有穷的算法。**\n\n算法的**四个评价标准**是：**正确性**（对合法输入能得到满足要求的结果）、**可读性**（便于人理解、交流与维护）、**健壮性**（对非法输入能做出恰当反应，而不是崩溃或输出莫名其妙的结果）、**时间效率与空间效率**。\n\n工程上常把可读性排在时间效率之前，理由有三条：① 代码一生中被阅读的次数远多于被编写的次数，别人读不懂的高效算法很难被正确修改，反而容易引入新错误；② 可读的代码更容易被评审和测试，正确性与健壮性因此更有保障；③ 只有在性能瓶颈被实测定位之后，针对性地优化那一小段代码才划算 —— 在没有测量之前就为效率牺牲可读性，通常是「提前优化」，收益不明而代价确定。",
       "explanation": "【思路】本题要求系统概括概念，所以答题要有层次：先给定义，再说它解决什么问题，最后点出与相邻概念的区别。这道题的得分点有两个层次：**把五个特性说全**（尤其容易漏掉「可行性」），以及**说清有穷性为什么是算法与程序的分界线**（很多人只会背「五个特性」却答不出区别在哪）。评价标准那部分要给出理由，不能只列名词。\n【步骤】\n1. 先按教材顺序列出五个特性，每个配一句含义，不要只写名词。\n2. 明确指出有穷性是算法与程序的分界，并举一个「不终止的合法程序」作为反例（操作系统、服务循环）。\n3. 再列四个评价标准：正确性、可读性、健壮性、时间与空间效率。\n4. 为「可读性优先」给出至少两条理由（阅读次数远多于编写次数、便于评审测试、优化应在实测定位瓶颈之后）。\n5. 收尾可以补一句「健壮性」的具体表现（本套题目里所有程序都对非法输入打印提示并正常返回，就是这个标准的落实）。\n【复杂度】概念题不涉及复杂度计算。但要注意「时间效率与空间效率」这一条评价标准本身就是用复杂度衡量的，答案里可以顺带说明：时间效率看语句频度的数量级，空间效率看辅助存储单元的数量级。\n【易错点】\n1. 最容易漏掉的是**可行性**。很多人只背得出有穷性、确定性、输入、输出四条。\n2. 把「输入」说成「必须有输入」是错的 —— 输入可以是**零个**（例如打印一个固定图案的程序）。但输出至少要有一个。\n3. 「确定性」不等于「正确性」。确定性指语句含义唯一、同输入同输出；一个确定地给出错误结果的程序满足确定性但不满足正确性。\n4. 评价标准里「健壮性」常被写成「稳定性」。**稳定性是排序算法的性质**（相等元素是否保持原次序），与算法评价标准里的健壮性完全是两回事，不要混用。\n【关联】知识点卡片 ds-ch01-06、ds-ch01-04、ds-ch01-03"
+    },
+    {
+      "id": "ds-ch01-cr-014",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1\n```\n\n程序：\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "stdin": "1\n",
+      "answer": "count=1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用一段双层循环程序统计最内层语句执行次数，直观体会嵌套循环的时间复杂度是 O(n^2)。该程序内层循环上界随外层 i 变化（j<=i），因此总次数是 1+2+…+n=n(n+1)/2。\n【步骤】\n1. 读入 n 的值，初始化 cnt=0。\n2. 外层 i 从 1 到 n；对每个 i，内层 j 从 1 到 i 执行 cnt++。\n3. 内层总执行次数为 1+2+…+n = n(n+1)/2。\n4. printf 输出 count= 后接该累计值。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n4. 这一组输入（n=1）的关键在于：只有 i=1 时内层执行一次，cnt 从 0 变成 1。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-cr-015",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n5\n```\n\n程序：\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "stdin": "5\n",
+      "answer": "count=15",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用一段双层循环程序统计最内层语句执行次数，直观体会嵌套循环的时间复杂度是 O(n^2)。该程序内层循环上界随外层 i 变化（j<=i），因此总次数是 1+2+…+n=n(n+1)/2。\n【步骤】\n1. 读入 n 的值，初始化 cnt=0。\n2. 外层 i 从 1 到 n；对每个 i，内层 j 从 1 到 i 执行 cnt++。\n3. 内层总执行次数为 1+2+…+n = n(n+1)/2。\n4. printf 输出 count= 后接该累计值。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n4. 这一组输入（n=5）的关键在于：内层共执行 1+2+3+4+5=15 次。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-cc-008",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        /*__BLANK_2__*/ {\n/*__BLANK_1__*/\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        /*__BLANK_2__*/ {\n/*__BLANK_1__*/\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "            cnt++;",
+          "accepted": [
+            "            cnt++;",
+            "            ++cnt;",
+            "            cnt = cnt + 1;"
+          ],
+          "hint": "每一层内循环都要把操作计数加 1。"
+        },
+        {
+          "index": 2,
+          "answer": "for (j = 1; j <= i; j++)",
+          "accepted": [
+            "for (j = 1; j <= i; j++)"
+          ],
+          "hint": "内层循环从 1 走到 i，才能凑成 n(n+1)/2 次执行。"
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1\n",
+          "expected": "count=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "count=6",
+          "note": "n=3"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "count=15",
+          "note": "n=5"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "count=55",
+          "note": "n=10"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "count=3",
+          "note": "n=2"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。用一段双层循环程序统计最内层语句执行次数，直观体会嵌套循环的时间复杂度是 O(n^2)。该程序内层循环上界随外层 i 变化（j<=i），因此总次数是 1+2+…+n=n(n+1)/2。\n【步骤】\n1. 补系统头文件 #include <stdio.h> 以便使用 scanf/printf。\n2. 最内层需要一条计数语句 cnt++;。\n3. 内层循环写成 for (j = 1; j <= i; j++)，使上界随 i 变化。\n4. 最后 printf 输出 count 值。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n4. 计数语句必须放在最内层循环体里，否则计数会少很多。\n5. 内层上界写成 n 会变成 n^2 次；写成 j<i 会少算 n 次。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-dsdbg-005",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "比较取反",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j < i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j < i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "bugs": [
+        "把内层循环上界从“<=i”改成“<i”，少执行 n 次，count 变小。"
+      ],
+      "fixed_code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1\n",
+          "expected": "count=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "count=6",
+          "note": "n=3"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "count=15",
+          "note": "n=5"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "count=55",
+          "note": "n=10"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "count=3",
+          "note": "n=2"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。内层循环上界写错会直接改变被执行的总次数。\n【步骤】\n1. 检查外层循环上界是否为 i<=n。\n2. 检查内层循环上界是否为 j<=i（随外层变化）。\n3. 确认计数语句在最内层循环体内。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n4. 内层 j<i 时，i=1 的内层一次都不执行，整体少算 n 次。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-mdb-005",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i < n; i++) {\n        for (j = 1; j < i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i < n; i++) {\n        for (j = 1; j < i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "bugs": [
+        "把内层循环上界从“<=i”改成“<i”，少执行 n 次，count 变小。",
+        "把外层循环上界从“<=n”改成“<n”，外层少跑一轮，count 变小。"
+      ],
+      "fixed_code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1\n",
+          "expected": "count=1",
+          "note": "n=1"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "count=6",
+          "note": "n=3"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "count=15",
+          "note": "n=5"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "count=55",
+          "note": "n=10"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "count=3",
+          "note": "n=2"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。用一段双层循环程序统计最内层语句执行次数，直观体会嵌套循环的时间复杂度是 O(n^2)。该程序内层循环上界随外层 i 变化（j<=i），因此总次数是 1+2+…+n=n(n+1)/2。\n【步骤】\n1. 先看外层循环：i 从 1 到 n，共 n 轮。\n2. 再看内层循环：对每个 i，j 从 1 到 i，共 i 次。\n3. 把每轮执行次数累加：1+2+…+n = n(n+1)/2。\n4. 只保留最高阶项，得到时间复杂度 O(n^2)。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n4. 内层 j<i 时，i=1 的内层一次都不执行，整体少算 n 次。\n5. 外层 i<n 时少执行最后一轮（i=n），结果整体变小。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-cxa-005",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04",
+        "ds-ch01-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的程序，回答有关算法时间复杂度的问题。\n```c\n#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void) {\n    int n, i, j, cnt = 0;\n    scanf(\"%d\", &n);\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= i; j++) {\n            cnt++;\n        }\n    }\n    printf(\"count=%d\\n\", cnt);\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "该程序的时间复杂度（用大 O 表示）是？",
+          "answer": "O(n^2)",
+          "unit": ""
+        },
+        {
+          "label": "当 n=5 时，程序输出的 count 是多少？",
+          "answer": "15",
+          "unit": ""
+        },
+        {
+          "label": "cnt 语句（最内层）总共执行多少次（用 n 表示）？",
+          "answer": "n(n+1)/2",
+          "unit": ""
+        },
+        {
+          "label": "最内层循环体之外，外层循环总共执行多少次？",
+          "answer": "n",
+          "unit": "次"
+        },
+        {
+          "label": "若把内层循环上界改为 n，cnt 语句总共执行多少次（用 n 表示）？",
+          "answer": "n^2",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n^2)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。总频度 n(n+1)/2 的最高阶为 n^2，故时间复杂度 O(n^2)。\n【步骤】\n1. 先看外层循环：i 从 1 到 n，共 n 轮。\n2. 再看内层循环：对每个 i，j 从 1 到 i，共 i 次。\n3. 把每轮执行次数累加：1+2+…+n = n(n+1)/2。\n4. 只保留最高阶项，得到时间复杂度 O(n^2)。\n【复杂度】总执行次数为 n(n+1)/2，渐近复杂度为 O(n^2)，空间复杂度为 O(1)。\n【易错点】\n1. 内层循环上界随外层变化，不能用“n×n”直接认为固定 n^2 次。\n2. 统计频度时要把所有层的循环次数相乘或相加，注意循环变量之间的依赖关系。\n3. 误以为内层也循环 n 次会得出 O(n^2) 但把系数算错；正确是 n(n+1)/2。\n【关联】知识点卡片 ds-ch01-04、ds-ch01-01"
+    },
+    {
+      "id": "ds-ch01-cr-016",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n8\n```\n\n程序：\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "stdin": "8\n",
+      "answer": "8 28 140 4",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 读 n。\n2. 单重循环 c1 计 n 次。\n3. 双重循环 c2 计 n(n-1)/2 次。\n4. 三重循环 c3 计 Σi² 次，while 折半 c4 计 ⌊log₂n⌋+1 次。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n5. 这一组输入（n=8。）的关键在于：c1=8，c2=8×7/2=28，c3=7×8×15/6=140，c4：8→4→2→1→0 共 4 次。\n【关联】知识点卡片 ds-ch01-04"
+    },
+    {
+      "id": "ds-ch01-cr-017",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n5\n```\n\n程序：\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "stdin": "5\n",
+      "answer": "5 10 30 3",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 读 n。\n2. 单重循环 c1 计 n 次。\n3. 双重循环 c2 计 n(n-1)/2 次。\n4. 三重循环 c3 计 Σi² 次，while 折半 c4 计 ⌊log₂n⌋+1 次。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n5. 这一组输入（n=5。）的关键在于：c1=5，c2=5×4/2=10，c3=4×5×9/6=30，c4：5→2→1→0 共 3 次。\n【关联】知识点卡片 ds-ch01-04"
+    },
+    {
+      "id": "ds-ch01-cc-009",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) /*__BLANK_1__*/\n    t=n;\n    while(t>0){ c4++; /*__BLANK_2__*/ }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) /*__BLANK_1__*/\n    t=n;\n    while(t>0){ c4++; /*__BLANK_2__*/ }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "c3++;",
+          "accepted": [
+            "c3++;"
+          ],
+          "hint": "三重嵌套最内层循环的计数语句，表示基本语句总执行次数。"
+        },
+        {
+          "index": 2,
+          "answer": "t/=2;",
+          "accepted": [
+            "t/=2;"
+          ],
+          "hint": "把 t 反复除以 2，是典型的对数阶（O(log n)）循环。"
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "8\n",
+          "expected": "8 28 140 4",
+          "note": "n=8。"
+        },
+        {
+          "stdin": "16\n",
+          "expected": "16 120 1240 5",
+          "note": "n=16。"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "5 10 30 3",
+          "note": "n=5。"
+        },
+        {
+          "stdin": "12\n",
+          "expected": "12 66 506 4",
+          "note": "n=12。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 补全三重循环最内层计数 c3++。\n2. 补全 while 中的折半步 t/=2。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n5. ★ 三重循环体内层执行 c3++ 的次数为 Σi²（i 从 0 到 n-1），即 n(n-1)(2n-1)/6。若误把 c3++ 写成 c3+=i 或放到不同循环层，正确公式会被破坏，输出的 c3 无法体现 O(n³) 量级。\n6. ★ while(t>0){ c4++; t/=2; } 是 O(log n)：每次把 t 折半，循环约 ⌊log₂n⌋+1 次。若把 t/=2 写成 t-- 会退化成 O(n)，若漏掉 t/=2 则 t 不变会死循环（超时）。必须保证 t 单调趋 0 且能到 0。\n【关联】知识点卡片 ds-ch01-04"
+    },
+    {
+      "id": "ds-ch01-dsdbg-006",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "循环边界错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<=i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<=i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "bugs": [
+        "把内层循环上界从 j<i 改成了 j<=i，循环多执行一次，c2 的公式被破坏。"
+      ],
+      "fixed_code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "8\n",
+          "expected": "8 28 140 4",
+          "note": "n=8。"
+        },
+        {
+          "stdin": "16\n",
+          "expected": "16 120 1240 5",
+          "note": "n=16。"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "5 10 30 3",
+          "note": "n=5。"
+        },
+        {
+          "stdin": "12\n",
+          "expected": "12 66 506 4",
+          "note": "n=12。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 检查 c1 单重循环上界 i<n。\n2. 检查 c2 双重循环上界 j<i。\n3. 检查 while 是否折半（t/=2）而非 t-- 或死循环。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n5. ★ 双循环 c2 的精确次数是 Σi = n(n-1)/2（j 从 0 到 i-1）。改成 j<=i 后每次多执行 1 次，c2 变 n(n+1)/2（n=8 时由 28 变 36），量级虽仍为 O(n²)，但精确公式错了。\n【关联】知识点卡片 ds-ch01-04"
+    },
+    {
+      "id": "ds-ch01-mdb-006",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<=n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<=i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<=n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<=i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "bugs": [
+        "把内层循环上界从 j<i 改成了 j<=i，循环多执行一次，c2 的公式被破坏。",
+        "把单重循环上界从 i<n 改成 i<=n，c1 由 n 变 n+1，次数量级虽不变但精确值出错。"
+      ],
+      "fixed_code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "8\n",
+          "expected": "8 28 140 4",
+          "note": "n=8。"
+        },
+        {
+          "stdin": "16\n",
+          "expected": "16 120 1240 5",
+          "note": "n=16。"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "5 10 30 3",
+          "note": "n=5。"
+        },
+        {
+          "stdin": "12\n",
+          "expected": "12 66 506 4",
+          "note": "n=12。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 读入 n。\n2. 单重循环 i=0…n-1，c1++ 执行 n 次（O(n)）。\n3. 双重循环 i 的每个取值下内层 j=0…i-1，c2++ 共 n(n-1)/2 次（O(n²)）。\n4. 三重循环最内层 k=0…i-1，c3++ 共 Σi²=n(n-1)(2n-1)/6 次（O(n³)）。\n5. while(t>0){ c4++; t/=2; } 把 n 折半，c4 约 ⌊log₂n⌋+1 次（O(log n)），输出 c1 c2 c3 c4。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n5. ★ 双循环 c2 的精确次数是 Σi = n(n-1)/2（j 从 0 到 i-1）。改成 j<=i 后每次多执行 1 次，c2 变 n(n+1)/2（n=8 时由 28 变 36），量级虽仍为 O(n²)，但精确公式错了。\n6. ★ c1 应为 n（i=0…n-1 共 n 次）。改成 i<=n 后执行 n+1 次（n=8 时 c1 变 9）。同时两个上界错误（c1 与 c2）叠加时，组合版本输出同时偏大，注意区分单重与双重循环各自的上界错误。\n【关联】知识点卡片 ds-ch01-04"
+    },
+    {
+      "id": "ds-ch01-cxa-006",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "source": "自撰变式（依据 第1章 绪论 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch01-04"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的程序（用四段循环统计基本语句执行次数 c1…c4），分析各段及整体时间复杂度。\n```c\n#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\nint main(void){\n    int n,i,j,k,t,c1=0,c2=0,c3=0,c4=0;\n    scanf(\"%d\",&n);\n    for(i=0;i<n;i++) c1++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) c2++;\n    for(i=0;i<n;i++) for(j=0;j<i;j++) for(k=0;k<i;k++) c3++;\n    t=n;\n    while(t>0){ c4++; t/=2; }\n    printf(\"%d %d %d %d\\n\",c1,c2,c3,c4);\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "三重嵌套循环 c3 对应的时间复杂度量级是?",
+          "answer": "O(n^3)",
+          "unit": ""
+        },
+        {
+          "label": "单重循环 c1 的时间复杂度量级是?",
+          "answer": "O(n)",
+          "unit": ""
+        },
+        {
+          "label": "while(t>0){ c4++; t/=2; } 的时间复杂度是?",
+          "answer": "O(log n)",
+          "unit": ""
+        },
+        {
+          "label": "四个计数的循环次数由小到大排列是?",
+          "answer": "c4 < c1 < c2 < c3",
+          "unit": ""
+        },
+        {
+          "label": "双重循环 c2 的精确迭代次数公式是?",
+          "answer": "n(n-1)/2",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n^3)（程序整体取最高阶；单重 O(n)、双重 O(n²)、三重 O(n³)、while 折半 O(log n)）",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。用四段循环分别统计基本语句执行次数，直观对照四种复杂度量级：单重循环 O(n)、双重嵌套 O(n²)、三重嵌套 O(n³)、把 n 反复折半的 while 循环 O(log n)，整体复杂度取最高阶。\n【步骤】\n1. 确定各段循环执行次数与量级。\n2. 取最高阶得到整体复杂度。\n【复杂度】整体 O(n³)（取最高阶），空间 O(1)；单重 O(n)、双重 O(n²)、三重 O(n³)、折半 O(log n)。\n【易错点】\n1. 时间频度是基本语句执行次数，按最高阶取大 O；常数与低阶项可以省略。\n2. 双重循环 c2=Σi 的精确公式是 n(n-1)/2，不是 n²/2 的近似。\n3. while 折半循环是 O(log n)：每次 t/=2，t 单调趋 0。\n4. 上界「< n」与「<= n」差 1 次，精确值会变，但大 O 量级不变。\n【关联】知识点卡片 ds-ch01-04"
     }
   ]
 }

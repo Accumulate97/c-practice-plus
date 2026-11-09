@@ -3501,6 +3501,2751 @@
       "ai_generated": true,
       "generated_at": "2026-11-06",
       "verified": true
+    },
+    {
+      "id": "ds-ch05-cr-010",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "叶子结点数 = 4",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 先序建立树。\n2. 后序统计叶子。\n3. 打印结果。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n4. 这一组输入（满二叉树（3 层），叶子 = 4、5、6、7，共 4 个。）的关键在于：full tree 4 leaves.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-cr-011",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "叶子结点数 = 1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 先序建立树。\n2. 后序统计叶子。\n3. 打印结果。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n4. 这一组输入（根 + 左孩子为叶，叶子 = 1（结点 2）。）的关键在于：root with left child leaf.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-cc-015",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    if (p->l == NULL && p->r == NULL) return 1;",
+          "accepted": [
+            "    if (p->l == NULL && p->r == NULL) return 1;"
+          ],
+          "hint": "叶子结点 = 左右孩子都为空。"
+        },
+        {
+          "index": 2,
+          "answer": "    return countLeaves(p->l) + countLeaves(p->r);",
+          "accepted": [
+            "    return countLeaves(p->l) + countLeaves(p->r);"
+          ],
+          "hint": "叶子数 = 左子树叶子 + 右子树叶子。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子结点数 = 4",
+          "note": "满二叉树（3 层），叶子 = 4、5、6、7，共 4 个。"
+        },
+        {
+          "stdin": "1 -1 2 4 -1 -1 5 -1 -1\n",
+          "expected": "叶子结点数 = 2",
+          "note": "根无左孩子、右子树含两个叶（4 和 5），叶子 = 2。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子结点数 = 1",
+          "note": "根 + 左孩子为叶，叶子 = 1（结点 2）。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子结点数 = 0",
+          "note": "空树，叶子 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 先序建立二叉树（-1 表空）。\n2. 递归统计叶子。\n3. 返回总和。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n4. ★ 必须先判空（p==NULL 返回 0），再判叶子（左右都空返回 1），最后递归。顺序不对（如先判 `p->l==NULL` 再判 `p->r==NULL` 时用 `||`）会把只有单孩子的结点也当成叶子。叶子定义是「左右孩子都为空」。\n5. ★ 递归用「先序建立 + 后序统计」结构：建立时先读根再递归左右（先序），统计时先递归左右再合并（后序）。写成 `countLeaves(p->l)` 就够吗？—— 不，要加 `+ countLeaves(p->r)`，否则只统计左子树。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-dsdbg-001",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "bugs": [
+        "把「左右孩子都为空」写成「左右任一为空」就判成叶子，导致只有单孩子的结点被误判为叶子。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子结点数 = 4",
+          "note": "满二叉树（3 层），叶子 = 4、5、6、7，共 4 个。"
+        },
+        {
+          "stdin": "1 -1 2 4 -1 -1 5 -1 -1\n",
+          "expected": "叶子结点数 = 2",
+          "note": "根无左孩子、右子树含两个叶（4 和 5），叶子 = 2。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子结点数 = 1",
+          "note": "根 + 左孩子为叶，叶子 = 1（结点 2）。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子结点数 = 0",
+          "note": "空树，叶子 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 检查叶子判断条件。\n2. 修正后得正确叶子数。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n4. ★ 用 `||` 会把「只有左孩子」或「只有右孩子」的结点也算成叶子。输入 `1 2 -1 -1 -1`（根+左叶）正确应为 1，错误版得 2；输入右链 `1 -1 2 -1 3 -1 -1` 正确 1，错误版 3。叶子定义必须是左右孩子都为空。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-mdb-001",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "bugs": [
+        "把「左右孩子都为空」写成「左右任一为空」就判成叶子，导致只有单孩子的结点被误判为叶子。",
+        "统计时漏加右子树的叶子数，只统计左子树。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子结点数 = 4",
+          "note": "满二叉树（3 层），叶子 = 4、5、6、7，共 4 个。"
+        },
+        {
+          "stdin": "1 -1 2 4 -1 -1 5 -1 -1\n",
+          "expected": "叶子结点数 = 2",
+          "note": "根无左孩子、右子树含两个叶（4 和 5），叶子 = 2。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子结点数 = 1",
+          "note": "根 + 左孩子为叶，叶子 = 1（结点 2）。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子结点数 = 0",
+          "note": "空树，叶子 0。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 先序建立二叉树（-1 表空）。\n2. 递归统计叶子。\n3. 返回总和。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n4. ★ 用 `||` 会把「只有左孩子」或「只有右孩子」的结点也算成叶子。输入 `1 2 -1 -1 -1`（根+左叶）正确应为 1，错误版得 2；输入右链 `1 -1 2 -1 3 -1 -1` 正确 1，错误版 3。叶子定义必须是左右孩子都为空。\n5. ★ 只返回 `countLeaves(p->l)` 会丢掉右子树的所有叶子。输入满二叉树正确 4，错误版只数根左子树的叶子（2）。程序不崩溃，输出像「合法的叶子数」，只有对比正确答案才发现。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-cxa-002",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09",
+        "ds-ch05-05"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树叶子结点统计程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "输入 1 -1 2 -1 3 的叶子数",
+          "answer": "1",
+          "unit": ""
+        },
+        {
+          "label": "输入 -1（空树）的叶子数",
+          "answer": "0",
+          "unit": ""
+        },
+        {
+          "label": "叶子结点的定义",
+          "answer": "左右孩子都为空",
+          "unit": ""
+        },
+        {
+          "label": "该统计用先序还是后序逻辑",
+          "answer": "后序",
+          "unit": ""
+        },
+        {
+          "label": "含 n 个结点的二叉树空链域个数",
+          "answer": "n+1",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+    },
+    {
+      "id": "ds-ch05-cr-012",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "树深度 = 3",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 先序建立树。\n2. 后序求深度。\n3. 打印结果。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n4. 这一组输入（满二叉树（3 层），深度 3。）的关键在于：full tree depth 3.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-cr-013",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "stdin": "1 -1 -1\n",
+      "answer": "树深度 = 1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 先序建立树。\n2. 后序求深度。\n3. 打印结果。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n4. 这一组输入（单结点，深度 1。）的关键在于：single node depth 1.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-cc-016",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n/*__BLANK_2__*/\n/*__BLANK_1__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n/*__BLANK_2__*/\n/*__BLANK_1__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    return (dl > dr ? dl : dr) + 1;",
+          "accepted": [
+            "    return (dl > dr ? dl : dr) + 1;"
+          ],
+          "hint": "深度 = 左右子树较大深度 + 1（算上根）。"
+        },
+        {
+          "index": 2,
+          "answer": "    dl = depth(p->l);\n    dr = depth(p->r);",
+          "accepted": [
+            "    dl = depth(p->l);\n    dr = depth(p->r);"
+          ],
+          "hint": "先递归求左、右子树深度。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "满二叉树（3 层），深度 3。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "左链（1->2->3），深度 3。"
+        },
+        {
+          "stdin": "1 -1 -1\n",
+          "expected": "树深度 = 1",
+          "note": "单结点，深度 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "树深度 = 0",
+          "note": "空树，深度 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 先序建立树。\n2. 递归求左右深度。\n3. 取较大 +1。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n4. ★ 深度要「左右较大 + 1」。写成 `dl > dr ? dl : dr`（不加 1）或 `(dl + dr) / 2` 都会错；写成除法更是把「深度」和「平均高度」混淆。+1 是因为当前结点本身算一层。\n5. ★ 递归返回的是子树的深度，需要先求出左右子树深度再比较。写成 `return depth(p->l) + 1;` 只算左链，会得到左子树路径长度而不是整树深度（右子树更深的链被忽略）。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-dsdbg-002",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "bugs": [
+        "求深度忘加 1，根结点没算进去，所有深度偏小 1。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "满二叉树（3 层），深度 3。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "左链（1->2->3），深度 3。"
+        },
+        {
+          "stdin": "1 -1 -1\n",
+          "expected": "树深度 = 1",
+          "note": "单结点，深度 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "树深度 = 0",
+          "note": "空树，深度 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 检查深度公式与基准。\n2. 修正后得正确深度。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n4. ★ 漏 +1 让每个结点都少算自己这一层。空树仍返回 0，单结点深度变 0（应为 1），满二叉树 3 层变 2 层。只有对比「结点数 vs 深度」才发现，且很多树深度恰好=层数-1 看不出。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-mdb-002",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 1;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 1;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "bugs": [
+        "求深度忘加 1，根结点没算进去，所有深度偏小 1。",
+        "空子树深度返回 1，导致所有路径长度被多算，深度整体偏大。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "满二叉树（3 层），深度 3。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "树深度 = 3",
+          "note": "左链（1->2->3），深度 3。"
+        },
+        {
+          "stdin": "1 -1 -1\n",
+          "expected": "树深度 = 1",
+          "note": "单结点，深度 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "树深度 = 0",
+          "note": "空树，深度 0。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 先序建立树。\n2. 递归求左右深度。\n3. 取较大 +1。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n4. ★ 漏 +1 让每个结点都少算自己这一层。空树仍返回 0，单结点深度变 0（应为 1），满二叉树 3 层变 2 层。只有对比「结点数 vs 深度」才发现，且很多树深度恰好=层数-1 看不出。\n5. ★ 空树深度应为 0，改成返回 1 会让空子树被当成「一层」。单结点深度变 2、空树变 1、每层都虚增。这个错误连空树输入 `-1` 都与正确版不同（正确 0 vs 错误 1），是基准边界最容易写错的一处。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-cxa-003",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01",
+        "ds-ch05-07"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树深度计算程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "单结点树的深度",
+          "answer": "1",
+          "unit": ""
+        },
+        {
+          "label": "空树的深度",
+          "answer": "0",
+          "unit": ""
+        },
+        {
+          "label": "深度公式",
+          "answer": "max(dl,dr)+1",
+          "unit": ""
+        },
+        {
+          "label": "深度与结点数的关系（完全二叉树）",
+          "answer": "O(log n)",
+          "unit": ""
+        },
+        {
+          "label": "该算法的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 每结点一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+    },
+    {
+      "id": "ds-ch05-cr-014",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "结点数 = 7",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 先序建立树。\n2. 后序统计结点。\n3. 打印结点数。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n4. 这一组输入（满二叉树（3 层），7 个结点。）的关键在于：full tree 7 nodes.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-015",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "结点数 = 2",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 先序建立树。\n2. 后序统计结点。\n3. 打印结点数。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n4. 这一组输入（根 + 左孩子，2 个结点。）的关键在于：root with left child, 2 nodes.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cc-017",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    if (p == NULL) return 0;",
+          "accepted": [
+            "    if (p == NULL) return 0;"
+          ],
+          "hint": "空子树没有结点，返回 0。"
+        },
+        {
+          "index": 2,
+          "answer": "    return countNodes(p->l) + countNodes(p->r) + 1;",
+          "accepted": [
+            "    return countNodes(p->l) + countNodes(p->r) + 1;"
+          ],
+          "hint": "结点数 = 左子树结点 + 右子树结点 + 1（算上根）。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "结点数 = 7",
+          "note": "满二叉树（3 层），7 个结点。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "结点数 = 3",
+          "note": "右链（1->2->3），3 个结点。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "结点数 = 2",
+          "note": "根 + 左孩子，2 个结点。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "结点数 = 0",
+          "note": "空树，0 个结点。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 先序建立二叉树（-1 表空）。\n2. 递归统计左右子树结点。\n3. 左右之和 +1 返回。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n4. ★ 递归基准必须是「空子树返回 0」。写成 `return 1;` 会让每个 NULL 都多算 1 个结点，导致整树计数虚增；空树输入 `-1` 甚至输出 1（正确应为 0），一测即知。\n5. ★ 末尾 +1 是「当前根结点本身」，漏掉它整树少 1；只写 `countNodes(p->l)` 则连右子树都丢。NULL 子结点的计数已由基准返回 0 兜底，不要在这里再判断 NULL。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-dsdbg-003",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "递归基准错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "bugs": [
+        "把空子树当成有 1 个结点，导致每个空指针都贡献 1，计数虚增。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "结点数 = 7",
+          "note": "满二叉树（3 层），7 个结点。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "结点数 = 3",
+          "note": "右链（1->2->3），3 个结点。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "结点数 = 2",
+          "note": "根 + 左孩子，2 个结点。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "结点数 = 0",
+          "note": "空树，0 个结点。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 检查递归基准与 +1。\n2. 修正后得正确结点数。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n4. ★ 空子树应是 0。满二叉树正确 7，本缺陷 15；单结点正确 1 → 2；空树 `-1` 正确 0 → 1（最直观，基准边界）。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-mdb-003",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "bugs": [
+        "把空子树当成有 1 个结点，导致每个空指针都贡献 1，计数虚增。",
+        "漏加当前根结点自身，整树结点数少 1。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "结点数 = 7",
+          "note": "满二叉树（3 层），7 个结点。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "结点数 = 3",
+          "note": "右链（1->2->3），3 个结点。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "结点数 = 2",
+          "note": "根 + 左孩子，2 个结点。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "结点数 = 0",
+          "note": "空树，0 个结点。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 先序建立二叉树（-1 表空）。\n2. 递归统计左右子树结点。\n3. 左右之和 +1 返回。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n4. ★ 空子树应是 0。满二叉树正确 7，本缺陷 15；单结点正确 1 → 2；空树 `-1` 正确 0 → 1（最直观，基准边界）。\n5. ★ 去掉 +1 后每个子树贡献 = 子结点数，根未被计入。满二叉树 7 → 6、空树仍 0（因为基准没变）。输出看似「合法的小数」，只有与正确答案对比才暴露。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cxa-004",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树结点统计程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 0;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "满二叉树（3 层）的结点数",
+          "answer": "7",
+          "unit": ""
+        },
+        {
+          "label": "空树的结点数",
+          "answer": "0",
+          "unit": ""
+        },
+        {
+          "label": "结点数计算公式",
+          "answer": "左+右+1",
+          "unit": ""
+        },
+        {
+          "label": "该算法的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        },
+        {
+          "label": "n 个结点的二叉树空链域个数",
+          "answer": "n+1",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-016",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "1 3 7 6 2 5 4 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 建立树。\n2. 镜像交换左右。\n3. 先序打印。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n4. 这一组输入（满二叉树镜像后再先序，输出 1 3 7 6 2 5 4。）的关键在于：full tree mirrored preorder differs from original.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-017",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "1 2 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 建立树。\n2. 镜像交换左右。\n3. 先序打印。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n4. 这一组输入（根+左孩子镜像成根+右孩子，先序仍 1 2。）的关键在于：single-left mirrored unchanged in preorder.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cc-018",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n/*__BLANK_1__*/\n    p->l = p->r;\n/*__BLANK_2__*/\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n/*__BLANK_1__*/\n    p->l = p->r;\n/*__BLANK_2__*/\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    TN *t = p->l;",
+          "accepted": [
+            "    TN *t = p->l;"
+          ],
+          "hint": "先用临时指针保存左孩子，再交换左右。"
+        },
+        {
+          "index": 2,
+          "answer": "    p->r = t;",
+          "accepted": [
+            "    p->r = t;"
+          ],
+          "hint": "把暂存的（原左孩子）赋给右孩子，完成交换。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 3 7 6 2 5 4 ",
+          "note": "满二叉树镜像后再先序，输出 1 3 7 6 2 5 4。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链镜像成左链，先序仍为 1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左孩子镜像成根+右孩子，先序仍 1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 先序建立树。\n2. 递归镜像（交换左右）。\n3. 先序遍历输出。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n4. ★ 交换必须借用临时变量。若不存 `t` 而直接写 `p->l = p->r; p->r = p->l;`，第二步 `p->l` 已是原右孩子，左右都被覆盖成原右孩子，左子树丢失。\n5. ★ 第二步必须用暂存的 `t`（原左孩子）。写成 `p->r = p->l;` 会把右侧也设为已被覆盖后的值，结果左右都变成原右孩子；写成 `p->r = p->r;` 则根本没换。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-dsdbg-004",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "交换取值错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "bugs": [
+        "把「存左孩子」写成「存右孩子」，交换后左右都变成原右孩子，左子树丢失。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 3 7 6 2 5 4 ",
+          "note": "满二叉树镜像后再先序，输出 1 3 7 6 2 5 4。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链镜像成左链，先序仍为 1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左孩子镜像成根+右孩子，先序仍 1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 检查交换是否用临时变量。\n2. 检查是否漏镜像一侧。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n4. ★ 满二叉树正确先序 1 3 7 6 2 5 4，本缺陷 1 3 7 7 3 7 7（结构坍塌）。注意镜像本身不改变树高，所以不能用「高度」当观测量，要看先序/中序序列。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-mdb-004",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "bugs": [
+        "把「存左孩子」写成「存右孩子」，交换后左右都变成原右孩子，左子树丢失。",
+        "只镜像左子树，右子树未对调。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 3 7 6 2 5 4 ",
+          "note": "满二叉树镜像后再先序，输出 1 3 7 6 2 5 4。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链镜像成左链，先序仍为 1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左孩子镜像成根+右孩子，先序仍 1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 先序建立树。\n2. 递归镜像（交换左右）。\n3. 先序遍历输出。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n4. ★ 满二叉树正确先序 1 3 7 6 2 5 4，本缺陷 1 3 7 7 3 7 7（结构坍塌）。注意镜像本身不改变树高，所以不能用「高度」当观测量，要看先序/中序序列。\n5. ★ 漏掉 `mirror(p->r);` 会让右子树保持原状。满二叉树正确 1 3 7 6 2 5 4，本缺陷 1 3 7 6 2 4 5（右子树那支未镜像）。程序不崩，只是局部未交换，需对比序列才发现。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cxa-005",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树镜像（左右交换）程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->l;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "满二叉树镜像后再先序的第一个值",
+          "answer": "1",
+          "unit": ""
+        },
+        {
+          "label": "镜像操作的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        },
+        {
+          "label": "镜像是否改变树的深度",
+          "answer": "不改变",
+          "unit": ""
+        },
+        {
+          "label": "交换左右孩子需要几个临时变量",
+          "answer": "1 个",
+          "unit": ""
+        },
+        {
+          "label": "空 NULL 在 mirror 中的返回",
+          "answer": "直接返回",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 每结点交换一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-018",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "叶子深度和 = 12",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 建立树。\n2. 带深度递归统计。\n3. 打印叶子深度和。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n4. 这一组输入（满二叉树，4 个叶子各深度 3，和 = 12。）的关键在于：full tree, 4 leaves at depth 3, sum 12.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-cr-019",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "叶子深度和 = 2",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 建立树。\n2. 带深度递归统计。\n3. 打印叶子深度和。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n4. 这一组输入（根+左叶，叶子 2 深度 2，和 = 2。）的关键在于：root with left leaf, sum 2.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-cc-019",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    if (p->l == NULL && p->r == NULL) return d;",
+          "accepted": [
+            "    if (p->l == NULL && p->r == NULL) return d;"
+          ],
+          "hint": "叶子 = 左右孩子都为空，此时返回它所在深度 d。"
+        },
+        {
+          "index": 2,
+          "answer": "    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);",
+          "accepted": [
+            "    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);"
+          ],
+          "hint": "非叶子时把深度加 1 再下探左右子树，两子树结果相加。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子深度和 = 12",
+          "note": "满二叉树，4 个叶子各深度 3，和 = 12。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "叶子深度和 = 3",
+          "note": "右链，叶子 3 深度 3，和 = 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子深度和 = 2",
+          "note": "根+左叶，叶子 2 深度 2，和 = 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子深度和 = 0",
+          "note": "空树，无叶子，和 = 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 从根以深度 1 开始。\n2. 叶子返回 d。\n3. 非叶子下探并累加。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n4. ★ 叶子返回的是「传入的深度 d」而非 1。写成 `return 1;` 会把每个叶子的深度都当 1，丢失「越深的叶子贡献越大」的关键信息；用 `||` 则会把单孩子结点也误判成叶子。\n5. ★ 每下一层 d 要 +1，忘记 +1 会使所有叶子深度偏小（满二叉树 12 → 9）。只递归 `leafDepth(p->l, d + 1)` 则漏掉右子树全部叶子的深度贡献。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-dsdbg-005",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "bugs": [
+        "把叶子判定从「左右都空」放宽成「任一为空」，单孩子结点被误判为叶子。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子深度和 = 12",
+          "note": "满二叉树，4 个叶子各深度 3，和 = 12。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "叶子深度和 = 3",
+          "note": "右链，叶子 3 深度 3，和 = 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子深度和 = 2",
+          "note": "根+左叶，叶子 2 深度 2，和 = 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子深度和 = 0",
+          "note": "空树，无叶子，和 = 0。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 检查叶子判定。\n2. 检查深度是否逐层 +1。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n4. ★ 右链输入 `1 -1 2 -1 3 -1 -1` 正确 3，本缺陷 1（结点 1、2 都被当成叶子提前返回深度，未下探到真正的叶子 3）。满二叉树因为无单孩子结点，结果不受影响——所以要用「含单孩子的树」的用例才能暴露。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-mdb-005",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "bugs": [
+        "把叶子判定从「左右都空」放宽成「任一为空」，单孩子结点被误判为叶子。",
+        "漏加右子树的叶子深度和，只统计左子树。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "叶子深度和 = 12",
+          "note": "满二叉树，4 个叶子各深度 3，和 = 12。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "叶子深度和 = 3",
+          "note": "右链，叶子 3 深度 3，和 = 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "叶子深度和 = 2",
+          "note": "根+左叶，叶子 2 深度 2，和 = 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "叶子深度和 = 0",
+          "note": "空树，无叶子，和 = 0。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 从根以深度 1 开始。\n2. 叶子返回 d。\n3. 非叶子下探并累加。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n4. ★ 右链输入 `1 -1 2 -1 3 -1 -1` 正确 3，本缺陷 1（结点 1、2 都被当成叶子提前返回深度，未下探到真正的叶子 3）。满二叉树因为无单孩子结点，结果不受影响——所以要用「含单孩子的树」的用例才能暴露。\n5. ★ 满二叉树正确 12（4×3），本缺陷只数左子树叶子（4、5 深度 3）得 6；实际 run 得 3。右链正确 3，本缺陷 0（根只有右孩子，`p->l` 为空返回 0）。只对比左子树可掩盖，需用右子树更深的用例。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-cxa-006",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-01"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树叶子深度求和程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL && p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "单结点树（根即叶）的叶子深度和",
+          "answer": "1",
+          "unit": ""
+        },
+        {
+          "label": "满二叉树（3 层）的叶子深度和",
+          "answer": "12",
+          "unit": ""
+        },
+        {
+          "label": "叶子的判定条件",
+          "answer": "左右孩子都为空",
+          "unit": ""
+        },
+        {
+          "label": "递归何时给 d 加 1",
+          "answer": "每下一层加 1",
+          "unit": ""
+        },
+        {
+          "label": "该算法的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+    },
+    {
+      "id": "ds-ch05-cr-020",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "4 2 5 1 6 3 7 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 建立树。\n2. 中序递归访问。\n3. 打印序列。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n4. 这一组输入（满二叉树中序：4 2 5 1 6 3 7。）的关键在于：full tree inorder.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cr-021",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "2 1 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 建立树。\n2. 中序递归访问。\n3. 打印序列。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n4. 这一组输入（根+左叶中序：2 1。）的关键在于：root with left leaf inorder.\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cc-020",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 2,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    inorder(p->l);",
+          "accepted": [
+            "    inorder(p->l);"
+          ],
+          "hint": "中序先访问左子树。"
+        },
+        {
+          "index": 2,
+          "answer": "    printf(\"%d \", p->data);",
+          "accepted": [
+            "    printf(\"%d \", p->data);"
+          ],
+          "hint": "左子树访问完，访问根结点。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "4 2 5 1 6 3 7 ",
+          "note": "满二叉树中序：4 2 5 1 6 3 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链中序：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "2 1 ",
+          "note": "根+左叶中序：2 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 递归左子树。\n2. 打印根。\n3. 递归右子树。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n4. ★ 中序的访问顺序是「左-根-右」。若把这行写成 `printf(\"%d \", p->data);` 再递归，就变成先序；若放在 `inorder(p->r);` 之后，就变成后序。错位即换遍历方法。\n5. ★ 访问根的语句必须夹在两个递归之间。只递归不打印、或把打印挪到头/尾，输出序列都会改变，但程序不崩溃，只有拿序列与标准中序对比才发现。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-dsdbg-006",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "递归调用缺失",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "bugs": [
+        "漏掉右子树的中序遍历调用，右子树的所有结点都不输出。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "4 2 5 1 6 3 7 ",
+          "note": "满二叉树中序：4 2 5 1 6 3 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链中序：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "2 1 ",
+          "note": "根+左叶中序：2 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 检查访问根的位置。\n2. 检查是否漏一侧递归。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n4. ★ 满二叉树正确 4 2 5 1 6 3 7，本缺陷 4 2 1（根和左子树仍在，右子树 6、3、7 消失）。替换成空语句 `;` 可编译通过，程序不崩，只少一段序列。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-mdb-006",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    ;\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    ;\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "bugs": [
+        "漏掉右子树的中序遍历调用，右子树的所有结点都不输出。",
+        "漏掉左子树的中序遍历调用，左子树所有结点不输出。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "4 2 5 1 6 3 7 ",
+          "note": "满二叉树中序：4 2 5 1 6 3 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链中序：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "2 1 ",
+          "note": "根+左叶中序：2 1。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 递归左子树。\n2. 打印根。\n3. 递归右子树。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n4. ★ 满二叉树正确 4 2 5 1 6 3 7，本缺陷 4 2 1（根和左子树仍在，右子树 6、3、7 消失）。替换成空语句 `;` 可编译通过，程序不崩，只少一段序列。\n5. ★ 满二叉树正确 4 2 5 1 6 3 7，本缺陷 1 3 7（只输出右链 1-3-7？实际 run 1 3 7）。根和右子树仍在但左子树消失，序列长度明显变短。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cxa-007",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-09",
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树中序遍历程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    inorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "满二叉树（3 层）中序的首个值",
+          "answer": "4",
+          "unit": ""
+        },
+        {
+          "label": "中序的访问顺序",
+          "answer": "左-根-右",
+          "unit": ""
+        },
+        {
+          "label": "中序遍历的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        },
+        {
+          "label": "先序/中序/后序中，根的位置",
+          "answer": "先序最前、中序居中、后序最后",
+          "unit": ""
+        },
+        {
+          "label": "右链 1-2-3 的中序序列",
+          "answer": "1 2 3",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cr-022",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "1 2 3 4 5 6 7 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 建立树。\n2. 队列层序访问。\n3. 打印序列。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n4. 这一组输入（满二叉树层次：1 2 3 4 5 6 7。）的关键在于：full tree level order.\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cr-023",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "1 2 ",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 建立树。\n2. 队列层序访问。\n3. 打印序列。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n4. 这一组输入（根+左叶层次：1 2。）的关键在于：root with left leaf, level 1 2.\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cc-021",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n/*__BLANK_1__*/\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n/*__BLANK_2__*/\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n/*__BLANK_1__*/\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n/*__BLANK_2__*/\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    TN *q[MAXN]; int head = 0, tail = 0;",
+          "accepted": [
+            "    TN *q[MAXN]; int head = 0, tail = 0;"
+          ],
+          "hint": "定义队列数组与头尾下标，head 出队、tail 入队。"
+        },
+        {
+          "index": 2,
+          "answer": "        if (cur->l) q[tail++] = cur->l;",
+          "accepted": [
+            "        if (cur->l) q[tail++] = cur->l;"
+          ],
+          "hint": "当前结点有左孩子就入队。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 2 3 4 5 6 7 ",
+          "note": "满二叉树层次：1 2 3 4 5 6 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链层次：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左叶层次：1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 根入队。\n2. 取队头、访问后左右孩子入队。\n3. 队列空即遍历完。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n4. ★ 队列用数组 + 头尾下标，出队是 `q[head++]`，入队是 `q[tail++]`。头尾不递增（如始终 head=0 或 head 不 ++）会导致重复处理同一结点堆积或无限循环。\n5. ★ 入队前必须判 `cur->l != NULL`。直接把可能为空的 `cur->l` 入队，出队时对 NULL 解引用 `cur->data` 会崩溃。层次遍历按「从左到右」先左后右，顺序颠倒会改变同一层内输出次序。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-dsdbg-007",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "入队顺序颠倒",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->r) q[tail++] = cur->r;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->r) q[tail++] = cur->r;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "bugs": [
+        "把右孩子先入队、左孩子后入队，同层内输出顺序变为从右到左。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 2 3 4 5 6 7 ",
+          "note": "满二叉树层次：1 2 3 4 5 6 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链层次：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左叶层次：1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 检查左右入队顺序。\n2. 检查入队前是否判空。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n4. ★ 满二叉树正确 1 2 3 4 5 6 7，本缺陷 1 3 2 7 6 5 4（每层顺序翻转）。程序不崩，只是顺序错；若树每层只有一个结点（如右链）则看不出差别——要用每层有多结点的树。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-mdb-007",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        ;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        ;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "bugs": [
+        "把右孩子先入队、左孩子后入队，同层内输出顺序变为从右到左。",
+        "丢掉右孩子入队，右子树的结点全部不访问。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "1 2 3 4 5 6 7 ",
+          "note": "满二叉树层次：1 2 3 4 5 6 7。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "1 2 3 ",
+          "note": "右链层次：1 2 3。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "1 2 ",
+          "note": "根+左叶层次：1 2。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "",
+          "note": "空树，无输出。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 根入队。\n2. 取队头、访问后左右孩子入队。\n3. 队列空即遍历完。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n4. ★ 满二叉树正确 1 2 3 4 5 6 7，本缺陷 1 3 2 7 6 5 4（每层顺序翻转）。程序不崩，只是顺序错；若树每层只有一个结点（如右链）则看不出差别——要用每层有多结点的树。\n5. ★ 满二叉树正确 1 2 3 4 5 6 7，本缺陷 1 2 4（只沿左孩子走）。右链 `1 -1 2 ...` 本缺陷只输出 1。NULL 不会入队（已在条件里判掉），所以只丢右侧不崩溃。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cxa-008",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-11",
+        "ds-ch05-03"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树层次遍历程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->l) q[tail++] = cur->l;\n        if (cur->r) q[tail++] = cur->r;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "层次遍历使用的数据结构",
+          "answer": "队列",
+          "unit": ""
+        },
+        {
+          "label": "层次遍历的顺序",
+          "answer": "自上而下、从左到右",
+          "unit": ""
+        },
+        {
+          "label": "层次遍历的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        },
+        {
+          "label": "队列出队操作",
+          "answer": "q[head++]",
+          "unit": ""
+        },
+        {
+          "label": "满二叉树（3 层）层次序列",
+          "answer": "1 2 3 4 5 6 7",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 每结点入队出队一次。\n2. O(n)，空间 O(w)。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+    },
+    {
+      "id": "ds-ch05-cr-024",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+      "answer": "单孩子结点数 = 0",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 建立树。\n2. 后序统计单孩子。\n3. 打印计数。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n4. 这一组输入（满二叉树每个结点有 0 或 2 个孩子，单孩子结点 0 个。）的关键在于：full tree 0 single-child.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-025",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "understand",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n1 2 -1 -1 -1\n```\n\n程序：\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "stdin": "1 2 -1 -1 -1\n",
+      "answer": "单孩子结点数 = 1",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 建立树。\n2. 后序统计单孩子。\n3. 打印计数。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n4. 这一组输入（根只有左孩子，单孩子结点 1 个。）的关键在于：root with left child, 1 single-child.\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cc-022",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 3,
+      "bloom": "apply",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n/*__BLANK_1__*/\n/*__BLANK_2__*/\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;",
+          "accepted": [
+            "    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;"
+          ],
+          "hint": "恰有一个孩子 ⇔ 左空与右空的真假不同（异或）。"
+        },
+        {
+          "index": 2,
+          "answer": "    return cur + singleChild(p->l) + singleChild(p->r);",
+          "accepted": [
+            "    return cur + singleChild(p->l) + singleChild(p->r);"
+          ],
+          "hint": "单孩子结点数 = 本结点判定 + 左子树单孩子 + 右子树单孩子。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "满二叉树每个结点有 0 或 2 个孩子，单孩子结点 0 个。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "单孩子结点数 = 2",
+          "note": "右链，结点 1、2 各只有右孩子，单孩子结点 2 个。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "单孩子结点数 = 1",
+          "note": "根只有左孩子，单孩子结点 1 个。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "空树，0 个。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 先序建立树。\n2. 判断本结点是否单孩子。\n3. 递归累加左右子树。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n4. ★ 「恰好一个孩子」用异或 `!=`（左右空状态不同）。写成 `&&` 会统计叶子（两个都空），写成 `||` 会统计「至少一个孩子」（含两个都有的）。三者是不同概念，必须区分叶子/单孩子/非空。\n5. ★ 漏加 `singleChild(p->r)` 会丢掉右子树中的单孩子结点；漏加 `cur` 则本结点即使单孩子也不计数。满二叉树因无单孩子结点，只缺右子树项时结果仍可能为 0（被掩盖），需用含单孩子的链树用例。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-dsdbg-008",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "条件判断错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "bugs": [
+        "把「恰好一个孩子」放宽成「至少一个孩子为空」，双孩子结点也被计入。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "满二叉树每个结点有 0 或 2 个孩子，单孩子结点 0 个。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "单孩子结点数 = 2",
+          "note": "右链，结点 1、2 各只有右孩子，单孩子结点 2 个。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "单孩子结点数 = 1",
+          "note": "根只有左孩子，单孩子结点 1 个。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "空树，0 个。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 检查单孩子判定表达式。\n2. 检查是否漏右侧递归。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n4. ★ 满二叉树正确 0，本缺陷 4（每层双孩子结点都被多计）。右链正确 2，本缺陷 3（叶子 3 两个都空也被 `||` 判为真）。用 `&&` 则变成统计叶子，又是另一种错。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-mdb-008",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "bugs": [
+        "把「恰好一个孩子」放宽成「至少一个孩子为空」，双孩子结点也被计入。",
+        "漏加右子树的单孩子结点数，只统计左子树。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "满二叉树每个结点有 0 或 2 个孩子，单孩子结点 0 个。"
+        },
+        {
+          "stdin": "1 -1 2 -1 3 -1 -1\n",
+          "expected": "单孩子结点数 = 2",
+          "note": "右链，结点 1、2 各只有右孩子，单孩子结点 2 个。"
+        },
+        {
+          "stdin": "1 2 -1 -1 -1\n",
+          "expected": "单孩子结点数 = 1",
+          "note": "根只有左孩子，单孩子结点 1 个。"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "单孩子结点数 = 0",
+          "note": "空树，0 个。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 先序建立树。\n2. 判断本结点是否单孩子。\n3. 递归累加左右子树。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n4. ★ 满二叉树正确 0，本缺陷 4（每层双孩子结点都被多计）。右链正确 2，本缺陷 3（叶子 3 两个都空也被 `||` 判为真）。用 `&&` 则变成统计叶子，又是另一种错。\n5. ★ 满二叉树正确 0，本缺陷 0（恰好被掩盖，因为满树无单孩子）；右链正确 2，本缺陷 1（只数到根 1，右子树 2 漏了）。所以要用含单孩子且在右子树的用例才能暴露。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cxa-009",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "difficulty": 4,
+      "bloom": "analyze",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-02",
+        "ds-ch05-09"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的二叉树单孩子结点统计程序，回答下列问题。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) != (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "右链 1-2-3 的单孩子结点数",
+          "answer": "2",
+          "unit": ""
+        },
+        {
+          "label": "满二叉树的单孩子结点数",
+          "answer": "0",
+          "unit": ""
+        },
+        {
+          "label": "「恰好一个孩子」的布尔表达式",
+          "answer": "(l==NULL) != (r==NULL)",
+          "unit": ""
+        },
+        {
+          "label": "叶子/单孩子/都有的区分",
+          "answer": "&& / != / ||",
+          "unit": ""
+        },
+        {
+          "label": "该算法的时间复杂度",
+          "answer": "O(n)",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n)",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+    },
+    {
+      "id": "ds-ch05-cr-026",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 4,
+      "bloom": "understand",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n4 7 5 2 4\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "stdin": "4 7 5 2 4\n",
+      "answer": "WPL = 35",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. 读权值。\n2. 反复合并最小两权值。\n3. 累加得 WPL 并打印。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n4. 这一组输入（权值 7 5 2 4，WPL = 35。）的关键在于：wpl 35.\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+    },
+    {
+      "id": "ds-ch05-cr-027",
+      "type": "code_reading",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 4,
+      "bloom": "understand",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "写出下列程序在给定输入下的运行结果（逐行抄写，空格与换行都要一致）。\n\n输入：\n```\n5 2 3 4 7 9\n```\n\n程序：\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "stdin": "5 2 3 4 7 9\n",
+      "answer": "WPL = 55",
+      "explanation": "【思路】本题要求直接写出运行结果，所以不能凭印象猜，必须把每一条语句对变量的影响逐步跟踪到底。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. 读权值。\n2. 反复合并最小两权值。\n3. 累加得 WPL 并打印。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n4. 这一组输入（权值 2 3 4 7 9，WPL = 55。）的关键在于：wpl 55.\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+    },
+    {
+      "id": "ds-ch05-cc-023",
+      "type": "code_completion",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 4,
+      "bloom": "apply",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "把下列程序中的空位补全，使它对所有测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n/*__BLANK_1__*/\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n/*__BLANK_2__*/\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n/*__BLANK_1__*/\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n/*__BLANK_2__*/\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "blanks": [
+        {
+          "index": 1,
+          "answer": "            if (w[i] < w[mi]) { mj = mi; mi = i; }",
+          "accepted": [
+            "            if (w[i] < w[mi]) { mj = mi; mi = i; }"
+          ],
+          "hint": "若当前权值比最小还小，则原最小退为次小，当前成为最小。"
+        },
+        {
+          "index": 2,
+          "answer": "        wpl += s;",
+          "accepted": [
+            "        wpl += s;"
+          ],
+          "hint": "每次合并的两个权值之和要累加到 WPL。"
+        }
+      ],
+      "solution": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "4 7 5 2 4\n",
+          "expected": "WPL = 35",
+          "note": "权值 7 5 2 4，WPL = 35。"
+        },
+        {
+          "stdin": "3 1 2 3\n",
+          "expected": "WPL = 9",
+          "note": "权值 1 2 3，WPL = 9。"
+        },
+        {
+          "stdin": "5 2 3 4 7 9\n",
+          "expected": "WPL = 55",
+          "note": "权值 2 3 4 7 9，WPL = 55。"
+        },
+        {
+          "stdin": "2 10 20\n",
+          "expected": "WPL = 30",
+          "note": "权值 10 20，WPL = 30。"
+        }
+      ],
+      "explanation": "【思路】本题要求补全空位，所以先要判断「这一行在整个算法里承担什么职责」，再反推缺了它会发生什么。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. 读入 n 与 n 个权值。\n2. 每次找两个最小，求和并累入 WPL。\n3. 用和替换最小、用末尾元素填充次小并 n--。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n4. ★ 找两个最小权值时，先比 `w[i] < w[mi]` 是否刷新最小，再用 `else if (w[i] < w[mj])` 刷新次小。颠倒这两个分支或比较方向写反（`>` 会去找最大），WPL 会错。循环需从下标 2 开始（前两个已作为初始 mi/mj）。\n5. ★ WPL = 所有内部结点权值之和 = 每次合并的和累加。写成 `wpl = s`（不累加）只留最后一次合并的和，且不崩溃、输出仍是个「合法」的数（如 35 → 18），只有对比才知道丢了历史合并。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+    },
+    {
+      "id": "ds-ch05-dsdbg-009",
+      "type": "ds_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "defectKind": "比较方向错误",
+      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "bugs": [
+        "把「找最小」的反向比较，导致选出最大的两个权值合并，得到错误的 WPL。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "4 7 5 2 4\n",
+          "expected": "WPL = 35",
+          "note": "权值 7 5 2 4，WPL = 35。"
+        },
+        {
+          "stdin": "3 1 2 3\n",
+          "expected": "WPL = 9",
+          "note": "权值 1 2 3，WPL = 9。"
+        },
+        {
+          "stdin": "5 2 3 4 7 9\n",
+          "expected": "WPL = 55",
+          "note": "权值 2 3 4 7 9，WPL = 55。"
+        },
+        {
+          "stdin": "2 10 20\n",
+          "expected": "WPL = 30",
+          "note": "权值 10 20，WPL = 30。"
+        }
+      ],
+      "explanation": "【思路】本题要求找出并改正一处错误，所以先要确认程序「本该做什么」，再逐个语句检查它「实际做了什么」。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. 检查选最小还是最大。\n2. 检查是否累加而非覆盖。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n4. ★ 正确 35，本缺陷 36（权值 7 5 2 4 改为合最大）。哈夫曼必须始终合并最小的两个，方向一改 WPL 立即变大。注意程序不崩，只是数值不同，要对比。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+    },
+    {
+      "id": "ds-ch05-mdb-009",
+      "type": "multi_bug_debug",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "下面的程序有两处错误。请把修正后的完整程序写出来，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl = s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl = s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "bugs": [
+        "把「找最小」的反向比较，导致选出最大的两个权值合并，得到错误的 WPL。",
+        "漏掉累加，WPL 只等于最后一次合并的和。"
+      ],
+      "fixed_code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "testCases": [
+        {
+          "stdin": "4 7 5 2 4\n",
+          "expected": "WPL = 35",
+          "note": "权值 7 5 2 4，WPL = 35。"
+        },
+        {
+          "stdin": "3 1 2 3\n",
+          "expected": "WPL = 9",
+          "note": "权值 1 2 3，WPL = 9。"
+        },
+        {
+          "stdin": "5 2 3 4 7 9\n",
+          "expected": "WPL = 55",
+          "note": "权值 2 3 4 7 9，WPL = 55。"
+        },
+        {
+          "stdin": "2 10 20\n",
+          "expected": "WPL = 30",
+          "note": "权值 10 20，WPL = 30。"
+        }
+      ],
+      "explanation": "【思路】本题有两处错误，且它们可能互相掩盖，所以不能改完一处就交卷，必须两处都改完再整体复核。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. 读入 n 与 n 个权值。\n2. 每次找两个最小，求和并累入 WPL。\n3. 用和替换最小、用末尾元素填充次小并 n--。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n4. ★ 正确 35，本缺陷 36（权值 7 5 2 4 改为合最大）。哈夫曼必须始终合并最小的两个，方向一改 WPL 立即变大。注意程序不崩，只是数值不同，要对比。\n5. ★ 正确 35，本缺陷 18（权值 7 5 2 4，最后合并 7+11=18）。WPL 定义是所有内部结点权值之和，漏加会显著偏小，且不像越界那样一眼看出，需逐次合并对比。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+    },
+    {
+      "id": "ds-ch05-cxa-010",
+      "type": "complexity_analysis",
+      "category": "ds",
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "difficulty": 5,
+      "bloom": "analyze",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "source": "自撰变式（依据 第5章 树和二叉树 知识点体系）",
+      "variantOf": "",
+      "knowledgeIds": [
+        "ds-ch05-04",
+        "ds-ch05-18"
+      ],
+      "vizIds": [],
+      "ai_generated": true,
+      "generated_at": "2026-11-09",
+      "verified": true,
+      "stem": "阅读下面的哈夫曼树带权路径长度（WPL）计算程序，回答下列问题。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] < w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
+      "asks": [
+        {
+          "label": "权值 1 2 3 的 WPL",
+          "answer": "9",
+          "unit": ""
+        },
+        {
+          "label": "权值 10 20 的 WPL",
+          "answer": "30",
+          "unit": ""
+        },
+        {
+          "label": "WPL 的组成",
+          "answer": "所有内部结点权值之和",
+          "unit": ""
+        },
+        {
+          "label": "每次合并选两个什么样的权值",
+          "answer": "最小的两个",
+          "unit": ""
+        },
+        {
+          "label": "该算法的时间复杂度",
+          "answer": "O(n^2)（简单实现）",
+          "unit": ""
+        }
+      ],
+      "complexity": "O(n^2)（每次扫描找两个最小，共 n-1 次合并）",
+      "accepted": [],
+      "askSpace": false,
+      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. n-1 次合并。\n2. 每次 O(n) 扫描，O(n^2)。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
     }
   ]
 }

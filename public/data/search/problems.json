@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "13537559738e6cda",
+  "content_sha": "8cc7bab744b38317",
   "fields": [
     "title",
     "tags",
@@ -10,7 +10,7 @@
   "enrichStrategies": [
     "minisearch-stemmer:en"
   ],
-  "count": 3391,
+  "count": 3808,
   "docs": [
     {
       "id": "c-ch01-cc-001",
@@ -34929,6 +34929,192 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch01-cr-014",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-015",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-008",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-005",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-005",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-005",
+      "file": "ds-ch01.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "时间复杂度",
+        "算法分析",
+        "循环嵌套",
+        "计数"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-016",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cr-017",
+      "file": "ds-ch01.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cc-009",
+      "file": "ds-ch01.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-dsdbg-006",
+      "file": "ds-ch01.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-mdb-006",
+      "file": "ds-ch01.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch01-cxa-006",
+      "file": "ds-ch01.json",
+      "title": "阅读下面的程序",
+      "tags": [
+        "时间复杂度",
+        "循环嵌套",
+        "基本操作计数",
+        "对数阶",
+        "大O记法"
+      ],
+      "chapter": "第1章 绪论",
+      "section": "1.4 算法和算法分析",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch02-pg-001",
       "file": "ds-ch02.json",
       "title": "已知顺序表 L 中元素个数为 length",
@@ -36663,6 +36849,825 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch02-cr-026",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-027",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-018",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-009",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-008",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-012",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序在**带头结点的双向链表**上做插入与删除",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-013",
+      "file": "ds-ch02.json",
+      "title": "接上题",
+      "tags": [
+        "双向链表",
+        "插入删除",
+        "prior与next",
+        "指针改写顺序"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-028",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-029",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-019",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-010",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-009",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-014",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序删掉带头结点单链表里**所有**值等于 x 的结点",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-015",
+      "file": "ds-ch02.json",
+      "title": "接上题",
+      "tags": [
+        "单链表",
+        "删除结点",
+        "双指针",
+        "内存释放"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-030",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-031",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-020",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-011",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-010",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-016",
+      "file": "ds-ch02.json",
+      "title": "下面这段程序用**三次逆置法**把顺序表循环左移 k 位",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-017",
+      "file": "ds-ch02.json",
+      "title": "接上题",
+      "tags": [
+        "顺序表",
+        "循环左移",
+        "三次逆置",
+        "就地算法"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-032",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-033",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-021",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-012",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-011",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-018",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的带头结点单链表顺序查找程序",
+      "tags": [
+        "单链表",
+        "顺序查找",
+        "比较次数"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-034",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-035",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-022",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-013",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-012",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-019",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的带头结点双向链表按位置插入程序",
+      "tags": [
+        "双向链表",
+        "按位置插入",
+        "四指针改向"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.4 循环链表与双向链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-036",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-037",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-023",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-014",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-013",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-020",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的单链表回文判断程序",
+      "tags": [
+        "单链表",
+        "回文",
+        "逆置复本比较"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-038",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-039",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-024",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-015",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-014",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-021",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的顺序表就地逆置程序",
+      "tags": [
+        "顺序表",
+        "就地逆置",
+        "对称交换"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-040",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-041",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-025",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-016",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-015",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-022",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的快慢指针检测链表环程序",
+      "tags": [
+        "单链表",
+        "环的检测",
+        "快慢指针"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.3 线性表的链式表示（单链表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-042",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cr-043",
+      "file": "ds-ch02.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cc-026",
+      "file": "ds-ch02.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-dsdbg-017",
+      "file": "ds-ch02.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-mdb-016",
+      "file": "ds-ch02.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch02-cxa-023",
+      "file": "ds-ch02.json",
+      "title": "阅读下面的顺序表去重程序",
+      "tags": [
+        "顺序表",
+        "去重",
+        "保持首次出现"
+      ],
+      "chapter": "第2章 线性表",
+      "section": "2.2 线性表的顺序表示（顺序表）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch03-sc-001",
       "file": "ds-ch03.json",
       "title": "栈的插入和删除操作都只能在表的一端进行",
@@ -37773,6 +38778,906 @@
       ],
       "chapter": "第3章 栈和队列",
       "section": "3.5 循环队列的顺序表示",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-015",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-016",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-011",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-005",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-004",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-007",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的链式栈程序",
+      "tags": [
+        "链栈",
+        "链式存储",
+        "入栈",
+        "出栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.3 栈的链式表示与实现",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-017",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-018",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-012",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-006",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-005",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-008",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的链式队列程序",
+      "tags": [
+        "链队列",
+        "队头",
+        "队尾",
+        "入队出队"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.4 队列的定义与链式表示",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-019",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-020",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-013",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-007",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-006",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-009",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的汉诺塔递归程序",
+      "tags": [
+        "汉诺塔",
+        "递归",
+        "栈",
+        "应用"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-021",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-022",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-014",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-008",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-007",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-010",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的双栈共享程序",
+      "tags": [
+        "双栈",
+        "共享栈",
+        "判满",
+        "顺序栈"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.2 栈的顺序表示与实现",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-023",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-024",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-015",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-009",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-008",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-011",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的后缀表达式求值程序",
+      "tags": [
+        "后缀表达式",
+        "求值",
+        "操作数栈",
+        "数字与运算符处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-025",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-026",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-016",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-010",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-009",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-012",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的中缀转后缀表达式程序",
+      "tags": [
+        "中缀转后缀",
+        "运算符栈",
+        "优先级",
+        "括号处理"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-027",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-028",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-017",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-011",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-010",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-013",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的用两个栈实现队列的程序",
+      "tags": [
+        "两栈实现队列",
+        "入队出队",
+        "倒栈",
+        "栈顶"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-029",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-030",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-018",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-012",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-011",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-014",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的循环队列操作程序",
+      "tags": [
+        "循环队列",
+        "队头队尾指针",
+        "判空判满",
+        "取模"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.5 循环队列的顺序表示",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-031",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-032",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-019",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-013",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-012",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-015",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的用栈判定回文的程序",
+      "tags": [
+        "回文判定",
+        "栈",
+        "字符比较",
+        "逆序"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-033",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cr-034",
+      "file": "ds-ch03.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cc-020",
+      "file": "ds-ch03.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-dsdbg-014",
+      "file": "ds-ch03.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-mdb-013",
+      "file": "ds-ch03.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch03-cxa-016",
+      "file": "ds-ch03.json",
+      "title": "阅读下面的用递归回溯求解迷宫可达性的程序",
+      "tags": [
+        "迷宫",
+        "递归回溯",
+        "深度优先",
+        "可达性"
+      ],
+      "chapter": "第3章 栈和队列",
+      "section": "3.6 栈与队列的应用",
       "type": "complexity_analysis",
       "category": "ds"
     },
@@ -39479,6 +41384,636 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch04-cr-034",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-035",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-021",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-014",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-014",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-014",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序实现 BF",
+      "tags": [
+        "模式匹配",
+        "BF算法",
+        "字符串",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-036",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-037",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-022",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-015",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-015",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-015",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序实现 **KMP 算法的不重叠计数版**",
+      "tags": [
+        "KMP",
+        "模式匹配",
+        "next数组",
+        "计数"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.2 串的模式匹配（BF 与 KMP）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-038",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-039",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-023",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-016",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-016",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-016",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序实现串的**定位",
+      "tags": [
+        "字符串",
+        "定长顺序存储",
+        "定位",
+        "Index"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.1 串的定义与存储结构",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-040",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-041",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-024",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-017",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-017",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-017",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序按**列主序**",
+      "tags": [
+        "数组",
+        "列主序",
+        "地址计算",
+        "顺序存储"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.3 数组的顺序存储与地址计算",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-042",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-043",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-025",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-018",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-018",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-018",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序把**对称矩阵**按行优先压缩存储到下三角一维数组",
+      "tags": [
+        "对称矩阵",
+        "压缩存储",
+        "行优先",
+        "数组"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.4 特殊矩阵的压缩存储",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-044",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-045",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-026",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-019",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-019",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-019",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序实现稀疏矩阵的三元组**相加**",
+      "tags": [
+        "稀疏矩阵",
+        "三元组",
+        "相加",
+        "归并"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.5 稀疏矩阵的三元组与十字链表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-046",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cr-047",
+      "file": "ds-ch04.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cc-027",
+      "file": "ds-ch04.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-dsdbg-020",
+      "file": "ds-ch04.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-mdb-020",
+      "file": "ds-ch04.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch04-cxa-020",
+      "file": "ds-ch04.json",
+      "title": "下面这段程序计算**广义表**的长度",
+      "tags": [
+        "广义表",
+        "长度",
+        "递归",
+        "字符串"
+      ],
+      "chapter": "第4章 串、数组和广义表",
+      "section": "4.6 广义表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch05-sc-001",
       "file": "ds-ch05.json",
       "title": "关于树的基本术语",
@@ -40617,6 +43152,870 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch05-cr-010",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-011",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-015",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-001",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-001",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-002",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树叶子结点统计程序",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "叶子结点",
+        "递归",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-012",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-013",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-016",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-002",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-002",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-003",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树深度计算程序",
+      "tags": [
+        "二叉树",
+        "深度",
+        "递归",
+        "后序",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-014",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-015",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-017",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-003",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-003",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-004",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树结点统计程序",
+      "tags": [
+        "二叉树",
+        "二叉链表",
+        "结点计数",
+        "递归",
+        "后序"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-016",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-017",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-018",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-004",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-004",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-005",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树镜像",
+      "tags": [
+        "二叉树",
+        "镜像",
+        "递归",
+        "先序",
+        "左右交换"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-018",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-019",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-019",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-005",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-005",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-006",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树叶子深度求和程序",
+      "tags": [
+        "二叉树",
+        "叶子",
+        "深度",
+        "递归",
+        "带参递归"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-020",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-021",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-020",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-006",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-006",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-007",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树中序遍历程序",
+      "tags": [
+        "二叉树",
+        "中序遍历",
+        "递归",
+        "二叉链表",
+        "遍历"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-022",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-023",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-021",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-007",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-007",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-008",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树层次遍历程序",
+      "tags": [
+        "二叉树",
+        "层次遍历",
+        "队列",
+        "广度优先",
+        "二叉链表"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-024",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-025",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-022",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-008",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-008",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-009",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的二叉树单孩子结点统计程序",
+      "tags": [
+        "二叉树",
+        "单孩子结点",
+        "递归",
+        "后序",
+        "条件计数"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.4 二叉树的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-026",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cr-027",
+      "file": "ds-ch05.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cc-023",
+      "file": "ds-ch05.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-dsdbg-009",
+      "file": "ds-ch05.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-mdb-009",
+      "file": "ds-ch05.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch05-cxa-010",
+      "file": "ds-ch05.json",
+      "title": "阅读下面的哈夫曼树带权路径长度",
+      "tags": [
+        "哈夫曼树",
+        "哈夫曼编码",
+        "WPL",
+        "贪心",
+        "带权路径长度"
+      ],
+      "chapter": "第5章 树和二叉树",
+      "section": "5.7 哈夫曼树与哈夫曼编码",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch06-sc-001",
       "file": "ds-ch06.json",
       "title": "具有 10 个顶点的无向完全图",
@@ -41455,6 +44854,1086 @@
       "category": "ds"
     },
     {
+      "id": "ds-ch06-cr-007",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-008",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-011",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-001",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-001",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-001",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的邻接表 DFS 程序",
+      "tags": [
+        "邻接表",
+        "DFS",
+        "深度优先搜索",
+        "图的遍历"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-009",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-010",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-012",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-002",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-002",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-002",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的邻接表 BFS 程序",
+      "tags": [
+        "邻接表",
+        "BFS",
+        "广度优先搜索",
+        "队列"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-011",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-012",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-013",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-003",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-003",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-003",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 Dijkstra 最短路径程序",
+      "tags": [
+        "Dijkstra",
+        "单源最短路径",
+        "邻接矩阵",
+        "贪心"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-013",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-014",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-014",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-004",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-004",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-004",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 Kruskal 最小生成树程序",
+      "tags": [
+        "Kruskal",
+        "最小生成树",
+        "并查集",
+        "边排序"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最小生成树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-015",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-016",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-015",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-005",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-005",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-005",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的邻接矩阵求度程序",
+      "tags": [
+        "邻接矩阵",
+        "出度",
+        "入度",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-017",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-018",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-016",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-006",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-006",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-006",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的邻接表拓扑排序",
+      "tags": [
+        "拓扑排序",
+        "Kahn",
+        "入度",
+        "有向无环图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-019",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-020",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-017",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-007",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-007",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-007",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 Floyd 全源最短路径程序",
+      "tags": [
+        "Floyd",
+        "全源最短路径",
+        "邻接矩阵",
+        "动态规划"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.5 最短路径",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-021",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-022",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-018",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-008",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-008",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-008",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 Prim 最小生成树程序",
+      "tags": [
+        "Prim",
+        "最小生成树",
+        "lowcost",
+        "邻接矩阵"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.4 最小生成树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-023",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-024",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-019",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-009",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-009",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-009",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的邻接矩阵转邻接表程序",
+      "tags": [
+        "邻接表",
+        "邻接矩阵",
+        "转换",
+        "头插法"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.2 图的存储结构",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-025",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-026",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-020",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-010",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-010",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-010",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 BFS 求连通分量程序",
+      "tags": [
+        "连通分量",
+        "BFS",
+        "无向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-027",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-028",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-021",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-011",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-011",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-011",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 DFS 检测环程序",
+      "tags": [
+        "DFS",
+        "环检测",
+        "颜色标记",
+        "有向图"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.3 图的遍历",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-029",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cr-030",
+      "file": "ds-ch06.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cc-022",
+      "file": "ds-ch06.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-dsdbg-012",
+      "file": "ds-ch06.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-mdb-012",
+      "file": "ds-ch06.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch06-cxa-012",
+      "file": "ds-ch06.json",
+      "title": "阅读下面的 AOE 网关键路径求解程序",
+      "tags": [
+        "AOE网",
+        "关键路径",
+        "拓扑排序",
+        "ve/vl",
+        "活动开始时间"
+      ],
+      "chapter": "第6章 图",
+      "section": "6.6 拓扑排序与关键路径",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
       "id": "ds-ch07-sc-001",
       "file": "ds-ch07.json",
       "title": "衡量一个查找算法效率的主要指标是平均查找长度 ASL",
@@ -42171,6 +46650,996 @@
       "chapter": "第7章 查找",
       "section": "7.4 平衡二叉树",
       "type": "structure_trace",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-008",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-009",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-007",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-002",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-001",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-002",
+      "file": "ds-ch07.json",
+      "title": "阅读下面这段带哨兵的顺序查找算法",
+      "tags": [
+        "顺序查找",
+        "哨兵",
+        "比较次数",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-010",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-011",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-008",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-003",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-002",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-003",
+      "file": "ds-ch07.json",
+      "title": "阅读下面这段折半查找算法",
+      "tags": [
+        "折半查找",
+        "有序表",
+        "比较次数",
+        "判定树"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-012",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-013",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-009",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-004",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-003",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-004",
+      "file": "ds-ch07.json",
+      "title": "阅读下面这段二叉排序树插入与查找程序",
+      "tags": [
+        "二叉排序树",
+        "插入",
+        "中序遍历",
+        "查找"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-014",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-015",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-010",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-005",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-004",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-005",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的线性探测散列表程序",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "开放定址",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-016",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-017",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-011",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-006",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-005",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-006",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的链地址法散列表程序",
+      "tags": [
+        "散列表",
+        "链地址法",
+        "拉链法",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-018",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-019",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-012",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-007",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-006",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-007",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的分块查找程序",
+      "tags": [
+        "分块查找",
+        "索引顺序查找",
+        "索引表",
+        "ASL"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-020",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-021",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-013",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-008",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-007",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-008",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的二叉排序树递归查找程序",
+      "tags": [
+        "二叉排序树",
+        "递归查找",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-022",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-023",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-014",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-009",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-008",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-009",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的二叉排序树求最值与范围统计程序",
+      "tags": [
+        "二叉排序树",
+        "最小值",
+        "最大值",
+        "中序"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.3 二叉排序树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-024",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-025",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-015",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-010",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-009",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-010",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的平衡因子计算程序",
+      "tags": [
+        "平衡二叉树",
+        "平衡因子",
+        "AVL",
+        "树高"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.4 平衡二叉树",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-026",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-027",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-016",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-011",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-010",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-011",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的递归折半查找程序",
+      "tags": [
+        "折半查找",
+        "递归",
+        "有序表",
+        "比较次数"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.2 线性表的查找（顺序查找与折半查找）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-028",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cr-029",
+      "file": "ds-ch07.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cc-017",
+      "file": "ds-ch07.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-dsdbg-012",
+      "file": "ds-ch07.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-mdb-011",
+      "file": "ds-ch07.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch07-cxa-012",
+      "file": "ds-ch07.json",
+      "title": "阅读下面的散列表构造程序",
+      "tags": [
+        "散列表",
+        "线性探测",
+        "装填因子",
+        "成功查找ASL",
+        "除留余数法"
+      ],
+      "chapter": "第7章 查找",
+      "section": "7.5 散列表",
+      "type": "complexity_analysis",
       "category": "ds"
     },
     {
@@ -42955,6 +48424,834 @@
       ],
       "chapter": "第8章 排序",
       "section": "8.2 插入排序",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-011",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-012",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-010",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-001",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-001",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-002",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段冒泡排序算法",
+      "tags": [
+        "冒泡排序",
+        "交换",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-013",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-014",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-011",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-002",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-002",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-003",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段简单选择排序算法",
+      "tags": [
+        "简单选择排序",
+        "比较次数",
+        "交换次数",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-015",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-016",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-012",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-003",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-003",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-004",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段堆排序算法",
+      "tags": [
+        "堆排序",
+        "大顶堆",
+        "建堆",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.4 选择排序（简单选择排序与堆排序）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-017",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-018",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-013",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-004",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-004",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-005",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段直接插入排序算法",
+      "tags": [
+        "直接插入排序",
+        "哨兵",
+        "逆序对",
+        "比较次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-019",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-020",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-014",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-005",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-005",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-006",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段折半插入排序算法",
+      "tags": [
+        "折半插入排序",
+        "二分查找",
+        "比较次数",
+        "移动次数",
+        "稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-021",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-022",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-015",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-006",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-006",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-007",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段希尔排序算法",
+      "tags": [
+        "希尔排序",
+        "增量",
+        "不稳定",
+        "插入类"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.2 插入排序",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-023",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-024",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-016",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-007",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-007",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-008",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段二路归并排序算法",
+      "tags": [
+        "归并排序",
+        "分治",
+        "稳定",
+        "比较次数"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-025",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-026",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-017",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-008",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-008",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-009",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段快速排序算法",
+      "tags": [
+        "快速排序",
+        "枢轴",
+        "分治",
+        "不稳定"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.3 交换排序（冒泡排序与快速排序）",
+      "type": "complexity_analysis",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-027",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cr-028",
+      "file": "ds-ch08.json",
+      "title": "写出下列程序在给定输入下的运行结果",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_reading",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cc-018",
+      "file": "ds-ch08.json",
+      "title": "把下列程序中的空位补全",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "code_completion",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-dsdbg-009",
+      "file": "ds-ch08.json",
+      "title": "下面的程序本应完成题面描述的功能",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "ds_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-mdb-009",
+      "file": "ds-ch08.json",
+      "title": "下面的程序有两处错误",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
+      "type": "multi_bug_debug",
+      "category": "ds"
+    },
+    {
+      "id": "ds-ch08-cxa-010",
+      "file": "ds-ch08.json",
+      "title": "阅读下面这段 LSD 基数排序算法",
+      "tags": [
+        "基数排序",
+        "LSD",
+        "稳定",
+        "分配收集"
+      ],
+      "chapter": "第8章 排序",
+      "section": "8.5 归并排序与基数排序",
       "type": "complexity_analysis",
       "category": "ds"
     }
