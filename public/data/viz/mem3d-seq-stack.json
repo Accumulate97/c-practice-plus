@@ -1,24 +1,18 @@
 {
-  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "_generated": "GENERATED — 由 npm run gen:viz 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
   "id": "mem3d-seq-stack",
-  "title": "顺序栈的入栈与出栈（3D 内存沙盘）",
+  "title": "顺序栈的入栈与出栈（内存沙盘）",
   "renderer": "memory",
   "category": "memory",
   "chapter": "第3章 栈和队列",
-  "relatedProblems": [
-    "ds-ch03-fb-002",
-    "ds-ch03-sc-010",
-    "ds-ch03-sc-011"
-  ],
+  "relatedProblems": [],
   "code": "#include <stdio.h>\n#define MAXSIZE 5\n\ntypedef struct {\n    int data[MAXSIZE];   /* 栈底在 data[0]，栈顶在 data[top] */\n    int top;\n} SqStack;\n\nint main(void) {\n    SqStack S;\n    S.top = -1;                  /* 初始化空栈 */\n    S.data[++S.top] = 10;        /* push(10) */\n    S.data[++S.top] = 20;        /* push(20) */\n    S.data[++S.top] = 30;        /* push(30) */\n    S.top--;                     /* pop 出栈 */\n    S.top--;                     /* pop 出栈 */\n    return 0;\n}\n",
   "meta": {
     "algorithm": "seqStack",
-    "n": 5,
     "counterKeys": [
       "top"
     ],
-    "generatedBy": "gen-viz3d@0.1.0",
-    "hall": "viz3d"
+    "generatedBy": "gen-viz@0.1.0"
   },
   "steps": [
     {

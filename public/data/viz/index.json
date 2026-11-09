@@ -1,7 +1,7 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "f037d2ca4e30d1c1",
-  "count": 34,
+  "content_sha": "c3e4f0b0860be5a1",
+  "count": 39,
   "demos": [
     {
       "id": "graph-bfs",
@@ -122,6 +122,56 @@
       "category": "linear",
       "steps": 10,
       "url": "data/viz/linear-stack-push-pop.json"
+    },
+    {
+      "id": "mem3d-bst-node",
+      "chapter": "第5章 树和二叉树",
+      "title": "二叉排序树结点的内存与孩子指针（内存沙盘）",
+      "relatedProblems": [],
+      "renderer": "memory",
+      "category": "memory",
+      "steps": 6,
+      "url": "data/viz/mem3d-bst-node.json"
+    },
+    {
+      "id": "mem3d-circular-queue",
+      "chapter": "第3章 栈和队列",
+      "title": "循环队列的入队出队与判空判满（内存沙盘）",
+      "relatedProblems": [],
+      "renderer": "memory",
+      "category": "memory",
+      "steps": 8,
+      "url": "data/viz/mem3d-circular-queue.json"
+    },
+    {
+      "id": "mem3d-doubly-list",
+      "chapter": "第2章 线性表",
+      "title": "双向链表的 prior 与 next 双向链接（内存沙盘）",
+      "relatedProblems": [],
+      "renderer": "memory",
+      "category": "memory",
+      "steps": 6,
+      "url": "data/viz/mem3d-doubly-list.json"
+    },
+    {
+      "id": "mem3d-seq-stack",
+      "chapter": "第3章 栈和队列",
+      "title": "顺序栈的入栈与出栈（内存沙盘）",
+      "relatedProblems": [],
+      "renderer": "memory",
+      "category": "memory",
+      "steps": 7,
+      "url": "data/viz/mem3d-seq-stack.json"
+    },
+    {
+      "id": "mem3d-singly-list",
+      "chapter": "第2章 线性表",
+      "title": "单链表结点的内存与 next 指针（内存沙盘）",
+      "relatedProblems": [],
+      "renderer": "memory",
+      "category": "memory",
+      "steps": 5,
+      "url": "data/viz/mem3d-singly-list.json"
     },
     {
       "id": "memory-array-layout",

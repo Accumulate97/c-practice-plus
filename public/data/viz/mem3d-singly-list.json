@@ -1,24 +1,18 @@
 {
-  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "_generated": "GENERATED — 由 npm run gen:viz 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
   "id": "mem3d-singly-list",
-  "title": "单链表结点的内存与 next 指针（3D）",
+  "title": "单链表结点的内存与 next 指针（内存沙盘）",
   "renderer": "memory",
   "category": "memory",
   "chapter": "第2章 线性表",
-  "relatedProblems": [
-    "ds-ch02-sc-008",
-    "ds-ch02-sc-009",
-    "ds-ch02-sc-010"
-  ],
+  "relatedProblems": [],
   "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\n\nint main(void) {\n    Node *head = NULL;              /* 空表：头指针先为空 */\n    Node *n1 = malloc(sizeof(Node)); n1->data = 10; n1->next = head; head = n1;\n    Node *n2 = malloc(sizeof(Node)); n2->data = 20; n2->next = head; head = n2;\n    Node *n3 = malloc(sizeof(Node)); n3->data = 30; n3->next = head; head = n3;\n    /* 头插法：每次新结点都插在表头，next 永远指向原来的头 */\n    return 0;\n}\n",
   "meta": {
     "algorithm": "singlyList",
-    "n": 3,
     "counterKeys": [
       "count"
     ],
-    "generatedBy": "gen-viz3d@0.1.0",
-    "hall": "viz3d"
+    "generatedBy": "gen-viz@0.1.0"
   },
   "steps": [
     {

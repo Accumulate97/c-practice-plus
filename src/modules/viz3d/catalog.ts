@@ -74,13 +74,13 @@ export const VIZ3D_CATALOG: Viz3DCatalogEntry[] = [
   { id: 'memory-malloc-free', source: 'viz', scene: 'memory3d', group: 'memory', blurb: 'malloc / free 全流程：栈区指针与堆区块的 3D 连线随分配与释放变化' },
   { id: 'memory-pointer-address', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '指针与地址：& 取址、* 解引用，在分区沙盘上看清「存的是地址」' },
   { id: 'memory-multi-pointer', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '多个指针指向同一块内存：改一处，处处可见（别名效应）' },
-  { id: 'mem3d-seq-stack', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '顺序栈在内存里：top 指针回落，入栈出栈就是改一段连续单元' },
-  { id: 'mem3d-circular-queue', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '循环队列的 front/rear：环形复用让「假溢出」直观可见' },
-  { id: 'mem3d-singly-list', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '单链表结点与指针：每个结点存 data 与 next，链式到底在内存里怎么落' },
-  { id: 'mem3d-doubly-list', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '双向链表结点：prior 与 next 两条指针，前后都连得上的空间结构' },
+  { id: 'mem3d-seq-stack', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '顺序栈在内存里：top 指针回落，入栈出栈就是改一段连续单元' },
+  { id: 'mem3d-circular-queue', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '循环队列的 front/rear：环形复用让「假溢出」直观可见' },
+  { id: 'mem3d-singly-list', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '单链表结点与指针：每个结点存 data 与 next，链式到底在内存里怎么落' },
+  { id: 'mem3d-doubly-list', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '双向链表结点：prior 与 next 两条指针，前后都连得上的空间结构' },
   { id: 'mem3d-hash-open', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '哈希表开放定址：冲突时顺槽位探查，probes 计数告诉你要试几次' },
   { id: 'mem3d-hash-chain', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '哈希表链地址法：每个槽挂一条链表，冲突元素顺着 next 排下去' },
-  { id: 'mem3d-bst-node', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '二叉排序树结点：left/right 指针的树形在内存堆里如何指来指去' },
+  { id: 'mem3d-bst-node', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '二叉排序树结点：left/right 指针的树形在内存堆里如何指来指去' },
   { id: 'mem3d-adjmatrix', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '邻接矩阵存图：v² 个格子，有边则非零，空间开销与稀疏度相关' },
 
   /* ---- 🪜 3D 函数调用栈 ---- */

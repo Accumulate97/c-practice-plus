@@ -1,24 +1,18 @@
 {
-  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "_generated": "GENERATED — 由 npm run gen:viz 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
   "id": "mem3d-doubly-list",
-  "title": "双向链表的 prior 与 next 双向链接（3D）",
+  "title": "双向链表的 prior 与 next 双向链接（内存沙盘）",
   "renderer": "memory",
   "category": "memory",
   "chapter": "第2章 线性表",
-  "relatedProblems": [
-    "ds-ch02-sc-015",
-    "ds-ch02-fb-016",
-    "ds-ch02-cc-010"
-  ],
+  "relatedProblems": [],
   "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Node {\n    int data;\n    struct Node *prior;   /* 指向前驱 */\n    struct Node *next;    /* 指向后继 */\n} Node;\n\nint main(void) {\n    Node *head = NULL;\n    Node *n1 = malloc(sizeof(Node)); n1->data = 10; n1->prior = NULL; n1->next = NULL; head = n1;\n    Node *n2 = malloc(sizeof(Node)); n2->data = 20; n2->prior = n1; n1->next = n2; n2->next = NULL;\n    Node *n3 = malloc(sizeof(Node)); n3->data = 30; n3->prior = n2; n2->next = n3; n3->next = NULL;\n    /* 在 n2 之后插入 s */\n    Node *s  = malloc(sizeof(Node)); s->data = 25;\n    s->prior = n2; s->next = n2->next; n2->next->prior = s; n2->next = s;\n    return 0;\n}\n",
   "meta": {
     "algorithm": "doublyList",
-    "n": 4,
     "counterKeys": [
       "count"
     ],
-    "generatedBy": "gen-viz3d@0.1.0",
-    "hall": "viz3d"
+    "generatedBy": "gen-viz@0.1.0"
   },
   "steps": [
     {

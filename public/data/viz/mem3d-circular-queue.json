@@ -1,26 +1,20 @@
 {
-  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "_generated": "GENERATED — 由 npm run gen:viz 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
   "id": "mem3d-circular-queue",
-  "title": "循环队列的入队出队与判空判满（3D）",
+  "title": "循环队列的入队出队与判空判满（内存沙盘）",
   "renderer": "memory",
   "category": "memory",
   "chapter": "第3章 栈和队列",
-  "relatedProblems": [
-    "ds-ch03-sc-014",
-    "ds-ch03-fb-005",
-    "ds-ch03-sc-015"
-  ],
+  "relatedProblems": [],
   "code": "#include <stdio.h>\n#define MAXSIZE 5\n\ntypedef struct {\n    char data[MAXSIZE];\n    int front;   /* 队头元素的下标 */\n    int rear;    /* 队尾元素「下一个」位置 */\n} SqQueue;\n\nint main(void) {\n    SqQueue Q;\n    Q.front = Q.rear = 0;                      /* 初始空队 */\n    Q.data[Q.rear] = 'A'; Q.rear = (Q.rear + 1) % MAXSIZE;\n    Q.data[Q.rear] = 'B'; Q.rear = (Q.rear + 1) % MAXSIZE;\n    Q.front = (Q.front + 1) % MAXSIZE;         /* 出队一个 */\n    Q.data[Q.rear] = 'C'; Q.rear = (Q.rear + 1) % MAXSIZE;\n    Q.data[Q.rear] = 'D'; Q.rear = (Q.rear + 1) % MAXSIZE;\n    Q.data[Q.rear] = 'E'; Q.rear = (Q.rear + 1) % MAXSIZE;  /* 环绕到下标 0 */\n    return 0;\n}\n",
   "meta": {
     "algorithm": "circularQueue",
-    "n": 5,
     "counterKeys": [
       "front",
       "rear",
       "size"
     ],
-    "generatedBy": "gen-viz3d@0.1.0",
-    "hall": "viz3d"
+    "generatedBy": "gen-viz@0.1.0"
   },
   "steps": [
     {

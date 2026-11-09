@@ -25,6 +25,7 @@ import { linearCircularList, linearDoublyInsertDelete, linearQueueEnqueueDequeue
 import { avlRotate, bstDelete, heapBuild, huffmanBuild, treeTraversal } from './tree'
 import { graphDfs, graphDijkstra, graphKruskal, graphPrim, graphToposort } from './graph'
 import { memoryArrayLayout, memoryCallStack, memoryMallocFree, memoryMultiPointer, memoryPointerAddress } from './memory'
+import { DS_MEMORY_VIZ_SPECS } from './dsMemory'
 import { VIZ_CODE } from './vizCode'
 
 /**
@@ -183,6 +184,9 @@ export const VIZ_SPECS: VizGenSpec[] = [
   vizSpec('memory-call-stack', '函数调用栈：栈帧的压入与弹出', 'memory', '第9章 指针', 'memory', 'memoryCallStack', [], () => memoryCallStack()),
   vizSpec('memory-multi-pointer', '多级指针：pp → p → i', 'memory', '第9章 指针', 'memory', 'memoryMultiPointer', [], () => memoryMultiPointer()),
   vizSpec('memory-malloc-free', 'malloc/free 与野指针', 'memory', '第9章 指针', 'memory', 'memoryMallocFree', [], () => memoryMallocFree()),
+
+  // ── 阶段5：DS 结构内存形态（与 3D 馆共享语料，source='viz'）──────────
+  ...DS_MEMORY_VIZ_SPECS,
 ]
 
 /** 按 id 查规格（gen-viz.ts 支持只重生成指定演示：npm run gen:viz -- sort-bubble） */

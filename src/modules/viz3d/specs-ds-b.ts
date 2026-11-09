@@ -10,7 +10,7 @@
  * 栈区地址取高位 STACK_ADDR（0x7ff0），栈帧向下每层减 0x20，与真实 x86-64 布局方向一致。
  * 前进用快照生成，后退只靠下标回退 —— 每步都是完整状态快照，绝不写逆运算。
  */
-import { cell, region, step } from './generators'
+import { cell, region, step } from './specHelpers'
 import type { Viz3DSpec } from './generators'
 import type { MemoryRegion, VizRole, VizStep } from '../viz/types'
 

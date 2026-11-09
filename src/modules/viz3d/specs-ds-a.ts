@@ -15,14 +15,14 @@
  *   7. mem3d-bst-node        二叉排序树：堆区结点 + 左右孩子指针
  *   8. mem3d-adjmatrix       邻接矩阵 vs 邻接表
  */
-import { cell, region, step, STACK_ADDR } from './generators'
+import { cell, region, step, STACK_ADDR } from './specHelpers'
 import type { Viz3DSpec } from './generators'
 import type { MemoryCell, MemoryRegion, VizStep } from '../viz/types'
 
 /* ================================================================== *
  * 1. 顺序栈：数组 + top 指针
  * ================================================================== */
-const SEQ_CODE = `#include <stdio.h>
+export const SEQ_CODE = `#include <stdio.h>
 #define MAXSIZE 5
 
 typedef struct {
@@ -45,7 +45,7 @@ int main(void) {
 const SEQ_MAXLEN = 5
 const SEQ_BASE = 0x7ff0
 
-function seqStack(): VizStep[] {
+export function seqStack(): VizStep[] {
   const steps: VizStep[] = []
   // values[i] 是槽 i 的当前内容；top 是栈顶下标（-1 = 空栈）
   const values: (number | '')[] = ['', '', '', '', '']
@@ -113,7 +113,7 @@ function seqStack(): VizStep[] {
 /* ================================================================== *
  * 2. 循环队列：数组 + front/rear（牺牲一格判满）
  * ================================================================== */
-const CIRC_CODE = `#include <stdio.h>
+export const CIRC_CODE = `#include <stdio.h>
 #define MAXSIZE 5
 
 typedef struct {
@@ -138,7 +138,7 @@ int main(void) {
 const CIRC_MAXLEN = 5
 const CIRC_BASE = 0x7ff0
 
-function circularQueue(): VizStep[] {
+export function circularQueue(): VizStep[] {
   const steps: VizStep[] = []
   const values: (string | '')[] = ['', '', '', '', '']
   let front = 0
@@ -220,7 +220,7 @@ function circularQueue(): VizStep[] {
 /* ================================================================== *
  * 3. 单链表：堆区结点 + next 链
  * ================================================================== */
-const SINGLY_CODE = `#include <stdio.h>
+export const SINGLY_CODE = `#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct Node {
@@ -238,7 +238,7 @@ int main(void) {
 }
 `
 
-function singlyList(): VizStep[] {
+export function singlyList(): VizStep[] {
   const steps: VizStep[] = []
   // 结点地址：n1 0x9000, n2 0x9008, n3 0x9010（每个结点 8 字节）
   const ADDR: Record<string, number> = { n1: 0x9000, n2: 0x9008, n3: 0x9010 }
@@ -308,7 +308,7 @@ function singlyList(): VizStep[] {
 /* ================================================================== *
  * 4. 双向链表：prior + next 双向
  * ================================================================== */
-const DOUBLY_CODE = `#include <stdio.h>
+export const DOUBLY_CODE = `#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct Node {
@@ -329,7 +329,7 @@ int main(void) {
 }
 `
 
-function doublyList(): VizStep[] {
+export function doublyList(): VizStep[] {
   const steps: VizStep[] = []
   // 每个结点 12 字节：prior / data / next
   const ADDR: Record<string, number> = { n1: 0x9000, n2: 0x900c, n3: 0x9018, s: 0x9024 }
@@ -591,7 +591,7 @@ function hashChain(): VizStep[] {
 /* ================================================================== *
  * 7. 二叉排序树：堆区结点 + 左右孩子指针
  * ================================================================== */
-const BST_CODE = `#include <stdio.h>
+export const BST_CODE = `#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct BSTNode {
@@ -611,7 +611,7 @@ int main(void) {
 }
 `
 
-function bstNode(): VizStep[] {
+export function bstNode(): VizStep[] {
   const steps: VizStep[] = []
   // 每个结点 12 字节：key / lchild / rchild
   const ADDR: Record<string, number> = { n50: 0x9000, n30: 0x900c, n70: 0x9018, n40: 0x9024 }
@@ -797,58 +797,6 @@ function adjmatrix(): VizStep[] {
  * ================================================================== */
 export const VIZ3D_SPECS: Viz3DSpec[] = [
   {
-    id: 'mem3d-seq-stack',
-    title: '顺序栈的入栈与出栈（3D 内存沙盘）',
-    category: 'memory',
-    chapter: '第3章 栈和队列',
-    renderer: 'memory',
-    algorithm: 'seqStack',
-    counterKeys: ['top'],
-    code: SEQ_CODE,
-    n: 5,
-    related: { chapter: '第3章 栈和队列', keywords: ['栈顶', '入栈', '顺序栈'], max: 3 },
-    generate: seqStack,
-  },
-  {
-    id: 'mem3d-circular-queue',
-    title: '循环队列的入队出队与判空判满（3D）',
-    category: 'memory',
-    chapter: '第3章 栈和队列',
-    renderer: 'memory',
-    algorithm: 'circularQueue',
-    counterKeys: ['front', 'rear', 'size'],
-    code: CIRC_CODE,
-    n: 5,
-    related: { chapter: '第3章 栈和队列', keywords: ['队尾', '队列', '循环队列'], max: 3 },
-    generate: circularQueue,
-  },
-  {
-    id: 'mem3d-singly-list',
-    title: '单链表结点的内存与 next 指针（3D）',
-    category: 'memory',
-    chapter: '第2章 线性表',
-    renderer: 'memory',
-    algorithm: 'singlyList',
-    counterKeys: ['count'],
-    code: SINGLY_CODE,
-    n: 3,
-    related: { chapter: '第2章 线性表', keywords: ['单链表', '头结点'], max: 3 },
-    generate: singlyList,
-  },
-  {
-    id: 'mem3d-doubly-list',
-    title: '双向链表的 prior 与 next 双向链接（3D）',
-    category: 'memory',
-    chapter: '第2章 线性表',
-    renderer: 'memory',
-    algorithm: 'doublyList',
-    counterKeys: ['count'],
-    code: DOUBLY_CODE,
-    n: 4,
-    related: { chapter: '第2章 线性表', keywords: ['双向链表', '插入结点'], max: 3 },
-    generate: doublyList,
-  },
-  {
     id: 'mem3d-hash-open',
     title: '散列开放定址（线性探测）的冲突处理（3D）',
     category: 'memory',
@@ -873,19 +821,6 @@ export const VIZ3D_SPECS: Viz3DSpec[] = [
     n: 4,
     related: { chapter: '第7章 查找', keywords: ['散列', '链地址', '查找'], max: 3 },
     generate: hashChain,
-  },
-  {
-    id: 'mem3d-bst-node',
-    title: '二叉排序树结点的内存与孩子指针（3D）',
-    category: 'memory',
-    chapter: '第5章 树和二叉树',
-    renderer: 'memory',
-    algorithm: 'bstNode',
-    counterKeys: ['count'],
-    code: BST_CODE,
-    n: 4,
-    related: { chapter: '第5章 树和二叉树', keywords: ['二叉树', '结点'], max: 3 },
-    generate: bstNode,
   },
   {
     id: 'mem3d-adjmatrix',

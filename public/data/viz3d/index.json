@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
-  "count": 26,
+  "count": 21,
   "demos": [
     {
       "id": "mem3d-wild-pointer",
@@ -59,62 +59,6 @@
       "url": "data/viz3d/mem3d-matrix-cube.json"
     },
     {
-      "id": "mem3d-seq-stack",
-      "title": "顺序栈的入栈与出栈（3D 内存沙盘）",
-      "chapter": "第3章 栈和队列",
-      "category": "memory",
-      "renderer": "memory",
-      "relatedProblems": [
-        "ds-ch03-fb-002",
-        "ds-ch03-sc-010",
-        "ds-ch03-sc-011"
-      ],
-      "steps": 7,
-      "url": "data/viz3d/mem3d-seq-stack.json"
-    },
-    {
-      "id": "mem3d-circular-queue",
-      "title": "循环队列的入队出队与判空判满（3D）",
-      "chapter": "第3章 栈和队列",
-      "category": "memory",
-      "renderer": "memory",
-      "relatedProblems": [
-        "ds-ch03-sc-014",
-        "ds-ch03-fb-005",
-        "ds-ch03-sc-015"
-      ],
-      "steps": 8,
-      "url": "data/viz3d/mem3d-circular-queue.json"
-    },
-    {
-      "id": "mem3d-singly-list",
-      "title": "单链表结点的内存与 next 指针（3D）",
-      "chapter": "第2章 线性表",
-      "category": "memory",
-      "renderer": "memory",
-      "relatedProblems": [
-        "ds-ch02-sc-008",
-        "ds-ch02-sc-009",
-        "ds-ch02-sc-010"
-      ],
-      "steps": 5,
-      "url": "data/viz3d/mem3d-singly-list.json"
-    },
-    {
-      "id": "mem3d-doubly-list",
-      "title": "双向链表的 prior 与 next 双向链接（3D）",
-      "chapter": "第2章 线性表",
-      "category": "memory",
-      "renderer": "memory",
-      "relatedProblems": [
-        "ds-ch02-sc-015",
-        "ds-ch02-fb-016",
-        "ds-ch02-cc-010"
-      ],
-      "steps": 6,
-      "url": "data/viz3d/mem3d-doubly-list.json"
-    },
-    {
       "id": "mem3d-hash-open",
       "title": "散列开放定址（线性探测）的冲突处理（3D）",
       "chapter": "第7章 查找",
@@ -141,20 +85,6 @@
       ],
       "steps": 5,
       "url": "data/viz3d/mem3d-hash-chain.json"
-    },
-    {
-      "id": "mem3d-bst-node",
-      "title": "二叉排序树结点的内存与孩子指针（3D）",
-      "chapter": "第5章 树和二叉树",
-      "category": "memory",
-      "renderer": "memory",
-      "relatedProblems": [
-        "ds-ch05-tf-001",
-        "ds-ch05-sc-005",
-        "ds-ch05-sc-006"
-      ],
-      "steps": 6,
-      "url": "data/viz3d/mem3d-bst-node.json"
     },
     {
       "id": "mem3d-adjmatrix",

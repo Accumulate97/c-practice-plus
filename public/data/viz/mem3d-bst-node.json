@@ -1,24 +1,18 @@
 {
-  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "_generated": "GENERATED — 由 npm run gen:viz 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
   "id": "mem3d-bst-node",
-  "title": "二叉排序树结点的内存与孩子指针（3D）",
+  "title": "二叉排序树结点的内存与孩子指针（内存沙盘）",
   "renderer": "memory",
   "category": "memory",
   "chapter": "第5章 树和二叉树",
-  "relatedProblems": [
-    "ds-ch05-tf-001",
-    "ds-ch05-sc-005",
-    "ds-ch05-sc-006"
-  ],
+  "relatedProblems": [],
   "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct BSTNode {\n    int key;\n    struct BSTNode *lchild;\n    struct BSTNode *rchild;\n} BSTNode;\n\nint main(void) {\n    BSTNode *root = NULL;\n    /* 依次插入 50、30、70、40 —— 按二叉排序树规则 */\n    BSTNode *n50 = malloc(sizeof(BSTNode)); n50->key = 50; n50->lchild = NULL; n50->rchild = NULL; root = n50;\n    BSTNode *n30 = malloc(sizeof(BSTNode)); n30->key = 30; n30->lchild = NULL; n30->rchild = NULL; n50->lchild = n30;\n    BSTNode *n70 = malloc(sizeof(BSTNode)); n70->key = 70; n70->lchild = NULL; n70->rchild = NULL; n50->rchild = n70;\n    BSTNode *n40 = malloc(sizeof(BSTNode)); n40->key = 40; n40->lchild = NULL; n40->rchild = NULL; n30->rchild = n40;\n    return 0;\n}\n",
   "meta": {
     "algorithm": "bstNode",
-    "n": 4,
     "counterKeys": [
       "count"
     ],
-    "generatedBy": "gen-viz3d@0.1.0",
-    "hall": "viz3d"
+    "generatedBy": "gen-viz@0.1.0"
   },
   "steps": [
     {

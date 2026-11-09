@@ -14,7 +14,7 @@
  *   6. mem3d-array-base      一维数组基址+下标   a[k]=base+k*size
  *   7. mem3d-3d-array        三维数组行优先   addr=base+(i*n*p+j*p+k)*size
  */
-import { cell, region, step } from './generators'
+import { cell, region, step } from './specHelpers'
 import type { Viz3DSpec } from './generators'
 
 /* ================================================================== *
