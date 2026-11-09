@@ -74,15 +74,37 @@ export const VIZ3D_CATALOG: Viz3DCatalogEntry[] = [
   { id: 'memory-malloc-free', source: 'viz', scene: 'memory3d', group: 'memory', blurb: 'malloc / free 全流程：栈区指针与堆区块的 3D 连线随分配与释放变化' },
   { id: 'memory-pointer-address', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '指针与地址：& 取址、* 解引用，在分区沙盘上看清「存的是地址」' },
   { id: 'memory-multi-pointer', source: 'viz', scene: 'memory3d', group: 'memory', blurb: '多个指针指向同一块内存：改一处，处处可见（别名效应）' },
+  { id: 'mem3d-seq-stack', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '顺序栈在内存里：top 指针回落，入栈出栈就是改一段连续单元' },
+  { id: 'mem3d-circular-queue', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '循环队列的 front/rear：环形复用让「假溢出」直观可见' },
+  { id: 'mem3d-singly-list', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '单链表结点与指针：每个结点存 data 与 next，链式到底在内存里怎么落' },
+  { id: 'mem3d-doubly-list', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '双向链表结点：prior 与 next 两条指针，前后都连得上的空间结构' },
+  { id: 'mem3d-hash-open', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '哈希表开放定址：冲突时顺槽位探查，probes 计数告诉你要试几次' },
+  { id: 'mem3d-hash-chain', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '哈希表链地址法：每个槽挂一条链表，冲突元素顺着 next 排下去' },
+  { id: 'mem3d-bst-node', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '二叉排序树结点：left/right 指针的树形在内存堆里如何指来指去' },
+  { id: 'mem3d-adjmatrix', source: 'viz3d', scene: 'memory3d', group: 'memory', blurb: '邻接矩阵存图：v² 个格子，有边则非零，空间开销与稀疏度相关' },
 
   /* ---- 🪜 3D 函数调用栈 ---- */
   { id: 'mem3d-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', highlight: true, blurb: '递归的层层堆叠与回退：factorial(5) 五层栈帧压入，再逐层弹出返回' },
   { id: 'memory-call-stack', source: 'viz', scene: 'callstack3d', group: 'callstack', blurb: 'main 调用 f：形参、局部变量、返回地址组成一个栈帧' },
   { id: 'memory-swap-call', source: 'viz', scene: 'callstack3d', group: 'callstack', blurb: 'swap(a,b) 值传递：为什么交换不了 —— 栈帧里只是副本' },
+  { id: 'mem3d-quick-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: '快排递归划分：每层栈帧是当前子区间，栈深即递归嵌套数' },
+  { id: 'mem3d-merge-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: '归并递归拆分：栈帧逐层压入再逐层合并，stackDepth 变化可见' },
+  { id: 'mem3d-hanoi', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: '汉诺塔递归：n 层调用嵌套在栈里堆叠，基例出现才开始回退' },
+  { id: 'mem3d-bst-search-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: 'BST 递归查找：每层沿 left/right 下沉一层，栈帧随之加一' },
+  { id: 'mem3d-dfs-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: 'DFS 递归：沿邻接点一路深入，栈帧堆到最深再逐层返回' },
+  { id: 'mem3d-binary-search-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: '折半查找递归：区间每层减半，栈深是 log₂n 级别的嵌套' },
+  { id: 'mem3d-array-sum-recursion', source: 'viz3d', scene: 'callstack3d', group: 'callstack', blurb: '数组求和递归：n 个元素递归到基例，栈帧随下标边界逐层堆叠' },
 
   /* ---- 🧊 3D 数组/矩阵内存立方体 ---- */
   { id: 'mem3d-matrix-cube', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', highlight: true, blurb: '3×3 矩阵：逻辑二维网格与物理一维内存的对照，看清 a[i][j] 的地址公式' },
   { id: 'memory-array-layout', source: 'viz', scene: 'memory3d', group: 'matrix', blurb: '一维数组连续布局：基址 + 下标 × sizeof，指针 p 指向 a[0]' },
+  { id: 'mem3d-array-base', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '一维数组基址寻址：a[k] ≡ *(base + k*4)，指针步长由类型决定' },
+  { id: 'mem3d-2d-rowmajor', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '行优先存储：a[i][j] 的地址 = base + (i*N + j)*4，整行连续' },
+  { id: 'mem3d-2d-colmajor', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '列优先存储：a[i][j] 的地址 = base + (j*M + i)*4，整列连续' },
+  { id: 'mem3d-symmetric-store', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '对称矩阵压缩：只存下三角，i≥j 映射到一维 k=i(i+1)/2+j' },
+  { id: 'mem3d-triangle-store', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '三角矩阵压缩：上/下三角只存一半，映射公式省一半空间' },
+  { id: 'mem3d-sparse-triplet', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '稀疏矩阵三元组：仅存 (i,j,value)，非零元少时远小于全矩阵' },
+  { id: 'mem3d-3d-array', source: 'viz3d', scene: 'matrixcube3d', group: 'matrix', blurb: '三维数组寻址：a[i][j][k] = base + (i*n*p + j*p + k)*4，逐层偏移' },
 
   /* ---- 🕸️ 3D 图 ---- */
   { id: 'graph-dfs', source: 'viz', scene: 'graph3d', group: 'graph', blurb: 'DFS 深度优先：沿一条路走到底再回溯，立体看递归展开方向' },

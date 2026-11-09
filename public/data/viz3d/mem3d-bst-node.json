@@ -1,0 +1,510 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-bst-node",
+  "title": "二叉排序树结点的内存与孩子指针（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第5章 树和二叉树",
+  "relatedProblems": [
+    "ds-ch05-tf-001",
+    "ds-ch05-sc-005",
+    "ds-ch05-sc-006"
+  ],
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct BSTNode {\n    int key;\n    struct BSTNode *lchild;\n    struct BSTNode *rchild;\n} BSTNode;\n\nint main(void) {\n    BSTNode *root = NULL;\n    /* 依次插入 50、30、70、40 —— 按二叉排序树规则 */\n    BSTNode *n50 = malloc(sizeof(BSTNode)); n50->key = 50; n50->lchild = NULL; n50->rchild = NULL; root = n50;\n    BSTNode *n30 = malloc(sizeof(BSTNode)); n30->key = 30; n30->lchild = NULL; n30->rchild = NULL; n50->lchild = n30;\n    BSTNode *n70 = malloc(sizeof(BSTNode)); n70->key = 70; n70->lchild = NULL; n70->rchild = NULL; n50->rchild = n70;\n    BSTNode *n40 = malloc(sizeof(BSTNode)); n40->key = 40; n40->lchild = NULL; n40->rchild = NULL; n30->rchild = n40;\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "bstNode",
+    "n": 4,
+    "counterKeys": [
+      "count"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "空树：root = NULL，还没有任何结点。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 0
+        }
+      }
+    },
+    {
+      "description": "插入 50：第一个结点成为根。root = n50，左右孩子都为空。二叉排序树的性质：左子树所有结点 < 根，右子树所有结点 > 根。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [
+              {
+                "key": "n50-key",
+                "address": "0x9000",
+                "value": "50",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n50-lchild",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "active",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n50-rchild",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "active",
+                "note": "右孩子指针"
+              }
+            ],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 1
+        }
+      }
+    },
+    {
+      "description": "插入 30：30 < 50，往左走，n50 的左孩子为空，于是 30 成为 n50 的左孩子。左子树保存比根小的值。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [
+              {
+                "key": "n50-key",
+                "address": "0x9000",
+                "value": "50",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n50-lchild",
+                "address": "0x9004",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n50-rchild",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n30-key",
+                "address": "0x900c",
+                "value": "30",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n30-lchild",
+                "address": "0x9010",
+                "value": "NULL",
+                "role": "active",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n30-rchild",
+                "address": "0x9014",
+                "value": "NULL",
+                "role": "active",
+                "note": "右孩子指针"
+              }
+            ],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 2
+        }
+      }
+    },
+    {
+      "description": "插入 70：70 > 50，往右走，成为 n50 的右孩子。右子树保存比根大的值。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [
+              {
+                "key": "n50-key",
+                "address": "0x9000",
+                "value": "50",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n50-lchild",
+                "address": "0x9004",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n50-rchild",
+                "address": "0x9008",
+                "value": "→ 0x9018",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n30-key",
+                "address": "0x900c",
+                "value": "30",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n30-lchild",
+                "address": "0x9010",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n30-rchild",
+                "address": "0x9014",
+                "value": "NULL",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n70-key",
+                "address": "0x9018",
+                "value": "70",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n70-lchild",
+                "address": "0x901c",
+                "value": "NULL",
+                "role": "active",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n70-rchild",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "active",
+                "note": "右孩子指针"
+              }
+            ],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    },
+    {
+      "description": "插入 40：40 < 50 往左到 n30，40 > 30 往右，成为 n30 的右孩子。整棵树：n50 左孩子 n30、右孩子 n70，n30 右孩子 n40 —— 中序遍历可得有序序列 30、40、50、70。",
+      "codeLine": 11,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [
+              {
+                "key": "n50-key",
+                "address": "0x9000",
+                "value": "50",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n50-lchild",
+                "address": "0x9004",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n50-rchild",
+                "address": "0x9008",
+                "value": "→ 0x9018",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n30-key",
+                "address": "0x900c",
+                "value": "30",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n30-lchild",
+                "address": "0x9010",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n30-rchild",
+                "address": "0x9014",
+                "value": "→ 0x9024",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n70-key",
+                "address": "0x9018",
+                "value": "70",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n70-lchild",
+                "address": "0x901c",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n70-rchild",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n40-key",
+                "address": "0x9024",
+                "value": "40",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n40-lchild",
+                "address": "0x9028",
+                "value": "NULL",
+                "role": "active",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n40-rchild",
+                "address": "0x902c",
+                "value": "NULL",
+                "role": "active",
+                "note": "右孩子指针"
+              }
+            ],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 4
+        }
+      }
+    },
+    {
+      "description": "总结：二叉排序树把「大小关系」编码进结点的左右孩子指针。插入/查找都从根出发，每层比较一次、缩小一半搜索范围，平均 O(log n)；但若插入次序恰好有序，会退化成一条「链」，退到 O(n)。内存形态上就是一堆用指针相连的堆区结点。",
+      "codeLine": 13,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "root",
+            "title": "根指针",
+            "cells": [
+              {
+                "key": "root",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "根指针 root"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：key + lchild + rchild）",
+            "cells": [
+              {
+                "key": "n50-key",
+                "address": "0x9000",
+                "value": "50",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n50-lchild",
+                "address": "0x9004",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n50-rchild",
+                "address": "0x9008",
+                "value": "→ 0x9018",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n30-key",
+                "address": "0x900c",
+                "value": "30",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n30-lchild",
+                "address": "0x9010",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n30-rchild",
+                "address": "0x9014",
+                "value": "→ 0x9024",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n70-key",
+                "address": "0x9018",
+                "value": "70",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n70-lchild",
+                "address": "0x901c",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n70-rchild",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "idle",
+                "note": "右孩子指针"
+              },
+              {
+                "key": "n40-key",
+                "address": "0x9024",
+                "value": "40",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n40-lchild",
+                "address": "0x9028",
+                "value": "NULL",
+                "role": "idle",
+                "note": "左孩子指针"
+              },
+              {
+                "key": "n40-rchild",
+                "address": "0x902c",
+                "value": "NULL",
+                "role": "idle",
+                "note": "右孩子指针"
+              }
+            ],
+            "note": "二叉排序树结点离散分布在堆区，孩子用指针连接"
+          }
+        ],
+        "counters": {
+          "count": 4
+        }
+      }
+    }
+  ]
+}

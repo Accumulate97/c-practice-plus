@@ -1,0 +1,420 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-hash-chain",
+  "title": "散列链地址法的槽与同义词链（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第7章 查找",
+  "relatedProblems": [
+    "ds-ch07-sc-016",
+    "ds-ch07-sc-017",
+    "ds-ch07-tf-004"
+  ],
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n#define M 4\n\ntypedef struct HNode {\n    int key;\n    struct HNode *next;\n} HNode;\n\nint main(void) {\n    HNode *slot[M] = {0};            /* 每个槽是一个链表的头指针 */\n    int keys[] = {15, 23, 31};       /* H 值都是 3 → 同一槽 */\n    /* 头插法：H(key) = key % M */\n    HNode *n1 = malloc(sizeof(HNode)); n1->key = 15; n1->next = slot[3]; slot[3] = n1;\n    HNode *n2 = malloc(sizeof(HNode)); n2->key = 23; n2->next = slot[3]; slot[3] = n2;\n    HNode *n3 = malloc(sizeof(HNode)); n3->key = 31; n3->next = slot[3]; slot[3] = n3;\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "hashChain",
+    "n": 4,
+    "counterKeys": [
+      "count"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "初始化：4 个槽，每个都是空链表（NULL）。链地址法与开放定址法的区别：冲突的 key 不挤进同一张表，而是各自挂到「同一个槽下的链表」里。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "slots",
+            "title": "散列槽数组（链地址法）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 0 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 1 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 2 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 3 的链表头指针（H(key) = key % 4）"
+              }
+            ],
+            "note": "每个槽是链表头指针，M=4"
+          },
+          {
+            "key": "heap",
+            "title": "堆区（冲突结点用链串起来）",
+            "cells": [],
+            "note": "同义词结点挂在同一个槽的链上"
+          }
+        ],
+        "counters": {
+          "count": 0
+        }
+      }
+    },
+    {
+      "description": "插入 15：H(15) = 15 % 4 = 3，槽 3 是空链表，直接把结点 n1 挂上去，链尾 next = NULL。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "slots",
+            "title": "散列槽数组（链地址法）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 0 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 1 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 2 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "槽 3 的链表头指针（H(key) = key % 4）"
+              }
+            ],
+            "note": "每个槽是链表头指针，M=4"
+          },
+          {
+            "key": "heap",
+            "title": "堆区（冲突结点用链串起来）",
+            "cells": [
+              {
+                "key": "n1-key",
+                "address": "0x9004",
+                "value": "15",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针"
+              }
+            ],
+            "note": "同义词结点挂在同一个槽的链上"
+          }
+        ],
+        "counters": {
+          "count": 1
+        }
+      }
+    },
+    {
+      "description": "插入 23：H(23) = 23 % 4 = 3，同样落到槽 3。头插法把新结点 n2 放在链头：n2->next 指向原头 n1，slot[3] 改指 n2。链变成 n2 → n1 → NULL。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "slots",
+            "title": "散列槽数组（链地址法）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 0 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 1 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 2 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "→ 0x9008",
+                "role": "idle",
+                "note": "槽 3 的链表头指针（H(key) = key % 4）"
+              }
+            ],
+            "note": "每个槽是链表头指针，M=4"
+          },
+          {
+            "key": "heap",
+            "title": "堆区（冲突结点用链串起来）",
+            "cells": [
+              {
+                "key": "n1-key",
+                "address": "0x9004",
+                "value": "15",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针"
+              },
+              {
+                "key": "n2-key",
+                "address": "0x900c",
+                "value": "23",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9010",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针"
+              }
+            ],
+            "note": "同义词结点挂在同一个槽的链上"
+          }
+        ],
+        "counters": {
+          "count": 2
+        }
+      }
+    },
+    {
+      "description": "插入 31：H(31) = 31 % 4 = 3，仍在槽 3，头插后链为 n3 → n2 → n1。三个冲突 key 都集中在槽 3 的链表里，其他槽仍空 —— 这就是「同义词链」。",
+      "codeLine": 11,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "slots",
+            "title": "散列槽数组（链地址法）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 0 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 1 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 2 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "→ 0x9010",
+                "role": "idle",
+                "note": "槽 3 的链表头指针（H(key) = key % 4）"
+              }
+            ],
+            "note": "每个槽是链表头指针，M=4"
+          },
+          {
+            "key": "heap",
+            "title": "堆区（冲突结点用链串起来）",
+            "cells": [
+              {
+                "key": "n1-key",
+                "address": "0x9004",
+                "value": "15",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针"
+              },
+              {
+                "key": "n2-key",
+                "address": "0x900c",
+                "value": "23",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9010",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针"
+              },
+              {
+                "key": "n3-key",
+                "address": "0x9014",
+                "value": "31",
+                "role": "active",
+                "note": "key"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9018",
+                "value": "→ 0x9008",
+                "role": "idle",
+                "note": "next 指针"
+              }
+            ],
+            "note": "同义词结点挂在同一个槽的链上"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    },
+    {
+      "description": "总结：链地址法把冲突的 key 用链表串在同一个槽下。查找先算 H(key) 定位槽，再沿链线性查 —— 链越短越快。它不需要像开放定址那样预留空槽，装填因子可以 >1；代价是每个结点多一个 next 指针占空间。",
+      "codeLine": 13,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "slots",
+            "title": "散列槽数组（链地址法）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 0 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 1 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "槽 2 的链表头指针（H(key) = key % 4）"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "→ 0x9010",
+                "role": "idle",
+                "note": "槽 3 的链表头指针（H(key) = key % 4）"
+              }
+            ],
+            "note": "每个槽是链表头指针，M=4"
+          },
+          {
+            "key": "heap",
+            "title": "堆区（冲突结点用链串起来）",
+            "cells": [
+              {
+                "key": "n1-key",
+                "address": "0x9004",
+                "value": "15",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针"
+              },
+              {
+                "key": "n2-key",
+                "address": "0x900c",
+                "value": "23",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9010",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针"
+              },
+              {
+                "key": "n3-key",
+                "address": "0x9014",
+                "value": "31",
+                "role": "sorted",
+                "note": "key"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9018",
+                "value": "→ 0x9008",
+                "role": "idle",
+                "note": "next 指针"
+              }
+            ],
+            "note": "同义词结点挂在同一个槽的链上"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    }
+  ]
+}

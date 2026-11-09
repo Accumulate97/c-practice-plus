@@ -1,0 +1,3767 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-triangle-store",
+  "title": "三对角 / 上三角矩阵压缩存储（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第4章 串、数组和广义表",
+  "relatedProblems": [
+    "ds-ch04-sc-010",
+    "ds-ch04-sc-011",
+    "ds-ch04-cc-006"
+  ],
+  "code": "#include <stdio.h>\n#define N 5\n\nint main(void) {\n    int A[N][N];            /* 三对角矩阵：|i-j| <= 1 处非零 */\n    int b[3*N-2];           /* 压缩存储，共 13 个元素 */\n    int k = 0;\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j < N; j++)\n            if ((i-j)*(i-j) <= 1)   /* 只取三条对角线 */\n                b[k++] = A[i][j];\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "tridiagonalStore",
+    "n": 13,
+    "counterKeys": [
+      "stored"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "三对角矩阵只有三条对角线（主对角线 + 上下各一条）非零，|i-j| ≤ 1 之外全是 0。5 阶矩阵有 25 个格子，但真正要存的非零元素只有 3n-2 = 13 个。压缩策略：按行优先只把这 13 个非零元收进一维数组 b[0..12]。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零，其余恒 0"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [],
+            "note": "只存三条对角线"
+          }
+        ],
+        "counters": {
+          "stored": 0
+        }
+      }
+    },
+    {
+      "description": "A[0][0] = 1 落在主顶/次对角线上，按行优先第 1 个非零元，存入 b[0]，地址 = 0x3000。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "active",
+                "note": "存 A[0][0]"
+              }
+            ],
+            "note": "已存入 1 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 1
+        }
+      }
+    },
+    {
+      "description": "A[0][1] = 2 落在主顶/次对角线上，按行优先第 2 个非零元，存入 b[1]，地址 = 0x3004。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "active",
+                "note": "存 A[0][1]"
+              }
+            ],
+            "note": "已存入 2 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 2
+        }
+      }
+    },
+    {
+      "description": "A[1][0] = 3 落在主顶/次对角线上，按行优先第 3 个非零元，存入 b[2]，地址 = 0x3008。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "active",
+                "note": "存 A[1][0]"
+              }
+            ],
+            "note": "已存入 3 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 3
+        }
+      }
+    },
+    {
+      "description": "A[1][1] = 4 落在主顶/次对角线上，按行优先第 4 个非零元，存入 b[3]，地址 = 0x300c。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "active",
+                "note": "存 A[1][1]"
+              }
+            ],
+            "note": "已存入 4 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 4
+        }
+      }
+    },
+    {
+      "description": "A[1][2] = 5 落在主顶/次对角线上，按行优先第 5 个非零元，存入 b[4]，地址 = 0x3010。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "active",
+                "note": "存 A[1][2]"
+              }
+            ],
+            "note": "已存入 5 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 5
+        }
+      }
+    },
+    {
+      "description": "A[2][1] = 6 落在主顶/次对角线上，按行优先第 6 个非零元，存入 b[5]，地址 = 0x3014。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "active",
+                "note": "存 A[2][1]"
+              }
+            ],
+            "note": "已存入 6 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 6
+        }
+      }
+    },
+    {
+      "description": "A[2][2] = 7 落在主顶/次对角线上，按行优先第 7 个非零元，存入 b[6]，地址 = 0x3018。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "active",
+                "note": "存 A[2][2]"
+              }
+            ],
+            "note": "已存入 7 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 7
+        }
+      }
+    },
+    {
+      "description": "A[2][3] = 8 落在主顶/次对角线上，按行优先第 8 个非零元，存入 b[7]，地址 = 0x301c。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "active",
+                "note": "存 A[2][3]"
+              }
+            ],
+            "note": "已存入 8 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 8
+        }
+      }
+    },
+    {
+      "description": "A[3][2] = 9 落在主顶/次对角线上，按行优先第 9 个非零元，存入 b[8]，地址 = 0x3020。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "active",
+                "note": "存 A[3][2]"
+              }
+            ],
+            "note": "已存入 9 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 9
+        }
+      }
+    },
+    {
+      "description": "A[3][3] = 10 落在主顶/次对角线上，按行优先第 10 个非零元，存入 b[9]，地址 = 0x3024。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "b9",
+                "address": "0x3024",
+                "value": "10",
+                "role": "active",
+                "note": "存 A[3][3]"
+              }
+            ],
+            "note": "已存入 10 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 10
+        }
+      }
+    },
+    {
+      "description": "A[3][4] = 11 落在主顶/次对角线上，按行优先第 11 个非零元，存入 b[10]，地址 = 0x3028。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "b9",
+                "address": "0x3024",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "b10",
+                "address": "0x3028",
+                "value": "11",
+                "role": "active",
+                "note": "存 A[3][4]"
+              }
+            ],
+            "note": "已存入 11 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 11
+        }
+      }
+    },
+    {
+      "description": "A[4][3] = 12 落在主顶/次对角线上，按行优先第 12 个非零元，存入 b[11]，地址 = 0x302c。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "b9",
+                "address": "0x3024",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "b10",
+                "address": "0x3028",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][4]"
+              },
+              {
+                "key": "b11",
+                "address": "0x302c",
+                "value": "12",
+                "role": "active",
+                "note": "存 A[4][3]"
+              }
+            ],
+            "note": "已存入 12 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 12
+        }
+      }
+    },
+    {
+      "description": "A[4][4] = 13 落在主顶/次对角线上，按行优先第 13 个非零元，存入 b[12]，地址 = 0x3030。远离对角线的那一大片 0 根本没进数组——这就是压缩省下的空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "active",
+                "note": "三条对角线之一，压缩"
+              }
+            ],
+            "note": "|i-j| ≤ 1 处非零"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "b9",
+                "address": "0x3024",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "b10",
+                "address": "0x3028",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][4]"
+              },
+              {
+                "key": "b11",
+                "address": "0x302c",
+                "value": "12",
+                "role": "sorted",
+                "note": "存 A[4][3]"
+              },
+              {
+                "key": "b12",
+                "address": "0x3030",
+                "value": "13",
+                "role": "active",
+                "note": "存 A[4][4]"
+              }
+            ],
+            "note": "已存入 13 / 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 13
+        }
+      }
+    },
+    {
+      "description": "结论：压缩把 5×5=25 个格子缩到 13 个，节省近一半（n 越大越省：三对角恒为 O(n) 存储而非 O(n²)）。上三角矩阵同理——只存 i≤j 那半边，也是 n(n+1)/2 个。这类矩阵在数值计算里极常见，压缩存储 + 稀疏配合，是「空间换出错率」的经典手法。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 三对角矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "3",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "4",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "5",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "6",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "7",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "8",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "9",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "10",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "11",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "0",
+                "role": "idle",
+                "note": "远离对角线，恒为 0，不存"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "12",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "13",
+                "role": "idle",
+                "note": "三条对角线之一，待压缩"
+              }
+            ],
+            "note": "非零元已全部压缩"
+          },
+          {
+            "key": "store",
+            "title": "三对角压缩数组 b[0..12]",
+            "cells": [
+              {
+                "key": "b0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "b1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[0][1]"
+              },
+              {
+                "key": "b2",
+                "address": "0x3008",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "b3",
+                "address": "0x300c",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "b4",
+                "address": "0x3010",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[1][2]"
+              },
+              {
+                "key": "b5",
+                "address": "0x3014",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "b6",
+                "address": "0x3018",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "b7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[2][3]"
+              },
+              {
+                "key": "b8",
+                "address": "0x3020",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "b9",
+                "address": "0x3024",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "b10",
+                "address": "0x3028",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][4]"
+              },
+              {
+                "key": "b11",
+                "address": "0x302c",
+                "value": "12",
+                "role": "sorted",
+                "note": "存 A[4][3]"
+              },
+              {
+                "key": "b12",
+                "address": "0x3030",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[4][4]"
+              }
+            ],
+            "note": "共 13 个非零元"
+          }
+        ],
+        "counters": {
+          "stored": 13
+        }
+      }
+    }
+  ]
+}

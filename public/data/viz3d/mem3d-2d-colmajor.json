@@ -1,0 +1,1466 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-2d-colmajor",
+  "title": "二维数组列优先：逻辑网格到一维地址（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第4章 串、数组和广义表",
+  "relatedProblems": [
+    "ds-ch04-sc-006",
+    "ds-ch04-fb-003"
+  ],
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a[3][4] = { {1,2,3,4}, {5,6,7,8}, {9,10,11,12} };\n    /* 列优先（FORTRAN 风格）：a[i][j] 的地址 = 基址 + (j*行数 + i) * sizeof(int) */\n    for (int j = 0; j < 4; j++)\n        for (int i = 0; i < 3; i++)\n            printf(\"a[%d][%d] offset=(%d*3+%d)*4\\n\", i, j, j, i);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "colMajor2d",
+    "n": 12,
+    "counterKeys": [
+      "visited"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "若改用列优先（FORTRAN 风格），同样 12 个 int 但铺法不同：先 a[0..2][0]，再 a[0..2][1]，最后 a[0..2][3]。**地址递增方向沿列走**，而不是沿行。看 3D 沙盘：内存条上按列编号，与直觉的「逐行」相反。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x1000，addr(i,j)=base+(j*行数+i)*4"
+          }
+        ],
+        "counters": {
+          "visited": 0
+        }
+      }
+    },
+    {
+      "description": "a[0][0] = 1，地址 = 0x1000。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (0×3 + 0)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "active",
+                "note": "线性序号 0 = j×行数 + i = 0×3+0"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 1
+        }
+      }
+    },
+    {
+      "description": "a[1][0] = 2，地址 = 0x1004。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (0×3 + 1)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "active",
+                "note": "线性序号 1 = j×行数 + i = 0×3+1"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 2
+        }
+      }
+    },
+    {
+      "description": "a[2][0] = 3，地址 = 0x1008。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (0×3 + 2)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "active",
+                "note": "线性序号 2 = j×行数 + i = 0×3+2"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 3
+        }
+      }
+    },
+    {
+      "description": "a[0][1] = 4，地址 = 0x100c。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (1×3 + 0)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "active",
+                "note": "线性序号 3 = j×行数 + i = 1×3+0"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 4
+        }
+      }
+    },
+    {
+      "description": "a[1][1] = 5，地址 = 0x1010。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (1×3 + 1)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "active",
+                "note": "线性序号 4 = j×行数 + i = 1×3+1"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 5
+        }
+      }
+    },
+    {
+      "description": "a[2][1] = 6，地址 = 0x1014。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (1×3 + 2)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "active",
+                "note": "线性序号 5 = j×行数 + i = 1×3+2"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 6
+        }
+      }
+    },
+    {
+      "description": "a[0][2] = 7，地址 = 0x1018。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (2×3 + 0)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "active",
+                "note": "线性序号 6 = j×行数 + i = 2×3+0"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 7
+        }
+      }
+    },
+    {
+      "description": "a[1][2] = 8，地址 = 0x101c。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (2×3 + 1)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "active",
+                "note": "线性序号 7 = j×行数 + i = 2×3+1"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 8
+        }
+      }
+    },
+    {
+      "description": "a[2][2] = 9，地址 = 0x1020。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (2×3 + 2)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "active",
+                "note": "线性序号 8 = j×行数 + i = 2×3+2"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 9
+        }
+      }
+    },
+    {
+      "description": "a[0][3] = 10，地址 = 0x1024。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (3×3 + 0)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "active",
+                "note": "线性序号 9 = j×行数 + i = 3×3+0"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 10
+        }
+      }
+    },
+    {
+      "description": "a[1][3] = 11，地址 = 0x1028。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (3×3 + 1)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "active",
+                "note": "线性序号 10 = j×行数 + i = 3×3+1"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 11
+        }
+      }
+    },
+    {
+      "description": "a[2][3] = 12，地址 = 0x102c。套列优先公式：0x1000 + (j×行数 + i)×4 = 0x1000 + (3×3 + 2)×4。注意此时同一列（固定 j、i 递增）的地址才是连续的。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "active",
+                "note": "线性序号 11 = j×行数 + i = 3×3+2"
+              }
+            ],
+            "note": "列优先：同一列的地址连续"
+          }
+        ],
+        "counters": {
+          "visited": 12
+        }
+      }
+    },
+    {
+      "description": "结论：同一维面，仅「哪个维度连续」不同，地址公式就完全不同 —— row-major 用 (i×N+j)，column-major 用 (j×M+i)。这也解释了为什么 C 用行优先，而 FORTRAN 用列优先：主维度不同，缓存友好方向就相反；若用 C 按列遍历二维数组，实际是在跨行跳着访问内存。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "int a[3][4] —— 列优先铺排",
+            "cells": [
+              {
+                "key": "a00",
+                "address": "0x1000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a01",
+                "address": "0x100c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a02",
+                "address": "0x1018",
+                "value": "7",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a03",
+                "address": "0x1024",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a10",
+                "address": "0x1004",
+                "value": "2",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a11",
+                "address": "0x1010",
+                "value": "5",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a12",
+                "address": "0x101c",
+                "value": "8",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a13",
+                "address": "0x1028",
+                "value": "11",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a20",
+                "address": "0x1008",
+                "value": "3",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a21",
+                "address": "0x1014",
+                "value": "6",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a22",
+                "address": "0x1020",
+                "value": "9",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              },
+              {
+                "key": "a23",
+                "address": "0x102c",
+                "value": "12",
+                "role": "sorted",
+                "note": "已访问，地址随列递增"
+              }
+            ],
+            "note": "addr(i,j) = base + (j*rows + i)*sizeof(elem)"
+          }
+        ],
+        "counters": {
+          "visited": 12
+        }
+      }
+    }
+  ]
+}

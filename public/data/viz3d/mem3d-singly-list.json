@@ -1,0 +1,310 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-singly-list",
+  "title": "单链表结点的内存与 next 指针（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第2章 线性表",
+  "relatedProblems": [
+    "ds-ch02-sc-008",
+    "ds-ch02-sc-009",
+    "ds-ch02-sc-010"
+  ],
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\n\nint main(void) {\n    Node *head = NULL;              /* 空表：头指针先为空 */\n    Node *n1 = malloc(sizeof(Node)); n1->data = 10; n1->next = head; head = n1;\n    Node *n2 = malloc(sizeof(Node)); n2->data = 20; n2->next = head; head = n2;\n    Node *n3 = malloc(sizeof(Node)); n3->data = 30; n3->next = head; head = n3;\n    /* 头插法：每次新结点都插在表头，next 永远指向原来的头 */\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "singlyList",
+    "n": 3,
+    "counterKeys": [
+      "count"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "空表：int *head = NULL。还没有任何结点，链表为空。头指针是链表的唯一入口，所有查找/插入都必须从它出发。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（malloc 的结点）",
+            "cells": [],
+            "note": "每个结点含 data + next，在堆区离散分配"
+          }
+        ],
+        "counters": {
+          "count": 0
+        }
+      }
+    },
+    {
+      "description": "头插法插入第一个结点：malloc 一块 8 字节的空间，把 10 写进 data，next 置为原 head(NULL)，最后 head 指向它。此时链表只有一个结点，next 指向 NULL 即链尾。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（malloc 的结点）",
+            "cells": [
+              {
+                "key": "n1-data",
+                "address": "0x9000",
+                "value": "10",
+                "role": "active",
+                "note": "头结点，head 指向这里"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              }
+            ],
+            "note": "每个结点含 data + next，在堆区离散分配"
+          }
+        ],
+        "counters": {
+          "count": 1
+        }
+      }
+    },
+    {
+      "description": "再头插一个结点 n2=20：malloc 出新结点，data=20，next 指向前一个头结点 n1，head 改指 n2。链表变成 n2 → n1 → NULL。",
+      "codeLine": 7,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9008",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（malloc 的结点）",
+            "cells": [
+              {
+                "key": "n1-data",
+                "address": "0x9000",
+                "value": "10",
+                "role": "sorted",
+                "note": "普通结点"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9008",
+                "value": "20",
+                "role": "active",
+                "note": "头结点，head 指向这里"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x900c",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              }
+            ],
+            "note": "每个结点含 data + next，在堆区离散分配"
+          }
+        ],
+        "counters": {
+          "count": 2
+        }
+      }
+    },
+    {
+      "description": "再头插 n3=30：data=30，next 指向原头 n2，head 改为 n3。链表现在 n3 → n2 → n1 → NULL。注意 head 只存「第一个结点地址」，后续结点全靠 next 一个接一个串起来。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9010",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（malloc 的结点）",
+            "cells": [
+              {
+                "key": "n1-data",
+                "address": "0x9000",
+                "value": "10",
+                "role": "sorted",
+                "note": "普通结点"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9008",
+                "value": "20",
+                "role": "sorted",
+                "note": "普通结点"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x900c",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              },
+              {
+                "key": "n3-data",
+                "address": "0x9010",
+                "value": "30",
+                "role": "active",
+                "note": "头结点，head 指向这里"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9014",
+                "value": "→ 0x9008",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              }
+            ],
+            "note": "每个结点含 data + next，在堆区离散分配"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    },
+    {
+      "description": "总结：单链表把「数据的先后顺序」编码进每个结点的 next 指针，而非连续下标。因此插入只需改两个指针（新结点的 next 与原头指针），代价是查找必须从 head 一路 next 数过去 —— 时间 O(n)，空间上每个结点多占一个指针。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9010",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（malloc 的结点）",
+            "cells": [
+              {
+                "key": "n1-data",
+                "address": "0x9000",
+                "value": "10",
+                "role": "sorted",
+                "note": "普通结点"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9008",
+                "value": "20",
+                "role": "sorted",
+                "note": "普通结点"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x900c",
+                "value": "→ 0x9000",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              },
+              {
+                "key": "n3-data",
+                "address": "0x9010",
+                "value": "30",
+                "role": "active",
+                "note": "头结点，head 指向这里"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9014",
+                "value": "→ 0x9008",
+                "role": "idle",
+                "note": "next 指针：指向后继结点"
+              }
+            ],
+            "note": "每个结点含 data + next，在堆区离散分配"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    }
+  ]
+}

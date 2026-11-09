@@ -1,0 +1,501 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-seq-stack",
+  "title": "顺序栈的入栈与出栈（3D 内存沙盘）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第3章 栈和队列",
+  "relatedProblems": [
+    "ds-ch03-fb-002",
+    "ds-ch03-sc-010",
+    "ds-ch03-sc-011"
+  ],
+  "code": "#include <stdio.h>\n#define MAXSIZE 5\n\ntypedef struct {\n    int data[MAXSIZE];   /* 栈底在 data[0]，栈顶在 data[top] */\n    int top;\n} SqStack;\n\nint main(void) {\n    SqStack S;\n    S.top = -1;                  /* 初始化空栈 */\n    S.data[++S.top] = 10;        /* push(10) */\n    S.data[++S.top] = 20;        /* push(20) */\n    S.data[++S.top] = 30;        /* push(30) */\n    S.top--;                     /* pop 出栈 */\n    S.top--;                     /* pop 出栈 */\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "seqStack",
+    "n": 5,
+    "counterKeys": [
+      "top"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "初始化空栈：S.top = -1。data[0..4] 五个槽在栈区连续占好，但没有一个元素 —— 空栈的判据不是「数组是空的」，而是 top = -1。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "-1",
+                "role": "pivot",
+                "note": "栈顶指针 top = -1"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": -1
+        }
+      }
+    },
+    {
+      "description": "入栈 push(10)：先执行 ++top 让 top 变成 0，再把 10 写进 data[0]。顺序栈入栈固定两步 —— 「先移栈顶指针、再写元素」；出栈则反过来，先取元素、再退 top。",
+      "codeLine": 7,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "active",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "0",
+                "role": "pivot",
+                "note": "栈顶指针 top = 0"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 0
+        }
+      }
+    },
+    {
+      "description": "入栈 push(20)：top 上移到 1，20 落在 data[1]。栈顶元素永远是最新压入的那个，数组端在物理上不断向上增长；被压在下面的元素只能等上面全部弹出后才触手可及。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "sorted",
+                "note": "栈内元素"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "20",
+                "role": "active",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "1",
+                "role": "pivot",
+                "note": "栈顶指针 top = 1"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 1
+        }
+      }
+    },
+    {
+      "description": "入栈 push(30)：top 上移到 2，data[2] = 30。此刻栈里自底向顶是 10 / 20 / 30，栈顶是 30。10 最早进来，压在栈底，最后才能出去 —— 这叫后进先出（LIFO）。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "sorted",
+                "note": "栈内元素"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "20",
+                "role": "sorted",
+                "note": "栈内元素"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "30",
+                "role": "active",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "2",
+                "role": "pivot",
+                "note": "栈顶指针 top = 2"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 2
+        }
+      }
+    },
+    {
+      "description": "出栈 pop()：弹出栈顶 data[2] = 30，随后 top 退到 1。注意下标回退即可，30 从逻辑栈里消失，但**槽位还在** —— 数组里仍是旧值，只是 top 不再覆盖它，成了「逻辑上不可访问」的残留。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "sorted",
+                "note": "栈内元素"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "20",
+                "role": "sorted",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "active",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "1",
+                "role": "pivot",
+                "note": "栈顶指针 top = 1"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 1
+        }
+      }
+    },
+    {
+      "description": "再出栈 pop()：弹出 20，top 退到 0。30 与 20 的槽位仍写着旧值，但都被 top 甩到栈外。顺序栈唯一关注的只有 top —— 「top 以下都是栈内、top 以上都是栈外」。",
+      "codeLine": 11,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "sorted",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "空",
+                "role": "active",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "0",
+                "role": "pivot",
+                "note": "栈顶指针 top = 0"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 0
+        }
+      }
+    },
+    {
+      "description": "总结：顺序栈用一块连续数组 + 一个 top 下标表达「栈」。入栈 = ++top 再写值，出栈 = 退 top。因为插入删除都只在表的一端进行，所以两种操作都只要 O(1) 时间，这是它比链栈快的原因。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "stack",
+            "title": "顺序栈 SqStack（data[0..4] + top）",
+            "cells": [
+              {
+                "key": "data0",
+                "address": "0x7ff0",
+                "value": "10",
+                "role": "sorted",
+                "note": "栈顶元素（top 指向这里）"
+              },
+              {
+                "key": "data1",
+                "address": "0x7ff4",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data2",
+                "address": "0x7ff8",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data3",
+                "address": "0x7ffc",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "data4",
+                "address": "0x8000",
+                "value": "空",
+                "role": "idle",
+                "note": "空闲槽"
+              },
+              {
+                "key": "top",
+                "address": "0x8004",
+                "value": "0",
+                "role": "pivot",
+                "note": "栈顶指针 top = 0"
+              },
+              {
+                "key": "max",
+                "address": "0x8008",
+                "value": "5",
+                "role": "idle",
+                "note": "栈容量 MAXSIZE"
+              }
+            ],
+            "note": "数组在栈区连续存放，top 记住栈顶下标"
+          }
+        ],
+        "counters": {
+          "top": 0
+        }
+      }
+    }
+  ]
+}

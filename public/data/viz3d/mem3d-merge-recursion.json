@@ -1,0 +1,1378 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-merge-recursion",
+  "title": "归并排序的递归拆合（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第8章 排序",
+  "relatedProblems": [
+    "ds-ch08-sc-015",
+    "ds-ch08-sc-016",
+    "ds-ch08-sc-020"
+  ],
+  "code": "#include <stdio.h>\n\nvoid merge(int a[], int lo, int mid, int hi) {\n    int t[100], i = lo, j = mid + 1, k = 0;\n    while (i <= mid && j <= hi)\n        t[k++] = a[i] <= a[j] ? a[i++] : a[j++];\n    while (i <= mid) t[k++] = a[i++];\n    while (j <= hi)  t[k++] = a[j++];\n    for (i = lo, k = 0; i <= hi; i++) a[i] = t[k++];\n}\n\nvoid ms(int a[], int lo, int hi) {\n    if (lo >= hi) return;          /* 递归出口：单元素 */\n    int mid = (lo + hi) / 2;\n    ms(a, lo, mid);                /* 递归左半 */\n    ms(a, mid + 1, hi);            /* 递归右半 */\n    merge(a, lo, mid, hi);         /* 回时归并 */\n}\n\nint main(void) {\n    int a[6] = {4, 2, 6, 1, 3, 5};\n    ms(a, 0, 5);\n    printf(\"%d %d %d %d %d %d\\n\", a[0], a[1], a[2], a[3], a[4], a[5]);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "mergeSortRecursion",
+    "n": 6,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 先落地。数组 {4,2,6,1,3,5} 待排。归并排序的策略是「先拆到底、再归并回来」—— 拆的时候只记录区间，真正的排序动作发生在返回路上的 merge。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "待排序数组 a[]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "ms(0,5) 压栈：lo=0、hi=5，算出 mid=(0+5)/2=2。它先递归左半 [0..2] —— 注意此刻数组还没变，只是把区间切了一份。",
+      "codeLine": 23,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "active"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "待排序数组 a[]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "ms(0,2) 压栈：lo=0、hi=2，mid=1。继续往左拆 [0..1]。栈深 3 —— 归并的递归树深度是 log₂n，6 个数最多 3 层。",
+      "codeLine": 24,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms02",
+            "title": "ms(0,2)",
+            "cells": [
+              {
+                "key": "ms02-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms02-hi",
+                "address": "0x7fb4",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "ms02-mid",
+                "address": "0x7fb8",
+                "value": "1",
+                "role": "active",
+                "note": "(0+2)/2"
+              },
+              {
+                "key": "ms02-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms02-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "待排序数组 a[]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "ms(0,1) 压栈：lo=0、hi=1，mid=0。再拆到 [0..0] 与 [1..1] 两个单元素区间。递归在这里一直往深走，每一层都在等下一层返回，所以一路的返回值都是「待定」。",
+      "codeLine": 25,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms02",
+            "title": "ms(0,2)",
+            "cells": [
+              {
+                "key": "ms02-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms02-hi",
+                "address": "0x7fb4",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "ms02-mid",
+                "address": "0x7fb8",
+                "value": "1",
+                "role": "idle",
+                "note": "(0+2)/2"
+              },
+              {
+                "key": "ms02-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms02-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms01",
+            "title": "ms(0,1)",
+            "cells": [
+              {
+                "key": "ms01-lo",
+                "address": "0x7f90",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms01-hi",
+                "address": "0x7f94",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "ms01-mid",
+                "address": "0x7f98",
+                "value": "0",
+                "role": "active",
+                "note": "(0+1)/2"
+              },
+              {
+                "key": "ms01-ret",
+                "address": "0x7f9c",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms01-ra",
+                "address": "0x7fa0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "待排序数组 a[]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "触底：ms(0,0) 与 ms(1,1) 都是单元素，直接触发 lo>=hi 出口返回。回来后执行 merge(0,1)：把 {4} 和 {2} 归并成 {2,4}，写回下标 0..1。数组变成 {2,4,6,1,3,5}。这是「回」阶段第一次真正的排序动作。",
+      "codeLine": 26,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms02",
+            "title": "ms(0,2)",
+            "cells": [
+              {
+                "key": "ms02-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms02-hi",
+                "address": "0x7fb4",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "ms02-mid",
+                "address": "0x7fb8",
+                "value": "1",
+                "role": "idle",
+                "note": "(0+2)/2"
+              },
+              {
+                "key": "ms02-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms02-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms01",
+            "title": "ms(0,1)",
+            "cells": [
+              {
+                "key": "ms01-lo",
+                "address": "0x7f90",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms01-hi",
+                "address": "0x7f94",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "ms01-mid",
+                "address": "0x7f98",
+                "value": "0",
+                "role": "active",
+                "note": "(0+1)/2"
+              },
+              {
+                "key": "ms01-ret",
+                "address": "0x7f9c",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms01-ra",
+                "address": "0x7fa0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "归并 [0..1] 后",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "ms(0,1) 返回并弹栈。ms(0,2) 现在拿到左半 [0..1]={2,4}，右半 [2..2]={6}，执行 merge(0,2) 归并成 {2,4,6}。数组变成 {2,4,6,1,3,5}。栈深回到 3。",
+      "codeLine": 27,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms02",
+            "title": "ms(0,2)",
+            "cells": [
+              {
+                "key": "ms02-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms02-hi",
+                "address": "0x7fb4",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "ms02-mid",
+                "address": "0x7fb8",
+                "value": "1",
+                "role": "active",
+                "note": "(0+2)/2"
+              },
+              {
+                "key": "ms02-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms02-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "归并 [0..2] 后",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "ms(0,2) 完成，弹出栈帧，栈深回到 2。左半 [0..2] 已排好 {2,4,6}。ms(0,5) 现在去处理右半 [3..5]。注意整个数组目前是 {2,4,6,1,3,5} —— 左右两个半区各自独立，尚未合拢。",
+      "codeLine": 24,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "active"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "左半就绪",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "ms(0,5) 递归右半：ms(3,5) 压栈，lo=3、hi=5，mid=4。它把 [3..5]={1,3,5} 继续拆成 [3..4] 与 [5..5]，然后归并成 {1,3,5}。右半也排好了。",
+      "codeLine": 25,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "ms35",
+            "title": "ms(3,5)",
+            "cells": [
+              {
+                "key": "ms35-lo",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "ms35-hi",
+                "address": "0x7fb4",
+                "value": "5",
+                "role": "active"
+              },
+              {
+                "key": "ms35-mid",
+                "address": "0x7fb8",
+                "value": "4",
+                "role": "active",
+                "note": "(3+5)/2"
+              },
+              {
+                "key": "ms35-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms35-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "右半就绪",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "6",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "5",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "ms(3,5) 弹栈，控制权回到 ms(0,5)。此时左半 {2,4,6} 与右半 {1,3,5} 都已有序，执行最后一次 merge(0,5)：双指针比较，逐元素归并成 {1,2,3,4,5,6}。这是整次递归的收尾。",
+      "codeLine": 28,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "ms05",
+            "title": "ms(0,5)",
+            "cells": [
+              {
+                "key": "ms05-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "ms05-hi",
+                "address": "0x7fd4",
+                "value": "5",
+                "role": "active"
+              },
+              {
+                "key": "ms05-mid",
+                "address": "0x7fd8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+5)/2"
+              },
+              {
+                "key": "ms05-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "ms05-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "最终归并 [0..5]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "ms(0,5) 返回，栈只剩 main 一层。数组完全升序。归并排序的递归栈深恒为 log₂n（这里约 3 层），但 merge 每层都要一块与原序列等长的辅助数组 —— 所以归并的空间复杂度是 O(n)，这来自「辅助空间」，不是递归栈本身。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "排好序的数组 a[]",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "6",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 占 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

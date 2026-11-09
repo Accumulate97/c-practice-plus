@@ -1,0 +1,1317 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-sparse-triplet",
+  "title": "稀疏矩阵三元组顺序表（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第4章 串、数组和广义表",
+  "relatedProblems": [
+    "ds-ch04-sc-012",
+    "ds-ch04-sc-013",
+    "ds-ch04-fb-005"
+  ],
+  "code": "#include <stdio.h>\n\ntypedef struct { int i, j, v; } Triple;\n\nint main(void) {\n    int M[4][4] = { {5,0,0,8}, {0,0,3,0}, {7,6,0,0}, {0,0,0,9} };\n    Triple t[6];            /* 非零元三元组顺序表 */\n    int k = 0;\n    for (int i = 0; i < 4; i++)\n        for (int j = 0; j < 4; j++)\n            if (M[i][j] != 0) { t[k].i = i; t[k].j = j; t[k].v = M[i][j]; k++; }\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "sparseTriplet",
+    "n": 6,
+    "counterKeys": [
+      "nonZero"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "稀疏矩阵 = 非零元极少。这个 4×4 里只有 6 个非零元，其余 10 个都是 0。若仍按 n² 存储就白白浪费。三元组顺序表只存「行、列、值」这三个信息，把 6 个非零元装进一条连续数组 t[0..5]。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [],
+            "note": "每格一个三元组 (行,列,值)，12 字节"
+          }
+        ],
+        "counters": {
+          "nonZero": 0
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[0][0] = 5 ≠ 0，记录第 1 个三元组 (0,0,5)，地址 = 0x2000。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "active",
+                "note": "行 0 / 列 0 / 值 5"
+              }
+            ],
+            "note": "已记录 1 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 1
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[0][3] = 8 ≠ 0，记录第 2 个三元组 (0,3,8)，地址 = 0x200c。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "active",
+                "note": "行 0 / 列 3 / 值 8"
+              }
+            ],
+            "note": "已记录 2 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 2
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[1][2] = 3 ≠ 0，记录第 3 个三元组 (1,2,3)，地址 = 0x2018。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "sorted",
+                "note": "行 0 / 列 3 / 值 8"
+              },
+              {
+                "key": "t2",
+                "address": "0x2018",
+                "value": "(1,2,3)",
+                "role": "active",
+                "note": "行 1 / 列 2 / 值 3"
+              }
+            ],
+            "note": "已记录 3 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 3
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[2][0] = 7 ≠ 0，记录第 4 个三元组 (2,0,7)，地址 = 0x2024。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "sorted",
+                "note": "行 0 / 列 3 / 值 8"
+              },
+              {
+                "key": "t2",
+                "address": "0x2018",
+                "value": "(1,2,3)",
+                "role": "sorted",
+                "note": "行 1 / 列 2 / 值 3"
+              },
+              {
+                "key": "t3",
+                "address": "0x2024",
+                "value": "(2,0,7)",
+                "role": "active",
+                "note": "行 2 / 列 0 / 值 7"
+              }
+            ],
+            "note": "已记录 4 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 4
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[2][1] = 6 ≠ 0，记录第 5 个三元组 (2,1,6)，地址 = 0x2030。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "sorted",
+                "note": "行 0 / 列 3 / 值 8"
+              },
+              {
+                "key": "t2",
+                "address": "0x2018",
+                "value": "(1,2,3)",
+                "role": "sorted",
+                "note": "行 1 / 列 2 / 值 3"
+              },
+              {
+                "key": "t3",
+                "address": "0x2024",
+                "value": "(2,0,7)",
+                "role": "sorted",
+                "note": "行 2 / 列 0 / 值 7"
+              },
+              {
+                "key": "t4",
+                "address": "0x2030",
+                "value": "(2,1,6)",
+                "role": "active",
+                "note": "行 2 / 列 1 / 值 6"
+              }
+            ],
+            "note": "已记录 5 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 5
+        }
+      }
+    },
+    {
+      "description": "扫描到 M[3][3] = 9 ≠ 0，记录第 6 个三元组 (3,3,9)，地址 = 0x203c。注意：只有非零元进表，那些 0 全部跳过。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "active",
+                "note": "非零元，收入三元组"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "sorted",
+                "note": "行 0 / 列 3 / 值 8"
+              },
+              {
+                "key": "t2",
+                "address": "0x2018",
+                "value": "(1,2,3)",
+                "role": "sorted",
+                "note": "行 1 / 列 2 / 值 3"
+              },
+              {
+                "key": "t3",
+                "address": "0x2024",
+                "value": "(2,0,7)",
+                "role": "sorted",
+                "note": "行 2 / 列 0 / 值 7"
+              },
+              {
+                "key": "t4",
+                "address": "0x2030",
+                "value": "(2,1,6)",
+                "role": "sorted",
+                "note": "行 2 / 列 1 / 值 6"
+              },
+              {
+                "key": "t5",
+                "address": "0x203c",
+                "value": "(3,3,9)",
+                "role": "active",
+                "note": "行 3 / 列 3 / 值 9"
+              }
+            ],
+            "note": "已记录 6 / 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 6
+        }
+      }
+    },
+    {
+      "description": "结论：存储量从 n² 降到 3×非零元个数。本例 16 格 → 6 个三元组。代价是访问不再是 O(1) 下标，得先在三元组里查位置——这就是「用时间换空间」。配套的普通转置、快速转置、十字链表，都是在这个顺序表/链结构上做文章。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 M[4][4] 稀疏矩阵",
+            "cells": [
+              {
+                "key": "M00",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M01",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M02",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M03",
+                "address": "0x100c",
+                "value": "8",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M10",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M11",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M12",
+                "address": "0x1018",
+                "value": "3",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M13",
+                "address": "0x101c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M20",
+                "address": "0x1020",
+                "value": "7",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M21",
+                "address": "0x1024",
+                "value": "6",
+                "role": "idle",
+                "note": "非零元"
+              },
+              {
+                "key": "M22",
+                "address": "0x1028",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M23",
+                "address": "0x102c",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M30",
+                "address": "0x1030",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M31",
+                "address": "0x1034",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M32",
+                "address": "0x1038",
+                "value": "0",
+                "role": "idle",
+                "note": "0，不存"
+              },
+              {
+                "key": "M33",
+                "address": "0x103c",
+                "value": "9",
+                "role": "idle",
+                "note": "非零元"
+              }
+            ],
+            "note": "16 格，仅少量非零"
+          },
+          {
+            "key": "store",
+            "title": "三元组顺序表 t[0..5]",
+            "cells": [
+              {
+                "key": "t0",
+                "address": "0x2000",
+                "value": "(0,0,5)",
+                "role": "sorted",
+                "note": "行 0 / 列 0 / 值 5"
+              },
+              {
+                "key": "t1",
+                "address": "0x200c",
+                "value": "(0,3,8)",
+                "role": "sorted",
+                "note": "行 0 / 列 3 / 值 8"
+              },
+              {
+                "key": "t2",
+                "address": "0x2018",
+                "value": "(1,2,3)",
+                "role": "sorted",
+                "note": "行 1 / 列 2 / 值 3"
+              },
+              {
+                "key": "t3",
+                "address": "0x2024",
+                "value": "(2,0,7)",
+                "role": "sorted",
+                "note": "行 2 / 列 0 / 值 7"
+              },
+              {
+                "key": "t4",
+                "address": "0x2030",
+                "value": "(2,1,6)",
+                "role": "sorted",
+                "note": "行 2 / 列 1 / 值 6"
+              },
+              {
+                "key": "t5",
+                "address": "0x203c",
+                "value": "(3,3,9)",
+                "role": "sorted",
+                "note": "行 3 / 列 3 / 值 9"
+              }
+            ],
+            "note": "已记录全部 6 个非零元"
+          }
+        ],
+        "counters": {
+          "nonZero": 6
+        }
+      }
+    }
+  ]
+}

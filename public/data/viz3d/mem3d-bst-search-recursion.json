@@ -1,0 +1,594 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-bst-search-recursion",
+  "title": "二叉排序树查找的递归（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第5章 树和二叉树",
+  "relatedProblems": [
+    "ds-ch05-tf-001",
+    "ds-ch05-sc-005",
+    "ds-ch05-sc-006"
+  ],
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct node { int key; struct node *l, *r; } Node;\n\nNode *bstSearch(Node *t, int key) {\n    if (t == NULL) return NULL;             /* 走到空结点：没找到 */\n    if (key == t->key)  return t;           /* 命中 */\n    if (key < t->key)   return bstSearch(t->l, key);  /* 左子树 */\n    return bstSearch(t->r, key);            /* 右子树 */\n}\n\nint main(void) {\n    /* 依次插入 50 30 70 20 40 60 80 建成一棵二叉排序树 */\n    Node *root = NULL;\n    /* ...构造树省略... */\n    Node *p = bstSearch(root, 60);\n    printf(\"%d\\n\", p ? p->key : -1);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "bstSearchRecursion",
+    "n": 5,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 落地。二叉排序树满足左子树 < 根 < 右子树，因此查找可以像折半一样剪枝：从根出发，每走一层就排除一半。现在要找 key=60。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "bstSearch(50,60) 压栈：当前结点 key=50，待查 key=60。比较 60 > 50，于是走右子树。栈深 2。每次只往一个方向走，这是「线性递归」—— 栈深等于树高。",
+      "codeLine": 13,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch5060",
+            "title": "bstSearch(50,60)",
+            "cells": [
+              {
+                "key": "bstSearch5060-node",
+                "address": "0x7fd0",
+                "value": "50",
+                "role": "active",
+                "note": "当前结点 key"
+              },
+              {
+                "key": "bstSearch5060-key",
+                "address": "0x7fd4",
+                "value": "60",
+                "role": "active",
+                "note": "待查关键字"
+              },
+              {
+                "key": "bstSearch5060-ret",
+                "address": "0x7fd8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch5060-ra",
+                "address": "0x7fdc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "bstSearch(70,60) 压栈：进入右子树的根 70。比较 60 < 70，走左子树。嵌套调用让栈向下长，每一层都记住「我是从哪个结点来的、下一步该回谁」。",
+      "codeLine": 15,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch5060",
+            "title": "bstSearch(50,60)",
+            "cells": [
+              {
+                "key": "bstSearch5060-node",
+                "address": "0x7fd0",
+                "value": "50",
+                "role": "active",
+                "note": "当前结点 key"
+              },
+              {
+                "key": "bstSearch5060-key",
+                "address": "0x7fd4",
+                "value": "60",
+                "role": "active",
+                "note": "待查关键字"
+              },
+              {
+                "key": "bstSearch5060-ret",
+                "address": "0x7fd8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch5060-ra",
+                "address": "0x7fdc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch7060",
+            "title": "bstSearch(70,60)",
+            "cells": [
+              {
+                "key": "bstSearch7060-node",
+                "address": "0x7fb0",
+                "value": "70",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch7060-key",
+                "address": "0x7fb4",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch7060-ret",
+                "address": "0x7fb8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch7060-ra",
+                "address": "0x7fbc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "bstSearch(60,60) 压栈：进入左子树根 60。比较 60 == 60，命中！直接返回指向该结点的指针。栈深 4 —— 这是本次查找的最深处，也就是 BST 查找的「路径长度」。",
+      "codeLine": 15,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch5060",
+            "title": "bstSearch(50,60)",
+            "cells": [
+              {
+                "key": "bstSearch5060-node",
+                "address": "0x7fd0",
+                "value": "50",
+                "role": "active",
+                "note": "当前结点 key"
+              },
+              {
+                "key": "bstSearch5060-key",
+                "address": "0x7fd4",
+                "value": "60",
+                "role": "active",
+                "note": "待查关键字"
+              },
+              {
+                "key": "bstSearch5060-ret",
+                "address": "0x7fd8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch5060-ra",
+                "address": "0x7fdc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch7060",
+            "title": "bstSearch(70,60)",
+            "cells": [
+              {
+                "key": "bstSearch7060-node",
+                "address": "0x7fb0",
+                "value": "70",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch7060-key",
+                "address": "0x7fb4",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch7060-ret",
+                "address": "0x7fb8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch7060-ra",
+                "address": "0x7fbc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch6060",
+            "title": "bstSearch(60,60)",
+            "cells": [
+              {
+                "key": "bstSearch6060-node",
+                "address": "0x7f90",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch6060-key",
+                "address": "0x7f94",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch6060-ret",
+                "address": "0x7f98",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch6060-ra",
+                "address": "0x7f9c",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "bstSearch(60,60) 返回指针 &60，值传到 bstSearch(70,60)；bstSearch(70,60) 也随之返回，把结果原样往上抛。返回值不是新算出来的，而是顺着调用链一路传回 —— 这就是「返回时更新返回值」。",
+      "codeLine": 15,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch5060",
+            "title": "bstSearch(50,60)",
+            "cells": [
+              {
+                "key": "bstSearch5060-node",
+                "address": "0x7fd0",
+                "value": "50",
+                "role": "idle",
+                "note": "当前结点 key"
+              },
+              {
+                "key": "bstSearch5060-key",
+                "address": "0x7fd4",
+                "value": "60",
+                "role": "idle",
+                "note": "待查关键字"
+              },
+              {
+                "key": "bstSearch5060-ret",
+                "address": "0x7fd8",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch5060-ra",
+                "address": "0x7fdc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "bstSearch7060",
+            "title": "bstSearch(70,60)",
+            "cells": [
+              {
+                "key": "bstSearch7060-node",
+                "address": "0x7fb0",
+                "value": "70",
+                "role": "idle"
+              },
+              {
+                "key": "bstSearch7060-key",
+                "address": "0x7fb4",
+                "value": "60",
+                "role": "idle"
+              },
+              {
+                "key": "bstSearch7060-ret",
+                "address": "0x7fb8",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch7060-ra",
+                "address": "0x7fbc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "bstSearch6060",
+            "title": "bstSearch(60,60)",
+            "cells": [
+              {
+                "key": "bstSearch6060-node",
+                "address": "0x7f90",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch6060-key",
+                "address": "0x7f94",
+                "value": "60",
+                "role": "active"
+              },
+              {
+                "key": "bstSearch6060-ret",
+                "address": "0x7f98",
+                "value": "&60",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch6060-ra",
+                "address": "0x7f9c",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "各层依次弹栈，最终 bstSearch(root,60) 把命中结点回传给 main。栈被清空，只剩 main。若查到的是最末端的叶子，路径长度 = 树高；若查一个不存在的值，会一直递归到 NULL 结点才返回 NULL —— 那条更长的路径就是「查找失败要走到底」。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bstSearch5060",
+            "title": "bstSearch(50,60)",
+            "cells": [
+              {
+                "key": "bstSearch5060-node",
+                "address": "0x7fd0",
+                "value": "50",
+                "role": "active",
+                "note": "当前结点 key"
+              },
+              {
+                "key": "bstSearch5060-key",
+                "address": "0x7fd4",
+                "value": "60",
+                "role": "active",
+                "note": "待查关键字"
+              },
+              {
+                "key": "bstSearch5060-ret",
+                "address": "0x7fd8",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bstSearch5060-ra",
+                "address": "0x7fdc",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "main 打印结果 60 后结束。二叉排序树的平均成功查找长度 ≈ 1.4·log₂n，前提是树**平衡**；若按有序序列插入而退化成一棵单支树，查找就变成顺序查找，栈深 = n。这就是为什么后面要用平衡二叉树（AVL）。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,625 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-array-base",
+  "title": "一维数组基址与下标：a[k]=base+k*size（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第6章 数组",
+  "relatedProblems": [
+    "c-ch06-alg-112",
+    "c-ch06-alg-124",
+    "c-ch06-alg-125"
+  ],
+  "code": "#include <stdio.h>\n\nint main(void) {\n    int a[6] = {10,20,30,40,50,60};\n    int *p = a;             /* p 指向 a[0]，即基址 */\n    for (int k = 0; k < 6; k++)\n        printf(\"a[%d]=%d addr=%p\\n\", k, a[k], (void *)&a[k]);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "arrayBase",
+    "n": 6,
+    "counterKeys": [
+      "visited"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "一维数组的核心是连续存储：只要记住首元素地址（基址），任意 a[k] 的地址 = 基址 + k×sizeof(int)。指针 p = a 正是让 p 记住这个基址。后面每一步都会看到「+k×4」这个固定增量。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 sizeof(int)=4，共 24 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，保存基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 0
+        }
+      }
+    },
+    {
+      "description": "a[0] = 10，地址 = 0x3000 = 基址 0x3000 + 0×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "active",
+                "note": "基址 + 0×4 = 0x3000"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 1
+        }
+      }
+    },
+    {
+      "description": "a[1] = 20，地址 = 0x3004 = 基址 0x3000 + 1×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "active",
+                "note": "基址 + 1×4 = 0x3004"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 2
+        }
+      }
+    },
+    {
+      "description": "a[2] = 30，地址 = 0x3008 = 基址 0x3000 + 2×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "active",
+                "note": "基址 + 2×4 = 0x3008"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 3
+        }
+      }
+    },
+    {
+      "description": "a[3] = 40，地址 = 0x300c = 基址 0x3000 + 3×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "active",
+                "note": "基址 + 3×4 = 0x300c"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "idle",
+                "note": "待访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 4
+        }
+      }
+    },
+    {
+      "description": "a[4] = 50，地址 = 0x3010 = 基址 0x3000 + 4×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "active",
+                "note": "基址 + 4×4 = 0x3010"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "idle",
+                "note": "待访问"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 5
+        }
+      }
+    },
+    {
+      "description": "a[5] = 60，地址 = 0x3014 = 基址 0x3000 + 5×4。编译器对 a[k] 的寻址，本质就是计算 base + k*sizeof。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "active",
+                "note": "基址 + 5×4 = 0x3014"
+              }
+            ],
+            "note": "基址 0x3000，每格 4 字节"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a，始终指向基址"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 6
+        }
+      }
+    },
+    {
+      "description": "结论：一维数组的随机访问是 O(1)，因为地址是「基址 + 常数×下标」的线性算式中直接算出，不需要查找。这也正是数组「顺序存储」能支持 O(1) 下标访问、以及指针算术 p[k] ≡ *(p+k) 成立的物理基础。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "array",
+            "title": "int a[6] 一维数组",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x3000",
+                "value": "10",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a1",
+                "address": "0x3004",
+                "value": "20",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a2",
+                "address": "0x3008",
+                "value": "30",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a3",
+                "address": "0x300c",
+                "value": "40",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a4",
+                "address": "0x3010",
+                "value": "50",
+                "role": "sorted",
+                "note": "已访问"
+              },
+              {
+                "key": "a5",
+                "address": "0x3014",
+                "value": "60",
+                "role": "sorted",
+                "note": "已访问"
+              }
+            ],
+            "note": "基址 0x3000"
+          },
+          {
+            "key": "ptr",
+            "title": "int *p",
+            "cells": [
+              {
+                "key": "p",
+                "address": "0x7ff0",
+                "value": "→ 0x3000",
+                "role": "idle",
+                "note": "p = a"
+              }
+            ],
+            "note": "p 指向数组首元素"
+          }
+        ],
+        "counters": {
+          "visited": 6
+        }
+      }
+    }
+  ]
+}

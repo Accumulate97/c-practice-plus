@@ -1,0 +1,363 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-hash-open",
+  "title": "散列开放定址（线性探测）的冲突处理（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第7章 查找",
+  "relatedProblems": [
+    "ds-ch07-sc-016",
+    "ds-ch07-sc-017",
+    "ds-ch07-tf-004"
+  ],
+  "code": "#include <stdio.h>\n#define M 8\n\nint main(void) {\n    int table[M] = {0};            /* 散列表，0 表示空槽 */\n    /* 散列函数 H(key) = key % M */\n    int keys[] = {15, 23, 31};     /* 三者 H 值都是 7 → 冲突 */\n    table[15 % M] = 15;            /* H(15)=7 */\n    int h = 23 % M; while (table[h] != 0) h = (h + 1) % M; table[h] = 23;  /* 探测到 0 */\n    h = 31 % M; while (table[h] != 0) h = (h + 1) % M; table[h] = 31;      /* 探测 0、1 */\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "hashOpen",
+    "n": 8,
+    "counterKeys": [
+      "probes"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "初始化散列表：M = 8 个槽全空。散列函数 H(key) = key % M，把 key 映射到 0..7 的某个槽。",
+      "codeLine": 4,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "hashtable",
+            "title": "散列表（线性探测，M=8）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot4",
+                "address": "0x9010",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot5",
+                "address": "0x9014",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot6",
+                "address": "0x9018",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot7",
+                "address": "0x901c",
+                "value": "空",
+                "role": "idle"
+              }
+            ],
+            "note": "H(key) = key % M，地址 0x9000 起，每槽 4 字节"
+          }
+        ],
+        "counters": {
+          "probes": 0
+        }
+      }
+    },
+    {
+      "description": "插入 15：H(15) = 15 % 8 = 7，槽 7 空，直接落位，探测 1 次。散列查找的理想情况：一步到位。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "hashtable",
+            "title": "散列表（线性探测，M=8）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot4",
+                "address": "0x9010",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot5",
+                "address": "0x9014",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot6",
+                "address": "0x9018",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot7",
+                "address": "0x901c",
+                "value": "15",
+                "role": "active",
+                "note": "本次探测/落位位置"
+              }
+            ],
+            "note": "H(key) = key % M，地址 0x9000 起，每槽 4 字节"
+          }
+        ],
+        "counters": {
+          "probes": 1
+        }
+      }
+    },
+    {
+      "description": "插入 23：H(23) = 23 % 8 = 7，但槽 7 已被 15 占住 —— 冲突。线性探测从 7 顺次往后找空槽：7 忙 → 0 空，于是 23 落在槽 0，共探测 2 次。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "hashtable",
+            "title": "散列表（线性探测，M=8）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "23",
+                "role": "active",
+                "note": "本次探测/落位位置"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot4",
+                "address": "0x9010",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot5",
+                "address": "0x9014",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot6",
+                "address": "0x9018",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot7",
+                "address": "0x901c",
+                "value": "15",
+                "role": "sorted"
+              }
+            ],
+            "note": "H(key) = key % M，地址 0x9000 起，每槽 4 字节"
+          }
+        ],
+        "counters": {
+          "probes": 2
+        }
+      }
+    },
+    {
+      "description": "插入 31：H(31) = 31 % 8 = 7，冲突；线性探测 7 忙 → 0 忙 → 1 空，落在槽 1，共探测 3 次。冲突聚集成「堆积」，探测次数随插入顺序增长 —— 这就是线性探测的代价。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "hashtable",
+            "title": "散列表（线性探测，M=8）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "23",
+                "role": "sorted"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "31",
+                "role": "active",
+                "note": "本次探测/落位位置"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot4",
+                "address": "0x9010",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot5",
+                "address": "0x9014",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot6",
+                "address": "0x9018",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot7",
+                "address": "0x901c",
+                "value": "15",
+                "role": "sorted"
+              }
+            ],
+            "note": "H(key) = key % M，地址 0x9000 起，每槽 4 字节"
+          }
+        ],
+        "counters": {
+          "probes": 3
+        }
+      }
+    },
+    {
+      "description": "总结：开放定址法把冲突的元素也放进同一张表里，用「向后探测」找空位。它节省空间（无需额外指针），但查找一个不存在的 key 时，可能要探测到空槽才知道失败；装填因子越高，探测次数越涨，所以散列表要控制装填因子（常留 30% 空槽）。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "hashtable",
+            "title": "散列表（线性探测，M=8）",
+            "cells": [
+              {
+                "key": "slot0",
+                "address": "0x9000",
+                "value": "23",
+                "role": "sorted"
+              },
+              {
+                "key": "slot1",
+                "address": "0x9004",
+                "value": "31",
+                "role": "sorted"
+              },
+              {
+                "key": "slot2",
+                "address": "0x9008",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot3",
+                "address": "0x900c",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot4",
+                "address": "0x9010",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot5",
+                "address": "0x9014",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot6",
+                "address": "0x9018",
+                "value": "空",
+                "role": "idle"
+              },
+              {
+                "key": "slot7",
+                "address": "0x901c",
+                "value": "15",
+                "role": "sorted"
+              }
+            ],
+            "note": "H(key) = key % M，地址 0x9000 起，每槽 4 字节"
+          }
+        ],
+        "counters": {
+          "probes": 3
+        }
+      }
+    }
+  ]
+}

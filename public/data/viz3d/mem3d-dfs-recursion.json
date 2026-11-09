@@ -1,0 +1,1116 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-dfs-recursion",
+  "title": "图的深度优先遍历的递归（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第6章 图",
+  "relatedProblems": [
+    "ds-ch06-sc-008",
+    "ds-ch06-sc-009",
+    "ds-ch06-tf-004"
+  ],
+  "code": "#include <stdio.h>\n\n#define N 6\nint adj[N][N] = {0};     /* 邻接矩阵，顶点 1..5 */\nint visited[N] = {0};\n\nvoid dfs(int v) {\n    visited[v] = 1;                       /* 先标记再递归 */\n    for (int u = 1; u < N; u++)\n        if (adj[v][u] && !visited[u]) dfs(u);\n}\n\nint main(void) {\n    /* 边：1-2, 1-3, 2-4, 4-5 */\n    adj[1][2] = adj[2][1] = 1;\n    adj[1][3] = adj[3][1] = 1;\n    adj[2][4] = adj[4][2] = 1;\n    adj[4][5] = adj[5][4] = 1;\n    dfs(1);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "dfsRecursion",
+    "n": 5,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 落地。图有 5 个顶点、4 条边（1-2、1-3、2-4、4-5）。DFS 的策略是「一条路走到黑，走不通再回头」。关键是用 visited[] 数组防止重复访问 —— 没有它就会死循环。",
+      "codeLine": 25,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "main 调 dfs(1)：栈帧压上，v=1。先标记 visited[1]=1，然后遍历 1 的邻居。第一个邻居是 2 且未访问，于是递归 dfs(2)。栈深 2。",
+      "codeLine": 26,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "active",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "dfs(2) 压栈：v=2。标记 visited[2]=1，邻居 4 未访问，递归 dfs(4)。每一个邻居都是一次新的压栈 —— 图的递归深度就是「沿一条边走到头」的长度。",
+      "codeLine": 26,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "active",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs2",
+            "title": "dfs(2)",
+            "cells": [
+              {
+                "key": "dfs2-v",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "dfs2-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs2-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "dfs(4) 压栈：v=4。标记 visited[4]=1，邻居 5 未访问，递归 dfs(5)。栈深 4 —— 从顶点 1 走到 4 已经用了 4 层栈。",
+      "codeLine": 26,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "active",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs2",
+            "title": "dfs(2)",
+            "cells": [
+              {
+                "key": "dfs2-v",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "dfs2-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs2-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs4",
+            "title": "dfs(4)",
+            "cells": [
+              {
+                "key": "dfs4-v",
+                "address": "0x7f90",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "dfs4-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs4-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "0",
+                "role": "idle"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "dfs(5) 压栈：v=5。标记 visited[5]=1。5 没有未访问的邻居，for 循环走完就直接返回 —— 这是本次递归的叶子。栈深 5，最深。",
+      "codeLine": 26,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "idle",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs2",
+            "title": "dfs(2)",
+            "cells": [
+              {
+                "key": "dfs2-v",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "dfs2-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs2-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs4",
+            "title": "dfs(4)",
+            "cells": [
+              {
+                "key": "dfs4-v",
+                "address": "0x7f90",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "dfs4-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs4-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs5",
+            "title": "dfs(5)",
+            "cells": [
+              {
+                "key": "dfs5-v",
+                "address": "0x7f70",
+                "value": "5",
+                "role": "active"
+              },
+              {
+                "key": "dfs5-ret",
+                "address": "0x7f74",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs5-ra",
+                "address": "0x7f78",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 5
+        }
+      }
+    },
+    {
+      "description": "dfs(5) 弹栈，回到 dfs(4)。4 的邻居 5 已访问、不再有新分支，dfs(4) 也返回并弹栈。这就是「回退」：一个分支走完，把控制权交回调用它的上一层，继续扫描那个顶点剩下的邻居。",
+      "codeLine": 27,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "idle",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs2",
+            "title": "dfs(2)",
+            "cells": [
+              {
+                "key": "dfs2-v",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "dfs2-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs2-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs4",
+            "title": "dfs(4)",
+            "cells": [
+              {
+                "key": "dfs4-v",
+                "address": "0x7f90",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "dfs4-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs4-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "一路回退到 dfs(2)、dfs(1)。dfs(1) 的 for 循环继续扫描：邻居 2 已访问、邻居 3 未访问，于是递归 dfs(3)。注意这一路（1→2→4→5）的栈已经全部弹空，这是全新的一条路径。",
+      "codeLine": 27,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "active",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "dfs(3) 压栈：v=3。标记 visited[3]=1，没有未访问邻居，随即返回。5 个顶点全部被访问，遍历完成。DFS 的访问序列是 1→2→4→5→3。",
+      "codeLine": 25,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "dfs1",
+            "title": "dfs(1)",
+            "cells": [
+              {
+                "key": "dfs1-v",
+                "address": "0x7fd0",
+                "value": "1",
+                "role": "idle",
+                "note": "当前顶点"
+              },
+              {
+                "key": "dfs1-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs1-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "dfs3",
+            "title": "dfs(3)",
+            "cells": [
+              {
+                "key": "dfs3-v",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "dfs3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "dfs3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "dfs(3) 弹栈，main 结束。整张图的遍历靠的就是「递归压栈 + visited 防重」：压栈代表深入，弹栈代表回溯。这也是为什么 DFS 天然用递归实现、而 BFS 用队列 —— 一个靠系统栈，一个靠显式队列。若图有多个连通分量，需要在主程序里对每个未访问顶点再调一次 dfs。",
+      "codeLine": 25,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "visited",
+            "title": "visited[] 访问标记",
+            "cells": [
+              {
+                "key": "v1",
+                "address": "0x1004",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v2",
+                "address": "0x1008",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v3",
+                "address": "0x100c",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v4",
+                "address": "0x1010",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              },
+              {
+                "key": "v5",
+                "address": "0x1014",
+                "value": "1",
+                "role": "compare",
+                "note": "已访问"
+              }
+            ],
+            "note": "0 = 未访问，1 = 已访问"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

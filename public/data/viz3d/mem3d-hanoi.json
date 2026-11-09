@@ -1,0 +1,1119 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-hanoi",
+  "title": "汉诺塔的递归树（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第3章 栈和队列",
+  "relatedProblems": [
+    "ds-ch03-sc-004",
+    "ds-ch03-cxa-009",
+    "ds-ch03-cxa-016"
+  ],
+  "code": "#include <stdio.h>\n\nvoid hanoi(int n, char from, char to, char aux) {\n    if (n == 1) {                  /* 递归出口 */\n        printf(\"move %d: %c -> %c\\n\", n, from, to);\n        return;\n    }\n    hanoi(n - 1, from, aux, to);   /* 先把上面 n-1 片挪到辅助柱 */\n    printf(\"move %d: %c -> %c\\n\", n, from, to);\n    hanoi(n - 1, aux, to, from);   /* 再把 n-1 片从辅助柱挪到目标柱 */\n}\n\nint main(void) {\n    hanoi(3, 'A', 'C', 'B');\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "hanoiRecursion",
+    "n": 3,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 落地。三片圆盘在 A 柱，要借助 B 柱全部移到 C 柱，条件是每次只能挪一片、大盘不能压在小盘上。解法不是「一步步怎么挪」，而是一个递归：把上面 n-1 片当作一个整体。",
+      "codeLine": 16,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "hanoi(3,A,C,B) 压栈：n=3、from=A、to=C、aux=B。它要挪 3 片，于是先递归 hanoi(2,A,B,C) —— 把上面两片先挪到辅助柱 B，才能腾出最下面那一片。栈深 2。",
+      "codeLine": 19,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "active",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "hanoi(2,A,B,C) 压栈：它要把 A 上 2 片挪到 B（借 C）。再递归一层 hanoi(1,A,C,B) —— 只剩 1 片时是出口，直接搬。递归树在这里延伸，栈深 3。",
+      "codeLine": 20,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2ABC",
+            "title": "hanoi(2,A,B,C)",
+            "cells": [
+              {
+                "key": "hanoi2ABC-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-from",
+                "address": "0x7fb4",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-to",
+                "address": "0x7fb8",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-aux",
+                "address": "0x7fbc",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2ABC-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "hanoi(1,A,C,B) 压栈：n=1 命中出口 —— 把第 1 片从 A 挪到 C。这是最深一层，栈深 4。越到叶子，移动就越简单：不用再拆。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2ABC",
+            "title": "hanoi(2,A,B,C)",
+            "cells": [
+              {
+                "key": "hanoi2ABC-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-from",
+                "address": "0x7fb4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-to",
+                "address": "0x7fb8",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-aux",
+                "address": "0x7fbc",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2ABC-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi1ACB",
+            "title": "hanoi(1,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi1ACB-n",
+                "address": "0x7f90",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1ACB-from",
+                "address": "0x7f94",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1ACB-to",
+                "address": "0x7f98",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1ACB-aux",
+                "address": "0x7f9c",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1ACB-ret",
+                "address": "0x7fa0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi1ACB-ra",
+                "address": "0x7fa4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "hanoi(1,A,C,B) 弹栈。回到 hanoi(2,A,B,C)：现在把第 2 片从 A 挪到 B，然后递归 hanoi(1,C,B,A) 把刚才挪到 C 的第 1 片再挪到 B。栈深回到 3。",
+      "codeLine": 21,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2ABC",
+            "title": "hanoi(2,A,B,C)",
+            "cells": [
+              {
+                "key": "hanoi2ABC-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-from",
+                "address": "0x7fb4",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-to",
+                "address": "0x7fb8",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-aux",
+                "address": "0x7fbc",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2ABC-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2ABC-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "hanoi(1,C,B,A) 压栈：把第 1 片从 C 挪到 B。至此 A 上 2 片全部到了 B，hanoi(2,A,B,C) 使命完成，弹栈。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2ABC",
+            "title": "hanoi(2,A,B,C)",
+            "cells": [
+              {
+                "key": "hanoi2ABC-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-from",
+                "address": "0x7fb4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-to",
+                "address": "0x7fb8",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-aux",
+                "address": "0x7fbc",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2ABC-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2ABC-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi1CBA",
+            "title": "hanoi(1,C,B,A)",
+            "cells": [
+              {
+                "key": "hanoi1CBA-n",
+                "address": "0x7f90",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1CBA-from",
+                "address": "0x7f94",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1CBA-to",
+                "address": "0x7f98",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1CBA-aux",
+                "address": "0x7f9c",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1CBA-ret",
+                "address": "0x7fa0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi1CBA-ra",
+                "address": "0x7fa4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "回到 hanoi(3,A,C,B)：此时 B 柱已摞好 2 片，最下面的第 3 片可以直接从 A 挪到 C。这一步没有递归 —— 它正是递归体里「拆到一半」时记录下来的那次移动。栈深回到 2。",
+      "codeLine": 21,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "active",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "hanoi(3,A,C,B) 再递归 hanoi(2,B,C,A)：把 B 上的 2 片挪到 C（借 A）。递归的最后一个子问题开始 —— 栈又一次向下长。",
+      "codeLine": 22,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2BCA",
+            "title": "hanoi(2,B,C,A)",
+            "cells": [
+              {
+                "key": "hanoi2BCA-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2BCA-from",
+                "address": "0x7fb4",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2BCA-to",
+                "address": "0x7fb8",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2BCA-aux",
+                "address": "0x7fbc",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi2BCA-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2BCA-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "hanoi(1,B,A,C) 压栈：把第 1 片从 B 挪到 A；随后 hanoi(2,B,C,A) 把第 2 片从 B 挪到 C，再 hanoi(1,A,C,B) 把第 1 片从 A 挪到 C。三片全部到位。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "hanoi3ACB",
+            "title": "hanoi(3,A,C,B)",
+            "cells": [
+              {
+                "key": "hanoi3ACB-n",
+                "address": "0x7fd0",
+                "value": "3",
+                "role": "idle",
+                "note": "盘数"
+              },
+              {
+                "key": "hanoi3ACB-from",
+                "address": "0x7fd4",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-to",
+                "address": "0x7fd8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-aux",
+                "address": "0x7fdc",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi3ACB-ret",
+                "address": "0x7fe0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi3ACB-ra",
+                "address": "0x7fe4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi2BCA",
+            "title": "hanoi(2,B,C,A)",
+            "cells": [
+              {
+                "key": "hanoi2BCA-n",
+                "address": "0x7fb0",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2BCA-from",
+                "address": "0x7fb4",
+                "value": "B",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2BCA-to",
+                "address": "0x7fb8",
+                "value": "C",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2BCA-aux",
+                "address": "0x7fbc",
+                "value": "A",
+                "role": "idle"
+              },
+              {
+                "key": "hanoi2BCA-ret",
+                "address": "0x7fc0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi2BCA-ra",
+                "address": "0x7fc4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "hanoi1BAC",
+            "title": "hanoi(1,B,A,C)",
+            "cells": [
+              {
+                "key": "hanoi1BAC-n",
+                "address": "0x7f90",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1BAC-from",
+                "address": "0x7f94",
+                "value": "B",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1BAC-to",
+                "address": "0x7f98",
+                "value": "A",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1BAC-aux",
+                "address": "0x7f9c",
+                "value": "C",
+                "role": "active"
+              },
+              {
+                "key": "hanoi1BAC-ret",
+                "address": "0x7fa0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "hanoi1BAC-ra",
+                "address": "0x7fa4",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "所有子问题完成，栈逐层弹空，回到 main。观察：3 片时总共 2³−1 = 7 次移动，递归树有 7 个叶子；栈的**最大深度**是 3（等于盘数），但**总调用次数**是 7 —— 汉诺塔的时间复杂度 O(2ⁿ) 由调用次数决定，空间 O(n) 由栈深决定，二者不是一回事。",
+      "codeLine": 16,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

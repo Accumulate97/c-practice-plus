@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
-  "count": 4,
+  "count": 26,
   "demos": [
     {
       "id": "mem3d-wild-pointer",
@@ -57,6 +57,313 @@
       ],
       "steps": 11,
       "url": "data/viz3d/mem3d-matrix-cube.json"
+    },
+    {
+      "id": "mem3d-seq-stack",
+      "title": "顺序栈的入栈与出栈（3D 内存沙盘）",
+      "chapter": "第3章 栈和队列",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch03-fb-002",
+        "ds-ch03-sc-010",
+        "ds-ch03-sc-011"
+      ],
+      "steps": 7,
+      "url": "data/viz3d/mem3d-seq-stack.json"
+    },
+    {
+      "id": "mem3d-circular-queue",
+      "title": "循环队列的入队出队与判空判满（3D）",
+      "chapter": "第3章 栈和队列",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch03-sc-014",
+        "ds-ch03-fb-005",
+        "ds-ch03-sc-015"
+      ],
+      "steps": 8,
+      "url": "data/viz3d/mem3d-circular-queue.json"
+    },
+    {
+      "id": "mem3d-singly-list",
+      "title": "单链表结点的内存与 next 指针（3D）",
+      "chapter": "第2章 线性表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch02-sc-008",
+        "ds-ch02-sc-009",
+        "ds-ch02-sc-010"
+      ],
+      "steps": 5,
+      "url": "data/viz3d/mem3d-singly-list.json"
+    },
+    {
+      "id": "mem3d-doubly-list",
+      "title": "双向链表的 prior 与 next 双向链接（3D）",
+      "chapter": "第2章 线性表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch02-sc-015",
+        "ds-ch02-fb-016",
+        "ds-ch02-cc-010"
+      ],
+      "steps": 6,
+      "url": "data/viz3d/mem3d-doubly-list.json"
+    },
+    {
+      "id": "mem3d-hash-open",
+      "title": "散列开放定址（线性探测）的冲突处理（3D）",
+      "chapter": "第7章 查找",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch07-sc-016",
+        "ds-ch07-sc-017",
+        "ds-ch07-tf-004"
+      ],
+      "steps": 5,
+      "url": "data/viz3d/mem3d-hash-open.json"
+    },
+    {
+      "id": "mem3d-hash-chain",
+      "title": "散列链地址法的槽与同义词链（3D）",
+      "chapter": "第7章 查找",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch07-sc-016",
+        "ds-ch07-sc-017",
+        "ds-ch07-tf-004"
+      ],
+      "steps": 5,
+      "url": "data/viz3d/mem3d-hash-chain.json"
+    },
+    {
+      "id": "mem3d-bst-node",
+      "title": "二叉排序树结点的内存与孩子指针（3D）",
+      "chapter": "第5章 树和二叉树",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch05-tf-001",
+        "ds-ch05-sc-005",
+        "ds-ch05-sc-006"
+      ],
+      "steps": 6,
+      "url": "data/viz3d/mem3d-bst-node.json"
+    },
+    {
+      "id": "mem3d-adjmatrix",
+      "title": "邻接矩阵 vs 邻接表的内存形态（3D）",
+      "chapter": "第6章 图",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch06-sc-003",
+        "ds-ch06-tf-001",
+        "ds-ch06-fb-002"
+      ],
+      "steps": 5,
+      "url": "data/viz3d/mem3d-adjmatrix.json"
+    },
+    {
+      "id": "mem3d-quick-recursion",
+      "title": "快速排序的递归划分（3D 调用栈）",
+      "chapter": "第8章 排序",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch08-sc-009",
+        "ds-ch08-tf-003",
+        "ds-ch08-cc-004"
+      ],
+      "steps": 9,
+      "url": "data/viz3d/mem3d-quick-recursion.json"
+    },
+    {
+      "id": "mem3d-merge-recursion",
+      "title": "归并排序的递归拆合（3D 调用栈）",
+      "chapter": "第8章 排序",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch08-sc-015",
+        "ds-ch08-sc-016",
+        "ds-ch08-sc-020"
+      ],
+      "steps": 10,
+      "url": "data/viz3d/mem3d-merge-recursion.json"
+    },
+    {
+      "id": "mem3d-hanoi",
+      "title": "汉诺塔的递归树（3D 调用栈）",
+      "chapter": "第3章 栈和队列",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch03-sc-004",
+        "ds-ch03-cxa-009",
+        "ds-ch03-cxa-016"
+      ],
+      "steps": 10,
+      "url": "data/viz3d/mem3d-hanoi.json"
+    },
+    {
+      "id": "mem3d-bst-search-recursion",
+      "title": "二叉排序树查找的递归（3D 调用栈）",
+      "chapter": "第5章 树和二叉树",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch05-tf-001",
+        "ds-ch05-sc-005",
+        "ds-ch05-sc-006"
+      ],
+      "steps": 7,
+      "url": "data/viz3d/mem3d-bst-search-recursion.json"
+    },
+    {
+      "id": "mem3d-dfs-recursion",
+      "title": "图的深度优先遍历的递归（3D 调用栈）",
+      "chapter": "第6章 图",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch06-sc-008",
+        "ds-ch06-sc-009",
+        "ds-ch06-tf-004"
+      ],
+      "steps": 9,
+      "url": "data/viz3d/mem3d-dfs-recursion.json"
+    },
+    {
+      "id": "mem3d-binary-search-recursion",
+      "title": "折半查找的递归（3D 调用栈）",
+      "chapter": "第7章 查找",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch07-sc-005",
+        "ds-ch07-sc-006",
+        "ds-ch07-fb-002"
+      ],
+      "steps": 7,
+      "url": "data/viz3d/mem3d-binary-search-recursion.json"
+    },
+    {
+      "id": "mem3d-array-sum-recursion",
+      "title": "数组求和的递归（3D 调用栈）",
+      "chapter": "第6章 数组",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "c-ch06-alg-112",
+        "c-ch06-alg-124",
+        "c-ch06-alg-125"
+      ],
+      "steps": 11,
+      "url": "data/viz3d/mem3d-array-sum-recursion.json"
+    },
+    {
+      "id": "mem3d-2d-rowmajor",
+      "title": "二维数组行优先：逻辑网格到一维地址（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-cx-001",
+        "ds-ch04-fb-003",
+        "ds-ch04-cc-005"
+      ],
+      "steps": 14,
+      "url": "data/viz3d/mem3d-2d-rowmajor.json"
+    },
+    {
+      "id": "mem3d-2d-colmajor",
+      "title": "二维数组列优先：逻辑网格到一维地址（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-sc-006",
+        "ds-ch04-fb-003"
+      ],
+      "steps": 14,
+      "url": "data/viz3d/mem3d-2d-colmajor.json"
+    },
+    {
+      "id": "mem3d-symmetric-store",
+      "title": "对称矩阵下三角压缩存储（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-sc-009",
+        "ds-ch04-fb-004",
+        "ds-ch04-cc-005"
+      ],
+      "steps": 17,
+      "url": "data/viz3d/mem3d-symmetric-store.json"
+    },
+    {
+      "id": "mem3d-triangle-store",
+      "title": "三对角 / 上三角矩阵压缩存储（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-sc-010",
+        "ds-ch04-sc-011",
+        "ds-ch04-cc-006"
+      ],
+      "steps": 15,
+      "url": "data/viz3d/mem3d-triangle-store.json"
+    },
+    {
+      "id": "mem3d-sparse-triplet",
+      "title": "稀疏矩阵三元组顺序表（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-sc-012",
+        "ds-ch04-sc-013",
+        "ds-ch04-fb-005"
+      ],
+      "steps": 8,
+      "url": "data/viz3d/mem3d-sparse-triplet.json"
+    },
+    {
+      "id": "mem3d-array-base",
+      "title": "一维数组基址与下标：a[k]=base+k*size（3D）",
+      "chapter": "第6章 数组",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "c-ch06-alg-112",
+        "c-ch06-alg-124",
+        "c-ch06-alg-125"
+      ],
+      "steps": 8,
+      "url": "data/viz3d/mem3d-array-base.json"
+    },
+    {
+      "id": "mem3d-3d-array",
+      "title": "三维数组行优先地址：A[2][3][4]（3D）",
+      "chapter": "第4章 串、数组和广义表",
+      "category": "memory",
+      "renderer": "memory",
+      "relatedProblems": [
+        "ds-ch04-fb-003",
+        "ds-ch04-cx-001",
+        "ds-ch04-cc-005"
+      ],
+      "steps": 26,
+      "url": "data/viz3d/mem3d-3d-array.json"
     }
   ]
 }

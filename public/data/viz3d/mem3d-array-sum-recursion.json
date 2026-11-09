@@ -1,0 +1,1395 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-array-sum-recursion",
+  "title": "数组求和的递归（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第6章 数组",
+  "relatedProblems": [
+    "c-ch06-alg-112",
+    "c-ch06-alg-124",
+    "c-ch06-alg-125"
+  ],
+  "code": "#include <stdio.h>\n\nint sum(int a[], int n) {\n    if (n == 0) return 0;              /* 递归出口 */\n    return a[n - 1] + sum(a, n - 1);   /* 当前值 + 前 n-1 项和 */\n}\n\nint main(void) {\n    int a[4] = {1, 2, 3, 4};\n    printf(\"%d\\n\", sum(a, 4));\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "arraySumRecursion",
+    "n": 4,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 落地，数组 {1,2,3,4}。sum(a,n) 定义为「前 n 项之和」= a[n-1] + sum(a,n-1)，即「当前这一项 + 前面已经算好的和」。这是一种**线性递归**，栈会一层层压到 n=0。",
+      "codeLine": 18,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "main 调 sum(4)：栈帧压上，n=4。它要计算 a[3] + sum(3) —— 可 sum(3) 还没算出来，于是必须先递归。栈深 2，返回值仍是「待定」。",
+      "codeLine": 19,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "active",
+                "note": "当前项数"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "sum(3) 压栈：n=3，要算 a[2] + sum(2)，又得先递归 sum(2)。栈深 3。每一层都在「等下一层返回」，所以化身成一座等待结算的塔。",
+      "codeLine": 19,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "active",
+                "note": "当前项数"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "sum(2) 压栈：n=2，要算 a[1] + sum(1)。栈深 4。",
+      "codeLine": 19,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "active",
+                "note": "当前项数"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum2",
+            "title": "sum(2)",
+            "cells": [
+              {
+                "key": "sum2-n",
+                "address": "0x7f90",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "sum2-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum2-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "sum(1) 压栈：n=1，要算 a[0] + sum(0)。栈深 5。",
+      "codeLine": 19,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "active",
+                "note": "当前项数"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum2",
+            "title": "sum(2)",
+            "cells": [
+              {
+                "key": "sum2-n",
+                "address": "0x7f90",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "sum2-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum2-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum1",
+            "title": "sum(1)",
+            "cells": [
+              {
+                "key": "sum1-n",
+                "address": "0x7f70",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "sum1-ret",
+                "address": "0x7f74",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum1-ra",
+                "address": "0x7f78",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 5
+        }
+      }
+    },
+    {
+      "description": "sum(0) 压栈：n=0，命中出口 if(n==0) return 0，不再递归。这是本次递归的**最深处**，栈深 6。n=0 就是「空数组的和为 0」—— 递归必须有一个能直接结算的基准情形，否则会无限压栈直到栈溢出。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "idle",
+                "note": "当前项数"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum2",
+            "title": "sum(2)",
+            "cells": [
+              {
+                "key": "sum2-n",
+                "address": "0x7f90",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "sum2-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum2-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum1",
+            "title": "sum(1)",
+            "cells": [
+              {
+                "key": "sum1-n",
+                "address": "0x7f70",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "sum1-ret",
+                "address": "0x7f74",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum1-ra",
+                "address": "0x7f78",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum0",
+            "title": "sum(0)",
+            "cells": [
+              {
+                "key": "sum0-n",
+                "address": "0x7f50",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "sum0-ret",
+                "address": "0x7f54",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum0-ra",
+                "address": "0x7f58",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 6
+        }
+      }
+    },
+    {
+      "description": "sum(0) 返回 0 —— 递归触底后的第一个回退。sum(1) 拿到操作数，算出 1 + 0 = 1；这一帧的返回值第一次不再是「待定」。栈深 5，栈顶是 sum(1)。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum2",
+            "title": "sum(2)",
+            "cells": [
+              {
+                "key": "sum2-n",
+                "address": "0x7f90",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "sum2-ret",
+                "address": "0x7f94",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum2-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum1",
+            "title": "sum(1)",
+            "cells": [
+              {
+                "key": "sum1-n",
+                "address": "0x7f70",
+                "value": "1",
+                "role": "active"
+              },
+              {
+                "key": "sum1-ret",
+                "address": "0x7f74",
+                "value": "1",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum1-ra",
+                "address": "0x7f78",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 5
+        }
+      }
+    },
+    {
+      "description": "sum(1) 弹栈，栈深回到 4。sum(2) 结算：2 + 1 = 3 。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum2",
+            "title": "sum(2)",
+            "cells": [
+              {
+                "key": "sum2-n",
+                "address": "0x7f90",
+                "value": "2",
+                "role": "active"
+              },
+              {
+                "key": "sum2-ret",
+                "address": "0x7f94",
+                "value": "3",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum2-ra",
+                "address": "0x7f98",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "sum(2) 弹栈，栈深回到 3。sum(3) 结算：3 + 3 = 6 。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum3",
+            "title": "sum(3)",
+            "cells": [
+              {
+                "key": "sum3-n",
+                "address": "0x7fb0",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "sum3-ret",
+                "address": "0x7fb4",
+                "value": "6",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum3-ra",
+                "address": "0x7fb8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "sum(3) 弹栈，栈深回到 2。sum(4) 结算：4 + 6 = 10 。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "sum4",
+            "title": "sum(4)",
+            "cells": [
+              {
+                "key": "sum4-n",
+                "address": "0x7fd0",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "sum4-ret",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "sum4-ra",
+                "address": "0x7fd8",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "sum(4) 弹栈，栈深回到 1，main 打印结果 10。整个递归：压栈 6 层、弹栈 6 层，完全对称。若把 n 换成 100000，栈就要压 10 万层 —— 这就是「递归深度不能无限」的教训；很多递归（尤其这种线性递归）改写为迭代版本可彻底避免栈溢出。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "数组 a[]（4 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "1",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "2",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "4",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

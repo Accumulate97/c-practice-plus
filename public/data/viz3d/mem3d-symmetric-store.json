@@ -1,0 +1,4386 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-symmetric-store",
+  "title": "对称矩阵下三角压缩存储（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第4章 串、数组和广义表",
+  "relatedProblems": [
+    "ds-ch04-sc-009",
+    "ds-ch04-fb-004",
+    "ds-ch04-cc-005"
+  ],
+  "code": "#include <stdio.h>\n#define N 5\n\nint main(void) {\n    int A[N][N];            /* 对称矩阵：A[i][j] == A[j][i] */\n    int sa[N*(N+1)/2];      /* 只存下三角，共 15 个元素 */\n    for (int i = 0; i < N; i++)\n        for (int j = 0; j <= i; j++)\n            sa[i*(i+1)/2 + j] = A[i][j];   /* k = i(i+1)/2 + j */\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "symmetricStore",
+    "n": 15,
+    "counterKeys": [
+      "stored"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "n 阶对称矩阵满足 A[i][j] == A[j][i]，所以没必要存满 n² 个元素 —— 上三角完全由下三角镜像得到。压缩策略：只存下三角（含对角线），共 n(n+1)/2 = 15 个元素。看 3D 沙盘：上层是 5×5 对称矩阵，深色格 = 下三角（真正要存的），浅色格 = 上三角（不存）。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "idle",
+                "note": "待压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "idle",
+                "note": "待压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "idle",
+                "note": "待压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "idle",
+                "note": "待压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "idle",
+                "note": "待压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [],
+            "note": "k = i(i+1)/2 + j"
+          }
+        ],
+        "counters": {
+          "stored": 0
+        }
+      }
+    },
+    {
+      "description": "A[0][0] = 1，映射到一维下标 k = 0(i+1)/2 + 0 = 0×1÷2 + 0 = 0，地址 = 0x3000。这就是节省的空间：上三角的 A[0][0] = 1 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "active",
+                "note": "下三角，压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "idle",
+                "note": "待压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "idle",
+                "note": "待压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "idle",
+                "note": "待压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "idle",
+                "note": "待压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "active",
+                "note": "存 A[0][0] = A[0][0]"
+              }
+            ],
+            "note": "已存入 1 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 1
+        }
+      }
+    },
+    {
+      "description": "A[1][0] = 2，映射到一维下标 k = 1(i+1)/2 + 0 = 1×2÷2 + 0 = 1，地址 = 0x3004。这就是节省的空间：上三角的 A[0][1] = 2 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "active",
+                "note": "下三角，压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "idle",
+                "note": "待压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "idle",
+                "note": "待压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "idle",
+                "note": "待压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "active",
+                "note": "存 A[1][0] = A[0][1]"
+              }
+            ],
+            "note": "已存入 2 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 2
+        }
+      }
+    },
+    {
+      "description": "A[1][1] = 6，映射到一维下标 k = 1(i+1)/2 + 1 = 1×2÷2 + 1 = 2，地址 = 0x3008。这就是节省的空间：上三角的 A[1][1] = 6 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "active",
+                "note": "下三角，压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "idle",
+                "note": "待压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "idle",
+                "note": "待压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "active",
+                "note": "存 A[1][1] = A[1][1]"
+              }
+            ],
+            "note": "已存入 3 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 3
+        }
+      }
+    },
+    {
+      "description": "A[2][0] = 3，映射到一维下标 k = 2(i+1)/2 + 0 = 2×3÷2 + 0 = 3，地址 = 0x300c。这就是节省的空间：上三角的 A[0][2] = 3 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "active",
+                "note": "下三角，压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "idle",
+                "note": "待压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "active",
+                "note": "存 A[2][0] = A[0][2]"
+              }
+            ],
+            "note": "已存入 4 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 4
+        }
+      }
+    },
+    {
+      "description": "A[2][1] = 7，映射到一维下标 k = 2(i+1)/2 + 1 = 2×3÷2 + 1 = 4，地址 = 0x3010。这就是节省的空间：上三角的 A[1][2] = 7 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "active",
+                "note": "下三角，压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "idle",
+                "note": "待压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "active",
+                "note": "存 A[2][1] = A[1][2]"
+              }
+            ],
+            "note": "已存入 5 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 5
+        }
+      }
+    },
+    {
+      "description": "A[2][2] = 10，映射到一维下标 k = 2(i+1)/2 + 2 = 2×3÷2 + 2 = 5，地址 = 0x3014。这就是节省的空间：上三角的 A[2][2] = 10 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "active",
+                "note": "下三角，压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "idle",
+                "note": "待压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "active",
+                "note": "存 A[2][2] = A[2][2]"
+              }
+            ],
+            "note": "已存入 6 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 6
+        }
+      }
+    },
+    {
+      "description": "A[3][0] = 4，映射到一维下标 k = 3(i+1)/2 + 0 = 3×4÷2 + 0 = 6，地址 = 0x3018。这就是节省的空间：上三角的 A[0][3] = 4 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "active",
+                "note": "下三角，压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "idle",
+                "note": "待压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "active",
+                "note": "存 A[3][0] = A[0][3]"
+              }
+            ],
+            "note": "已存入 7 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 7
+        }
+      }
+    },
+    {
+      "description": "A[3][1] = 8，映射到一维下标 k = 3(i+1)/2 + 1 = 3×4÷2 + 1 = 7，地址 = 0x301c。这就是节省的空间：上三角的 A[1][3] = 8 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "active",
+                "note": "下三角，压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "idle",
+                "note": "待压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "active",
+                "note": "存 A[3][1] = A[1][3]"
+              }
+            ],
+            "note": "已存入 8 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 8
+        }
+      }
+    },
+    {
+      "description": "A[3][2] = 11，映射到一维下标 k = 3(i+1)/2 + 2 = 3×4÷2 + 2 = 8，地址 = 0x3020。这就是节省的空间：上三角的 A[2][3] = 11 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "active",
+                "note": "下三角，压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "idle",
+                "note": "待压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "active",
+                "note": "存 A[3][2] = A[2][3]"
+              }
+            ],
+            "note": "已存入 9 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 9
+        }
+      }
+    },
+    {
+      "description": "A[3][3] = 13，映射到一维下标 k = 3(i+1)/2 + 3 = 3×4÷2 + 3 = 9，地址 = 0x3024。这就是节省的空间：上三角的 A[3][3] = 13 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "active",
+                "note": "下三角，压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "idle",
+                "note": "待压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "active",
+                "note": "存 A[3][3] = A[3][3]"
+              }
+            ],
+            "note": "已存入 10 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 10
+        }
+      }
+    },
+    {
+      "description": "A[4][0] = 5，映射到一维下标 k = 4(i+1)/2 + 0 = 4×5÷2 + 0 = 10，地址 = 0x3028。这就是节省的空间：上三角的 A[0][4] = 5 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "active",
+                "note": "下三角，压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "idle",
+                "note": "待压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "active",
+                "note": "存 A[4][0] = A[0][4]"
+              }
+            ],
+            "note": "已存入 11 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 11
+        }
+      }
+    },
+    {
+      "description": "A[4][1] = 9，映射到一维下标 k = 4(i+1)/2 + 1 = 4×5÷2 + 1 = 11，地址 = 0x302c。这就是节省的空间：上三角的 A[1][4] = 9 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "sorted",
+                "note": "已压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "active",
+                "note": "下三角，压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "idle",
+                "note": "待压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[4][0]"
+              },
+              {
+                "key": "sa11",
+                "address": "0x302c",
+                "value": "9",
+                "role": "active",
+                "note": "存 A[4][1] = A[1][4]"
+              }
+            ],
+            "note": "已存入 12 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 12
+        }
+      }
+    },
+    {
+      "description": "A[4][2] = 12，映射到一维下标 k = 4(i+1)/2 + 2 = 4×5÷2 + 2 = 12，地址 = 0x3030。这就是节省的空间：上三角的 A[2][4] = 12 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "sorted",
+                "note": "已压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "sorted",
+                "note": "已压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "active",
+                "note": "下三角，压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "idle",
+                "note": "待压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[4][0]"
+              },
+              {
+                "key": "sa11",
+                "address": "0x302c",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[4][1]"
+              },
+              {
+                "key": "sa12",
+                "address": "0x3030",
+                "value": "12",
+                "role": "active",
+                "note": "存 A[4][2] = A[2][4]"
+              }
+            ],
+            "note": "已存入 13 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 13
+        }
+      }
+    },
+    {
+      "description": "A[4][3] = 14，映射到一维下标 k = 4(i+1)/2 + 3 = 4×5÷2 + 3 = 13，地址 = 0x3034。这就是节省的空间：上三角的 A[3][4] = 14 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "sorted",
+                "note": "已压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "sorted",
+                "note": "已压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "sorted",
+                "note": "已压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "active",
+                "note": "下三角，压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "idle",
+                "note": "待压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[4][0]"
+              },
+              {
+                "key": "sa11",
+                "address": "0x302c",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[4][1]"
+              },
+              {
+                "key": "sa12",
+                "address": "0x3030",
+                "value": "12",
+                "role": "sorted",
+                "note": "存 A[4][2]"
+              },
+              {
+                "key": "sa13",
+                "address": "0x3034",
+                "value": "14",
+                "role": "active",
+                "note": "存 A[4][3] = A[3][4]"
+              }
+            ],
+            "note": "已存入 14 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 14
+        }
+      }
+    },
+    {
+      "description": "A[4][4] = 15，映射到一维下标 k = 4(i+1)/2 + 4 = 4×5÷2 + 4 = 14，地址 = 0x3038。这就是节省的空间：上三角的 A[4][4] = 15 只读不存。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "sorted",
+                "note": "已压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "sorted",
+                "note": "已压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "sorted",
+                "note": "已压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "sorted",
+                "note": "已压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "active",
+                "note": "下三角，压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储，由下三角对称得出"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[4][0]"
+              },
+              {
+                "key": "sa11",
+                "address": "0x302c",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[4][1]"
+              },
+              {
+                "key": "sa12",
+                "address": "0x3030",
+                "value": "12",
+                "role": "sorted",
+                "note": "存 A[4][2]"
+              },
+              {
+                "key": "sa13",
+                "address": "0x3034",
+                "value": "14",
+                "role": "sorted",
+                "note": "存 A[4][3]"
+              },
+              {
+                "key": "sa14",
+                "address": "0x3038",
+                "value": "15",
+                "role": "active",
+                "note": "存 A[4][4] = A[4][4]"
+              }
+            ],
+            "note": "已存入 15 / 15 个下三角元素"
+          }
+        ],
+        "counters": {
+          "stored": 15
+        }
+      }
+    },
+    {
+      "description": "结论：压缩把占用从 n² 降到 n(n+1)/2，5 阶从 25 降到 15，省 40%。查找 A[i][j] 时，若 i≥j 直接取 sa[i(i+1)/2+j]；若 i<j 则交换下标取 sa[j(j+1)/2+i]。代价是下标的映射不再是简单的 i×列数+j，但换来近一半的存储——这就是「压缩存储」的本质：用公式换空间。",
+      "codeLine": 6,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "逻辑 A[5][5] 对称矩阵",
+            "cells": [
+              {
+                "key": "A00",
+                "address": "0x2000",
+                "value": "1",
+                "role": "sorted",
+                "note": "已压缩到 sa[0]"
+              },
+              {
+                "key": "A01",
+                "address": "0x2004",
+                "value": "2",
+                "role": "idle",
+                "note": "上三角 A[1][0] 对称，不存储"
+              },
+              {
+                "key": "A02",
+                "address": "0x2008",
+                "value": "3",
+                "role": "idle",
+                "note": "上三角 A[2][0] 对称，不存储"
+              },
+              {
+                "key": "A03",
+                "address": "0x200c",
+                "value": "4",
+                "role": "idle",
+                "note": "上三角 A[3][0] 对称，不存储"
+              },
+              {
+                "key": "A04",
+                "address": "0x2010",
+                "value": "5",
+                "role": "idle",
+                "note": "上三角 A[4][0] 对称，不存储"
+              },
+              {
+                "key": "A10",
+                "address": "0x2014",
+                "value": "2",
+                "role": "sorted",
+                "note": "已压缩到 sa[1]"
+              },
+              {
+                "key": "A11",
+                "address": "0x2018",
+                "value": "6",
+                "role": "sorted",
+                "note": "已压缩到 sa[2]"
+              },
+              {
+                "key": "A12",
+                "address": "0x201c",
+                "value": "7",
+                "role": "idle",
+                "note": "上三角 A[2][1] 对称，不存储"
+              },
+              {
+                "key": "A13",
+                "address": "0x2020",
+                "value": "8",
+                "role": "idle",
+                "note": "上三角 A[3][1] 对称，不存储"
+              },
+              {
+                "key": "A14",
+                "address": "0x2024",
+                "value": "9",
+                "role": "idle",
+                "note": "上三角 A[4][1] 对称，不存储"
+              },
+              {
+                "key": "A20",
+                "address": "0x2028",
+                "value": "3",
+                "role": "sorted",
+                "note": "已压缩到 sa[3]"
+              },
+              {
+                "key": "A21",
+                "address": "0x202c",
+                "value": "7",
+                "role": "sorted",
+                "note": "已压缩到 sa[4]"
+              },
+              {
+                "key": "A22",
+                "address": "0x2030",
+                "value": "10",
+                "role": "sorted",
+                "note": "已压缩到 sa[5]"
+              },
+              {
+                "key": "A23",
+                "address": "0x2034",
+                "value": "11",
+                "role": "idle",
+                "note": "上三角 A[3][2] 对称，不存储"
+              },
+              {
+                "key": "A24",
+                "address": "0x2038",
+                "value": "12",
+                "role": "idle",
+                "note": "上三角 A[4][2] 对称，不存储"
+              },
+              {
+                "key": "A30",
+                "address": "0x203c",
+                "value": "4",
+                "role": "sorted",
+                "note": "已压缩到 sa[6]"
+              },
+              {
+                "key": "A31",
+                "address": "0x2040",
+                "value": "8",
+                "role": "sorted",
+                "note": "已压缩到 sa[7]"
+              },
+              {
+                "key": "A32",
+                "address": "0x2044",
+                "value": "11",
+                "role": "sorted",
+                "note": "已压缩到 sa[8]"
+              },
+              {
+                "key": "A33",
+                "address": "0x2048",
+                "value": "13",
+                "role": "sorted",
+                "note": "已压缩到 sa[9]"
+              },
+              {
+                "key": "A34",
+                "address": "0x204c",
+                "value": "14",
+                "role": "idle",
+                "note": "上三角 A[4][3] 对称，不存储"
+              },
+              {
+                "key": "A40",
+                "address": "0x2050",
+                "value": "5",
+                "role": "sorted",
+                "note": "已压缩到 sa[10]"
+              },
+              {
+                "key": "A41",
+                "address": "0x2054",
+                "value": "9",
+                "role": "sorted",
+                "note": "已压缩到 sa[11]"
+              },
+              {
+                "key": "A42",
+                "address": "0x2058",
+                "value": "12",
+                "role": "sorted",
+                "note": "已压缩到 sa[12]"
+              },
+              {
+                "key": "A43",
+                "address": "0x205c",
+                "value": "14",
+                "role": "sorted",
+                "note": "已压缩到 sa[13]"
+              },
+              {
+                "key": "A44",
+                "address": "0x2060",
+                "value": "15",
+                "role": "sorted",
+                "note": "已压缩到 sa[14]"
+              }
+            ],
+            "note": "上三角不存储"
+          },
+          {
+            "key": "store",
+            "title": "下三角压缩一维数组 sa[0..14]",
+            "cells": [
+              {
+                "key": "sa0",
+                "address": "0x3000",
+                "value": "1",
+                "role": "sorted",
+                "note": "存 A[0][0]"
+              },
+              {
+                "key": "sa1",
+                "address": "0x3004",
+                "value": "2",
+                "role": "sorted",
+                "note": "存 A[1][0]"
+              },
+              {
+                "key": "sa2",
+                "address": "0x3008",
+                "value": "6",
+                "role": "sorted",
+                "note": "存 A[1][1]"
+              },
+              {
+                "key": "sa3",
+                "address": "0x300c",
+                "value": "3",
+                "role": "sorted",
+                "note": "存 A[2][0]"
+              },
+              {
+                "key": "sa4",
+                "address": "0x3010",
+                "value": "7",
+                "role": "sorted",
+                "note": "存 A[2][1]"
+              },
+              {
+                "key": "sa5",
+                "address": "0x3014",
+                "value": "10",
+                "role": "sorted",
+                "note": "存 A[2][2]"
+              },
+              {
+                "key": "sa6",
+                "address": "0x3018",
+                "value": "4",
+                "role": "sorted",
+                "note": "存 A[3][0]"
+              },
+              {
+                "key": "sa7",
+                "address": "0x301c",
+                "value": "8",
+                "role": "sorted",
+                "note": "存 A[3][1]"
+              },
+              {
+                "key": "sa8",
+                "address": "0x3020",
+                "value": "11",
+                "role": "sorted",
+                "note": "存 A[3][2]"
+              },
+              {
+                "key": "sa9",
+                "address": "0x3024",
+                "value": "13",
+                "role": "sorted",
+                "note": "存 A[3][3]"
+              },
+              {
+                "key": "sa10",
+                "address": "0x3028",
+                "value": "5",
+                "role": "sorted",
+                "note": "存 A[4][0]"
+              },
+              {
+                "key": "sa11",
+                "address": "0x302c",
+                "value": "9",
+                "role": "sorted",
+                "note": "存 A[4][1]"
+              },
+              {
+                "key": "sa12",
+                "address": "0x3030",
+                "value": "12",
+                "role": "sorted",
+                "note": "存 A[4][2]"
+              },
+              {
+                "key": "sa13",
+                "address": "0x3034",
+                "value": "14",
+                "role": "sorted",
+                "note": "存 A[4][3]"
+              },
+              {
+                "key": "sa14",
+                "address": "0x3038",
+                "value": "15",
+                "role": "sorted",
+                "note": "存 A[4][4]"
+              }
+            ],
+            "note": "k = i(i+1)/2 + j，全 15 个下三角元素已存入"
+          }
+        ],
+        "counters": {
+          "stored": 15
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1329 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-binary-search-recursion",
+  "title": "折半查找的递归（3D 调用栈）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第7章 查找",
+  "relatedProblems": [
+    "ds-ch07-sc-005",
+    "ds-ch07-sc-006",
+    "ds-ch07-fb-002"
+  ],
+  "code": "#include <stdio.h>\n\nint bs(int a[], int lo, int hi, int key) {\n    if (lo > hi) return -1;        /* 区间空：没找到 */\n    int mid = (lo + hi) / 2;\n    if (key == a[mid]) return mid; /* 命中 */\n    if (key < a[mid]) return bs(a, lo, mid - 1, key);  /* 左半 */\n    return bs(a, mid + 1, hi, key);                     /* 右半 */\n}\n\nint main(void) {\n    int a[11] = {5,13,19,21,37,56,64,75,80,88,92};\n    int idx = bs(a, 0, 10, 37);\n    printf(\"%d\\n\", idx);\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "binarySearchRecursion",
+    "n": 11,
+    "counterKeys": [
+      "stackDepth"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "main 落地。表中 11 个元素已按升序排好，要查 key=37。折半查找的前提是「有序表 + 顺序存储」—— 只有这样才能靠下标直接跳到中间，像查字典一样每次砍掉一半。",
+      "codeLine": 21,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    },
+    {
+      "description": "bs(0,10,37) 压栈：lo=0、hi=10，算 mid=(0+10)/2=5，a[5]=56。key=37 < 56，说明目标在左半区，于是递归 bs(0,4)。一趟比较就能把范围从 11 砍到 5，这就是折半的效率来源。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs01037",
+            "title": "bs(0,10,37)",
+            "cells": [
+              {
+                "key": "bs01037-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-hi",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-mid",
+                "address": "0x7fd8",
+                "value": "5",
+                "role": "active",
+                "note": "(0+10)/2"
+              },
+              {
+                "key": "bs01037-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs01037-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "compare",
+                "note": "当前 mid 位置 5"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 2
+        }
+      }
+    },
+    {
+      "description": "bs(0,4,37) 压栈：lo=0、hi=4，mid=2，a[2]=19。key=37 > 19，目标在右半区，递归 bs(3,4)。栈深 3。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs01037",
+            "title": "bs(0,10,37)",
+            "cells": [
+              {
+                "key": "bs01037-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-hi",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-mid",
+                "address": "0x7fd8",
+                "value": "5",
+                "role": "active",
+                "note": "(0+10)/2"
+              },
+              {
+                "key": "bs01037-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs01037-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs0437",
+            "title": "bs(0,4,37)",
+            "cells": [
+              {
+                "key": "bs0437-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-hi",
+                "address": "0x7fb4",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-mid",
+                "address": "0x7fb8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+4)/2"
+              },
+              {
+                "key": "bs0437-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs0437-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "compare",
+                "note": "当前 mid 位置 2"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 3
+        }
+      }
+    },
+    {
+      "description": "bs(3,4,37) 压栈：lo=3、hi=4，mid=3，a[3]=21。key=37 > 21，递归 bs(4,4)。查找范围缩到只剩一个元素。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs01037",
+            "title": "bs(0,10,37)",
+            "cells": [
+              {
+                "key": "bs01037-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-hi",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-mid",
+                "address": "0x7fd8",
+                "value": "5",
+                "role": "active",
+                "note": "(0+10)/2"
+              },
+              {
+                "key": "bs01037-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs01037-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs0437",
+            "title": "bs(0,4,37)",
+            "cells": [
+              {
+                "key": "bs0437-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-hi",
+                "address": "0x7fb4",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-mid",
+                "address": "0x7fb8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+4)/2"
+              },
+              {
+                "key": "bs0437-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs0437-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs3437",
+            "title": "bs(3,4,37)",
+            "cells": [
+              {
+                "key": "bs3437-lo",
+                "address": "0x7f90",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "bs3437-hi",
+                "address": "0x7f94",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs3437-mid",
+                "address": "0x7f98",
+                "value": "3",
+                "role": "active",
+                "note": "(3+4)/2"
+              },
+              {
+                "key": "bs3437-ret",
+                "address": "0x7f9c",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs3437-ra",
+                "address": "0x7fa0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "compare",
+                "note": "当前 mid 位置 3"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 4
+        }
+      }
+    },
+    {
+      "description": "bs(4,4,37) 压栈：lo=4、hi=4，mid=4，a[4]=37。key == 37，命中！返回下标 4。栈深 5 —— 对 11 个元素最多比较 ⌈log₂(11)⌉≈4 次，这就是折半查找的效率。",
+      "codeLine": 13,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs01037",
+            "title": "bs(0,10,37)",
+            "cells": [
+              {
+                "key": "bs01037-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-hi",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "active"
+              },
+              {
+                "key": "bs01037-mid",
+                "address": "0x7fd8",
+                "value": "5",
+                "role": "active",
+                "note": "(0+10)/2"
+              },
+              {
+                "key": "bs01037-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs01037-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs0437",
+            "title": "bs(0,4,37)",
+            "cells": [
+              {
+                "key": "bs0437-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-hi",
+                "address": "0x7fb4",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs0437-mid",
+                "address": "0x7fb8",
+                "value": "2",
+                "role": "active",
+                "note": "(0+4)/2"
+              },
+              {
+                "key": "bs0437-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs0437-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs3437",
+            "title": "bs(3,4,37)",
+            "cells": [
+              {
+                "key": "bs3437-lo",
+                "address": "0x7f90",
+                "value": "3",
+                "role": "active"
+              },
+              {
+                "key": "bs3437-hi",
+                "address": "0x7f94",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs3437-mid",
+                "address": "0x7f98",
+                "value": "3",
+                "role": "active",
+                "note": "(3+4)/2"
+              },
+              {
+                "key": "bs3437-ret",
+                "address": "0x7f9c",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs3437-ra",
+                "address": "0x7fa0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs4437",
+            "title": "bs(4,4,37)",
+            "cells": [
+              {
+                "key": "bs4437-lo",
+                "address": "0x7f70",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs4437-hi",
+                "address": "0x7f74",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs4437-mid",
+                "address": "0x7f78",
+                "value": "4",
+                "role": "active",
+                "note": "(4+4)/2"
+              },
+              {
+                "key": "bs4437-ret",
+                "address": "0x7f7c",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs4437-ra",
+                "address": "0x7f80",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "compare",
+                "note": "当前 mid 位置 4"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 5
+        }
+      }
+    },
+    {
+      "description": "bs(4,4,37) 返回下标 4，各层依次弹栈，把结果顺着调用链传回 main。整个过程不存在「回算」—— 折半查找是线性递归，命中后一路原样返回，栈深等于比较次数，即 O(log n)。",
+      "codeLine": 14,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "bs01037",
+            "title": "bs(0,10,37)",
+            "cells": [
+              {
+                "key": "bs01037-lo",
+                "address": "0x7fd0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "bs01037-hi",
+                "address": "0x7fd4",
+                "value": "10",
+                "role": "idle"
+              },
+              {
+                "key": "bs01037-mid",
+                "address": "0x7fd8",
+                "value": "5",
+                "role": "idle",
+                "note": "(0+10)/2"
+              },
+              {
+                "key": "bs01037-ret",
+                "address": "0x7fdc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "bs01037-ra",
+                "address": "0x7fe0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "bs0437",
+            "title": "bs(0,4,37)",
+            "cells": [
+              {
+                "key": "bs0437-lo",
+                "address": "0x7fb0",
+                "value": "0",
+                "role": "idle"
+              },
+              {
+                "key": "bs0437-hi",
+                "address": "0x7fb4",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "bs0437-mid",
+                "address": "0x7fb8",
+                "value": "2",
+                "role": "idle",
+                "note": "(0+4)/2"
+              },
+              {
+                "key": "bs0437-ret",
+                "address": "0x7fbc",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "bs0437-ra",
+                "address": "0x7fc0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "bs3437",
+            "title": "bs(3,4,37)",
+            "cells": [
+              {
+                "key": "bs3437-lo",
+                "address": "0x7f90",
+                "value": "3",
+                "role": "idle"
+              },
+              {
+                "key": "bs3437-hi",
+                "address": "0x7f94",
+                "value": "4",
+                "role": "idle"
+              },
+              {
+                "key": "bs3437-mid",
+                "address": "0x7f98",
+                "value": "3",
+                "role": "idle",
+                "note": "(3+4)/2"
+              },
+              {
+                "key": "bs3437-ret",
+                "address": "0x7f9c",
+                "value": "待定",
+                "role": "idle",
+                "note": "返回值"
+              },
+              {
+                "key": "bs3437-ra",
+                "address": "0x7fa0",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ]
+          },
+          {
+            "key": "bs4437",
+            "title": "bs(4,4,37)",
+            "cells": [
+              {
+                "key": "bs4437-lo",
+                "address": "0x7f70",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs4437-hi",
+                "address": "0x7f74",
+                "value": "4",
+                "role": "active"
+              },
+              {
+                "key": "bs4437-mid",
+                "address": "0x7f78",
+                "value": "4",
+                "role": "active",
+                "note": "(4+4)/2"
+              },
+              {
+                "key": "bs4437-ret",
+                "address": "0x7f7c",
+                "value": "4",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "bs4437-ra",
+                "address": "0x7f80",
+                "value": "← 上层",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "compare",
+                "note": "当前 mid 位置 4"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 5
+        }
+      }
+    },
+    {
+      "description": "栈只剩 main 一层，main 打印下标 4。补充：若查 key=40（表里没有），会一路递归到 lo>hi —— 区间为空才返回 -1，那条路径的深度同样是 O(log n)。这也解释了折半查找**为什么不能用于链表**：链表无法 O(1) 跳到 mid，即使逻辑上折半，每次定位都要从头走。",
+      "codeLine": 21,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "main",
+            "title": "main",
+            "cells": [
+              {
+                "key": "main-ret",
+                "address": "0x7ff0",
+                "value": "待定",
+                "role": "compare",
+                "note": "返回值"
+              },
+              {
+                "key": "main-ra",
+                "address": "0x7ff4",
+                "value": "← OS",
+                "role": "idle",
+                "note": "返回地址"
+              }
+            ],
+            "note": "当前正在执行的栈帧（栈顶）"
+          },
+          {
+            "key": "array",
+            "title": "有序表 a[]（11 个元素）",
+            "cells": [
+              {
+                "key": "a0",
+                "address": "0x1000",
+                "value": "5",
+                "role": "idle"
+              },
+              {
+                "key": "a1",
+                "address": "0x1004",
+                "value": "13",
+                "role": "idle"
+              },
+              {
+                "key": "a2",
+                "address": "0x1008",
+                "value": "19",
+                "role": "idle"
+              },
+              {
+                "key": "a3",
+                "address": "0x100c",
+                "value": "21",
+                "role": "idle"
+              },
+              {
+                "key": "a4",
+                "address": "0x1010",
+                "value": "37",
+                "role": "idle"
+              },
+              {
+                "key": "a5",
+                "address": "0x1014",
+                "value": "56",
+                "role": "idle"
+              },
+              {
+                "key": "a6",
+                "address": "0x1018",
+                "value": "64",
+                "role": "idle"
+              },
+              {
+                "key": "a7",
+                "address": "0x101c",
+                "value": "75",
+                "role": "idle"
+              },
+              {
+                "key": "a8",
+                "address": "0x1020",
+                "value": "80",
+                "role": "idle"
+              },
+              {
+                "key": "a9",
+                "address": "0x1024",
+                "value": "88",
+                "role": "idle"
+              },
+              {
+                "key": "a10",
+                "address": "0x1028",
+                "value": "92",
+                "role": "idle"
+              }
+            ],
+            "note": "基址 0x1000，每格 int 4 字节"
+          }
+        ],
+        "counters": {
+          "stackDepth": 1
+        }
+      }
+    }
+  ]
+}

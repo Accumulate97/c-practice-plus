@@ -1,0 +1,981 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-adjmatrix",
+  "title": "邻接矩阵 vs 邻接表的内存形态（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第6章 图",
+  "relatedProblems": [
+    "ds-ch06-sc-003",
+    "ds-ch06-tf-001",
+    "ds-ch06-fb-002"
+  ],
+  "code": "#include <stdio.h>\n#define N 4   /* 顶点：0=a 1=b 2=c 3=d */\n\nint main(void) {\n    int matrix[N][N] = {0};   /* 邻接矩阵：无向图，对称 */\n    /* 边：a-b, a-c, b-d */\n    matrix[0][1] = matrix[1][0] = 1;   /* a-b */\n    matrix[0][2] = matrix[2][0] = 1;   /* a-c */\n    matrix[1][3] = matrix[3][1] = 1;   /* b-d */\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "adjmatrix",
+    "n": 4,
+    "counterKeys": [
+      "edges"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "给定无向图：4 个顶点 a、b、c、d，初始没有任何边。先看两种存储方式的内存形态 —— 邻接矩阵是 N×N 的二维数组（每个格子都占位，即使没边）；邻接表则是每个顶点挂一条链表，只存真正存在的边。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "邻接矩阵（N=4）",
+            "cells": [
+              {
+                "key": "m00",
+                "address": "0x8000",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][a]"
+              },
+              {
+                "key": "m01",
+                "address": "0x8004",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][b]"
+              },
+              {
+                "key": "m02",
+                "address": "0x8008",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][c]"
+              },
+              {
+                "key": "m03",
+                "address": "0x800c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][d]"
+              },
+              {
+                "key": "m10",
+                "address": "0x8010",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][a]"
+              },
+              {
+                "key": "m11",
+                "address": "0x8014",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][b]"
+              },
+              {
+                "key": "m12",
+                "address": "0x8018",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][c]"
+              },
+              {
+                "key": "m13",
+                "address": "0x801c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][d]"
+              },
+              {
+                "key": "m20",
+                "address": "0x8020",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][a]"
+              },
+              {
+                "key": "m21",
+                "address": "0x8024",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][b]"
+              },
+              {
+                "key": "m22",
+                "address": "0x8028",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][c]"
+              },
+              {
+                "key": "m23",
+                "address": "0x802c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][d]"
+              },
+              {
+                "key": "m30",
+                "address": "0x8030",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][a]"
+              },
+              {
+                "key": "m31",
+                "address": "0x8034",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][b]"
+              },
+              {
+                "key": "m32",
+                "address": "0x8038",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][c]"
+              },
+              {
+                "key": "m33",
+                "address": "0x803c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][d]"
+              }
+            ],
+            "note": "二维数组，无向图关于主对角线对称"
+          },
+          {
+            "key": "adjlist",
+            "title": "邻接表（每个顶点一条链）",
+            "cells": [
+              {
+                "key": "head0",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 a 的邻接表头"
+              },
+              {
+                "key": "head1",
+                "address": "0x9004",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 b 的邻接表头"
+              },
+              {
+                "key": "head2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 c 的邻接表头"
+              },
+              {
+                "key": "head3",
+                "address": "0x900c",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 d 的邻接表头"
+              }
+            ],
+            "note": "只存实际存在的边，稀疏图省空间"
+          }
+        ],
+        "counters": {
+          "edges": 0
+        }
+      }
+    },
+    {
+      "description": "加边 a-b：矩阵里 matrix[a][b] 与 matrix[b][a] 同时置 1（无向图对称）；邻接表里 a 链头插 b、b 链头插 a。两种结构同时记录了这条边。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "邻接矩阵（N=4）",
+            "cells": [
+              {
+                "key": "m00",
+                "address": "0x8000",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][a]"
+              },
+              {
+                "key": "m01",
+                "address": "0x8004",
+                "value": "1",
+                "role": "active",
+                "note": "matrix[a][b]"
+              },
+              {
+                "key": "m02",
+                "address": "0x8008",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][c]"
+              },
+              {
+                "key": "m03",
+                "address": "0x800c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][d]"
+              },
+              {
+                "key": "m10",
+                "address": "0x8010",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[b][a]"
+              },
+              {
+                "key": "m11",
+                "address": "0x8014",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][b]"
+              },
+              {
+                "key": "m12",
+                "address": "0x8018",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][c]"
+              },
+              {
+                "key": "m13",
+                "address": "0x801c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][d]"
+              },
+              {
+                "key": "m20",
+                "address": "0x8020",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][a]"
+              },
+              {
+                "key": "m21",
+                "address": "0x8024",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][b]"
+              },
+              {
+                "key": "m22",
+                "address": "0x8028",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][c]"
+              },
+              {
+                "key": "m23",
+                "address": "0x802c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][d]"
+              },
+              {
+                "key": "m30",
+                "address": "0x8030",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][a]"
+              },
+              {
+                "key": "m31",
+                "address": "0x8034",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][b]"
+              },
+              {
+                "key": "m32",
+                "address": "0x8038",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][c]"
+              },
+              {
+                "key": "m33",
+                "address": "0x803c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][d]"
+              }
+            ],
+            "note": "二维数组，无向图关于主对角线对称"
+          },
+          {
+            "key": "adjlist",
+            "title": "邻接表（每个顶点一条链）",
+            "cells": [
+              {
+                "key": "head0",
+                "address": "0x9000",
+                "value": "→ 0x9100",
+                "role": "pivot",
+                "note": "顶点 a 的邻接表头"
+              },
+              {
+                "key": "e0-data",
+                "address": "0x9100",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head1",
+                "address": "0x9004",
+                "value": "→ 0x9108",
+                "role": "pivot",
+                "note": "顶点 b 的邻接表头"
+              },
+              {
+                "key": "e1-data",
+                "address": "0x9108",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head2",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 c 的邻接表头"
+              },
+              {
+                "key": "head3",
+                "address": "0x900c",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 d 的邻接表头"
+              }
+            ],
+            "note": "只存实际存在的边，稀疏图省空间"
+          }
+        ],
+        "counters": {
+          "edges": 1
+        }
+      }
+    },
+    {
+      "description": "加边 a-c：矩阵置 matrix[a][c] = matrix[c][a] = 1；邻接表 a 的链上再头插 c。注意邻接表里 a 的链是 b → c（头插让后加的 c 在链头）。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "邻接矩阵（N=4）",
+            "cells": [
+              {
+                "key": "m00",
+                "address": "0x8000",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][a]"
+              },
+              {
+                "key": "m01",
+                "address": "0x8004",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[a][b]"
+              },
+              {
+                "key": "m02",
+                "address": "0x8008",
+                "value": "1",
+                "role": "active",
+                "note": "matrix[a][c]"
+              },
+              {
+                "key": "m03",
+                "address": "0x800c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][d]"
+              },
+              {
+                "key": "m10",
+                "address": "0x8010",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[b][a]"
+              },
+              {
+                "key": "m11",
+                "address": "0x8014",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][b]"
+              },
+              {
+                "key": "m12",
+                "address": "0x8018",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][c]"
+              },
+              {
+                "key": "m13",
+                "address": "0x801c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][d]"
+              },
+              {
+                "key": "m20",
+                "address": "0x8020",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[c][a]"
+              },
+              {
+                "key": "m21",
+                "address": "0x8024",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][b]"
+              },
+              {
+                "key": "m22",
+                "address": "0x8028",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][c]"
+              },
+              {
+                "key": "m23",
+                "address": "0x802c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][d]"
+              },
+              {
+                "key": "m30",
+                "address": "0x8030",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][a]"
+              },
+              {
+                "key": "m31",
+                "address": "0x8034",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][b]"
+              },
+              {
+                "key": "m32",
+                "address": "0x8038",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][c]"
+              },
+              {
+                "key": "m33",
+                "address": "0x803c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][d]"
+              }
+            ],
+            "note": "二维数组，无向图关于主对角线对称"
+          },
+          {
+            "key": "adjlist",
+            "title": "邻接表（每个顶点一条链）",
+            "cells": [
+              {
+                "key": "head0",
+                "address": "0x9000",
+                "value": "→ 0x9110",
+                "role": "pivot",
+                "note": "顶点 a 的邻接表头"
+              },
+              {
+                "key": "e2-data",
+                "address": "0x9110",
+                "value": "c",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "e0-data",
+                "address": "0x9100",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head1",
+                "address": "0x9004",
+                "value": "→ 0x9108",
+                "role": "pivot",
+                "note": "顶点 b 的邻接表头"
+              },
+              {
+                "key": "e1-data",
+                "address": "0x9108",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head2",
+                "address": "0x9008",
+                "value": "→ 0x9118",
+                "role": "pivot",
+                "note": "顶点 c 的邻接表头"
+              },
+              {
+                "key": "e3-data",
+                "address": "0x9118",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head3",
+                "address": "0x900c",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "顶点 d 的邻接表头"
+              }
+            ],
+            "note": "只存实际存在的边，稀疏图省空间"
+          }
+        ],
+        "counters": {
+          "edges": 2
+        }
+      }
+    },
+    {
+      "description": "加边 b-d：矩阵置 matrix[b][d] = matrix[d][b] = 1；邻接表 b 的链上头插 d（b 链变 d → a）。现在一共有 3 条边。",
+      "codeLine": 10,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "邻接矩阵（N=4）",
+            "cells": [
+              {
+                "key": "m00",
+                "address": "0x8000",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][a]"
+              },
+              {
+                "key": "m01",
+                "address": "0x8004",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[a][b]"
+              },
+              {
+                "key": "m02",
+                "address": "0x8008",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[a][c]"
+              },
+              {
+                "key": "m03",
+                "address": "0x800c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][d]"
+              },
+              {
+                "key": "m10",
+                "address": "0x8010",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[b][a]"
+              },
+              {
+                "key": "m11",
+                "address": "0x8014",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][b]"
+              },
+              {
+                "key": "m12",
+                "address": "0x8018",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][c]"
+              },
+              {
+                "key": "m13",
+                "address": "0x801c",
+                "value": "1",
+                "role": "active",
+                "note": "matrix[b][d]"
+              },
+              {
+                "key": "m20",
+                "address": "0x8020",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[c][a]"
+              },
+              {
+                "key": "m21",
+                "address": "0x8024",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][b]"
+              },
+              {
+                "key": "m22",
+                "address": "0x8028",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][c]"
+              },
+              {
+                "key": "m23",
+                "address": "0x802c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][d]"
+              },
+              {
+                "key": "m30",
+                "address": "0x8030",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][a]"
+              },
+              {
+                "key": "m31",
+                "address": "0x8034",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[d][b]"
+              },
+              {
+                "key": "m32",
+                "address": "0x8038",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][c]"
+              },
+              {
+                "key": "m33",
+                "address": "0x803c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][d]"
+              }
+            ],
+            "note": "二维数组，无向图关于主对角线对称"
+          },
+          {
+            "key": "adjlist",
+            "title": "邻接表（每个顶点一条链）",
+            "cells": [
+              {
+                "key": "head0",
+                "address": "0x9000",
+                "value": "→ 0x9110",
+                "role": "pivot",
+                "note": "顶点 a 的邻接表头"
+              },
+              {
+                "key": "e2-data",
+                "address": "0x9110",
+                "value": "c",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "e0-data",
+                "address": "0x9100",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head1",
+                "address": "0x9004",
+                "value": "→ 0x9120",
+                "role": "pivot",
+                "note": "顶点 b 的邻接表头"
+              },
+              {
+                "key": "e4-data",
+                "address": "0x9120",
+                "value": "d",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "e1-data",
+                "address": "0x9108",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head2",
+                "address": "0x9008",
+                "value": "→ 0x9118",
+                "role": "pivot",
+                "note": "顶点 c 的邻接表头"
+              },
+              {
+                "key": "e3-data",
+                "address": "0x9118",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head3",
+                "address": "0x900c",
+                "value": "→ 0x9128",
+                "role": "pivot",
+                "note": "顶点 d 的邻接表头"
+              },
+              {
+                "key": "e5-data",
+                "address": "0x9128",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              }
+            ],
+            "note": "只存实际存在的边，稀疏图省空间"
+          }
+        ],
+        "counters": {
+          "edges": 3
+        }
+      }
+    },
+    {
+      "description": "对比两组存储：邻接矩阵永远是 N×N 格，判断「u、v 是否相邻」是 O(1)，但无论图多稀疏都占 O(N²) 空间；邻接表只存边，空间 O(N+E)，可省一张大表，但要沿链找、判断相邻是 O(度)。稀疏图用邻接表，稠密图用邻接矩阵。",
+      "codeLine": 12,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "matrix",
+            "title": "邻接矩阵（N=4）",
+            "cells": [
+              {
+                "key": "m00",
+                "address": "0x8000",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][a]"
+              },
+              {
+                "key": "m01",
+                "address": "0x8004",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[a][b]"
+              },
+              {
+                "key": "m02",
+                "address": "0x8008",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[a][c]"
+              },
+              {
+                "key": "m03",
+                "address": "0x800c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[a][d]"
+              },
+              {
+                "key": "m10",
+                "address": "0x8010",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[b][a]"
+              },
+              {
+                "key": "m11",
+                "address": "0x8014",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][b]"
+              },
+              {
+                "key": "m12",
+                "address": "0x8018",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[b][c]"
+              },
+              {
+                "key": "m13",
+                "address": "0x801c",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[b][d]"
+              },
+              {
+                "key": "m20",
+                "address": "0x8020",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[c][a]"
+              },
+              {
+                "key": "m21",
+                "address": "0x8024",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][b]"
+              },
+              {
+                "key": "m22",
+                "address": "0x8028",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][c]"
+              },
+              {
+                "key": "m23",
+                "address": "0x802c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[c][d]"
+              },
+              {
+                "key": "m30",
+                "address": "0x8030",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][a]"
+              },
+              {
+                "key": "m31",
+                "address": "0x8034",
+                "value": "1",
+                "role": "sorted",
+                "note": "matrix[d][b]"
+              },
+              {
+                "key": "m32",
+                "address": "0x8038",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][c]"
+              },
+              {
+                "key": "m33",
+                "address": "0x803c",
+                "value": "0",
+                "role": "idle",
+                "note": "matrix[d][d]"
+              }
+            ],
+            "note": "二维数组，无向图关于主对角线对称"
+          },
+          {
+            "key": "adjlist",
+            "title": "邻接表（每个顶点一条链）",
+            "cells": [
+              {
+                "key": "head0",
+                "address": "0x9000",
+                "value": "→ 0x9110",
+                "role": "pivot",
+                "note": "顶点 a 的邻接表头"
+              },
+              {
+                "key": "e2-data",
+                "address": "0x9110",
+                "value": "c",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "e0-data",
+                "address": "0x9100",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head1",
+                "address": "0x9004",
+                "value": "→ 0x9120",
+                "role": "pivot",
+                "note": "顶点 b 的邻接表头"
+              },
+              {
+                "key": "e4-data",
+                "address": "0x9120",
+                "value": "d",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "e1-data",
+                "address": "0x9108",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head2",
+                "address": "0x9008",
+                "value": "→ 0x9118",
+                "role": "pivot",
+                "note": "顶点 c 的邻接表头"
+              },
+              {
+                "key": "e3-data",
+                "address": "0x9118",
+                "value": "a",
+                "role": "sorted",
+                "note": "邻接结点"
+              },
+              {
+                "key": "head3",
+                "address": "0x900c",
+                "value": "→ 0x9128",
+                "role": "pivot",
+                "note": "顶点 d 的邻接表头"
+              },
+              {
+                "key": "e5-data",
+                "address": "0x9128",
+                "value": "b",
+                "role": "sorted",
+                "note": "邻接结点"
+              }
+            ],
+            "note": "只存实际存在的边，稀疏图省空间"
+          }
+        ],
+        "counters": {
+          "edges": 3
+        }
+      }
+    }
+  ]
+}

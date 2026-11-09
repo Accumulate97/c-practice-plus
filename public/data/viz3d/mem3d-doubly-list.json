@@ -1,0 +1,510 @@
+{
+  "_generated": "GENERATED — 由 npm run gen:viz3d 生成，禁止手工编辑（语料必须脚本产出，手改会在下次生成时被覆盖）",
+  "id": "mem3d-doubly-list",
+  "title": "双向链表的 prior 与 next 双向链接（3D）",
+  "renderer": "memory",
+  "category": "memory",
+  "chapter": "第2章 线性表",
+  "relatedProblems": [
+    "ds-ch02-sc-015",
+    "ds-ch02-fb-016",
+    "ds-ch02-cc-010"
+  ],
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Node {\n    int data;\n    struct Node *prior;   /* 指向前驱 */\n    struct Node *next;    /* 指向后继 */\n} Node;\n\nint main(void) {\n    Node *head = NULL;\n    Node *n1 = malloc(sizeof(Node)); n1->data = 10; n1->prior = NULL; n1->next = NULL; head = n1;\n    Node *n2 = malloc(sizeof(Node)); n2->data = 20; n2->prior = n1; n1->next = n2; n2->next = NULL;\n    Node *n3 = malloc(sizeof(Node)); n3->data = 30; n3->prior = n2; n2->next = n3; n3->next = NULL;\n    /* 在 n2 之后插入 s */\n    Node *s  = malloc(sizeof(Node)); s->data = 25;\n    s->prior = n2; s->next = n2->next; n2->next->prior = s; n2->next = s;\n    return 0;\n}\n",
+  "meta": {
+    "algorithm": "doublyList",
+    "n": 4,
+    "counterKeys": [
+      "count"
+    ],
+    "generatedBy": "gen-viz3d@0.1.0",
+    "hall": "viz3d"
+  },
+  "steps": [
+    {
+      "description": "空双向链表：head = NULL。双向链表与单链表的差别只在结点多了一个 prior 指针，用于指向前驱。",
+      "codeLine": 5,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "NULL",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 0
+        }
+      }
+    },
+    {
+      "description": "插入第一个结点 n1=10：prior = NULL（它是表头）、next = NULL（它是表尾），head 指向它。单结点时前驱后继都悬空。",
+      "codeLine": 7,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [
+              {
+                "key": "n1-prior",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "active",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n1-data",
+                "address": "0x9004",
+                "value": "10",
+                "role": "active",
+                "note": "data"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "NULL",
+                "role": "active",
+                "note": "后继指针"
+              }
+            ],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 1
+        }
+      }
+    },
+    {
+      "description": "在表尾追加 n2=20：n2->prior = n1，n1->next = n2，n2->next = NULL。现在 n1 ↔ n2：从 n1 能通过 next 到 n2，从 n2 能通过 prior 回 n1 —— 这是双向链表的核心能力。",
+      "codeLine": 8,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [
+              {
+                "key": "n1-prior",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n1-data",
+                "address": "0x9004",
+                "value": "10",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n2-prior",
+                "address": "0x900c",
+                "value": "← 0x9000",
+                "role": "active",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9010",
+                "value": "20",
+                "role": "active",
+                "note": "data"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9014",
+                "value": "NULL",
+                "role": "active",
+                "note": "后继指针"
+              }
+            ],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 2
+        }
+      }
+    },
+    {
+      "description": "再追加 n3=30 到表尾：n3->prior = n2，n2->next = n3。链表变成 n1 ↔ n2 ↔ n3，每个结点既知道后继也知道前驱。",
+      "codeLine": 9,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [
+              {
+                "key": "n1-prior",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n1-data",
+                "address": "0x9004",
+                "value": "10",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n2-prior",
+                "address": "0x900c",
+                "value": "← 0x9000",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9010",
+                "value": "20",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9014",
+                "value": "→ 0x9018",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n3-prior",
+                "address": "0x9018",
+                "value": "← 0x900c",
+                "role": "active",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n3-data",
+                "address": "0x901c",
+                "value": "30",
+                "role": "active",
+                "note": "data"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "active",
+                "note": "后继指针"
+              }
+            ],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 3
+        }
+      }
+    },
+    {
+      "description": "在 n2 之后插入新结点 s=25，四步改针：s->prior = n2；s->next = n2->next(即 n3)；n2->next->prior = s；n2->next = s。因为双向链表有 prior，插入时能把「后继的前驱」也一起改对 —— 这正是它比单链表便于插入删除的地方。",
+      "codeLine": 11,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [
+              {
+                "key": "n1-prior",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n1-data",
+                "address": "0x9004",
+                "value": "10",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n2-prior",
+                "address": "0x900c",
+                "value": "← 0x9000",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9010",
+                "value": "20",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9014",
+                "value": "→ 0x9024",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n3-prior",
+                "address": "0x9018",
+                "value": "← 0x9024",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n3-data",
+                "address": "0x901c",
+                "value": "30",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "s-prior",
+                "address": "0x9024",
+                "value": "← 0x900c",
+                "role": "active",
+                "note": "前驱指针"
+              },
+              {
+                "key": "s-data",
+                "address": "0x9028",
+                "value": "25",
+                "role": "active",
+                "note": "data"
+              },
+              {
+                "key": "s-next",
+                "address": "0x902c",
+                "value": "→ 0x9018",
+                "role": "active",
+                "note": "后继指针"
+              }
+            ],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 4
+        }
+      }
+    },
+    {
+      "description": "总结：双向链表每个结点多存一个 prior 指针，换来可在两个方向上遍历、以及在已知结点处 O(1) 插入/删除的能力。代价是每个结点多占 4 字节，且改指针的操作数是单链表的两倍。",
+      "codeLine": 15,
+      "snapshot": {
+        "kind": "memory",
+        "regions": [
+          {
+            "key": "head",
+            "title": "头指针",
+            "cells": [
+              {
+                "key": "head",
+                "address": "0x7ff0",
+                "value": "→ 0x9000",
+                "role": "pivot",
+                "note": "头指针 head"
+              }
+            ]
+          },
+          {
+            "key": "heap",
+            "title": "堆区（每个结点：prior + data + next）",
+            "cells": [
+              {
+                "key": "n1-prior",
+                "address": "0x9000",
+                "value": "NULL",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n1-data",
+                "address": "0x9004",
+                "value": "10",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n1-next",
+                "address": "0x9008",
+                "value": "→ 0x900c",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n2-prior",
+                "address": "0x900c",
+                "value": "← 0x9000",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n2-data",
+                "address": "0x9010",
+                "value": "20",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n2-next",
+                "address": "0x9014",
+                "value": "→ 0x9024",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "n3-prior",
+                "address": "0x9018",
+                "value": "← 0x9024",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "n3-data",
+                "address": "0x901c",
+                "value": "30",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "n3-next",
+                "address": "0x9020",
+                "value": "NULL",
+                "role": "idle",
+                "note": "后继指针"
+              },
+              {
+                "key": "s-prior",
+                "address": "0x9024",
+                "value": "← 0x900c",
+                "role": "idle",
+                "note": "前驱指针"
+              },
+              {
+                "key": "s-data",
+                "address": "0x9028",
+                "value": "25",
+                "role": "sorted",
+                "note": "data"
+              },
+              {
+                "key": "s-next",
+                "address": "0x902c",
+                "value": "→ 0x9018",
+                "role": "idle",
+                "note": "后继指针"
+              }
+            ],
+            "note": "双向链表每个结点有两个指针，可双向遍历"
+          }
+        ],
+        "counters": {
+          "count": 4
+        }
+      }
+    }
+  ]
+}

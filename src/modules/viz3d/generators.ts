@@ -18,14 +18,15 @@ import type { MemoryCell, MemoryRegion, MemorySnapshot, VizRole, VizStep } from 
 
 /* ------------------------------------------------------------------ *
  * 小工具：少写样板，同时保证 role / note 为空时不落进 JSON
+ * 从 gener*-ds-*.ts 批量模块（阶段4 追加的 3D 演示）复用同一套助手，故导出。
  * ------------------------------------------------------------------ */
-function cell(key: string, address: string, value: string, role?: VizRole, note?: string): MemoryCell {
+export function cell(key: string, address: string, value: string, role?: VizRole, note?: string): MemoryCell {
   return { key, address, value, ...(role ? { role } : {}), ...(note ? { note } : {}) }
 }
-function region(key: string, title: string, cells: MemoryCell[], note?: string): MemoryRegion {
+export function region(key: string, title: string, cells: MemoryCell[], note?: string): MemoryRegion {
   return { key, title, cells, ...(note ? { note } : {}) }
 }
-function step(
+export function step(
   description: string,
   regions: MemoryRegion[],
   counters?: Record<string, number>,
@@ -40,7 +41,7 @@ function step(
  * 与真实 x86-64 Linux 进程的布局方向一致，学生从 3D 沙盘上看到的相对位置
  * 不会因为「画得好看」而跟 gdb 里对不上。
  */
-const STACK_ADDR = '0x7ff0'
+export const STACK_ADDR = '0x7ff0'
 
 /* ================================================================== *
  * 1. 野指针（悬空指针）是怎么形成的
@@ -304,7 +305,7 @@ export interface Viz3DSpec {
   generate: () => VizStep[]
 }
 
-export const VIZ3D_SPECS: Viz3DSpec[] = [
+const BASE_VIZ3D_SPECS: Viz3DSpec[] = [
   {
     id: 'mem3d-wild-pointer',
     title: '野指针的形成（3D 内存沙盘）',
@@ -358,3 +359,14 @@ export const VIZ3D_SPECS: Viz3DSpec[] = [
     generate: matrixCube,
   },
 ]
+
+/* ------------------------------------------------------------------ *
+ * 阶段4：3D 演示 38 → ≥58。
+ * 批次 A/B/C 由子代理整文件写入（契约与本文件一致），它们只 import 本文件的
+ * cell/region/step 与类型。聚合放在这里，gen-viz3d.ts 仍然只 import VIZ3D_SPECS。
+ * ------------------------------------------------------------------ */
+import { VIZ3D_SPECS as SPECS_A } from './specs-ds-a'
+import { VIZ3D_SPECS as SPECS_B } from './specs-ds-b'
+import { VIZ3D_SPECS as SPECS_C } from './specs-ds-c'
+
+export const VIZ3D_SPECS: Viz3DSpec[] = [...BASE_VIZ3D_SPECS, ...SPECS_A, ...SPECS_B, ...SPECS_C]

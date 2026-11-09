@@ -1,6 +1,6 @@
 {
   "_generated": "GENERATED — 由 npm run build:index 生成，禁止手工编辑（手改会被覆盖）",
-  "content_sha": "11c76deb21d1195e",
+  "content_sha": "79ccc4a6c14940cc",
   "schema_version": 1,
   "data_version": "0.1.0",
   "count": 3808,
@@ -43518,7 +43518,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "算法分析",
@@ -43536,7 +43536,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "算法分析",
@@ -43554,7 +43554,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "算法分析",
@@ -43572,7 +43572,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "算法分析",
@@ -43590,7 +43590,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "算法分析",
@@ -43626,7 +43626,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "循环嵌套",
@@ -43645,7 +43645,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "循环嵌套",
@@ -43664,7 +43664,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "循环嵌套",
@@ -43683,7 +43683,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "循环嵌套",
@@ -43702,7 +43702,7 @@
       "section": "1.4 算法和算法分析",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "时间复杂度",
         "循环嵌套",
@@ -55942,7 +55942,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接矩阵",
         "出度",
@@ -55960,7 +55960,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接矩阵",
         "出度",
@@ -55978,7 +55978,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接矩阵",
         "出度",
@@ -55996,7 +55996,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接矩阵",
         "出度",
@@ -56014,7 +56014,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接矩阵",
         "出度",
@@ -56050,7 +56050,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "拓扑排序",
         "Kahn",
@@ -56068,7 +56068,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "拓扑排序",
         "Kahn",
@@ -56086,7 +56086,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "拓扑排序",
         "Kahn",
@@ -56104,7 +56104,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "拓扑排序",
         "Kahn",
@@ -56122,7 +56122,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "拓扑排序",
         "Kahn",
@@ -56158,7 +56158,7 @@
       "section": "6.5 最短路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Floyd",
         "全源最短路径",
@@ -56176,7 +56176,7 @@
       "section": "6.5 最短路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Floyd",
         "全源最短路径",
@@ -56194,7 +56194,7 @@
       "section": "6.5 最短路径",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Floyd",
         "全源最短路径",
@@ -56212,7 +56212,7 @@
       "section": "6.5 最短路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Floyd",
         "全源最短路径",
@@ -56230,7 +56230,7 @@
       "section": "6.5 最短路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Floyd",
         "全源最短路径",
@@ -56266,7 +56266,7 @@
       "section": "6.4 最小生成树",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Prim",
         "最小生成树",
@@ -56284,7 +56284,7 @@
       "section": "6.4 最小生成树",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Prim",
         "最小生成树",
@@ -56302,7 +56302,7 @@
       "section": "6.4 最小生成树",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Prim",
         "最小生成树",
@@ -56320,7 +56320,7 @@
       "section": "6.4 最小生成树",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Prim",
         "最小生成树",
@@ -56338,7 +56338,7 @@
       "section": "6.4 最小生成树",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "Prim",
         "最小生成树",
@@ -56374,7 +56374,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接表",
         "邻接矩阵",
@@ -56392,7 +56392,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接表",
         "邻接矩阵",
@@ -56410,7 +56410,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接表",
         "邻接矩阵",
@@ -56428,7 +56428,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接表",
         "邻接矩阵",
@@ -56446,7 +56446,7 @@
       "section": "6.2 图的存储结构",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "邻接表",
         "邻接矩阵",
@@ -56482,7 +56482,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连通分量",
         "BFS",
@@ -56499,7 +56499,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连通分量",
         "BFS",
@@ -56516,7 +56516,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连通分量",
         "BFS",
@@ -56533,7 +56533,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连通分量",
         "BFS",
@@ -56550,7 +56550,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "连通分量",
         "BFS",
@@ -56584,7 +56584,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "DFS",
         "环检测",
@@ -56602,7 +56602,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "DFS",
         "环检测",
@@ -56620,7 +56620,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "DFS",
         "环检测",
@@ -56638,7 +56638,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "DFS",
         "环检测",
@@ -56656,7 +56656,7 @@
       "section": "6.3 图的遍历",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "DFS",
         "环检测",
@@ -56692,7 +56692,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "AOE网",
         "关键路径",
@@ -56711,7 +56711,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "AOE网",
         "关键路径",
@@ -56730,7 +56730,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "AOE网",
         "关键路径",
@@ -56749,7 +56749,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "AOE网",
         "关键路径",
@@ -56768,7 +56768,7 @@
       "section": "6.6 拓扑排序与关键路径",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "AOE网",
         "关键路径",
@@ -58008,7 +58008,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58026,7 +58026,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58044,7 +58044,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58062,7 +58062,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58080,7 +58080,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58116,7 +58116,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "链地址法",
@@ -58134,7 +58134,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "链地址法",
@@ -58152,7 +58152,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "链地址法",
@@ -58170,7 +58170,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "链地址法",
@@ -58188,7 +58188,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "链地址法",
@@ -58224,7 +58224,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分块查找",
         "索引顺序查找",
@@ -58242,7 +58242,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分块查找",
         "索引顺序查找",
@@ -58260,7 +58260,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分块查找",
         "索引顺序查找",
@@ -58278,7 +58278,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分块查找",
         "索引顺序查找",
@@ -58296,7 +58296,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "分块查找",
         "索引顺序查找",
@@ -58332,7 +58332,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "递归查找",
@@ -58349,7 +58349,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "递归查找",
@@ -58366,7 +58366,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "递归查找",
@@ -58383,7 +58383,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "递归查找",
@@ -58400,7 +58400,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "递归查找",
@@ -58434,7 +58434,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "最小值",
@@ -58452,7 +58452,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "最小值",
@@ -58470,7 +58470,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "最小值",
@@ -58488,7 +58488,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "最小值",
@@ -58506,7 +58506,7 @@
       "section": "7.3 二叉排序树",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "二叉排序树",
         "最小值",
@@ -58542,7 +58542,7 @@
       "section": "7.4 平衡二叉树",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平衡二叉树",
         "平衡因子",
@@ -58560,7 +58560,7 @@
       "section": "7.4 平衡二叉树",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平衡二叉树",
         "平衡因子",
@@ -58578,7 +58578,7 @@
       "section": "7.4 平衡二叉树",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平衡二叉树",
         "平衡因子",
@@ -58596,7 +58596,7 @@
       "section": "7.4 平衡二叉树",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平衡二叉树",
         "平衡因子",
@@ -58614,7 +58614,7 @@
       "section": "7.4 平衡二叉树",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "平衡二叉树",
         "平衡因子",
@@ -58650,7 +58650,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "递归",
@@ -58668,7 +58668,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 2,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "递归",
@@ -58686,7 +58686,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 2,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "递归",
@@ -58704,7 +58704,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "递归",
@@ -58722,7 +58722,7 @@
       "section": "7.2 线性表的查找（顺序查找与折半查找）",
       "difficulty": 3,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "折半查找",
         "递归",
@@ -58758,7 +58758,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58777,7 +58777,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "understand",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58796,7 +58796,7 @@
       "section": "7.5 散列表",
       "difficulty": 3,
       "bloom": "apply",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58815,7 +58815,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
@@ -58834,7 +58834,7 @@
       "section": "7.5 散列表",
       "difficulty": 4,
       "bloom": "analyze",
-      "verified": false,
+      "verified": true,
       "tags": [
         "散列表",
         "线性探测",
