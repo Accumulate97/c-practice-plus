@@ -55,7 +55,7 @@
 │   ├── reports/        # 阶段验收与质量报告
 │   ├── archive/        # 一次性过程文档
 │   ├── handover/       # 交接说明
-│   └── source-data/    # 教材转换中间数据（版权敏感，仅离线脚本消费）
+│   └── source-data/    # 教材原始素材仅本地留存（版权敏感，不随仓库分发；见该目录 README）
 └── AGENTS.md           # 项目铁律与 Godbolt 契约
 ```
 

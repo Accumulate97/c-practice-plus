@@ -2836,7 +2836,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "指针丢失",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = NULL; g[u].head = p;\n}\nstatic void dfs(VNode *g, int u, int *vis) {\n    Arc *p; vis[u] = 1; printf(\"%d \", u);\n    for (p = g[u].head; p != NULL; p = p->next)\n        if (!vis[p->to]) dfs(g, p->to, vis);\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int n, m, u, v, i, comps = 0, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    vis = calloc(n, sizeof(int));\n    for (u = 0; u < n; u++)\n        if (!vis[u]) { dfs(g, u, vis); comps++; printf(\"\\n\"); }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「邻接表」（涉及知识点：「DFS」「深度优先搜索」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、深度优先遍历，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = NULL; g[u].head = p;\n}\nstatic void dfs(VNode *g, int u, int *vis) {\n    Arc *p; vis[u] = 1; printf(\"%d \", u);\n    for (p = g[u].head; p != NULL; p = p->next)\n        if (!vis[p->to]) dfs(g, p->to, vis);\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int n, m, u, v, i, comps = 0, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    vis = calloc(n, sizeof(int));\n    for (u = 0; u < n; u++)\n        if (!vis[u]) { dfs(g, u, vis); comps++; printf(\"\\n\"); }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = NULL; g[u].head = p;\n}\nstatic void dfs(VNode *g, int u, int *vis) {\n    Arc *p; vis[u] = 1; printf(\"%d \", u);\n    for (p = g[u].head; p != NULL; p = p->next)\n        if (!vis[p->to]) dfs(g, p->to, vis);\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int n, m, u, v, i, comps = 0, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    vis = calloc(n, sizeof(int));\n    for (u = 0; u < n; u++)\n        if (!vis[u]) { dfs(g, u, vis); comps++; printf(\"\\n\"); }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}",
       "bugs": [
         "头插法漏接 `p->next = g[u].head;`（写成 NULL），每个顶点只保留最后一个插入的邻接点，其余全丢。"
@@ -2979,7 +2979,7 @@
       "complexity": "O(n+e)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。DFS 用邻接表遍历（每条边经 head 链访问），核心是「访问当前点 → 递归未访问邻居」；visited 数组防止重复访问。\n【步骤】\n1. 邻接表 O(n+e)。\n2. DFS O(n+e)。\n【复杂度】每顶点/每弧访问一次，O(n+e)。\n【易错点】\n1. 头插使邻接点顺序反转。\n2. visited 必用。\n3. 分量数靠外层循环。\n【关联】知识点卡片 ds-ch06-08、ds-ch06-10、ds-ch06-02"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。DFS 用邻接表遍历（每条边经 head 链访问），核心是「访问当前点 → 递归未访问邻居」；visited 数组防止重复访问。\n【步骤】\n1. 邻接表 O(n+e)。\n2. DFS O(n+e)。\n【复杂度】每顶点/每弧访问一次，O(n+e)。\n【易错点】\n1. 头插使邻接点顺序反转。\n2. visited 必用。\n3. 分量数靠外层循环。\n【关联】知识点卡片 ds-ch06-08、ds-ch06-10、ds-ch06-02"
     },
     {
       "id": "ds-ch06-cr-009",
@@ -3139,7 +3139,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic int n, q[MAXV], front = 0, rear = 0;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = g[u].head; g[u].head = p;\n}\nstatic void bfs(VNode *g, int s, int *vis) {\n    int u; q[rear++] = s; vis[s] = 1;\n    while (front < rear) {\n        Arc *p; u = q[front++]; printf(\"%d \", u);\n        for (p = g[u].head; p != NULL; p = p->next) {\n            int w = p->to;\n            if (vis[w]) { vis[w] = 1; q[rear++] = w; }\n        }\n    }\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int m, u, v, s, i, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    scanf(\"%d\", &s);\n    vis = calloc(n, sizeof(int));\n    bfs(g, s, vis);\n    printf(\"\\n\");\n    free(vis);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「邻接表」（涉及知识点：「BFS」「广度优先搜索」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、广度优先遍历，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic int n, q[MAXV], front = 0, rear = 0;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = g[u].head; g[u].head = p;\n}\nstatic void bfs(VNode *g, int s, int *vis) {\n    int u; q[rear++] = s; vis[s] = 1;\n    while (front < rear) {\n        Arc *p; u = q[front++]; printf(\"%d \", u);\n        for (p = g[u].head; p != NULL; p = p->next) {\n            int w = p->to;\n            if (vis[w]) { vis[w] = 1; q[rear++] = w; }\n        }\n    }\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int m, u, v, s, i, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    scanf(\"%d\", &s);\n    vis = calloc(n, sizeof(int));\n    bfs(g, s, vis);\n    printf(\"\\n\");\n    free(vis);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nstatic int n, q[MAXV], front = 0, rear = 0;\nstatic void addArc(VNode *g, int u, int v) {\n    Arc *p = (Arc *)malloc(sizeof(Arc));\n    p->to = v; p->next = g[u].head; g[u].head = p;\n}\nstatic void bfs(VNode *g, int s, int *vis) {\n    int u; q[rear++] = s; vis[s] = 1;\n    while (front < rear) {\n        Arc *p; u = q[front++]; printf(\"%d \", u);\n        for (p = g[u].head; p != NULL; p = p->next) {\n            int w = p->to;\n            if (vis[w]) { vis[w] = 1; q[rear++] = w; }\n        }\n    }\n}\nint main(void) {\n    VNode g[MAXV] = {0}; int m, u, v, s, i, *vis;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); addArc(g, u, v); addArc(g, v, u); }\n    scanf(\"%d\", &s);\n    vis = calloc(n, sizeof(int));\n    bfs(g, s, vis);\n    printf(\"\\n\");\n    free(vis);\n    return 0;\n}",
       "bugs": [
         "把「未访问才入队」写成「已访问才入队」，从未访问的顶点反而不入队，BFS 序列错误。"
@@ -3282,7 +3282,7 @@
       "complexity": "O(n+e)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。BFS 用队列按层扩散，起点入队后循环「出队 → 访问 → 未访问邻接点入队」，入队时标记 visited。\n【步骤】\n1. 每顶点/弧一次。\n2. O(n+e)。\n【复杂度】O(n+e)，队列 O(n)。\n【易错点】\n1. 入队时标记。\n2. 数组队列判空 front==rear。\n3. 头插反转邻接顺序。\n【关联】知识点卡片 ds-ch06-12、ds-ch06-08、ds-ch06-03"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。BFS 用队列按层扩散，起点入队后循环「出队 → 访问 → 未访问邻接点入队」，入队时标记 visited。\n【步骤】\n1. 每顶点/弧一次。\n2. O(n+e)。\n【复杂度】O(n+e)，队列 O(n)。\n【易错点】\n1. 入队时标记。\n2. 数组队列判空 front==rear。\n3. 头插反转邻接顺序。\n【关联】知识点卡片 ds-ch06-12、ds-ch06-08、ds-ch06-03"
     },
     {
       "id": "ds-ch06-cr-011",
@@ -3442,7 +3442,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "赋值顺序错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nstatic int dist[MAXV], path[MAXV], visited[MAXV];\nstatic void dijkstra(int g[MAXV][MAXV], int n, int s) {\n    int i, j, v, min;\n    for (i = 0; i < n; i++) {\n        dist[i] = g[s][i]; path[i] = (g[s][i] < INF) ? s : -1; visited[i] = 0;\n    }\n    visited[s] = 1; dist[s] = 0;\n    for (i = 0; i < n; i++) {\n        min = INF; v = -1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && dist[j] < min) { min = dist[j]; v = j; }\n        if (v == -1) break;\n        visited[v] = 1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && g[v][j] < INF && dist[v] + g[v][j] < dist[j]) {\n                dist[j] = dist[v]; path[j] = v;\n            }\n    }\n}\nint main(void) {\n    int g[MAXV][MAXV], n, s, i, j;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    scanf(\"%d\", &s);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    dijkstra(g, n, s);\n    for (j = 0; j < n; j++) if (dist[j] < INF) printf(\"%d \", dist[j]);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「Dijkstra」（涉及知识点：「单源最短路径」「邻接矩阵」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成最短路径计算，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nstatic int dist[MAXV], path[MAXV], visited[MAXV];\nstatic void dijkstra(int g[MAXV][MAXV], int n, int s) {\n    int i, j, v, min;\n    for (i = 0; i < n; i++) {\n        dist[i] = g[s][i]; path[i] = (g[s][i] < INF) ? s : -1; visited[i] = 0;\n    }\n    visited[s] = 1; dist[s] = 0;\n    for (i = 0; i < n; i++) {\n        min = INF; v = -1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && dist[j] < min) { min = dist[j]; v = j; }\n        if (v == -1) break;\n        visited[v] = 1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && g[v][j] < INF && dist[v] + g[v][j] < dist[j]) {\n                dist[j] = dist[v]; path[j] = v;\n            }\n    }\n}\nint main(void) {\n    int g[MAXV][MAXV], n, s, i, j;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    scanf(\"%d\", &s);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    dijkstra(g, n, s);\n    for (j = 0; j < n; j++) if (dist[j] < INF) printf(\"%d \", dist[j]);\n    printf(\"\\n\");\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nstatic int dist[MAXV], path[MAXV], visited[MAXV];\nstatic void dijkstra(int g[MAXV][MAXV], int n, int s) {\n    int i, j, v, min;\n    for (i = 0; i < n; i++) {\n        dist[i] = g[s][i]; path[i] = (g[s][i] < INF) ? s : -1; visited[i] = 0;\n    }\n    visited[s] = 1; dist[s] = 0;\n    for (i = 0; i < n; i++) {\n        min = INF; v = -1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && dist[j] < min) { min = dist[j]; v = j; }\n        if (v == -1) break;\n        visited[v] = 1;\n        for (j = 0; j < n; j++)\n            if (!visited[j] && g[v][j] < INF && dist[v] + g[v][j] < dist[j]) {\n                dist[j] = dist[v]; path[j] = v;\n            }\n    }\n}\nint main(void) {\n    int g[MAXV][MAXV], n, s, i, j;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    scanf(\"%d\", &s);\n    for (i = 0; i < n; i++) for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    dijkstra(g, n, s);\n    for (j = 0; j < n; j++) if (dist[j] < INF) printf(\"%d \", dist[j]);\n    printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "松弛更新时漏掉边权 `+ g[v][j]`，把距离直接写成源顶点 v 的距离，相当于把中间这条边的权重当 0。"
@@ -3585,7 +3585,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。Dijkstra 每次选「未访问且 dist 最小」的顶点确定，再用它松弛邻接点（贪心），邻接矩阵 O(n²)。负权边会破坏贪心正确性。\n【步骤】\n1. 选最小 O(n)。\n2. 松弛 O(n)。\n【复杂度】O(n²)。\n【易错点】\n1. 负权边不可用。\n2. 松弛用严格 <。\n3. visited 判定加入集合。\n【关联】知识点卡片 ds-ch06-15、ds-ch06-07、ds-ch06-04"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。Dijkstra 每次选「未访问且 dist 最小」的顶点确定，再用它松弛邻接点（贪心），邻接矩阵 O(n²)。负权边会破坏贪心正确性。\n【步骤】\n1. 选最小 O(n)。\n2. 松弛 O(n)。\n【复杂度】O(n²)。\n【易错点】\n1. 负权边不可用。\n2. 松弛用严格 <。\n3. visited 判定加入集合。\n【关联】知识点卡片 ds-ch06-15、ds-ch06-07、ds-ch06-04"
     },
     {
       "id": "ds-ch06-cr-013",
@@ -3699,7 +3699,7 @@
         {
           "stdin": "4 5\n0 1 1\n0 2 3\n1 2 2\n1 3 4\n2 3 5\n",
           "expected": "边数 3 总权 7",
-          "note": "MST 边 (0-1=1,1-2=2,0-2=3? ) 选 0-1,1-2,0-3 权 1+2+4=7 边数 3。"
+          "note": "MST 边为 0-1=1、1-2=2、0-3=4（0-2=3 会成环被跳过），总权 1+2+4=7，边数 3。"
         },
         {
           "stdin": "3 3\n0 1 2\n1 2 3\n0 2 4\n",
@@ -3745,7 +3745,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXE 100\ntypedef struct { int u, v, w; } Edge;\nstatic int parent[10], rankk[10];\nstatic void init(int n) { int i; for (i = 0; i < n; i++) { parent[i] = i; rankk[i] = 0; } }\nstatic int find(int x) {\n    while (parent[x] != x) x = parent[x];\n    return x;\n}\nstatic void unio(int a, int b) {\n    int ra = find(a), rb = find(b);\n    if (ra == rb) return;\n    if (rankk[ra] < rankk[rb]) parent[ra] = rb;\n    else { parent[rb] = ra; if (rankk[ra] == rankk[rb]) rankk[ra]++; }\n}\nstatic void sortEdges(Edge *e, int m) {\n    int i, j; Edge t;\n    for (i = 0; i < m - 1; i++) for (j = 0; j < m - 1 - i; j++)\n        if (e[j].w > e[j + 1].w) { t = e[j]; e[j] = e[j + 1]; e[j + 1] = t; }\n}\nint main(void) {\n    Edge e[MAXE]; int n, m, i, cnt = 0, cost = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) scanf(\"%d %d %d\", &e[i].u, &e[i].v, &e[i].w);\n    sortEdges(e, m);\n    init(n);\n    for (i = 0; i < m; i++) {\n        if (find(e[i].u) == find(e[i].v)) {\n            unio(e[i].u, e[i].v); cost += e[i].w; cnt++;\n            if (cnt == n - 1) break;\n        }\n    }\n    printf(\"边数 %d 总权 %d\\n\", cnt, cost);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「Kruskal」（涉及知识点：「最小生成树」「并查集」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、并查集，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXE 100\ntypedef struct { int u, v, w; } Edge;\nstatic int parent[10], rankk[10];\nstatic void init(int n) { int i; for (i = 0; i < n; i++) { parent[i] = i; rankk[i] = 0; } }\nstatic int find(int x) {\n    while (parent[x] != x) x = parent[x];\n    return x;\n}\nstatic void unio(int a, int b) {\n    int ra = find(a), rb = find(b);\n    if (ra == rb) return;\n    if (rankk[ra] < rankk[rb]) parent[ra] = rb;\n    else { parent[rb] = ra; if (rankk[ra] == rankk[rb]) rankk[ra]++; }\n}\nstatic void sortEdges(Edge *e, int m) {\n    int i, j; Edge t;\n    for (i = 0; i < m - 1; i++) for (j = 0; j < m - 1 - i; j++)\n        if (e[j].w > e[j + 1].w) { t = e[j]; e[j] = e[j + 1]; e[j + 1] = t; }\n}\nint main(void) {\n    Edge e[MAXE]; int n, m, i, cnt = 0, cost = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) scanf(\"%d %d %d\", &e[i].u, &e[i].v, &e[i].w);\n    sortEdges(e, m);\n    init(n);\n    for (i = 0; i < m; i++) {\n        if (find(e[i].u) == find(e[i].v)) {\n            unio(e[i].u, e[i].v); cost += e[i].w; cnt++;\n            if (cnt == n - 1) break;\n        }\n    }\n    printf(\"边数 %d 总权 %d\\n\", cnt, cost);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXE 100\ntypedef struct { int u, v, w; } Edge;\nstatic int parent[10], rankk[10];\nstatic void init(int n) { int i; for (i = 0; i < n; i++) { parent[i] = i; rankk[i] = 0; } }\nstatic int find(int x) {\n    while (parent[x] != x) x = parent[x];\n    return x;\n}\nstatic void unio(int a, int b) {\n    int ra = find(a), rb = find(b);\n    if (ra == rb) return;\n    if (rankk[ra] < rankk[rb]) parent[ra] = rb;\n    else { parent[rb] = ra; if (rankk[ra] == rankk[rb]) rankk[ra]++; }\n}\nstatic void sortEdges(Edge *e, int m) {\n    int i, j; Edge t;\n    for (i = 0; i < m - 1; i++) for (j = 0; j < m - 1 - i; j++)\n        if (e[j].w > e[j + 1].w) { t = e[j]; e[j] = e[j + 1]; e[j + 1] = t; }\n}\nint main(void) {\n    Edge e[MAXE]; int n, m, i, cnt = 0, cost = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) scanf(\"%d %d %d\", &e[i].u, &e[i].v, &e[i].w);\n    sortEdges(e, m);\n    init(n);\n    for (i = 0; i < m; i++) {\n        if (find(e[i].u) == find(e[i].v)) {\n            unio(e[i].u, e[i].v); cost += e[i].w; cnt++;\n            if (cnt == n - 1) break;\n        }\n    }\n    printf(\"边数 %d 总权 %d\\n\", cnt, cost);\n    return 0;\n}",
       "bugs": [
         "把「不在同一集合才选」写成「在同一集合才选」，现在选的都是成环边、跳过合法边，MST 顺序完全错。"
@@ -3755,7 +3755,7 @@
         {
           "stdin": "4 5\n0 1 1\n0 2 3\n1 2 2\n1 3 4\n2 3 5\n",
           "expected": "边数 3 总权 7",
-          "note": "MST 边 (0-1=1,1-2=2,0-2=3? ) 选 0-1,1-2,0-3 权 1+2+4=7 边数 3。"
+          "note": "MST 边为 0-1=1、1-2=2、0-3=4（0-2=3 会成环被跳过），总权 1+2+4=7，边数 3。"
         },
         {
           "stdin": "3 3\n0 1 2\n1 2 3\n0 2 4\n",
@@ -3811,7 +3811,7 @@
         {
           "stdin": "4 5\n0 1 1\n0 2 3\n1 2 2\n1 3 4\n2 3 5\n",
           "expected": "边数 3 总权 7",
-          "note": "MST 边 (0-1=1,1-2=2,0-2=3? ) 选 0-1,1-2,0-3 权 1+2+4=7 边数 3。"
+          "note": "MST 边为 0-1=1、1-2=2、0-3=4（0-2=3 会成环被跳过），总权 1+2+4=7，边数 3。"
         },
         {
           "stdin": "3 3\n0 1 2\n1 2 3\n0 2 4\n",
@@ -3888,7 +3888,7 @@
       "complexity": "O(eloge)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。Kruskal 把边按权升序排，用并查集判环，选不与已选边成环的边直到 n−1 条；按秩合并控制树高。\n【步骤】\n1. 排序 O(eloge)。\n2. 并查集近 O(1)。\n【复杂度】排序 O(eloge)，并查集近似 O(1)×e。\n【易错点】\n1. 先 find 再 unio。\n2. 边数 n−1。\n3. 按秩合并防退化。\n【关联】知识点卡片 ds-ch06-14、ds-ch06-13、ds-ch06-04"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。Kruskal 把边按权升序排，用并查集判环，选不与已选边成环的边直到 n−1 条；按秩合并控制树高。\n【步骤】\n1. 排序 O(eloge)。\n2. 并查集近 O(1)。\n【复杂度】排序 O(eloge)，并查集近似 O(1)×e。\n【易错点】\n1. 先 find 再 unio。\n2. 边数 n−1。\n3. 按秩合并防退化。\n【关联】知识点卡片 ds-ch06-14、ds-ch06-13、ds-ch06-04"
     },
     {
       "id": "ds-ch06-cr-015",
@@ -4035,7 +4035,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "数组下标错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 20\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, out, in;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++) {\n        out = 0; in = 0;\n        for (j = 0; j < n; j++) {\n            out += g[i][i];\n            in += g[j][i];\n        }\n        printf(\"%d %d\\n\", out, in);\n    }\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「邻接矩阵」（涉及知识点：「出度」「入度」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成度的统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 20\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, out, in;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++) {\n        out = 0; in = 0;\n        for (j = 0; j < n; j++) {\n            out += g[i][i];\n            in += g[j][i];\n        }\n        printf(\"%d %d\\n\", out, in);\n    }\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXV 20\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, out, in;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++) {\n        out = 0; in = 0;\n        for (j = 0; j < n; j++) {\n            out += g[i][i];\n            in += g[j][i];\n        }\n        printf(\"%d %d\\n\", out, in);\n    }\n    return 0;\n}",
       "bugs": [
         "把出度累加写成只加对角线 g[i][i]，结果每个顶点的出度都变成对角线值（自环边），真正的出度丢失。"
@@ -4168,7 +4168,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。邻接矩阵用 n×n 矩阵存图，g[i][j]=1 表示 i→j 有边；有向图出度 = 行和，入度 = 列和。\n【步骤】\n1. 矩阵法空间 O(n²)。\n2. 双层循环 O(n²)。\n【复杂度】存储 O(n²)，求每点度 O(n²)。\n【易错点】\n1. 出度用行、入度用列。\n2. 无向图对称，度 = 行和。\n3. 矩阵法空间 O(n²)，稀疏图浪费。\n【关联】知识点卡片 ds-ch06-07、ds-ch06-05、ds-ch06-01"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。邻接矩阵用 n×n 矩阵存图，g[i][j]=1 表示 i→j 有边；有向图出度 = 行和，入度 = 列和。\n【步骤】\n1. 矩阵法空间 O(n²)。\n2. 双层循环 O(n²)。\n【复杂度】存储 O(n²)，求每点度 O(n²)。\n【易错点】\n1. 出度用行、入度用列。\n2. 无向图对称，度 = 行和。\n3. 矩阵法空间 O(n²)，稀疏图浪费。\n【关联】知识点卡片 ds-ch06-07、ds-ch06-05、ds-ch06-01"
     },
     {
       "id": "ds-ch06-cr-017",
@@ -4324,7 +4324,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, indeg[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front = 0, rear = 0, cnt = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; indeg[v]++; }\n    for (i = 0; i < n; i++) if (indeg[i] == 0) q[rear++] = i;\n    while (front < rear) {\n        int cur = q[front++]; cnt++;\n        printf(\"%d \", cur);\n        for (i = 0; i < n; i++)\n            if (g[cur][i] && --indeg[i] < 0) q[rear++] = i;\n    }\n    printf(\"\\n共 %d 个\\n\", cnt);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「拓扑排序」（涉及知识点：「Kahn」「入度」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成拓扑排序，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, indeg[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front = 0, rear = 0, cnt = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; indeg[v]++; }\n    for (i = 0; i < n; i++) if (indeg[i] == 0) q[rear++] = i;\n    while (front < rear) {\n        int cur = q[front++]; cnt++;\n        printf(\"%d \", cur);\n        for (i = 0; i < n; i++)\n            if (g[cur][i] && --indeg[i] < 0) q[rear++] = i;\n    }\n    printf(\"\\n共 %d 个\\n\", cnt);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, indeg[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front = 0, rear = 0, cnt = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; indeg[v]++; }\n    for (i = 0; i < n; i++) if (indeg[i] == 0) q[rear++] = i;\n    while (front < rear) {\n        int cur = q[front++]; cnt++;\n        printf(\"%d \", cur);\n        for (i = 0; i < n; i++)\n            if (g[cur][i] && --indeg[i] < 0) q[rear++] = i;\n    }\n    printf(\"\\n共 %d 个\\n\", cnt);\n    return 0;\n}",
       "bugs": [
         "把「减到 0 才入队」改成「减到负数才入队」，后继入度减到 0 后不会入队，最终只有初始入度为 0 的顶点被输出，其余全部丢失。"
@@ -4465,7 +4465,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。拓扑排序把「入度为 0」的顶点入队，逐个输出后对其所有后继递减入度，减到 0 再入队；能排完 n 个 ⇔ 图无环（DAG）。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 只对后继递减入度。\n2. 只有入度减到 0 才入队。\n3. 排不完 n 个说明有环。\n【关联】知识点卡片 ds-ch06-17、ds-ch06-08"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。拓扑排序把「入度为 0」的顶点入队，逐个输出后对其所有后继递减入度，减到 0 再入队；能排完 n 个 ⇔ 图无环（DAG）。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 只对后继递减入度。\n2. 只有入度减到 0 才入队。\n3. 排不完 n 个说明有环。\n【关联】知识点卡片 ds-ch06-17、ds-ch06-08"
     },
     {
       "id": "ds-ch06-cr-019",
@@ -4616,7 +4616,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, k;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (k = 0; k < n; k++)\n        for (i = 0; i < n; i++)\n            for (j = 0; j < n; j++)\n                if (g[i][k] < INF && g[k][j] < INF && g[i][k] + g[k][j] > g[i][j])\n                    g[i][j] = g[i][k] + g[k][j];\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) printf(\"%d \", g[i][j] == INF ? -1 : g[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「Floyd」（涉及知识点：「全源最短路径」「邻接矩阵」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成最短路径计算，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, k;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (k = 0; k < n; k++)\n        for (i = 0; i < n; i++)\n            for (j = 0; j < n; j++)\n                if (g[i][k] < INF && g[k][j] < INF && g[i][k] + g[k][j] > g[i][j])\n                    g[i][j] = g[i][k] + g[k][j];\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) printf(\"%d \", g[i][j] == INF ? -1 : g[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], n, i, j, k;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (k = 0; k < n; k++)\n        for (i = 0; i < n; i++)\n            for (j = 0; j < n; j++)\n                if (g[i][k] < INF && g[k][j] < INF && g[i][k] + g[k][j] > g[i][j])\n                    g[i][j] = g[i][k] + g[k][j];\n    for (i = 0; i < n; i++) {\n        for (j = 0; j < n; j++) printf(\"%d \", g[i][j] == INF ? -1 : g[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "bugs": [
         "把松弛条件 `<` 反成 `>`，现在只在「经 k 更长」才更新，结果所有距离都是直边或最大，失去中转优化作用。"
@@ -4747,7 +4747,7 @@
       "complexity": "O(n^3)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。Floyd 用「中间顶点 k」做动态规划：每次允许经过顶点 k，松弛所有 i→j。三重循环 k 必须最外层。\n【步骤】\n1. 三重循环 O(n³)。\n2. 空间 O(n²)。\n【复杂度】时间 O(n³)，空间 O(n²)。\n【易错点】\n1. k 必须最外层。\n2. 对角线保持 0。\n3. 可处理负权（无负环）。\n【关联】知识点卡片 ds-ch06-16、ds-ch06-07"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。Floyd 用「中间顶点 k」做动态规划：每次允许经过顶点 k，松弛所有 i→j。三重循环 k 必须最外层。\n【步骤】\n1. 三重循环 O(n³)。\n2. 空间 O(n²)。\n【复杂度】时间 O(n³)，空间 O(n²)。\n【易错点】\n1. k 必须最外层。\n2. 对角线保持 0。\n3. 可处理负权（无负环）。\n【关联】知识点卡片 ds-ch06-16、ds-ch06-07"
     },
     {
       "id": "ds-ch06-cr-021",
@@ -4898,7 +4898,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "赋值顺序错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], lowcost[MAXV], n, i, j, k, min, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (j = 0; j < n; j++) lowcost[j] = g[0][j];\n    for (i = 1; i < n; i++) {\n        min = INF; k = -1;\n        for (j = 0; j < n; j++)\n            if (lowcost[j] != 0 && lowcost[j] < min) { min = lowcost[j]; k = j; }\n        (void)min;\n        lowcost[k] = 0;\n        for (j = 0; j < n; j++)\n            if (g[k][j] < lowcost[j]) lowcost[j] = g[k][j];\n    }\n    printf(\"最小生成树权值和 = %d\\n\", sum);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「Prim」（涉及知识点：「最小生成树」「lowcost」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成最小生成树构造，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], lowcost[MAXV], n, i, j, k, min, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (j = 0; j < n; j++) lowcost[j] = g[0][j];\n    for (i = 1; i < n; i++) {\n        min = INF; k = -1;\n        for (j = 0; j < n; j++)\n            if (lowcost[j] != 0 && lowcost[j] < min) { min = lowcost[j]; k = j; }\n        (void)min;\n        lowcost[k] = 0;\n        for (j = 0; j < n; j++)\n            if (g[k][j] < lowcost[j]) lowcost[j] = g[k][j];\n    }\n    printf(\"最小生成树权值和 = %d\\n\", sum);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define INF 32767\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV], lowcost[MAXV], n, i, j, k, min, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &g[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) if (g[i][j] == 0 && i != j) g[i][j] = INF;\n    for (j = 0; j < n; j++) lowcost[j] = g[0][j];\n    for (i = 1; i < n; i++) {\n        min = INF; k = -1;\n        for (j = 0; j < n; j++)\n            if (lowcost[j] != 0 && lowcost[j] < min) { min = lowcost[j]; k = j; }\n        (void)min;\n        lowcost[k] = 0;\n        for (j = 0; j < n; j++)\n            if (g[k][j] < lowcost[j]) lowcost[j] = g[k][j];\n    }\n    printf(\"最小生成树权值和 = %d\\n\", sum);\n    return 0;\n}",
       "bugs": [
         "把累加边权的语句替换为空语句，sum 恒为 0，最小生成树总权输出为 0。"
@@ -5029,7 +5029,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。Prim 从一个顶点开始，每次选「到已选集合边权最小」的顶点加入，用 lowcost 维护每个顶点到集合的最小边权；稠密图用邻接矩阵 O(n²)。\n【步骤】\n1. 外层 n 次内层 n 次 O(n²)。\n【复杂度】O(n²)，适合稠密图。\n【易错点】\n1. 选未在集合中的最小 lowcost。\n2. 加入后置 0 并松弛。\n3. 最短边权累计。\n【关联】知识点卡片 ds-ch06-13、ds-ch06-04"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。Prim 从一个顶点开始，每次选「到已选集合边权最小」的顶点加入，用 lowcost 维护每个顶点到集合的最小边权；稠密图用邻接矩阵 O(n²)。\n【步骤】\n1. 外层 n 次内层 n 次 O(n²)。\n【复杂度】O(n²)，适合稠密图。\n【易错点】\n1. 选未在集合中的最小 lowcost。\n2. 加入后置 0 并松弛。\n3. 最短边权累计。\n【关联】知识点卡片 ds-ch06-13、ds-ch06-04"
     },
     {
       "id": "ds-ch06-cr-023",
@@ -5172,7 +5172,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "指针丢失",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nint main(void) {\n    VNode g[MAXV] = {0}; int a[MAXV][MAXV], n, i, j; Arc *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (a[i][j]) {\n                p = (Arc *)malloc(sizeof(Arc));\n                p->to = j; p->next = NULL; g[i].head = p;\n            }\n    for (i = 0; i < n; i++) {\n        printf(\"%d:\", i);\n        for (p = g[i].head; p != NULL; p = p->next) printf(\" %d\", p->to);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「邻接表」（涉及知识点：「邻接矩阵」「转换」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成邻接表与邻接矩阵转换，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nint main(void) {\n    VNode g[MAXV] = {0}; int a[MAXV][MAXV], n, i, j; Arc *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (a[i][j]) {\n                p = (Arc *)malloc(sizeof(Arc));\n                p->to = j; p->next = NULL; g[i].head = p;\n            }\n    for (i = 0; i < n; i++) {\n        printf(\"%d:\", i);\n        for (p = g[i].head; p != NULL; p = p->next) printf(\" %d\", p->to);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXV 100\ntypedef struct Arc { int to; struct Arc *next; } Arc;\ntypedef struct { Arc *head; } VNode;\nint main(void) {\n    VNode g[MAXV] = {0}; int a[MAXV][MAXV], n, i, j; Arc *p;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++) scanf(\"%d\", &a[i][j]);\n    for (i = 0; i < n; i++)\n        for (j = 0; j < n; j++)\n            if (a[i][j]) {\n                p = (Arc *)malloc(sizeof(Arc));\n                p->to = j; p->next = NULL; g[i].head = p;\n            }\n    for (i = 0; i < n; i++) {\n        printf(\"%d:\", i);\n        for (p = g[i].head; p != NULL; p = p->next) printf(\" %d\", p->to);\n        printf(\"\\n\");\n    }\n    return 0;\n}",
       "bugs": [
         "头插法漏接旧链（p->next 赋 NULL），每个顶点只保留最后一个插入的邻接点，其余全部丢失。"
@@ -5303,7 +5303,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。邻接表为每个顶点建一条链存其邻接点；头插法使顺序反转。矩阵转邻接表：遍历矩阵，凡 a[i][j]=1 就头插 j 到 i 的链。\n【步骤】\n1. O(n²) 转换。\n2. O(n+2e) 存储。\n【复杂度】转换时间 O(n²)，存储无向图 O(n+2e)。\n【易错点】\n1. 头插使邻接点逆序。\n2. 必须接旧链否则丢点。\n3. 只扫上三角会漏反向边。\n【关联】知识点卡片 ds-ch06-08、ds-ch06-07"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。邻接表为每个顶点建一条链存其邻接点；头插法使顺序反转。矩阵转邻接表：遍历矩阵，凡 a[i][j]=1 就头插 j 到 i 的链。\n【步骤】\n1. O(n²) 转换。\n2. O(n+2e) 存储。\n【复杂度】转换时间 O(n²)，存储无向图 O(n+2e)。\n【易错点】\n1. 头插使邻接点逆序。\n2. 必须接旧链否则丢点。\n3. 只扫上三角会漏反向边。\n【关联】知识点卡片 ds-ch06-08、ds-ch06-07"
     },
     {
       "id": "ds-ch06-cr-025",
@@ -5455,7 +5455,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "赋值顺序错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, vis[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front, rear, s, comps = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; g[v][u] = 1; }\n    for (s = 0; s < n; s++) {\n        if (vis[s]) continue;\n        comps++;\n        front = rear = 0; q[rear++] = s; vis[s] = 1;\n        while (front < rear) {\n            int cur = q[front++];\n            for (i = 0; i < n; i++)\n                if (g[cur][i] && !vis[i]) { vis[i] = 1; }\n        }\n    }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「连通分量」（涉及知识点：「BFS」「无向图」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成连通分量遍历，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, vis[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front, rear, s, comps = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; g[v][u] = 1; }\n    for (s = 0; s < n; s++) {\n        if (vis[s]) continue;\n        comps++;\n        front = rear = 0; q[rear++] = s; vis[s] = 1;\n        while (front < rear) {\n            int cur = q[front++];\n            for (i = 0; i < n; i++)\n                if (g[cur][i] && !vis[i]) { vis[i] = 1; }\n        }\n    }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXV 100\nint main(void) {\n    int g[MAXV][MAXV] = {0}, vis[MAXV] = {0}, q[MAXV];\n    int n, m, u, v, i, front, rear, s, comps = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; g[v][u] = 1; }\n    for (s = 0; s < n; s++) {\n        if (vis[s]) continue;\n        comps++;\n        front = rear = 0; q[rear++] = s; vis[s] = 1;\n        while (front < rear) {\n            int cur = q[front++];\n            for (i = 0; i < n; i++)\n                if (g[cur][i] && !vis[i]) { vis[i] = 1; }\n        }\n    }\n    printf(\"连通分量数 = %d\\n\", comps);\n    return 0;\n}",
       "bugs": [
         "标记了 `vis[i]=1` 但不入队，BFS 只处理起点，不再扩散，每个顶点几乎各成一个分量。"
@@ -5594,7 +5594,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。用 BFS 求连通分量：外层遍历每个未访问顶点起一次 BFS，用共享 visited 标记整个分量并计数。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 入队时标记。\n2. 共享 visited。\n3. 外层跳过已访问。\n【关联】知识点卡片 ds-ch06-12、ds-ch06-06"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。用 BFS 求连通分量：外层遍历每个未访问顶点起一次 BFS，用共享 visited 标记整个分量并计数。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 入队时标记。\n2. 共享 visited。\n3. 外层跳过已访问。\n【关联】知识点卡片 ds-ch06-12、ds-ch06-06"
     },
     {
       "id": "ds-ch06-cr-027",
@@ -5745,7 +5745,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nstatic int g[MAXV][MAXV], color[MAXV], n;\nstatic int dfs(int u) {\n    int v;\n    color[u] = 1;\n    for (v = 0; v < n; v++)\n        if (g[u][v]) {\n            if (color[v] == 2) return 1;\n            if (color[v] == 0 && dfs(v)) return 1;\n        }\n    color[u] = 2;\n    return 0;\n}\nint main(void) {\n    int m, u, v, i, cyc = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; }\n    for (i = 0; i < n; i++)\n        if (color[i] == 0 && dfs(i)) { cyc = 1; break; }\n    printf(\"%s\\n\", cyc ? \"有环\" : \"无环\");\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「DFS」（涉及知识点：「环检测」「颜色标记」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成深度优先遍历，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\nstatic int g[MAXV][MAXV], color[MAXV], n;\nstatic int dfs(int u) {\n    int v;\n    color[u] = 1;\n    for (v = 0; v < n; v++)\n        if (g[u][v]) {\n            if (color[v] == 2) return 1;\n            if (color[v] == 0 && dfs(v)) return 1;\n        }\n    color[u] = 2;\n    return 0;\n}\nint main(void) {\n    int m, u, v, i, cyc = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; }\n    for (i = 0; i < n; i++)\n        if (color[i] == 0 && dfs(i)) { cyc = 1; break; }\n    printf(\"%s\\n\", cyc ? \"有环\" : \"无环\");\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXV 100\nstatic int g[MAXV][MAXV], color[MAXV], n;\nstatic int dfs(int u) {\n    int v;\n    color[u] = 1;\n    for (v = 0; v < n; v++)\n        if (g[u][v]) {\n            if (color[v] == 2) return 1;\n            if (color[v] == 0 && dfs(v)) return 1;\n        }\n    color[u] = 2;\n    return 0;\n}\nint main(void) {\n    int m, u, v, i, cyc = 0;\n    scanf(\"%d %d\", &n, &m);\n    for (i = 0; i < m; i++) { scanf(\"%d %d\", &u, &v); g[u][v] = 1; }\n    for (i = 0; i < n; i++)\n        if (color[i] == 0 && dfs(i)) { cyc = 1; break; }\n    printf(\"%s\\n\", cyc ? \"有环\" : \"无环\");\n    return 0;\n}",
       "bugs": [
         "把「遇灰色算环」改成「遇黑色算环」，而黑色说明已访问完，正常无环也不会触发回边，环被漏检。"
@@ -5876,7 +5876,7 @@
       "complexity": "O(n^2)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。DFS 三色标记：白(0)未访问、灰(1)在递归栈、黑(2)已回溯。遇到灰邻居说明有回边 ⇒ 有环。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 灰=在栈中。\n2. 遇灰才有环。\n3. 要覆盖所有连通分量。\n【关联】知识点卡片 ds-ch06-10、ds-ch06-17"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。DFS 三色标记：白(0)未访问、灰(1)在递归栈、黑(2)已回溯。遇到灰邻居说明有回边 ⇒ 有环。\n【步骤】\n1. 邻接矩阵 O(n²)。\n2. 邻接表 O(n+e)。\n【复杂度】邻接矩阵 O(n²)，邻接表 O(n+e)。\n【易错点】\n1. 灰=在栈中。\n2. 遇灰才有环。\n3. 要覆盖所有连通分量。\n【关联】知识点卡片 ds-ch06-10、ds-ch06-17"
     },
     {
       "id": "ds-ch06-cr-029",
@@ -6036,7 +6036,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "比较逻辑取反",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\n#define MAXE 1000\nint main(void){\n    int n,m,u,v,w,i,j,indeg[MAXV],ve[MAXV],vl[MAXV],eu[MAXE],ev[MAXE],ew[MAXE];\n    int order[MAXV],cnt=0,h=0,t=0,q[MAXV],g[MAXV][MAXV];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<n;i++){indeg[i]=0;ve[i]=0;vl[i]=0;for(j=0;j<n;j++)g[i][j]=-1;}\n    for(i=0;i<m;i++){scanf(\"%d %d %d\",&u,&v,&w);eu[i]=u;ev[i]=v;ew[i]=w;g[u][v]=w;indeg[v]++;}\n    for(i=0;i<n;i++)if(indeg[i]==0)q[t++]=i;\n    while(h<t){\n        u=q[h++];order[cnt++]=u;\n        for(v=0;v<n;v++)if(g[u][v]>=0){\n            if(ve[u]+g[u][v]>ve[v])ve[v]=ve[u]+g[u][v];\n            if(--indeg[v]==0)q[t++]=v;\n        }\n    }\n    for(i=0;i<n;i++)vl[i]=ve[n-1];\n    for(i=cnt-1;i>=0;i--){\n        u=order[i];\n        for(v=0;v<n;v++)if(g[u][v]>=0)\n            if(vl[v]-g[u][v]<vl[u])vl[u]=vl[v]-g[u][v];\n    }\n    for(i=0;i<m;i++){\n        u=eu[i];v=ev[i];\n        if(ve[u]!=vl[v]-ew[i])printf(\"%d %d\\n\",u,v);\n    }\n    printf(\"%d\\n\",ve[n-1]);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「AOE网」（涉及知识点：「关键路径」「拓扑排序」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成关键路径计算、拓扑排序，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXV 100\n#define MAXE 1000\nint main(void){\n    int n,m,u,v,w,i,j,indeg[MAXV],ve[MAXV],vl[MAXV],eu[MAXE],ev[MAXE],ew[MAXE];\n    int order[MAXV],cnt=0,h=0,t=0,q[MAXV],g[MAXV][MAXV];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<n;i++){indeg[i]=0;ve[i]=0;vl[i]=0;for(j=0;j<n;j++)g[i][j]=-1;}\n    for(i=0;i<m;i++){scanf(\"%d %d %d\",&u,&v,&w);eu[i]=u;ev[i]=v;ew[i]=w;g[u][v]=w;indeg[v]++;}\n    for(i=0;i<n;i++)if(indeg[i]==0)q[t++]=i;\n    while(h<t){\n        u=q[h++];order[cnt++]=u;\n        for(v=0;v<n;v++)if(g[u][v]>=0){\n            if(ve[u]+g[u][v]>ve[v])ve[v]=ve[u]+g[u][v];\n            if(--indeg[v]==0)q[t++]=v;\n        }\n    }\n    for(i=0;i<n;i++)vl[i]=ve[n-1];\n    for(i=cnt-1;i>=0;i--){\n        u=order[i];\n        for(v=0;v<n;v++)if(g[u][v]>=0)\n            if(vl[v]-g[u][v]<vl[u])vl[u]=vl[v]-g[u][v];\n    }\n    for(i=0;i<m;i++){\n        u=eu[i];v=ev[i];\n        if(ve[u]!=vl[v]-ew[i])printf(\"%d %d\\n\",u,v);\n    }\n    printf(\"%d\\n\",ve[n-1]);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXV 100\n#define MAXE 1000\nint main(void){\n    int n,m,u,v,w,i,j,indeg[MAXV],ve[MAXV],vl[MAXV],eu[MAXE],ev[MAXE],ew[MAXE];\n    int order[MAXV],cnt=0,h=0,t=0,q[MAXV],g[MAXV][MAXV];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<n;i++){indeg[i]=0;ve[i]=0;vl[i]=0;for(j=0;j<n;j++)g[i][j]=-1;}\n    for(i=0;i<m;i++){scanf(\"%d %d %d\",&u,&v,&w);eu[i]=u;ev[i]=v;ew[i]=w;g[u][v]=w;indeg[v]++;}\n    for(i=0;i<n;i++)if(indeg[i]==0)q[t++]=i;\n    while(h<t){\n        u=q[h++];order[cnt++]=u;\n        for(v=0;v<n;v++)if(g[u][v]>=0){\n            if(ve[u]+g[u][v]>ve[v])ve[v]=ve[u]+g[u][v];\n            if(--indeg[v]==0)q[t++]=v;\n        }\n    }\n    for(i=0;i<n;i++)vl[i]=ve[n-1];\n    for(i=cnt-1;i>=0;i--){\n        u=order[i];\n        for(v=0;v<n;v++)if(g[u][v]>=0)\n            if(vl[v]-g[u][v]<vl[u])vl[u]=vl[v]-g[u][v];\n    }\n    for(i=0;i<m;i++){\n        u=eu[i];v=ev[i];\n        if(ve[u]!=vl[v]-ew[i])printf(\"%d %d\\n\",u,v);\n    }\n    printf(\"%d\\n\",ve[n-1]);\n    return 0;\n}",
       "bugs": [
         "关键活动判定条件 e==l 被取反成 e!=l，于是把「非关键活动」当成关键活动输出。"
@@ -6179,7 +6179,7 @@
       "complexity": "O(n^2+m)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。AOE 网（边表示活动、权为持续时间）上，用拓扑排序正向求各事件最早发生时间 ve（取 max），再逆拓扑序求最晚发生时间 vl（取 min），满足 e=ve[u]、l=vl[v]-w、且 e==l 的活动就是关键活动，汇点 ve 即工程工期。\n【步骤】\n1. 拓扑序正推每事件 O(n) 次、共 O(n²)。\n2. 逆拓扑序反推 O(n²)。\n3. 判定 m 条活动边 O(m)。\n【复杂度】邻接矩阵 + 拓扑排序 + 逆拓扑各 O(n²)，读边 O(m)，整体时间 O(n²+m)，空间 O(n²)（邻接矩阵）。\n【易错点】\n1. ve 取 max、vl 取 min，方向不能颠倒。\n2. 关键活动是 e==l 无机动时间者，不是简单「最长边」。\n3. 工程工期取汇点 ve，与源点 ve==0 区分开。\n4. AOE 网必须无环，否则拓扑排序无法结束（会得到不完整的 order）。\n【关联】知识点卡片 ds-ch06-17、ds-ch06-16"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。AOE 网（边表示活动、权为持续时间）上，用拓扑排序正向求各事件最早发生时间 ve（取 max），再逆拓扑序求最晚发生时间 vl（取 min），满足 e=ve[u]、l=vl[v]-w、且 e==l 的活动就是关键活动，汇点 ve 即工程工期。\n【步骤】\n1. 拓扑序正推每事件 O(n) 次、共 O(n²)。\n2. 逆拓扑序反推 O(n²)。\n3. 判定 m 条活动边 O(m)。\n【复杂度】邻接矩阵 + 拓扑排序 + 逆拓扑各 O(n²)，读边 O(m)，整体时间 O(n²+m)，空间 O(n²)（邻接矩阵）。\n【易错点】\n1. ve 取 max、vl 取 min，方向不能颠倒。\n2. 关键活动是 e==l 无机动时间者，不是简单「最长边」。\n3. 工程工期取汇点 ve，与源点 ve==0 区分开。\n4. AOE 网必须无环，否则拓扑排序无法结束（会得到不完整的 order）。\n【关联】知识点卡片 ds-ch06-17、ds-ch06-16"
     }
   ]
 }

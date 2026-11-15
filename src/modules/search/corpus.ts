@@ -98,7 +98,7 @@ const W_TITLE = 150
 const W_ID_PART = 140
 const W_SUB = 60
 const W_EXTRA = 25
-/** 一次查询最多拆几个词：防止有人粘一整段代码进来把 2806 条 × N 词跑爆 */
+/** 一次查询最多拆几个词：防止有人粘一整段代码进来把数千条语料 × N 词跑爆 */
 const MAX_TOKENS = 6
 /** 一次最多返回多少条：再多也没人翻，且渲染上千个 <mark> 会卡 */
 const DEFAULT_LIMIT = 80

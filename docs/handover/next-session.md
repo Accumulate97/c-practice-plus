@@ -65,3 +65,16 @@
 - **闸门全绿**：typecheck/build/verify:data 0e7w/verify:spec 0/0/lint:code 0/scan:doubt 0/verify:pages ✅/check-explain 3808/0（直接 `node scripts/check-explain.mjs`，package.json 无 alias）/verify:answers 0/0/**acceptance:all 21/21**/**acceptance:online 31 项 0 失败**/L2-UI 15/15（深链上下题可点、三新题型 data-role、卡片兜底+哈夫曼新文案、dark/light×375px 控制台 0 error）。
 - **B 档待用户裁决**（选项表见本轮汇报）：B1 mdb-005 三选项（推荐①只认单 bug）；B2 批量文字 96 模板题干+106 cxa 首句（推荐②批量补全，先给 2 道样例）；B3 免责声明（推荐①保持 Public+移出教材原文）；B4 P2 结构性项（推荐②留下轮专项）。
 - **开发轮踩坑**：⑤ Playwright 断言详解/卡片文案必须用 textContent（折叠面板 innerText 不含隐藏内容）且先点 reference-answer-toggle 再等 React 渲染。⑥ check-explain 易错点计数按行首 `/^\d+\./`，内联编号不算——删重复段可能把凑数的行删掉触发闸门。⑦ acceptance:online 实跑 31 项（README 旧写 36 为历史值，按实跑更新）。
+
+
+## 裁决轮结论（2026-11-15，执行 B 档裁决）
+
+用户裁决：B1①认单bug / B2②批量模板化补全（免中途样例等待）/ B3①保持Public+移出教材原文+声明不改 / B4②结构性项留下轮 / note×3 窄授权。
+
+- **B1**：ds-ch03-mdb-005 stem+【思路】首句改「1 处可观察错误 + 1 处潜伏缺陷」口径；type/bugs/testCases/answer/verified 零触碰（改 type 会牵动 schema defectKind 必填、题型分布、搜索语料，故不动）。潜伏注记保留未洗掉。
+- **A5 窄授权**：note×3（ds-ch06-cc-014/dsdbg-004/mdb-004）问号残留改完整陈述；字段级 diff 输出 changed_fields=["testCases.note"]，stdin/expected 未动。
+- **B2 批量**：96 dsdbg 模板题干全部替换为分化功能描述——变量=tags[0]结构 × 操作词（fns 28 条映射+tags 29 条兜底词典，命中 96/96）× 首行代码注释（仅 12 题有，走句式A；其余 84 题句式B）；环节提示=操作词，不写 defectKind（避免泄露错点性质）。106 cxa 思路首句按 asks 答案类型 3 桶：含渐近 53→渐近+具体双口径句；无渐近含状态/序列 29→精确数值或确定状态口径句；纯数值 24→保留原句（口径本就一致）。逐桶断言+seed=20261115 抽 10 道（dsdbg5+cxa5）人工判全过。产物：_inputs/_meta/b2-{inventory,vars,apply,selfcheck}.mjs（apply 带 --apply 开关，dry-run 先出样例）。
+- **B3**：docs/source-data 39 文件先复制到 D:\C-practice-local\source-data\（数量核对 39=39）再 git rm；仓库留 docs/source-data/README.md 占位说明；依赖它的 4 个离线脚本（convert-to-schema/merge-to-public/validate-converted/authoring-verify）均不在 npm 构建/验收链路，失效影响已写进占位 README。仓库保持 Public，免责声明一字未改。
+- **B4 已登记下轮专项**：26 对 dsdbg↔mdb variantOf 未标 / 97 对 cr 相似族 / knowledgeIds 缺 31 / 章节权重偏斜 / cc-006 归属 / testCases<3 组×3。
+- **阶段6 口径**：README 12 项差异全销账；验收套数统一为「21 套子验收 + acceptance:all 汇总 + acceptance:online(31 项)」，复核轮「22 套」是把 online 误计入（audit-final-report.md:131 已更正）；主力占比 51.2%(1949/3808) 现算不变；注释旧数字更新 6 处（totals.ts/build-search-index/acceptance-stage10×2/SearchPage/corpus.ts），历史实测描述 3 处故意保留（Markdown.tsx、scan-variant-quality、levels.ts——是当时实验事实，改了反而失真）。
+- **裁决轮踩坑**：⑧ pwsh 里 node -e 含反引号/复杂引号会被 PowerShell 吃掉或被安全网拦 → 复杂内联脚本一律落盘 .mjs 再跑。⑨ cxa 模板句实际在 explanation【思路】首句，不在 stem（复核轮 audit7 记录「题干首句」为口径笔误）。

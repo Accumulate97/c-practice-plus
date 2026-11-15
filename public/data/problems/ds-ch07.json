@@ -2236,7 +2236,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "循环边界错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\nint seqSearch(int a[], int n, int key, int *cmp){\n    int i;\n    a[0] = key;\n    for (i = n - 1; i >= 0 && a[i] != key; i--) (*cmp)++;\n    (*cmp)++;\n    return i;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 1; i <= n; i++) scanf(\"%d\", &a[i]);\n    pos = seqSearch(a, n, key, &cmp);\n    if (pos == 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，位置 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「顺序查找」（涉及知识点：「哨兵」「比较次数」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\nint seqSearch(int a[], int n, int key, int *cmp){\n    int i;\n    a[0] = key;\n    for (i = n - 1; i >= 0 && a[i] != key; i--) (*cmp)++;\n    (*cmp)++;\n    return i;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 1; i <= n; i++) scanf(\"%d\", &a[i]);\n    pos = seqSearch(a, n, key, &cmp);\n    if (pos == 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，位置 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXN 100\nint seqSearch(int a[], int n, int key, int *cmp){\n    int i;\n    a[0] = key;\n    for (i = n - 1; i >= 0 && a[i] != key; i--) (*cmp)++;\n    (*cmp)++;\n    return i;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 1; i <= n; i++) scanf(\"%d\", &a[i]);\n    pos = seqSearch(a, n, key, &cmp);\n    if (pos == 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，位置 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}",
       "bugs": [
         "把扫描起点从 i=n 改成 i=n-1，跳过最后一个元素；当关键字恰好在最后一个位置时找不到，返回「未找到」。"
@@ -2387,7 +2387,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。顺序查找从表尾向表头逐个比较，把关键字复制到 a[0] 作哨兵，避免每次循环内都要判断下标越界。\n【步骤】\n1. 数出每次被比较的元素\n2. 区分成功与失败两种情况\n3. 用位置 p 导出 n-p+1\n【复杂度】时间 O(n)，成功平均 ASL=(n+1)/2，失败 n+1 次；空间 O(1)，对顺序表与链表都适用。\n【易错点】\n1. 哨兵 a[0] 的值必须是 key，否则查找可能越界\n2. 成功比较次数 = n-p+1，失败总比 n+1 次（含哨兵那次）\n3. 适用于无序表或链表；有序表用折半查找更快\n【关联】知识点卡片 ds-ch07-05、ds-ch07-04"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。顺序查找从表尾向表头逐个比较，把关键字复制到 a[0] 作哨兵，避免每次循环内都要判断下标越界。\n【步骤】\n1. 数出每次被比较的元素\n2. 区分成功与失败两种情况\n3. 用位置 p 导出 n-p+1\n【复杂度】时间 O(n)，成功平均 ASL=(n+1)/2，失败 n+1 次；空间 O(1)，对顺序表与链表都适用。\n【易错点】\n1. 哨兵 a[0] 的值必须是 key，否则查找可能越界\n2. 成功比较次数 = n-p+1，失败总比 n+1 次（含哨兵那次）\n3. 适用于无序表或链表；有序表用折半查找更快\n【关联】知识点卡片 ds-ch07-05、ds-ch07-04"
     },
     {
       "id": "ds-ch07-cr-010",
@@ -2548,7 +2548,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "循环边界错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\nint binSearch(int a[], int n, int key, int *cmp){\n    int lo = 0, hi = n - 1, mid;\n    while (lo < hi) {\n        mid = (lo + hi) / 2;\n        (*cmp)++;\n        if (a[mid] == key) return mid;\n        else if (a[mid] < key) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, n, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，下标 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「折半查找」（涉及知识点：「有序表」「比较次数」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\nint binSearch(int a[], int n, int key, int *cmp){\n    int lo = 0, hi = n - 1, mid;\n    while (lo < hi) {\n        mid = (lo + hi) / 2;\n        (*cmp)++;\n        if (a[mid] == key) return mid;\n        else if (a[mid] < key) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, n, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，下标 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXN 100\nint binSearch(int a[], int n, int key, int *cmp){\n    int lo = 0, hi = n - 1, mid;\n    while (lo < hi) {\n        mid = (lo + hi) / 2;\n        (*cmp)++;\n        if (a[mid] == key) return mid;\n        else if (a[mid] < key) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\nint main(void){\n    int a[MAXN], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, n, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d：比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d，下标 %d：比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}",
       "bugs": [
         "把折半查找边界从 lo<=hi 改成 lo<hi，当 lo==hi 时（区间只剩一个元素）循环不再执行，该元素永远不会被比较，关键字落在最后一个区间时查不到。"
@@ -2699,7 +2699,7 @@
       "complexity": "O(log n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。折半查找每次取中间元素与 key 比较，据比较结果把查找区间缩小一半，适用于有序顺序表。\n【步骤】\n1. 数出每层区间缩小次数\n2. 用 log 关系解释最多比较次数\n【复杂度】时间 O(log n)，成功 ASL≈log2(n+1)-1；空间 O(1)。\n【易错点】\n1. 边界必须是 lo<=hi，且收缩为 mid±1，否则漏元素或死循环\n2. 只适用于随机存取的顺序表，链表无法 O(1) 定位中间元素\n3. 相等元素顺序不重要，但表必须有序\n【关联】知识点卡片 ds-ch07-06、ds-ch07-04"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。折半查找每次取中间元素与 key 比较，据比较结果把查找区间缩小一半，适用于有序顺序表。\n【步骤】\n1. 数出每层区间缩小次数\n2. 用 log 关系解释最多比较次数\n【复杂度】时间 O(log n)，成功 ASL≈log2(n+1)-1；空间 O(1)。\n【易错点】\n1. 边界必须是 lo<=hi，且收缩为 mid±1，否则漏元素或死循环\n2. 只适用于随机存取的顺序表，链表无法 O(1) 定位中间元素\n3. 相等元素顺序不重要，但表必须有序\n【关联】知识点卡片 ds-ch07-06、ds-ch07-04"
     },
     {
       "id": "ds-ch07-cr-012",
@@ -2860,7 +2860,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x <= t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nvoid inorder(TNode *t){\n    if (t == NULL) return;\n    inorder(t->l); printf(\"%d \", t->data); inorder(t->r);\n}\nint search(TNode *t, int key, int *cmp){\n    while (t != NULL) { (*cmp)++; if (key < t->data) t = t->l; else if (key > t->data) t = t->r; else return 1; }\n    return 0;\n}\nint main(void){\n    int n, i, x, key, cmp = 0, found; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    inorder(root); printf(\"\\n\");\n    found = search(root, key, &cmp);\n    printf(\"%s 比较 %d 次\\n\", found ? \"找到\" : \"未找到\", cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉排序树」（涉及知识点：「插入」「中序遍历」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成插入、遍历输出，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x <= t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nvoid inorder(TNode *t){\n    if (t == NULL) return;\n    inorder(t->l); printf(\"%d \", t->data); inorder(t->r);\n}\nint search(TNode *t, int key, int *cmp){\n    while (t != NULL) { (*cmp)++; if (key < t->data) t = t->l; else if (key > t->data) t = t->r; else return 1; }\n    return 0;\n}\nint main(void){\n    int n, i, x, key, cmp = 0, found; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    inorder(root); printf(\"\\n\");\n    found = search(root, key, &cmp);\n    printf(\"%s 比较 %d 次\\n\", found ? \"找到\" : \"未找到\", cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x <= t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nvoid inorder(TNode *t){\n    if (t == NULL) return;\n    inorder(t->l); printf(\"%d \", t->data); inorder(t->r);\n}\nint search(TNode *t, int key, int *cmp){\n    while (t != NULL) { (*cmp)++; if (key < t->data) t = t->l; else if (key > t->data) t = t->r; else return 1; }\n    return 0;\n}\nint main(void){\n    int n, i, x, key, cmp = 0, found; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    inorder(root); printf(\"\\n\");\n    found = search(root, key, &cmp);\n    printf(\"%s 比较 %d 次\\n\", found ? \"找到\" : \"未找到\", cmp);\n    return 0;\n}",
       "bugs": [
         "把「小于则走左」改成「小于等于则走左」，重复值 37 会被作为新结点插入到原 37 的左子树，中序输出出现两个 37，不再是严格升序。"
@@ -3011,7 +3011,7 @@
       "complexity": "O(log n) 平均",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。二叉排序树（BST）：左子树所有值小于根，右子树所有值大于根；中序遍历得到有序序列。\n【步骤】\n1. 统计从根到命中结点的层数\n2. 用对数关系解释平均 O(log n)\n【复杂度】插入与查找平均 O(log n)，最坏 O(n)（退化单支）；中序 O(n)。\n【易错点】\n1. 重复值不插入（严格大于/小于），否则中序出现重复\n2. 插入顺序决定树形：有序输入会退化成单支链\n3. 中序遍历结果总是升序，可作为验证树结构是否正确的手段\n【关联】知识点卡片 ds-ch07-08、ds-ch07-02"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。二叉排序树（BST）：左子树所有值小于根，右子树所有值大于根；中序遍历得到有序序列。\n【步骤】\n1. 统计从根到命中结点的层数\n2. 用对数关系解释平均 O(log n)\n【复杂度】插入与查找平均 O(log n)，最坏 O(n)（退化单支）；中序 O(n)。\n【易错点】\n1. 重复值不插入（严格大于/小于），否则中序出现重复\n2. 插入顺序决定树形：有序输入会退化成单支链\n3. 中序遍历结果总是升序，可作为验证树结构是否正确的手段\n【关联】知识点卡片 ds-ch07-08、ds-ch07-02"
     },
     {
       "id": "ds-ch07-cr-014",
@@ -3172,7 +3172,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "初始化错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define M 13\nint main(void){\n    int h[M], n, x, i, p, cmp;\n    for (i = 0; i < M; i++) h[i] = -1;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); p = x % (M - 1);\n        while (h[p] != -1) p = (p + 1) % M;\n        h[p] = x;\n    }\n    scanf(\"%d\", &x);\n    p = x % M; cmp = 0;\n    while (h[p] != -1 && h[p] != x) { cmp++; p = (p + 1) % M; }\n    if (h[p] == x) printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, p, cmp + 1);\n    else printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「散列表」（涉及知识点：「线性探测」「开放定址」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成线性探测建表与查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define M 13\nint main(void){\n    int h[M], n, x, i, p, cmp;\n    for (i = 0; i < M; i++) h[i] = -1;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); p = x % (M - 1);\n        while (h[p] != -1) p = (p + 1) % M;\n        h[p] = x;\n    }\n    scanf(\"%d\", &x);\n    p = x % M; cmp = 0;\n    while (h[p] != -1 && h[p] != x) { cmp++; p = (p + 1) % M; }\n    if (h[p] == x) printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, p, cmp + 1);\n    else printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define M 13\nint main(void){\n    int h[M], n, x, i, p, cmp;\n    for (i = 0; i < M; i++) h[i] = -1;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); p = x % (M - 1);\n        while (h[p] != -1) p = (p + 1) % M;\n        h[p] = x;\n    }\n    scanf(\"%d\", &x);\n    p = x % M; cmp = 0;\n    while (h[p] != -1 && h[p] != x) { cmp++; p = (p + 1) % M; }\n    if (h[p] == x) printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, p, cmp + 1);\n    else printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}",
       "bugs": [
         "把插入时的散列函数从 key mod 13 改成 key mod 12，键落位位置全变。"
@@ -3323,7 +3323,7 @@
       "complexity": "O(1) 平均",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。除留余数法 H(key)=key mod m 计算地址，线性探测（开放定址法）在冲突时向后找下一个空位，查找按同样顺序探测到空位即失败。\n【步骤】\n1. 数出探测次数。\n2. 用 α 解释平均性能。\n【复杂度】平均 O(1)（α 合适时），最坏 O(n)。\n【易错点】\n1. 插入与查找须同函数同探测顺序。\n2. 必须判空位 -1 防死循环。\n3. 装填因子决定性能。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。除留余数法 H(key)=key mod m 计算地址，线性探测（开放定址法）在冲突时向后找下一个空位，查找按同样顺序探测到空位即失败。\n【步骤】\n1. 数出探测次数。\n2. 用 α 解释平均性能。\n【复杂度】平均 O(1)（α 合适时），最坏 O(n)。\n【易错点】\n1. 插入与查找须同函数同探测顺序。\n2. 必须判空位 -1 防死循环。\n3. 装填因子决定性能。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
     },
     {
       "id": "ds-ch07-cr-016",
@@ -3484,7 +3484,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "指针丢失",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define M 13\ntypedef struct N { int key; struct N *next; } N;\nint main(void){\n    N *head[M] = {0}, *p, *q; int n, x, i, pos;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); pos = x % M;\n        p = (N *)malloc(sizeof(N)); p->key = x; p->next = NULL; head[pos] = p;\n    }\n    scanf(\"%d\", &x);\n    pos = x % M; q = head[pos];\n    while (q != NULL && q->key != x) q = q->next;\n    if (q != NULL) printf(\"找到 %d\\n\", x);\n    else printf(\"未找到 %d\\n\", x);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「散列表」（涉及知识点：「链地址法」「拉链法」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成存储地址计算，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define M 13\ntypedef struct N { int key; struct N *next; } N;\nint main(void){\n    N *head[M] = {0}, *p, *q; int n, x, i, pos;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); pos = x % M;\n        p = (N *)malloc(sizeof(N)); p->key = x; p->next = NULL; head[pos] = p;\n    }\n    scanf(\"%d\", &x);\n    pos = x % M; q = head[pos];\n    while (q != NULL && q->key != x) q = q->next;\n    if (q != NULL) printf(\"找到 %d\\n\", x);\n    else printf(\"未找到 %d\\n\", x);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define M 13\ntypedef struct N { int key; struct N *next; } N;\nint main(void){\n    N *head[M] = {0}, *p, *q; int n, x, i, pos;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x); pos = x % M;\n        p = (N *)malloc(sizeof(N)); p->key = x; p->next = NULL; head[pos] = p;\n    }\n    scanf(\"%d\", &x);\n    pos = x % M; q = head[pos];\n    while (q != NULL && q->key != x) q = q->next;\n    if (q != NULL) printf(\"找到 %d\\n\", x);\n    else printf(\"未找到 %d\\n\", x);\n    return 0;\n}",
       "bugs": [
         "头插法漏接旧链（p->next=NULL），每个桶只保留最后插入的结点，链上先插入的键全部丢失。"
@@ -3635,7 +3635,7 @@
       "complexity": "O(1) 平均",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。链地址法：把散列到同一地址的键用单链串起来，表头数组 head[M] 每个元素指向一条链；查找只在对应桶的链上顺序比较。\n【步骤】\n1. 链长≈α。\n2. 比较 1+α/2 次。\n【复杂度】平均 O(1)（链长≈α），最坏 O(n)。\n【易错点】\n1. 头插法先接旧链再改头指针。\n2. 查找 q 从 head[pos] 起、判 q 为 NULL 结束。\n3. 删除直接摘链，不堆积。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。链地址法：把散列到同一地址的键用单链串起来，表头数组 head[M] 每个元素指向一条链；查找只在对应桶的链上顺序比较。\n【步骤】\n1. 链长≈α。\n2. 比较 1+α/2 次。\n【复杂度】平均 O(1)（链长≈α），最坏 O(n)。\n【易错点】\n1. 头插法先接旧链再改头指针。\n2. 查找 q 从 head[pos] 起、判 q 为 NULL 结束。\n3. 删除直接摘链，不堆积。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
     },
     {
       "id": "ds-ch07-cr-018",
@@ -3796,7 +3796,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 30\nint main(void){\n    int a[MAXN], idx[10], n, s, nb, x, i, b, cmp = 0;\n    scanf(\"%d %d\", &n, &s);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    nb = (n + s - 1) / s;\n    for (b = 0; b < nb; b++) { i = (b + 1) * s - 1; if (i > n - 1) i = n - 1; idx[b] = a[i]; }\n    scanf(\"%d\", &x);\n    for (b = 0; b < nb; b++) { cmp++; if (x < idx[b]) break; }\n    if (b == nb) { printf(\"未找到 %d 比较 %d 次\\n\", x, cmp); return 0; }\n    for (i = b * s; i <= (b + 1) * s - 1 && i < n; i++) { cmp++; if (a[i] == x) { printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, i, cmp); return 0; } }\n    printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「分块查找」（涉及知识点：「索引顺序查找」「索引表」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成分块查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 30\nint main(void){\n    int a[MAXN], idx[10], n, s, nb, x, i, b, cmp = 0;\n    scanf(\"%d %d\", &n, &s);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    nb = (n + s - 1) / s;\n    for (b = 0; b < nb; b++) { i = (b + 1) * s - 1; if (i > n - 1) i = n - 1; idx[b] = a[i]; }\n    scanf(\"%d\", &x);\n    for (b = 0; b < nb; b++) { cmp++; if (x < idx[b]) break; }\n    if (b == nb) { printf(\"未找到 %d 比较 %d 次\\n\", x, cmp); return 0; }\n    for (i = b * s; i <= (b + 1) * s - 1 && i < n; i++) { cmp++; if (a[i] == x) { printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, i, cmp); return 0; } }\n    printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXN 30\nint main(void){\n    int a[MAXN], idx[10], n, s, nb, x, i, b, cmp = 0;\n    scanf(\"%d %d\", &n, &s);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    nb = (n + s - 1) / s;\n    for (b = 0; b < nb; b++) { i = (b + 1) * s - 1; if (i > n - 1) i = n - 1; idx[b] = a[i]; }\n    scanf(\"%d\", &x);\n    for (b = 0; b < nb; b++) { cmp++; if (x < idx[b]) break; }\n    if (b == nb) { printf(\"未找到 %d 比较 %d 次\\n\", x, cmp); return 0; }\n    for (i = b * s; i <= (b + 1) * s - 1 && i < n; i++) { cmp++; if (a[i] == x) { printf(\"找到 %d 位置 %d 比较 %d 次\\n\", x, i, cmp); return 0; } }\n    printf(\"未找到 %d 比较 %d 次\\n\", x, cmp);\n    return 0;\n}",
       "bugs": [
         "把索引查找条件 x<=idx[b] 改成 x<idx[b]，当 x 恰好等于某块最大关键字时，会跳过该块，查到下一块去。"
@@ -3947,7 +3947,7 @@
       "complexity": "O(sqrt(n))",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。分块查找先查索引表（每块最大关键字，块间有序）确定块，再在该块内顺序查找。块内可无序，适合「插入频繁、查找也频繁」的动态表。\n【步骤】\n1. 索引 ASL + 块内 ASL。\n2. s=√n 时最优 √n+1。\n【复杂度】ASL≈√n+1（s=√n 时最优）。\n【易错点】\n1. 索引表存每块最大关键字。\n2. 索引表与块内查找各计一部分 ASL。\n3. s=√n 时性能最优。\n【关联】知识点卡片 ds-ch07-07、ds-ch07-04"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。分块查找先查索引表（每块最大关键字，块间有序）确定块，再在该块内顺序查找。块内可无序，适合「插入频繁、查找也频繁」的动态表。\n【步骤】\n1. 索引 ASL + 块内 ASL。\n2. s=√n 时最优 √n+1。\n【复杂度】ASL≈√n+1（s=√n 时最优）。\n【易错点】\n1. 索引表存每块最大关键字。\n2. 索引表与块内查找各计一部分 ASL。\n3. s=√n 时性能最优。\n【关联】知识点卡片 ds-ch07-07、ds-ch07-04"
     },
     {
       "id": "ds-ch07-cr-020",
@@ -4099,7 +4099,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint search(TNode *t, int key, int *cmp){\n    (*cmp)++;\n    if (t == NULL) return 0;\n    if (key == t->data) return 1;\n    if (key < t->data) return search(t->l, key, cmp);\n    return search(t->l, key, cmp);\n}\nint main(void){\n    int n, i, x, key, cmp = 0; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    if (search(root, key, &cmp)) printf(\"找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉排序树」（涉及知识点：「递归查找」「比较次数」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成插入、查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint search(TNode *t, int key, int *cmp){\n    (*cmp)++;\n    if (t == NULL) return 0;\n    if (key == t->data) return 1;\n    if (key < t->data) return search(t->l, key, cmp);\n    return search(t->l, key, cmp);\n}\nint main(void){\n    int n, i, x, key, cmp = 0; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    if (search(root, key, &cmp)) printf(\"找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint search(TNode *t, int key, int *cmp){\n    (*cmp)++;\n    if (t == NULL) return 0;\n    if (key == t->data) return 1;\n    if (key < t->data) return search(t->l, key, cmp);\n    return search(t->l, key, cmp);\n}\nint main(void){\n    int n, i, x, key, cmp = 0; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    scanf(\"%d\", &key);\n    if (search(root, key, &cmp)) printf(\"找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    return 0;\n}",
       "bugs": [
         "把大于时走右改成也走左，查找永远只往左子树走，等于把查找方向搞错。"
@@ -4238,7 +4238,7 @@
       "complexity": "O(log n) 平均",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。BST 查找：小于根走左、大于根走右、相等命中；每次进入结点计数，空子树返回未找到。\n【步骤】\n1. 路径长即比较次数。\n2. 平均 O(log n)。\n【复杂度】平均 O(log n)，最坏 O(n)。\n【易错点】\n1. 先判命中再走左右。\n2. 每次进入结点计数。\n3. 有序输入退化单支。\n【关联】知识点卡片 ds-ch07-08、ds-ch07-04"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。BST 查找：小于根走左、大于根走右、相等命中；每次进入结点计数，空子树返回未找到。\n【步骤】\n1. 路径长即比较次数。\n2. 平均 O(log n)。\n【复杂度】平均 O(log n)，最坏 O(n)。\n【易错点】\n1. 先判命中再走左右。\n2. 每次进入结点计数。\n3. 有序输入退化单支。\n【关联】知识点卡片 ds-ch07-08、ds-ch07-04"
     },
     {
       "id": "ds-ch07-cr-022",
@@ -4381,7 +4381,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint minof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint maxof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    printf(\"最小值 %d 最大值 %d\\n\", minof(root), maxof(root));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉排序树」（涉及知识点：「最小值」「最大值」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成插入、查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint minof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint maxof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    printf(\"最小值 %d 最大值 %d\\n\", minof(root), maxof(root));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint minof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint maxof(TNode *t){ while (t->r != NULL) t = t->r; return t->data; }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    printf(\"最小值 %d 最大值 %d\\n\", minof(root), maxof(root));\n    return 0;\n}",
       "bugs": [
         "求最小值时误用右子树（t->r），返回的其实是最大值。"
@@ -4512,7 +4512,7 @@
       "complexity": "O(h)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。BST 的中序有序性保证：最小值沿左子树走到最左端，最大值沿右子树走到最右端。\n【步骤】\n1. 单路径 O(h)。\n【复杂度】O(h)。\n【易错点】\n1. 最左最右即最值。\n2. 退化单支时 O(n)。\n【关联】知识点卡片 ds-ch07-08、ds-ch07-06"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。BST 的中序有序性保证：最小值沿左子树走到最左端，最大值沿右子树走到最右端。\n【步骤】\n1. 单路径 O(h)。\n【复杂度】O(h)。\n【易错点】\n1. 最左最右即最值。\n2. 退化单支时 O(n)。\n【关联】知识点卡片 ds-ch07-08、ds-ch07-06"
     },
     {
       "id": "ds-ch07-cr-024",
@@ -4655,7 +4655,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint height(TNode *t){ int hl, hr; if (t == NULL) return 0; hl = height(t->l); hr = height(t->r); return (hl > hr ? hl : hr) + 1; }\nint bf(TNode *t){ return height(t->r) - height(t->l); }\nvoid pp(TNode *t){ if (t == NULL) return; pp(t->l); printf(\"%d(%d) \", t->data, bf(t)); pp(t->r); }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    pp(root); printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「平衡二叉树」（涉及知识点：「平衡因子」「AVL」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成插入、树高与平衡因子，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint height(TNode *t){ int hl, hr; if (t == NULL) return 0; hl = height(t->l); hr = height(t->r); return (hl > hr ? hl : hr) + 1; }\nint bf(TNode *t){ return height(t->r) - height(t->l); }\nvoid pp(TNode *t){ if (t == NULL) return; pp(t->l); printf(\"%d(%d) \", t->data, bf(t)); pp(t->r); }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    pp(root); printf(\"\\n\");\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TNode { int data; struct TNode *l, *r; } TNode;\nTNode *insert(TNode *t, int x){\n    if (t == NULL) { TNode *p = malloc(sizeof(TNode)); p->data = x; p->l = p->r = NULL; return p; }\n    if (x < t->data) t->l = insert(t->l, x);\n    else if (x > t->data) t->r = insert(t->r, x);\n    return t;\n}\nint height(TNode *t){ int hl, hr; if (t == NULL) return 0; hl = height(t->l); hr = height(t->r); return (hl > hr ? hl : hr) + 1; }\nint bf(TNode *t){ return height(t->r) - height(t->l); }\nvoid pp(TNode *t){ if (t == NULL) return; pp(t->l); printf(\"%d(%d) \", t->data, bf(t)); pp(t->r); }\nint main(void){\n    int n, i, x; TNode *root = NULL;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) { scanf(\"%d\", &x); root = insert(root, x); }\n    pp(root); printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "把平衡因子定义为「右 − 左」，符号全反，左高变成负。"
@@ -4786,7 +4786,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。AVL 树每个结点平衡因子 |bf|≤1。计算 bf=左高−右高可判定是否平衡；树高取左右较高者+1。\n【步骤】\n1. 每结点算高 O(n)。\n【复杂度】O(n) 求所有 bf（n 个结点，每结点 O(n) 若每次重算）。\n【易错点】\n1. bf=左−右。\n2. 树高取 max+1。\n3. |bf|≤1 为平衡。\n【关联】知识点卡片 ds-ch07-10、ds-ch07-02"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。AVL 树每个结点平衡因子 |bf|≤1。计算 bf=左高−右高可判定是否平衡；树高取左右较高者+1。\n【步骤】\n1. 每结点算高 O(n)。\n【复杂度】O(n) 求所有 bf（n 个结点，每结点 O(n) 若每次重算）。\n【易错点】\n1. bf=左−右。\n2. 树高取 max+1。\n3. |bf|≤1 为平衡。\n【关联】知识点卡片 ds-ch07-10、ds-ch07-02"
     },
     {
       "id": "ds-ch07-cr-026",
@@ -4942,7 +4942,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "循环边界错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint binSearch(int a[], int lo, int hi, int key, int *cmp){\n    int mid;\n    if (lo >= hi) return -1;\n    mid = (lo + hi) / 2;\n    (*cmp)++;\n    if (a[mid] == key) return mid;\n    if (a[mid] < key) return binSearch(a, mid + 1, hi, key, cmp);\n    return binSearch(a, lo, mid - 1, key, cmp);\n}\nint main(void){\n    int a[100], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, 0, n - 1, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d 下标 %d 比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「折半查找」（涉及知识点：「递归」「有序表」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成查找，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\nint binSearch(int a[], int lo, int hi, int key, int *cmp){\n    int mid;\n    if (lo >= hi) return -1;\n    mid = (lo + hi) / 2;\n    (*cmp)++;\n    if (a[mid] == key) return mid;\n    if (a[mid] < key) return binSearch(a, mid + 1, hi, key, cmp);\n    return binSearch(a, lo, mid - 1, key, cmp);\n}\nint main(void){\n    int a[100], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, 0, n - 1, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d 下标 %d 比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\nint binSearch(int a[], int lo, int hi, int key, int *cmp){\n    int mid;\n    if (lo >= hi) return -1;\n    mid = (lo + hi) / 2;\n    (*cmp)++;\n    if (a[mid] == key) return mid;\n    if (a[mid] < key) return binSearch(a, mid + 1, hi, key, cmp);\n    return binSearch(a, lo, mid - 1, key, cmp);\n}\nint main(void){\n    int a[100], n, key, i, cmp = 0, pos;\n    scanf(\"%d %d\", &n, &key);\n    for (i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n    pos = binSearch(a, 0, n - 1, key, &cmp);\n    if (pos < 0) printf(\"未找到 %d 比较 %d 次\\n\", key, cmp);\n    else printf(\"找到 %d 下标 %d 比较 %d 次\\n\", key, pos, cmp);\n    return 0;\n}",
       "bugs": [
         "把递归出口 lo>hi 改成 lo>=hi，区间只剩一个元素（lo==hi）时不再比较，该元素被跳过。"
@@ -5083,7 +5083,7 @@
       "complexity": "O(log n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。递归折半查找：取中间元素比较，小于则查右半（lo=mid+1），大于则查左半（hi=mid-1），空区间返回 -1。\n【步骤】\n1. 每次减半 O(log n)。\n【复杂度】O(log n)，空间 O(log n)（递归栈）。\n【易错点】\n1. 出口 lo>hi。\n2. 收缩必须 mid±1。\n3. 要求有序顺序表。\n【关联】知识点卡片 ds-ch07-06、ds-ch07-04"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。递归折半查找：取中间元素比较，小于则查右半（lo=mid+1），大于则查左半（hi=mid-1），空区间返回 -1。\n【步骤】\n1. 每次减半 O(log n)。\n【复杂度】O(log n)，空间 O(log n)（递归栈）。\n【易错点】\n1. 出口 lo>hi。\n2. 收缩必须 mid±1。\n3. 要求有序顺序表。\n【关联】知识点卡片 ds-ch07-06、ds-ch07-04"
     },
     {
       "id": "ds-ch07-cr-028",
@@ -5243,7 +5243,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "漏计原子",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAX 100\nint main(void){\n    int n,m,i,k,pos,step,total;\n    int table[MAX],used[MAX],probe[MAX],key[MAX];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<m;i++){table[i]=-1;used[i]=0;}\n    for(i=0;i<n;i++){scanf(\"%d\",&key[i]);}\n    total=0;\n    for(i=0;i<n;i++){\n        k=key[i];\n        pos=k%m;\n        step=0;\n        while(used[pos]){\n            pos=(pos+1)%m;\n            step++;\n        }\n        used[pos]=1;\n        table[pos]=k;\n        probe[i]=step;\n        total+=probe[i];\n    }\n    for(i=0;i<m;i++){printf(\"%d\",table[i]);if(i<m-1)printf(\" \");}\n    printf(\"\\n\");\n    printf(\"%d\\n\",total);\n    printf(\"%.2f\\n\",(double)total/n);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「散列表」（涉及知识点：「线性探测」「装填因子」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成线性探测建表与查找、ASL 统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAX 100\nint main(void){\n    int n,m,i,k,pos,step,total;\n    int table[MAX],used[MAX],probe[MAX],key[MAX];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<m;i++){table[i]=-1;used[i]=0;}\n    for(i=0;i<n;i++){scanf(\"%d\",&key[i]);}\n    total=0;\n    for(i=0;i<n;i++){\n        k=key[i];\n        pos=k%m;\n        step=0;\n        while(used[pos]){\n            pos=(pos+1)%m;\n            step++;\n        }\n        used[pos]=1;\n        table[pos]=k;\n        probe[i]=step;\n        total+=probe[i];\n    }\n    for(i=0;i<m;i++){printf(\"%d\",table[i]);if(i<m-1)printf(\" \");}\n    printf(\"\\n\");\n    printf(\"%d\\n\",total);\n    printf(\"%.2f\\n\",(double)total/n);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAX 100\nint main(void){\n    int n,m,i,k,pos,step,total;\n    int table[MAX],used[MAX],probe[MAX],key[MAX];\n    scanf(\"%d %d\",&n,&m);\n    for(i=0;i<m;i++){table[i]=-1;used[i]=0;}\n    for(i=0;i<n;i++){scanf(\"%d\",&key[i]);}\n    total=0;\n    for(i=0;i<n;i++){\n        k=key[i];\n        pos=k%m;\n        step=0;\n        while(used[pos]){\n            pos=(pos+1)%m;\n            step++;\n        }\n        used[pos]=1;\n        table[pos]=k;\n        probe[i]=step;\n        total+=probe[i];\n    }\n    for(i=0;i<m;i++){printf(\"%d\",table[i]);if(i<m-1)printf(\" \");}\n    printf(\"\\n\");\n    printf(\"%d\\n\",total);\n    printf(\"%.2f\\n\",(double)total/n);\n    return 0;\n}",
       "bugs": [
         "成功查找每个关键字至少要探测 1 次（直接命中位），probe 应从 step+1 计起，漏计了首次探测。"
@@ -5386,7 +5386,7 @@
       "complexity": "O(n·m) 最坏（n 个关键字，线性探测每次插入平均 O(1)、最坏 O(m)），期望 O(n)；空间 O(m)（散列表）。",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。用除留余数法 H(key)=key%m 求关键字初始位置，冲突时用线性探测 pos=(pos+1)%m 顺移；每插一个关键字记下其探测次数（含直接命中的第 1 次），最后输出散列表、总探测次数与成功查找平均查找长度 ASL=total/n。\n【步骤】\n1. 线性探测每关键字平均 O(1)、最坏 O(m)。\n2. n 个关键字建表最坏 O(n·m)、期望 O(n)。\n3. 空间为散列表 O(m)。\n【复杂度】每个关键字线性探测平均 O(1)（α<1 时），最坏 O(m)，建整个表最坏 O(n·m)、期望 O(n)；空间 O(m)（散列表）。\n【易错点】\n1. probe 要含直接命中的第 1 次探测（加 1），否则 ASL 被低估。\n2. 线性探测到表尾 m-1 必须 %m 回绕到 0，否则越界。\n3. ASL 分母是关键字个数 n，不是表长 m；只有装填因子 α 才用 m。\n4. 空位标记要区分「未用」与「已用」，否则会把空位当作被占。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。用除留余数法 H(key)=key%m 求关键字初始位置，冲突时用线性探测 pos=(pos+1)%m 顺移；每插一个关键字记下其探测次数（含直接命中的第 1 次），最后输出散列表、总探测次数与成功查找平均查找长度 ASL=total/n。\n【步骤】\n1. 线性探测每关键字平均 O(1)、最坏 O(m)。\n2. n 个关键字建表最坏 O(n·m)、期望 O(n)。\n3. 空间为散列表 O(m)。\n【复杂度】每个关键字线性探测平均 O(1)（α<1 时），最坏 O(m)，建整个表最坏 O(n·m)、期望 O(n)；空间 O(m)（散列表）。\n【易错点】\n1. probe 要含直接命中的第 1 次探测（加 1），否则 ASL 被低估。\n2. 线性探测到表尾 m-1 必须 %m 回绕到 0，否则越界。\n3. ASL 分母是关键字个数 n，不是表长 m；只有装填因子 α 才用 m。\n4. 空位标记要区分「未用」与「已用」，否则会把空位当作被占。\n【关联】知识点卡片 ds-ch07-14、ds-ch07-03"
     }
   ]
 }

@@ -142,7 +142,7 @@ const payload = {
 }
 
 writeFileSync(OUT, JSON.stringify(payload), 'utf8')
-// 另出一份**极小**的计数文件：首页要显示「2074 题 / 345 卡片」这类规模数字，
+// 另出一份**极小**的计数文件：首页要显示「3808 题 / 447 卡片」这类规模数字，
 // 但绝不能为了几个数字把 727 KB 语料拖进首屏 —— 故拆一个 <1 KB 的 totals.json 给它。
 writeFileSync(join(DATA, 'search', 'totals.json'), JSON.stringify({
   _generated: payload._generated,

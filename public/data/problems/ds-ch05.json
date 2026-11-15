@@ -3664,7 +3664,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「二叉链表」「叶子结点」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、递归统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countLeaves(TN *p) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return 1;\n    return countLeaves(p->l) + countLeaves(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子结点数 = %d\\n\", countLeaves(root));\n    return 0;\n}",
       "bugs": [
         "把「左右孩子都为空」写成「左右任一为空」就判成叶子，导致只有单孩子的结点被误判为叶子。"
@@ -3809,7 +3809,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
+      "explanation": "【思路】本题要求算出精确数值或确定的状态/结果（不是渐近记号），所以必须把口径先定死：数什么、数到什么时候为止；状态类答案要写明是哪个字段、取什么值。统计叶子结点用递归后序：空子树返回 0，叶子（左右皆空）返回 1，否则返回左右子树叶子之和。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每个结点访问一次，O(n)。\n【易错点】\n1. 先判空再判叶子再递归。\n2. 叶子 = 左右都空，不是左空。\n3. 别把 NULL 当叶子。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09、ds-ch05-05"
     },
     {
       "id": "ds-ch05-cr-012",
@@ -3973,7 +3973,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「深度」「递归」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、递归统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int depth(TN *p) {\n    int dl, dr;\n    if (p == NULL) return 0;\n    dl = depth(p->l);\n    dr = depth(p->r);\n    return (dl > dr ? dl : dr);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"树深度 = %d\\n\", depth(root));\n    return 0;\n}",
       "bugs": [
         "求深度忘加 1，根结点没算进去，所有深度偏小 1。"
@@ -4118,7 +4118,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 每结点一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。求深度用递归后序：空返回 0，否则返回 max(左深,右深)+1。\n【步骤】\n1. 每结点一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每结点访问一次，O(n)，递归空间 O(h)。\n【易错点】\n1. 深度公式 max+1。\n2. 空树深度 0。\n3. 别只递归左子树。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01、ds-ch05-07"
     },
     {
       "id": "ds-ch05-cr-014",
@@ -4278,7 +4278,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "递归基准错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「二叉链表」「结点计数」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、递归统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int countNodes(TN *p) {\n    if (p == NULL) return 1;\n    return countNodes(p->l) + countNodes(p->r) + 1;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"结点数 = %d\\n\", countNodes(root));\n    return 0;\n}",
       "bugs": [
         "把空子树当成有 1 个结点，导致每个空指针都贡献 1，计数虚增。"
@@ -4421,7 +4421,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。统计结点用递归后序：空子树返回 0，否则返回左右子树结点数之和再加 1（当前根）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)，递归栈 O(h)。\n【复杂度】每个结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 空子树基准返回 0。\n2. 最后 +1 算根自身。\n3. 别把 NULL 子结点当结点。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
     },
     {
       "id": "ds-ch05-cr-016",
@@ -4581,7 +4581,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "交换取值错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「镜像」「递归」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、镜像变换，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void mirror(TN *p) {\n    if (p == NULL) return;\n    TN *t = p->r;\n    p->l = p->r;\n    p->r = t;\n    mirror(p->l);\n    mirror(p->r);\n}\nstatic void preorder(TN *p) {\n    if (p == NULL) return;\n    printf(\"%d \", p->data);\n    preorder(p->l);\n    preorder(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    mirror(root);\n    preorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "把「存左孩子」写成「存右孩子」，交换后左右都变成原右孩子，左子树丢失。"
@@ -4724,7 +4724,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 每结点交换一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。镜像 = 递归交换每个结点的左右孩子，最后先序遍历输出，用交换后的序列观察镜像是否生效。\n【步骤】\n1. 每结点交换一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 交换要用临时变量。\n2. 镜像不改树高，观测需用遍历序列。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
     },
     {
       "id": "ds-ch05-cr-018",
@@ -4884,7 +4884,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「叶子」「深度」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、递归统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int leafDepth(TN *p, int d) {\n    if (p == NULL) return 0;\n    if (p->l == NULL || p->r == NULL) return d;\n    return leafDepth(p->l, d + 1) + leafDepth(p->r, d + 1);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"叶子深度和 = %d\\n\", leafDepth(root, 1));\n    return 0;\n}",
       "bugs": [
         "把叶子判定从「左右都空」放宽成「任一为空」，单孩子结点被误判为叶子。"
@@ -5027,7 +5027,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。叶子深度求和用带参递归：下传当前深度 d；空返回 0，叶子返回 d，否则返回左右子树深度和（每层 d+1）。\n【步骤】\n1. 每结点访问一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 叶子返回传入深度 d。\n2. 每下一层 d+1。\n3. 叶子判定用 &&，不用 ||。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-01"
     },
     {
       "id": "ds-ch05-cr-020",
@@ -5191,7 +5191,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "递归调用缺失",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「中序遍历」「递归」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、遍历输出，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void inorder(TN *p) {\n    if (p == NULL) return;\n    inorder(p->l);\n    printf(\"%d \", p->data);\n    ;\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}",
       "bugs": [
         "漏掉右子树的中序遍历调用，右子树的所有结点都不输出。"
@@ -5336,7 +5336,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。中序 = 左子树中序 → 访问根 → 右子树中序，递归实现。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点访问一次，O(n)；递归栈深 O(h)。\n【易错点】\n1. 访问根的语句在中间。\n2. 别漏左右子树之一。\n3. 空子树直接返回。\n【关联】知识点卡片 ds-ch05-09、ds-ch05-11、ds-ch05-03"
     },
     {
       "id": "ds-ch05-cr-022",
@@ -5496,7 +5496,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "入队顺序颠倒",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->r) q[tail++] = cur->r;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「层次遍历」「队列」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、遍历输出，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->r) q[tail++] = cur->r;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\n#define MAXN 100\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic void levelorder(TN *root) {\n    if (root == NULL) return;\n    TN *q[MAXN]; int head = 0, tail = 0;\n    q[tail++] = root;\n    while (head < tail) {\n        TN *cur = q[head++];\n        printf(\"%d \", cur->data);\n        if (cur->r) q[tail++] = cur->r;\n        if (cur->l) q[tail++] = cur->l;\n    }\n    printf(\"\\n\");\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    levelorder(root);\n    return 0;\n}",
       "bugs": [
         "把右孩子先入队、左孩子后入队，同层内输出顺序变为从右到左。"
@@ -5639,7 +5639,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 每结点入队出队一次。\n2. O(n)，空间 O(w)。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。层次遍历用队列：根入队，循环取队头访问，将其左右孩子依次入队，直到队列为空。\n【步骤】\n1. 每结点入队出队一次。\n2. O(n)，空间 O(w)。\n【复杂度】每结点入队一次、出队一次，O(n)；辅助空间 O(最宽层宽)。\n【易错点】\n1. 入队前判 NULL。\n2. 先左后右。\n3. 用 head/tail 双下标。\n【关联】知识点卡片 ds-ch05-11、ds-ch05-03"
     },
     {
       "id": "ds-ch05-cr-024",
@@ -5799,7 +5799,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "条件判断错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
+      "stem": "下面的程序围绕「二叉树」（涉及知识点：「单孩子结点」「递归」），输入从标准输入读入，结果按程序中规定的格式输出。程序本应正确完成构造与初始化、递归统计，但其中有一处错误导致输出不正确。请找出错在哪个环节并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct TN { int data; struct TN *l, *r; } TN;\nstatic void build(TN **p) {\n    int x; scanf(\"%d\", &x);\n    if (x == -1) { *p = NULL; return; }\n    *p = (TN *)malloc(sizeof(TN));\n    (*p)->data = x;\n    build(&(*p)->l);\n    build(&(*p)->r);\n}\nstatic int singleChild(TN *p) {\n    if (p == NULL) return 0;\n    int cur = (p->l == NULL) || (p->r == NULL) ? 1 : 0;\n    return cur + singleChild(p->l) + singleChild(p->r);\n}\nint main(void) {\n    TN *root;\n    build(&root);\n    printf(\"单孩子结点数 = %d\\n\", singleChild(root));\n    return 0;\n}",
       "bugs": [
         "把「恰好一个孩子」放宽成「至少一个孩子为空」，双孩子结点也被计入。"
@@ -5942,7 +5942,7 @@
       "complexity": "O(n)",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。用递归后序统计单孩子结点：本结点「恰有一个孩子」则 +1，再累加左右子树的单孩子数。\n【步骤】\n1. 每结点一次。\n2. O(n)。\n【复杂度】每结点一次，O(n)。\n【易错点】\n1. 「恰好一个」用 !=（异或）。\n2. 区分叶子/单孩子/至少一个。\n3. 别漏右侧递归。\n【关联】知识点卡片 ds-ch05-02、ds-ch05-09"
     },
     {
       "id": "ds-ch05-cr-026",
@@ -6102,7 +6102,7 @@
       "generated_at": "2026-11-09",
       "verified": true,
       "defectKind": "比较方向错误",
-      "stem": "下面的程序本应完成题面描述的功能，但有一处错误。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
+      "stem": "下面的程序完成的功能是：哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和。（主题：哈夫曼树；涉及知识点：「哈夫曼编码」「WPL」）输入从标准输入读入，结果按程序中规定的格式输出。但程序中有一处错误（大致在WPL 计算环节），导致无法正确完成上述功能。请找出并改正，使它对全部测试输入都给出正确输出。\n```c\n#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}\n```",
       "code": "#include <stdio.h>\n#define MAXN 100\n/* 哈夫曼树带权路径长度 WPL：每次合并两个最小权值，WPL 累加每次合并的和 */\nint main(void) {\n    int n, w[MAXN], i;\n    if (scanf(\"%d\", &n) != 1) { printf(\"输入有误\\n\"); return 0; }\n    for (i = 0; i < n; i++) scanf(\"%d\", &w[i]);\n    long wpl = 0;\n    while (n > 1) {\n        int mi = 0, mj = 1;\n        if (w[mi] > w[mj]) { int t = mi; mi = mj; mj = t; }\n        for (i = 2; i < n; i++) {\n            if (w[i] > w[mi]) { mj = mi; mi = i; }\n            else if (w[i] < w[mj]) { mj = i; }\n        }\n        int s = w[mi] + w[mj];\n        wpl += s;\n        w[mi] = s;\n        w[mj] = w[n - 1];\n        n--;\n    }\n    printf(\"WPL = %ld\\n\", wpl);\n    return 0;\n}",
       "bugs": [
         "把「找最小」的反向比较，导致选出最大的两个权值合并，得到错误的 WPL。"
@@ -6245,7 +6245,7 @@
       "complexity": "O(n^2)（每次扫描找两个最小，共 n-1 次合并）",
       "accepted": [],
       "askSpace": false,
-      "explanation": "【思路】本题要求算出精确数值而不是渐近记号，所以必须把计数口径先定死（数什么、数到什么时候为止）。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. n-1 次合并。\n2. 每次 O(n) 扫描，O(n^2)。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
+      "explanation": "【思路】本题既有要求用渐近记号（大 O）作答的小问，也有要求精确数值或确定状态/结果的小问，必须先分清各小问的口径：渐近的只答增长量级，具体的要把计数口径定死（数什么、数到什么时候为止）。哈夫曼 WPL 可用「反复贪心合并最小两权值」直接算出：每次取两个最小权值相加，把和累入 WPL，再把和放回待选集合，重复至只剩一个（等价于建树后求所有内部结点之和）。\n【步骤】\n1. n-1 次合并。\n2. 每次 O(n) 扫描，O(n^2)。\n【复杂度】每次合并扫描 O(n)，共 n-1 次，O(n^2)；若用小顶堆可优化到 O(n log n)。\n【易错点】\n1. 永远合并最小的两个。\n2. WPL 累加，不是只取最后一次。\n3. 用末尾元素填充后 n-- 保持有效区间。\n【关联】知识点卡片 ds-ch05-04、ds-ch05-18"
     }
   ]
 }

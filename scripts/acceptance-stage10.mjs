@@ -240,7 +240,7 @@ async function main() {
 
     const rows = await page.locator('[data-role="row"]').count()
     const size = await page.getAttribute('[data-role="summary"]', 'data-rows')
-    check('首屏分页渲染（默认 50 张/页，不是一次性铺 345 张）', rows === Number(size) && rows <= 50, `rows=${rows} data-rows=${size}`)
+    check('首屏分页渲染（默认 50 张/页，不是一次性铺全量卡片）', rows === Number(size) && rows <= 50, `rows=${rows} data-rows=${size}`)
 
     const groups = new Set()
     for (const c of K.cards) groups.add(`${c.category}|${c.chapter}`)
@@ -754,7 +754,7 @@ async function main() {
     const homeJs = [...jsUrls]
     const homeData = [...dataUrls]
     // 首页唯一允许的非 index.json 是 data/search/totals.json（几百字节的规模计数）：
-    // 首页写「2074 道题 / 345 张卡片」这些数字必须来自构建期真相，不能硬编码。
+    // 首页写「3808 道题 / 447 张卡片」这些数字必须来自构建期真相，不能硬编码。
     // 727 KB 的搜索语料 unified.json 与任何详情分片仍然一律禁止。
     const homeOk = (u) => u.endsWith('/index.json') || u.endsWith('search/totals.json')
     check('首页不预取任何详情语料（data 请求 ≤4 个，只许 index.json 与 search/totals.json）',
