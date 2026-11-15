@@ -23,7 +23,7 @@ import {
   loadKnowledgeIndex,
   type LoadedCard,
 } from '../modules/knowledge/data/loader'
-import { RelLinks, useCardItems, useProblemItems, useVizItems } from '../modules/knowledge/links'
+import { RelLinks, RelatedProblemsForCard, useCardItems, useVizItems } from '../modules/knowledge/links'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -102,7 +102,6 @@ function Ready({ data }: { data: LoadedCard }) {
   const examples = Array.isArray(card.examples) ? card.examples : []
 
   const viz = useVizItems(strArray(card.relatedViz))
-  const problems = useProblemItems(strArray(card.relatedProblems))
   const related = useCardItems(strArray(card.relatedKnowledge))
 
   return (
@@ -208,7 +207,12 @@ function Ready({ data }: { data: LoadedCard }) {
             <RelLinks items={viz.items} dataRole="related-viz" empty="这张卡片还没有关联演示。" />
           </Block>
           <Block label="✍️ 相关题目">
-            <RelLinks items={problems.items} dataRole="related-problems" empty="这张卡片还没有关联题目。" />
+            <RelatedProblemsForCard
+              cardFile={entry.file}
+              category={entry.category}
+              chapter={entry.chapter}
+              directIds={strArray(card.relatedProblems)}
+            />
           </Block>
           <Block label="📖 相关卡片">
             <RelLinks items={related.items} dataRole="related-knowledge" empty="这张卡片还没有关联其他卡片。" />

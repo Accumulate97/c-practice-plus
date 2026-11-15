@@ -39,3 +39,29 @@
 - **goal_round 触发会杀掉全部活跃子代理并中止前台工具**：长时间静默（>10 分钟无模型可见事件）就会触发；子代理批量写作时要么保持事件流（心跳提醒 schedule_create every 240s），要么主代理自写
 - **子代理失败先查落盘文件再决定重发**：子代理会自由发挥 defectKind；delegate 时必须在 prompt 里给死合法 enum 词表（schema/Problem.schema.json 的 defectKind），否则 verify:data 报 SCHEMA 错
 - **PowerShell 不用 `&&` 用 `;`**；here-string 一律 `@'...'@`（`@"..."@` 吃反引号）；ConvertFrom-Json 解析中文 JSON 不可靠，用 node；`.mjs` 里 C 的 `\n` 是 `\`+`\`+`n`，多行替换用 edit 工具
+
+## 复核轮结论（2026-11-15，检验轮·只报告不修补）
+
+全面复核报告：`_inputs/_meta/audit-final-report.md`（机检原始数据 `_inputs/_meta/ds-audit.json` refined.r1–r12；汇报1/2 在 `_inputs/_meta/audit-reports.md`；token 看板 `_inputs/_meta/token-audit.md`）。
+
+- **总判**：DS 内容总体可信——抽样 30 题答案本体零错误（gcc 实跑 14 题 43/43 + Godbolt 实机 2/2），章节映射无错位（严蔚敏 8 章骨架），两域名线上数据与仓库逐字节一致，acceptance:viz3d 104/104 回归绿。
+- **待用户裁决的 P1×7**：ds-ch03-dsdbg-001（详解称 size 字段法实为牺牲单元法+重复段混剪）、ds-ch03-mdb-005（bug2 潜伏不可测，陷阱无效）、ds-ch03-cr-025（易错点出栈机制错）、ds-ch06-str-001（MST 唯一性定理误述）、ds-ch05-tf-007（算式 8 应为 6）、卡片 ds-ch05-19（等频哈夫曼断言对非 2 幂 n 错）、**系统性**：131/132 DS 卡片 relatedProblems 空 → 卡片页「相关题目」空白（KnowledgeDetailPage.tsx:105,211 无兜底；可复用 links.tsx:195-238 同章兜底或按 knowledgeIds 倒排回填数据）。
+- **系统性 P2**：96/99 ds_debug 模板题干零功能描述；106/109 cxa 首句「精确数值」与渐近答案矛盾；26 对 dsdbg↔mdb 同码族 variantOf 未标。
+- **本轮唯一数据修改（P3 授权内）**：ds-ch04.json 6 处「线性下注」→「线性下标」，verify:data 复检 0 error/7 warn；**未提交**，远端 main 仍 2a6d447。
+- **README 12 处滞后**（2074→3808 等，见 final-report 差异表），免责声明「不收录教材原文」与 docs/source-data/ 教材中间数据是否冲突需用户定口径。
+- 未判定仅 1 题 ds-ch04-cc-017（verified 未动，lkg 有证据，expected 手工推演全对）。
+- 根目录 `_ch456.txt`（91KB，11-09 遗留乱码 dump，未跟踪）建议删除。
+- **复核轮踩坑**：① 独立写 Godbolt 请求时把双开关放 options 顶层 → stdout 空；契约是嵌 `options.compilerOptions`（godbolt.ts:70-84），executeParameters 才在 options 层。② node spawnSync 调 gcc 用 `stdio:['ignore',fd,fd]` 直连，勿用 cmd /c 包装（Windows 下会全量假失败）。③ acceptance:viz3d 前必须先 `npm run build`（dist 时效拦截）。④ audit 脚本里 `"ds-ch01-x"` 的章号在 `id.slice(5,7)`（不是 3,5/6,8）。
+
+## 开发轮结论（2026-11-15，落地复核结论）
+
+复核 P1/P2/P3 → 已修复并上线（本轮 commit）。产物：`_inputs/_meta/apply-fixes.mjs`（10 处 raw-text 精确替换，NOT FOUND/NOT UNIQUE 即抛）、`fix-verify.mjs`（20/20 断言：新串在/旧串不在/verified 未动）、`l2-ui.mjs`（15/15 真实 DOM 断言）。
+
+- **A1 六处详解层修复**（只动 explanation/keyPoints/content，answer/testCases/verified 零触碰）：ds-ch03-dsdbg-001（删混剪重复段+按牺牲单元法重写第 5 条）、ds-ch03-cr-025（易错点4 按 prec(+)>=prec(*) 真实规则重写）、ds-ch06-str-001（MST 唯一性改基本环判据+指出本例环 0-2-3 两条权 5 并列）、ds-ch05-tf-007（算式 8→6）、卡片 ds-ch05-19（哈夫曼等频断言加「n 为 2 的幂」限定+非 2 幂说明）、ds-ch03-mdb-005（易错点5 补潜伏缺陷如实标注）。
+- **A2 系统性断链修复（前端兜底）**：`src/modules/knowledge/links.tsx` 新增 `RelatedProblemsForCard`（directIds 优先，空则同章兜底 CAP=8 + `related-problems-fallback-note` 提示），`KnowledgeDetailPage.tsx` 接线 → 131 张 DS 卡片页「相关题目」不再空白。数据层 relatedProblems 保持空（回填数据会牵动索引，未做）。
+- **A3**：cr-035 断言残缺、cr-013 问号残留（explanation 内）已修；3 题重复详解段（ch02/ch03/ch07 dsdbg-001）已删重。⚠️ cr-013 同款问号残留还在 testCases[].note ×3（ds-ch06-cc-014/dsdbg-004/mdb-004）——铁律区未动，待裁决。⚠️ 删 ch02-dsdbg-001 重复段触发 check-explain「易错点只有 1 条」（1/2/3 原内联一行靠重复行凑数）→ 已在 items 2/3 前插 \n（纯排版）。
+- **A4 README 8 处现算更新**：3808(verified 3801)/447/39/60/4669、23 题型分布、21 路由（补 /p/:id）、lkg 2548(DS 660)、acceptance:all 21 套、online 31 项、51.2% 主力占比、双线上地址。**免责声明未改**（B3 待裁决）。docs/reports/* 历史报告内旧数字为当时快照，正确保留。
+- **A5**：_ch456.txt 已删；_inputs/ 保持未跟踪。
+- **闸门全绿**：typecheck/build/verify:data 0e7w/verify:spec 0/0/lint:code 0/scan:doubt 0/verify:pages ✅/check-explain 3808/0（直接 `node scripts/check-explain.mjs`，package.json 无 alias）/verify:answers 0/0/**acceptance:all 21/21**/**acceptance:online 31 项 0 失败**/L2-UI 15/15（深链上下题可点、三新题型 data-role、卡片兜底+哈夫曼新文案、dark/light×375px 控制台 0 error）。
+- **B 档待用户裁决**（选项表见本轮汇报）：B1 mdb-005 三选项（推荐①只认单 bug）；B2 批量文字 96 模板题干+106 cxa 首句（推荐②批量补全，先给 2 道样例）；B3 免责声明（推荐①保持 Public+移出教材原文）；B4 P2 结构性项（推荐②留下轮专项）。
+- **开发轮踩坑**：⑤ Playwright 断言详解/卡片文案必须用 textContent（折叠面板 innerText 不含隐藏内容）且先点 reference-answer-toggle 再等 React 渲染。⑥ check-explain 易错点计数按行首 `/^\d+\./`，内联编号不算——删重复段可能把凑数的行删掉触发闸门。⑦ acceptance:online 实跑 31 项（README 旧写 36 为历史值，按实跑更新）。

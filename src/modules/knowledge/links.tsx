@@ -2,7 +2,7 @@
  * 三向联动的反向通路组件（阶段 10-1）。
  *
  * 关联字段是「卡片侧单向写」的：卡片有 relatedProblems / relatedViz / relatedKnowledge，
- * 题目侧没有 knowledgeIds（实测 518 题里 0 条），演示侧 relatedProblems 也全空。
+ * 题目侧 C 库没有 knowledgeIds（DS 库 1020/1051 有），演示侧 relatedProblems 也全空。
  * 所以反向通路一律用 cardsByProblem / cardsByViz 两张倒排表算出来，不要求数据补字段。
  *
  * 三条铁律：
@@ -234,6 +234,59 @@ export function RelatedCardsForProblem({
         />
       </div>
     </section>
+  )
+}
+
+/**
+ * 卡片详情页的「相关题目」（复核轮 A2）：
+ * 先用卡片自带 relatedProblems；为空时按「同章」兜底推荐 ——
+ * 以分片 file（如 ds-ch03.json）对齐题目索引，天然不跨课程（c 与 ds 各自分片）。
+ * DS 卡片 131/132 张 relatedProblems 为空，无兜底时「相关题目」区整块空白。
+ */
+export function RelatedProblemsForCard({
+  cardFile,
+  category,
+  chapter,
+  directIds,
+}: {
+  cardFile: string
+  category: string
+  chapter: string
+  directIds: string[]
+}) {
+  const index = useIndex(loadProblems)
+  const [ids, setIds] = useState<string[]>([])
+  const [fallback, setFallback] = useState(false)
+
+  useEffect(() => {
+    if (directIds.length > 0) {
+      setIds(directIds)
+      setFallback(false)
+      return
+    }
+    if (!index) return
+    const same = index.problems.filter(
+      (p) => p.file === cardFile || (p.category === category && p.chapter === chapter),
+    )
+    setIds(same.slice(0, CAP).map((p) => p.id))
+    setFallback(same.length > 0)
+  }, [index, cardFile, category, chapter, directIds])
+
+  const { items } = useProblemItems(ids)
+
+  return (
+    <>
+      {fallback && (
+        <p className="mb-1 text-xs" style={muted} data-role="related-problems-fallback-note">
+          这张卡片还没有手写关联，下面按同章推荐：
+        </p>
+      )}
+      <RelLinks
+        items={items}
+        dataRole="related-problems"
+        empty={index === null && directIds.length === 0 ? undefined : '这张卡片还没有关联题目。'}
+      />
+    </>
   )
 }
 
