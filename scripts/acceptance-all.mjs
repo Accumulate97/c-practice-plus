@@ -40,6 +40,8 @@ const SUITES = [
   // 阶段 3.0：ds_debug / complexity_analysis / structure_trace 三型的渲染、判分闭环、
   // 等价写法、三级提示阶梯、底部参考源代码与窄屏可达性
   'acceptance:newtypes',
+  // 体验轮 1.1：白名单编程型空白起始 + 占位提示 + IO 约定渲染；非白名单骨架保留
+  'acceptance:blankstart-ui',
 ]
 const HARD_TIMEOUT_MS = 12 * 60 * 1000
 const SUMMARY = 'tmp/acc-summary.txt'

@@ -26,11 +26,27 @@ import { STATE_COLOR, STATE_LABEL, isInconclusive } from '../verdict-meta'
 import { recordBatchAttempt } from '../progress/store'
 
 /**
- * 48 道编程题的 reference 全是空串、也没有 code_starter 字段（提取阶段的既成事实，
- * 见 docs/提取阶段总结.md），所以这里给一个空脚手架让学生从零写。
- * 这是模板不是答案 —— 刻意不预填 reference，免得把参考解直接摊在编辑器里。
+ * 无 code_starter 题（如 code_optimization）的空脚手架兜底：这是模板不是答案 ——
+ * 刻意不预填 reference，免得把参考解直接摊在编辑器里。
  */
 const SCAFFOLD = ['#include <stdio.h>', '', 'int main(void) {', '', '    return 0;', '}', ''].join('\n')
+
+/**
+ * 1.1 空白起始白名单（体验轮）：这三型要求「从零写出完整程序」，判分是学生代码
+ * 整体编译（judge/client.ts runTests 只发 { code, stdin }，不拼任何隐藏骨架），
+ * 所以编辑器初值恒为空串。数据里的 code_starter 原样保留不删（不牵动 index.json /
+ * 搜索语料 / verified 证据），只是渲染层不再注入。
+ *
+ * ⚠️ 刻意排除（清空会毁题，判断依据见 _inputs/_meta/诊断报告_编程题空白起始与返回章节.md）：
+ *   · api_drill / stdlib_reimpl —— 题干 81/81 承诺「main 已给出，请不要改动」，
+ *     要求的函数签名与 IO 骨架就在 starter 里，清空即与题干矛盾；
+ *   · code_optimization —— 题目是优化题干围栏里的低效代码，编辑器初值本就是 SCAFFOLD 空模板；
+ *   · debug / code_completion / multi_blank 等骨架型 —— 带错/带空代码就是题目本体（不走本渲染器）。
+ */
+const BLANK_START_TYPES: ReadonlySet<string> = new Set(['programming', 'algorithm_impl', 'timed_impl'])
+
+/** 空白起始的占位提示（原生 placeholder，不进 value、不参与编译） */
+const BLANK_PLACEHOLDER = '从零编写完整程序，需含 main 与 return 0；提交后按 stdin / stdout 比对'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -73,6 +89,8 @@ function summarize(report: BatchReport): Overall {
 }
 
 function initialCode(problem: ProblemRecord): string {
+  // 1.1：白名单题型空白起始（starter 数据保留，仅不注入编辑器）
+  if (BLANK_START_TYPES.has(String(problem.type))) return ''
   const starter = problem.code_starter
   return typeof starter === 'string' && starter.trim().length > 0 ? starter : SCAFFOLD
 }
@@ -84,6 +102,15 @@ interface Props {
 export function ProgrammingRenderer({ problem }: Props) {
   const cases = useMemo(() => toProblemTestCases(problem.testCases), [problem.testCases])
   const [code, setCode] = useState<string>(() => initialCode(problem))
+  const blankStart = BLANK_START_TYPES.has(String(problem.type))
+  /**
+   * 1.1：空白起始后 IO 约定必须可见，不能让学生猜接口。
+   * programming / algorithm_impl 数据自带 input_format / output_format（此前 src 零渲染，
+   * 学生全靠 starter 里的 scanf/printf 猜格式）；timed_impl 无这两字段 → 用第一组用例作样例。
+   */
+  const inputFormat = typeof problem.input_format === 'string' ? problem.input_format.trim() : ''
+  const outputFormat = typeof problem.output_format === 'string' ? problem.output_format.trim() : ''
+  const sampleCase = blankStart && inputFormat.length === 0 && outputFormat.length === 0 ? (cases[0] ?? null) : null
   const [running, setRunning] = useState(false)
   const [progress, setProgress] = useState<RunProgress | null>(null)
   const [report, setReport] = useState<BatchReport | null>(null)
@@ -148,6 +175,31 @@ export function ProgrammingRenderer({ problem }: Props) {
             dedupeAgainst={[String(problem.code_starter ?? ''), String(problem.reference ?? '')]}
           />
         </div>
+        {(inputFormat.length > 0 || outputFormat.length > 0) && (
+          <div className="mt-2 space-y-1 text-xs" data-role="io-spec">
+            {inputFormat.length > 0 && (
+              <div>
+                <span className="font-semibold" style={muted}>输入格式：</span>
+                <span className="ml-1 whitespace-pre-wrap">{inputFormat}</span>
+              </div>
+            )}
+            {outputFormat.length > 0 && (
+              <div>
+                <span className="font-semibold" style={muted}>输出格式：</span>
+                <span className="ml-1 whitespace-pre-wrap">{outputFormat}</span>
+              </div>
+            )}
+          </div>
+        )}
+        {sampleCase && (
+          <div className="mt-2 text-xs" data-role="io-sample">
+            <div className="font-semibold" style={muted}>样例（第 1 组测试用例，判分即按 stdin / stdout 比对）</div>
+            <div className="mt-1 grid gap-2 sm:grid-cols-2">
+              <Block title="样例输入 stdin" body={sampleCase.stdin} />
+              <Block title="样例输出" body={sampleCase.expected} />
+            </div>
+          </div>
+        )}
         {typeof problem.source === 'string' && problem.source.length > 0 && (
           <p className="mt-2 text-xs" style={muted}>出处：{problem.source}</p>
         )}
@@ -164,7 +216,14 @@ export function ProgrammingRenderer({ problem }: Props) {
           </span>
         </div>
         <div className="mt-2">
-          <CodeEditor value={code} onChange={setCode} disabled={running} rows={16} ariaLabel="编程题代码编辑器" />
+          <CodeEditor
+            value={code}
+            onChange={setCode}
+            disabled={running}
+            rows={16}
+            ariaLabel="编程题代码编辑器"
+            placeholder={blankStart ? BLANK_PLACEHOLDER : undefined}
+          />
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <button

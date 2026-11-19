@@ -8,6 +8,8 @@ interface Props {
   /** 可视行数，决定高度（每行 20px） */
   rows?: number
   ariaLabel?: string
+  /** 空值时的占位提示（原生 placeholder：不是初始代码、不进 value、不参与编译） */
+  placeholder?: string
 }
 
 const INDENT = '    '
@@ -22,7 +24,14 @@ export const MONO_FONT =
  * 可 Tab 跳转的行内输入槽（Decoration）时再 npm i。届时替换本组件内部实现即可，
  * 对外仍是 value / onChange 受控接口，调用方（各 Renderer）一行都不用改。
  */
-export function CodeEditor({ value, onChange, disabled = false, rows = 16, ariaLabel = 'C 代码编辑器' }: Props) {
+export function CodeEditor({
+  value,
+  onChange,
+  disabled = false,
+  rows = 16,
+  ariaLabel = 'C 代码编辑器',
+  placeholder,
+}: Props) {
   const areaRef = useRef<HTMLTextAreaElement>(null)
   const gutterRef = useRef<HTMLDivElement>(null)
   const lineCount = value.split('\n').length
@@ -87,6 +96,8 @@ export function CodeEditor({ value, onChange, disabled = false, rows = 16, ariaL
         disabled={disabled}
         rows={rows}
         aria-label={ariaLabel}
+        placeholder={placeholder}
+        data-role="code-editor-input"
         spellCheck={false}
         autoCapitalize="off"
         autoCorrect="off"

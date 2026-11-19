@@ -16,6 +16,7 @@
     "acceptance:site-ui": "node scripts/acceptance-site-ui.mjs",
     "acceptance:refnav-ui": "node scripts/acceptance-refnav-ui.mjs",
     "acceptance:navctx-ui": "node scripts/acceptance-navctx-ui.mjs",
+    "acceptance:blankstart-ui": "node scripts/acceptance-blankstart-ui.mjs",
     "acceptance:all": "node scripts/acceptance-all.mjs",
     "a11y:probe": "node scripts/a11y-probe.mjs",
     "spotcheck:20": "node scripts/spotcheck-20.mjs",
