@@ -13,9 +13,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 44176 // 本机 TCP 动态端口范围为 1024–15000，旧值 4176 会被长连接出站口随机占用（EACCES）；4xxxx 在临时口范围之外
+const PORT = await freePort() // 动态分配：固定 4176 曾被出站长连接占用（EACCES 偶发红），listen(0) 由内核保证端口空闲
 const BASE = `http://127.0.0.1:${PORT}/`
 
 const PG = 'c-ch03-pg-001'

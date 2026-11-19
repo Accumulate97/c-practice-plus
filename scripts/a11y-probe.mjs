@@ -5,8 +5,9 @@
 import { spawn } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { chromium } from 'playwright-core'
+import { freePort, pickPort } from './lib/free-port.mjs'
 
-const PORT = Number(process.env.A11Y_PORT ?? 4189)
+const PORT = await pickPort('A11Y_PORT')
 const BASE = `http://127.0.0.1:${PORT}/`
 
 function extractAudit() {

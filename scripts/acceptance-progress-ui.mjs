@@ -24,9 +24,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 44177 // 同 acceptance-site-ui：避开 1024–15000 动态端口范围，防止被出站长连接占用导致 EACCES
+const PORT = await freePort() // 同 acceptance-site-ui：动态分配防端口占用偶发红
 const BASE = `http://127.0.0.1:${PORT}/`
 const TMP = join(ROOT, 'tmp')
 const PROGRESS_KEY = 'cpractice:progress:v1'

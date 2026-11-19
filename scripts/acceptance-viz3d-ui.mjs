@@ -15,9 +15,10 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 4188
+const PORT = await freePort()
 const BASE = `http://127.0.0.1:${PORT}/`
 const VIZ_DIR = join(ROOT, 'public', 'data', 'viz')
 const VIZ3D_DIR = join(ROOT, 'public', 'data', 'viz3d')

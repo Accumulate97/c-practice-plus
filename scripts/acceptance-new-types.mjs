@@ -20,9 +20,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort, pickPort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = Number(process.env.NEWTYPES_PORT ?? 4194)
+const PORT = await pickPort('NEWTYPES_PORT')
 const BASE = `http://127.0.0.1:${PORT}/`
 
 const checks = []

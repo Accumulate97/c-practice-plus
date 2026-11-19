@@ -21,9 +21,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 4199
+const PORT = await freePort()
 const BASE = `http://127.0.0.1:${PORT}/`
 const ONBOARDED_KEY = 'cpractice:onboarded:v1'
 const PROGRESS_KEY = 'cpractice:progress:v1'

@@ -20,9 +20,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 4177
+const PORT = await freePort()
 const BASE = `http://127.0.0.1:${PORT}/`
 
 const PG = 'c-ch01-pg-001'       // programming + reference 非空

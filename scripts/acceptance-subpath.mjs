@@ -15,9 +15,10 @@ import { createServer } from 'node:http'
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { extname, join, normalize, resolve, sep } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 4181
+const PORT = await freePort()
 const PREFIX = '/' + (process.argv[2] ?? 'C-practice').replace(/^\/+|\/+$/g, '') + '/'
 const DIST = join(ROOT, 'dist')
 const BASE = `http://127.0.0.1:${PORT}${PREFIX}`

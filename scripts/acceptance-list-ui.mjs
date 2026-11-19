@@ -13,9 +13,10 @@ import { spawn } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
+import { freePort } from './lib/free-port.mjs'
 
 const ROOT = process.cwd()
-const PORT = 4175
+const PORT = await freePort()
 const BASE = `http://127.0.0.1:${PORT}/`
 
 const INDEX = JSON.parse(readFileSync(join(ROOT, 'public/data/problems/index.json'), 'utf8'))
