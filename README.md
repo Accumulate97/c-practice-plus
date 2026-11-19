@@ -69,13 +69,13 @@ npm run typecheck      # TS 类型检查
 npm run verify:data    # 数据闸门（题量/章节/verified）
 npm run scan:doubt     # 存疑标记残留扫描
 npm run judge:verify   # Godbolt 实机判分验证（写 verification-report.json）
-npm run acceptance:all # 21 套 Playwright UI 验收
+npm run acceptance:all # 22 套 Playwright UI 验收
 npm run acceptance:online   # 线上抽样真判
 ```
 
 ## 七、验收情况
 
-`acceptance:all` 21/21、`acceptance:online` 31 项 0 失败、`verify:data` error 0（warn 7 为 C 库历史遗留 7 道未实机验证的 code_reading）、`scan:doubt` 表面文本 0 残留、`a11y:probe` 23 页 × 2 主题 + 375px 窄屏 0 问题。
+`acceptance:all` 22/22（含本轮新增的空白起始套件 `acceptance:blankstart-ui`）、`acceptance:online` 31 项 0 失败、`verify:data` error 0（warn 7 为 C 库历史遗留 7 道未实机验证的 code_reading）、`scan:doubt` 表面文本 0 残留、`a11y:probe` 23 页 × 2 主题 + 375px 窄屏 0 问题。
 
 ## 八、说明
 
