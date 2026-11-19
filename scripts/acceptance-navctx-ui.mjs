@@ -18,6 +18,13 @@
  *   N11 列表滚动到中部 → 点行进详情 → 面包屑返回列表 → scrollY 恢复（±150px）
  *   N12 全程控制台 error/warn/pageerror 为空
  *
+ * 体验轮 1.2（返回章节修复）追加：
+ *   N13 面包屑章节链 href 带 shard key，点击落章节列表（旧 bug：传中文显示名 → 0 题空态）
+ *   N14 章节列表刷新后筛选保持（不退回初始页）
+ *   N15 历史中文章节名参数 ?chapter=第1章… 兼容反查（救活旧收藏/分享链）
+ *   N16 多筛选（chapter+type+page+size）进题 → 面包屑「在线刷题」完整恢复 URL 与结果数
+ *   N17 冷启动深链（全新 context 无 nav-ctx）→ 章节链仍落章节列表
+ *
  * 期望值一律从 public/data 现读，脚本不写死题量。
  */
 import { spawn } from 'node:child_process'
@@ -44,6 +51,15 @@ const tagCounts = new Map()
 for (const p of index.problems) for (const t of p.tags ?? []) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1)
 const TAG = [...tagCounts.entries()].filter(([, n]) => n >= 20 && n <= 400).sort((a, b) => b[1] - a[1])[0]?.[0]
 const TAG_COUNT = TAG ? tagCounts.get(TAG) : 0
+
+// 体验轮 1.2（N13–N17）：本章题量 / 中文显示名 / 一个题量 >20 的题型（保证 page=2&size=20 存在）
+const SHARD_META = index.shards.find((s) => s.file === SHARD)
+const SHARD_COUNT = SHARD_META?.count ?? 0
+const CH_NAME = SHARD_META?.chapter ?? ''
+const chTypeCounts = new Map()
+for (const p of index.problems) if (p.file === SHARD) chTypeCounts.set(p.type, (chTypeCounts.get(p.type) ?? 0) + 1)
+const TYPE16 = [...chTypeCounts.entries()].filter(([, n]) => n > 20).sort((a, b) => b[1] - a[1])[0]?.[0] ?? ''
+const TYPE16_COUNT = TYPE16 ? chTypeCounts.get(TYPE16) : 0
 
 const checks = []
 function check(name, ok, detail = '') {
@@ -211,6 +227,79 @@ async function main() {
   const restored = await page.evaluate(() => window.scrollY)
   check('N11c 面包屑返回列表后滚动位置恢复（±150px）', Math.abs(restored - scrolled) <= 150, `原 ${scrolled} → 恢复 ${restored}`)
   await page.setViewportSize({ width: 1440, height: 900 })
+
+  // ── N13 返回章节：面包屑章节链（体验轮 1.2 修复）──
+  await page.goto(`${BASE}#/problems/p/${MID}`, { waitUntil: 'networkidle' })
+  await page.waitForSelector('[data-role="problem-breadcrumb"]', { timeout: 30000 })
+  const chapterCrumb = page.locator('[data-role="breadcrumb-chapter"]')
+  const chapterHref = decodeURIComponent((await chapterCrumb.getAttribute('href')) ?? '')
+  check('N13a 面包屑章节链 href 带 shard key（c-ch01）', chapterHref.includes('chapter=c-ch01'), chapterHref)
+  await chapterCrumb.click()
+  await page.waitForSelector('[data-role="summary"]', { timeout: 30000 })
+  const sum13 = await page.locator('[data-role="summary"]').getAttribute('data-filtered')
+  check(`N13b 点章节链落章节列表（${SHARD_COUNT} 题，非空态）`, Number(sum13) === SHARD_COUNT, `data-filtered=${sum13}`)
+  const sel13 = await page.locator('select[aria-label="章节"]').inputValue()
+  check('N13c 章节下拉同步选中 c-ch01', sel13 === 'c-ch01', sel13)
+
+  // ── N14 章节列表刷新不退化 ──
+  await page.reload({ waitUntil: 'networkidle' })
+  await page.waitForSelector('[data-role="summary"]', { timeout: 30000 })
+  const sum14 = await page.locator('[data-role="summary"]').getAttribute('data-filtered')
+  check('N14 刷新后章节筛选保持（不退回初始页/全量）', Number(sum14) === SHARD_COUNT, `data-filtered=${sum14}`)
+
+  // ── N15 历史中文章节名参数兼容（救活旧收藏/分享链）──
+  await page.goto(`${BASE}#/problems?chapter=${encodeURIComponent(CH_NAME)}`, { waitUntil: 'networkidle' })
+  await page.waitForSelector('[data-role="summary"]', { timeout: 30000 })
+  const sum15 = await page.locator('[data-role="summary"]').getAttribute('data-filtered')
+  const sel15 = await page.locator('select[aria-label="章节"]').inputValue()
+  check(`N15 中文章节名参数「${CH_NAME}」反查为 shard key`, Number(sum15) === SHARD_COUNT && sel15 === 'c-ch01', `data-filtered=${sum15} select=${sel15}`)
+
+  // ── N16 多筛选进题 → 面包屑「在线刷题」完整恢复 ──
+  if (TYPE16) {
+    await page.goto(`${BASE}#/problems?chapter=c-ch01&type=${TYPE16}&page=2&size=20`, { waitUntil: 'networkidle' })
+    await page.waitForSelector('tr[data-role="row"]', { timeout: 30000 })
+    const sum16a = await page.locator('[data-role="summary"]').getAttribute('data-filtered')
+    check(`N16a 多筛选列表渲染（${TYPE16} 共 ${TYPE16_COUNT} 题，第 2 页）`, Number(sum16a) === TYPE16_COUNT, `data-filtered=${sum16a}`)
+    // 与 N11 同法：mouse.click 视口内可见行，避免 scrollIntoViewIfNeeded 污染滚动快照
+    const target16 = await page.evaluate(() => {
+      const header = document.querySelector('header')
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0
+      const links = [...document.querySelectorAll('tr[data-role="row"] a[href*="/problems/p/"]')]
+      const i = links.findIndex((a) => { const r = a.getBoundingClientRect(); return r.top > headerBottom + 8 && r.bottom < window.innerHeight - 8 })
+      if (i < 0) return null
+      const r = links[i].getBoundingClientRect()
+      return { href: links[i].getAttribute('href'), x: r.left + 4, y: r.top + r.height / 2 }
+    })
+    check('N16b 视口内找到可点题目行', !!target16)
+    await page.mouse.click(target16.x, target16.y)
+    await page.waitForFunction((h) => window.location.hash === h, target16.href, { timeout: 5000 })
+    await page.waitForSelector('[data-role="problem-breadcrumb"]', { timeout: 30000 })
+    await page.locator('[data-role="breadcrumb-list"]').click()
+    await page.waitForSelector('tr[data-role="row"]', { timeout: 30000 })
+    const hash16 = await hash()
+    const qs16 = new URLSearchParams(hash16.split('?')[1] ?? '')
+    const ok16 = qs16.get('chapter') === 'c-ch01' && qs16.get('type') === TYPE16 && qs16.get('page') === '2' && qs16.get('size') === '20'
+    const sum16 = await page.locator('[data-role="summary"]').getAttribute('data-filtered')
+    check('N16c 面包屑「在线刷题」完整恢复章节/题型/页码/每页', ok16 && Number(sum16) === TYPE16_COUNT, `${hash16} data-filtered=${sum16}`)
+  } else {
+    check('N16 本章找到题量 >20 的题型', false, 'c-ch01 无题量 >20 的题型')
+  }
+
+  // ── N17 冷启动深链（全新 context 无 nav-ctx）→ 章节链仍可用 ──
+  {
+    const ctx2 = await browser.newContext({ viewport: { width: 1440, height: 900 } })
+    const page2 = await ctx2.newPage()
+    page2.on('pageerror', (e) => pageErrors.push('[ctx2] ' + e.message))
+    await page2.goto(`${BASE}#/problems/p/${MID}`, { waitUntil: 'networkidle' })
+    await page2.waitForSelector('[data-role="breadcrumb-chapter"]', { timeout: 30000 })
+    const hasCtx = await page2.evaluate(() => localStorage.getItem('cpractice:problems:nav-ctx'))
+    check('N17a 全新 context 确无 nav-ctx（冷启动）', hasCtx === null, String(hasCtx).slice(0, 60))
+    await page2.locator('[data-role="breadcrumb-chapter"]').click()
+    await page2.waitForSelector('[data-role="summary"]', { timeout: 30000 })
+    const sum17 = await page2.locator('[data-role="summary"]').getAttribute('data-filtered')
+    check(`N17b 冷启动深链点章节链仍落章节列表（${SHARD_COUNT} 题）`, Number(sum17) === SHARD_COUNT, `data-filtered=${sum17}`)
+    await ctx2.close()
+  }
 
   // ── N12 控制台 ──
   const bad = consoleMsgs.filter((m) => m.type === 'error' || m.type === 'warning')

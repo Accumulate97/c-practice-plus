@@ -209,6 +209,17 @@ function Ready({ index }: { index: ProblemIndex }) {
     [index],
   )
 
+  /**
+   * 1.2 兼容反查：历史收藏 / 分享链的 ?chapter= 可能带中文显示名（旧版面包屑章节链
+   * 就是这么拼的，落地必 0 题）。不是 shard key 但命中显示名 → 映射回 key；
+   * 两者都不匹配 → 原样保留（仍是空态，不静默吞掉真正的错值）。
+   */
+  const chapterKey = useMemo(() => {
+    if (chapter.length === 0) return ''
+    if (chapters.some((c) => c.key === chapter)) return chapter
+    return chapters.find((c) => c.name === chapter)?.key ?? chapter
+  }, [chapter, chapters])
+
   const types = useMemo(() => {
     const counts = new Map<string, number>()
     for (const p of index.problems) counts.set(p.type, (counts.get(p.type) ?? 0) + 1)
@@ -233,13 +244,13 @@ function Ready({ index }: { index: ProblemIndex }) {
     () =>
       index.problems.filter(
         (p) =>
-          (chapter.length === 0 || shardKey(p.file) === chapter) &&
+          (chapterKey.length === 0 || shardKey(p.file) === chapterKey) &&
           (type.length === 0 || p.type === type) &&
           (difficulty.length === 0 || String(p.difficulty) === difficulty) &&
           (tag.length === 0 || (p.tags ?? []).includes(tag)) &&
           matchesTerms(p, queryTerms),
       ),
-    [index, chapter, type, difficulty, tag, queryTerms],
+    [index, chapterKey, type, difficulty, tag, queryTerms],
   )
 
   const statusCounts = useMemo(() => {
@@ -277,7 +288,7 @@ function Ready({ index }: { index: ProblemIndex }) {
   const to = (page - 1) * pageSize + rows.length
 
   const activeFilterCount = [chapter, type, difficulty, status, query, tag].filter((v) => v.length > 0).length
-  const chapterName = chapters.find((c) => c.key === chapter)?.name ?? ''
+  const chapterName = chapters.find((c) => c.key === chapterKey)?.name ?? ''
 
   /**
    * 任务07-阶段3：列表滚动位置恢复。
@@ -319,7 +330,7 @@ function Ready({ index }: { index: ProblemIndex }) {
   const snapshotNav = useCallback(
     (from: string) => {
       writeNavContext({
-        chapter,
+        chapter: chapterKey,
         type,
         difficulty,
         status,
@@ -337,7 +348,7 @@ function Ready({ index }: { index: ProblemIndex }) {
         /* 存不下就不恢复，无碍 */
       }
     },
-    [chapter, type, difficulty, status, query, sortKey, tag, page, pageSize, sorted, canonicalSig],
+    [chapterKey, type, difficulty, status, query, sortKey, tag, page, pageSize, sorted, canonicalSig],
   )
 
   return (
@@ -369,7 +380,7 @@ function Ready({ index }: { index: ProblemIndex }) {
             <span className="mb-1 block">章节</span>
             <select
               aria-label="章节"
-              value={chapter}
+              value={chapterKey}
               onChange={(e) => patch({ chapter: e.target.value })}
               className="rounded-lg border px-2 py-1.5 text-sm"
               style={control}

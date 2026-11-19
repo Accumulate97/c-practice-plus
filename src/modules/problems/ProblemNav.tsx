@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom'
 import { loadIndex } from './data/loader'
 import type { ProblemIndexEntry } from './data/loader'
 import { chapterOrderById, contextOrderByFilter, contextToFilter, filterToQuery, locateInOrder, readNavContext, writeLastViewed } from './nav-context'
-import { shortId } from './type-meta'
+import { shardKey, shortId } from './type-meta'
 
 const panel: CSSProperties = { borderColor: 'var(--border)', background: 'var(--bg-elev)' }
 const muted: CSSProperties = { color: 'var(--fg-muted)' }
@@ -169,13 +169,17 @@ export function Breadcrumb({ entry }: { entry: ProblemIndexEntry }) {
     const ctx = readNavContext()
     return ctx ? `/problems${filterToQuery(contextToFilter(ctx))}` : '/problems'
   }, [])
+  // 1.2 修复：章节链过去传 entry.chapter（中文显示名，如「第5章 循环结构」），
+  // 而列表页按 shardKey(file)（'c-ch05'）过滤 → 点击必落 0 题空态（「返回章节刷新不出页面」主根因）。
+  // 改传 shard key；无 file 的兜底仍传显示名（列表页有中文名反查兼容）。
+  const chapterParam = typeof entry.file === 'string' && entry.file.length > 0 ? shardKey(entry.file) : String(entry.chapter ?? '')
   return (
     <nav className="text-xs" style={muted} aria-label="面包屑" data-role="problem-breadcrumb">
       <Link to="/" className="hover:underline" style={{ color: 'var(--fg-link)' }}>🏠 首页</Link>
       <span className="px-1">/</span>
-      <Link to={listTo} className="hover:underline" style={{ color: 'var(--fg-link)' }}>✍️ 在线刷题</Link>
+      <Link to={listTo} className="hover:underline" style={{ color: 'var(--fg-link)' }} data-role="breadcrumb-list">✍️ 在线刷题</Link>
       <span className="px-1">/</span>
-      <Link to={`/problems?chapter=${encodeURIComponent(String(entry.chapter ?? ''))}`} className="hover:underline" style={{ color: 'var(--fg-link)' }}>
+      <Link to={`/problems?chapter=${encodeURIComponent(chapterParam)}`} className="hover:underline" style={{ color: 'var(--fg-link)' }} data-role="breadcrumb-chapter">
         {entry.chapter}
       </Link>
       <span className="px-1">/</span>
