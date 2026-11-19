@@ -1,0 +1,6 @@
+# code_reading/pointer_trace 60 题判分字段(code)被 1.4 格式化触碰、当时 90 题口径未含 → 漏跑补验清单
+# 生成：2026-11-19 盘点轮 handover-prep.mjs 机械对账（_inputs/_meta/recon-90-178.json）
+# 补验命令：node scripts/judge-verify.ts --only=<逗号串>（lkg 只增不减，重跑安全）
+# 【已解决 2026-11-19 盘点轮】与 65 待补验题合并为 125 题一次探测：125/125 实机通过
+#   （tmp/judge-probe-run.txt），分片 verified 零字节变化，lkg 2548 零丢失；无遗留。
+ds-ch02-cr-012,ds-ch02-cr-013,ds-ch02-cr-014,ds-ch02-cr-015,ds-ch02-pt-001,ds-ch02-cr-016,ds-ch02-cr-017,ds-ch02-cr-018,ds-ch02-cr-019,ds-ch02-pt-002,ds-ch02-cr-020,ds-ch02-cr-021,ds-ch02-cr-022,ds-ch02-cr-023,ds-ch02-cr-024,ds-ch02-cr-025,ds-ch02-cr-026,ds-ch02-cr-027,ds-ch02-cr-028,ds-ch02-cr-029,ds-ch02-cr-030,ds-ch02-cr-031,ds-ch02-cr-032,ds-ch02-cr-033,ds-ch02-cr-034,ds-ch02-cr-035,ds-ch02-cr-036,ds-ch02-cr-037,ds-ch02-cr-038,ds-ch02-cr-039,ds-ch02-cr-040,ds-ch02-cr-041,ds-ch02-cr-042,ds-ch02-cr-043,ds-ch03-cr-009,ds-ch03-cr-010,ds-ch03-cr-011,ds-ch03-cr-012,ds-ch03-cr-013,ds-ch03-cr-014,ds-ch03-cr-015,ds-ch03-cr-016,ds-ch03-cr-017,ds-ch03-cr-018,ds-ch03-cr-019,ds-ch03-cr-020,ds-ch03-cr-021,ds-ch03-cr-022,ds-ch03-cr-023,ds-ch03-cr-024,ds-ch03-cr-025,ds-ch03-cr-026,ds-ch03-cr-027,ds-ch03-cr-028,ds-ch03-cr-029,ds-ch03-cr-030,ds-ch03-cr-031,ds-ch03-cr-032,ds-ch03-cr-033,ds-ch03-cr-034
